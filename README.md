@@ -15,16 +15,21 @@ These classes are used to convert dictionary provided by openflow input to pydan
 
 ```python
 # requirements:
-# git+https://github.com/tektomejp/tektome_utils.git@v0.1.0
+# git+https://github.com/tektomejp/tektome_utils.git@v0.1.1
 
-from tektome_utils import Resource
+from tektome_utils import Resource, Context
 from pydantic import validate_call
 
-
-@validate_call  # validate_call attempts to convert input dict to Resource class
-def main(resource: Resource):
-    print(f"resource is of type: {type(resource)}")  # resource is of type: <class '....Resource'>
-    return {"data": "some data"}
+@validate_call
+def main(ctx: Context, r: Resource):
+    print(f"type of ctx is: {type(ctx)} with the following data available")
+    print(ctx.model_dump())
+    print(f"type of r is: {type(r)} with the following data available")
+    print(r.model_dump())
+    """
+    Perform procesing here
+    """
+    return "data to next step"
 ```
 
 ## Development
