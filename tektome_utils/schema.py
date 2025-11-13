@@ -26,7 +26,7 @@ class Resources(BaseModel):
     Represents a single resource.
     """
 
-    id: list[UUID] = Field(..., description="The unique identifier for the resource")
+    ids: list[UUID] = Field(..., description="The unique identifier for the resource")
     kind: str = Field(..., description="The kind of the schema ,must be 'resource[]")
 
     @field_validator("kind")
@@ -58,7 +58,7 @@ class Projects(BaseModel):
     Represents a single project.
     """
 
-    id: list[UUID] = Field(..., description="The unique identifier for the project")
+    ids: list[UUID] = Field(..., description="The unique identifier for the project")
     kind: str = Field(..., description="The kind of the schema ,must be 'project[]'")
 
     @field_validator("kind")
@@ -74,7 +74,7 @@ class AttributeDefinitions(BaseModel):
     Represents definition of a resource or project.
     """
 
-    id: list[UUID] = Field(..., description="The unique identifier for the attributes")
+    ids: list[UUID] = Field(..., description="The unique identifier for the attributes")
     kind: str = Field(
         ..., description="The kind of the schema ,must be 'attribute_definition[]'"
     )
