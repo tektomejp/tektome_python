@@ -2,52 +2,100 @@
 These classes are used to convert dictonary provided by openflow input to pydantic dataclass with validation.
 # Example usage:
 ```
-from openflow_schema import Resource
+from shared/tektome_openflow_schema import Resource
 from pydantic import validate_call
 
 
 @validate_call  # validate_call attempts to convert input dict to Resource class
 def main(resource: Resource):
-    print(f"resource is of type: {type(resource)}")  # resource is of type: <class 'Resource'>
+    print(f"resource is of type: {type(resource)}")  # resource is of type: <class '....Resource'>
+    return {"data": "some data"}
 ```
+
 """
 
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, ConfigDict, Field
+from uuid import UUID
+
+from pydantic import BaseModel, Field, field_validator
 
 
 class Resource(BaseModel):
     """
-    Represents a single OpenFlow resource.
-    
-    This class is used to validate and convert dictionary inputs from OpenFlow
-    into a strongly-typed Pydantic model.
+    Represents a single resource.
     """
-    
-    model_config = ConfigDict(
-        extra="allow",  # Allow additional fields not explicitly defined
-        populate_by_name=True
-    )
-    
-    id: Optional[str] = Field(None, description="Unique identifier for the resource")
-    name: str = Field(..., description="Name of the resource")
-    type: Optional[str] = Field(None, description="Type of the resource")
-    description: Optional[str] = Field(None, description="Description of the resource")
-    metadata: Optional[Dict[str, Any]] = Field(default_factory=dict, description="Additional metadata")
+
+    id: UUID = Field(..., description="The unique identifier for the resource")
+    kind: str = Field(..., description="The kind of the schema ,must be 'resource")
+
+    @field_validator("kind")
+    def validate_kind(cls, v):
+        if v != "resource":
+            raise ValueError("kind must be 'resource'")
+
+        return v
 
 
 class Resources(BaseModel):
     """
-    Represents a collection of OpenFlow resources.
-    
-    This class is used to validate and convert dictionary inputs containing
-    multiple resources from OpenFlow into a strongly-typed Pydantic model.
+    Represents a single resource.
     """
-    
-    model_config = ConfigDict(
-        extra="allow",  # Allow additional fields not explicitly defined
-        populate_by_name=True
+
+    id: list[UUID] = Field(..., description="The unique identifier for the resource")
+    kind: str = Field(..., description="The kind of the schema ,must be 'resource[]")
+
+    @field_validator("kind")
+    def validate_kind(cls, v):
+        if v != "resource[]":
+            raise ValueError("kind must be 'resource[]'")
+
+        return v
+
+
+class Project(BaseModel):
+    """
+    Represents a single project.
+    """
+
+    id: UUID = Field(..., description="The unique identifier for the project")
+    kind: str = Field(..., description="The kind of the schema ,must be 'project'")
+
+    @field_validator("kind")
+    def validate_kind(cls, v):
+        if v != "project":
+            raise ValueError("kind must be 'project'")
+
+        return v
+
+
+class Projects(BaseModel):
+    """
+    Represents a single project.
+    """
+
+    id: list[UUID] = Field(..., description="The unique identifier for the project")
+    kind: str = Field(..., description="The kind of the schema ,must be 'project[]'")
+
+    @field_validator("kind")
+    def validate_kind(cls, v):
+        if v != "project[]":
+            raise ValueError("kind must be 'project[]'")
+
+        return v
+
+
+class AttributeDefinitions(BaseModel):
+    """
+    Represents definition of a resource or project.
+    """
+
+    id: UUID = Field(..., description="The unique identifier for the attributes")
+    kind: str = Field(
+        ..., description="The kind of the schema ,must be 'attribute_definition[]'"
     )
-    
-    resources: List[Resource] = Field(default_factory=list, description="List of resources")
-    total: Optional[int] = Field(None, description="Total count of resources")
+
+    @field_validator("kind")
+    def validate_kind(cls, v):
+        if v != "attribute_definition[]":
+            raise ValueError("kind must be 'attribute_definition[]'")
+
+        return v

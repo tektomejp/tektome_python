@@ -2,6 +2,12 @@
 
 __version__ = "0.1.0"
 
-from openflow_schema.schema import Resource, Resources
+from openflow_schema.schema import Resource, Resources, Project, Projects
 
-__all__ = ["Resource", "Resources", "__version__"]
+__all__ = [
+    "__version__",
+    "Resource", 
+    "Resources", 
+    "Project",
+    "Projects",
+    ]
