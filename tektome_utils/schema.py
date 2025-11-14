@@ -106,10 +106,6 @@ class Context(BaseModel):
 
     @field_validator("base_url")
     def validate_base_url(cls, v):
-        if not v:
-            raise ValueError("base_url cannot be empty")
-
-        # Check if URL has a valid scheme (http or https)
         if not v.startswith("http://") and not v.startswith("https://"):
             raise ValueError("base_url must start with 'http://' or 'https://'")
 
