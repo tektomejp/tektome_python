@@ -2,7 +2,7 @@
 import uuid
 import pytest
 from pydantic import ValidationError
-from tektome_utils import Projects
+from tektome import Projects
 
 
 class TestProjectsCreation:
@@ -148,7 +148,7 @@ class TestProjectsEquality:
 
     def test_projects_not_equal_to_resources(self, sample_uuid_list):
         """Test that Projects is not equal to Resources with same IDs."""
-        from tektome_utils import Resources
+        from tektome import Resources
         projects = Projects(ids=sample_uuid_list, kind="project[]")
         resources = Resources(ids=sample_uuid_list, kind="resource[]")
         assert projects != resources

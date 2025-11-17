@@ -2,7 +2,7 @@
 import uuid
 import pytest
 from pydantic import ValidationError
-from tektome_utils import AttributeDefinitions
+from tektome import AttributeDefinitions
 
 
 class TestAttributeDefinitionsCreation:

@@ -30,7 +30,7 @@ jobs:
         run: uv sync --group dev
 
       - name: Run tests
-        run: uv run pytest -v --cov=tektome_utils --cov-report=term-missing
+        run: uv run pytest -v --cov=tektome --cov-report=term-missing
 
       - name: Check test coverage
-        run: uv run pytest --cov=tektome_utils --cov-report=xml --cov-fail-under=80
+        run: uv run pytest --cov=tektome --cov-report=xml --cov-fail-under=80

@@ -805,7 +805,7 @@ wheels = [
 ]
 
 [[package]]
-name = "tektome-utils"
+name = "tektome"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

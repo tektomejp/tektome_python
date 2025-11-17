@@ -1,4 +1,4 @@
-# tektome_utils
+# tektome
 Utilities for handling Tektome Resources
 
 ## Installation
@@ -17,7 +17,7 @@ These classes are used to convert dictionary provided by openflow input to pydan
 # requirements:
 # git+https://github.com/tektomejp/tektome_utils.git@v0.1.1
 
-from tektome_utils import Resource, Context
+from tektome import Resource, Context
 from pydantic import validate_call
 
 @validate_call

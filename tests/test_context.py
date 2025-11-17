@@ -2,7 +2,7 @@
 import uuid
 import pytest
 from pydantic import ValidationError
-from tektome_utils import Context
+from tektome import Context
 
 
 class TestContextCreation:

@@ -2,7 +2,7 @@
 import uuid
 import pytest
 from pydantic import ValidationError
-from tektome_utils import Resource
+from tektome import Resource
 
 
 class TestResourceCreation:
