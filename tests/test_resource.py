@@ -125,9 +125,10 @@ class TestResourceEdgeCases:
 
     def test_extra_fields_not_allowed_by_default(self, sample_uuid):
         """Test that extra fields are not allowed by default."""
-        # Pydantic v2 ignores extra fields by default
-        resource = Resource(id=sample_uuid, kind="resource", extra_field="value")
-        assert not hasattr(resource, "extra_field")
+        # BaseSchema forbids extra fields
+        with pytest.raises(ValidationError) as exc_info:
+            Resource(id=sample_uuid, kind="resource", extra_field="value")
+        assert "extra_field" in str(exc_info.value)
 
     def test_uuid_type_preservation(self, sample_uuid):
         """Test that UUID type is preserved."""

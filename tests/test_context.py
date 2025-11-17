@@ -14,10 +14,10 @@ class TestContextCreation:
             user_api_key="test_api_key_12345",
             base_url="https://example.tektome.com",
             execution_id=sample_uuid,
-            
+
         )
         assert context.user_api_key == "test_api_key_12345"
-        assert context.base_url == "https://example.tektome.com"
+        assert str(context.base_url) == "https://example.tektome.com/"
         assert context.execution_id == sample_uuid
 
     def test_create_context_from_dict(self, sample_uuid_str):
@@ -29,24 +29,24 @@ class TestContextCreation:
         }
         context = Context(**data)
         assert context.user_api_key == "test_api_key_12345"
-        assert context.base_url == "https://example.tektome.com"
+        assert str(context.base_url) == "https://example.tektome.com/"
         assert str(context.execution_id) == sample_uuid_str
 
     def test_create_context_with_different_base_urls(self, sample_uuid):
         """Test creating Context with different base URL formats."""
         urls = [
-            "https://domain.tld",
-            "https://api.example.com",
-            "http://localhost:8000",
+            ("https://domain.tld", "https://domain.tld/"),
+            ("https://api.example.com", "https://api.example.com/"),
+            ("http://localhost:8000", "http://localhost:8000/"),
         ]
-        for url in urls:
+        for url_input, url_expected in urls:
             context = Context(
                 user_api_key="key",
-                base_url=url,
+                base_url=url_input,
                 execution_id=sample_uuid,
-                
+
             )
-            assert context.base_url == url
+            assert str(context.base_url) == url_expected
 
 
 class TestContextValidation:
@@ -144,11 +144,11 @@ class TestContextSerialization:
             user_api_key="test_api_key",
             base_url="https://example.com",
             execution_id=sample_uuid,
-            
+
         )
         data = context.model_dump()
         assert data["user_api_key"] == "test_api_key"
-        assert data["base_url"] == "https://example.com"
+        assert str(data["base_url"]) == "https://example.com/"
         assert data["execution_id"] == sample_uuid
 
     def test_model_dump_json(self, sample_uuid):
@@ -248,15 +248,15 @@ class TestContextEdgeCases:
 
     def test_extra_fields_not_allowed_by_default(self, sample_uuid):
         """Test that extra fields are not allowed by default."""
-        # Pydantic v2 ignores extra fields by default
-        context = Context(
-            user_api_key="key",
-            base_url="https://example.com",
-            execution_id=sample_uuid,
-            
-            extra_field="value",
-        )
-        assert not hasattr(context, "extra_field")
+        # BaseSchema forbids extra fields
+        with pytest.raises(ValidationError) as exc_info:
+            Context(
+                user_api_key="key",
+                base_url="https://example.com",
+                execution_id=sample_uuid,
+                extra_field="value",
+            )
+        assert "extra_field" in str(exc_info.value)
 
     def test_uuid_type_preservation(self, sample_uuid):
         """Test that UUID type is preserved."""
@@ -290,7 +290,7 @@ class TestContextValidateCall:
         )
         assert isinstance(result, Context)
         assert result.user_api_key == "key"
-        assert result.base_url == "https://example.com"
+        assert str(result.base_url) == "https://example.com/"
         assert str(result.execution_id) == sample_uuid_str
 
     def test_validate_call_with_context_instance(self, sample_uuid):

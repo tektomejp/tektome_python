@@ -137,8 +137,10 @@ class TestProjectEdgeCases:
 
     def test_extra_fields_not_allowed_by_default(self, sample_uuid):
         """Test that extra fields are not allowed by default."""
-        project = Project(id=sample_uuid, kind="project", extra_field="value")
-        assert not hasattr(project, "extra_field")
+        # BaseSchema forbids extra fields
+        with pytest.raises(ValidationError) as exc_info:
+            Project(id=sample_uuid, kind="project", extra_field="value")
+        assert "extra_field" in str(exc_info.value)
 
     def test_uuid_type_preservation(self, sample_uuid):
         """Test that UUID type is preserved."""

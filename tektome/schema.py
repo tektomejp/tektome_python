@@ -1,11 +1,21 @@
 """Schema classes for Tektome resources and projects."""
 
+from datetime import date, datetime
 from uuid import UUID
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, AnyHttpUrl
 
 
-class Resource(BaseModel):
+class BaseSchema(BaseModel):
+    """
+    Base schema class for all Tektome models.
+    Forbids extra fields and provides common configuration.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+
+class Resource(BaseSchema):
     """
     Represents a single resource.
     """
@@ -21,7 +31,7 @@ class Resource(BaseModel):
         return v
 
 
-class Resources(BaseModel):
+class Resources(BaseSchema):
     """
     Represents a single resource.
     """
@@ -37,7 +47,7 @@ class Resources(BaseModel):
         return v
 
 
-class Project(BaseModel):
+class Project(BaseSchema):
     """
     Represents a single project.
     """
@@ -53,7 +63,7 @@ class Project(BaseModel):
         return v
 
 
-class Projects(BaseModel):
+class Projects(BaseSchema):
     """
     Represents a single project.
     """
@@ -69,7 +79,7 @@ class Projects(BaseModel):
         return v
 
 
-class AttributeDefinitions(BaseModel):
+class AttributeDefinitions(BaseSchema):
     """
     Represents definition of a resource or project.
     """
@@ -87,7 +97,7 @@ class AttributeDefinitions(BaseModel):
         return v
 
 
-class Context(BaseModel):
+class Context(BaseSchema):
     """
     Represents context configuration automatically inserted by the system.
     Contains authentication and deployment information.
@@ -97,16 +107,40 @@ class Context(BaseModel):
         ...,
         description='User\'s API key. Include as "Authorization": Bearer <key> in the header to authenticate as the current user.',
     )
-    base_url: str = Field(
+    base_url: AnyHttpUrl = Field(
         ..., description="Tektome's deployment base url ex: https://domain.tld"
     )
     execution_id: UUID = Field(
         ..., description="Execution id used to obtain additional extraction context"
     )
+    
+class Date(BaseSchema):
+    """
+    Represents a date value.
+    """
 
-    @field_validator("base_url")
-    def validate_base_url(cls, v):
-        if not v.startswith("http://") and not v.startswith("https://"):
-            raise ValueError("base_url must start with 'http://' or 'https://'")
+    value: date = Field(..., description="The date value")
+    kind: str = Field(..., description="The kind of the schema, must be 'date'")
+
+    @field_validator("kind")
+    def validate_kind(cls, v):
+        if v != "date":
+            raise ValueError("kind must be 'date'")
+
+        return v
+    
+
+class DateTime(BaseSchema):
+    """
+    Represents a datetime value.
+    """
+
+    value: datetime = Field(..., description="The datetime value")
+    kind: str = Field(..., description="The kind of the schema, must be 'datetime'")
+
+    @field_validator("kind")
+    def validate_kind(cls, v):
+        if v != "datetime":
+            raise ValueError("kind must be 'datetime'")
 
         return v
