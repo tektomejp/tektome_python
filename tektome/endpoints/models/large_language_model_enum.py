@@ -1,0 +1,70 @@
+from enum import Enum
+
+
+class LargeLanguageModelEnum(str, Enum):
+    ANTHROPIC_CLAUDE_3_5_SONNET = "anthropic-claude-3.5-sonnet"
+    ANTHROPIC_CLAUDE_3_7_SONNET = "anthropic-claude-3.7-sonnet"
+    ANTHROPIC_CLAUDE_3_7_SONNET_THINKING = "anthropic-claude-3.7-sonnet-thinking"
+    ANTHROPIC_CLAUDE_3_7_SONNET_THINKING_VISION_IMAGE_AND_TEXT = (
+        "anthropic-claude-3.7-sonnet-thinking-vision-image-and-text"
+    )
+    ANTHROPIC_CLAUDE_3_7_SONNET_THINKING_VISION_IMAGE_ONLY = "anthropic-claude-3.7-sonnet-thinking-vision-image-only"
+    ANTHROPIC_CLAUDE_3_7_SONNET_VISION_IMAGE_AND_TEXT = "anthropic-claude-3.7-sonnet-vision-image-and-text"
+    ANTHROPIC_CLAUDE_3_7_SONNET_VISION_IMAGE_ONLY = "anthropic-claude-3.7-sonnet-vision-image-only"
+    ANTHROPIC_CLAUDE_3_OPUS = "anthropic-claude-3-opus"
+    ANTHROPIC_CLAUDE_3_OPUS_VISION = "anthropic-claude-3-opus-vision"
+    ANTHROPIC_CLAUDE_3_SONNET = "anthropic-claude-3-sonnet"
+    ANTHROPIC_CLAUDE_3_SONNET_VISION = "anthropic-claude-3-sonnet-vision"
+    ANTHROPIC_CLAUDE_4_OPUS_20250514 = "anthropic-claude-4-opus-20250514"
+    ANTHROPIC_CLAUDE_4_OPUS_20250514_VISION_IMAGE_AND_TEXT = "anthropic-claude-4-opus-20250514-vision-image-and-text"
+    ANTHROPIC_CLAUDE_4_OPUS_20250514_VISION_IMAGE_ONLY = "anthropic-claude-4-opus-20250514-vision-image-only"
+    ANTHROPIC_CLAUDE_4_SONNET_20250514 = "anthropic-claude-4-sonnet-20250514"
+    ANTHROPIC_CLAUDE_4_SONNET_20250514_VISION_IMAGE_AND_TEXT = (
+        "anthropic-claude-4-sonnet-20250514-vision-image-and-text"
+    )
+    ANTHROPIC_CLAUDE_4_SONNET_20250514_VISION_IMAGE_ONLY = "anthropic-claude-4-sonnet-20250514-vision-image-only"
+    AZURE_OPENAI_GPT_3_5_TURBO_0125 = "azure-openai-gpt-3.5-turbo-0125"
+    AZURE_OPENAI_GPT_4_0125_PREVIEW = "azure-openai-gpt-4-0125-preview"
+    AZURE_OPENAI_GPT_4_1106_PREVIEW = "azure-openai-gpt-4-1106-preview"
+    AZURE_OPENAI_GPT_4_OMNI = "azure-openai-gpt-4-omni"
+    AZURE_OPENAI_GPT_4_OMNI_VISION_IMAGE_AND_TEXT = "azure-openai-gpt-4-omni-vision-image-and-text"
+    AZURE_OPENAI_GPT_4_OMNI_VISION_IMAGE_ONLY = "azure-openai-gpt-4-omni-vision-image-only"
+    AZURE_OPENAI_GPT_4_TURBO = "azure-openai-gpt-4-turbo"
+    AZURE_OPENAI_O1 = "azure-openai-o1"
+    AZURE_OPENAI_O1_VISION_IMAGE_AND_TEXT = "azure-openai-o1-vision-image-and-text"
+    AZURE_OPENAI_O1_VISION_IMAGE_ONLY = "azure-openai-o1-vision-image-only"
+    AZURE_OPENAI_O3 = "azure-openai-o3"
+    AZURE_OPENAI_O3_VISION_IMAGE_AND_TEXT = "azure-openai-o3-vision-image-and-text"
+    AZURE_OPENAI_O3_VISION_IMAGE_ONLY = "azure-openai-o3-vision-image-only"
+    GOOGLE_GEMINI_2_0_FLASH = "google-gemini-2.0-flash"
+    GOOGLE_GEMINI_2_0_FLASH_VISION_IMAGE_AND_TEXT = "google-gemini-2.0-flash-vision-image-and-text"
+    GOOGLE_GEMINI_2_0_FLASH_VISION_IMAGE_ONLY = "google-gemini-2.0-flash-vision-image-only"
+    GOOGLE_GEMINI_2_5_PRO_PREVIEW_06_05 = "google-gemini-2.5-pro-preview-06-05"
+    GOOGLE_GEMINI_2_5_PRO_PREVIEW_06_05_VISION_IMAGE_AND_TEXT = (
+        "google-gemini-2.5-pro-preview-06-05-vision-image-and-text"
+    )
+    GOOGLE_GEMINI_2_5_PRO_PREVIEW_06_05_VISION_IMAGE_ONLY = "google-gemini-2.5-pro-preview-06-05-vision-image-only"
+    OPENAI_GPT_3_5_TURBO_0125 = "openai-gpt-3.5-turbo-0125"
+    OPENAI_GPT_4_0125_PREVIEW = "openai-gpt-4-0125-preview"
+    OPENAI_GPT_4_1 = "openai-gpt-4.1"
+    OPENAI_GPT_4_1106_PREVIEW = "openai-gpt-4-1106-preview"
+    OPENAI_GPT_4_1_MINI = "openai-gpt-4.1-mini"
+    OPENAI_GPT_4_1_NANO = "openai-gpt-4.1-nano"
+    OPENAI_GPT_4_OMNI = "openai-gpt-4-omni"
+    OPENAI_GPT_4_OMNI_20240806 = "openai-gpt-4-omni-20240806"
+    OPENAI_GPT_4_OMNI_VISION_IMAGE_AND_TEXT = "openai-gpt-4-omni-vision-image-and-text"
+    OPENAI_GPT_4_OMNI_VISION_IMAGE_ONLY = "openai-gpt-4-omni-vision-image-only"
+    OPENAI_GPT_4_OMNI_VISION_NAIVE = "openai-gpt-4-omni-vision-naive"
+    OPENAI_GPT_4_TURBO = "openai-gpt-4-turbo"
+    OPENAI_O1 = "openai-o1"
+    OPENAI_O1_VISION_IMAGE_AND_TEXT = "openai-o1-vision-image-and-text"
+    OPENAI_O1_VISION_IMAGE_ONLY = "openai-o1-vision-image-only"
+    OPENAI_O3 = "openai-o3"
+    OPENAI_O3_PRO = "openai-o3-pro"
+    OPENAI_O3_PRO_VISION_IMAGE_AND_TEXT = "openai-o3-pro-vision-image-and-text"
+    OPENAI_O3_PRO_VISION_IMAGE_ONLY = "openai-o3-pro-vision-image-only"
+    OPENAI_O3_VISION_IMAGE_AND_TEXT = "openai-o3-vision-image-and-text"
+    OPENAI_O3_VISION_IMAGE_ONLY = "openai-o3-vision-image-only"
+
+    def __str__(self) -> str:
+        return str(self.value)
