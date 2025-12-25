@@ -25,7 +25,7 @@ jobs:
           fi
 
           VERSION=$(awk '{print $2}' VERSION)
-          if [ -z "$VERSION" ]; then
+          if [ -z "$VERSION" ] || [ "$VERSION" = "no-tag" ]; then
             echo "Invalid version, skipping PR/release"
             exit 0
           fi
