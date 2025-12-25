@@ -19,7 +19,11 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          VERSION=$(cat VERSION | tr -d '[:space:]')
+          VERSION=$(awk '{print $2}' VERSION)
+          if [ -z "$VERSION" ] || [ "$VERSION" = "unknown" ]; then
+            echo "Invalid version, skipping PR/release"
+            exit 0
+          fi
 
           gh pr create \
             --title "feat: update endpoints from gateway $VERSION" \
@@ -28,6 +32,6 @@ jobs:
 
           gh pr merge --squash --delete-branch
 
-          gh release create "v$VERSION" \
-            --title "v$VERSION" \
+          gh release create "$VERSION" \
+            --title "$VERSION" \
             --notes "Update endpoints from gateway version $VERSION"
