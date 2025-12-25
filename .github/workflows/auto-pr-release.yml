@@ -1,0 +1,33 @@
+name: Auto PR for endpoint updates
+
+on:
+  push:
+    branches:
+      - 'pipeline/autogen_sdk_*'
+
+jobs:
+  create-pr-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create and merge PR, create release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION=$(cat VERSION | tr -d '[:space:]')
+
+          gh pr create \
+            --title "feat: update endpoints from gateway $VERSION" \
+            --body "Automated update of endpoints from gateway version $VERSION" \
+            --base main
+
+          gh pr merge --squash --delete-branch
+
+          gh release create "v$VERSION" \
+            --title "v$VERSION" \
+            --notes "Update endpoints from gateway version $VERSION"
