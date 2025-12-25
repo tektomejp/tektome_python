@@ -19,8 +19,13 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          if [ "$(cat VERSION)" = "unknown" ]; then
+            echo "Version is unknown, skipping PR/release"
+            exit 0
+          fi
+
           VERSION=$(awk '{print $2}' VERSION)
-          if [ -z "$VERSION" ] || [ "$VERSION" = "unknown" ]; then
+          if [ -z "$VERSION" ]; then
             echo "Invalid version, skipping PR/release"
             exit 0
           fi
