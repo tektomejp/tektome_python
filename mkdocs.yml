@@ -75,4 +75,8 @@ nav:
       - AttributeDefinitions: api/attribute-definitions.md
       - Context: api/context.md
       - Date & DateTime: api/datetime.md
+      - Endpoints:
+          - Overview: api/endpoints.md
+          - API: api/endpoints-api.md
+          - Models: api/endpoints-models.md
   - Contributing: contributing.md

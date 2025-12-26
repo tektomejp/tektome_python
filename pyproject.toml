@@ -7,7 +7,7 @@ name = "tektome"
 version = "0.1.0"
 description = "Utilities for handling Tektome Resources."
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.13"
 license = "MIT"
 authors = [
     {name = "tektomejp"}
@@ -46,4 +46,14 @@ docs = [
     "mkdocs>=1.6.0",
     "mkdocs-material>=9.5.0",
     "mkdocstrings[python]>=0.25.0",
+]
+
+[tool.coverage.run]
+omit = [
+    "tektome/endpoints/*",
+]
+
+[tool.coverage.report]
+omit = [
+    "tektome/endpoints/*",
 ]

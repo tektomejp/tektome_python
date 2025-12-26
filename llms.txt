@@ -1,15 +1,46 @@
-# Tektome
+# Tektome Python SDK
 
-> Utilities for handling Tektome Resources
+> Utilities and API client for handling Tektome Resources
 
 ## Overview
 
-Tektome is a Python package that provides strongly-typed Pydantic classes for working with Tektome resources, projects, and execution contexts. It offers robust validation and serialization for Tektome data structures.
+Tektome is a Python SDK for interacting with the Tektome API. It provides:
+1. **Schema classes** - Pydantic models for validating Tektome data structures
+2. **API client** - HTTP client for making authenticated requests to Tektome API
+3. **API endpoints** - Auto-generated endpoint functions for all Tektome API operations
+4. **Data models** - 700+ Pydantic models for API request/response types
 
 ## Installation
 
 ```bash
 pip install git+https://github.com/tektomejp/tektome_python.git@main
+```
+
+## Package Structure
+
+```
+tektome/
+├── __init__.py          # Exports: BaseSchema, Resource, Resources, Project, Projects,
+│                        #          AttributeDefinitions, Context, Date, DateTime
+├── schema.py            # Core Pydantic schema classes
+└── endpoints/
+    ├── __init__.py      # Exports: Client, AuthenticatedClient
+    ├── client.py        # HTTP client classes (sync and async)
+    ├── errors.py        # UnexpectedStatus exception
+    ├── types.py         # Shared types: UNSET, File, Response
+    ├── api/             # API endpoint modules (40 modules)
+    │   ├── access/
+    │   ├── account/
+    │   ├── attribute/
+    │   ├── bim/
+    │   ├── chats/
+    │   ├── dataspace/
+    │   ├── folder/
+    │   ├── project/
+    │   ├── resource/
+    │   ├── search/
+    │   └── ... (30 more)
+    └── models/          # Data models (700+ classes)
 ```
 
 ## Quick Start
@@ -25,7 +56,9 @@ def main(ctx: Context, r: Resource):
     return "data to next step"
 ```
 
-## Available Classes
+---
+
+## Core Schema Classes
 
 ### BaseSchema
 Base class for all Tektome schemas. Forbids extra fields to prevent data corruption.
@@ -119,7 +152,7 @@ attr_defs = AttributeDefinitions(
 ```
 
 ### Context
-Represents the execution context for Tektome operations.
+Represents the execution context for Tektome operations. Automatically injected by Tektome system.
 
 **Fields:**
 - `user_api_key: str` - User's API key for authentication
@@ -135,14 +168,9 @@ ctx = Context(
     base_url="https://gateway.tektome.com",
     execution_id="123e4567-e89b-12d3-a456-426614174000"
 )
-```
 
-**Authentication:**
-Include the API key in requests as:
-```python
-headers = {
-    "Authorization": f"Bearer {ctx.user_api_key}"
-}
+# Authentication header
+headers = {"Authorization": f"Bearer {ctx.user_api_key}"}
 ```
 
 ### Date
@@ -157,10 +185,7 @@ Represents a date value with kind validation.
 from tektome import Date
 from datetime import date
 
-date_obj = Date(
-    value=date(2025, 11, 19),
-    kind="date"
-)
+date_obj = Date(value=date(2025, 11, 19), kind="date")
 ```
 
 ### DateTime
@@ -175,53 +200,195 @@ Represents a datetime value with kind validation.
 from tektome import DateTime
 from datetime import datetime
 
-dt = DateTime(
-    value=datetime(2025, 11, 19, 10, 30, 0),
-    kind="datetime"
-)
+dt = DateTime(value=datetime(2025, 11, 19, 10, 30, 0), kind="datetime")
 ```
 
-## Validation
+---
 
-All classes use Pydantic for validation:
+## API Client
 
-- **UUID Validation**: Automatically converts string UUIDs to UUID objects
-- **Kind Validation**: Ensures correct type identifiers
-- **Extra Field Protection**: Rejects unexpected fields
-- **Type Safety**: Enforces correct types for all fields
+### Client (Unauthenticated)
 
-**Example Error:**
 ```python
-# This will raise ValidationError - wrong kind
-resource = Resource(
-    id="123e4567-e89b-12d3-a456-426614174000",
-    kind="invalid"
-)
-# ValidationError: kind must be 'resource'
+from tektome.endpoints import Client
 
-# This will raise ValidationError - extra field
-resource = Resource(
-    id="123e4567-e89b-12d3-a456-426614174000",
-    kind="resource",
-    extra_field="not allowed"
-)
-# ValidationError: Extra inputs are not permitted
+client = Client(base_url="https://gateway.tektome.com")
+
+# With context manager (sync)
+with Client(base_url="https://gateway.tektome.com") as client:
+    # make requests
+    pass
+
+# Async usage
+async with Client(base_url="https://gateway.tektome.com") as client:
+    # make async requests
+    pass
 ```
+
+**Constructor Parameters:**
+- `base_url: str` - The base URL for the API
+- `cookies: dict[str, str]` - Cookies to send with every request
+- `headers: dict[str, str]` - Headers to send with every request
+- `timeout: httpx.Timeout` - Request timeout configuration
+- `verify_ssl: bool` - Whether to verify SSL certificates (default: True)
+- `follow_redirects: bool` - Whether to follow redirects (default: False)
+- `httpx_args: dict` - Additional arguments for httpx.Client
+- `raise_on_unexpected_status: bool` - Raise on undocumented status codes (default: False)
+
+**Methods:**
+- `with_headers(headers: dict) -> Client` - Return client with additional headers
+- `with_cookies(cookies: dict) -> Client` - Return client with additional cookies
+- `with_timeout(timeout: httpx.Timeout) -> Client` - Return client with new timeout
+- `get_httpx_client() -> httpx.Client` - Get underlying sync client
+- `get_async_httpx_client() -> httpx.AsyncClient` - Get underlying async client
+
+### AuthenticatedClient
+
+```python
+from tektome.endpoints import AuthenticatedClient
+
+client = AuthenticatedClient(
+    base_url="https://gateway.tektome.com",
+    token="your-api-key",
+    prefix="Bearer",  # default
+    auth_header_name="Authorization",  # default
+)
+```
+
+**Additional Parameters:**
+- `token: str` - Authentication token (required)
+- `prefix: str` - Token prefix (default: "Bearer")
+- `auth_header_name: str` - Header name (default: "Authorization")
+
+---
+
+## API Endpoints
+
+Endpoints are organized by domain in `tektome.endpoints.api.*`:
+
+| Module | Description |
+|--------|-------------|
+| `access` | Access control |
+| `account` | Account management |
+| `attribute` | Attribute operations |
+| `bim` | BIM (Building Information Modeling) |
+| `chats` | Chat functionality |
+| `chunk_group` | Chunk group operations |
+| `dataspace` | Dataspace management |
+| `default` | Default endpoints |
+| `entity_tracker` | Entity tracking |
+| `extraction` | Document extraction |
+| `folder` | Folder operations |
+| `lawtalk_project` | Lawtalk project operations |
+| `llm` | LLM operations |
+| `observability` | Observability/monitoring |
+| `organizations` | Organization management |
+| `page` | Page operations |
+| `payment_records` | Payment records |
+| `project` | Project operations |
+| `project_resource_group` | Project resource groups |
+| `reports` | Reporting |
+| `requirement` | Requirements |
+| `requirement_research_templates` | Requirement research templates |
+| `requirement_templates` | Requirement templates |
+| `requirement_templates_container` | Requirement template containers |
+| `resource` | Resource operations |
+| `resource_group` | Resource groups |
+| `sample` | Sample/test endpoints |
+| `search` | Search functionality |
+| `section` / `sections` | Section operations |
+| `slack` | Slack integration |
+| `storage_import` | Storage import |
+| `tasks` | Task management |
+| `tektome_backend` | Core backend |
+| `tektome_os` | Tektome OS |
+| `usage` | Usage tracking |
+| `user` | User management |
+| `utils` | Utility endpoints |
+| `worker` | Worker operations |
+
+---
+
+## Types and Utilities
+
+### UNSET
+Sentinel value for optional parameters that weren't provided.
+
+```python
+from tektome.endpoints.types import UNSET, Unset
+
+def api_call(param: str | Unset = UNSET):
+    if param is UNSET:
+        # parameter not provided
+        pass
+```
+
+### File
+File upload helper for multipart/form-data.
+
+```python
+from tektome.endpoints.types import File
+
+file = File(
+    payload=open("document.pdf", "rb"),
+    file_name="document.pdf",
+    mime_type="application/pdf"
+)
+```
+
+### Response
+Generic response wrapper from API calls.
+
+```python
+from tektome.endpoints.types import Response
+
+# Response[T] contains:
+# - status_code: HTTPStatus
+# - content: bytes
+# - headers: MutableMapping[str, str]
+# - parsed: T | None
+```
+
+### UnexpectedStatus
+Exception raised when API returns undocumented status code.
+
+```python
+from tektome.endpoints.errors import UnexpectedStatus
+
+try:
+    # API call
+    pass
+except UnexpectedStatus as e:
+    print(f"Status: {e.status_code}")
+    print(f"Content: {e.content}")
+```
+
+---
 
 ## Common Patterns
 
-### Using with @validate_call
+### Using with Openflow
 
 ```python
 from tektome import Resource, Context
+from tektome.endpoints import AuthenticatedClient
 from pydantic import validate_call
 
 @validate_call
-def process_resource(ctx: Context, resource: Resource):
-    """Automatically validates input types."""
-    headers = {"Authorization": f"Bearer {ctx.user_api_key}"}
-    # Make API calls using ctx.base_url and headers
-    return resource.id
+def main(ctx: Context, r: Resource):
+    """Openflow function with auto-injected context."""
+    # Create authenticated client from context
+    client = AuthenticatedClient(
+        base_url=str(ctx.base_url),
+        token=ctx.user_api_key,
+    )
+
+    # Use client for API calls
+    with client:
+        # make requests
+        pass
+
+    return "result for next step"
 ```
 
 ### Working with Collections
@@ -230,10 +397,8 @@ def process_resource(ctx: Context, resource: Resource):
 from tektome import Resources, Projects
 
 def process_multiple(resources: Resources, projects: Projects):
-    """Process multiple resources and projects."""
     for resource_id in resources.ids:
         print(f"Resource: {resource_id}")
-
     for project_id in projects.ids:
         print(f"Project: {project_id}")
 ```
@@ -258,35 +423,57 @@ json_str = resource.model_dump_json()
 resource2 = Resource(**data)
 ```
 
-## Development
+---
 
-```bash
-# Clone repository
-git clone https://github.com/tektomejp/tektome_python.git
-cd tektome_python
+## Validation
 
-# Install dependencies
-uv sync
+All classes use Pydantic for validation:
 
-# Run tests
-uv run pytest
+- **UUID Validation**: Automatically converts string UUIDs to UUID objects
+- **Kind Validation**: Ensures correct type identifiers
+- **Extra Field Protection**: Rejects unexpected fields
+- **Type Safety**: Enforces correct types for all fields
 
-# Run tests with coverage
-uv run pytest --cov=tektome
+**Example Errors:**
+```python
+# Wrong kind - raises ValidationError
+resource = Resource(id="...", kind="invalid")
+# ValidationError: kind must be 'resource'
+
+# Extra field - raises ValidationError
+resource = Resource(id="...", kind="resource", extra="not allowed")
+# ValidationError: Extra inputs are not permitted
 ```
+
+---
 
 ## Key Points for LLMs
 
-1. **Field Names**: Note that actual implementation uses `id`/`ids` (not `uuid`/`uuids`) and `user_api_key` (not `api_key`)
-2. **Kind Values**: Each class has a specific required `kind` value that must match exactly
-3. **Validation**: All classes automatically validate UUID strings and convert them to UUID objects
-4. **Extra Fields**: All classes inherit from BaseSchema which forbids extra fields
-5. **Context Usage**: Context.user_api_key should be used as `Authorization: Bearer <key>` header
-6. **Default Base URL**: The default Tektome gateway is `https://gateway.tektome.com`
+1. **Field Names**: Use `id`/`ids` (not `uuid`/`uuids`) and `user_api_key` (not `api_key`)
+2. **Kind Values**: Each class requires specific `kind` value that must match exactly
+3. **Validation**: All classes validate UUID strings and convert to UUID objects
+4. **Extra Fields**: All classes inherit BaseSchema which forbids extra fields
+5. **Context Usage**: Use `Authorization: Bearer {ctx.user_api_key}` header
+6. **Default Base URL**: `https://gateway.tektome.com`
+7. **Client Types**: Use `Client` for unauthenticated, `AuthenticatedClient` for authenticated requests
+8. **Async Support**: Both clients support sync and async via context managers
+
+---
+
+## Dependencies
+
+- `pydantic>=2.0.0` - Data validation
+- `httpx>=0.23.0,<0.29.0` - HTTP client
+- `attrs>=22.2.0` - Class definitions
+- `python-dateutil>=2.8.0,<3` - Date utilities
+
+## Version
+
+Current version: 0.3.1
 
 ## Documentation
 
-Full documentation available at: https://github.com/tektomejp/tektome_python
+Full documentation: https://github.com/tektomejp/tektome_python
 
 ## License
 
