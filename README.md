@@ -18,30 +18,54 @@ Utilities for handling Tektome Resources
 You can install this package directly from GitHub:
 
 ```bash
-pip install git+https://github.com/tektomejp/tektome_utils.git@main
+pip install git+https://github.com/tektomejp/tektome_python.git@main
 ```
 
 ## Usage
 
 These classes are used to convert dictionary provided by openflow input to pydantic dataclass with validation.
 
+### The `@parseio` Decorator
+
+The `@parseio` decorator from `tektome.decorators` handles input validation and output serialization:
+
+**Input (arguments):**
+- Validates and coerces using Pydantic's `@validate_call` (dicts become models)
+- Runtime type-checked via `@beartype`
+
+**Output (return value):**
+- Runtime type-checked via `@beartype`
+- Pydantic models automatically converted to dict via `.model_dump()`
+
 ```python
 # requirements:
-# git+https://github.com/tektomejp/tektome_utils.git@v0.3.0
+# git+https://github.com/tektomejp/tektome_python.git@main
 
 from tektome import Resource, Context
-from pydantic import validate_call
+from tektome.decorators import parseio
+from tektome.endpoints.api.project import create_core_project
+from tektome.endpoints.models import CoreProjectPostIn
+from pydantic import BaseModel
 
-@validate_call
-def main(ctx: Context, r: Resource):
+class Output(BaseModel):
+    status: str
+    project_id: str
+
+@parseio
+def main(ctx: Context, r: Resource, project_name: str) -> Output:
     print(f"type of ctx is: {type(ctx)} with the following data available")
     print(ctx.model_dump())
     print(f"type of r is: {type(r)} with the following data available")
     print(r.model_dump())
-    """
-    Perform procesing here
-    """
-    return "data to next step"
+
+    # Create authenticated client from context
+    with ctx.client() as client:
+        # Create a new project with payload
+        payload = CoreProjectPostIn(name=project_name)
+        response = create_core_project.sync(client=client, body=payload)
+        print(f"Created project: {response}")
+
+    return Output(status="success", project_id=str(response.id))
 ```
 
 ## Development
@@ -49,7 +73,7 @@ def main(ctx: Context, r: Resource):
 To install in development mode:
 
 ```bash
-git clone https://github.com/tektomejp/tektome_utils.git
-cd tektome_utils
+git clone https://github.com/tektomejp/tektome_python.git
+cd tektome_python
 uv sync
 ```

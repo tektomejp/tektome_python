@@ -23,6 +23,7 @@ tektome/
 ├── __init__.py          # Exports: BaseSchema, Resource, Resources, Project, Projects,
 │                        #          AttributeDefinitions, Context, Date, DateTime
 ├── schema.py            # Core Pydantic schema classes
+├── decorators.py        # Validation decorators (parseio)
 └── endpoints/
     ├── __init__.py      # Exports: Client, AuthenticatedClient
     ├── client.py        # HTTP client classes (sync and async)
@@ -47,13 +48,62 @@ tektome/
 
 ```python
 from tektome import Resource, Context
-from pydantic import validate_call
+from tektome.decorators import parseio
 
-@validate_call
-def main(ctx: Context, r: Resource):
+@parseio
+def main(ctx: Context, r: Resource) -> dict:
     print(f"Context: {ctx.model_dump()}")
     print(f"Resource: {r.model_dump()}")
-    return "data to next step"
+    return {"status": "success"}
+```
+
+---
+
+## Usage
+
+These classes convert dictionaries provided by Openflow input to validated Pydantic models.
+
+### The `@parseio` Decorator
+
+The `@parseio` decorator from `tektome.decorators` handles input validation and output serialization:
+
+**Input (arguments):**
+- Validates and coerces using Pydantic's `@validate_call` (dicts become models)
+- Runtime type-checked via `@beartype`
+
+**Output (return value):**
+- Runtime type-checked via `@beartype`
+- Pydantic models automatically converted to dict via `.model_dump()`
+
+```python
+# requirements:
+# git+https://github.com/tektomejp/tektome_python.git@main
+
+from tektome import Resource, Context
+from tektome.decorators import parseio
+from tektome.endpoints.api.project import create_core_project
+from tektome.endpoints.models import CoreProjectPostIn
+from pydantic import BaseModel
+
+class Output(BaseModel):
+    status: str
+    project_id: str
+
+@parseio
+def main(ctx: Context, r: Resource, project_name: str) -> Output:
+    print(f"type of ctx is: {type(ctx)} with the following data available")
+    print(ctx.model_dump())
+    print(f"type of r is: {type(r)} with the following data available")
+    print(r.model_dump())
+
+    # Create authenticated client from context
+    with ctx.client() as client:
+        # Create a new project with payload
+        payload = CoreProjectPostIn(name=project_name)
+        response = create_core_project.sync(client=client, body=payload)
+        print(f"Created project: {response}")
+
+    return Output(status="success", project_id=str(response.id))
 ```
 
 ---
@@ -159,6 +209,9 @@ Represents the execution context for Tektome operations. Automatically injected 
 - `base_url: AnyHttpUrl` - Tektome deployment base URL (e.g., https://gateway.tektome.com)
 - `execution_id: UUID` - Execution ID for obtaining additional context
 
+**Methods:**
+- `client(**kwargs) -> AuthenticatedClient` - Create an authenticated API client from context
+
 **Example:**
 ```python
 from tektome import Context
@@ -169,7 +222,12 @@ ctx = Context(
     execution_id="123e4567-e89b-12d3-a456-426614174000"
 )
 
-# Authentication header
+# Create client directly from context (recommended)
+with ctx.client() as client:
+    # make authenticated requests
+    pass
+
+# Or manually construct headers
 headers = {"Authorization": f"Bearer {ctx.user_api_key}"}
 ```
 
@@ -365,30 +423,49 @@ except UnexpectedStatus as e:
 
 ---
 
+## Decorators
+
+### parseio
+Decorator that validates inputs with Pydantic and outputs with beartype. The return value is automatically converted to dict if it's a Pydantic model.
+
+**Behavior:**
+- Inputs: Validated/coerced using pydantic's `@validate_call` (dicts become models)
+- Outputs: Type-checked using `@beartype`
+- Return value: Converted to dict via `.model_dump()` if it's a Pydantic model
+
+**Example:**
+```python
+from tektome import Context, Resource
+from tektome.decorators import parseio
+
+@parseio
+def main(ctx: Context, r: Resource) -> dict:
+    """Openflow function with automatic validation."""
+    with ctx.client() as client:
+        # make authenticated requests
+        pass
+    return {"status": "success", "resource_id": str(r.id)}
+```
+
+---
+
 ## Common Patterns
 
 ### Using with Openflow
 
 ```python
 from tektome import Resource, Context
-from tektome.endpoints import AuthenticatedClient
-from pydantic import validate_call
+from tektome.decorators import parseio
 
-@validate_call
-def main(ctx: Context, r: Resource):
+@parseio
+def main(ctx: Context, r: Resource) -> dict:
     """Openflow function with auto-injected context."""
     # Create authenticated client from context
-    client = AuthenticatedClient(
-        base_url=str(ctx.base_url),
-        token=ctx.user_api_key,
-    )
-
-    # Use client for API calls
-    with client:
+    with ctx.client() as client:
         # make requests
         pass
 
-    return "result for next step"
+    return {"result": "data to next step"}
 ```
 
 ### Working with Collections
@@ -453,10 +530,11 @@ resource = Resource(id="...", kind="resource", extra="not allowed")
 2. **Kind Values**: Each class requires specific `kind` value that must match exactly
 3. **Validation**: All classes validate UUID strings and convert to UUID objects
 4. **Extra Fields**: All classes inherit BaseSchema which forbids extra fields
-5. **Context Usage**: Use `Authorization: Bearer {ctx.user_api_key}` header
+5. **Context Client**: Use `ctx.client()` to create authenticated client directly from context
 6. **Default Base URL**: `https://gateway.tektome.com`
 7. **Client Types**: Use `Client` for unauthenticated, `AuthenticatedClient` for authenticated requests
 8. **Async Support**: Both clients support sync and async via context managers
+9. **Decorator**: Use `@parseio` from `tektome.decorators` for input/output validation
 
 ---
 
@@ -466,6 +544,7 @@ resource = Resource(id="...", kind="resource", extra="not allowed")
 - `httpx>=0.23.0,<0.29.0` - HTTP client
 - `attrs>=22.2.0` - Class definitions
 - `python-dateutil>=2.8.0,<3` - Date utilities
+- `beartype>=0.22.9` - Runtime type checking
 
 ## Version
 
