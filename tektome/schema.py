@@ -1,9 +1,14 @@
 """Schema classes for Tektome resources and projects."""
 
+import ssl
 from datetime import date, datetime
+from typing import Any
 from uuid import UUID
 
+import httpx
 from pydantic import BaseModel, ConfigDict, Field, field_validator, AnyHttpUrl
+
+from tektome.endpoints.client import AuthenticatedClient
 
 
 class BaseSchema(BaseModel):
@@ -113,7 +118,43 @@ class Context(BaseSchema):
     execution_id: UUID = Field(
         ..., description="Execution id used to obtain additional extraction context"
     )
-    
+
+    def client(
+        self,
+        *,
+        cookies: dict[str, str] | None = None,
+        headers: dict[str, str] | None = None,
+        timeout: httpx.Timeout | None = None,
+        verify_ssl: str | bool | ssl.SSLContext = True,
+        follow_redirects: bool = False,
+        httpx_args: dict[str, Any] | None = None,
+        raise_on_unexpected_status: bool = True,
+    ) -> AuthenticatedClient:
+        """
+        Tektome API client initialized with the context's base_url and user_api_key.
+
+        Args:
+            cookies: A dictionary of cookies to be sent with every request.
+            headers: A dictionary of headers to be sent with every request.
+            timeout: The maximum amount of time a request can take.
+            verify_ssl: Whether to verify the SSL certificate of the API server.
+            follow_redirects: Whether to follow redirects.
+            httpx_args: Additional arguments passed to httpx.Client/AsyncClient.
+            raise_on_unexpected_status: Whether to raise on undocumented status codes.
+        """
+        return AuthenticatedClient(
+            base_url=str(self.base_url),
+            token=self.user_api_key,
+            cookies=cookies or {},
+            headers=headers or {},
+            timeout=timeout,
+            verify_ssl=verify_ssl,
+            follow_redirects=follow_redirects,
+            httpx_args=httpx_args or {},
+            raise_on_unexpected_status=raise_on_unexpected_status,
+        )
+
+
 class Date(BaseSchema):
     """
     Represents a date value.
@@ -128,7 +169,7 @@ class Date(BaseSchema):
             raise ValueError("kind must be 'date'")
 
         return v
-    
+
 
 class DateTime(BaseSchema):
     """
