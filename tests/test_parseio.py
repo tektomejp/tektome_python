@@ -122,6 +122,17 @@ class TestParseioOutputConversion:
         result = func(42)
         assert result == {"value": 42}
 
+    def test_validates_dict_when_model_annotated(self):
+        """parseio validates dict against annotated Pydantic model and returns dict."""
+
+        @parseio
+        def func(x: int) -> OutputModel:
+            return {"result": "hello", "computed": x * 2}  # type: ignore # Returns dict, validated against OutputModel
+
+        result = func(21)
+        assert isinstance(result, dict)
+        assert result == {"result": "hello", "computed": 42}
+
     def test_rejects_non_dict_non_model_output(self):
         """parseio raises TypeError for non-dict, non-model output."""
 
@@ -129,7 +140,9 @@ class TestParseioOutputConversion:
         def func(x: int) -> int:
             return x * 2
 
-        with pytest.raises(TypeError, match="Expected return type to be dict or Pydantic model"):
+        with pytest.raises(
+            TypeError, match="Expected return type to be dict or Pydantic model"
+        ):
             func(21)
 
     def test_rejects_string_output(self):
@@ -139,7 +152,9 @@ class TestParseioOutputConversion:
         def func() -> str:
             return "hello"
 
-        with pytest.raises(TypeError, match="Expected return type to be dict or Pydantic model"):
+        with pytest.raises(
+            TypeError, match="Expected return type to be dict or Pydantic model"
+        ):
             func()
 
     def test_rejects_list_output(self):
@@ -149,7 +164,9 @@ class TestParseioOutputConversion:
         def func() -> list:
             return [1, 2, 3]
 
-        with pytest.raises(TypeError, match="Expected return type to be dict or Pydantic model"):
+        with pytest.raises(
+            TypeError, match="Expected return type to be dict or Pydantic model"
+        ):
             func()
 
     def test_rejects_none_output(self):
@@ -159,7 +176,9 @@ class TestParseioOutputConversion:
         def func() -> None:
             return None
 
-        with pytest.raises(TypeError, match="Expected return type to be dict or Pydantic model"):
+        with pytest.raises(
+            TypeError, match="Expected return type to be dict or Pydantic model"
+        ):
             func()
 
 
@@ -232,7 +251,7 @@ class TestParseioEdgeCases:
         def func(data: InputModel) -> dict:
             return {"name": data.name}
 
-        result = func(data={"name": "test", "value": 42})
+        result = func(data={"name": "test", "value": 42})  # type: ignore
         assert result == {"name": "test"}
 
     def test_mixed_positional_and_keyword(self):
@@ -242,7 +261,7 @@ class TestParseioEdgeCases:
         def func(a: InputModel, b: int) -> dict:
             return {"name": a.name, "b": b}
 
-        result = func({"name": "test", "value": 1}, b=42)
+        result = func({"name": "test", "value": 1}, b=42)  # type: ignore
         assert result == {"name": "test", "b": 42}
 
     def test_optional_fields_in_model(self):
@@ -256,7 +275,7 @@ class TestParseioEdgeCases:
         def func(data: ModelWithOptional) -> dict:
             return {"required": data.required, "optional": data.optional}
 
-        result = func({"required": "test"})
+        result = func({"required": "test"})  # type: ignore
         assert result == {"required": "test", "optional": None}
 
     def test_default_values_in_model(self):
@@ -270,5 +289,5 @@ class TestParseioEdgeCases:
         def func(data: ModelWithDefault) -> dict:
             return {"name": data.name, "count": data.count}
 
-        result = func({"name": "test"})
+        result = func({"name": "test"})  # type: ignore
         assert result == {"name": "test", "count": 0}

@@ -36,6 +36,7 @@ The `@parseio` decorator from `tektome.decorators` handles input validation and 
 **Output (return value):**
 - Runtime type-checked via `@beartype`
 - Pydantic models automatically converted to dict via `.model_dump()`
+- Returning dictionary is allowed if it conforms with the return type
 
 ```python
 # requirements:
