@@ -69,12 +69,25 @@ The `@parseio` decorator from `tektome.decorators` handles input validation and 
 
 **Input (arguments):**
 - Validates and coerces using Pydantic's `@validate_call` (dicts become models)
-- Runtime type-checked via `@beartype`
 
 **Output (return value):**
-- Runtime type-checked via `@beartype`
 - Pydantic models automatically converted to dict via `.model_dump()`
+- If return type is annotated as a Pydantic model but a dict is returned, the dict is validated against the model
+- JSON serializability is validated by default
 
+**Parameters:**
+- `return_dict` (bool, default `True`): If `True`, convert Pydantic models to dict. If `False`, return the model instance.
+- `validate_json_serializable` (bool, default `True`): If `True`, validate that the return value is JSON serializable.
+
+**Usage styles:**
+```python
+@parseio                    # Uses defaults
+@parseio()                  # Same as above
+@parseio(return_dict=False) # Return Pydantic model instead of dict
+@parseio(validate_json_serializable=False)  # Skip JSON validation
+```
+
+**Example:**
 ```python
 # requirements:
 # git+https://github.com/tektomejp/tektome_python.git@main
@@ -103,6 +116,7 @@ def main(ctx: Context, r: Resource, project_name: str) -> Output:
         response = create_core_project.sync(client=client, body=payload)
         print(f"Created project: {response}")
 
+    # Can return dict or Pydantic model - both are validated against Output, but Pydantic model is preferred
     return Output(status="success", project_id=str(response.id))
 ```
 
@@ -426,25 +440,43 @@ except UnexpectedStatus as e:
 ## Decorators
 
 ### parseio
-Decorator that validates inputs with Pydantic and outputs with beartype. The return value is automatically converted to dict if it's a Pydantic model.
+Decorator that validates inputs with Pydantic and ensures JSON-serializable output.
 
 **Behavior:**
-- Inputs: Validated/coerced using pydantic's `@validate_call` (dicts become models)
-- Outputs: Type-checked using `@beartype`
-- Return value: Converted to dict via `.model_dump()` if it's a Pydantic model
+- Inputs: Validated/coerced using Pydantic's `@validate_call` (dicts become models)
+- Outputs: If return type is a Pydantic model and result is a dict, validates against the model
+- Return value: Converted to dict via `.model_dump()` if it's a Pydantic model (when `return_dict=True`)
+- JSON serializability is validated by default
+
+**Parameters:**
+- `return_dict` (bool, default `True`): If `True`, convert Pydantic models to dict. If `False`, return the model instance.
+- `validate_json_serializable` (bool, default `True`): If `True`, validate that the return value is JSON serializable.
+
+**Usage:**
+```python
+@parseio                    # Uses defaults
+@parseio()                  # Same as above
+@parseio(return_dict=False) # Return Pydantic model instead of dict
+@parseio(validate_json_serializable=False)  # Skip JSON validation
+```
 
 **Example:**
 ```python
 from tektome import Context, Resource
 from tektome.decorators import parseio
+from pydantic import BaseModel
+
+class Output(BaseModel):
+    status: str
+    resource_id: str
 
 @parseio
-def main(ctx: Context, r: Resource) -> dict:
+def main(ctx: Context, r: Resource) -> Output:
     """Openflow function with automatic validation."""
     with ctx.client() as client:
         # make authenticated requests
         pass
-    return {"status": "success", "resource_id": str(r.id)}
+    return Output(status="success", resource_id=str(r.id))
 ```
 
 ---
@@ -544,11 +576,10 @@ resource = Resource(id="...", kind="resource", extra="not allowed")
 - `httpx>=0.23.0,<0.29.0` - HTTP client
 - `attrs>=22.2.0` - Class definitions
 - `python-dateutil>=2.8.0,<3` - Date utilities
-- `beartype>=0.22.9` - Runtime type checking
 
 ## Version
 
-Current version: 0.3.1
+Current version: 0.4.2
 
 ## Documentation
 
