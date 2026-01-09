@@ -69,6 +69,7 @@ nav:
   - Getting Started: getting-started.md
   - API Reference:
       - Overview: api/index.md
+      - Decorators: api/decorators.md
       - BaseSchema: api/base-schema.md
       - Resource: api/resource.md
       - Project: api/project.md

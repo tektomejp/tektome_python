@@ -18,19 +18,28 @@ Tektome is a Python package that provides strongly-typed classes for working wit
 - **`Date`** - Date value with kind validation
 - **`DateTime`** - DateTime value with kind validation
 
+## Decorators
+
+- **`@parseio`** - Input validation and output serialization decorator
+
 ## Quick Example
 
 ```python
 from tektome import Resource, Context
-from pydantic import validate_call
+from tektome.decorators import parseio
+from pydantic import BaseModel
 
-@validate_call
-def main(ctx: Context, r: Resource):
+class Output(BaseModel):
+    status: str
+    message: str
+
+@parseio
+def main(ctx: Context, r: Resource) -> Output:
     print(f"type of ctx is: {type(ctx)}")
     print(ctx.model_dump())
     print(f"type of r is: {type(r)}")
     print(r.model_dump())
-    return "data to next step"
+    return Output(status="success", message="processed")
 ```
 
 ## Features

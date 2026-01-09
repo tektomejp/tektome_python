@@ -85,38 +85,60 @@ print(dt.value)  # "2025-11-19T10:30:00Z"
 print(dt.kind)   # "datetime"
 ```
 
-### Using with Pydantic Validation
+### Using the `@parseio` Decorator
+
+The `@parseio` decorator handles input validation and output serialization:
 
 ```python
 from tektome import Resource, Context
-from pydantic import validate_call
+from tektome.decorators import parseio
+from pydantic import BaseModel
 
-@validate_call
-def process_resource(ctx: Context, resource: Resource):
+class Output(BaseModel):
+    status: str
+    resource_id: str
+
+@parseio
+def process_resource(ctx: Context, resource: Resource) -> Output:
     """
-    This function will automatically validate that:
-    - ctx is a valid Context object
-    - resource is a valid Resource object
+    This function will automatically:
+    - Validate and coerce inputs (dicts become models)
+    - Validate output against the Output model
+    - Convert output to JSON-serializable dict
     """
-    print(f"Processing resource {resource.uuid}")
+    print(f"Processing resource {resource.id}")
     print(f"Using API key: {ctx.api_key}")
-    return "Success"
+    return Output(status="success", resource_id=str(resource.id))
 
-# Call with valid data - works
+# Call with dicts - automatically validated and coerced
 result = process_resource(
-    ctx=Context(api_key="key", base_url="url", execution_id="id"),
-    resource=Resource(uuid="123e4567-e89b-12d3-a456-426614174000", kind="resource")
+    ctx={"api_key": "key", "base_url": "url", "execution_id": "id"},
+    resource={"id": "123e4567-e89b-12d3-a456-426614174000", "kind": "resource"}
 )
+# result is a dict: {"status": "success", "resource_id": "123e4567-..."}
 
 # Call with invalid data - raises ValidationError
-# This will fail because kind is wrong
 try:
     result = process_resource(
-        ctx=Context(api_key="key", base_url="url", execution_id="id"),
-        resource=Resource(uuid="123e4567-e89b-12d3-a456-426614174000", kind="invalid")
+        ctx={"api_key": "key", "base_url": "url", "execution_id": "id"},
+        resource={"id": "not-a-uuid", "kind": "resource"}
     )
 except Exception as e:
     print(f"Validation error: {e}")
+```
+
+#### Decorator Options
+
+```python
+# Return Pydantic model instead of dict
+@parseio(return_dict=False)
+def get_model() -> Output:
+    return Output(status="ok", resource_id="abc")
+
+# Skip JSON serialization validation
+@parseio(validate_json_serializable=False)
+def allow_non_json() -> dict:
+    return {"callback": lambda x: x}
 ```
 
 ## Development Setup
