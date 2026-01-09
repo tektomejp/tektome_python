@@ -31,13 +31,25 @@ The `@parseio` decorator from `tektome.decorators` handles input validation and 
 
 **Input (arguments):**
 - Validates and coerces using Pydantic's `@validate_call` (dicts become models)
-- Runtime type-checked via `@beartype`
 
 **Output (return value):**
-- Runtime type-checked via `@beartype`
 - Pydantic models automatically converted to dict via `.model_dump()`
-- Returning dictionary is allowed if it conforms with the return type
+- If return type is annotated as a Pydantic model but a dict is returned, the dict is validated against the model
+- JSON serializability is validated by default
 
+**Parameters:**
+- `return_dict` (bool, default `True`): If `True`, convert Pydantic models to dict. If `False`, return the model instance.
+- `validate_json_serializable` (bool, default `True`): If `True`, validate that the return value is JSON serializable.
+
+**Usage styles:**
+```python
+@parseio                    # Uses defaults
+@parseio()                  # Same as above
+@parseio(return_dict=False) # Return Pydantic model instead of dict
+@parseio(validate_json_serializable=False)  # Skip JSON validation
+```
+
+**Example:**
 ```python
 # requirements:
 # git+https://github.com/tektomejp/tektome_python.git@main
@@ -66,6 +78,7 @@ def main(ctx: Context, r: Resource, project_name: str) -> Output:
         response = create_core_project.sync(client=client, body=payload)
         print(f"Created project: {response}")
 
+    # Can return dict or Pydantic model - both are validated against Output, but Pydantic model is preferred
     return Output(status="success", project_id=str(response.id))
 ```
 

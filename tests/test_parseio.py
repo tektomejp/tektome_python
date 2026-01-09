@@ -291,3 +291,105 @@ class TestParseioEdgeCases:
 
         result = func({"name": "test"})  # type: ignore
         assert result == {"name": "test", "count": 0}
+
+
+class TestParseioParameters:
+    """Tests for parseio decorator parameters."""
+
+    def test_decorator_with_empty_parentheses(self):
+        """parseio() with empty parentheses works like @parseio."""
+
+        @parseio()
+        def func(x: int) -> dict:
+            return {"x": x}
+
+        result = func(42)
+        assert result == {"x": 42}
+
+    def test_return_dict_true_converts_model_to_dict(self):
+        """parseio(return_dict=True) converts Pydantic model to dict."""
+
+        @parseio(return_dict=True)
+        def func(x: int) -> OutputModel:
+            return OutputModel(result="hello", computed=x * 2)
+
+        result = func(21)
+        assert isinstance(result, dict)
+        assert result == {"result": "hello", "computed": 42}
+
+    def test_return_dict_false_keeps_model(self):
+        """parseio(return_dict=False) returns Pydantic model instance."""
+
+        @parseio(return_dict=False)
+        def func(x: int) -> OutputModel:
+            return OutputModel(result="hello", computed=x * 2)
+
+        result = func(21)
+        assert isinstance(result, OutputModel)
+        assert result.result == "hello"
+        assert result.computed == 42
+
+    def test_return_dict_false_with_dict_input_validates_and_returns_model(self):
+        """parseio(return_dict=False) validates dict and returns model when annotated."""
+
+        @parseio(return_dict=False)
+        def func(x: int) -> OutputModel:
+            return {"result": "hello", "computed": x * 2}  # type: ignore
+
+        result = func(21)
+        assert isinstance(result, OutputModel)
+        assert result.result == "hello"
+        assert result.computed == 42
+
+    def test_validate_json_serializable_true_rejects_non_serializable(self):
+        """parseio(validate_json_serializable=True) rejects non-JSON-serializable values."""
+
+        @parseio(validate_json_serializable=True)
+        def func() -> dict:
+            return {"func": lambda x: x}  # functions are not JSON serializable
+
+        with pytest.raises(TypeError, match="not JSON serializable"):
+            func()
+
+    def test_validate_json_serializable_false_allows_non_serializable(self):
+        """parseio(validate_json_serializable=False) allows non-JSON-serializable values."""
+
+        @parseio(validate_json_serializable=False)
+        def func() -> dict:
+            return {"func": lambda x: x}
+
+        result = func()
+        assert "func" in result
+        assert callable(result["func"])
+
+    def test_validate_json_serializable_default_rejects_non_serializable(self):
+        """parseio by default rejects non-JSON-serializable values."""
+
+        @parseio
+        def func() -> dict:
+            return {"data": {1, 2, 3}}  # sets are not JSON serializable
+
+        with pytest.raises(TypeError, match="not JSON serializable"):
+            func()
+
+    def test_both_parameters_false(self):
+        """parseio(return_dict=False, validate_json_serializable=False) works."""
+
+        @parseio(return_dict=False, validate_json_serializable=False)
+        def func() -> OutputModel:
+            return OutputModel(result="test", computed=100)
+
+        result = func()
+        assert isinstance(result, OutputModel)
+        assert result.result == "test"
+
+    def test_return_dict_false_with_plain_dict_return(self):
+        """parseio(return_dict=False) with dict return type returns dict."""
+
+        @parseio(return_dict=False)
+        def func() -> dict:
+            return {"key": "value"}
+
+        result = func()
+        assert isinstance(result, dict)
+        assert result == {"key": "value"}
