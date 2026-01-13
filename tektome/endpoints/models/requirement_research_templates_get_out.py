@@ -39,6 +39,7 @@ class RequirementResearchTemplatesGetOut:
         prompt (None | str | Unset):
         project_specific_resource_groups_keywords
             (RequirementResearchTemplatesGetOutProjectSpecificResourceGroupsKeywords | Unset):
+        output_format_prompt (None | str | Unset):
     """
 
     public_resource_groups: list[ResearchTemplateResourcesOut]
@@ -54,6 +55,7 @@ class RequirementResearchTemplatesGetOut:
     project_specific_resource_groups_keywords: (
         RequirementResearchTemplatesGetOutProjectSpecificResourceGroupsKeywords | Unset
     ) = UNSET
+    output_format_prompt: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -94,6 +96,12 @@ class RequirementResearchTemplatesGetOut:
         if not isinstance(self.project_specific_resource_groups_keywords, Unset):
             project_specific_resource_groups_keywords = self.project_specific_resource_groups_keywords.to_dict()
 
+        output_format_prompt: None | str | Unset
+        if isinstance(self.output_format_prompt, Unset):
+            output_format_prompt = UNSET
+        else:
+            output_format_prompt = self.output_format_prompt
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -114,6 +122,8 @@ class RequirementResearchTemplatesGetOut:
             field_dict["prompt"] = prompt
         if project_specific_resource_groups_keywords is not UNSET:
             field_dict["project_specific_resource_groups_keywords"] = project_specific_resource_groups_keywords
+        if output_format_prompt is not UNSET:
+            field_dict["output_format_prompt"] = output_format_prompt
 
         return field_dict
 
@@ -187,6 +197,15 @@ class RequirementResearchTemplatesGetOut:
                 )
             )
 
+        def _parse_output_format_prompt(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        output_format_prompt = _parse_output_format_prompt(d.pop("output_format_prompt", UNSET))
+
         requirement_research_templates_get_out = cls(
             public_resource_groups=public_resource_groups,
             created_by=created_by,
@@ -199,6 +218,7 @@ class RequirementResearchTemplatesGetOut:
             id=id,
             prompt=prompt,
             project_specific_resource_groups_keywords=project_specific_resource_groups_keywords,
+            output_format_prompt=output_format_prompt,
         )
 
         requirement_research_templates_get_out.additional_properties = d

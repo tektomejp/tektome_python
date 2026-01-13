@@ -8,6 +8,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.dataspace_resource_attribute_patch_in_patch import DataspaceResourceAttributePatchInPatch
+from ...models.dataspace_resource_file_attribute_schema_out import DataspaceResourceFileAttributeSchemaOut
 from ...types import Response
 
 
@@ -33,9 +34,13 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
-    if response.status_code == 204:
-        return None
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> DataspaceResourceFileAttributeSchemaOut | None:
+    if response.status_code == 200:
+        response_200 = DataspaceResourceFileAttributeSchemaOut.from_dict(response.json())
+
+        return response_200
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -43,7 +48,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[DataspaceResourceFileAttributeSchemaOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,7 +64,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: DataspaceResourceAttributePatchInPatch,
-) -> Response[Any]:
+) -> Response[DataspaceResourceFileAttributeSchemaOut]:
     """Patch Dataspace Resource Attribute Config
 
      x16N0f5A
@@ -73,7 +80,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[DataspaceResourceFileAttributeSchemaOut]
     """
 
     kwargs = _get_kwargs(
@@ -88,12 +95,12 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     attribute_config_id: UUID,
     *,
     client: AuthenticatedClient,
     body: DataspaceResourceAttributePatchInPatch,
-) -> Response[Any]:
+) -> DataspaceResourceFileAttributeSchemaOut | None:
     """Patch Dataspace Resource Attribute Config
 
      x16N0f5A
@@ -109,7 +116,38 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        DataspaceResourceFileAttributeSchemaOut
+    """
+
+    return sync_detailed(
+        attribute_config_id=attribute_config_id,
+        client=client,
+        body=body,
+    ).parsed
+
+
+async def asyncio_detailed(
+    attribute_config_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    body: DataspaceResourceAttributePatchInPatch,
+) -> Response[DataspaceResourceFileAttributeSchemaOut]:
+    """Patch Dataspace Resource Attribute Config
+
+     x16N0f5A
+
+    Updates the column attributes of a dataspace
+
+    Args:
+        attribute_config_id (UUID):
+        body (DataspaceResourceAttributePatchInPatch):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[DataspaceResourceFileAttributeSchemaOut]
     """
 
     kwargs = _get_kwargs(
@@ -120,3 +158,36 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    attribute_config_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    body: DataspaceResourceAttributePatchInPatch,
+) -> DataspaceResourceFileAttributeSchemaOut | None:
+    """Patch Dataspace Resource Attribute Config
+
+     x16N0f5A
+
+    Updates the column attributes of a dataspace
+
+    Args:
+        attribute_config_id (UUID):
+        body (DataspaceResourceAttributePatchInPatch):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        DataspaceResourceFileAttributeSchemaOut
+    """
+
+    return (
+        await asyncio_detailed(
+            attribute_config_id=attribute_config_id,
+            client=client,
+            body=body,
+        )
+    ).parsed

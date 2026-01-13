@@ -5,29 +5,27 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.keyword_extraction import KeywordExtraction
 from ...models.keywords import Keywords
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
     *,
-    text: str,
-    include_inflections: bool | Unset = False,
+    body: KeywordExtraction,
 ) -> dict[str, Any]:
-    params: dict[str, Any] = {}
-
-    params["text"] = text
-
-    params["include_inflections"] = include_inflections
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+    headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
-        "method": "get",
+        "method": "post",
         "url": "/api/core/utils/keywords/",
-        "params": params,
     }
 
+    _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -55,26 +53,41 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    text: str,
-    include_inflections: bool | Unset = False,
+    body: KeywordExtraction,
 ) -> Response[Keywords]:
-    """Get Keywords
+    """Extract Keywords
 
      UOn7hBJp
 
-    Get keywords from text using NLP techniques.
+    Extract keywords from text using NLP techniques.
+    Currently only English and Japanese are supported.
+    The value of the return mode only affects English text.
+    Defaults to returning surface forms of keywords (i.e. as they appear in the text).
+    Japanese keywords are returned in surface form.
+    The Language Detector service is used to determine the language of the input text.
 
     Args:
         request: Request object
-        query_params: request payload of type Text
+        payload: request payload containing the text to extract from, and return mode for the keywords
 
     Returns:
         A response containing extracted keywords as a list of strings with no inherent order and no
     duplicates.
 
     Args:
-        text (str):
-        include_inflections (bool | Unset):  Default: False.
+        body (KeywordExtraction): Schema for keyword extraction requests.
+
+            This schema defines the structure for keyword extraction operations,
+            allowing users to specify the text to analyze and whether to include
+            word inflections in the extraction process.
+
+            Attributes:
+                text (str): The input text from which keywords will be extracted.
+                return_mode (str): The mode to determine the form of keywords to return.
+                    - SURFACE: Return surface forms of keywords.
+                    - ROOT: Return root/lemma forms of keywords (or surface in case of measurements).
+                    - INFLECTIONS: Return all inflected forms of keywords (just surface in case of
+            measurements).
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -85,8 +98,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        text=text,
-        include_inflections=include_inflections,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -99,26 +111,41 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    text: str,
-    include_inflections: bool | Unset = False,
+    body: KeywordExtraction,
 ) -> Keywords | None:
-    """Get Keywords
+    """Extract Keywords
 
      UOn7hBJp
 
-    Get keywords from text using NLP techniques.
+    Extract keywords from text using NLP techniques.
+    Currently only English and Japanese are supported.
+    The value of the return mode only affects English text.
+    Defaults to returning surface forms of keywords (i.e. as they appear in the text).
+    Japanese keywords are returned in surface form.
+    The Language Detector service is used to determine the language of the input text.
 
     Args:
         request: Request object
-        query_params: request payload of type Text
+        payload: request payload containing the text to extract from, and return mode for the keywords
 
     Returns:
         A response containing extracted keywords as a list of strings with no inherent order and no
     duplicates.
 
     Args:
-        text (str):
-        include_inflections (bool | Unset):  Default: False.
+        body (KeywordExtraction): Schema for keyword extraction requests.
+
+            This schema defines the structure for keyword extraction operations,
+            allowing users to specify the text to analyze and whether to include
+            word inflections in the extraction process.
+
+            Attributes:
+                text (str): The input text from which keywords will be extracted.
+                return_mode (str): The mode to determine the form of keywords to return.
+                    - SURFACE: Return surface forms of keywords.
+                    - ROOT: Return root/lemma forms of keywords (or surface in case of measurements).
+                    - INFLECTIONS: Return all inflected forms of keywords (just surface in case of
+            measurements).
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -130,34 +157,48 @@ def sync(
 
     return sync_detailed(
         client=client,
-        text=text,
-        include_inflections=include_inflections,
+        body=body,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    text: str,
-    include_inflections: bool | Unset = False,
+    body: KeywordExtraction,
 ) -> Response[Keywords]:
-    """Get Keywords
+    """Extract Keywords
 
      UOn7hBJp
 
-    Get keywords from text using NLP techniques.
+    Extract keywords from text using NLP techniques.
+    Currently only English and Japanese are supported.
+    The value of the return mode only affects English text.
+    Defaults to returning surface forms of keywords (i.e. as they appear in the text).
+    Japanese keywords are returned in surface form.
+    The Language Detector service is used to determine the language of the input text.
 
     Args:
         request: Request object
-        query_params: request payload of type Text
+        payload: request payload containing the text to extract from, and return mode for the keywords
 
     Returns:
         A response containing extracted keywords as a list of strings with no inherent order and no
     duplicates.
 
     Args:
-        text (str):
-        include_inflections (bool | Unset):  Default: False.
+        body (KeywordExtraction): Schema for keyword extraction requests.
+
+            This schema defines the structure for keyword extraction operations,
+            allowing users to specify the text to analyze and whether to include
+            word inflections in the extraction process.
+
+            Attributes:
+                text (str): The input text from which keywords will be extracted.
+                return_mode (str): The mode to determine the form of keywords to return.
+                    - SURFACE: Return surface forms of keywords.
+                    - ROOT: Return root/lemma forms of keywords (or surface in case of measurements).
+                    - INFLECTIONS: Return all inflected forms of keywords (just surface in case of
+            measurements).
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -168,8 +209,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        text=text,
-        include_inflections=include_inflections,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -180,26 +220,41 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    text: str,
-    include_inflections: bool | Unset = False,
+    body: KeywordExtraction,
 ) -> Keywords | None:
-    """Get Keywords
+    """Extract Keywords
 
      UOn7hBJp
 
-    Get keywords from text using NLP techniques.
+    Extract keywords from text using NLP techniques.
+    Currently only English and Japanese are supported.
+    The value of the return mode only affects English text.
+    Defaults to returning surface forms of keywords (i.e. as they appear in the text).
+    Japanese keywords are returned in surface form.
+    The Language Detector service is used to determine the language of the input text.
 
     Args:
         request: Request object
-        query_params: request payload of type Text
+        payload: request payload containing the text to extract from, and return mode for the keywords
 
     Returns:
         A response containing extracted keywords as a list of strings with no inherent order and no
     duplicates.
 
     Args:
-        text (str):
-        include_inflections (bool | Unset):  Default: False.
+        body (KeywordExtraction): Schema for keyword extraction requests.
+
+            This schema defines the structure for keyword extraction operations,
+            allowing users to specify the text to analyze and whether to include
+            word inflections in the extraction process.
+
+            Attributes:
+                text (str): The input text from which keywords will be extracted.
+                return_mode (str): The mode to determine the form of keywords to return.
+                    - SURFACE: Return surface forms of keywords.
+                    - ROOT: Return root/lemma forms of keywords (or surface in case of measurements).
+                    - INFLECTIONS: Return all inflected forms of keywords (just surface in case of
+            measurements).
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -212,7 +267,6 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
-            text=text,
-            include_inflections=include_inflections,
+            body=body,
         )
     ).parsed

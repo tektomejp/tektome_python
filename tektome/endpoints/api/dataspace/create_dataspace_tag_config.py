@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.dataspace_search_tag_config_in import DataspaceSearchTagConfigIn
 from ...models.dataspace_search_tag_config_out import DataspaceSearchTagConfigOut
+from ...models.dataspace_search_tag_config_post_in import DataspaceSearchTagConfigPostIn
 from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
     *,
-    body: DataspaceSearchTagConfigIn,
+    body: DataspaceSearchTagConfigPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -63,7 +63,7 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceSearchTagConfigIn,
+    body: DataspaceSearchTagConfigPostIn,
 ) -> Response[DataspaceSearchTagConfigOut]:
     """Create Dataspace Tag Config
 
@@ -73,8 +73,7 @@ def sync_detailed(
 
     Args:
         dataspace_id (UUID):
-        body (DataspaceSearchTagConfigIn): Schema for creating or updating dataspace tag
-            configuration.
+        body (DataspaceSearchTagConfigPostIn): Schema for creating dataspace tag configuration.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -100,7 +99,7 @@ def sync(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceSearchTagConfigIn,
+    body: DataspaceSearchTagConfigPostIn,
 ) -> DataspaceSearchTagConfigOut | None:
     """Create Dataspace Tag Config
 
@@ -110,8 +109,7 @@ def sync(
 
     Args:
         dataspace_id (UUID):
-        body (DataspaceSearchTagConfigIn): Schema for creating or updating dataspace tag
-            configuration.
+        body (DataspaceSearchTagConfigPostIn): Schema for creating dataspace tag configuration.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -132,7 +130,7 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceSearchTagConfigIn,
+    body: DataspaceSearchTagConfigPostIn,
 ) -> Response[DataspaceSearchTagConfigOut]:
     """Create Dataspace Tag Config
 
@@ -142,8 +140,7 @@ async def asyncio_detailed(
 
     Args:
         dataspace_id (UUID):
-        body (DataspaceSearchTagConfigIn): Schema for creating or updating dataspace tag
-            configuration.
+        body (DataspaceSearchTagConfigPostIn): Schema for creating dataspace tag configuration.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -167,7 +164,7 @@ async def asyncio(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceSearchTagConfigIn,
+    body: DataspaceSearchTagConfigPostIn,
 ) -> DataspaceSearchTagConfigOut | None:
     """Create Dataspace Tag Config
 
@@ -177,8 +174,7 @@ async def asyncio(
 
     Args:
         dataspace_id (UUID):
-        body (DataspaceSearchTagConfigIn): Schema for creating or updating dataspace tag
-            configuration.
+        body (DataspaceSearchTagConfigPostIn): Schema for creating dataspace tag configuration.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

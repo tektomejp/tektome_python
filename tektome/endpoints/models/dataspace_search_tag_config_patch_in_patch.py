@@ -8,17 +8,16 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="DataspaceSearchTagConfigIn")
+T = TypeVar("T", bound="DataspaceSearchTagConfigPatchInPatch")
 
 
 @_attrs_define
-class DataspaceSearchTagConfigIn:
-    """Schema for creating or updating dataspace tag configuration.
-
+class DataspaceSearchTagConfigPatchInPatch:
+    """
     Attributes:
-        name (None | str | Unset): Name of the tag configuration.
+        name (None | str | Unset):
         description (None | str | Unset):
-        is_active (bool | None | Unset): Whether the tag configuration is active.
+        is_active (bool | None | Unset):
     """
 
     name: None | str | Unset = UNSET
@@ -88,14 +87,14 @@ class DataspaceSearchTagConfigIn:
 
         is_active = _parse_is_active(d.pop("is_active", UNSET))
 
-        dataspace_search_tag_config_in = cls(
+        dataspace_search_tag_config_patch_in_patch = cls(
             name=name,
             description=description,
             is_active=is_active,
         )
 
-        dataspace_search_tag_config_in.additional_properties = d
-        return dataspace_search_tag_config_in
+        dataspace_search_tag_config_patch_in_patch.additional_properties = d
+        return dataspace_search_tag_config_patch_in_patch
 
     @property
     def additional_keys(self) -> list[str]:

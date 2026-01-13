@@ -11,6 +11,7 @@ from ...models.list_active_core_project_templates_ui_trigger_kind_choices import
     ListActiveCoreProjectTemplatesUiTriggerKindChoices,
 )
 from ...models.paged_template_out import PagedTemplateOut
+from ...models.process_type_choices import ProcessTypeChoices
 from ...types import UNSET, Response, Unset
 
 
@@ -20,6 +21,7 @@ def _get_kwargs(
     ui_trigger_name: None | str | Unset = UNSET,
     ui_trigger_kinds: list[ListActiveCoreProjectTemplatesUiTriggerKindChoices] | Unset = UNSET,
     name: None | str | Unset = UNSET,
+    type_: None | ProcessTypeChoices | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> dict[str, Any]:
@@ -47,6 +49,15 @@ def _get_kwargs(
     else:
         json_name = name
     params["name"] = json_name
+
+    json_type_: None | str | Unset
+    if isinstance(type_, Unset):
+        json_type_ = UNSET
+    elif isinstance(type_, ProcessTypeChoices):
+        json_type_ = type_.value
+    else:
+        json_type_ = type_
+    params["type"] = json_type_
 
     params["page"] = page
 
@@ -98,6 +109,7 @@ def sync_detailed(
     ui_trigger_name: None | str | Unset = UNSET,
     ui_trigger_kinds: list[ListActiveCoreProjectTemplatesUiTriggerKindChoices] | Unset = UNSET,
     name: None | str | Unset = UNSET,
+    type_: None | ProcessTypeChoices | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedTemplateOut]:
@@ -114,6 +126,8 @@ def sync_detailed(
         ui_trigger_kinds (list[ListActiveCoreProjectTemplatesUiTriggerKindChoices] | Unset):
             Filter templates by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
         name (None | str | Unset): The name (or part of the name) of the template to search for.
+        type_ (None | ProcessTypeChoices | Unset): Filter templates by type. Possible values are
+            defined in ProcessTypeChoices.
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
 
@@ -130,6 +144,7 @@ def sync_detailed(
         ui_trigger_name=ui_trigger_name,
         ui_trigger_kinds=ui_trigger_kinds,
         name=name,
+        type_=type_,
         page=page,
         page_size=page_size,
     )
@@ -148,6 +163,7 @@ def sync(
     ui_trigger_name: None | str | Unset = UNSET,
     ui_trigger_kinds: list[ListActiveCoreProjectTemplatesUiTriggerKindChoices] | Unset = UNSET,
     name: None | str | Unset = UNSET,
+    type_: None | ProcessTypeChoices | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedTemplateOut | None:
@@ -164,6 +180,8 @@ def sync(
         ui_trigger_kinds (list[ListActiveCoreProjectTemplatesUiTriggerKindChoices] | Unset):
             Filter templates by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
         name (None | str | Unset): The name (or part of the name) of the template to search for.
+        type_ (None | ProcessTypeChoices | Unset): Filter templates by type. Possible values are
+            defined in ProcessTypeChoices.
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
 
@@ -181,6 +199,7 @@ def sync(
         ui_trigger_name=ui_trigger_name,
         ui_trigger_kinds=ui_trigger_kinds,
         name=name,
+        type_=type_,
         page=page,
         page_size=page_size,
     ).parsed
@@ -193,6 +212,7 @@ async def asyncio_detailed(
     ui_trigger_name: None | str | Unset = UNSET,
     ui_trigger_kinds: list[ListActiveCoreProjectTemplatesUiTriggerKindChoices] | Unset = UNSET,
     name: None | str | Unset = UNSET,
+    type_: None | ProcessTypeChoices | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedTemplateOut]:
@@ -209,6 +229,8 @@ async def asyncio_detailed(
         ui_trigger_kinds (list[ListActiveCoreProjectTemplatesUiTriggerKindChoices] | Unset):
             Filter templates by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
         name (None | str | Unset): The name (or part of the name) of the template to search for.
+        type_ (None | ProcessTypeChoices | Unset): Filter templates by type. Possible values are
+            defined in ProcessTypeChoices.
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
 
@@ -225,6 +247,7 @@ async def asyncio_detailed(
         ui_trigger_name=ui_trigger_name,
         ui_trigger_kinds=ui_trigger_kinds,
         name=name,
+        type_=type_,
         page=page,
         page_size=page_size,
     )
@@ -241,6 +264,7 @@ async def asyncio(
     ui_trigger_name: None | str | Unset = UNSET,
     ui_trigger_kinds: list[ListActiveCoreProjectTemplatesUiTriggerKindChoices] | Unset = UNSET,
     name: None | str | Unset = UNSET,
+    type_: None | ProcessTypeChoices | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedTemplateOut | None:
@@ -257,6 +281,8 @@ async def asyncio(
         ui_trigger_kinds (list[ListActiveCoreProjectTemplatesUiTriggerKindChoices] | Unset):
             Filter templates by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
         name (None | str | Unset): The name (or part of the name) of the template to search for.
+        type_ (None | ProcessTypeChoices | Unset): Filter templates by type. Possible values are
+            defined in ProcessTypeChoices.
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
 
@@ -275,6 +301,7 @@ async def asyncio(
             ui_trigger_name=ui_trigger_name,
             ui_trigger_kinds=ui_trigger_kinds,
             name=name,
+            type_=type_,
             page=page,
             page_size=page_size,
         )

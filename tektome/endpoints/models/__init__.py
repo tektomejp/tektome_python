@@ -9,7 +9,24 @@ from .aggregated_usage_by_model import AggregatedUsageByModel
 from .all_attributes_schema_out import AllAttributesSchemaOut
 from .any_resource_schema_in import AnyResourceSchemaIn
 from .any_valued_attribute_schema_in import AnyValuedAttributeSchemaIn
+from .approval_candidate_path_params import ApprovalCandidatePathParams
+from .approval_candidate_status import ApprovalCandidateStatus
+from .approval_candidates_path_params import ApprovalCandidatesPathParams
+from .approval_category_types import ApprovalCategoryTypes
 from .approval_entry_schema import ApprovalEntrySchema
+from .approval_status import ApprovalStatus
+from .approval_status_patch_in import ApprovalStatusPatchIn
+from .approval_ticket_candidate_out import ApprovalTicketCandidateOut
+from .approval_ticket_candidate_out_data_container import ApprovalTicketCandidateOutDataContainer
+from .approval_ticket_candidate_patch_in_patch import ApprovalTicketCandidatePatchInPatch
+from .approval_ticket_candidate_patch_out import ApprovalTicketCandidatePatchOut
+from .approval_ticket_candidate_patch_out_data_container import ApprovalTicketCandidatePatchOutDataContainer
+from .approval_ticket_get_out import ApprovalTicketGetOut
+from .approval_ticket_get_out_2 import ApprovalTicketGetOut2
+from .approval_ticket_get_out_3 import ApprovalTicketGetOut3
+from .approval_ticket_get_out_3_data_container import ApprovalTicketGetOut3DataContainer
+from .approval_ticket_patch_in_patch import ApprovalTicketPatchInPatch
+from .approval_ticket_post_in import ApprovalTicketPostIn
 from .approval_user_profile_schema import ApprovalUserProfileSchema
 from .approval_user_schema import ApprovalUserSchema
 from .artifact_delete_path import ArtifactDeletePath
@@ -41,6 +58,8 @@ from .background_task_status_out import BackgroundTaskStatusOut
 from .base_resource_path_in import BaseResourcePathIn
 from .bim_batch_element_request_post_in import BimBatchElementRequestPostIn
 from .bim_batch_trim_element_request_post_in import BimBatchTrimElementRequestPostIn
+from .bim_clash_check_post_in import BimClashCheckPostIn
+from .bim_clash_check_post_out import BimClashCheckPostOut
 from .bim_element_key_value_search_bim_element_type_v2_path import BimElementKeyValueSearchBimElementTypeV2Path
 from .bim_element_link_parent_children import BimElementLinkParentChildren
 from .bim_element_link_path import BimElementLinkPath
@@ -72,12 +91,20 @@ from .bim_view_post_out import BimViewPostOut
 from .blob_upload_complete_post_in import BlobUploadCompletePostIn
 from .blob_upload_request_post_in import BlobUploadRequestPostIn
 from .blob_upload_request_post_out import BlobUploadRequestPostOut
+from .boolean_attribute_candidate_payload import BooleanAttributeCandidatePayload
 from .boolean_attribute_schema_in import BooleanAttributeSchemaIn
 from .boolean_attribute_schema_out import BooleanAttributeSchemaOut
 from .boolean_condition_action import BooleanConditionAction
 from .boolean_search_condition import BooleanSearchCondition
 from .bulk_move_folder_resources_schema import BulkMoveFolderResourcesSchema
 from .bulk_user_invitation_schema_out import BulkUserInvitationSchemaOut
+from .candidate_citation import CandidateCitation
+from .candidate_citation_bim_helpers_type_0 import CandidateCitationBimHelpersType0
+from .candidate_citation_highlights_type_0 import CandidateCitationHighlightsType0
+from .candidate_citation_polygons_type_0 import CandidateCitationPolygonsType0
+from .candidate_item import CandidateItem
+from .candidate_item_data_type_1 import CandidateItemDataType1
+from .candidate_item_kind import CandidateItemKind
 from .cell_coordinate import CellCoordinate
 from .chat import Chat
 from .chat_chunks_type_0_item import ChatChunksType0Item
@@ -92,6 +119,7 @@ from .choice_schema import ChoiceSchema
 from .chunk import Chunk
 from .chunk_group_component_schema_get_out import ChunkGroupComponentSchemaGetOut
 from .chunk_group_component_schema_path_in import ChunkGroupComponentSchemaPathIn
+from .citation_kind import CitationKind
 from .component_schema_path_in import ComponentSchemaPathIn
 from .convert_ifc_to_bim_elements_file_params import ConvertIfcToBimElementsFileParams
 from .coordinate import Coordinate
@@ -103,6 +131,9 @@ from .core_project_required_schema import CoreProjectRequiredSchema
 from .core_project_schema import CoreProjectSchema
 from .create_api_key_post_in import CreateAPIKeyPostIn
 from .create_api_key_post_out import CreateAPIKeyPostOut
+from .create_approval_ticket_with_candidates_multi_part_body_params import (
+    CreateApprovalTicketWithCandidatesMultiPartBodyParams,
+)
 from .create_bim_element_bim_element_type_path import CreateBimElementBimElementTypePath
 from .create_bim_element_file_params import CreateBimElementFileParams
 from .create_bim_resource_file_params import CreateBimResourceFileParams
@@ -166,10 +197,21 @@ from .dataspace_search_filter_field_out_recommended_values_type_0 import (
 )
 from .dataspace_search_filter_field_path import DataspaceSearchFilterFieldPath
 from .dataspace_search_filter_path import DataspaceSearchFilterPath
-from .dataspace_search_tag_config_in import DataspaceSearchTagConfigIn
+from .dataspace_search_tag_config_filter_through_in import DataspaceSearchTagConfigFilterThroughIn
 from .dataspace_search_tag_config_out import DataspaceSearchTagConfigOut
+from .dataspace_search_tag_config_out_default_search_conditions import (
+    DataspaceSearchTagConfigOutDefaultSearchConditions,
+)
 from .dataspace_search_tag_config_patch_default_filter_in import DataspaceSearchTagConfigPatchDefaultFilterIn
+from .dataspace_search_tag_config_patch_default_search_conditions_in import (
+    DataspaceSearchTagConfigPatchDefaultSearchConditionsIn,
+)
+from .dataspace_search_tag_config_patch_default_search_conditions_in_default_search_conditions import (
+    DataspaceSearchTagConfigPatchDefaultSearchConditionsInDefaultSearchConditions,
+)
 from .dataspace_search_tag_config_patch_filter_in import DataspaceSearchTagConfigPatchFilterIn
+from .dataspace_search_tag_config_patch_in_patch import DataspaceSearchTagConfigPatchInPatch
+from .dataspace_search_tag_config_post_in import DataspaceSearchTagConfigPostIn
 from .dataspace_tag_config_path import DataspaceTagConfigPath
 from .dataspace_template_import_in import DataspaceTemplateImportIn
 from .dataspace_template_path import DataspaceTemplatePath
@@ -185,6 +227,7 @@ from .deep_research_chat_post_in import DeepResearchChatPostIn
 from .deep_research_models_type import DeepResearchModelsType
 from .default_attribute_body_put_in import DefaultAttributeBodyPutIn
 from .default_attribute_body_put_in_list_object_attributes_item import DefaultAttributeBodyPutInListObjectAttributesItem
+from .default_search_condition_schema import DefaultSearchConditionSchema
 from .delete_bim_element_bim_element_type_path import DeleteBimElementBimElementTypePath
 from .delete_capture_section_component_path import DeleteCaptureSectionComponentPath
 from .delete_folder_resources_schema import DeleteFolderResourcesSchema
@@ -250,6 +293,28 @@ from .execute_process_path_params import ExecuteProcessPathParams
 from .execute_process_post_in import ExecuteProcessPostIn
 from .execute_process_post_in_execution_run_args import ExecuteProcessPostInExecutionRunArgs
 from .execute_process_post_out import ExecuteProcessPostOut
+from .execution_approval_path_params import ExecutionApprovalPathParams
+from .execution_approvals_get_out import ExecutionApprovalsGetOut
+from .execution_approvals_query_params import ExecutionApprovalsQueryParams
+from .execution_group_get_out import ExecutionGroupGetOut
+from .execution_group_get_out_2 import ExecutionGroupGetOut2
+from .execution_group_path_params import ExecutionGroupPathParams
+from .execution_group_query_params import ExecutionGroupQueryParams
+from .execution_group_query_params_execution_group_status import ExecutionGroupQueryParamsExecutionGroupStatus
+from .execution_group_query_params_execution_review_status import ExecutionGroupQueryParamsExecutionReviewStatus
+from .execution_group_query_params_process_type_choices import ExecutionGroupQueryParamsProcessTypeChoices
+from .execution_group_status import ExecutionGroupStatus
+from .execution_process_get_out import ExecutionProcessGetOut
+from .execution_query_params import ExecutionQueryParams
+from .execution_query_params_execution_review_status import ExecutionQueryParamsExecutionReviewStatus
+from .execution_query_params_execution_status import ExecutionQueryParamsExecutionStatus
+from .execution_query_params_process_type_choices import ExecutionQueryParamsProcessTypeChoices
+from .execution_review_status import ExecutionReviewStatus
+from .execution_status import ExecutionStatus
+from .execution_status_details import ExecutionStatusDetails
+from .executions_get_out import ExecutionsGetOut
+from .executions_path_params import ExecutionsPathParams
+from .executions_review_status_details import ExecutionsReviewStatusDetails
 from .export_csv_report_query import ExportCSVReportQuery
 from .export_usage_reports_period_types import ExportUsageReportsPeriodTypes
 from .extraction_post_in import ExtractionPostIn
@@ -262,6 +327,7 @@ from .file_attributes_search import FileAttributesSearch
 from .file_move_patch_schema_in import FileMovePatchSchemaIn
 from .file_table_attribute import FileTableAttribute
 from .file_table_attribute_extraction import FileTableAttributeExtraction
+from .float_attribute_candidate_payload import FloatAttributeCandidatePayload
 from .float_attribute_schema_in import FloatAttributeSchemaIn
 from .float_attribute_schema_out import FloatAttributeSchemaOut
 from .float_search_condition import FloatSearchCondition
@@ -294,6 +360,12 @@ from .get_bim_element_bim_element_type_path import GetBimElementBimElementTypePa
 from .get_capture_section_component_path import GetCaptureSectionComponentPath
 from .get_capture_section_component_query import GetCaptureSectionComponentQuery
 from .get_citing_attributes_get_out import GetCitingAttributesGetOut
+from .get_dataspace_execution_groups_execution_group_status import GetDataspaceExecutionGroupsExecutionGroupStatus
+from .get_dataspace_execution_groups_execution_review_status import GetDataspaceExecutionGroupsExecutionReviewStatus
+from .get_dataspace_execution_groups_process_type_choices import GetDataspaceExecutionGroupsProcessTypeChoices
+from .get_dataspace_executions_execution_review_status import GetDataspaceExecutionsExecutionReviewStatus
+from .get_dataspace_executions_execution_status import GetDataspaceExecutionsExecutionStatus
+from .get_dataspace_executions_process_type_choices import GetDataspaceExecutionsProcessTypeChoices
 from .get_dr_default_output_format_get_out import GetDRDefaultOutputFormatGetOut
 from .get_extracted_page_get_out import GetExtractedPageGetOut
 from .get_extracted_page_get_out_tables_type_0 import GetExtractedPageGetOutTablesType0
@@ -315,6 +387,7 @@ from .import_result_failed import ImportResultFailed
 from .import_storage_folders_response import ImportStorageFoldersResponse
 from .improve_user_prompt_query_in import ImproveUserPromptQueryIn
 from .input_ import Input
+from .integer_attribute_candidate_payload import IntegerAttributeCandidatePayload
 from .integer_attribute_schema_in import IntegerAttributeSchemaIn
 from .integer_attribute_schema_out import IntegerAttributeSchemaOut
 from .integer_search_condition import IntegerSearchCondition
@@ -326,6 +399,7 @@ from .json_attribute_schema_out import JSONAttributeSchemaOut
 from .json_attribute_schema_out_value_type_0 import JSONAttributeSchemaOutValueType0
 from .json_field import JsonField
 from .keyword_extraction import KeywordExtraction
+from .keyword_extraction_return_mode import KeywordExtractionReturnMode
 from .keywords import Keywords
 from .language_scheme import LanguageScheme
 from .large_language_model_enum import LargeLanguageModelEnum
@@ -416,11 +490,15 @@ from .organizations_post_in import OrganizationsPostIn
 from .page_component_schema_get_out import PageComponentSchemaGetOut
 from .page_component_schema_get_out_tables_type_0 import PageComponentSchemaGetOutTablesType0
 from .page_component_schema_path_in import PageComponentSchemaPathIn
+from .paged_approval_ticket_candidate_out import PagedApprovalTicketCandidateOut
 from .paged_core_project_schema import PagedCoreProjectSchema
 from .paged_dataspace_list_get_out import PagedDataspaceListGetOut
 from .paged_dataspace_project_attribute_post_out import PagedDataspaceProjectAttributePostOut
 from .paged_dataspace_project_resources_get_out import PagedDataspaceProjectResourcesGetOut
 from .paged_dataspace_projects_get_out import PagedDataspaceProjectsGetOut
+from .paged_execution_approvals_get_out import PagedExecutionApprovalsGetOut
+from .paged_execution_group_get_out import PagedExecutionGroupGetOut
+from .paged_executions_get_out import PagedExecutionsGetOut
 from .paged_folder_metadata_out import PagedFolderMetadataOut
 from .paged_lawtalk_project_resource_get_out import PagedLawtalkProjectResourceGetOut
 from .paged_lawtalk_project_schema_get_out import PagedLawtalkProjectSchemaGetOut
@@ -660,6 +738,7 @@ from .stream_bim_element_key_value_search_bim_element_type_v2_path import (
 )
 from .stream_bim_elements_by_project_bim_element_type_v2_path import StreamBimElementsByProjectBimElementTypeV2Path
 from .stream_trim_batch_bim_elements_bim_element_type_path import StreamTrimBatchBimElementsBimElementTypePath
+from .string_attribute_candidate_payload import StringAttributeCandidatePayload
 from .string_attribute_schema_in import StringAttributeSchemaIn
 from .string_attribute_schema_out import StringAttributeSchemaOut
 from .string_condition_action import StringConditionAction
@@ -731,7 +810,24 @@ __all__ = (
     "AllAttributesSchemaOut",
     "AnyResourceSchemaIn",
     "AnyValuedAttributeSchemaIn",
+    "ApprovalCandidatePathParams",
+    "ApprovalCandidatesPathParams",
+    "ApprovalCandidateStatus",
+    "ApprovalCategoryTypes",
     "ApprovalEntrySchema",
+    "ApprovalStatus",
+    "ApprovalStatusPatchIn",
+    "ApprovalTicketCandidateOut",
+    "ApprovalTicketCandidateOutDataContainer",
+    "ApprovalTicketCandidatePatchInPatch",
+    "ApprovalTicketCandidatePatchOut",
+    "ApprovalTicketCandidatePatchOutDataContainer",
+    "ApprovalTicketGetOut",
+    "ApprovalTicketGetOut2",
+    "ApprovalTicketGetOut3",
+    "ApprovalTicketGetOut3DataContainer",
+    "ApprovalTicketPatchInPatch",
+    "ApprovalTicketPostIn",
     "ApprovalUserProfileSchema",
     "ApprovalUserSchema",
     "AProjectDefaultPath",
@@ -766,6 +862,8 @@ __all__ = (
     "BaseResourcePathIn",
     "BimBatchElementRequestPostIn",
     "BimBatchTrimElementRequestPostIn",
+    "BimClashCheckPostIn",
+    "BimClashCheckPostOut",
     "BimElementKeyValueSearchBimElementTypeV2Path",
     "BimElementLinkParentChildren",
     "BimElementLinkPath",
@@ -797,12 +895,20 @@ __all__ = (
     "BlobUploadCompletePostIn",
     "BlobUploadRequestPostIn",
     "BlobUploadRequestPostOut",
+    "BooleanAttributeCandidatePayload",
     "BooleanAttributeSchemaIn",
     "BooleanAttributeSchemaOut",
     "BooleanConditionAction",
     "BooleanSearchCondition",
     "BulkMoveFolderResourcesSchema",
     "BulkUserInvitationSchemaOut",
+    "CandidateCitation",
+    "CandidateCitationBimHelpersType0",
+    "CandidateCitationHighlightsType0",
+    "CandidateCitationPolygonsType0",
+    "CandidateItem",
+    "CandidateItemDataType1",
+    "CandidateItemKind",
     "CellCoordinate",
     "Chat",
     "ChatChunksType0Item",
@@ -817,6 +923,7 @@ __all__ = (
     "Chunk",
     "ChunkGroupComponentSchemaGetOut",
     "ChunkGroupComponentSchemaPathIn",
+    "CitationKind",
     "ComponentSchemaPathIn",
     "ConvertIfcToBimElementsFileParams",
     "Coordinate",
@@ -828,6 +935,7 @@ __all__ = (
     "CoreProjectSchema",
     "CreateAPIKeyPostIn",
     "CreateAPIKeyPostOut",
+    "CreateApprovalTicketWithCandidatesMultiPartBodyParams",
     "CreateBimElementBimElementTypePath",
     "CreateBimElementFileParams",
     "CreateBimResourceFileParams",
@@ -886,10 +994,15 @@ __all__ = (
     "DataspaceSearchFilterFieldOutRecommendedValuesType0",
     "DataspaceSearchFilterFieldPath",
     "DataspaceSearchFilterPath",
-    "DataspaceSearchTagConfigIn",
+    "DataspaceSearchTagConfigFilterThroughIn",
     "DataspaceSearchTagConfigOut",
+    "DataspaceSearchTagConfigOutDefaultSearchConditions",
     "DataspaceSearchTagConfigPatchDefaultFilterIn",
+    "DataspaceSearchTagConfigPatchDefaultSearchConditionsIn",
+    "DataspaceSearchTagConfigPatchDefaultSearchConditionsInDefaultSearchConditions",
     "DataspaceSearchTagConfigPatchFilterIn",
+    "DataspaceSearchTagConfigPatchInPatch",
+    "DataspaceSearchTagConfigPostIn",
     "DataspacesOrganizationSchema",
     "DataspaceTagConfigPath",
     "DataspaceTemplateImportIn",
@@ -906,6 +1019,7 @@ __all__ = (
     "DeepResearchModelsType",
     "DefaultAttributeBodyPutIn",
     "DefaultAttributeBodyPutInListObjectAttributesItem",
+    "DefaultSearchConditionSchema",
     "DeleteBimElementBimElementTypePath",
     "DeleteCaptureSectionComponentPath",
     "DeleteFolderResourcesSchema",
@@ -971,6 +1085,28 @@ __all__ = (
     "ExecuteProcessPostIn",
     "ExecuteProcessPostInExecutionRunArgs",
     "ExecuteProcessPostOut",
+    "ExecutionApprovalPathParams",
+    "ExecutionApprovalsGetOut",
+    "ExecutionApprovalsQueryParams",
+    "ExecutionGroupGetOut",
+    "ExecutionGroupGetOut2",
+    "ExecutionGroupPathParams",
+    "ExecutionGroupQueryParams",
+    "ExecutionGroupQueryParamsExecutionGroupStatus",
+    "ExecutionGroupQueryParamsExecutionReviewStatus",
+    "ExecutionGroupQueryParamsProcessTypeChoices",
+    "ExecutionGroupStatus",
+    "ExecutionProcessGetOut",
+    "ExecutionQueryParams",
+    "ExecutionQueryParamsExecutionReviewStatus",
+    "ExecutionQueryParamsExecutionStatus",
+    "ExecutionQueryParamsProcessTypeChoices",
+    "ExecutionReviewStatus",
+    "ExecutionsGetOut",
+    "ExecutionsPathParams",
+    "ExecutionsReviewStatusDetails",
+    "ExecutionStatus",
+    "ExecutionStatusDetails",
     "ExportCSVReportQuery",
     "ExportUsageReportsPeriodTypes",
     "ExtractionPostIn",
@@ -983,6 +1119,7 @@ __all__ = (
     "FileMovePatchSchemaIn",
     "FileTableAttribute",
     "FileTableAttributeExtraction",
+    "FloatAttributeCandidatePayload",
     "FloatAttributeSchemaIn",
     "FloatAttributeSchemaOut",
     "FloatSearchCondition",
@@ -1015,6 +1152,12 @@ __all__ = (
     "GetCaptureSectionComponentPath",
     "GetCaptureSectionComponentQuery",
     "GetCitingAttributesGetOut",
+    "GetDataspaceExecutionGroupsExecutionGroupStatus",
+    "GetDataspaceExecutionGroupsExecutionReviewStatus",
+    "GetDataspaceExecutionGroupsProcessTypeChoices",
+    "GetDataspaceExecutionsExecutionReviewStatus",
+    "GetDataspaceExecutionsExecutionStatus",
+    "GetDataspaceExecutionsProcessTypeChoices",
     "GetDRDefaultOutputFormatGetOut",
     "GetExtractedPageGetOut",
     "GetExtractedPageGetOutTablesType0",
@@ -1036,6 +1179,7 @@ __all__ = (
     "ImportStorageFoldersResponse",
     "ImproveUserPromptQueryIn",
     "Input",
+    "IntegerAttributeCandidatePayload",
     "IntegerAttributeSchemaIn",
     "IntegerAttributeSchemaOut",
     "IntegerSearchCondition",
@@ -1047,6 +1191,7 @@ __all__ = (
     "JSONAttributeSchemaOutValueType0",
     "JsonField",
     "KeywordExtraction",
+    "KeywordExtractionReturnMode",
     "Keywords",
     "LanguageScheme",
     "LargeLanguageModelEnum",
@@ -1133,11 +1278,15 @@ __all__ = (
     "PageComponentSchemaGetOut",
     "PageComponentSchemaGetOutTablesType0",
     "PageComponentSchemaPathIn",
+    "PagedApprovalTicketCandidateOut",
     "PagedCoreProjectSchema",
     "PagedDataspaceListGetOut",
     "PagedDataspaceProjectAttributePostOut",
     "PagedDataspaceProjectResourcesGetOut",
     "PagedDataspaceProjectsGetOut",
+    "PagedExecutionApprovalsGetOut",
+    "PagedExecutionGroupGetOut",
+    "PagedExecutionsGetOut",
     "PagedFolderMetadataOut",
     "PagedLawtalkProjectResourceGetOut",
     "PagedLawtalkProjectSchemaGetOut",
@@ -1361,6 +1510,7 @@ __all__ = (
     "StreamBimElementKeyValueSearchBimElementTypeV2Path",
     "StreamBimElementsByProjectBimElementTypeV2Path",
     "StreamTrimBatchBimElementsBimElementTypePath",
+    "StringAttributeCandidatePayload",
     "StringAttributeSchemaIn",
     "StringAttributeSchemaOut",
     "StringConditionAction",

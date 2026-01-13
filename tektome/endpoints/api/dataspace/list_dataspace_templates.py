@@ -9,6 +9,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.list_dataspace_templates_ui_trigger_kind_choices import ListDataspaceTemplatesUiTriggerKindChoices
 from ...models.paged_template_out import PagedTemplateOut
+from ...models.process_type_choices import ProcessTypeChoices
 from ...types import UNSET, Response, Unset
 
 
@@ -18,6 +19,7 @@ def _get_kwargs(
     ui_trigger_name: None | str | Unset = UNSET,
     ui_trigger_kinds: list[ListDataspaceTemplatesUiTriggerKindChoices] | Unset = UNSET,
     name: None | str | Unset = UNSET,
+    type_: None | ProcessTypeChoices | Unset = UNSET,
     for_import: bool | None | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
@@ -46,6 +48,15 @@ def _get_kwargs(
     else:
         json_name = name
     params["name"] = json_name
+
+    json_type_: None | str | Unset
+    if isinstance(type_, Unset):
+        json_type_ = UNSET
+    elif isinstance(type_, ProcessTypeChoices):
+        json_type_ = type_.value
+    else:
+        json_type_ = type_
+    params["type"] = json_type_
 
     json_for_import: bool | None | Unset
     if isinstance(for_import, Unset):
@@ -104,6 +115,7 @@ def sync_detailed(
     ui_trigger_name: None | str | Unset = UNSET,
     ui_trigger_kinds: list[ListDataspaceTemplatesUiTriggerKindChoices] | Unset = UNSET,
     name: None | str | Unset = UNSET,
+    type_: None | ProcessTypeChoices | Unset = UNSET,
     for_import: bool | None | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
@@ -120,6 +132,8 @@ def sync_detailed(
         ui_trigger_kinds (list[ListDataspaceTemplatesUiTriggerKindChoices] | Unset): Filter
             templates by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
         name (None | str | Unset): The name (or part of the name) of the template to search for.
+        type_ (None | ProcessTypeChoices | Unset): Filter templates by type. Possible values are
+            defined in ProcessTypeChoices.
         for_import (bool | None | Unset): If true, only return templates that can be imported.
             Otherwise, return all available templates, either default or imported.
         page (int | Unset):  Default: 1.
@@ -138,6 +152,7 @@ def sync_detailed(
         ui_trigger_name=ui_trigger_name,
         ui_trigger_kinds=ui_trigger_kinds,
         name=name,
+        type_=type_,
         for_import=for_import,
         page=page,
         page_size=page_size,
@@ -157,6 +172,7 @@ def sync(
     ui_trigger_name: None | str | Unset = UNSET,
     ui_trigger_kinds: list[ListDataspaceTemplatesUiTriggerKindChoices] | Unset = UNSET,
     name: None | str | Unset = UNSET,
+    type_: None | ProcessTypeChoices | Unset = UNSET,
     for_import: bool | None | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
@@ -173,6 +189,8 @@ def sync(
         ui_trigger_kinds (list[ListDataspaceTemplatesUiTriggerKindChoices] | Unset): Filter
             templates by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
         name (None | str | Unset): The name (or part of the name) of the template to search for.
+        type_ (None | ProcessTypeChoices | Unset): Filter templates by type. Possible values are
+            defined in ProcessTypeChoices.
         for_import (bool | None | Unset): If true, only return templates that can be imported.
             Otherwise, return all available templates, either default or imported.
         page (int | Unset):  Default: 1.
@@ -192,6 +210,7 @@ def sync(
         ui_trigger_name=ui_trigger_name,
         ui_trigger_kinds=ui_trigger_kinds,
         name=name,
+        type_=type_,
         for_import=for_import,
         page=page,
         page_size=page_size,
@@ -205,6 +224,7 @@ async def asyncio_detailed(
     ui_trigger_name: None | str | Unset = UNSET,
     ui_trigger_kinds: list[ListDataspaceTemplatesUiTriggerKindChoices] | Unset = UNSET,
     name: None | str | Unset = UNSET,
+    type_: None | ProcessTypeChoices | Unset = UNSET,
     for_import: bool | None | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
@@ -221,6 +241,8 @@ async def asyncio_detailed(
         ui_trigger_kinds (list[ListDataspaceTemplatesUiTriggerKindChoices] | Unset): Filter
             templates by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
         name (None | str | Unset): The name (or part of the name) of the template to search for.
+        type_ (None | ProcessTypeChoices | Unset): Filter templates by type. Possible values are
+            defined in ProcessTypeChoices.
         for_import (bool | None | Unset): If true, only return templates that can be imported.
             Otherwise, return all available templates, either default or imported.
         page (int | Unset):  Default: 1.
@@ -239,6 +261,7 @@ async def asyncio_detailed(
         ui_trigger_name=ui_trigger_name,
         ui_trigger_kinds=ui_trigger_kinds,
         name=name,
+        type_=type_,
         for_import=for_import,
         page=page,
         page_size=page_size,
@@ -256,6 +279,7 @@ async def asyncio(
     ui_trigger_name: None | str | Unset = UNSET,
     ui_trigger_kinds: list[ListDataspaceTemplatesUiTriggerKindChoices] | Unset = UNSET,
     name: None | str | Unset = UNSET,
+    type_: None | ProcessTypeChoices | Unset = UNSET,
     for_import: bool | None | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
@@ -272,6 +296,8 @@ async def asyncio(
         ui_trigger_kinds (list[ListDataspaceTemplatesUiTriggerKindChoices] | Unset): Filter
             templates by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
         name (None | str | Unset): The name (or part of the name) of the template to search for.
+        type_ (None | ProcessTypeChoices | Unset): Filter templates by type. Possible values are
+            defined in ProcessTypeChoices.
         for_import (bool | None | Unset): If true, only return templates that can be imported.
             Otherwise, return all available templates, either default or imported.
         page (int | Unset):  Default: 1.
@@ -292,6 +318,7 @@ async def asyncio(
             ui_trigger_name=ui_trigger_name,
             ui_trigger_kinds=ui_trigger_kinds,
             name=name,
+            type_=type_,
             for_import=for_import,
             page=page,
             page_size=page_size,

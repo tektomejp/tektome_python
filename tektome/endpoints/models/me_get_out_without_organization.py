@@ -24,11 +24,11 @@ class MeGetOutWithoutOrganization:
         username (str):
         language (str):
         email (str):
+        is_timezone_auto_detect (bool):
         first_name (str | Unset):  Default: ''.
         last_name (str | Unset):  Default: ''.
         avatar_url (None | str | Unset):
         tos_accepted_at (datetime.datetime | None | Unset):
-        is_timezone_auto_detect (bool | None | Unset):
     """
 
     created: datetime.datetime
@@ -37,11 +37,11 @@ class MeGetOutWithoutOrganization:
     username: str
     language: str
     email: str
+    is_timezone_auto_detect: bool
     first_name: str | Unset = ""
     last_name: str | Unset = ""
     avatar_url: None | str | Unset = UNSET
     tos_accepted_at: datetime.datetime | None | Unset = UNSET
-    is_timezone_auto_detect: bool | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -56,6 +56,8 @@ class MeGetOutWithoutOrganization:
         language = self.language
 
         email = self.email
+
+        is_timezone_auto_detect = self.is_timezone_auto_detect
 
         first_name = self.first_name
 
@@ -75,12 +77,6 @@ class MeGetOutWithoutOrganization:
         else:
             tos_accepted_at = self.tos_accepted_at
 
-        is_timezone_auto_detect: bool | None | Unset
-        if isinstance(self.is_timezone_auto_detect, Unset):
-            is_timezone_auto_detect = UNSET
-        else:
-            is_timezone_auto_detect = self.is_timezone_auto_detect
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -91,6 +87,7 @@ class MeGetOutWithoutOrganization:
                 "username": username,
                 "language": language,
                 "email": email,
+                "is_timezone_auto_detect": is_timezone_auto_detect,
             }
         )
         if first_name is not UNSET:
@@ -101,8 +98,6 @@ class MeGetOutWithoutOrganization:
             field_dict["avatar_url"] = avatar_url
         if tos_accepted_at is not UNSET:
             field_dict["tos_accepted_at"] = tos_accepted_at
-        if is_timezone_auto_detect is not UNSET:
-            field_dict["is_timezone_auto_detect"] = is_timezone_auto_detect
 
         return field_dict
 
@@ -120,6 +115,8 @@ class MeGetOutWithoutOrganization:
         language = d.pop("language")
 
         email = d.pop("email")
+
+        is_timezone_auto_detect = d.pop("is_timezone_auto_detect")
 
         first_name = d.pop("first_name", UNSET)
 
@@ -151,15 +148,6 @@ class MeGetOutWithoutOrganization:
 
         tos_accepted_at = _parse_tos_accepted_at(d.pop("tos_accepted_at", UNSET))
 
-        def _parse_is_timezone_auto_detect(data: object) -> bool | None | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(bool | None | Unset, data)
-
-        is_timezone_auto_detect = _parse_is_timezone_auto_detect(d.pop("is_timezone_auto_detect", UNSET))
-
         me_get_out_without_organization = cls(
             created=created,
             updated=updated,
@@ -167,11 +155,11 @@ class MeGetOutWithoutOrganization:
             username=username,
             language=language,
             email=email,
+            is_timezone_auto_detect=is_timezone_auto_detect,
             first_name=first_name,
             last_name=last_name,
             avatar_url=avatar_url,
             tos_accepted_at=tos_accepted_at,
-            is_timezone_auto_detect=is_timezone_auto_detect,
         )
 
         me_get_out_without_organization.additional_properties = d

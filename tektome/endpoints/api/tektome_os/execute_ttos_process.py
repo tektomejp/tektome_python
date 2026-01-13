@@ -68,7 +68,8 @@ def sync_detailed(
      AqZqtBsA
 
     2 Entrypoints
-    1. [Process Page] Multiple Process in a single execution group run over one resource/project
+    1. [Process Page] Multiple Process in a single execution group run over one resource/project m2m -
+    no design and not yet supported
     2. [Resource/Project list] Single Process in a single execution group runs over multiple
     resources/projects
 
@@ -125,7 +126,8 @@ def sync(
      AqZqtBsA
 
     2 Entrypoints
-    1. [Process Page] Multiple Process in a single execution group run over one resource/project
+    1. [Process Page] Multiple Process in a single execution group run over one resource/project m2m -
+    no design and not yet supported
     2. [Resource/Project list] Single Process in a single execution group runs over multiple
     resources/projects
 
@@ -177,7 +179,8 @@ async def asyncio_detailed(
      AqZqtBsA
 
     2 Entrypoints
-    1. [Process Page] Multiple Process in a single execution group run over one resource/project
+    1. [Process Page] Multiple Process in a single execution group run over one resource/project m2m -
+    no design and not yet supported
     2. [Resource/Project list] Single Process in a single execution group runs over multiple
     resources/projects
 
@@ -232,7 +235,8 @@ async def asyncio(
      AqZqtBsA
 
     2 Entrypoints
-    1. [Process Page] Multiple Process in a single execution group run over one resource/project
+    1. [Process Page] Multiple Process in a single execution group run over one resource/project m2m -
+    no design and not yet supported
     2. [Resource/Project list] Single Process in a single execution group runs over multiple
     resources/projects
 

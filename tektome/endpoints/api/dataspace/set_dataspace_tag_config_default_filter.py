@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import Any
 from urllib.parse import quote
 from uuid import UUID
 
@@ -7,6 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.dataspace_search_tag_config_out import DataspaceSearchTagConfigOut
 from ...models.dataspace_search_tag_config_patch_default_filter_in import DataspaceSearchTagConfigPatchDefaultFilterIn
 from ...models.error_out import ErrorOut
 from ...types import Response
@@ -36,10 +37,13 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | ErrorOut | None:
-    if response.status_code == 204:
-        response_204 = cast(Any, None)
-        return response_204
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> DataspaceSearchTagConfigOut | ErrorOut | None:
+    if response.status_code == 200:
+        response_200 = DataspaceSearchTagConfigOut.from_dict(response.json())
+
+        return response_200
 
     if response.status_code == 400:
         response_400 = ErrorOut.from_dict(response.json())
@@ -137,7 +141,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | ErrorOut]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[DataspaceSearchTagConfigOut | ErrorOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -152,7 +158,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPatchDefaultFilterIn,
-) -> Response[Any | ErrorOut]:
+) -> Response[DataspaceSearchTagConfigOut | ErrorOut]:
     """Patch Dataspace Tag Config Default Filter
 
      YpdxZW3r
@@ -170,7 +176,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ErrorOut]
+        Response[DataspaceSearchTagConfigOut | ErrorOut]
     """
 
     kwargs = _get_kwargs(
@@ -192,7 +198,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPatchDefaultFilterIn,
-) -> Any | ErrorOut | None:
+) -> DataspaceSearchTagConfigOut | ErrorOut | None:
     """Patch Dataspace Tag Config Default Filter
 
      YpdxZW3r
@@ -210,7 +216,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | ErrorOut
+        DataspaceSearchTagConfigOut | ErrorOut
     """
 
     return sync_detailed(
@@ -227,7 +233,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPatchDefaultFilterIn,
-) -> Response[Any | ErrorOut]:
+) -> Response[DataspaceSearchTagConfigOut | ErrorOut]:
     """Patch Dataspace Tag Config Default Filter
 
      YpdxZW3r
@@ -245,7 +251,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ErrorOut]
+        Response[DataspaceSearchTagConfigOut | ErrorOut]
     """
 
     kwargs = _get_kwargs(
@@ -265,7 +271,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPatchDefaultFilterIn,
-) -> Any | ErrorOut | None:
+) -> DataspaceSearchTagConfigOut | ErrorOut | None:
     """Patch Dataspace Tag Config Default Filter
 
      YpdxZW3r
@@ -283,7 +289,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | ErrorOut
+        DataspaceSearchTagConfigOut | ErrorOut
     """
 
     return (
