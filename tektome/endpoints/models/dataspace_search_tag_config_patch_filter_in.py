@@ -1,54 +1,60 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
-from uuid import UUID
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
+if TYPE_CHECKING:
+    from ..models.dataspace_search_tag_config_filter_through_in import DataspaceSearchTagConfigFilterThroughIn
+
+
 T = TypeVar("T", bound="DataspaceSearchTagConfigPatchFilterIn")
 
 
 @_attrs_define
 class DataspaceSearchTagConfigPatchFilterIn:
-    """Schema for patching a dataspace tag configuration filters .
+    """Schema for patching a dataspace tag configuration filters with default search conditions.
 
     Attributes:
-        filter_ids (list[UUID] | None | Unset): List of filter configuration IDs associated with the tag configuration.
+        filters (list[DataspaceSearchTagConfigFilterThroughIn] | None | Unset): List of filter configurations with
+            optional default operator and value.
     """
 
-    filter_ids: list[UUID] | None | Unset = UNSET
+    filters: list[DataspaceSearchTagConfigFilterThroughIn] | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        filter_ids: list[str] | None | Unset
-        if isinstance(self.filter_ids, Unset):
-            filter_ids = UNSET
-        elif isinstance(self.filter_ids, list):
-            filter_ids = []
-            for filter_ids_type_0_item_data in self.filter_ids:
-                filter_ids_type_0_item = str(filter_ids_type_0_item_data)
-                filter_ids.append(filter_ids_type_0_item)
+        filters: list[dict[str, Any]] | None | Unset
+        if isinstance(self.filters, Unset):
+            filters = UNSET
+        elif isinstance(self.filters, list):
+            filters = []
+            for filters_type_0_item_data in self.filters:
+                filters_type_0_item = filters_type_0_item_data.to_dict()
+                filters.append(filters_type_0_item)
 
         else:
-            filter_ids = self.filter_ids
+            filters = self.filters
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if filter_ids is not UNSET:
-            field_dict["filter_ids"] = filter_ids
+        if filters is not UNSET:
+            field_dict["filters"] = filters
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.dataspace_search_tag_config_filter_through_in import DataspaceSearchTagConfigFilterThroughIn
+
         d = dict(src_dict)
 
-        def _parse_filter_ids(data: object) -> list[UUID] | None | Unset:
+        def _parse_filters(data: object) -> list[DataspaceSearchTagConfigFilterThroughIn] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -56,22 +62,22 @@ class DataspaceSearchTagConfigPatchFilterIn:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                filter_ids_type_0 = []
-                _filter_ids_type_0 = data
-                for filter_ids_type_0_item_data in _filter_ids_type_0:
-                    filter_ids_type_0_item = UUID(filter_ids_type_0_item_data)
+                filters_type_0 = []
+                _filters_type_0 = data
+                for filters_type_0_item_data in _filters_type_0:
+                    filters_type_0_item = DataspaceSearchTagConfigFilterThroughIn.from_dict(filters_type_0_item_data)
 
-                    filter_ids_type_0.append(filter_ids_type_0_item)
+                    filters_type_0.append(filters_type_0_item)
 
-                return filter_ids_type_0
+                return filters_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(list[UUID] | None | Unset, data)
+            return cast(list[DataspaceSearchTagConfigFilterThroughIn] | None | Unset, data)
 
-        filter_ids = _parse_filter_ids(d.pop("filter_ids", UNSET))
+        filters = _parse_filters(d.pop("filters", UNSET))
 
         dataspace_search_tag_config_patch_filter_in = cls(
-            filter_ids=filter_ids,
+            filters=filters,
         )
 
         dataspace_search_tag_config_patch_filter_in.additional_properties = d

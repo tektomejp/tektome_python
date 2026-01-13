@@ -13,6 +13,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.template_override_out_input_schema_patch_type_0 import TemplateOverrideOutInputSchemaPatchType0
+    from ..models.user_metadata import UserMetadata
 
 
 T = TypeVar("T", bound="TemplateOverrideOut")
@@ -22,13 +23,13 @@ T = TypeVar("T", bound="TemplateOverrideOut")
 class TemplateOverrideOut:
     """
     Attributes:
+        created_by (None | UserMetadata):
+        updated_by (None | UserMetadata):
         created (datetime.datetime):
         updated (datetime.datetime):
         template (UUID):
         organization (UUID):
         id (None | Unset | UUID):
-        created_by (None | Unset | UUID):
-        updated_by (None | Unset | UUID):
         is_active (bool | Unset):  Default: True.
         is_modified (bool | Unset):  Default: False.
         dataspace (None | Unset | UUID):
@@ -38,13 +39,13 @@ class TemplateOverrideOut:
         input_schema_patch (None | TemplateOverrideOutInputSchemaPatchType0 | Unset):
     """
 
+    created_by: None | UserMetadata
+    updated_by: None | UserMetadata
     created: datetime.datetime
     updated: datetime.datetime
     template: UUID
     organization: UUID
     id: None | Unset | UUID = UNSET
-    created_by: None | Unset | UUID = UNSET
-    updated_by: None | Unset | UUID = UNSET
     is_active: bool | Unset = True
     is_modified: bool | Unset = False
     dataspace: None | Unset | UUID = UNSET
@@ -56,6 +57,19 @@ class TemplateOverrideOut:
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.template_override_out_input_schema_patch_type_0 import TemplateOverrideOutInputSchemaPatchType0
+        from ..models.user_metadata import UserMetadata
+
+        created_by: dict[str, Any] | None
+        if isinstance(self.created_by, UserMetadata):
+            created_by = self.created_by.to_dict()
+        else:
+            created_by = self.created_by
+
+        updated_by: dict[str, Any] | None
+        if isinstance(self.updated_by, UserMetadata):
+            updated_by = self.updated_by.to_dict()
+        else:
+            updated_by = self.updated_by
 
         created = self.created.isoformat()
 
@@ -72,22 +86,6 @@ class TemplateOverrideOut:
             id = str(self.id)
         else:
             id = self.id
-
-        created_by: None | str | Unset
-        if isinstance(self.created_by, Unset):
-            created_by = UNSET
-        elif isinstance(self.created_by, UUID):
-            created_by = str(self.created_by)
-        else:
-            created_by = self.created_by
-
-        updated_by: None | str | Unset
-        if isinstance(self.updated_by, Unset):
-            updated_by = UNSET
-        elif isinstance(self.updated_by, UUID):
-            updated_by = str(self.updated_by)
-        else:
-            updated_by = self.updated_by
 
         is_active = self.is_active
 
@@ -133,6 +131,8 @@ class TemplateOverrideOut:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "created_by": created_by,
+                "updated_by": updated_by,
                 "created": created,
                 "updated": updated,
                 "template": template,
@@ -141,10 +141,6 @@ class TemplateOverrideOut:
         )
         if id is not UNSET:
             field_dict["id"] = id
-        if created_by is not UNSET:
-            field_dict["created_by"] = created_by
-        if updated_by is not UNSET:
-            field_dict["updated_by"] = updated_by
         if is_active is not UNSET:
             field_dict["is_active"] = is_active
         if is_modified is not UNSET:
@@ -165,8 +161,40 @@ class TemplateOverrideOut:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.template_override_out_input_schema_patch_type_0 import TemplateOverrideOutInputSchemaPatchType0
+        from ..models.user_metadata import UserMetadata
 
         d = dict(src_dict)
+
+        def _parse_created_by(data: object) -> None | UserMetadata:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                created_by_type_0 = UserMetadata.from_dict(data)
+
+                return created_by_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | UserMetadata, data)
+
+        created_by = _parse_created_by(d.pop("created_by"))
+
+        def _parse_updated_by(data: object) -> None | UserMetadata:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                updated_by_type_0 = UserMetadata.from_dict(data)
+
+                return updated_by_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | UserMetadata, data)
+
+        updated_by = _parse_updated_by(d.pop("updated_by"))
+
         created = isoparse(d.pop("created"))
 
         updated = isoparse(d.pop("updated"))
@@ -191,40 +219,6 @@ class TemplateOverrideOut:
             return cast(None | Unset | UUID, data)
 
         id = _parse_id(d.pop("id", UNSET))
-
-        def _parse_created_by(data: object) -> None | Unset | UUID:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                created_by_type_0 = UUID(data)
-
-                return created_by_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | Unset | UUID, data)
-
-        created_by = _parse_created_by(d.pop("created_by", UNSET))
-
-        def _parse_updated_by(data: object) -> None | Unset | UUID:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                updated_by_type_0 = UUID(data)
-
-                return updated_by_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | Unset | UUID, data)
-
-        updated_by = _parse_updated_by(d.pop("updated_by", UNSET))
 
         is_active = d.pop("is_active", UNSET)
 
@@ -300,13 +294,13 @@ class TemplateOverrideOut:
         input_schema_patch = _parse_input_schema_patch(d.pop("input_schema_patch", UNSET))
 
         template_override_out = cls(
+            created_by=created_by,
+            updated_by=updated_by,
             created=created,
             updated=updated,
             template=template,
             organization=organization,
             id=id,
-            created_by=created_by,
-            updated_by=updated_by,
             is_active=is_active,
             is_modified=is_modified,
             dataspace=dataspace,

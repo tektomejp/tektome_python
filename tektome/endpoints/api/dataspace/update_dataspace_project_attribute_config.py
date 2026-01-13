@@ -8,6 +8,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.dataspace_project_attribute_patch_in_patch import DataspaceProjectAttributePatchInPatch
+from ...models.dataspace_project_attribute_schema_out import DataspaceProjectAttributeSchemaOut
 from ...types import Response
 
 
@@ -33,9 +34,13 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
-    if response.status_code == 204:
-        return None
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> DataspaceProjectAttributeSchemaOut | None:
+    if response.status_code == 200:
+        response_200 = DataspaceProjectAttributeSchemaOut.from_dict(response.json())
+
+        return response_200
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -43,7 +48,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[DataspaceProjectAttributeSchemaOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,7 +64,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: DataspaceProjectAttributePatchInPatch,
-) -> Response[Any]:
+) -> Response[DataspaceProjectAttributeSchemaOut]:
     """Patch Dataspace Project Attribute Config
 
      x16N0f5B
@@ -74,7 +81,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[DataspaceProjectAttributeSchemaOut]
     """
 
     kwargs = _get_kwargs(
@@ -89,12 +96,12 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     attribute_config_id: UUID,
     *,
     client: AuthenticatedClient,
     body: DataspaceProjectAttributePatchInPatch,
-) -> Response[Any]:
+) -> DataspaceProjectAttributeSchemaOut | None:
     """Patch Dataspace Project Attribute Config
 
      x16N0f5B
@@ -111,7 +118,39 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        DataspaceProjectAttributeSchemaOut
+    """
+
+    return sync_detailed(
+        attribute_config_id=attribute_config_id,
+        client=client,
+        body=body,
+    ).parsed
+
+
+async def asyncio_detailed(
+    attribute_config_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    body: DataspaceProjectAttributePatchInPatch,
+) -> Response[DataspaceProjectAttributeSchemaOut]:
+    """Patch Dataspace Project Attribute Config
+
+     x16N0f5B
+
+    Updates the column attributes of a dataspace project.
+    attribute name is a computed field based on the attribute label.
+
+    Args:
+        attribute_config_id (UUID):
+        body (DataspaceProjectAttributePatchInPatch):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[DataspaceProjectAttributeSchemaOut]
     """
 
     kwargs = _get_kwargs(
@@ -122,3 +161,37 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    attribute_config_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    body: DataspaceProjectAttributePatchInPatch,
+) -> DataspaceProjectAttributeSchemaOut | None:
+    """Patch Dataspace Project Attribute Config
+
+     x16N0f5B
+
+    Updates the column attributes of a dataspace project.
+    attribute name is a computed field based on the attribute label.
+
+    Args:
+        attribute_config_id (UUID):
+        body (DataspaceProjectAttributePatchInPatch):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        DataspaceProjectAttributeSchemaOut
+    """
+
+    return (
+        await asyncio_detailed(
+            attribute_config_id=attribute_config_id,
+            client=client,
+            body=body,
+        )
+    ).parsed

@@ -18,6 +18,7 @@ class MePatchIn:
         username (str | Unset):
         language (str | Unset): Language code, e.g., 'en' for English
         tos_accepted_at (bool | Unset): Terms of Service accepted
+        is_timezone_auto_detect (bool | None | Unset): User timezone autodetect feature status
         first_name (str | Unset):  Default: ''.
         last_name (str | Unset):  Default: ''.
         avatar_url (None | str | Unset):
@@ -26,6 +27,7 @@ class MePatchIn:
     username: str | Unset = UNSET
     language: str | Unset = UNSET
     tos_accepted_at: bool | Unset = UNSET
+    is_timezone_auto_detect: bool | None | Unset = UNSET
     first_name: str | Unset = ""
     last_name: str | Unset = ""
     avatar_url: None | str | Unset = UNSET
@@ -37,6 +39,12 @@ class MePatchIn:
         language = self.language
 
         tos_accepted_at = self.tos_accepted_at
+
+        is_timezone_auto_detect: bool | None | Unset
+        if isinstance(self.is_timezone_auto_detect, Unset):
+            is_timezone_auto_detect = UNSET
+        else:
+            is_timezone_auto_detect = self.is_timezone_auto_detect
 
         first_name = self.first_name
 
@@ -57,6 +65,8 @@ class MePatchIn:
             field_dict["language"] = language
         if tos_accepted_at is not UNSET:
             field_dict["tos_accepted_at"] = tos_accepted_at
+        if is_timezone_auto_detect is not UNSET:
+            field_dict["is_timezone_auto_detect"] = is_timezone_auto_detect
         if first_name is not UNSET:
             field_dict["first_name"] = first_name
         if last_name is not UNSET:
@@ -75,6 +85,15 @@ class MePatchIn:
 
         tos_accepted_at = d.pop("tos_accepted_at", UNSET)
 
+        def _parse_is_timezone_auto_detect(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        is_timezone_auto_detect = _parse_is_timezone_auto_detect(d.pop("is_timezone_auto_detect", UNSET))
+
         first_name = d.pop("first_name", UNSET)
 
         last_name = d.pop("last_name", UNSET)
@@ -92,6 +111,7 @@ class MePatchIn:
             username=username,
             language=language,
             tos_accepted_at=tos_accepted_at,
+            is_timezone_auto_detect=is_timezone_auto_detect,
             first_name=first_name,
             last_name=last_name,
             avatar_url=avatar_url,

@@ -6,6 +6,7 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.keyword_extraction_return_mode import KeywordExtractionReturnMode
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="KeywordExtraction")
@@ -21,23 +22,26 @@ class KeywordExtraction:
 
     Attributes:
         text (str): The input text from which keywords will be extracted.
-        include_inflections (bool): Flag indicating whether to include word
-            inflections (different forms of the same word) in the keyword
-            extraction results. Defaults to False.
+        return_mode (str): The mode to determine the form of keywords to return.
+            - SURFACE: Return surface forms of keywords.
+            - ROOT: Return root/lemma forms of keywords (or surface in case of measurements).
+            - INFLECTIONS: Return all inflected forms of keywords (just surface in case of measurements).
 
         Attributes:
             text (str):
-            include_inflections (bool | Unset):  Default: False.
+            return_mode (KeywordExtractionReturnMode | Unset):  Default: KeywordExtractionReturnMode.SURFACE.
     """
 
     text: str
-    include_inflections: bool | Unset = False
+    return_mode: KeywordExtractionReturnMode | Unset = KeywordExtractionReturnMode.SURFACE
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         text = self.text
 
-        include_inflections = self.include_inflections
+        return_mode: str | Unset = UNSET
+        if not isinstance(self.return_mode, Unset):
+            return_mode = self.return_mode.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -46,8 +50,8 @@ class KeywordExtraction:
                 "text": text,
             }
         )
-        if include_inflections is not UNSET:
-            field_dict["include_inflections"] = include_inflections
+        if return_mode is not UNSET:
+            field_dict["return_mode"] = return_mode
 
         return field_dict
 
@@ -56,11 +60,16 @@ class KeywordExtraction:
         d = dict(src_dict)
         text = d.pop("text")
 
-        include_inflections = d.pop("include_inflections", UNSET)
+        _return_mode = d.pop("return_mode", UNSET)
+        return_mode: KeywordExtractionReturnMode | Unset
+        if isinstance(_return_mode, Unset):
+            return_mode = UNSET
+        else:
+            return_mode = KeywordExtractionReturnMode(_return_mode)
 
         keyword_extraction = cls(
             text=text,
-            include_inflections=include_inflections,
+            return_mode=return_mode,
         )
 
         keyword_extraction.additional_properties = d

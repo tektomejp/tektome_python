@@ -1,16 +1,21 @@
 from __future__ import annotations
 
+import datetime
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.dataspace_search_filter_configuration_out import DataspaceSearchFilterConfigurationOut
+    from ..models.dataspace_search_tag_config_out_default_search_conditions import (
+        DataspaceSearchTagConfigOutDefaultSearchConditions,
+    )
     from ..models.user_metadata import UserMetadata
 
 
@@ -25,7 +30,11 @@ class DataspaceSearchTagConfigOut:
         created_by (UserMetadata):
         updated_by (UserMetadata):
         name (str):
+        created (datetime.datetime):
+        updated (datetime.datetime):
         filters (list[DataspaceSearchFilterConfigurationOut] | Unset):
+        default_grouping_option (None | str | Unset):
+        default_search_conditions (DataspaceSearchTagConfigOutDefaultSearchConditions | Unset):
         id (None | Unset | UUID):
         description (None | str | Unset):
         is_active (bool | Unset):  Default: False.
@@ -35,7 +44,11 @@ class DataspaceSearchTagConfigOut:
     created_by: UserMetadata
     updated_by: UserMetadata
     name: str
+    created: datetime.datetime
+    updated: datetime.datetime
     filters: list[DataspaceSearchFilterConfigurationOut] | Unset = UNSET
+    default_grouping_option: None | str | Unset = UNSET
+    default_search_conditions: DataspaceSearchTagConfigOutDefaultSearchConditions | Unset = UNSET
     id: None | Unset | UUID = UNSET
     description: None | str | Unset = UNSET
     is_active: bool | Unset = False
@@ -49,12 +62,26 @@ class DataspaceSearchTagConfigOut:
 
         name = self.name
 
+        created = self.created.isoformat()
+
+        updated = self.updated.isoformat()
+
         filters: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.filters, Unset):
             filters = []
             for filters_item_data in self.filters:
                 filters_item = filters_item_data.to_dict()
                 filters.append(filters_item)
+
+        default_grouping_option: None | str | Unset
+        if isinstance(self.default_grouping_option, Unset):
+            default_grouping_option = UNSET
+        else:
+            default_grouping_option = self.default_grouping_option
+
+        default_search_conditions: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.default_search_conditions, Unset):
+            default_search_conditions = self.default_search_conditions.to_dict()
 
         id: None | str | Unset
         if isinstance(self.id, Unset):
@@ -87,10 +114,16 @@ class DataspaceSearchTagConfigOut:
                 "created_by": created_by,
                 "updated_by": updated_by,
                 "name": name,
+                "created": created,
+                "updated": updated,
             }
         )
         if filters is not UNSET:
             field_dict["filters"] = filters
+        if default_grouping_option is not UNSET:
+            field_dict["default_grouping_option"] = default_grouping_option
+        if default_search_conditions is not UNSET:
+            field_dict["default_search_conditions"] = default_search_conditions
         if id is not UNSET:
             field_dict["id"] = id
         if description is not UNSET:
@@ -105,6 +138,9 @@ class DataspaceSearchTagConfigOut:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.dataspace_search_filter_configuration_out import DataspaceSearchFilterConfigurationOut
+        from ..models.dataspace_search_tag_config_out_default_search_conditions import (
+            DataspaceSearchTagConfigOutDefaultSearchConditions,
+        )
         from ..models.user_metadata import UserMetadata
 
         d = dict(src_dict)
@@ -114,6 +150,10 @@ class DataspaceSearchTagConfigOut:
 
         name = d.pop("name")
 
+        created = isoparse(d.pop("created"))
+
+        updated = isoparse(d.pop("updated"))
+
         _filters = d.pop("filters", UNSET)
         filters: list[DataspaceSearchFilterConfigurationOut] | Unset = UNSET
         if _filters is not UNSET:
@@ -122,6 +162,24 @@ class DataspaceSearchTagConfigOut:
                 filters_item = DataspaceSearchFilterConfigurationOut.from_dict(filters_item_data)
 
                 filters.append(filters_item)
+
+        def _parse_default_grouping_option(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        default_grouping_option = _parse_default_grouping_option(d.pop("default_grouping_option", UNSET))
+
+        _default_search_conditions = d.pop("default_search_conditions", UNSET)
+        default_search_conditions: DataspaceSearchTagConfigOutDefaultSearchConditions | Unset
+        if isinstance(_default_search_conditions, Unset):
+            default_search_conditions = UNSET
+        else:
+            default_search_conditions = DataspaceSearchTagConfigOutDefaultSearchConditions.from_dict(
+                _default_search_conditions
+            )
 
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -172,7 +230,11 @@ class DataspaceSearchTagConfigOut:
             created_by=created_by,
             updated_by=updated_by,
             name=name,
+            created=created,
+            updated=updated,
             filters=filters,
+            default_grouping_option=default_grouping_option,
+            default_search_conditions=default_search_conditions,
             id=id,
             description=description,
             is_active=is_active,

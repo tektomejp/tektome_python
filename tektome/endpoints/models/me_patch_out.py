@@ -29,12 +29,12 @@ class MePatchOut:
         username (str):
         language (str):
         email (str):
+        is_timezone_auto_detect (bool):
         current_organization (CurrentOrganizationSchema):
         first_name (str | Unset):  Default: ''.
         last_name (str | Unset):  Default: ''.
         avatar_url (None | str | Unset):
         tos_accepted_at (datetime.datetime | None | Unset):
-        is_timezone_auto_detect (bool | None | Unset):
         role_assignments (list[AssignedRoleSchemaOut] | Unset):
     """
 
@@ -44,12 +44,12 @@ class MePatchOut:
     username: str
     language: str
     email: str
+    is_timezone_auto_detect: bool
     current_organization: CurrentOrganizationSchema
     first_name: str | Unset = ""
     last_name: str | Unset = ""
     avatar_url: None | str | Unset = UNSET
     tos_accepted_at: datetime.datetime | None | Unset = UNSET
-    is_timezone_auto_detect: bool | None | Unset = UNSET
     role_assignments: list[AssignedRoleSchemaOut] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -65,6 +65,8 @@ class MePatchOut:
         language = self.language
 
         email = self.email
+
+        is_timezone_auto_detect = self.is_timezone_auto_detect
 
         current_organization = self.current_organization.to_dict()
 
@@ -86,12 +88,6 @@ class MePatchOut:
         else:
             tos_accepted_at = self.tos_accepted_at
 
-        is_timezone_auto_detect: bool | None | Unset
-        if isinstance(self.is_timezone_auto_detect, Unset):
-            is_timezone_auto_detect = UNSET
-        else:
-            is_timezone_auto_detect = self.is_timezone_auto_detect
-
         role_assignments: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.role_assignments, Unset):
             role_assignments = []
@@ -109,6 +105,7 @@ class MePatchOut:
                 "username": username,
                 "language": language,
                 "email": email,
+                "is_timezone_auto_detect": is_timezone_auto_detect,
                 "current_organization": current_organization,
             }
         )
@@ -120,8 +117,6 @@ class MePatchOut:
             field_dict["avatar_url"] = avatar_url
         if tos_accepted_at is not UNSET:
             field_dict["tos_accepted_at"] = tos_accepted_at
-        if is_timezone_auto_detect is not UNSET:
-            field_dict["is_timezone_auto_detect"] = is_timezone_auto_detect
         if role_assignments is not UNSET:
             field_dict["role_assignments"] = role_assignments
 
@@ -144,6 +139,8 @@ class MePatchOut:
         language = d.pop("language")
 
         email = d.pop("email")
+
+        is_timezone_auto_detect = d.pop("is_timezone_auto_detect")
 
         current_organization = CurrentOrganizationSchema.from_dict(d.pop("current_organization"))
 
@@ -177,15 +174,6 @@ class MePatchOut:
 
         tos_accepted_at = _parse_tos_accepted_at(d.pop("tos_accepted_at", UNSET))
 
-        def _parse_is_timezone_auto_detect(data: object) -> bool | None | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(bool | None | Unset, data)
-
-        is_timezone_auto_detect = _parse_is_timezone_auto_detect(d.pop("is_timezone_auto_detect", UNSET))
-
         _role_assignments = d.pop("role_assignments", UNSET)
         role_assignments: list[AssignedRoleSchemaOut] | Unset = UNSET
         if _role_assignments is not UNSET:
@@ -202,12 +190,12 @@ class MePatchOut:
             username=username,
             language=language,
             email=email,
+            is_timezone_auto_detect=is_timezone_auto_detect,
             current_organization=current_organization,
             first_name=first_name,
             last_name=last_name,
             avatar_url=avatar_url,
             tos_accepted_at=tos_accepted_at,
-            is_timezone_auto_detect=is_timezone_auto_detect,
             role_assignments=role_assignments,
         )
 
