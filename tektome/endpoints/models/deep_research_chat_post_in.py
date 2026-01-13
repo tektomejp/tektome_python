@@ -32,6 +32,13 @@ class DeepResearchChatPostIn:
         auto_generate_specs (bool | Unset): Auto-generate specification table after the DR process Default: False.
         output_format_prompt (None | str | Unset): Custom output format prompt for the deep research model. If not
             provided, a default format will be used.
+        deep_research_uses_ocr (bool | Unset):
+            Flag indicating whether OCR-extracted text from resources should be used in the deep research, as opposed to the
+            PDFs themselves.
+            Defaults to True.
+            Using OCR text reduces the analysis time by around half, and handles raster PDFs.
+            It is recommended, but PDF analysis is provided for backwards compatibility with existing workflows.
+             Default: True.
     """
 
     prompt: str
@@ -46,6 +53,7 @@ class DeepResearchChatPostIn:
     user_answers: None | str | Unset = UNSET
     auto_generate_specs: bool | Unset = False
     output_format_prompt: None | str | Unset = UNSET
+    deep_research_uses_ocr: bool | Unset = True
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -100,6 +108,8 @@ class DeepResearchChatPostIn:
         else:
             output_format_prompt = self.output_format_prompt
 
+        deep_research_uses_ocr = self.deep_research_uses_ocr
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -125,6 +135,8 @@ class DeepResearchChatPostIn:
             field_dict["auto_generate_specs"] = auto_generate_specs
         if output_format_prompt is not UNSET:
             field_dict["output_format_prompt"] = output_format_prompt
+        if deep_research_uses_ocr is not UNSET:
+            field_dict["deep_research_uses_ocr"] = deep_research_uses_ocr
 
         return field_dict
 
@@ -211,6 +223,8 @@ class DeepResearchChatPostIn:
 
         output_format_prompt = _parse_output_format_prompt(d.pop("output_format_prompt", UNSET))
 
+        deep_research_uses_ocr = d.pop("deep_research_uses_ocr", UNSET)
+
         deep_research_chat_post_in = cls(
             prompt=prompt,
             recipe=recipe,
@@ -224,6 +238,7 @@ class DeepResearchChatPostIn:
             user_answers=user_answers,
             auto_generate_specs=auto_generate_specs,
             output_format_prompt=output_format_prompt,
+            deep_research_uses_ocr=deep_research_uses_ocr,
         )
 
         deep_research_chat_post_in.additional_properties = d
