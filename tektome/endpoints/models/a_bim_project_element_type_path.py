@@ -9,12 +9,13 @@ from attrs import field as _attrs_field
 
 from ..models.bim_element_type_v2_path import BimElementTypeV2Path
 
-T = TypeVar("T", bound="BimProjectElementTypeV2Path")
+T = TypeVar("T", bound="ABimProjectElementTypePath")
 
 
 @_attrs_define
-class BimProjectElementTypeV2Path:
-    """
+class ABimProjectElementTypePath:
+    """Async path parameters for BIM element operations with project validation.
+
     Attributes:
         bim_project_id (UUID):
         bim_type (BimElementTypeV2Path): An enumeration representing different BIM (Building Information Modeling)
@@ -57,13 +58,13 @@ class BimProjectElementTypeV2Path:
 
         bim_type = BimElementTypeV2Path(d.pop("bim_type"))
 
-        bim_project_element_type_v2_path = cls(
+        a_bim_project_element_type_path = cls(
             bim_project_id=bim_project_id,
             bim_type=bim_type,
         )
 
-        bim_project_element_type_v2_path.additional_properties = d
-        return bim_project_element_type_v2_path
+        a_bim_project_element_type_path.additional_properties = d
+        return a_bim_project_element_type_path
 
     @property
     def additional_keys(self) -> list[str]:

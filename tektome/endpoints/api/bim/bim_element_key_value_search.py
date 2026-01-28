@@ -76,74 +76,11 @@ def sync_detailed(
     body: BimKeyValueSearchPostIn,
     bim_project_id: UUID,
 ) -> Response[BimKeyValueSearchResultPostOut]:
-    r"""Bim Element Key Value Search
+    """Bim Element Key Value Search
 
      Nh2cP7IZ
 
-    Search BIM elements within a project for entries containing a specific key-value pair.
-
-    This endpoint performs case-sensitive search on BIM element JSON content stored in
-    Elasticsearch. It supports both exact matching and wildcard patterns using '*' character.
-
-    Supported BIM element types: bim-object, bim-view, bim-sheet
-
-    Wildcard Pattern Support:
-    - Use '*' in key to match any key name (e.g., key=\"*\" matches any key)
-    - Use '*' in value to match partial values (e.g., value=\"玄関*\" matches values starting with \"玄関\")
-    - Combine wildcards (e.g., key=\"*\", value=\"*扉*\" matches any key with values containing \"扉\")
-
-    Search Process:
-    1. Selects the appropriate Elasticsearch document class based on bim_element type
-    2. Constructs an Elasticsearch query filtering by project ID
-    3. Uses match_phrase queries for exact JSON key-value pattern matching
-    4. Executes paginated search against the selected document index
-    5. Processes each hit to extract only the requested fields from the JSON content
-    6. Returns structured results with field filtering and pagination metadata
-
-    Field Extraction:
-    - If 'fields' is provided in payload: extracts only those specified fields
-    - If 'fields' is not provided: defaults to extracting only 'id' field
-    - Supports nested field paths using dot notation (e.g., \"geometry.location.x\")
-    - Always includes the Elasticsearch document ID in the response
-    - Handles malformed JSON gracefully by falling back to empty data
-
-    Args:
-        request: Django request object (unused)
-        payload: Search parameters including key, value, optional fields, and pagination
-        bim_project_id: UUID of the BIM project to search within
-        bim_element: Type of BIM element to search (bim-object, bim-view, or bim-sheet)
-
-    Returns:
-        BimKeyValueSearchResultPostOut: Paginated search results containing:
-            - results: List of matching elements with requested fields
-            - total: Total number of matching documents
-            - page: Current page number
-            - page_size: Number of results per page
-
-    Examples:
-        1. Search BIM objects for exact match:
-        POST /api/bim/{project_id}/kv-search/bim-object/
-        {
-            \"key\": \"material\",
-            \"value\": \"concrete\",
-            \"fields\": [\"id\", \"geometry.height\", \"properties.color\"]
-        }
-
-        2. Search BIM views for wildcard key:
-        POST /api/bim/{project_id}/kv-search/bim-view/
-        {
-            \"key\": \"*\",
-            \"value\": \"玄関扉DW\",
-            \"fields\": [\"id\", \"name\"]
-        }
-
-        3. Search BIM sheets for partial value match:
-        POST /api/bim/{project_id}/kv-search/bim-sheet/
-        {
-            \"key\": \"name\",
-            \"value\": \"玄関*\",
-            \"fields\": [\"id\", \"name\"]
-        }
+    Deprecated Key-Value search endpoint using V1 indices.
 
     Args:
         bim_element (BimElementKeyValueSearchBimElementTypeV2Path): An enumeration representing
@@ -195,74 +132,11 @@ def sync(
     body: BimKeyValueSearchPostIn,
     bim_project_id: UUID,
 ) -> BimKeyValueSearchResultPostOut | None:
-    r"""Bim Element Key Value Search
+    """Bim Element Key Value Search
 
      Nh2cP7IZ
 
-    Search BIM elements within a project for entries containing a specific key-value pair.
-
-    This endpoint performs case-sensitive search on BIM element JSON content stored in
-    Elasticsearch. It supports both exact matching and wildcard patterns using '*' character.
-
-    Supported BIM element types: bim-object, bim-view, bim-sheet
-
-    Wildcard Pattern Support:
-    - Use '*' in key to match any key name (e.g., key=\"*\" matches any key)
-    - Use '*' in value to match partial values (e.g., value=\"玄関*\" matches values starting with \"玄関\")
-    - Combine wildcards (e.g., key=\"*\", value=\"*扉*\" matches any key with values containing \"扉\")
-
-    Search Process:
-    1. Selects the appropriate Elasticsearch document class based on bim_element type
-    2. Constructs an Elasticsearch query filtering by project ID
-    3. Uses match_phrase queries for exact JSON key-value pattern matching
-    4. Executes paginated search against the selected document index
-    5. Processes each hit to extract only the requested fields from the JSON content
-    6. Returns structured results with field filtering and pagination metadata
-
-    Field Extraction:
-    - If 'fields' is provided in payload: extracts only those specified fields
-    - If 'fields' is not provided: defaults to extracting only 'id' field
-    - Supports nested field paths using dot notation (e.g., \"geometry.location.x\")
-    - Always includes the Elasticsearch document ID in the response
-    - Handles malformed JSON gracefully by falling back to empty data
-
-    Args:
-        request: Django request object (unused)
-        payload: Search parameters including key, value, optional fields, and pagination
-        bim_project_id: UUID of the BIM project to search within
-        bim_element: Type of BIM element to search (bim-object, bim-view, or bim-sheet)
-
-    Returns:
-        BimKeyValueSearchResultPostOut: Paginated search results containing:
-            - results: List of matching elements with requested fields
-            - total: Total number of matching documents
-            - page: Current page number
-            - page_size: Number of results per page
-
-    Examples:
-        1. Search BIM objects for exact match:
-        POST /api/bim/{project_id}/kv-search/bim-object/
-        {
-            \"key\": \"material\",
-            \"value\": \"concrete\",
-            \"fields\": [\"id\", \"geometry.height\", \"properties.color\"]
-        }
-
-        2. Search BIM views for wildcard key:
-        POST /api/bim/{project_id}/kv-search/bim-view/
-        {
-            \"key\": \"*\",
-            \"value\": \"玄関扉DW\",
-            \"fields\": [\"id\", \"name\"]
-        }
-
-        3. Search BIM sheets for partial value match:
-        POST /api/bim/{project_id}/kv-search/bim-sheet/
-        {
-            \"key\": \"name\",
-            \"value\": \"玄関*\",
-            \"fields\": [\"id\", \"name\"]
-        }
+    Deprecated Key-Value search endpoint using V1 indices.
 
     Args:
         bim_element (BimElementKeyValueSearchBimElementTypeV2Path): An enumeration representing
@@ -309,74 +183,11 @@ async def asyncio_detailed(
     body: BimKeyValueSearchPostIn,
     bim_project_id: UUID,
 ) -> Response[BimKeyValueSearchResultPostOut]:
-    r"""Bim Element Key Value Search
+    """Bim Element Key Value Search
 
      Nh2cP7IZ
 
-    Search BIM elements within a project for entries containing a specific key-value pair.
-
-    This endpoint performs case-sensitive search on BIM element JSON content stored in
-    Elasticsearch. It supports both exact matching and wildcard patterns using '*' character.
-
-    Supported BIM element types: bim-object, bim-view, bim-sheet
-
-    Wildcard Pattern Support:
-    - Use '*' in key to match any key name (e.g., key=\"*\" matches any key)
-    - Use '*' in value to match partial values (e.g., value=\"玄関*\" matches values starting with \"玄関\")
-    - Combine wildcards (e.g., key=\"*\", value=\"*扉*\" matches any key with values containing \"扉\")
-
-    Search Process:
-    1. Selects the appropriate Elasticsearch document class based on bim_element type
-    2. Constructs an Elasticsearch query filtering by project ID
-    3. Uses match_phrase queries for exact JSON key-value pattern matching
-    4. Executes paginated search against the selected document index
-    5. Processes each hit to extract only the requested fields from the JSON content
-    6. Returns structured results with field filtering and pagination metadata
-
-    Field Extraction:
-    - If 'fields' is provided in payload: extracts only those specified fields
-    - If 'fields' is not provided: defaults to extracting only 'id' field
-    - Supports nested field paths using dot notation (e.g., \"geometry.location.x\")
-    - Always includes the Elasticsearch document ID in the response
-    - Handles malformed JSON gracefully by falling back to empty data
-
-    Args:
-        request: Django request object (unused)
-        payload: Search parameters including key, value, optional fields, and pagination
-        bim_project_id: UUID of the BIM project to search within
-        bim_element: Type of BIM element to search (bim-object, bim-view, or bim-sheet)
-
-    Returns:
-        BimKeyValueSearchResultPostOut: Paginated search results containing:
-            - results: List of matching elements with requested fields
-            - total: Total number of matching documents
-            - page: Current page number
-            - page_size: Number of results per page
-
-    Examples:
-        1. Search BIM objects for exact match:
-        POST /api/bim/{project_id}/kv-search/bim-object/
-        {
-            \"key\": \"material\",
-            \"value\": \"concrete\",
-            \"fields\": [\"id\", \"geometry.height\", \"properties.color\"]
-        }
-
-        2. Search BIM views for wildcard key:
-        POST /api/bim/{project_id}/kv-search/bim-view/
-        {
-            \"key\": \"*\",
-            \"value\": \"玄関扉DW\",
-            \"fields\": [\"id\", \"name\"]
-        }
-
-        3. Search BIM sheets for partial value match:
-        POST /api/bim/{project_id}/kv-search/bim-sheet/
-        {
-            \"key\": \"name\",
-            \"value\": \"玄関*\",
-            \"fields\": [\"id\", \"name\"]
-        }
+    Deprecated Key-Value search endpoint using V1 indices.
 
     Args:
         bim_element (BimElementKeyValueSearchBimElementTypeV2Path): An enumeration representing
@@ -426,74 +237,11 @@ async def asyncio(
     body: BimKeyValueSearchPostIn,
     bim_project_id: UUID,
 ) -> BimKeyValueSearchResultPostOut | None:
-    r"""Bim Element Key Value Search
+    """Bim Element Key Value Search
 
      Nh2cP7IZ
 
-    Search BIM elements within a project for entries containing a specific key-value pair.
-
-    This endpoint performs case-sensitive search on BIM element JSON content stored in
-    Elasticsearch. It supports both exact matching and wildcard patterns using '*' character.
-
-    Supported BIM element types: bim-object, bim-view, bim-sheet
-
-    Wildcard Pattern Support:
-    - Use '*' in key to match any key name (e.g., key=\"*\" matches any key)
-    - Use '*' in value to match partial values (e.g., value=\"玄関*\" matches values starting with \"玄関\")
-    - Combine wildcards (e.g., key=\"*\", value=\"*扉*\" matches any key with values containing \"扉\")
-
-    Search Process:
-    1. Selects the appropriate Elasticsearch document class based on bim_element type
-    2. Constructs an Elasticsearch query filtering by project ID
-    3. Uses match_phrase queries for exact JSON key-value pattern matching
-    4. Executes paginated search against the selected document index
-    5. Processes each hit to extract only the requested fields from the JSON content
-    6. Returns structured results with field filtering and pagination metadata
-
-    Field Extraction:
-    - If 'fields' is provided in payload: extracts only those specified fields
-    - If 'fields' is not provided: defaults to extracting only 'id' field
-    - Supports nested field paths using dot notation (e.g., \"geometry.location.x\")
-    - Always includes the Elasticsearch document ID in the response
-    - Handles malformed JSON gracefully by falling back to empty data
-
-    Args:
-        request: Django request object (unused)
-        payload: Search parameters including key, value, optional fields, and pagination
-        bim_project_id: UUID of the BIM project to search within
-        bim_element: Type of BIM element to search (bim-object, bim-view, or bim-sheet)
-
-    Returns:
-        BimKeyValueSearchResultPostOut: Paginated search results containing:
-            - results: List of matching elements with requested fields
-            - total: Total number of matching documents
-            - page: Current page number
-            - page_size: Number of results per page
-
-    Examples:
-        1. Search BIM objects for exact match:
-        POST /api/bim/{project_id}/kv-search/bim-object/
-        {
-            \"key\": \"material\",
-            \"value\": \"concrete\",
-            \"fields\": [\"id\", \"geometry.height\", \"properties.color\"]
-        }
-
-        2. Search BIM views for wildcard key:
-        POST /api/bim/{project_id}/kv-search/bim-view/
-        {
-            \"key\": \"*\",
-            \"value\": \"玄関扉DW\",
-            \"fields\": [\"id\", \"name\"]
-        }
-
-        3. Search BIM sheets for partial value match:
-        POST /api/bim/{project_id}/kv-search/bim-sheet/
-        {
-            \"key\": \"name\",
-            \"value\": \"玄関*\",
-            \"fields\": [\"id\", \"name\"]
-        }
+    Deprecated Key-Value search endpoint using V1 indices.
 
     Args:
         bim_element (BimElementKeyValueSearchBimElementTypeV2Path): An enumeration representing

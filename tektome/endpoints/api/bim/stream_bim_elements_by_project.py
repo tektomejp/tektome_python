@@ -74,7 +74,7 @@ def sync_detailed(
 
     Args:
         request: The incoming request object (unused in current implementation).
-        path (Path[BimProjectElementTypeV2Path]): Path object containing the BIM project ID
+        path (Path[ABimProjectElementTypePath]): Path object containing the BIM project ID
             and BIM model information.
         id_only (bool, optional): If True, returns only element IDs. If False, returns
             full element data. Defaults to False.
@@ -139,7 +139,7 @@ async def asyncio_detailed(
 
     Args:
         request: The incoming request object (unused in current implementation).
-        path (Path[BimProjectElementTypeV2Path]): Path object containing the BIM project ID
+        path (Path[ABimProjectElementTypePath]): Path object containing the BIM project ID
             and BIM model information.
         id_only (bool, optional): If True, returns only element IDs. If False, returns
             full element data. Defaults to False.

@@ -1,5 +1,6 @@
 """Contains all the data models used in inputs/outputs"""
 
+from .a_bim_project_element_type_path import ABimProjectElementTypePath
 from .a_project_default_path import AProjectDefaultPath
 from .a_requirement_path import ARequirementPath
 from .a_simulate_long_call_post_out import ASimulateLongCallPostOut
@@ -54,6 +55,7 @@ from .available_language import AvailableLanguage
 from .azure_embedding_model import AzureEmbeddingModel
 from .azure_presigned_upload_input_schema import AzurePresignedUploadInputSchema
 from .azure_presigned_upload_output_schema import AzurePresignedUploadOutputSchema
+from .background_task_id_out import BackgroundTaskIdOut
 from .background_task_status_out import BackgroundTaskStatusOut
 from .base_resource_path_in import BaseResourcePathIn
 from .bim_batch_element_request_post_in import BimBatchElementRequestPostIn
@@ -75,7 +77,6 @@ from .bim_object_3d_response_get_out import BimObject3DResponseGetOut
 from .bim_object_post_out import BimObjectPostOut
 from .bim_project_element_id_type_path import BimProjectElementIdTypePath
 from .bim_project_element_type_path import BimProjectElementTypePath
-from .bim_project_element_type_v2_path import BimProjectElementTypeV2Path
 from .bim_project_path import BimProjectPath
 from .bim_project_path_no_validation import BimProjectPathNoValidation
 from .bim_project_post_in import BimProjectPostIn
@@ -183,6 +184,7 @@ from .dataspace_resource_file_attribute_path import DataspaceResourceFileAttribu
 from .dataspace_resource_file_attribute_post_out import DataspaceResourceFileAttributePostOut
 from .dataspace_resource_file_attribute_schema_out import DataspaceResourceFileAttributeSchemaOut
 from .dataspace_resource_ocr_path import DataspaceResourceOCRPath
+from .dataspace_resource_path import DataspaceResourcePath
 from .dataspace_resource_reorder_column_post_in import DataspaceResourceReorderColumnPostIn
 from .dataspace_resource_upload_in import DataspaceResourceUploadIn
 from .dataspace_schema import DataspaceSchema
@@ -804,6 +806,7 @@ from .users_schema_in import UsersSchemaIn
 from .verify_otp_post_in import VerifyOTPPostIn
 
 __all__ = (
+    "ABimProjectElementTypePath",
     "AggregatedLLMUsagePostOut",
     "AggregatedUsageByModel",
     "AggregateLLMUsagePostIn",
@@ -858,6 +861,7 @@ __all__ = (
     "AzureEmbeddingModel",
     "AzurePresignedUploadInputSchema",
     "AzurePresignedUploadOutputSchema",
+    "BackgroundTaskIdOut",
     "BackgroundTaskStatusOut",
     "BaseResourcePathIn",
     "BimBatchElementRequestPostIn",
@@ -879,7 +883,6 @@ __all__ = (
     "BimObjectPostOut",
     "BimProjectElementIdTypePath",
     "BimProjectElementTypePath",
-    "BimProjectElementTypeV2Path",
     "BimProjectPath",
     "BimProjectPathNoValidation",
     "BimProjectPostIn",
@@ -982,6 +985,7 @@ __all__ = (
     "DataspaceResourceFileAttributePostOut",
     "DataspaceResourceFileAttributeSchemaOut",
     "DataspaceResourceOCRPath",
+    "DataspaceResourcePath",
     "DataspaceResourceReorderColumnPostIn",
     "DataspaceResourceUploadIn",
     "DataspaceSchema",

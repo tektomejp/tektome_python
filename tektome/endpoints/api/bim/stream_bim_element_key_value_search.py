@@ -75,12 +75,13 @@ def sync_detailed(
 
      zYFYOkp6
 
-    Scroll-based search endpoint that streams IDs only as NDJSON.
+    Scroll-based search endpoint that streams IDs only as NDJSON using V2 indices.
 
-    - Uses Elasticsearch scroll API via .scan() method for automatic handling.
-    - Returns only document IDs (lightweight) streamed as newline-delimited JSON.
-    - Caps results at 150_000 to avoid runaway exports.
-    - Streams results as they are retrieved, no waiting for full result set.
+    - Uses V2 typed-bucket document structure for efficient key-value search
+    - Uses Elasticsearch scroll API via .scan() method for automatic handling
+    - Returns only parent document IDs (excludes child chunks) streamed as NDJSON
+    - Caps results at 150_000 to avoid runaway exports
+    - Streams results as they are retrieved, no waiting for full result set
     - Supports BIM element types: bim-object, bim-view, bim-sheet
 
     Response format: NDJSON (one JSON object per line)
@@ -140,12 +141,13 @@ async def asyncio_detailed(
 
      zYFYOkp6
 
-    Scroll-based search endpoint that streams IDs only as NDJSON.
+    Scroll-based search endpoint that streams IDs only as NDJSON using V2 indices.
 
-    - Uses Elasticsearch scroll API via .scan() method for automatic handling.
-    - Returns only document IDs (lightweight) streamed as newline-delimited JSON.
-    - Caps results at 150_000 to avoid runaway exports.
-    - Streams results as they are retrieved, no waiting for full result set.
+    - Uses V2 typed-bucket document structure for efficient key-value search
+    - Uses Elasticsearch scroll API via .scan() method for automatic handling
+    - Returns only parent document IDs (excludes child chunks) streamed as NDJSON
+    - Caps results at 150_000 to avoid runaway exports
+    - Streams results as they are retrieved, no waiting for full result set
     - Supports BIM element types: bim-object, bim-view, bim-sheet
 
     Response format: NDJSON (one JSON object per line)
