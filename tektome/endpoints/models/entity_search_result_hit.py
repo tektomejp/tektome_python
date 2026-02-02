@@ -23,6 +23,7 @@ class EntitySearchResultHit:
     Attributes:
         id (UUID):
         score (float):
+        dataspace_ids (list[UUID] | Unset): The IDs of the dataspaces, if applicable
         project_id (None | Unset | UUID): The ID of the project, if applicable
         resource_group_id (None | Unset | UUID): The ID of the resource group, if applicable
         resource_id (None | Unset | UUID): The ID of the resource, if applicable
@@ -40,6 +41,7 @@ class EntitySearchResultHit:
 
     id: UUID
     score: float
+    dataspace_ids: list[UUID] | Unset = UNSET
     project_id: None | Unset | UUID = UNSET
     resource_group_id: None | Unset | UUID = UNSET
     resource_id: None | Unset | UUID = UNSET
@@ -59,6 +61,13 @@ class EntitySearchResultHit:
         id = str(self.id)
 
         score = self.score
+
+        dataspace_ids: list[str] | Unset = UNSET
+        if not isinstance(self.dataspace_ids, Unset):
+            dataspace_ids = []
+            for dataspace_ids_item_data in self.dataspace_ids:
+                dataspace_ids_item = str(dataspace_ids_item_data)
+                dataspace_ids.append(dataspace_ids_item)
 
         project_id: None | str | Unset
         if isinstance(self.project_id, Unset):
@@ -162,6 +171,8 @@ class EntitySearchResultHit:
                 "score": score,
             }
         )
+        if dataspace_ids is not UNSET:
+            field_dict["dataspace_ids"] = dataspace_ids
         if project_id is not UNSET:
             field_dict["project_id"] = project_id
         if resource_group_id is not UNSET:
@@ -199,6 +210,15 @@ class EntitySearchResultHit:
         id = UUID(d.pop("id"))
 
         score = d.pop("score")
+
+        _dataspace_ids = d.pop("dataspace_ids", UNSET)
+        dataspace_ids: list[UUID] | Unset = UNSET
+        if _dataspace_ids is not UNSET:
+            dataspace_ids = []
+            for dataspace_ids_item_data in _dataspace_ids:
+                dataspace_ids_item = UUID(dataspace_ids_item_data)
+
+                dataspace_ids.append(dataspace_ids_item)
 
         def _parse_project_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -344,6 +364,7 @@ class EntitySearchResultHit:
         entity_search_result_hit = cls(
             id=id,
             score=score,
+            dataspace_ids=dataspace_ids,
             project_id=project_id,
             resource_group_id=resource_group_id,
             resource_id=resource_id,

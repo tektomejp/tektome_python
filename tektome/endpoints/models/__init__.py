@@ -1,6 +1,7 @@
 """Contains all the data models used in inputs/outputs"""
 
 from .a_bim_project_element_type_path import ABimProjectElementTypePath
+from .a_dataspace_path_params import ADataspacePathParams
 from .a_project_default_path import AProjectDefaultPath
 from .a_requirement_path import ARequirementPath
 from .a_simulate_long_call_post_out import ASimulateLongCallPostOut
@@ -15,17 +16,18 @@ from .approval_candidate_status import ApprovalCandidateStatus
 from .approval_candidates_path_params import ApprovalCandidatesPathParams
 from .approval_category_types import ApprovalCategoryTypes
 from .approval_entry_schema import ApprovalEntrySchema
+from .approval_path_params import ApprovalPathParams
 from .approval_status import ApprovalStatus
 from .approval_status_patch_in import ApprovalStatusPatchIn
 from .approval_ticket_candidate_out import ApprovalTicketCandidateOut
 from .approval_ticket_candidate_out_data_container import ApprovalTicketCandidateOutDataContainer
+from .approval_ticket_candidate_out_reviewed_data_snapshot_type_0 import (
+    ApprovalTicketCandidateOutReviewedDataSnapshotType0,
+)
 from .approval_ticket_candidate_patch_in_patch import ApprovalTicketCandidatePatchInPatch
 from .approval_ticket_candidate_patch_out import ApprovalTicketCandidatePatchOut
 from .approval_ticket_candidate_patch_out_data_container import ApprovalTicketCandidatePatchOutDataContainer
 from .approval_ticket_get_out import ApprovalTicketGetOut
-from .approval_ticket_get_out_2 import ApprovalTicketGetOut2
-from .approval_ticket_get_out_3 import ApprovalTicketGetOut3
-from .approval_ticket_get_out_3_data_container import ApprovalTicketGetOut3DataContainer
 from .approval_ticket_patch_in_patch import ApprovalTicketPatchInPatch
 from .approval_ticket_post_in import ApprovalTicketPostIn
 from .approval_user_profile_schema import ApprovalUserProfileSchema
@@ -44,6 +46,10 @@ from .assistants import Assistants
 from .assistants_callback_payload import AssistantsCallbackPayload
 from .async_generate_markdown_path import AsyncGenerateMarkdownPath
 from .attribute import Attribute
+from .attribute_candidate_payload import AttributeCandidatePayload
+from .attribute_citation_path import AttributeCitationPath
+from .attribute_citation_schema_out import AttributeCitationSchemaOut
+from .attribute_citation_schema_out_value_type_7 import AttributeCitationSchemaOutValueType7
 from .attribute_extraction_post_out import AttributeExtractionPostOut
 from .attribute_object_types import AttributeObjectTypes
 from .attribute_path import AttributePath
@@ -60,6 +66,12 @@ from .background_task_status_out import BackgroundTaskStatusOut
 from .base_resource_path_in import BaseResourcePathIn
 from .bim_batch_element_request_post_in import BimBatchElementRequestPostIn
 from .bim_batch_trim_element_request_post_in import BimBatchTrimElementRequestPostIn
+from .bim_citation_patch_in_patch import BIMCitationPatchInPatch
+from .bim_citation_path import BIMCitationPath
+from .bim_citation_post_in import BIMCitationPostIn
+from .bim_citation_schema_out import BIMCitationSchemaOut
+from .bim_citation_schema_out_bim_helpers import BIMCitationSchemaOutBimHelpers
+from .bim_citation_schema_out_highlights import BIMCitationSchemaOutHighlights
 from .bim_clash_check_post_in import BimClashCheckPostIn
 from .bim_clash_check_post_out import BimClashCheckPostOut
 from .bim_element_key_value_search_bim_element_type_v2_path import BimElementKeyValueSearchBimElementTypeV2Path
@@ -67,6 +79,8 @@ from .bim_element_link_parent_children import BimElementLinkParentChildren
 from .bim_element_link_path import BimElementLinkPath
 from .bim_element_type_path import BimElementTypePath
 from .bim_element_type_v2_path import BimElementTypeV2Path
+from .bim_helpers import BIMHelpers
+from .bim_helpers_bim_helper_elements_item import BIMHelpersBimHelperElementsItem
 from .bim_key_value_search_item_post_out import BimKeyValueSearchItemPostOut
 from .bim_key_value_search_item_post_out_result import BimKeyValueSearchItemPostOutResult
 from .bim_key_value_search_post_in import BimKeyValueSearchPostIn
@@ -86,25 +100,22 @@ from .bim_search_detail_post_in import BimSearchDetailPostIn
 from .bim_search_item_result_post_out import BimSearchItemResultPostOut
 from .bim_search_item_result_post_out_file_content_type_0 import BimSearchItemResultPostOutFileContentType0
 from .bim_search_result_post_out import BimSearchResultPostOut
+from .bim_text_highlights import BIMTextHighlights
 from .bim_trim_query_item import BimTrimQueryItem
 from .bim_view_object_link_post_out import BimViewObjectLinkPostOut
 from .bim_view_post_out import BimViewPostOut
 from .blob_upload_complete_post_in import BlobUploadCompletePostIn
 from .blob_upload_request_post_in import BlobUploadRequestPostIn
 from .blob_upload_request_post_out import BlobUploadRequestPostOut
-from .boolean_attribute_candidate_payload import BooleanAttributeCandidatePayload
 from .boolean_attribute_schema_in import BooleanAttributeSchemaIn
 from .boolean_attribute_schema_out import BooleanAttributeSchemaOut
 from .boolean_condition_action import BooleanConditionAction
 from .boolean_search_condition import BooleanSearchCondition
 from .bulk_move_folder_resources_schema import BulkMoveFolderResourcesSchema
+from .bulk_review_post_in import BulkReviewPostIn
+from .bulk_review_post_in_action import BulkReviewPostInAction
 from .bulk_user_invitation_schema_out import BulkUserInvitationSchemaOut
-from .candidate_citation import CandidateCitation
-from .candidate_citation_bim_helpers_type_0 import CandidateCitationBimHelpersType0
-from .candidate_citation_highlights_type_0 import CandidateCitationHighlightsType0
-from .candidate_citation_polygons_type_0 import CandidateCitationPolygonsType0
 from .candidate_item import CandidateItem
-from .candidate_item_data_type_1 import CandidateItemDataType1
 from .candidate_item_kind import CandidateItemKind
 from .cell_coordinate import CellCoordinate
 from .chat import Chat
@@ -120,7 +131,9 @@ from .choice_schema import ChoiceSchema
 from .chunk import Chunk
 from .chunk_group_component_schema_get_out import ChunkGroupComponentSchemaGetOut
 from .chunk_group_component_schema_path_in import ChunkGroupComponentSchemaPathIn
-from .citation_kind import CitationKind
+from .citation_path import CitationPath
+from .citation_post_in import CitationPostIn
+from .citations_schema_out import CitationsSchemaOut
 from .component_schema_path_in import ComponentSchemaPathIn
 from .convert_ifc_to_bim_elements_file_params import ConvertIfcToBimElementsFileParams
 from .coordinate import Coordinate
@@ -132,9 +145,6 @@ from .core_project_required_schema import CoreProjectRequiredSchema
 from .core_project_schema import CoreProjectSchema
 from .create_api_key_post_in import CreateAPIKeyPostIn
 from .create_api_key_post_out import CreateAPIKeyPostOut
-from .create_approval_ticket_with_candidates_multi_part_body_params import (
-    CreateApprovalTicketWithCandidatesMultiPartBodyParams,
-)
 from .create_bim_element_bim_element_type_path import CreateBimElementBimElementTypePath
 from .create_bim_element_file_params import CreateBimElementFileParams
 from .create_bim_resource_file_params import CreateBimResourceFileParams
@@ -144,6 +154,10 @@ from .create_chat_auto_capture_response import CreateChatAutoCaptureResponse
 from .create_chat_deep_research_response import CreateChatDeepResearchResponse
 from .create_core_project_response import CreateCoreProjectResponse
 from .create_dataspace_response import CreateDataspaceResponse
+from .create_environment_variable_request import CreateEnvironmentVariableRequest
+from .create_execution_approval_ticket_with_candidates_multi_part_body_params import (
+    CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams,
+)
 from .create_organization_multi_part_body_params import CreateOrganizationMultiPartBodyParams
 from .create_organization_response import CreateOrganizationResponse
 from .create_payment_record_multi_part_body_params import CreatePaymentRecordMultiPartBodyParams
@@ -156,6 +170,7 @@ from .current_organization_schema import CurrentOrganizationSchema
 from .data_type_enum import DataTypeEnum
 from .dataspace_delete_path import DataspaceDeletePath
 from .dataspace_entity_list_query import DataspaceEntityListQuery
+from .dataspace_entity_type import DataspaceEntityType
 from .dataspace_fuzzy_search_configuration_body_in import DataspaceFuzzySearchConfigurationBodyIn
 from .dataspace_fuzzy_search_configuration_get_out import DataspaceFuzzySearchConfigurationGetOut
 from .dataspace_get_out import DataspaceGetOut
@@ -199,20 +214,27 @@ from .dataspace_search_filter_field_out_recommended_values_type_0 import (
 )
 from .dataspace_search_filter_field_path import DataspaceSearchFilterFieldPath
 from .dataspace_search_filter_path import DataspaceSearchFilterPath
-from .dataspace_search_tag_config_filter_through_in import DataspaceSearchTagConfigFilterThroughIn
-from .dataspace_search_tag_config_out import DataspaceSearchTagConfigOut
-from .dataspace_search_tag_config_out_default_search_conditions import (
-    DataspaceSearchTagConfigOutDefaultSearchConditions,
+from .dataspace_search_request_get_out import DataspaceSearchRequestGetOut
+from .dataspace_search_request_get_out_highlight_keywords_type_0 import (
+    DataspaceSearchRequestGetOutHighlightKeywordsType0,
 )
+from .dataspace_search_request_is_saved_patch_in import DataspaceSearchRequestIsSavedPatchIn
+from .dataspace_search_request_path import DataspaceSearchRequestPath
+from .dataspace_search_request_query_in import DataspaceSearchRequestQueryIn
+from .dataspace_search_request_query_in_target_entity import DataspaceSearchRequestQueryInTargetEntity
+from .dataspace_search_request_schema import DataspaceSearchRequestSchema
+from .dataspace_search_result_out import DataspaceSearchResultOut
+from .dataspace_search_schema import DataspaceSearchSchema
+from .dataspace_search_tag_config_out import DataspaceSearchTagConfigOut
 from .dataspace_search_tag_config_patch_default_filter_in import DataspaceSearchTagConfigPatchDefaultFilterIn
 from .dataspace_search_tag_config_patch_default_search_conditions_in import (
     DataspaceSearchTagConfigPatchDefaultSearchConditionsIn,
 )
-from .dataspace_search_tag_config_patch_default_search_conditions_in_default_search_conditions import (
-    DataspaceSearchTagConfigPatchDefaultSearchConditionsInDefaultSearchConditions,
-)
 from .dataspace_search_tag_config_patch_filter_in import DataspaceSearchTagConfigPatchFilterIn
 from .dataspace_search_tag_config_patch_in_patch import DataspaceSearchTagConfigPatchInPatch
+from .dataspace_search_tag_config_patch_in_patch_default_grouping_option_type_0 import (
+    DataspaceSearchTagConfigPatchInPatchDefaultGroupingOptionType0,
+)
 from .dataspace_search_tag_config_post_in import DataspaceSearchTagConfigPostIn
 from .dataspace_tag_config_path import DataspaceTagConfigPath
 from .dataspace_template_import_in import DataspaceTemplateImportIn
@@ -272,6 +294,7 @@ from .dynamic_table_search_condition import DynamicTableSearchCondition
 from .dynamic_time_search_condition import DynamicTimeSearchCondition
 from .dynamic_time_value import DynamicTimeValue
 from .embedding_model_enum import EmbeddingModelEnum
+from .entity_attributes_extracted_filter_options import EntityAttributesExtractedFilterOptions
 from .entity_search_request_path import EntitySearchRequestPath
 from .entity_search_request_schema_get_out import EntitySearchRequestSchemaGetOut
 from .entity_search_request_schema_get_out_conditions import EntitySearchRequestSchemaGetOutConditions
@@ -288,26 +311,51 @@ from .entity_tracker_data_in import EntityTrackerDataIn
 from .entity_tracker_get_out import EntityTrackerGetOut
 from .entity_tracker_put_in import EntityTrackerPutIn
 from .entity_type import EntityType
+from .environment_variable_common_path import EnvironmentVariableCommonPath
+from .environment_variable_filter_in import EnvironmentVariableFilterIn
+from .environment_variable_patch_in import EnvironmentVariablePatchIn
+from .environment_variable_path import EnvironmentVariablePath
+from .environment_variable_response import EnvironmentVariableResponse
 from .error_out import ErrorOut
 from .error_output_schema_out import ErrorOutputSchemaOut
 from .error_response_post_out import ErrorResponsePostOut
-from .execute_process_path_params import ExecuteProcessPathParams
+from .execute_metadata_kind import ExecuteMetadataKind
+from .execute_process_details import ExecuteProcessDetails
+from .execute_process_file_attribute_details import ExecuteProcessFileAttributeDetails
+from .execute_process_metadata_get_out import ExecuteProcessMetadataGetOut
+from .execute_process_metadata_query_in import ExecuteProcessMetadataQueryIn
+from .execute_process_payload_out import ExecuteProcessPayloadOut
+from .execute_process_payload_out_execution_run_args import ExecuteProcessPayloadOutExecutionRunArgs
 from .execute_process_post_in import ExecuteProcessPostIn
 from .execute_process_post_in_execution_run_args import ExecuteProcessPostInExecutionRunArgs
 from .execute_process_post_out import ExecuteProcessPostOut
+from .execute_process_ui_trigger_details import ExecuteProcessUITriggerDetails
+from .execute_processes_post_in import ExecuteProcessesPostIn
 from .execution_approval_path_params import ExecutionApprovalPathParams
 from .execution_approvals_get_out import ExecutionApprovalsGetOut
+from .execution_approvals_path import ExecutionApprovalsPath
 from .execution_approvals_query_params import ExecutionApprovalsQueryParams
+from .execution_approvals_query_params_approval_category_types import ExecutionApprovalsQueryParamsApprovalCategoryTypes
+from .execution_approvals_query_params_approval_status import ExecutionApprovalsQueryParamsApprovalStatus
+from .execution_approvals_query_params_process_type_choices import ExecutionApprovalsQueryParamsProcessTypeChoices
+from .execution_attribute_metadata import ExecutionAttributeMetadata
+from .execution_get_out import ExecutionGetOut
+from .execution_get_out_execution_run_args import ExecutionGetOutExecutionRunArgs
+from .execution_group_detail_get_out import ExecutionGroupDetailGetOut
+from .execution_group_filter_get_out import ExecutionGroupFilterGetOut
 from .execution_group_get_out import ExecutionGroupGetOut
-from .execution_group_get_out_2 import ExecutionGroupGetOut2
 from .execution_group_path_params import ExecutionGroupPathParams
+from .execution_group_processes_metadata_get_out import ExecutionGroupProcessesMetadataGetOut
 from .execution_group_query_params import ExecutionGroupQueryParams
 from .execution_group_query_params_execution_group_status import ExecutionGroupQueryParamsExecutionGroupStatus
 from .execution_group_query_params_execution_review_status import ExecutionGroupQueryParamsExecutionReviewStatus
 from .execution_group_query_params_process_type_choices import ExecutionGroupQueryParamsProcessTypeChoices
 from .execution_group_status import ExecutionGroupStatus
+from .execution_groups_path_params import ExecutionGroupsPathParams
+from .execution_path_params import ExecutionPathParams
 from .execution_process_get_out import ExecutionProcessGetOut
 from .execution_query_params import ExecutionQueryParams
+from .execution_query_params_approval_category_types import ExecutionQueryParamsApprovalCategoryTypes
 from .execution_query_params_execution_review_status import ExecutionQueryParamsExecutionReviewStatus
 from .execution_query_params_execution_status import ExecutionQueryParamsExecutionStatus
 from .execution_query_params_process_type_choices import ExecutionQueryParamsProcessTypeChoices
@@ -315,21 +363,25 @@ from .execution_review_status import ExecutionReviewStatus
 from .execution_status import ExecutionStatus
 from .execution_status_details import ExecutionStatusDetails
 from .executions_get_out import ExecutionsGetOut
+from .executions_get_out_metadata import ExecutionsGetOutMetadata
 from .executions_path_params import ExecutionsPathParams
 from .executions_review_status_details import ExecutionsReviewStatusDetails
 from .export_csv_report_query import ExportCSVReportQuery
 from .export_usage_reports_period_types import ExportUsageReportsPeriodTypes
 from .extraction_post_in import ExtractionPostIn
+from .field_condition_input import FieldConditionInput
 from .file_attribute import FileAttribute
 from .file_attribute_delete import FileAttributeDelete
 from .file_attribute_type_enum import FileAttributeTypeEnum
 from .file_attribute_update import FileAttributeUpdate
+from .file_attributes_extracted_filter_options import FileAttributesExtractedFilterOptions
 from .file_attributes_extraction import FileAttributesExtraction
 from .file_attributes_search import FileAttributesSearch
 from .file_move_patch_schema_in import FileMovePatchSchemaIn
 from .file_table_attribute import FileTableAttribute
 from .file_table_attribute_extraction import FileTableAttributeExtraction
-from .float_attribute_candidate_payload import FloatAttributeCandidatePayload
+from .file_upload_candidate_payload import FileUploadCandidatePayload
+from .fire_dataspace_search_target_entity import FireDataspaceSearchTargetEntity
 from .float_attribute_schema_in import FloatAttributeSchemaIn
 from .float_attribute_schema_out import FloatAttributeSchemaOut
 from .float_search_condition import FloatSearchCondition
@@ -356,6 +408,7 @@ from .generate_markdown_path import GenerateMarkdownPath
 from .generate_requirement_item_row_post_in import GenerateRequirementItemRowPostIn
 from .generic_http_error import GenericHttpError
 from .geometry import Geometry
+from .get_api_key_filter_in import GetAPIKeyFilterIn
 from .get_api_key_get_out import GetAPIKeyGetOut
 from .get_batch_bim_elements_bim_element_type_path import GetBatchBimElementsBimElementTypePath
 from .get_bim_element_bim_element_type_path import GetBimElementBimElementTypePath
@@ -365,10 +418,15 @@ from .get_citing_attributes_get_out import GetCitingAttributesGetOut
 from .get_dataspace_execution_groups_execution_group_status import GetDataspaceExecutionGroupsExecutionGroupStatus
 from .get_dataspace_execution_groups_execution_review_status import GetDataspaceExecutionGroupsExecutionReviewStatus
 from .get_dataspace_execution_groups_process_type_choices import GetDataspaceExecutionGroupsProcessTypeChoices
+from .get_dataspace_executions_approval_category_types import GetDataspaceExecutionsApprovalCategoryTypes
 from .get_dataspace_executions_execution_review_status import GetDataspaceExecutionsExecutionReviewStatus
 from .get_dataspace_executions_execution_status import GetDataspaceExecutionsExecutionStatus
 from .get_dataspace_executions_process_type_choices import GetDataspaceExecutionsProcessTypeChoices
 from .get_dr_default_output_format_get_out import GetDRDefaultOutputFormatGetOut
+from .get_execute_process_metadata_execute_metadata_kind import GetExecuteProcessMetadataExecuteMetadataKind
+from .get_execution_approvals_approval_category_types import GetExecutionApprovalsApprovalCategoryTypes
+from .get_execution_approvals_approval_status import GetExecutionApprovalsApprovalStatus
+from .get_execution_approvals_process_type_choices import GetExecutionApprovalsProcessTypeChoices
 from .get_extracted_page_get_out import GetExtractedPageGetOut
 from .get_extracted_page_get_out_tables_type_0 import GetExtractedPageGetOutTablesType0
 from .get_extracted_result_get_out import GetExtractedResultGetOut
@@ -382,6 +440,12 @@ from .get_resource_user_aids_pdf_get_out_text_highlights_type_0 import GetResour
 from .get_supported_dr_models_get_out import GetSupportedDRModelsGetOut
 from .get_ttos_job_response import GetTtosJobResponse
 from .get_users_info_response import GetUsersInfoResponse
+from .image_citation_patch_in_patch import ImageCitationPatchInPatch
+from .image_citation_path import ImageCitationPath
+from .image_citation_post_in import ImageCitationPostIn
+from .image_citation_schema_out import ImageCitationSchemaOut
+from .image_citation_schema_out_polygons_item import ImageCitationSchemaOutPolygonsItem
+from .image_polygons import ImagePolygons
 from .import_folder import ImportFolder
 from .import_resource_group_post_in import ImportResourceGroupPostIn
 from .import_result import ImportResult
@@ -389,7 +453,6 @@ from .import_result_failed import ImportResultFailed
 from .import_storage_folders_response import ImportStorageFoldersResponse
 from .improve_user_prompt_query_in import ImproveUserPromptQueryIn
 from .input_ import Input
-from .integer_attribute_candidate_payload import IntegerAttributeCandidatePayload
 from .integer_attribute_schema_in import IntegerAttributeSchemaIn
 from .integer_attribute_schema_out import IntegerAttributeSchemaOut
 from .integer_search_condition import IntegerSearchCondition
@@ -453,6 +516,7 @@ from .list_dataspace_templates_ui_trigger_kind_choices import ListDataspaceTempl
 from .list_llm_usage_reports_period_types import ListLlmUsageReportsPeriodTypes
 from .list_requirement_reference_notes_sort import ListRequirementReferenceNotesSort
 from .list_ttos_templates_ui_trigger_kind_choices import ListTtosTemplatesUiTriggerKindChoices
+from .literal_attribute_type import LiteralAttributeType
 from .llm_parser_post_in import LlmParserPostIn
 from .llm_parser_post_out import LlmParserPostOut
 from .llm_search import LLMSearch
@@ -465,6 +529,8 @@ from .login_post_in import LoginPostIn
 from .login_post_out import LoginPostOut
 from .login_providers import LoginProviders
 from .login_v2_post_in import LoginV2PostIn
+from .mark_all_read_in import MarkAllReadIn
+from .mark_all_read_out import MarkAllReadOut
 from .markdown_schema import MarkdownSchema
 from .me_get_out import MeGetOut
 from .me_get_out_without_organization import MeGetOutWithoutOrganization
@@ -472,6 +538,11 @@ from .me_patch_in import MePatchIn
 from .me_patch_out import MePatchOut
 from .merge_result import MergeResult
 from .merge_result_search_results_item import MergeResultSearchResultsItem
+from .notification_get_out import NotificationGetOut
+from .notification_get_out_metadata import NotificationGetOutMetadata
+from .notification_path import NotificationPath
+from .notification_query import NotificationQuery
+from .notification_read_out import NotificationReadOut
 from .numeric_condition_action import NumericConditionAction
 from .observability_ids_in import ObservabilityIdsIn
 from .observability_put_in import ObservabilityPutIn
@@ -502,10 +573,12 @@ from .paged_execution_approvals_get_out import PagedExecutionApprovalsGetOut
 from .paged_execution_group_get_out import PagedExecutionGroupGetOut
 from .paged_executions_get_out import PagedExecutionsGetOut
 from .paged_folder_metadata_out import PagedFolderMetadataOut
+from .paged_get_api_key_get_out import PagedGetAPIKeyGetOut
 from .paged_lawtalk_project_resource_get_out import PagedLawtalkProjectResourceGetOut
 from .paged_lawtalk_project_schema_get_out import PagedLawtalkProjectSchemaGetOut
 from .paged_lawtalk_requirement_item_table_row_schema import PagedLawtalkRequirementItemTableRowSchema
 from .paged_llm_usage_report_get_out import PagedLLMUsageReportGetOut
+from .paged_notification_get_out import PagedNotificationGetOut
 from .paged_organizations_get_out import PagedOrganizationsGetOut
 from .paged_payment_record_out import PagedPaymentRecordOut
 from .paged_process_out import PagedProcessOut
@@ -520,6 +593,7 @@ from .paged_requirements_list_get_out import PagedRequirementsListGetOut
 from .paged_resource_group_schema import PagedResourceGroupSchema
 from .paged_resource_groups_get_out import PagedResourceGroupsGetOut
 from .paged_resource_metadata_out import PagedResourceMetadataOut
+from .paged_resource_schema_2 import PagedResourceSchema2
 from .paged_resource_schema_post_out import PagedResourceSchemaPostOut
 from .paged_section_get_out import PagedSectionGetOut
 from .paged_template_out import PagedTemplateOut
@@ -528,6 +602,7 @@ from .paginated_response_requirement_template_container_get_out import (
     PaginatedResponseRequirementTemplateContainerGetOut,
 )
 from .paginated_response_requirement_template_get_out import PaginatedResponseRequirementTemplateGetOut
+from .paginated_search_result_hits import PaginatedSearchResultHits
 from .parsed_tektome_response_entry import ParsedTektomeResponseEntry
 from .parsed_tektome_response_entry_resource_text_highlights import ParsedTektomeResponseEntryResourceTextHighlights
 from .payment_record_out import PaymentRecordOut
@@ -535,6 +610,12 @@ from .payment_record_out_base import PaymentRecordOutBase
 from .payment_record_patch_in_patch import PaymentRecordPatchInPatch
 from .payment_record_patch_path import PaymentRecordPatchPath
 from .payment_record_post_in import PaymentRecordPostIn
+from .pdf_citation_patch_in_patch import PDFCitationPatchInPatch
+from .pdf_citation_path import PDFCitationPath
+from .pdf_citation_post_in import PDFCitationPostIn
+from .pdf_citation_schema_out import PDFCitationSchemaOut
+from .pdf_citation_schema_out_highlights import PDFCitationSchemaOutHighlights
+from .pdf_citation_schema_out_polygons import PDFCitationSchemaOutPolygons
 from .period_types import PeriodTypes
 from .polygon_attribute_schema_in import PolygonAttributeSchemaIn
 from .polygon_attribute_schema_out import PolygonAttributeSchemaOut
@@ -542,9 +623,11 @@ from .polygon_attribute_schema_out_value_type_0 import PolygonAttributeSchemaOut
 from .polygon_highlight import PolygonHighlight
 from .positional_text import PositionalText
 from .process_filter_in import ProcessFilterIn
+from .process_filter_options import ProcessFilterOptions
 from .process_out import ProcessOut
 from .process_out_input_schema_patch_type_0 import ProcessOutInputSchemaPatchType0
 from .process_out_openflow_json import ProcessOutOpenflowJson
+from .process_path import ProcessPath
 from .process_post_in import ProcessPostIn
 from .process_post_in_patch import ProcessPostInPatch
 from .process_type_choices import ProcessTypeChoices
@@ -572,6 +655,10 @@ from .project_requirement_item_table_get_out_value_item import ProjectRequiremen
 from .project_template_import_in import ProjectTemplateImportIn
 from .project_template_path import ProjectTemplatePath
 from .queue_length_status_get_out import QueueLengthStatusGetOut
+from .raw_text_citation_patch_in_patch import RawTextCitationPatchInPatch
+from .raw_text_citation_path import RawTextCitationPath
+from .raw_text_citation_post_in import RawTextCitationPostIn
+from .raw_text_citation_schema_out import RawTextCitationSchemaOut
 from .recipeschoices import RECIPESCHOICES
 from .recommend_resource_group_get_out import RecommendResourceGroupGetOut
 from .recommend_resource_group_get_out_parsed_location import RecommendResourceGroupGetOutParsedLocation
@@ -588,6 +675,7 @@ from .reference_note_version_path import ReferenceNoteVersionPath
 from .reference_notes_query import ReferenceNotesQuery
 from .reference_notes_query_sort import ReferenceNotesQuerySort
 from .reference_notes_version_path import ReferenceNotesVersionPath
+from .refire_dataspace_search_target_entity import RefireDataspaceSearchTargetEntity
 from .refresh_post_in import RefreshPostIn
 from .refresh_post_out import RefreshPostOut
 from .remove_resource_group_post_in import RemoveResourceGroupPostIn
@@ -730,6 +818,58 @@ from .section_table_path import SectionTablePath
 from .section_table_path_mode import SectionTablePathMode
 from .send_msg_post_in import SendMsgPostIn
 from .simple_attribute_type import SimpleAttributeType
+from .simple_attribute_type_action_schema import SimpleAttributeTypeActionSchema
+from .simple_attribute_type_action_schema_boolean_equals import SimpleAttributeTypeActionSchemaBooleanEquals
+from .simple_attribute_type_action_schema_boolean_not_equals import SimpleAttributeTypeActionSchemaBooleanNotEquals
+from .simple_attribute_type_action_schema_date_after import SimpleAttributeTypeActionSchemaDateAfter
+from .simple_attribute_type_action_schema_date_before import SimpleAttributeTypeActionSchemaDateBefore
+from .simple_attribute_type_action_schema_date_equals import SimpleAttributeTypeActionSchemaDateEquals
+from .simple_attribute_type_action_schema_date_not_equals import SimpleAttributeTypeActionSchemaDateNotEquals
+from .simple_attribute_type_action_schema_date_on_or_after import SimpleAttributeTypeActionSchemaDateOnOrAfter
+from .simple_attribute_type_action_schema_date_on_or_before import SimpleAttributeTypeActionSchemaDateOnOrBefore
+from .simple_attribute_type_action_schema_datetime_after import SimpleAttributeTypeActionSchemaDatetimeAfter
+from .simple_attribute_type_action_schema_datetime_before import SimpleAttributeTypeActionSchemaDatetimeBefore
+from .simple_attribute_type_action_schema_datetime_equals import SimpleAttributeTypeActionSchemaDatetimeEquals
+from .simple_attribute_type_action_schema_datetime_not_equals import SimpleAttributeTypeActionSchemaDatetimeNotEquals
+from .simple_attribute_type_action_schema_datetime_on_or_after import SimpleAttributeTypeActionSchemaDatetimeOnOrAfter
+from .simple_attribute_type_action_schema_datetime_on_or_before import SimpleAttributeTypeActionSchemaDatetimeOnOrBefore
+from .simple_attribute_type_action_schema_float_equals import SimpleAttributeTypeActionSchemaFloatEquals
+from .simple_attribute_type_action_schema_float_greater_than import SimpleAttributeTypeActionSchemaFloatGreaterThan
+from .simple_attribute_type_action_schema_float_greater_than_or_equal_to import (
+    SimpleAttributeTypeActionSchemaFloatGreaterThanOrEqualTo,
+)
+from .simple_attribute_type_action_schema_float_less_than import SimpleAttributeTypeActionSchemaFloatLessThan
+from .simple_attribute_type_action_schema_float_less_than_or_equal_to import (
+    SimpleAttributeTypeActionSchemaFloatLessThanOrEqualTo,
+)
+from .simple_attribute_type_action_schema_float_not_equals import SimpleAttributeTypeActionSchemaFloatNotEquals
+from .simple_attribute_type_action_schema_integer_equals import SimpleAttributeTypeActionSchemaIntegerEquals
+from .simple_attribute_type_action_schema_integer_greater_than import SimpleAttributeTypeActionSchemaIntegerGreaterThan
+from .simple_attribute_type_action_schema_integer_greater_than_or_equal_to import (
+    SimpleAttributeTypeActionSchemaIntegerGreaterThanOrEqualTo,
+)
+from .simple_attribute_type_action_schema_integer_less_than import SimpleAttributeTypeActionSchemaIntegerLessThan
+from .simple_attribute_type_action_schema_integer_less_than_or_equal_to import (
+    SimpleAttributeTypeActionSchemaIntegerLessThanOrEqualTo,
+)
+from .simple_attribute_type_action_schema_integer_not_equals import SimpleAttributeTypeActionSchemaIntegerNotEquals
+from .simple_attribute_type_action_schema_string_contains import SimpleAttributeTypeActionSchemaStringContains
+from .simple_attribute_type_action_schema_string_exact import SimpleAttributeTypeActionSchemaStringExact
+from .simple_attribute_type_action_schema_string_excludes import SimpleAttributeTypeActionSchemaStringExcludes
+from .simple_attribute_type_action_schema_string_includes import SimpleAttributeTypeActionSchemaStringIncludes
+from .simple_attribute_type_action_schema_string_matches import SimpleAttributeTypeActionSchemaStringMatches
+from .simple_attribute_type_action_schema_string_means import SimpleAttributeTypeActionSchemaStringMeans
+from .simple_attribute_type_action_schema_string_not_contains import SimpleAttributeTypeActionSchemaStringNotContains
+from .simple_attribute_type_action_schema_table_cell_matches import SimpleAttributeTypeActionSchemaTableCellMatches
+from .simple_attribute_type_action_schema_table_column_contains import (
+    SimpleAttributeTypeActionSchemaTableColumnContains,
+)
+from .simple_attribute_type_action_schema_time_after import SimpleAttributeTypeActionSchemaTimeAfter
+from .simple_attribute_type_action_schema_time_before import SimpleAttributeTypeActionSchemaTimeBefore
+from .simple_attribute_type_action_schema_time_equals import SimpleAttributeTypeActionSchemaTimeEquals
+from .simple_attribute_type_action_schema_time_not_equals import SimpleAttributeTypeActionSchemaTimeNotEquals
+from .simple_attribute_type_action_schema_time_on_or_after import SimpleAttributeTypeActionSchemaTimeOnOrAfter
+from .simple_attribute_type_action_schema_time_on_or_before import SimpleAttributeTypeActionSchemaTimeOnOrBefore
 from .simulate_long_call_post_out import SimulateLongCallPostOut
 from .simulate_task_post_in import SimulateTaskPostIn
 from .simulate_task_post_out import SimulateTaskPostOut
@@ -740,7 +880,6 @@ from .stream_bim_element_key_value_search_bim_element_type_v2_path import (
 )
 from .stream_bim_elements_by_project_bim_element_type_v2_path import StreamBimElementsByProjectBimElementTypeV2Path
 from .stream_trim_batch_bim_elements_bim_element_type_path import StreamTrimBatchBimElementsBimElementTypePath
-from .string_attribute_candidate_payload import StringAttributeCandidatePayload
 from .string_attribute_schema_in import StringAttributeSchemaIn
 from .string_attribute_schema_out import StringAttributeSchemaOut
 from .string_condition_action import StringConditionAction
@@ -760,6 +899,7 @@ from .table_column import TableColumn
 from .table_column_type import TableColumnType
 from .table_condition_action import TableConditionAction
 from .table_search_condition import TableSearchCondition
+from .target_model_entity_filter_options import TargetModelEntityFilterOptions
 from .target_user_in_schema import TargetUserInSchema
 from .task_post_out import TaskPostOut
 from .tektome_response_entry import TektomeResponseEntry
@@ -775,20 +915,24 @@ from .template_out_openflow_json import TemplateOutOpenflowJson
 from .template_override_in import TemplateOverrideIn
 from .template_override_input_schema import TemplateOverrideInputSchema
 from .template_override_input_schema_properties_type_0 import TemplateOverrideInputSchemaPropertiesType0
+from .template_override_input_schema_properties_type_0_additional_property import (
+    TemplateOverrideInputSchemaPropertiesType0AdditionalProperty,
+)
 from .template_override_out import TemplateOverrideOut
 from .template_override_out_input_schema_patch_type_0 import TemplateOverrideOutInputSchemaPatchType0
-from .template_override_property_schema import TemplateOverridePropertySchema
 from .template_path import TemplatePath
 from .template_update_in import TemplateUpdateIn
+from .text_highlights import TextHighlights
 from .time_attribute_schema_in import TimeAttributeSchemaIn
 from .time_attribute_schema_out import TimeAttributeSchemaOut
 from .time_search_condition import TimeSearchCondition
 from .transaction_types import TransactionTypes
 from .transform import Transform
 from .ui_trigger_kind_choices import UiTriggerKindChoices
-from .ui_trigger_values import UITriggerValues
 from .united_kingdom_project_attributes import UnitedKingdomProjectAttributes
 from .united_states_project_attributes import UnitedStatesProjectAttributes
+from .unread_count_out import UnreadCountOut
+from .unread_count_query import UnreadCountQuery
 from .update_general_lawtalk_attributes_attribute_object_types import UpdateGeneralLawtalkAttributesAttributeObjectTypes
 from .update_lawtalk_attributes_attribute_object_types import UpdateLawtalkAttributesAttributeObjectTypes
 from .update_organization_multi_part_body_params import UpdateOrganizationMultiPartBodyParams
@@ -807,6 +951,7 @@ from .verify_otp_post_in import VerifyOTPPostIn
 
 __all__ = (
     "ABimProjectElementTypePath",
+    "ADataspacePathParams",
     "AggregatedLLMUsagePostOut",
     "AggregatedUsageByModel",
     "AggregateLLMUsagePostIn",
@@ -818,17 +963,16 @@ __all__ = (
     "ApprovalCandidateStatus",
     "ApprovalCategoryTypes",
     "ApprovalEntrySchema",
+    "ApprovalPathParams",
     "ApprovalStatus",
     "ApprovalStatusPatchIn",
     "ApprovalTicketCandidateOut",
     "ApprovalTicketCandidateOutDataContainer",
+    "ApprovalTicketCandidateOutReviewedDataSnapshotType0",
     "ApprovalTicketCandidatePatchInPatch",
     "ApprovalTicketCandidatePatchOut",
     "ApprovalTicketCandidatePatchOutDataContainer",
     "ApprovalTicketGetOut",
-    "ApprovalTicketGetOut2",
-    "ApprovalTicketGetOut3",
-    "ApprovalTicketGetOut3DataContainer",
     "ApprovalTicketPatchInPatch",
     "ApprovalTicketPostIn",
     "ApprovalUserProfileSchema",
@@ -850,6 +994,10 @@ __all__ = (
     "AssistantsCallbackPayload",
     "AsyncGenerateMarkdownPath",
     "Attribute",
+    "AttributeCandidatePayload",
+    "AttributeCitationPath",
+    "AttributeCitationSchemaOut",
+    "AttributeCitationSchemaOutValueType7",
     "AttributeExtractionPostOut",
     "AttributeObjectTypes",
     "AttributePath",
@@ -866,6 +1014,12 @@ __all__ = (
     "BaseResourcePathIn",
     "BimBatchElementRequestPostIn",
     "BimBatchTrimElementRequestPostIn",
+    "BIMCitationPatchInPatch",
+    "BIMCitationPath",
+    "BIMCitationPostIn",
+    "BIMCitationSchemaOut",
+    "BIMCitationSchemaOutBimHelpers",
+    "BIMCitationSchemaOutHighlights",
     "BimClashCheckPostIn",
     "BimClashCheckPostOut",
     "BimElementKeyValueSearchBimElementTypeV2Path",
@@ -873,6 +1027,8 @@ __all__ = (
     "BimElementLinkPath",
     "BimElementTypePath",
     "BimElementTypeV2Path",
+    "BIMHelpers",
+    "BIMHelpersBimHelperElementsItem",
     "BimKeyValueSearchItemPostOut",
     "BimKeyValueSearchItemPostOutResult",
     "BimKeyValueSearchPostIn",
@@ -892,25 +1048,22 @@ __all__ = (
     "BimSearchItemResultPostOut",
     "BimSearchItemResultPostOutFileContentType0",
     "BimSearchResultPostOut",
+    "BIMTextHighlights",
     "BimTrimQueryItem",
     "BimViewObjectLinkPostOut",
     "BimViewPostOut",
     "BlobUploadCompletePostIn",
     "BlobUploadRequestPostIn",
     "BlobUploadRequestPostOut",
-    "BooleanAttributeCandidatePayload",
     "BooleanAttributeSchemaIn",
     "BooleanAttributeSchemaOut",
     "BooleanConditionAction",
     "BooleanSearchCondition",
     "BulkMoveFolderResourcesSchema",
+    "BulkReviewPostIn",
+    "BulkReviewPostInAction",
     "BulkUserInvitationSchemaOut",
-    "CandidateCitation",
-    "CandidateCitationBimHelpersType0",
-    "CandidateCitationHighlightsType0",
-    "CandidateCitationPolygonsType0",
     "CandidateItem",
-    "CandidateItemDataType1",
     "CandidateItemKind",
     "CellCoordinate",
     "Chat",
@@ -926,7 +1079,9 @@ __all__ = (
     "Chunk",
     "ChunkGroupComponentSchemaGetOut",
     "ChunkGroupComponentSchemaPathIn",
-    "CitationKind",
+    "CitationPath",
+    "CitationPostIn",
+    "CitationsSchemaOut",
     "ComponentSchemaPathIn",
     "ConvertIfcToBimElementsFileParams",
     "Coordinate",
@@ -938,7 +1093,6 @@ __all__ = (
     "CoreProjectSchema",
     "CreateAPIKeyPostIn",
     "CreateAPIKeyPostOut",
-    "CreateApprovalTicketWithCandidatesMultiPartBodyParams",
     "CreateBimElementBimElementTypePath",
     "CreateBimElementFileParams",
     "CreateBimResourceFileParams",
@@ -948,6 +1102,8 @@ __all__ = (
     "CreateChatDeepResearchResponse",
     "CreateCoreProjectResponse",
     "CreateDataspaceResponse",
+    "CreateEnvironmentVariableRequest",
+    "CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams",
     "CreateOrganizationMultiPartBodyParams",
     "CreateOrganizationResponse",
     "CreatePaymentRecordMultiPartBodyParams",
@@ -957,6 +1113,7 @@ __all__ = (
     "CurrentOrganizationSchema",
     "DataspaceDeletePath",
     "DataspaceEntityListQuery",
+    "DataspaceEntityType",
     "DataspaceFuzzySearchConfigurationBodyIn",
     "DataspaceFuzzySearchConfigurationGetOut",
     "DataspaceGetOut",
@@ -998,14 +1155,21 @@ __all__ = (
     "DataspaceSearchFilterFieldOutRecommendedValuesType0",
     "DataspaceSearchFilterFieldPath",
     "DataspaceSearchFilterPath",
-    "DataspaceSearchTagConfigFilterThroughIn",
+    "DataspaceSearchRequestGetOut",
+    "DataspaceSearchRequestGetOutHighlightKeywordsType0",
+    "DataspaceSearchRequestIsSavedPatchIn",
+    "DataspaceSearchRequestPath",
+    "DataspaceSearchRequestQueryIn",
+    "DataspaceSearchRequestQueryInTargetEntity",
+    "DataspaceSearchRequestSchema",
+    "DataspaceSearchResultOut",
+    "DataspaceSearchSchema",
     "DataspaceSearchTagConfigOut",
-    "DataspaceSearchTagConfigOutDefaultSearchConditions",
     "DataspaceSearchTagConfigPatchDefaultFilterIn",
     "DataspaceSearchTagConfigPatchDefaultSearchConditionsIn",
-    "DataspaceSearchTagConfigPatchDefaultSearchConditionsInDefaultSearchConditions",
     "DataspaceSearchTagConfigPatchFilterIn",
     "DataspaceSearchTagConfigPatchInPatch",
+    "DataspaceSearchTagConfigPatchInPatchDefaultGroupingOptionType0",
     "DataspaceSearchTagConfigPostIn",
     "DataspacesOrganizationSchema",
     "DataspaceTagConfigPath",
@@ -1066,6 +1230,7 @@ __all__ = (
     "DynamicTimeSearchCondition",
     "DynamicTimeValue",
     "EmbeddingModelEnum",
+    "EntityAttributesExtractedFilterOptions",
     "EntitySearchRequestPath",
     "EntitySearchRequestSchemaGetOut",
     "EntitySearchRequestSchemaGetOutConditions",
@@ -1082,31 +1247,57 @@ __all__ = (
     "EntityTrackerGetOut",
     "EntityTrackerPutIn",
     "EntityType",
+    "EnvironmentVariableCommonPath",
+    "EnvironmentVariableFilterIn",
+    "EnvironmentVariablePatchIn",
+    "EnvironmentVariablePath",
+    "EnvironmentVariableResponse",
     "ErrorOut",
     "ErrorOutputSchemaOut",
     "ErrorResponsePostOut",
-    "ExecuteProcessPathParams",
+    "ExecuteMetadataKind",
+    "ExecuteProcessDetails",
+    "ExecuteProcessesPostIn",
+    "ExecuteProcessFileAttributeDetails",
+    "ExecuteProcessMetadataGetOut",
+    "ExecuteProcessMetadataQueryIn",
+    "ExecuteProcessPayloadOut",
+    "ExecuteProcessPayloadOutExecutionRunArgs",
     "ExecuteProcessPostIn",
     "ExecuteProcessPostInExecutionRunArgs",
     "ExecuteProcessPostOut",
+    "ExecuteProcessUITriggerDetails",
     "ExecutionApprovalPathParams",
     "ExecutionApprovalsGetOut",
+    "ExecutionApprovalsPath",
     "ExecutionApprovalsQueryParams",
+    "ExecutionApprovalsQueryParamsApprovalCategoryTypes",
+    "ExecutionApprovalsQueryParamsApprovalStatus",
+    "ExecutionApprovalsQueryParamsProcessTypeChoices",
+    "ExecutionAttributeMetadata",
+    "ExecutionGetOut",
+    "ExecutionGetOutExecutionRunArgs",
+    "ExecutionGroupDetailGetOut",
+    "ExecutionGroupFilterGetOut",
     "ExecutionGroupGetOut",
-    "ExecutionGroupGetOut2",
     "ExecutionGroupPathParams",
+    "ExecutionGroupProcessesMetadataGetOut",
     "ExecutionGroupQueryParams",
     "ExecutionGroupQueryParamsExecutionGroupStatus",
     "ExecutionGroupQueryParamsExecutionReviewStatus",
     "ExecutionGroupQueryParamsProcessTypeChoices",
+    "ExecutionGroupsPathParams",
     "ExecutionGroupStatus",
+    "ExecutionPathParams",
     "ExecutionProcessGetOut",
     "ExecutionQueryParams",
+    "ExecutionQueryParamsApprovalCategoryTypes",
     "ExecutionQueryParamsExecutionReviewStatus",
     "ExecutionQueryParamsExecutionStatus",
     "ExecutionQueryParamsProcessTypeChoices",
     "ExecutionReviewStatus",
     "ExecutionsGetOut",
+    "ExecutionsGetOutMetadata",
     "ExecutionsPathParams",
     "ExecutionsReviewStatusDetails",
     "ExecutionStatus",
@@ -1114,8 +1305,10 @@ __all__ = (
     "ExportCSVReportQuery",
     "ExportUsageReportsPeriodTypes",
     "ExtractionPostIn",
+    "FieldConditionInput",
     "FileAttribute",
     "FileAttributeDelete",
+    "FileAttributesExtractedFilterOptions",
     "FileAttributesExtraction",
     "FileAttributesSearch",
     "FileAttributeTypeEnum",
@@ -1123,7 +1316,8 @@ __all__ = (
     "FileMovePatchSchemaIn",
     "FileTableAttribute",
     "FileTableAttributeExtraction",
-    "FloatAttributeCandidatePayload",
+    "FileUploadCandidatePayload",
+    "FireDataspaceSearchTargetEntity",
     "FloatAttributeSchemaIn",
     "FloatAttributeSchemaOut",
     "FloatSearchCondition",
@@ -1150,6 +1344,7 @@ __all__ = (
     "GenerateRequirementItemRowPostIn",
     "GenericHttpError",
     "Geometry",
+    "GetAPIKeyFilterIn",
     "GetAPIKeyGetOut",
     "GetBatchBimElementsBimElementTypePath",
     "GetBimElementBimElementTypePath",
@@ -1159,10 +1354,15 @@ __all__ = (
     "GetDataspaceExecutionGroupsExecutionGroupStatus",
     "GetDataspaceExecutionGroupsExecutionReviewStatus",
     "GetDataspaceExecutionGroupsProcessTypeChoices",
+    "GetDataspaceExecutionsApprovalCategoryTypes",
     "GetDataspaceExecutionsExecutionReviewStatus",
     "GetDataspaceExecutionsExecutionStatus",
     "GetDataspaceExecutionsProcessTypeChoices",
     "GetDRDefaultOutputFormatGetOut",
+    "GetExecuteProcessMetadataExecuteMetadataKind",
+    "GetExecutionApprovalsApprovalCategoryTypes",
+    "GetExecutionApprovalsApprovalStatus",
+    "GetExecutionApprovalsProcessTypeChoices",
     "GetExtractedPageGetOut",
     "GetExtractedPageGetOutTablesType0",
     "GetExtractedResultGetOut",
@@ -1176,6 +1376,12 @@ __all__ = (
     "GetSupportedDRModelsGetOut",
     "GetTtosJobResponse",
     "GetUsersInfoResponse",
+    "ImageCitationPatchInPatch",
+    "ImageCitationPath",
+    "ImageCitationPostIn",
+    "ImageCitationSchemaOut",
+    "ImageCitationSchemaOutPolygonsItem",
+    "ImagePolygons",
     "ImportFolder",
     "ImportResourceGroupPostIn",
     "ImportResult",
@@ -1183,7 +1389,6 @@ __all__ = (
     "ImportStorageFoldersResponse",
     "ImproveUserPromptQueryIn",
     "Input",
-    "IntegerAttributeCandidatePayload",
     "IntegerAttributeSchemaIn",
     "IntegerAttributeSchemaOut",
     "IntegerSearchCondition",
@@ -1243,6 +1448,7 @@ __all__ = (
     "ListLlmUsageReportsPeriodTypes",
     "ListRequirementReferenceNotesSort",
     "ListTtosTemplatesUiTriggerKindChoices",
+    "LiteralAttributeType",
     "LlmParserPostIn",
     "LlmParserPostOut",
     "LLMSearch",
@@ -1255,6 +1461,8 @@ __all__ = (
     "LoginPostOut",
     "LoginProviders",
     "LoginV2PostIn",
+    "MarkAllReadIn",
+    "MarkAllReadOut",
     "MarkdownSchema",
     "MeGetOut",
     "MeGetOutWithoutOrganization",
@@ -1262,6 +1470,11 @@ __all__ = (
     "MePatchOut",
     "MergeResult",
     "MergeResultSearchResultsItem",
+    "NotificationGetOut",
+    "NotificationGetOutMetadata",
+    "NotificationPath",
+    "NotificationQuery",
+    "NotificationReadOut",
     "NumericConditionAction",
     "ObservabilityIdsIn",
     "ObservabilityPutIn",
@@ -1292,10 +1505,12 @@ __all__ = (
     "PagedExecutionGroupGetOut",
     "PagedExecutionsGetOut",
     "PagedFolderMetadataOut",
+    "PagedGetAPIKeyGetOut",
     "PagedLawtalkProjectResourceGetOut",
     "PagedLawtalkProjectSchemaGetOut",
     "PagedLawtalkRequirementItemTableRowSchema",
     "PagedLLMUsageReportGetOut",
+    "PagedNotificationGetOut",
     "PagedOrganizationsGetOut",
     "PagedPaymentRecordOut",
     "PagedProcessOut",
@@ -1310,12 +1525,14 @@ __all__ = (
     "PagedResourceGroupSchema",
     "PagedResourceGroupsGetOut",
     "PagedResourceMetadataOut",
+    "PagedResourceSchema2",
     "PagedResourceSchemaPostOut",
     "PagedSectionGetOut",
     "Pagedstr",
     "PagedTemplateOut",
     "PaginatedResponseRequirementTemplateContainerGetOut",
     "PaginatedResponseRequirementTemplateGetOut",
+    "PaginatedSearchResultHits",
     "ParsedTektomeResponseEntry",
     "ParsedTektomeResponseEntryResourceTextHighlights",
     "PaymentRecordOut",
@@ -1323,6 +1540,12 @@ __all__ = (
     "PaymentRecordPatchInPatch",
     "PaymentRecordPatchPath",
     "PaymentRecordPostIn",
+    "PDFCitationPatchInPatch",
+    "PDFCitationPath",
+    "PDFCitationPostIn",
+    "PDFCitationSchemaOut",
+    "PDFCitationSchemaOutHighlights",
+    "PDFCitationSchemaOutPolygons",
     "PeriodTypes",
     "PolygonAttributeSchemaIn",
     "PolygonAttributeSchemaOut",
@@ -1330,9 +1553,11 @@ __all__ = (
     "PolygonHighlight",
     "PositionalText",
     "ProcessFilterIn",
+    "ProcessFilterOptions",
     "ProcessOut",
     "ProcessOutInputSchemaPatchType0",
     "ProcessOutOpenflowJson",
+    "ProcessPath",
     "ProcessPostIn",
     "ProcessPostInPatch",
     "ProcessTypeChoices",
@@ -1360,6 +1585,10 @@ __all__ = (
     "ProjectTemplateImportIn",
     "ProjectTemplatePath",
     "QueueLengthStatusGetOut",
+    "RawTextCitationPatchInPatch",
+    "RawTextCitationPath",
+    "RawTextCitationPostIn",
+    "RawTextCitationSchemaOut",
     "RECIPESCHOICES",
     "RecommendResourceGroupGetOut",
     "RecommendResourceGroupGetOutParsedLocation",
@@ -1376,6 +1605,7 @@ __all__ = (
     "ReferenceNoteVersionGetOut",
     "ReferenceNoteVersionPatchInPatch",
     "ReferenceNoteVersionPath",
+    "RefireDataspaceSearchTargetEntity",
     "RefreshPostIn",
     "RefreshPostOut",
     "RemoveResourceGroupPostIn",
@@ -1506,6 +1736,48 @@ __all__ = (
     "SectionTablePathMode",
     "SendMsgPostIn",
     "SimpleAttributeType",
+    "SimpleAttributeTypeActionSchema",
+    "SimpleAttributeTypeActionSchemaBooleanEquals",
+    "SimpleAttributeTypeActionSchemaBooleanNotEquals",
+    "SimpleAttributeTypeActionSchemaDateAfter",
+    "SimpleAttributeTypeActionSchemaDateBefore",
+    "SimpleAttributeTypeActionSchemaDateEquals",
+    "SimpleAttributeTypeActionSchemaDateNotEquals",
+    "SimpleAttributeTypeActionSchemaDateOnOrAfter",
+    "SimpleAttributeTypeActionSchemaDateOnOrBefore",
+    "SimpleAttributeTypeActionSchemaDatetimeAfter",
+    "SimpleAttributeTypeActionSchemaDatetimeBefore",
+    "SimpleAttributeTypeActionSchemaDatetimeEquals",
+    "SimpleAttributeTypeActionSchemaDatetimeNotEquals",
+    "SimpleAttributeTypeActionSchemaDatetimeOnOrAfter",
+    "SimpleAttributeTypeActionSchemaDatetimeOnOrBefore",
+    "SimpleAttributeTypeActionSchemaFloatEquals",
+    "SimpleAttributeTypeActionSchemaFloatGreaterThan",
+    "SimpleAttributeTypeActionSchemaFloatGreaterThanOrEqualTo",
+    "SimpleAttributeTypeActionSchemaFloatLessThan",
+    "SimpleAttributeTypeActionSchemaFloatLessThanOrEqualTo",
+    "SimpleAttributeTypeActionSchemaFloatNotEquals",
+    "SimpleAttributeTypeActionSchemaIntegerEquals",
+    "SimpleAttributeTypeActionSchemaIntegerGreaterThan",
+    "SimpleAttributeTypeActionSchemaIntegerGreaterThanOrEqualTo",
+    "SimpleAttributeTypeActionSchemaIntegerLessThan",
+    "SimpleAttributeTypeActionSchemaIntegerLessThanOrEqualTo",
+    "SimpleAttributeTypeActionSchemaIntegerNotEquals",
+    "SimpleAttributeTypeActionSchemaStringContains",
+    "SimpleAttributeTypeActionSchemaStringExact",
+    "SimpleAttributeTypeActionSchemaStringExcludes",
+    "SimpleAttributeTypeActionSchemaStringIncludes",
+    "SimpleAttributeTypeActionSchemaStringMatches",
+    "SimpleAttributeTypeActionSchemaStringMeans",
+    "SimpleAttributeTypeActionSchemaStringNotContains",
+    "SimpleAttributeTypeActionSchemaTableCellMatches",
+    "SimpleAttributeTypeActionSchemaTableColumnContains",
+    "SimpleAttributeTypeActionSchemaTimeAfter",
+    "SimpleAttributeTypeActionSchemaTimeBefore",
+    "SimpleAttributeTypeActionSchemaTimeEquals",
+    "SimpleAttributeTypeActionSchemaTimeNotEquals",
+    "SimpleAttributeTypeActionSchemaTimeOnOrAfter",
+    "SimpleAttributeTypeActionSchemaTimeOnOrBefore",
     "SimulateLongCallPostOut",
     "SimulateTaskPostIn",
     "SimulateTaskPostOut",
@@ -1514,7 +1786,6 @@ __all__ = (
     "StreamBimElementKeyValueSearchBimElementTypeV2Path",
     "StreamBimElementsByProjectBimElementTypeV2Path",
     "StreamTrimBatchBimElementsBimElementTypePath",
-    "StringAttributeCandidatePayload",
     "StringAttributeSchemaIn",
     "StringAttributeSchemaOut",
     "StringConditionAction",
@@ -1534,6 +1805,7 @@ __all__ = (
     "TableColumnType",
     "TableConditionAction",
     "TableSearchCondition",
+    "TargetModelEntityFilterOptions",
     "TargetUserInSchema",
     "TaskPostOut",
     "TektomeResponseEntry",
@@ -1549,20 +1821,22 @@ __all__ = (
     "TemplateOverrideIn",
     "TemplateOverrideInputSchema",
     "TemplateOverrideInputSchemaPropertiesType0",
+    "TemplateOverrideInputSchemaPropertiesType0AdditionalProperty",
     "TemplateOverrideOut",
     "TemplateOverrideOutInputSchemaPatchType0",
-    "TemplateOverridePropertySchema",
     "TemplatePath",
     "TemplateUpdateIn",
+    "TextHighlights",
     "TimeAttributeSchemaIn",
     "TimeAttributeSchemaOut",
     "TimeSearchCondition",
     "TransactionTypes",
     "Transform",
     "UiTriggerKindChoices",
-    "UITriggerValues",
     "UnitedKingdomProjectAttributes",
     "UnitedStatesProjectAttributes",
+    "UnreadCountOut",
+    "UnreadCountQuery",
     "UpdateGeneralLawtalkAttributesAttributeObjectTypes",
     "UpdateLawtalkAttributesAttributeObjectTypes",
     "UpdateOrganizationMultiPartBodyParams",

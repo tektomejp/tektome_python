@@ -13,6 +13,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.execution_process_get_out import ExecutionProcessGetOut
+    from ..models.executions_get_out_metadata import ExecutionsGetOutMetadata
     from ..models.executions_review_status_details import ExecutionsReviewStatusDetails
     from ..models.user_metadata import UserMetadata
 
@@ -28,7 +29,7 @@ class ExecutionsGetOut:
         created_by (UserMetadata):
         updated_by (UserMetadata):
         approvals_count (int):
-        processes_details (list[ExecutionProcessGetOut]):
+        process_details (ExecutionProcessGetOut): Process details within an execution group
         review_status (ExecutionsReviewStatusDetails): Details about execution review statuses within an execution group
         execution_group (UUID): The execution group this execution belongs to
         created (datetime.datetime):
@@ -36,6 +37,7 @@ class ExecutionsGetOut:
         memo (None | str | Unset):
         id (None | Unset | UUID):
         summary (None | str | Unset): A brief summary of the tickets from the execution
+        metadata (ExecutionsGetOutMetadata | Unset): The raw metadata received for this specific execution
         launched_by (None | Unset | UUID): The user who launched this execution
         status (str | Unset): The status of the execution (e.g., pending, completed, failed) Default: 'pending'.
         start_time (datetime.datetime | None | Unset):
@@ -45,7 +47,7 @@ class ExecutionsGetOut:
     created_by: UserMetadata
     updated_by: UserMetadata
     approvals_count: int
-    processes_details: list[ExecutionProcessGetOut]
+    process_details: ExecutionProcessGetOut
     review_status: ExecutionsReviewStatusDetails
     execution_group: UUID
     created: datetime.datetime
@@ -53,6 +55,7 @@ class ExecutionsGetOut:
     memo: None | str | Unset = UNSET
     id: None | Unset | UUID = UNSET
     summary: None | str | Unset = UNSET
+    metadata: ExecutionsGetOutMetadata | Unset = UNSET
     launched_by: None | Unset | UUID = UNSET
     status: str | Unset = "pending"
     start_time: datetime.datetime | None | Unset = UNSET
@@ -66,10 +69,7 @@ class ExecutionsGetOut:
 
         approvals_count = self.approvals_count
 
-        processes_details = []
-        for processes_details_item_data in self.processes_details:
-            processes_details_item = processes_details_item_data.to_dict()
-            processes_details.append(processes_details_item)
+        process_details = self.process_details.to_dict()
 
         review_status = self.review_status.to_dict()
 
@@ -98,6 +98,10 @@ class ExecutionsGetOut:
             summary = UNSET
         else:
             summary = self.summary
+
+        metadata: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.metadata, Unset):
+            metadata = self.metadata.to_dict()
 
         launched_by: None | str | Unset
         if isinstance(self.launched_by, Unset):
@@ -132,7 +136,7 @@ class ExecutionsGetOut:
                 "created_by": created_by,
                 "updated_by": updated_by,
                 "approvals_count": approvals_count,
-                "processes_details": processes_details,
+                "process_details": process_details,
                 "review_status": review_status,
                 "execution_group": execution_group,
                 "created": created,
@@ -145,6 +149,8 @@ class ExecutionsGetOut:
             field_dict["id"] = id
         if summary is not UNSET:
             field_dict["summary"] = summary
+        if metadata is not UNSET:
+            field_dict["metadata"] = metadata
         if launched_by is not UNSET:
             field_dict["launched_by"] = launched_by
         if status is not UNSET:
@@ -159,6 +165,7 @@ class ExecutionsGetOut:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.execution_process_get_out import ExecutionProcessGetOut
+        from ..models.executions_get_out_metadata import ExecutionsGetOutMetadata
         from ..models.executions_review_status_details import ExecutionsReviewStatusDetails
         from ..models.user_metadata import UserMetadata
 
@@ -169,12 +176,7 @@ class ExecutionsGetOut:
 
         approvals_count = d.pop("approvals_count")
 
-        processes_details = []
-        _processes_details = d.pop("processes_details")
-        for processes_details_item_data in _processes_details:
-            processes_details_item = ExecutionProcessGetOut.from_dict(processes_details_item_data)
-
-            processes_details.append(processes_details_item)
+        process_details = ExecutionProcessGetOut.from_dict(d.pop("process_details"))
 
         review_status = ExecutionsReviewStatusDetails.from_dict(d.pop("review_status"))
 
@@ -218,6 +220,13 @@ class ExecutionsGetOut:
             return cast(None | str | Unset, data)
 
         summary = _parse_summary(d.pop("summary", UNSET))
+
+        _metadata = d.pop("metadata", UNSET)
+        metadata: ExecutionsGetOutMetadata | Unset
+        if isinstance(_metadata, Unset):
+            metadata = UNSET
+        else:
+            metadata = ExecutionsGetOutMetadata.from_dict(_metadata)
 
         def _parse_launched_by(data: object) -> None | Unset | UUID:
             if data is None:
@@ -276,7 +285,7 @@ class ExecutionsGetOut:
             created_by=created_by,
             updated_by=updated_by,
             approvals_count=approvals_count,
-            processes_details=processes_details,
+            process_details=process_details,
             review_status=review_status,
             execution_group=execution_group,
             created=created,
@@ -284,6 +293,7 @@ class ExecutionsGetOut:
             memo=memo,
             id=id,
             summary=summary,
+            metadata=metadata,
             launched_by=launched_by,
             status=status,
             start_time=start_time,

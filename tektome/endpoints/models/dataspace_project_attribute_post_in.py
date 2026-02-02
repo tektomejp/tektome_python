@@ -6,6 +6,8 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 T = TypeVar("T", bound="DataspaceProjectAttributePostIn")
 
 
@@ -16,16 +18,20 @@ class DataspaceProjectAttributePostIn:
     Attributes:
         attribute_label (str):
         attribute_type (str):
+        enabled (bool | Unset):  Default: True.
     """
 
     attribute_label: str
     attribute_type: str
+    enabled: bool | Unset = True
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         attribute_label = self.attribute_label
 
         attribute_type = self.attribute_type
+
+        enabled = self.enabled
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -35,6 +41,8 @@ class DataspaceProjectAttributePostIn:
                 "attribute_type": attribute_type,
             }
         )
+        if enabled is not UNSET:
+            field_dict["enabled"] = enabled
 
         return field_dict
 
@@ -45,9 +53,12 @@ class DataspaceProjectAttributePostIn:
 
         attribute_type = d.pop("attribute_type")
 
+        enabled = d.pop("enabled", UNSET)
+
         dataspace_project_attribute_post_in = cls(
             attribute_label=attribute_label,
             attribute_type=attribute_type,
+            enabled=enabled,
         )
 
         dataspace_project_attribute_post_in.additional_properties = d

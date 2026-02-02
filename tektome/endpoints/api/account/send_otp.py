@@ -49,12 +49,13 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def sync_detailed(
     *,
-    client: AuthenticatedClient,
+    client: AuthenticatedClient | Client,
     body: LoginEmailPostIn,
 ) -> Response[Any]:
     """Post Send Otp
 
-     Send OTP to user email.
+     aTopcOpY
+    Send OTP to user email.
 
     Args:
         body (LoginEmailPostIn):
@@ -80,12 +81,13 @@ def sync_detailed(
 
 async def asyncio_detailed(
     *,
-    client: AuthenticatedClient,
+    client: AuthenticatedClient | Client,
     body: LoginEmailPostIn,
 ) -> Response[Any]:
     """Post Send Otp
 
-     Send OTP to user email.
+     aTopcOpY
+    Send OTP to user email.
 
     Args:
         body (LoginEmailPostIn):
