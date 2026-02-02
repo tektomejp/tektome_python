@@ -15,19 +15,24 @@ class ApprovalCandidatesPathParams:
     """Path parameters for retrieving approval candidates
 
     Attributes:
+        dataspace_id (UUID):
         approval_id (UUID):
     """
 
+    dataspace_id: UUID
     approval_id: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        dataspace_id = str(self.dataspace_id)
+
         approval_id = str(self.approval_id)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "dataspace_id": dataspace_id,
                 "approval_id": approval_id,
             }
         )
@@ -37,9 +42,12 @@ class ApprovalCandidatesPathParams:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        dataspace_id = UUID(d.pop("dataspace_id"))
+
         approval_id = UUID(d.pop("approval_id"))
 
         approval_candidates_path_params = cls(
+            dataspace_id=dataspace_id,
             approval_id=approval_id,
         )
 

@@ -2,6 +2,7 @@ from enum import Enum
 
 
 class ExecutionGroupStatus(str, Enum):
+    CANCELLED = "cancelled"
     COMPLETED = "completed"
     FAILED = "failed"
     INITIALIZING = "initializing"

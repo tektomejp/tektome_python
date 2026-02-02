@@ -7,9 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.dataspace_search_tag_config_patch_default_search_conditions_in_default_search_conditions import (
-        DataspaceSearchTagConfigPatchDefaultSearchConditionsInDefaultSearchConditions,
-    )
+    from ..models.default_search_condition_schema import DefaultSearchConditionSchema
 
 
 T = TypeVar("T", bound="DataspaceSearchTagConfigPatchDefaultSearchConditionsIn")
@@ -17,17 +15,20 @@ T = TypeVar("T", bound="DataspaceSearchTagConfigPatchDefaultSearchConditionsIn")
 
 @_attrs_define
 class DataspaceSearchTagConfigPatchDefaultSearchConditionsIn:
-    """Schema for patching default search conditions for tag config filters.
+    """Schema for patching default search conditions for tag config filter fields.
 
     Attributes:
-        default_search_conditions (DataspaceSearchTagConfigPatchDefaultSearchConditionsInDefaultSearchConditions):
+        default_search_conditions (list[DefaultSearchConditionSchema]):
     """
 
-    default_search_conditions: DataspaceSearchTagConfigPatchDefaultSearchConditionsInDefaultSearchConditions
+    default_search_conditions: list[DefaultSearchConditionSchema]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        default_search_conditions = self.default_search_conditions.to_dict()
+        default_search_conditions = []
+        for default_search_conditions_item_data in self.default_search_conditions:
+            default_search_conditions_item = default_search_conditions_item_data.to_dict()
+            default_search_conditions.append(default_search_conditions_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -41,16 +42,15 @@ class DataspaceSearchTagConfigPatchDefaultSearchConditionsIn:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.dataspace_search_tag_config_patch_default_search_conditions_in_default_search_conditions import (
-            DataspaceSearchTagConfigPatchDefaultSearchConditionsInDefaultSearchConditions,
-        )
+        from ..models.default_search_condition_schema import DefaultSearchConditionSchema
 
         d = dict(src_dict)
-        default_search_conditions = (
-            DataspaceSearchTagConfigPatchDefaultSearchConditionsInDefaultSearchConditions.from_dict(
-                d.pop("default_search_conditions")
-            )
-        )
+        default_search_conditions = []
+        _default_search_conditions = d.pop("default_search_conditions")
+        for default_search_conditions_item_data in _default_search_conditions:
+            default_search_conditions_item = DefaultSearchConditionSchema.from_dict(default_search_conditions_item_data)
+
+            default_search_conditions.append(default_search_conditions_item)
 
         dataspace_search_tag_config_patch_default_search_conditions_in = cls(
             default_search_conditions=default_search_conditions,

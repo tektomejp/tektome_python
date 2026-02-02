@@ -1,0 +1,78 @@
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import Any, TypeVar
+from uuid import UUID
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+T = TypeVar("T", bound="AttributeCitationPath")
+
+
+@_attrs_define
+class AttributeCitationPath:
+    """
+    Attributes:
+        attribute_id (UUID):
+        dataspace_id (UUID):
+        cited_attribute_id (UUID):
+    """
+
+    attribute_id: UUID
+    dataspace_id: UUID
+    cited_attribute_id: UUID
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        attribute_id = str(self.attribute_id)
+
+        dataspace_id = str(self.dataspace_id)
+
+        cited_attribute_id = str(self.cited_attribute_id)
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "attribute_id": attribute_id,
+                "dataspace_id": dataspace_id,
+                "cited_attribute_id": cited_attribute_id,
+            }
+        )
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
+        attribute_id = UUID(d.pop("attribute_id"))
+
+        dataspace_id = UUID(d.pop("dataspace_id"))
+
+        cited_attribute_id = UUID(d.pop("cited_attribute_id"))
+
+        attribute_citation_path = cls(
+            attribute_id=attribute_id,
+            dataspace_id=dataspace_id,
+            cited_attribute_id=cited_attribute_id,
+        )
+
+        attribute_citation_path.additional_properties = d
+        return attribute_citation_path
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties

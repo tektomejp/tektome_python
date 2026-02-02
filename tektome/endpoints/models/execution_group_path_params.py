@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,23 +12,27 @@ T = TypeVar("T", bound="ExecutionGroupPathParams")
 
 @_attrs_define
 class ExecutionGroupPathParams:
-    """Path parameters for retrieving execution group details
-
+    """
     Attributes:
-        dataspace_id (str):
+        dataspace_id (UUID):
+        execution_group_id (UUID): The UUID of the execution group
     """
 
-    dataspace_id: str
+    dataspace_id: UUID
+    execution_group_id: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        dataspace_id = self.dataspace_id
+        dataspace_id = str(self.dataspace_id)
+
+        execution_group_id = str(self.execution_group_id)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "dataspace_id": dataspace_id,
+                "execution_group_id": execution_group_id,
             }
         )
 
@@ -36,10 +41,13 @@ class ExecutionGroupPathParams:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        dataspace_id = d.pop("dataspace_id")
+        dataspace_id = UUID(d.pop("dataspace_id"))
+
+        execution_group_id = UUID(d.pop("execution_group_id"))
 
         execution_group_path_params = cls(
             dataspace_id=dataspace_id,
+            execution_group_id=execution_group_id,
         )
 
         execution_group_path_params.additional_properties = d
