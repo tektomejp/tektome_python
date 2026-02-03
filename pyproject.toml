@@ -34,8 +34,8 @@ dependencies = [
 Homepage = "https://github.com/tektomejp/tektome_python"
 Repository = "https://github.com/tektomejp/tektome_python"
 
-[tool.setuptools]
-packages = ["tektome"]
+[tool.setuptools.packages.find]
+include = ["tektome*"]
 
 [dependency-groups]
 dev = [
