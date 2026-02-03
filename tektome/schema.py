@@ -118,6 +118,12 @@ class Context(BaseSchema):
     execution_id: UUID = Field(
         ..., description="Execution id used to obtain additional extraction context"
     )
+    dataspace_id: UUID = Field(
+        ..., description="Dataspace id used to obtain dataspace-specific settings"
+    )
+    project_id: UUID = Field(
+        ..., description="Project id used to obtain project-specific settings"
+    )
 
     def client(
         self,
