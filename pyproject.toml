@@ -7,7 +7,7 @@ name = "tektome"
 version = "0.1.0"
 description = "Utilities for handling Tektome Resources."
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.11"
 license = "MIT"
 authors = [
     {name = "tektomejp"}
