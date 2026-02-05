@@ -72,15 +72,14 @@ class TestContextValidation:
             )
         assert "base_url" in str(exc_info.value)
 
-    def test_execution_id_is_required(self):
-        """Test that execution_id field is required."""
-        with pytest.raises(ValidationError) as exc_info:
-            Context(
-                user_api_key="key",
-                base_url="https://example.com",
-                
-            )
-        assert "execution_id" in str(exc_info.value)
+    def test_guarded_fields_are_optional_at_construction(self):
+        """Test that guarded fields can be omitted at construction."""
+        context = Context(
+            user_api_key="key",
+            base_url="https://example.com",
+        )
+        # Construction succeeds without guarded fields
+        assert context.user_api_key == "key"
 
     def test_invalid_execution_id_format(self):
         """Test that invalid UUID format for execution_id raises error."""
@@ -108,30 +107,18 @@ class TestContextValidation:
                     
                 )
 
-    def test_none_values_not_allowed(self, sample_uuid):
+    def test_none_values_not_allowed_for_required_fields(self, sample_uuid):
         """Test that None values are not allowed for required fields."""
         with pytest.raises(ValidationError):
             Context(
                 user_api_key=None,
                 base_url="https://example.com",
-                execution_id=sample_uuid,
-                
             )
 
         with pytest.raises(ValidationError):
             Context(
                 user_api_key="key",
                 base_url=None,
-                execution_id=sample_uuid,
-                
-            )
-
-        with pytest.raises(ValidationError):
-            Context(
-                user_api_key="key",
-                base_url="https://example.com",
-                execution_id=None,
-
             )
 
 
@@ -350,3 +337,76 @@ class TestContextDocumentation:
         assert (
             "extraction context" in schema["properties"]["execution_id"]["description"]
         )
+
+
+class TestContextGuardedFields:
+    """Test Context guarded fields behavior."""
+
+    @pytest.fixture
+    def minimal_context(self):
+        """Create a Context with only required fields."""
+        return Context(
+            user_api_key="key",
+            base_url="https://example.com",
+        )
+
+    @pytest.fixture
+    def full_context(self, sample_uuid):
+        """Create a Context with all fields set."""
+        return Context(
+            user_api_key="key",
+            base_url="https://example.com",
+            chatroom_id=sample_uuid,
+            execution_id=sample_uuid,
+            dataspace_id=sample_uuid,
+            project_id=sample_uuid,
+            resource_id=sample_uuid,
+        )
+
+    def test_guarded_fields_raise_when_none(self, minimal_context):
+        """Test that accessing guarded fields raises AttributeError when None."""
+        guarded_fields = ["chatroom_id", "execution_id", "dataspace_id", "project_id", "resource_id"]
+        for field in guarded_fields:
+            with pytest.raises(AttributeError) as exc_info:
+                getattr(minimal_context, field)
+            assert field in str(exc_info.value)
+
+    def test_guarded_fields_return_value_when_set(self, full_context, sample_uuid):
+        """Test that accessing guarded fields returns value when set."""
+        assert full_context.chatroom_id == sample_uuid
+        assert full_context.execution_id == sample_uuid
+        assert full_context.dataspace_id == sample_uuid
+        assert full_context.project_id == sample_uuid
+        assert full_context.resource_id == sample_uuid
+
+    def test_non_guarded_fields_work_normally(self, minimal_context):
+        """Test that non-guarded fields are accessible without error."""
+        assert minimal_context.user_api_key == "key"
+        assert str(minimal_context.base_url) == "https://example.com/"
+
+    def test_guarded_fields_can_be_set_individually(self, sample_uuid):
+        """Test that guarded fields can be set individually."""
+        context = Context(
+            user_api_key="key",
+            base_url="https://example.com",
+            execution_id=sample_uuid,
+        )
+        # execution_id is set, should work
+        assert context.execution_id == sample_uuid
+        # chatroom_id is not set, should raise
+        with pytest.raises(AttributeError):
+            _ = context.chatroom_id
+
+    def test_model_dump_includes_none_guarded_fields(self, minimal_context):
+        """Test that model_dump includes guarded fields even when None."""
+        data = minimal_context.model_dump()
+        assert "chatroom_id" in data
+        assert data["chatroom_id"] is None
+        assert "execution_id" in data
+        assert data["execution_id"] is None
+
+    def test_model_dump_excludes_none_with_exclude_none(self, minimal_context):
+        """Test that model_dump with exclude_none omits None guarded fields."""
+        data = minimal_context.model_dump(exclude_none=True)
+        assert "chatroom_id" not in data
+        assert "execution_id" not in data

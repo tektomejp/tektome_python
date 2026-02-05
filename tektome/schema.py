@@ -2,7 +2,7 @@
 
 import ssl
 from datetime import date, datetime
-from typing import Any
+from typing import Any, ClassVar
 from uuid import UUID
 
 import httpx
@@ -106,6 +106,9 @@ class Context(BaseSchema):
     """
     Represents context configuration automatically inserted by the system.
     Contains authentication and deployment information.
+
+    Guarded fields (chatroom_id, execution_id, dataspace_id, project_id, resource_id)
+    raise AttributeError when accessed if None, so no explicit None checks are needed.
     """
 
     user_api_key: str = Field(
@@ -113,17 +116,45 @@ class Context(BaseSchema):
         description='User\'s API key. Include as "Authorization": Bearer <key> in the header to authenticate as the current user.',
     )
     base_url: AnyHttpUrl = Field(
-        ..., description="Tektome's deployment base url ex: https://domain.tld"
+        ...,
+        description="Tektome's deployment base url ex: https://domain.tld",
     )
-    execution_id: UUID = Field(
-        ..., description="Execution id used to obtain additional extraction context"
+    chatroom_id: UUID | None = Field(
+        None,
+        description="The chatroom that this code is being invoked from, if applicable",
     )
-    dataspace_id: UUID = Field(
-        ..., description="Dataspace id used to obtain dataspace-specific settings"
+    execution_id: UUID | None = Field(
+        None,
+        description="Execution id used to obtain additional extraction context",
     )
-    project_id: UUID = Field(
-        ..., description="Project id used to obtain project-specific settings"
+    dataspace_id: UUID | None = Field(
+        None,
+        description="Dataspace id used to obtain dataspace-specific settings",
     )
+    project_id: UUID | None = Field(
+        None,
+        description="Project id used to obtain project-specific settings",
+    )
+    resource_id: UUID | None = Field(
+        None,
+        description="Resource id used to obtain resource-specific settings",
+    )
+
+    _guarded_fields: ClassVar[set[str]] = {
+        "chatroom_id",
+        "execution_id",
+        "dataspace_id",
+        "project_id",
+        "resource_id",
+    }
+
+    def __getattribute__(self, name: str) -> Any:
+        if name in type(self)._guarded_fields:
+            value = super().__getattribute__(name)
+            if value is None:
+                raise AttributeError(f"{name} is not available in this context")
+            return value
+        return super().__getattribute__(name)
 
     def client(
         self,
