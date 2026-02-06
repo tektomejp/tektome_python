@@ -17,20 +17,33 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Read VERSION file
+        id: read_version
+        run: |
+          version=$(cat VERSION)
+          if [[ -z "$version" || "$version" == "unknown" ]]; then
+            echo "VERSION file is empty or unknown"
+            echo "version=unknown" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+          tag=$(awk '{print $2}' VERSION)
+          hash=$(awk '{print $4}' VERSION)
+          
+          if [[ "$version" == "no-tag" ]]; then
+            echo "version=${hash}" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          echo "version=${tag}" >> $GITHUB_OUTPUT
+
       - name: Create and merge PR, create release
+        if: steps.read_version.outputs.version != 'unknown'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [ "$(cat VERSION)" = "unknown" ]; then
-            echo "Version is unknown, skipping PR/release"
-            exit 0
-          fi
-
-          VERSION=$(awk '{print $2}' VERSION)
-          if [ -z "$VERSION" ] || [ "$VERSION" = "no-tag" ]; then
-            echo "Invalid version, skipping PR/release"
-            exit 0
-          fi
+          VERSION=${{ steps.read_version.outputs.version }}
+          echo "Version to use: $VERSION"
 
           gh pr create \
             --title "feat: update endpoints from gateway $VERSION" \
