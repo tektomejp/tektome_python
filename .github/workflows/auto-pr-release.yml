@@ -24,7 +24,7 @@ jobs:
           version=$(cat VERSION)
           if [[ -z "$version" || "$version" == "unknown" ]]; then
             echo "VERSION file is empty"
-            echo "unknown" >> $GITHUB_OUTPUT
+            echo "version=unknown" >> $GITHUB_OUTPUT
             exit 1
           fi
 
@@ -32,11 +32,11 @@ jobs:
           hash=$(awk '{print $4}' VERSION)
           
           if [[ "$version" == *"no-tag"* ]]; then
-            echo ${hash} >> $GITHUB_OUTPUT
+            echo "version=${hash}" >> $GITHUB_OUTPUT
             exit 0
           fi
           
-          echo "${tag}" >> $GITHUB_OUTPUT
+          echo "version=${tag}" >> $GITHUB_OUTPUT
             
 
       - name: Create and merge PR, create release
