@@ -107,45 +107,54 @@ class Context(BaseSchema):
     Represents context configuration automatically inserted by the system.
     Contains authentication and deployment information.
 
-    Guarded fields (chatroom_id, execution_id, dataspace_id, project_id, resource_id)
-    raise AttributeError when accessed if None, so no explicit None checks are needed.
+    Guarded fields (system_chatroom_id, system_execution_id, system_dataspace_id,
+    system_project_id, system_resource_id) raise AttributeError when accessed if None,
+    so no explicit None checks are needed.
+
+    Guarded fields are intended to provide additional context when available,
+    but may not be present depending on where the execution started.
+    Example: system_chatroom_id is only present when invoked from a chatroom.
     """
 
-    user_api_key: str = Field(
+    system_user_api_key: str = Field(
         ...,
         description='User\'s API key. Include as "Authorization": Bearer <key> in the header to authenticate as the current user.',
     )
-    base_url: AnyHttpUrl = Field(
+    system_base_url: AnyHttpUrl = Field(
         ...,
         description="Tektome's deployment base url ex: https://domain.tld",
     )
-    chatroom_id: UUID | None = Field(
+    system_chatroom_id: UUID | None = Field(
         None,
         description="The chatroom that this code is being invoked from, if applicable",
     )
-    execution_id: UUID | None = Field(
+    system_execution_id: UUID | None = Field(
         None,
         description="Execution id used to obtain additional extraction context",
     )
-    dataspace_id: UUID | None = Field(
+    system_dataspace_id: UUID | None = Field(
         None,
         description="Dataspace id used to obtain dataspace-specific settings",
     )
-    project_id: UUID | None = Field(
+    system_project_id: UUID | None = Field(
         None,
         description="Project id used to obtain project-specific settings",
     )
-    resource_id: UUID | None = Field(
+    system_resource_id: UUID | None = Field(
         None,
         description="Resource id used to obtain resource-specific settings",
     )
+    system_attribute_definition_ids: list[UUID] | None = Field(
+        None,
+        description="Attribute definition ids used to obtain attribute-specific settings",
+    )
 
     _guarded_fields: ClassVar[set[str]] = {
-        "chatroom_id",
-        "execution_id",
-        "dataspace_id",
-        "project_id",
-        "resource_id",
+        "system_chatroom_id",
+        "system_execution_id",
+        "system_dataspace_id",
+        "system_project_id",
+        "system_resource_id",
     }
 
     def __getattribute__(self, name: str) -> Any:
@@ -180,8 +189,8 @@ class Context(BaseSchema):
             raise_on_unexpected_status: Whether to raise on undocumented status codes.
         """
         return AuthenticatedClient(
-            base_url=str(self.base_url),
-            token=self.user_api_key,
+            base_url=str(self.system_base_url),
+            token=self.system_user_api_key,
             cookies=cookies or {},
             headers=headers or {},
             timeout=timeout,
