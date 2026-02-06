@@ -22,7 +22,7 @@ jobs:
         run: |
           version=$(cat VERSION)
           if [[ -z "$version" || "$version" == "unknown" ]]; then
-            echo "VERSION file is empty"
+            echo "VERSION file is empty or unknown"
             echo "version=unknown" >> $GITHUB_OUTPUT
             exit 1
           fi
@@ -30,7 +30,7 @@ jobs:
           tag=$(awk '{print $2}' VERSION)
           hash=$(awk '{print $4}' VERSION)
           
-          if [[ "$version" == *"no-tag"* ]]; then
+          if [[ "$version" == "no-tag" ]]; then
             echo "version=${hash}" >> $GITHUB_OUTPUT
             exit 0
           fi
