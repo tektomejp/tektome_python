@@ -16,6 +16,7 @@ def _get_kwargs(
     *,
     attribute_id: UUID,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     json_attribute_id = str(attribute_id)

@@ -15,6 +15,7 @@ def _get_kwargs(
     resource_id: UUID,
     chunk_group_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/core/resource-groups/resources/{resource_id}/chunk-groups/{chunk_group_id}/".format(

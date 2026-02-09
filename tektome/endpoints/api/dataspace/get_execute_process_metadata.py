@@ -19,6 +19,7 @@ def _get_kwargs(
     kind: GetExecuteProcessMetadataExecuteMetadataKind,
     model_entity_ids: list[UUID],
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     json_kind = kind.value

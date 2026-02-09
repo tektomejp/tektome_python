@@ -13,6 +13,7 @@ def _get_kwargs(
     *,
     delay: float | Unset = 1.0,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["delay"] = delay

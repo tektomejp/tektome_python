@@ -7,6 +7,7 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.ui_trigger_kind_choices import UiTriggerKindChoices
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -22,11 +23,13 @@ class ExecuteProcessPostIn:
     Attributes:
         execution_run_args (ExecuteProcessPostInExecutionRunArgs):
         process_id (UUID):
+        kind (None | UiTriggerKindChoices | Unset):
         ui_trigger_ids (list[UUID] | None | Unset):
     """
 
     execution_run_args: ExecuteProcessPostInExecutionRunArgs
     process_id: UUID
+    kind: None | UiTriggerKindChoices | Unset = UNSET
     ui_trigger_ids: list[UUID] | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -34,6 +37,14 @@ class ExecuteProcessPostIn:
         execution_run_args = self.execution_run_args.to_dict()
 
         process_id = str(self.process_id)
+
+        kind: None | str | Unset
+        if isinstance(self.kind, Unset):
+            kind = UNSET
+        elif isinstance(self.kind, UiTriggerKindChoices):
+            kind = self.kind.value
+        else:
+            kind = self.kind
 
         ui_trigger_ids: list[str] | None | Unset
         if isinstance(self.ui_trigger_ids, Unset):
@@ -55,6 +66,8 @@ class ExecuteProcessPostIn:
                 "process_id": process_id,
             }
         )
+        if kind is not UNSET:
+            field_dict["kind"] = kind
         if ui_trigger_ids is not UNSET:
             field_dict["ui_trigger_ids"] = ui_trigger_ids
 
@@ -68,6 +81,23 @@ class ExecuteProcessPostIn:
         execution_run_args = ExecuteProcessPostInExecutionRunArgs.from_dict(d.pop("execution_run_args"))
 
         process_id = UUID(d.pop("process_id"))
+
+        def _parse_kind(data: object) -> None | UiTriggerKindChoices | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                kind_type_0 = UiTriggerKindChoices(data)
+
+                return kind_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | UiTriggerKindChoices | Unset, data)
+
+        kind = _parse_kind(d.pop("kind", UNSET))
 
         def _parse_ui_trigger_ids(data: object) -> list[UUID] | None | Unset:
             if data is None:
@@ -94,6 +124,7 @@ class ExecuteProcessPostIn:
         execute_process_post_in = cls(
             execution_run_args=execution_run_args,
             process_id=process_id,
+            kind=kind,
             ui_trigger_ids=ui_trigger_ids,
         )
 

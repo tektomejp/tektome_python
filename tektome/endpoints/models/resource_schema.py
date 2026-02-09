@@ -12,6 +12,7 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.resource_metadata_required_schema import ResourceMetadataRequiredSchema
     from ..models.resource_required_schema import ResourceRequiredSchema
 
 
@@ -23,12 +24,14 @@ class ResourceSchema:
     """
     Attributes:
         core_attributes (ResourceRequiredSchema):
+        core_attributes_metadata (ResourceMetadataRequiredSchema):
         created (datetime.datetime):
         updated (datetime.datetime):
         id (None | Unset | UUID):
     """
 
     core_attributes: ResourceRequiredSchema
+    core_attributes_metadata: ResourceMetadataRequiredSchema
     created: datetime.datetime
     updated: datetime.datetime
     id: None | Unset | UUID = UNSET
@@ -36,6 +39,8 @@ class ResourceSchema:
 
     def to_dict(self) -> dict[str, Any]:
         core_attributes = self.core_attributes.to_dict()
+
+        core_attributes_metadata = self.core_attributes_metadata.to_dict()
 
         created = self.created.isoformat()
 
@@ -54,6 +59,7 @@ class ResourceSchema:
         field_dict.update(
             {
                 "core_attributes": core_attributes,
+                "core_attributes_metadata": core_attributes_metadata,
                 "created": created,
                 "updated": updated,
             }
@@ -65,10 +71,13 @@ class ResourceSchema:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.resource_metadata_required_schema import ResourceMetadataRequiredSchema
         from ..models.resource_required_schema import ResourceRequiredSchema
 
         d = dict(src_dict)
         core_attributes = ResourceRequiredSchema.from_dict(d.pop("core_attributes"))
+
+        core_attributes_metadata = ResourceMetadataRequiredSchema.from_dict(d.pop("core_attributes_metadata"))
 
         created = isoparse(d.pop("created"))
 
@@ -93,6 +102,7 @@ class ResourceSchema:
 
         resource_schema = cls(
             core_attributes=core_attributes,
+            core_attributes_metadata=core_attributes_metadata,
             created=created,
             updated=updated,
             id=id,

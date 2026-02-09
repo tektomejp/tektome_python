@@ -14,6 +14,7 @@ def _get_kwargs(
     dataspace_id: UUID,
     process_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/api/core/dataspaces/{dataspace_id}/processes/{process_id}/".format(

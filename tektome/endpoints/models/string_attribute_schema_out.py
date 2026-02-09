@@ -26,6 +26,7 @@ class StringAttributeSchemaOut:
         creation_method (None | str | Unset):  Default: 'automatic'.
         error_message (None | str | Unset):
         extraction_reasoning (None | str | Unset):
+        is_locked (bool | Unset): Indicates whether the attribute is locked from further edits. Default: False.
         value (None | str | Unset):
     """
 
@@ -37,6 +38,7 @@ class StringAttributeSchemaOut:
     creation_method: None | str | Unset = "automatic"
     error_message: None | str | Unset = UNSET
     extraction_reasoning: None | str | Unset = UNSET
+    is_locked: bool | Unset = False
     value: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -79,6 +81,8 @@ class StringAttributeSchemaOut:
         else:
             extraction_reasoning = self.extraction_reasoning
 
+        is_locked = self.is_locked
+
         value: None | str | Unset
         if isinstance(self.value, Unset):
             value = UNSET
@@ -104,6 +108,8 @@ class StringAttributeSchemaOut:
             field_dict["error_message"] = error_message
         if extraction_reasoning is not UNSET:
             field_dict["extraction_reasoning"] = extraction_reasoning
+        if is_locked is not UNSET:
+            field_dict["is_locked"] = is_locked
         if value is not UNSET:
             field_dict["value"] = value
 
@@ -171,6 +177,8 @@ class StringAttributeSchemaOut:
 
         extraction_reasoning = _parse_extraction_reasoning(d.pop("extraction_reasoning", UNSET))
 
+        is_locked = d.pop("is_locked", UNSET)
+
         def _parse_value(data: object) -> None | str | Unset:
             if data is None:
                 return data
@@ -189,6 +197,7 @@ class StringAttributeSchemaOut:
             creation_method=creation_method,
             error_message=error_message,
             extraction_reasoning=extraction_reasoning,
+            is_locked=is_locked,
             value=value,
         )
 

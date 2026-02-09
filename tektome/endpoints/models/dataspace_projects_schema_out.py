@@ -13,6 +13,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.required_core_project_attributes import RequiredCoreProjectAttributes
+    from ..models.required_core_project_metadata_attributes import RequiredCoreProjectMetadataAttributes
     from ..models.user_metadata import UserMetadata
 
 
@@ -24,6 +25,7 @@ class DataspaceProjectsSchemaOut:
     """
     Attributes:
         core_attributes (RequiredCoreProjectAttributes):
+        core_attributes_metadata (RequiredCoreProjectMetadataAttributes):
         root_folder_id (UUID):
         created_by (UserMetadata):
         created (datetime.datetime):
@@ -32,6 +34,7 @@ class DataspaceProjectsSchemaOut:
     """
 
     core_attributes: RequiredCoreProjectAttributes
+    core_attributes_metadata: RequiredCoreProjectMetadataAttributes
     root_folder_id: UUID
     created_by: UserMetadata
     created: datetime.datetime
@@ -41,6 +44,8 @@ class DataspaceProjectsSchemaOut:
 
     def to_dict(self) -> dict[str, Any]:
         core_attributes = self.core_attributes.to_dict()
+
+        core_attributes_metadata = self.core_attributes_metadata.to_dict()
 
         root_folder_id = str(self.root_folder_id)
 
@@ -63,6 +68,7 @@ class DataspaceProjectsSchemaOut:
         field_dict.update(
             {
                 "core_attributes": core_attributes,
+                "core_attributes_metadata": core_attributes_metadata,
                 "root_folder_id": root_folder_id,
                 "created_by": created_by,
                 "created": created,
@@ -77,10 +83,13 @@ class DataspaceProjectsSchemaOut:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.required_core_project_attributes import RequiredCoreProjectAttributes
+        from ..models.required_core_project_metadata_attributes import RequiredCoreProjectMetadataAttributes
         from ..models.user_metadata import UserMetadata
 
         d = dict(src_dict)
         core_attributes = RequiredCoreProjectAttributes.from_dict(d.pop("core_attributes"))
+
+        core_attributes_metadata = RequiredCoreProjectMetadataAttributes.from_dict(d.pop("core_attributes_metadata"))
 
         root_folder_id = UUID(d.pop("root_folder_id"))
 
@@ -109,6 +118,7 @@ class DataspaceProjectsSchemaOut:
 
         dataspace_projects_schema_out = cls(
             core_attributes=core_attributes,
+            core_attributes_metadata=core_attributes_metadata,
             root_folder_id=root_folder_id,
             created_by=created_by,
             created=created,

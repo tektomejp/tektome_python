@@ -12,6 +12,7 @@ from ...types import Response
 def _get_kwargs(
     task_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/core/sample/simulate-task/{task_id}/".format(

@@ -15,6 +15,7 @@ def _get_kwargs(
     *,
     ids: list[UUID],
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     json_ids = []

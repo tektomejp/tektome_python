@@ -14,6 +14,7 @@ from ...types import Response
 def _get_kwargs(
     dataspace_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/core/dataspaces/{dataspace_id}/tag-configs/".format(

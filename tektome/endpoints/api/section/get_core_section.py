@@ -14,6 +14,7 @@ from ...types import Response
 def _get_kwargs(
     section_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/core/sections/{section_id}/".format(

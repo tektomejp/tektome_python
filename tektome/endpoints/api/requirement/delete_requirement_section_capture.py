@@ -13,6 +13,7 @@ from ...types import Response
 def _get_kwargs(
     capture_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/api/app/lawtalk/requirements/sections/capture/{capture_id}/".format(

@@ -13,6 +13,7 @@ def _get_kwargs(
     batch_size: int | Unset = 1000,
     max_workers: int | Unset = 8,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["batch_size"] = batch_size

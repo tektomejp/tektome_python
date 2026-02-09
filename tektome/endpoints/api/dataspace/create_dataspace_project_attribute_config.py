@@ -80,6 +80,8 @@ def sync_detailed(
     - datetime_attributes
     - time_attributes
     - table_attributes
+    - single_select_attributes
+    - multi_select_attributes
 
     Args:
         dataspace_id (UUID):
@@ -127,6 +129,8 @@ def sync(
     - datetime_attributes
     - time_attributes
     - table_attributes
+    - single_select_attributes
+    - multi_select_attributes
 
     Args:
         dataspace_id (UUID):
@@ -169,6 +173,8 @@ async def asyncio_detailed(
     - datetime_attributes
     - time_attributes
     - table_attributes
+    - single_select_attributes
+    - multi_select_attributes
 
     Args:
         dataspace_id (UUID):
@@ -214,6 +220,8 @@ async def asyncio(
     - datetime_attributes
     - time_attributes
     - table_attributes
+    - single_select_attributes
+    - multi_select_attributes
 
     Args:
         dataspace_id (UUID):

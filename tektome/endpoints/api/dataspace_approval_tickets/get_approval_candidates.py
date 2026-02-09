@@ -18,6 +18,7 @@ def _get_kwargs(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["page"] = page
@@ -82,6 +83,10 @@ def sync_detailed(
 
     Retrieve the list of candidates associated with a specific approval ticket.
 
+    Serializes data snapshots for each candidate based on their instructions.
+        - If a data snapshot already exists, it uses that.
+        - If the ticket is pending and no snapshot exists, it generates one based on instructions.
+
     Args:
         request: The incoming HTTP request.
         path_params: The path parameters containing the approval ticket ID.
@@ -130,6 +135,10 @@ def sync(
 
     Retrieve the list of candidates associated with a specific approval ticket.
 
+    Serializes data snapshots for each candidate based on their instructions.
+        - If a data snapshot already exists, it uses that.
+        - If the ticket is pending and no snapshot exists, it generates one based on instructions.
+
     Args:
         request: The incoming HTTP request.
         path_params: The path parameters containing the approval ticket ID.
@@ -172,6 +181,10 @@ async def asyncio_detailed(
      e8eqlFo9
 
     Retrieve the list of candidates associated with a specific approval ticket.
+
+    Serializes data snapshots for each candidate based on their instructions.
+        - If a data snapshot already exists, it uses that.
+        - If the ticket is pending and no snapshot exists, it generates one based on instructions.
 
     Args:
         request: The incoming HTTP request.
@@ -218,6 +231,10 @@ async def asyncio(
      e8eqlFo9
 
     Retrieve the list of candidates associated with a specific approval ticket.
+
+    Serializes data snapshots for each candidate based on their instructions.
+        - If a data snapshot already exists, it uses that.
+        - If the ticket is pending and no snapshot exists, it generates one based on instructions.
 
     Args:
         request: The incoming HTTP request.

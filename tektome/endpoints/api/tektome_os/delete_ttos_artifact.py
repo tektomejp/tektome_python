@@ -14,6 +14,7 @@ from ...types import Response
 def _get_kwargs(
     artifact_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/api/core/agents/os/artifacts/{artifact_id}/".format(

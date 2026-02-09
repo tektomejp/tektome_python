@@ -14,6 +14,7 @@ def _get_kwargs(
     project_id: UUID,
     process_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/api/core/projects/{project_id}/processes/{process_id}/".format(

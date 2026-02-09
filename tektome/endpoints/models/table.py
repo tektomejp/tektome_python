@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.table_cell import TableCell
@@ -17,27 +19,25 @@ T = TypeVar("T", bound="Table")
 @_attrs_define
 class Table:
     """Data model representing a table with columns and rows.
-    Includes validation to ensure data integrity based on column definitions.
 
     Attributes:
-        columns (list[TableColumn]): List of column definitions.
-        rows (list[list[TableCell]]): List of rows, each containing a list of table cells.
+        columns: Column definitions (must have unique names, at least one required).
+        rows: List of rows, each row is a list of cells matching column order.
+        version: Optimistic locking version for structural changes only.
 
-    Methods:
-        validate_table: Validates the table structure and data integrity after initialization.
-
-    Requirement:
-        - At least one column must be defined.
-        - Column names must be unique.
-        - Each row must conform to the column definitions in terms of data types and nullability.
+    Version is used to detect conflicts when rows are inserted, deleted, or reordered.
+    Cell value updates use last-write-wins semantics and don't require version checks,
+    since they don't affect other cells or row indices.
 
         Attributes:
             columns (list[TableColumn]):
             rows (list[list[TableCell]]):
+            version (int | None | Unset):
     """
 
     columns: list[TableColumn]
     rows: list[list[TableCell]]
+    version: int | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -55,6 +55,12 @@ class Table:
 
             rows.append(rows_item)
 
+        version: int | None | Unset
+        if isinstance(self.version, Unset):
+            version = UNSET
+        else:
+            version = self.version
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -63,6 +69,8 @@ class Table:
                 "rows": rows,
             }
         )
+        if version is not UNSET:
+            field_dict["version"] = version
 
         return field_dict
 
@@ -91,9 +99,19 @@ class Table:
 
             rows.append(rows_item)
 
+        def _parse_version(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        version = _parse_version(d.pop("version", UNSET))
+
         table = cls(
             columns=columns,
             rows=rows,
+            version=version,
         )
 
         table.additional_properties = d

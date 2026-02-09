@@ -15,6 +15,7 @@ def _get_kwargs(
     requirement_id: UUID,
     resource_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/api/app/lawtalk/requirements/{requirement_id}/resource/{resource_id}/sections/".format(
