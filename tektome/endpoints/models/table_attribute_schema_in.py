@@ -19,19 +19,15 @@ class TableAttributeSchemaIn:
     Attributes:
         name (str):
         value (Table): Data model representing a table with columns and rows.
-            Includes validation to ensure data integrity based on column definitions.
 
             Attributes:
-                columns (list[TableColumn]): List of column definitions.
-                rows (list[list[TableCell]]): List of rows, each containing a list of table cells.
+                columns: Column definitions (must have unique names, at least one required).
+                rows: List of rows, each row is a list of cells matching column order.
+                version: Optimistic locking version for structural changes only.
 
-            Methods:
-                validate_table: Validates the table structure and data integrity after initialization.
-
-            Requirement:
-                - At least one column must be defined.
-                - Column names must be unique.
-                - Each row must conform to the column definitions in terms of data types and nullability.
+            Version is used to detect conflicts when rows are inserted, deleted, or reordered.
+            Cell value updates use last-write-wins semantics and don't require version checks,
+            since they don't affect other cells or row indices.
     """
 
     name: str

@@ -13,6 +13,7 @@ from ...types import Response
 def _get_kwargs(
     bim_project_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/api/core/resource-groups/bim/bim-project/{bim_project_id}/".format(

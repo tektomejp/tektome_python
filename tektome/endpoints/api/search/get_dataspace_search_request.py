@@ -16,6 +16,7 @@ def _get_kwargs(
     dataspace_id: UUID,
     search_request_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/core/dataspaces/{dataspace_id}/search/requests/{search_request_id}/".format(

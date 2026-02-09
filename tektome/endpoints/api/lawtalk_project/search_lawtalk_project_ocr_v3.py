@@ -22,6 +22,7 @@ def _get_kwargs(
     vector_project: None | str | Unset = UNSET,
     vector_data_space: None | str | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     json_embedding_model = embedding_model.value

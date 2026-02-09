@@ -7,6 +7,8 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.attribute_extraction_status_choices import AttributeExtractionStatusChoices
+
 T = TypeVar("T", bound="GetExtractedResultGetOut")
 
 
@@ -14,6 +16,7 @@ T = TypeVar("T", bound="GetExtractedResultGetOut")
 class GetExtractedResultGetOut:
     """
     Attributes:
+        extraction_status (AttributeExtractionStatusChoices):
         value (Any | None): The extracted value of the attribute.
         error_message (None | str): The optional error message
         reasoning (None | str): The optional reasoning behind the extracted value.
@@ -24,6 +27,7 @@ class GetExtractedResultGetOut:
         cited_image_resource_ids (list[UUID]): The image resource IDs cited by the attribute.
     """
 
+    extraction_status: AttributeExtractionStatusChoices
     value: Any | None
     error_message: None | str
     reasoning: None | str
@@ -35,6 +39,8 @@ class GetExtractedResultGetOut:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        extraction_status = self.extraction_status.value
+
         value: Any | None
         value = self.value
 
@@ -73,6 +79,7 @@ class GetExtractedResultGetOut:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "extraction_status": extraction_status,
                 "value": value,
                 "error_message": error_message,
                 "reasoning": reasoning,
@@ -89,6 +96,7 @@ class GetExtractedResultGetOut:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        extraction_status = AttributeExtractionStatusChoices(d.pop("extraction_status"))
 
         def _parse_value(data: object) -> Any | None:
             if data is None:
@@ -147,6 +155,7 @@ class GetExtractedResultGetOut:
             cited_image_resource_ids.append(cited_image_resource_ids_item)
 
         get_extracted_result_get_out = cls(
+            extraction_status=extraction_status,
             value=value,
             error_message=error_message,
             reasoning=reasoning,

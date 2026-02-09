@@ -16,6 +16,7 @@ def _get_kwargs(
     organization_id: UUID,
     var_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/core/organizations/{organization_id}/environment-variables/{var_id}/".format(

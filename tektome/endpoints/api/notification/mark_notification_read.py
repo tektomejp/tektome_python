@@ -15,6 +15,7 @@ from ...types import Response
 def _get_kwargs(
     notification_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "patch",
         "url": "/api/core/notifications/{notification_id}/read/".format(

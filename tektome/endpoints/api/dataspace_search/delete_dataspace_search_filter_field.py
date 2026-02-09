@@ -16,6 +16,7 @@ def _get_kwargs(
     filter_id: UUID,
     field_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/api/core/dataspaces/{dataspace_id}/filters/{filter_id}/fields/{field_id}/".format(

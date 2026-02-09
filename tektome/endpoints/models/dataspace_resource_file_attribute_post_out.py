@@ -12,6 +12,9 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.dataspace_resource_file_attribute_post_out_attribute_metadata_type_0 import (
+        DataspaceResourceFileAttributePostOutAttributeMetadataType0,
+    )
     from ..models.user_metadata import UserMetadata
 
 
@@ -32,6 +35,7 @@ class DataspaceResourceFileAttributePostOut:
         updated (datetime.datetime):
         id (None | Unset | UUID):
         attribute_label (str | Unset):  Default: ''.
+        attribute_metadata (DataspaceResourceFileAttributePostOutAttributeMetadataType0 | None | Unset):
         description (None | str | Unset):  Default: ''.
         enabled (bool | Unset):  Default: True.
         hidden (bool | Unset):  Default: False.
@@ -46,12 +50,17 @@ class DataspaceResourceFileAttributePostOut:
     updated: datetime.datetime
     id: None | Unset | UUID = UNSET
     attribute_label: str | Unset = ""
+    attribute_metadata: DataspaceResourceFileAttributePostOutAttributeMetadataType0 | None | Unset = UNSET
     description: None | str | Unset = ""
     enabled: bool | Unset = True
     hidden: bool | Unset = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.dataspace_resource_file_attribute_post_out_attribute_metadata_type_0 import (
+            DataspaceResourceFileAttributePostOutAttributeMetadataType0,
+        )
+
         created_by = self.created_by.to_dict()
 
         updated_by = self.updated_by.to_dict()
@@ -75,6 +84,14 @@ class DataspaceResourceFileAttributePostOut:
             id = self.id
 
         attribute_label = self.attribute_label
+
+        attribute_metadata: dict[str, Any] | None | Unset
+        if isinstance(self.attribute_metadata, Unset):
+            attribute_metadata = UNSET
+        elif isinstance(self.attribute_metadata, DataspaceResourceFileAttributePostOutAttributeMetadataType0):
+            attribute_metadata = self.attribute_metadata.to_dict()
+        else:
+            attribute_metadata = self.attribute_metadata
 
         description: None | str | Unset
         if isinstance(self.description, Unset):
@@ -103,6 +120,8 @@ class DataspaceResourceFileAttributePostOut:
             field_dict["id"] = id
         if attribute_label is not UNSET:
             field_dict["attribute_label"] = attribute_label
+        if attribute_metadata is not UNSET:
+            field_dict["attribute_metadata"] = attribute_metadata
         if description is not UNSET:
             field_dict["description"] = description
         if enabled is not UNSET:
@@ -114,6 +133,9 @@ class DataspaceResourceFileAttributePostOut:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.dataspace_resource_file_attribute_post_out_attribute_metadata_type_0 import (
+            DataspaceResourceFileAttributePostOutAttributeMetadataType0,
+        )
         from ..models.user_metadata import UserMetadata
 
         d = dict(src_dict)
@@ -150,6 +172,25 @@ class DataspaceResourceFileAttributePostOut:
 
         attribute_label = d.pop("attribute_label", UNSET)
 
+        def _parse_attribute_metadata(
+            data: object,
+        ) -> DataspaceResourceFileAttributePostOutAttributeMetadataType0 | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                attribute_metadata_type_0 = DataspaceResourceFileAttributePostOutAttributeMetadataType0.from_dict(data)
+
+                return attribute_metadata_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(DataspaceResourceFileAttributePostOutAttributeMetadataType0 | None | Unset, data)
+
+        attribute_metadata = _parse_attribute_metadata(d.pop("attribute_metadata", UNSET))
+
         def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
@@ -173,6 +214,7 @@ class DataspaceResourceFileAttributePostOut:
             updated=updated,
             id=id,
             attribute_label=attribute_label,
+            attribute_metadata=attribute_metadata,
             description=description,
             enabled=enabled,
             hidden=hidden,

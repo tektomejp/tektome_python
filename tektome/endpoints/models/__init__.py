@@ -11,8 +11,6 @@ from .aggregated_usage_by_model import AggregatedUsageByModel
 from .all_attributes_schema_out import AllAttributesSchemaOut
 from .any_resource_schema_in import AnyResourceSchemaIn
 from .any_valued_attribute_schema_in import AnyValuedAttributeSchemaIn
-from .approval_candidate_path_params import ApprovalCandidatePathParams
-from .approval_candidate_status import ApprovalCandidateStatus
 from .approval_candidates_path_params import ApprovalCandidatesPathParams
 from .approval_category_types import ApprovalCategoryTypes
 from .approval_entry_schema import ApprovalEntrySchema
@@ -20,13 +18,7 @@ from .approval_path_params import ApprovalPathParams
 from .approval_status import ApprovalStatus
 from .approval_status_patch_in import ApprovalStatusPatchIn
 from .approval_ticket_candidate_out import ApprovalTicketCandidateOut
-from .approval_ticket_candidate_out_data_container import ApprovalTicketCandidateOutDataContainer
-from .approval_ticket_candidate_out_reviewed_data_snapshot_type_0 import (
-    ApprovalTicketCandidateOutReviewedDataSnapshotType0,
-)
-from .approval_ticket_candidate_patch_in_patch import ApprovalTicketCandidatePatchInPatch
-from .approval_ticket_candidate_patch_out import ApprovalTicketCandidatePatchOut
-from .approval_ticket_candidate_patch_out_data_container import ApprovalTicketCandidatePatchOutDataContainer
+from .approval_ticket_candidate_out_instructions import ApprovalTicketCandidateOutInstructions
 from .approval_ticket_get_out import ApprovalTicketGetOut
 from .approval_ticket_patch_in_patch import ApprovalTicketPatchInPatch
 from .approval_ticket_post_in import ApprovalTicketPostIn
@@ -39,8 +31,6 @@ from .artifact_patch_path import ArtifactPatchPath
 from .artifact_post_in import ArtifactPostIn
 from .artifact_post_out import ArtifactPostOut
 from .artifact_post_path import ArtifactPostPath
-from .assigned_role_context_object_schema_out import AssignedRoleContextObjectSchemaOut
-from .assigned_role_project_object_schema_out import AssignedRoleProjectObjectSchemaOut
 from .assigned_role_schema_out import AssignedRoleSchemaOut
 from .assistants import Assistants
 from .assistants_callback_payload import AssistantsCallbackPayload
@@ -50,10 +40,21 @@ from .attribute_candidate_payload import AttributeCandidatePayload
 from .attribute_citation_path import AttributeCitationPath
 from .attribute_citation_schema_out import AttributeCitationSchemaOut
 from .attribute_citation_schema_out_value_type_7 import AttributeCitationSchemaOutValueType7
+from .attribute_data_snapshot import AttributeDataSnapshot
+from .attribute_data_snapshot_state import AttributeDataSnapshotState
 from .attribute_extraction_post_out import AttributeExtractionPostOut
+from .attribute_extraction_status_choices import AttributeExtractionStatusChoices
+from .attribute_get_out import AttributeGetOut
+from .attribute_get_out_value_type_7 import AttributeGetOutValueType7
+from .attribute_input_payload import AttributeInputPayload
+from .attribute_metadata import AttributeMetadata
 from .attribute_object_types import AttributeObjectTypes
+from .attribute_patch_in_patch import AttributePatchInPatch
+from .attribute_patch_in_patch_value_type_7 import AttributePatchInPatchValueType7
 from .attribute_path import AttributePath
+from .attribute_path_in import AttributePathIn
 from .attribute_query_delete_in import AttributeQueryDeleteIn
+from .attribute_reviewed_data import AttributeReviewedData
 from .attribute_schema import AttributeSchema
 from .attribute_schema_in import AttributeSchemaIn
 from .attribute_type import AttributeType
@@ -104,9 +105,13 @@ from .bim_text_highlights import BIMTextHighlights
 from .bim_trim_query_item import BimTrimQueryItem
 from .bim_view_object_link_post_out import BimViewObjectLinkPostOut
 from .bim_view_post_out import BimViewPostOut
+from .blob_upload_complete_in import BlobUploadCompleteIn
+from .blob_upload_complete_out import BlobUploadCompleteOut
 from .blob_upload_complete_post_in import BlobUploadCompletePostIn
+from .blob_upload_request_in import BlobUploadRequestIn
 from .blob_upload_request_post_in import BlobUploadRequestPostIn
 from .blob_upload_request_post_out import BlobUploadRequestPostOut
+from .blob_upload_response_out import BlobUploadResponseOut
 from .boolean_attribute_schema_in import BooleanAttributeSchemaIn
 from .boolean_attribute_schema_out import BooleanAttributeSchemaOut
 from .boolean_condition_action import BooleanConditionAction
@@ -183,10 +188,22 @@ from .dataspace_post_in import DataspacePostIn
 from .dataspace_post_out import DataspacePostOut
 from .dataspace_process_path import DataspaceProcessPath
 from .dataspace_project_attribute_patch_in_patch import DataspaceProjectAttributePatchInPatch
+from .dataspace_project_attribute_patch_in_patch_attribute_metadata_type_0 import (
+    DataspaceProjectAttributePatchInPatchAttributeMetadataType0,
+)
 from .dataspace_project_attribute_path import DataspaceProjectAttributePath
 from .dataspace_project_attribute_post_in import DataspaceProjectAttributePostIn
+from .dataspace_project_attribute_post_in_attribute_metadata_type_0 import (
+    DataspaceProjectAttributePostInAttributeMetadataType0,
+)
 from .dataspace_project_attribute_post_out import DataspaceProjectAttributePostOut
+from .dataspace_project_attribute_post_out_attribute_metadata_type_0 import (
+    DataspaceProjectAttributePostOutAttributeMetadataType0,
+)
 from .dataspace_project_attribute_schema_out import DataspaceProjectAttributeSchemaOut
+from .dataspace_project_attribute_schema_out_attribute_metadata_type_0 import (
+    DataspaceProjectAttributeSchemaOutAttributeMetadataType0,
+)
 from .dataspace_project_path import DataspaceProjectPath
 from .dataspace_project_reorder_column_post_in import DataspaceProjectReorderColumnPostIn
 from .dataspace_project_resources_get_out import DataspaceProjectResourcesGetOut
@@ -195,9 +212,18 @@ from .dataspace_projects_path import DataspaceProjectsPath
 from .dataspace_projects_schema_out import DataspaceProjectsSchemaOut
 from .dataspace_required_schema import DataspaceRequiredSchema
 from .dataspace_resource_attribute_patch_in_patch import DataspaceResourceAttributePatchInPatch
+from .dataspace_resource_attribute_patch_in_patch_attribute_metadata_type_0 import (
+    DataspaceResourceAttributePatchInPatchAttributeMetadataType0,
+)
 from .dataspace_resource_file_attribute_path import DataspaceResourceFileAttributePath
 from .dataspace_resource_file_attribute_post_out import DataspaceResourceFileAttributePostOut
+from .dataspace_resource_file_attribute_post_out_attribute_metadata_type_0 import (
+    DataspaceResourceFileAttributePostOutAttributeMetadataType0,
+)
 from .dataspace_resource_file_attribute_schema_out import DataspaceResourceFileAttributeSchemaOut
+from .dataspace_resource_file_attribute_schema_out_attribute_metadata_type_0 import (
+    DataspaceResourceFileAttributeSchemaOutAttributeMetadataType0,
+)
 from .dataspace_resource_ocr_path import DataspaceResourceOCRPath
 from .dataspace_resource_path import DataspaceResourcePath
 from .dataspace_resource_reorder_column_post_in import DataspaceResourceReorderColumnPostIn
@@ -260,6 +286,7 @@ from .delete_general_lawtalk_attribute_attribute_object_types import DeleteGener
 from .delete_lawtalk_attribute_attribute_object_types import DeleteLawtalkAttributeAttributeObjectTypes
 from .delete_resource_section_path import DeleteResourceSectionPath
 from .delete_system_attribute_attribute_object_types import DeleteSystemAttributeAttributeObjectTypes
+from .delete_table_attribute_row_attribute_object_types import DeleteTableAttributeRowAttributeObjectTypes
 from .document import Document
 from .document_async_extraction_task_result import DocumentAsyncExtractionTaskResult
 from .document_async_extraction_task_submission import DocumentAsyncExtractionTaskSubmission
@@ -377,7 +404,11 @@ from .file_attribute_update import FileAttributeUpdate
 from .file_attributes_extracted_filter_options import FileAttributesExtractedFilterOptions
 from .file_attributes_extraction import FileAttributesExtraction
 from .file_attributes_search import FileAttributesSearch
+from .file_data_snapshot import FileDataSnapshot
+from .file_data_snapshot_state import FileDataSnapshotState
+from .file_input_payload import FileInputPayload
 from .file_move_patch_schema_in import FileMovePatchSchemaIn
+from .file_reviewed_data import FileReviewedData
 from .file_table_attribute import FileTableAttribute
 from .file_table_attribute_extraction import FileTableAttributeExtraction
 from .file_upload_candidate_payload import FileUploadCandidatePayload
@@ -453,6 +484,7 @@ from .import_result_failed import ImportResultFailed
 from .import_storage_folders_response import ImportStorageFoldersResponse
 from .improve_user_prompt_query_in import ImproveUserPromptQueryIn
 from .input_ import Input
+from .insert_table_attribute_row_attribute_object_types import InsertTableAttributeRowAttributeObjectTypes
 from .integer_attribute_schema_in import IntegerAttributeSchemaIn
 from .integer_attribute_schema_out import IntegerAttributeSchemaOut
 from .integer_search_condition import IntegerSearchCondition
@@ -538,6 +570,7 @@ from .me_patch_in import MePatchIn
 from .me_patch_out import MePatchOut
 from .merge_result import MergeResult
 from .merge_result_search_results_item import MergeResultSearchResultsItem
+from .non_primitive_role_name import NonPrimitiveRoleName
 from .notification_get_out import NotificationGetOut
 from .notification_get_out_metadata import NotificationGetOutMetadata
 from .notification_path import NotificationPath
@@ -632,6 +665,9 @@ from .process_post_in import ProcessPostIn
 from .process_post_in_patch import ProcessPostInPatch
 from .process_type_choices import ProcessTypeChoices
 from .project_accept_invite_post_in import ProjectAcceptInvitePostIn
+from .project_attribute_path_in import ProjectAttributePathIn
+from .project_attribute_post_in import ProjectAttributePostIn
+from .project_attribute_post_in_value_type_7 import ProjectAttributePostInValueType7
 from .project_choices_get_out import ProjectChoicesGetOut
 from .project_default_path import ProjectDefaultPath
 from .project_invite_accept_post_out import ProjectInviteAcceptPostOut
@@ -681,6 +717,7 @@ from .refresh_post_out import RefreshPostOut
 from .remove_resource_group_post_in import RemoveResourceGroupPostIn
 from .render_material import RenderMaterial
 from .required_core_project_attributes import RequiredCoreProjectAttributes
+from .required_core_project_metadata_attributes import RequiredCoreProjectMetadataAttributes
 from .requirement_get_out import RequirementGetOut
 from .requirement_get_out_section_changes_since_last_summary import RequirementGetOutSectionChangesSinceLastSummary
 from .requirement_item_column_config_path import RequirementItemColumnConfigPath
@@ -741,6 +778,9 @@ from .research_mode_enum import ResearchModeEnum
 from .research_template_path_in import ResearchTemplatePathIn
 from .research_template_resources_out import ResearchTemplateResourcesOut
 from .resource_allow_edit_schema_patch_in_patch import ResourceAllowEditSchemaPatchInPatch
+from .resource_attribute_path_in import ResourceAttributePathIn
+from .resource_attribute_post_in import ResourceAttributePostIn
+from .resource_attribute_post_in_value_type_7 import ResourceAttributePostInValueType7
 from .resource_capture_section_component_schema import ResourceCaptureSectionComponentSchema
 from .resource_capture_section_component_schema_positional_text_type_0 import (
     ResourceCaptureSectionComponentSchemaPositionalTextType0,
@@ -763,6 +803,7 @@ from .resource_groups_get_out import ResourceGroupsGetOut
 from .resource_ifc_bim_project_creation_post_out import ResourceIfcBimProjectCreationPostOut
 from .resource_making_task_schema import ResourceMakingTaskSchema
 from .resource_metadata_out import ResourceMetadataOut
+from .resource_metadata_required_schema import ResourceMetadataRequiredSchema
 from .resource_ocr_schema_get_out import ResourceOCRSchemaGetOut
 from .resource_ocr_schema_get_out_latest_task_result_type_0 import ResourceOCRSchemaGetOutLatestTaskResultType0
 from .resource_ocr_schema_post_out import ResourceOCRSchemaPostOut
@@ -786,7 +827,9 @@ from .retrieve_bim_views_in_project_post_out import RetrieveBimViewsInProjectPos
 from .retrieve_bim_views_in_project_post_out_data_type_1_item import RetrieveBimViewsInProjectPostOutDataType1Item
 from .retrieve_bim_views_in_sheet_get_out import RetrieveBimViewsInSheetGetOut
 from .retrieve_bim_views_in_sheet_get_out_data_item_type_1 import RetrieveBimViewsInSheetGetOutDataItemType1
+from .role_entity_context import RoleEntityContext
 from .role_name import RoleName
+from .role_project_context import RoleProjectContext
 from .run_artifact_post_in import RunArtifactPostIn
 from .run_artifact_post_in_body_type_0 import RunArtifactPostInBodyType0
 from .run_artifact_post_out import RunArtifactPostOut
@@ -891,13 +934,18 @@ from .system_attribute_body_put_in import SystemAttributeBodyPutIn
 from .system_attribute_body_put_in_list_object_attributes_item import SystemAttributeBodyPutInListObjectAttributesItem
 from .system_attribute_query_delete_in import SystemAttributeQueryDeleteIn
 from .table import Table
+from .table_attribute_body_patch_in import TableAttributeBodyPatchIn
 from .table_attribute_schema_in import TableAttributeSchemaIn
 from .table_attribute_schema_out import TableAttributeSchemaOut
 from .table_attribute_schema_out_value_type_0 import TableAttributeSchemaOutValueType0
 from .table_cell import TableCell
+from .table_cell_update import TableCellUpdate
 from .table_column import TableColumn
 from .table_column_type import TableColumnType
 from .table_condition_action import TableConditionAction
+from .table_metadata_update_request import TableMetadataUpdateRequest
+from .table_metadata_update_request_rename_columns_type_0 import TableMetadataUpdateRequestRenameColumnsType0
+from .table_row_operation_in import TableRowOperationIn
 from .table_search_condition import TableSearchCondition
 from .target_model_entity_filter_options import TargetModelEntityFilterOptions
 from .target_user_in_schema import TargetUserInSchema
@@ -943,6 +991,7 @@ from .upload_new_resource_version_file_params import UploadNewResourceVersionFil
 from .upload_payment_record_file_file_params import UploadPaymentRecordFileFileParams
 from .upsert_general_attributes_attribute_object_types import UpsertGeneralAttributesAttributeObjectTypes
 from .upsert_system_attributes_attribute_object_types import UpsertSystemAttributesAttributeObjectTypes
+from .upsert_table_attributes_attribute_object_types import UpsertTableAttributesAttributeObjectTypes
 from .user_invitation_skipped_schema import UserInvitationSkippedSchema
 from .user_invitation_success_schema import UserInvitationSuccessSchema
 from .user_metadata import UserMetadata
@@ -958,20 +1007,14 @@ __all__ = (
     "AllAttributesSchemaOut",
     "AnyResourceSchemaIn",
     "AnyValuedAttributeSchemaIn",
-    "ApprovalCandidatePathParams",
     "ApprovalCandidatesPathParams",
-    "ApprovalCandidateStatus",
     "ApprovalCategoryTypes",
     "ApprovalEntrySchema",
     "ApprovalPathParams",
     "ApprovalStatus",
     "ApprovalStatusPatchIn",
     "ApprovalTicketCandidateOut",
-    "ApprovalTicketCandidateOutDataContainer",
-    "ApprovalTicketCandidateOutReviewedDataSnapshotType0",
-    "ApprovalTicketCandidatePatchInPatch",
-    "ApprovalTicketCandidatePatchOut",
-    "ApprovalTicketCandidatePatchOutDataContainer",
+    "ApprovalTicketCandidateOutInstructions",
     "ApprovalTicketGetOut",
     "ApprovalTicketPatchInPatch",
     "ApprovalTicketPostIn",
@@ -987,8 +1030,6 @@ __all__ = (
     "ArtifactPostOut",
     "ArtifactPostPath",
     "ASimulateLongCallPostOut",
-    "AssignedRoleContextObjectSchemaOut",
-    "AssignedRoleProjectObjectSchemaOut",
     "AssignedRoleSchemaOut",
     "Assistants",
     "AssistantsCallbackPayload",
@@ -998,10 +1039,21 @@ __all__ = (
     "AttributeCitationPath",
     "AttributeCitationSchemaOut",
     "AttributeCitationSchemaOutValueType7",
+    "AttributeDataSnapshot",
+    "AttributeDataSnapshotState",
     "AttributeExtractionPostOut",
+    "AttributeExtractionStatusChoices",
+    "AttributeGetOut",
+    "AttributeGetOutValueType7",
+    "AttributeInputPayload",
+    "AttributeMetadata",
     "AttributeObjectTypes",
+    "AttributePatchInPatch",
+    "AttributePatchInPatchValueType7",
     "AttributePath",
+    "AttributePathIn",
     "AttributeQueryDeleteIn",
+    "AttributeReviewedData",
     "AttributeSchema",
     "AttributeSchemaIn",
     "AttributeType",
@@ -1052,9 +1104,13 @@ __all__ = (
     "BimTrimQueryItem",
     "BimViewObjectLinkPostOut",
     "BimViewPostOut",
+    "BlobUploadCompleteIn",
+    "BlobUploadCompleteOut",
     "BlobUploadCompletePostIn",
+    "BlobUploadRequestIn",
     "BlobUploadRequestPostIn",
     "BlobUploadRequestPostOut",
+    "BlobUploadResponseOut",
     "BooleanAttributeSchemaIn",
     "BooleanAttributeSchemaOut",
     "BooleanConditionAction",
@@ -1126,10 +1182,14 @@ __all__ = (
     "DataspacePostOut",
     "DataspaceProcessPath",
     "DataspaceProjectAttributePatchInPatch",
+    "DataspaceProjectAttributePatchInPatchAttributeMetadataType0",
     "DataspaceProjectAttributePath",
     "DataspaceProjectAttributePostIn",
+    "DataspaceProjectAttributePostInAttributeMetadataType0",
     "DataspaceProjectAttributePostOut",
+    "DataspaceProjectAttributePostOutAttributeMetadataType0",
     "DataspaceProjectAttributeSchemaOut",
+    "DataspaceProjectAttributeSchemaOutAttributeMetadataType0",
     "DataspaceProjectPath",
     "DataspaceProjectReorderColumnPostIn",
     "DataspaceProjectResourcesGetOut",
@@ -1138,9 +1198,12 @@ __all__ = (
     "DataspaceProjectsSchemaOut",
     "DataspaceRequiredSchema",
     "DataspaceResourceAttributePatchInPatch",
+    "DataspaceResourceAttributePatchInPatchAttributeMetadataType0",
     "DataspaceResourceFileAttributePath",
     "DataspaceResourceFileAttributePostOut",
+    "DataspaceResourceFileAttributePostOutAttributeMetadataType0",
     "DataspaceResourceFileAttributeSchemaOut",
+    "DataspaceResourceFileAttributeSchemaOutAttributeMetadataType0",
     "DataspaceResourceOCRPath",
     "DataspaceResourcePath",
     "DataspaceResourceReorderColumnPostIn",
@@ -1196,6 +1259,7 @@ __all__ = (
     "DeleteLawtalkAttributeAttributeObjectTypes",
     "DeleteResourceSectionPath",
     "DeleteSystemAttributeAttributeObjectTypes",
+    "DeleteTableAttributeRowAttributeObjectTypes",
     "Document",
     "DocumentAsyncExtractionTaskResult",
     "DocumentAsyncExtractionTaskSubmission",
@@ -1313,7 +1377,11 @@ __all__ = (
     "FileAttributesSearch",
     "FileAttributeTypeEnum",
     "FileAttributeUpdate",
+    "FileDataSnapshot",
+    "FileDataSnapshotState",
+    "FileInputPayload",
     "FileMovePatchSchemaIn",
+    "FileReviewedData",
     "FileTableAttribute",
     "FileTableAttributeExtraction",
     "FileUploadCandidatePayload",
@@ -1389,6 +1457,7 @@ __all__ = (
     "ImportStorageFoldersResponse",
     "ImproveUserPromptQueryIn",
     "Input",
+    "InsertTableAttributeRowAttributeObjectTypes",
     "IntegerAttributeSchemaIn",
     "IntegerAttributeSchemaOut",
     "IntegerSearchCondition",
@@ -1470,6 +1539,7 @@ __all__ = (
     "MePatchOut",
     "MergeResult",
     "MergeResultSearchResultsItem",
+    "NonPrimitiveRoleName",
     "NotificationGetOut",
     "NotificationGetOutMetadata",
     "NotificationPath",
@@ -1562,6 +1632,9 @@ __all__ = (
     "ProcessPostInPatch",
     "ProcessTypeChoices",
     "ProjectAcceptInvitePostIn",
+    "ProjectAttributePathIn",
+    "ProjectAttributePostIn",
+    "ProjectAttributePostInValueType7",
     "ProjectChoicesGetOut",
     "ProjectDefaultPath",
     "ProjectInviteAcceptPostOut",
@@ -1611,6 +1684,7 @@ __all__ = (
     "RemoveResourceGroupPostIn",
     "RenderMaterial",
     "RequiredCoreProjectAttributes",
+    "RequiredCoreProjectMetadataAttributes",
     "RequirementGetOut",
     "RequirementGetOutSectionChangesSinceLastSummary",
     "RequirementItemColumnConfigPath",
@@ -1661,6 +1735,9 @@ __all__ = (
     "ResearchTemplatePathIn",
     "ResearchTemplateResourcesOut",
     "ResourceAllowEditSchemaPatchInPatch",
+    "ResourceAttributePathIn",
+    "ResourceAttributePostIn",
+    "ResourceAttributePostInValueType7",
     "ResourceCaptureSectionComponentSchema",
     "ResourceCaptureSectionComponentSchemaPositionalTextType0",
     "ResourceChildren",
@@ -1681,6 +1758,7 @@ __all__ = (
     "ResourceIfcBimProjectCreationPostOut",
     "ResourceMakingTaskSchema",
     "ResourceMetadataOut",
+    "ResourceMetadataRequiredSchema",
     "ResourceOCRSchemaGetOut",
     "ResourceOCRSchemaGetOutLatestTaskResultType0",
     "ResourceOCRSchemaPostOut",
@@ -1704,7 +1782,9 @@ __all__ = (
     "RetrieveBimViewsInProjectPostOutDataType1Item",
     "RetrieveBimViewsInSheetGetOut",
     "RetrieveBimViewsInSheetGetOutDataItemType1",
+    "RoleEntityContext",
     "RoleName",
+    "RoleProjectContext",
     "RunArtifactPostIn",
     "RunArtifactPostInBodyType0",
     "RunArtifactPostOut",
@@ -1797,13 +1877,18 @@ __all__ = (
     "SystemAttributeBodyPutInListObjectAttributesItem",
     "SystemAttributeQueryDeleteIn",
     "Table",
+    "TableAttributeBodyPatchIn",
     "TableAttributeSchemaIn",
     "TableAttributeSchemaOut",
     "TableAttributeSchemaOutValueType0",
     "TableCell",
+    "TableCellUpdate",
     "TableColumn",
     "TableColumnType",
     "TableConditionAction",
+    "TableMetadataUpdateRequest",
+    "TableMetadataUpdateRequestRenameColumnsType0",
+    "TableRowOperationIn",
     "TableSearchCondition",
     "TargetModelEntityFilterOptions",
     "TargetUserInSchema",
@@ -1847,6 +1932,7 @@ __all__ = (
     "UploadPaymentRecordFileFileParams",
     "UpsertGeneralAttributesAttributeObjectTypes",
     "UpsertSystemAttributesAttributeObjectTypes",
+    "UpsertTableAttributesAttributeObjectTypes",
     "UserInvitationSkippedSchema",
     "UserInvitationSuccessSchema",
     "UserMetadata",

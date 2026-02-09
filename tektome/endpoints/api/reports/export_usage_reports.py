@@ -17,6 +17,7 @@ def _get_kwargs(
     month: int,
     year: int | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     json_organization_id = str(organization_id)

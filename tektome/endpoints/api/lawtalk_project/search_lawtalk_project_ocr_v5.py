@@ -21,6 +21,7 @@ def _get_kwargs(
     skip: int | Unset = 0,
     sort_by_pages: bool | Unset = False,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["query"] = query

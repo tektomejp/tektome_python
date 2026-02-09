@@ -14,6 +14,7 @@ from ...types import Response
 def _get_kwargs(
     requirement_template_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/app/lawtalk/requirement-templates-container/requirement-templates/{requirement_template_id}/".format(

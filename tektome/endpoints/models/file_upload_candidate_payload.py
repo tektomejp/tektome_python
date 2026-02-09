@@ -17,31 +17,31 @@ class FileUploadCandidatePayload:
     """
     Attributes:
         project_id (UUID):
-        file_path (None | str | Unset):
-        file_name (None | str | Unset):
+        resource_url (None | str | Unset):
+        resource_name (None | str | Unset):
         extension (None | str | Unset):
     """
 
     project_id: UUID
-    file_path: None | str | Unset = UNSET
-    file_name: None | str | Unset = UNSET
+    resource_url: None | str | Unset = UNSET
+    resource_name: None | str | Unset = UNSET
     extension: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         project_id = str(self.project_id)
 
-        file_path: None | str | Unset
-        if isinstance(self.file_path, Unset):
-            file_path = UNSET
+        resource_url: None | str | Unset
+        if isinstance(self.resource_url, Unset):
+            resource_url = UNSET
         else:
-            file_path = self.file_path
+            resource_url = self.resource_url
 
-        file_name: None | str | Unset
-        if isinstance(self.file_name, Unset):
-            file_name = UNSET
+        resource_name: None | str | Unset
+        if isinstance(self.resource_name, Unset):
+            resource_name = UNSET
         else:
-            file_name = self.file_name
+            resource_name = self.resource_name
 
         extension: None | str | Unset
         if isinstance(self.extension, Unset):
@@ -56,10 +56,10 @@ class FileUploadCandidatePayload:
                 "project_id": project_id,
             }
         )
-        if file_path is not UNSET:
-            field_dict["file_path"] = file_path
-        if file_name is not UNSET:
-            field_dict["file_name"] = file_name
+        if resource_url is not UNSET:
+            field_dict["resource_url"] = resource_url
+        if resource_name is not UNSET:
+            field_dict["resource_name"] = resource_name
         if extension is not UNSET:
             field_dict["extension"] = extension
 
@@ -70,23 +70,23 @@ class FileUploadCandidatePayload:
         d = dict(src_dict)
         project_id = UUID(d.pop("project_id"))
 
-        def _parse_file_path(data: object) -> None | str | Unset:
+        def _parse_resource_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
             return cast(None | str | Unset, data)
 
-        file_path = _parse_file_path(d.pop("file_path", UNSET))
+        resource_url = _parse_resource_url(d.pop("resource_url", UNSET))
 
-        def _parse_file_name(data: object) -> None | str | Unset:
+        def _parse_resource_name(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
             return cast(None | str | Unset, data)
 
-        file_name = _parse_file_name(d.pop("file_name", UNSET))
+        resource_name = _parse_resource_name(d.pop("resource_name", UNSET))
 
         def _parse_extension(data: object) -> None | str | Unset:
             if data is None:
@@ -99,8 +99,8 @@ class FileUploadCandidatePayload:
 
         file_upload_candidate_payload = cls(
             project_id=project_id,
-            file_path=file_path,
-            file_name=file_name,
+            resource_url=resource_url,
+            resource_name=resource_name,
             extension=extension,
         )
 

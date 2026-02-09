@@ -14,6 +14,7 @@ def _get_kwargs(
     dataspace_id: UUID,
     execution_group_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/api/core/dataspaces/{dataspace_id}/execution-groups/{execution_group_id}/cancel/".format(

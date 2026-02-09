@@ -15,6 +15,7 @@ from ...types import Response
 def _get_kwargs(
     resource_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/api/core/dataspaces/resources/{resource_id}/convert-bim/".format(

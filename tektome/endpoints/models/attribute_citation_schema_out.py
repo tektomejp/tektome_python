@@ -20,25 +20,25 @@ T = TypeVar("T", bound="AttributeCitationSchemaOut")
 class AttributeCitationSchemaOut:
     """
     Attributes:
-        id (UUID):
         name (str):
         value (AttributeCitationSchemaOutValueType7 | bool | datetime.date | datetime.datetime | float | int | list[Any]
             | str):
+        is_locked (bool): Whether the attribute is locked - can't be modified
+        id (UUID):
         type_ (str):
     """
 
-    id: UUID
     name: str
     value: (
         AttributeCitationSchemaOutValueType7 | bool | datetime.date | datetime.datetime | float | int | list[Any] | str
     )
+    is_locked: bool
+    id: UUID
     type_: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.attribute_citation_schema_out_value_type_7 import AttributeCitationSchemaOutValueType7
-
-        id = str(self.id)
 
         name = self.name
 
@@ -55,15 +55,20 @@ class AttributeCitationSchemaOut:
         else:
             value = self.value
 
+        is_locked = self.is_locked
+
+        id = str(self.id)
+
         type_ = self.type_
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "id": id,
                 "name": name,
                 "value": value,
+                "is_locked": is_locked,
+                "id": id,
                 "type": type_,
             }
         )
@@ -75,8 +80,6 @@ class AttributeCitationSchemaOut:
         from ..models.attribute_citation_schema_out_value_type_7 import AttributeCitationSchemaOutValueType7
 
         d = dict(src_dict)
-        id = UUID(d.pop("id"))
-
         name = d.pop("name")
 
         def _parse_value(
@@ -137,12 +140,17 @@ class AttributeCitationSchemaOut:
 
         value = _parse_value(d.pop("value"))
 
+        is_locked = d.pop("is_locked")
+
+        id = UUID(d.pop("id"))
+
         type_ = d.pop("type")
 
         attribute_citation_schema_out = cls(
-            id=id,
             name=name,
             value=value,
+            is_locked=is_locked,
+            id=id,
             type_=type_,
         )
 
