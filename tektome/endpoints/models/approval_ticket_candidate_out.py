@@ -10,8 +10,9 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.approval_ticket_candidate_out_data_container import ApprovalTicketCandidateOutDataContainer
-    from ..models.approval_ticket_get_out_2 import ApprovalTicketGetOut2
+    from ..models.approval_ticket_candidate_out_instructions import ApprovalTicketCandidateOutInstructions
+    from ..models.attribute_data_snapshot import AttributeDataSnapshot
+    from ..models.file_data_snapshot import FileDataSnapshot
 
 
 T = TypeVar("T", bound="ApprovalTicketCandidateOut")
@@ -22,21 +23,32 @@ class ApprovalTicketCandidateOut:
     """Serializer for ApprovalTicketCandidate details
 
     Attributes:
-        approval_ticket (ApprovalTicketGetOut2): Serializer for ApprovalTicket details
+        serialized_review_data (AttributeDataSnapshot | FileDataSnapshot | None | Unset):
         id (None | Unset | UUID):
-        data_container (ApprovalTicketCandidateOutDataContainer | Unset): The data related to this approval ticket
-            candidate. These are the payload changes proposed for approval
+        instructions (ApprovalTicketCandidateOutInstructions | Unset): The data related to this approval ticket
+            candidate. These are the instructions to be performed once reviewed.
         status (str | Unset): The status of the approval ticket Default: 'Unselected'.
     """
 
-    approval_ticket: ApprovalTicketGetOut2
+    serialized_review_data: AttributeDataSnapshot | FileDataSnapshot | None | Unset = UNSET
     id: None | Unset | UUID = UNSET
-    data_container: ApprovalTicketCandidateOutDataContainer | Unset = UNSET
+    instructions: ApprovalTicketCandidateOutInstructions | Unset = UNSET
     status: str | Unset = "Unselected"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        approval_ticket = self.approval_ticket.to_dict()
+        from ..models.attribute_data_snapshot import AttributeDataSnapshot
+        from ..models.file_data_snapshot import FileDataSnapshot
+
+        serialized_review_data: dict[str, Any] | None | Unset
+        if isinstance(self.serialized_review_data, Unset):
+            serialized_review_data = UNSET
+        elif isinstance(self.serialized_review_data, AttributeDataSnapshot):
+            serialized_review_data = self.serialized_review_data.to_dict()
+        elif isinstance(self.serialized_review_data, FileDataSnapshot):
+            serialized_review_data = self.serialized_review_data.to_dict()
+        else:
+            serialized_review_data = self.serialized_review_data
 
         id: None | str | Unset
         if isinstance(self.id, Unset):
@@ -46,23 +58,21 @@ class ApprovalTicketCandidateOut:
         else:
             id = self.id
 
-        data_container: dict[str, Any] | Unset = UNSET
-        if not isinstance(self.data_container, Unset):
-            data_container = self.data_container.to_dict()
+        instructions: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.instructions, Unset):
+            instructions = self.instructions.to_dict()
 
         status = self.status
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "approval_ticket": approval_ticket,
-            }
-        )
+        field_dict.update({})
+        if serialized_review_data is not UNSET:
+            field_dict["serialized_review_data"] = serialized_review_data
         if id is not UNSET:
             field_dict["id"] = id
-        if data_container is not UNSET:
-            field_dict["data_container"] = data_container
+        if instructions is not UNSET:
+            field_dict["instructions"] = instructions
         if status is not UNSET:
             field_dict["status"] = status
 
@@ -70,11 +80,36 @@ class ApprovalTicketCandidateOut:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.approval_ticket_candidate_out_data_container import ApprovalTicketCandidateOutDataContainer
-        from ..models.approval_ticket_get_out_2 import ApprovalTicketGetOut2
+        from ..models.approval_ticket_candidate_out_instructions import ApprovalTicketCandidateOutInstructions
+        from ..models.attribute_data_snapshot import AttributeDataSnapshot
+        from ..models.file_data_snapshot import FileDataSnapshot
 
         d = dict(src_dict)
-        approval_ticket = ApprovalTicketGetOut2.from_dict(d.pop("approval_ticket"))
+
+        def _parse_serialized_review_data(data: object) -> AttributeDataSnapshot | FileDataSnapshot | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                serialized_review_data_type_0 = AttributeDataSnapshot.from_dict(data)
+
+                return serialized_review_data_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                serialized_review_data_type_1 = FileDataSnapshot.from_dict(data)
+
+                return serialized_review_data_type_1
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(AttributeDataSnapshot | FileDataSnapshot | None | Unset, data)
+
+        serialized_review_data = _parse_serialized_review_data(d.pop("serialized_review_data", UNSET))
 
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -93,19 +128,19 @@ class ApprovalTicketCandidateOut:
 
         id = _parse_id(d.pop("id", UNSET))
 
-        _data_container = d.pop("data_container", UNSET)
-        data_container: ApprovalTicketCandidateOutDataContainer | Unset
-        if isinstance(_data_container, Unset):
-            data_container = UNSET
+        _instructions = d.pop("instructions", UNSET)
+        instructions: ApprovalTicketCandidateOutInstructions | Unset
+        if isinstance(_instructions, Unset):
+            instructions = UNSET
         else:
-            data_container = ApprovalTicketCandidateOutDataContainer.from_dict(_data_container)
+            instructions = ApprovalTicketCandidateOutInstructions.from_dict(_instructions)
 
         status = d.pop("status", UNSET)
 
         approval_ticket_candidate_out = cls(
-            approval_ticket=approval_ticket,
+            serialized_review_data=serialized_review_data,
             id=id,
-            data_container=data_container,
+            instructions=instructions,
             status=status,
         )
 

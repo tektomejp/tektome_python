@@ -2,8 +2,8 @@ from enum import Enum
 
 
 class ApprovalStatusPatchIn(str, Enum):
-    APPROVED = "Approved"
-    REJECTED = "Rejected"
+    APPROVED = "approved"
+    REJECTED = "rejected"
 
     def __str__(self) -> str:
         return str(self.value)

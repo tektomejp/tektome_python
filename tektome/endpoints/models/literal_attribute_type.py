@@ -1,0 +1,19 @@
+from enum import Enum
+
+
+class LiteralAttributeType(str, Enum):
+    BOOLEAN = "boolean"
+    COORDINATE = "coordinate"
+    DATE = "date"
+    DATETIME = "datetime"
+    FLOAT = "float"
+    INTEGER = "integer"
+    JSON = "json"
+    LIST_OBJECT = "list_object"
+    POLYGON = "polygon"
+    STRING = "string"
+    TABLE = "table"
+    TIME = "time"
+
+    def __str__(self) -> str:
+        return str(self.value)

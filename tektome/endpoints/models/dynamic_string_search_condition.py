@@ -22,8 +22,11 @@ class DynamicStringSearchCondition:
         attribute_name (str): The name of the attribute to filter on
         attribute_type (Literal['string']): The type of the attribute being filtered (string)
         action (StringConditionAction): Allowed actions for string conditions.
-            - includes (For example: "foo" includes "foobar", treated as filtering)
-            - excludes (For example: "foo" excludes "foobar", treated as filtering)
+            - contains (For example: "foobar" contains "foo", treated as filtering)
+            - includes (alias for contains)
+            - not_contains (For example: "foobar" not contains "baz", treated as filtering)
+            - excludes (alias for not_contains)
+            - exact (For example: "foobar" exact "foobar", treated as filtering)
             - matches (For example: "foobar" could match "foobar", "barbaz" but not "bazqux", treated as querying)
             - means (For example: "royal" could mean "king & queen", "monarch", "sovereign", treated as querying)
         value (DynamicStringValue): Dynamic value for string attributes.
