@@ -5,6 +5,7 @@ from .a_dataspace_path_params import ADataspacePathParams
 from .a_project_default_path import AProjectDefaultPath
 from .a_requirement_path import ARequirementPath
 from .a_simulate_long_call_post_out import ASimulateLongCallPostOut
+from .affected_requirement_out import AffectedRequirementOut
 from .aggregate_llm_usage_post_in import AggregateLLMUsagePostIn
 from .aggregated_llm_usage_post_out import AggregatedLLMUsagePostOut
 from .aggregated_usage_by_model import AggregatedUsageByModel
@@ -31,8 +32,6 @@ from .artifact_patch_path import ArtifactPatchPath
 from .artifact_post_in import ArtifactPostIn
 from .artifact_post_out import ArtifactPostOut
 from .artifact_post_path import ArtifactPostPath
-from .assigned_role_context_object_schema_out import AssignedRoleContextObjectSchemaOut
-from .assigned_role_project_object_schema_out import AssignedRoleProjectObjectSchemaOut
 from .assigned_role_schema_out import AssignedRoleSchemaOut
 from .assistants import Assistants
 from .assistants_callback_payload import AssistantsCallbackPayload
@@ -287,6 +286,7 @@ from .delete_folder_resources_schema import DeleteFolderResourcesSchema
 from .delete_general_attribute_attribute_object_types import DeleteGeneralAttributeAttributeObjectTypes
 from .delete_general_lawtalk_attribute_attribute_object_types import DeleteGeneralLawtalkAttributeAttributeObjectTypes
 from .delete_lawtalk_attribute_attribute_object_types import DeleteLawtalkAttributeAttributeObjectTypes
+from .delete_resource_group_query import DeleteResourceGroupQuery
 from .delete_resource_section_path import DeleteResourceSectionPath
 from .delete_system_attribute_attribute_object_types import DeleteSystemAttributeAttributeObjectTypes
 from .delete_table_attribute_row_attribute_object_types import DeleteTableAttributeRowAttributeObjectTypes
@@ -573,6 +573,7 @@ from .me_patch_in import MePatchIn
 from .me_patch_out import MePatchOut
 from .merge_result import MergeResult
 from .merge_result_search_results_item import MergeResultSearchResultsItem
+from .non_primitive_role_name import NonPrimitiveRoleName
 from .notification_get_out import NotificationGetOut
 from .notification_get_out_metadata import NotificationGetOutMetadata
 from .notification_path import NotificationPath
@@ -795,6 +796,7 @@ from .resource_get_many_schema_post_out import ResourceGetManySchemaPostOut
 from .resource_get_many_schema_post_out_items import ResourceGetManySchemaPostOutItems
 from .resource_group import ResourceGroup
 from .resource_group_any_in import ResourceGroupAnyIn
+from .resource_group_check_delete_out import ResourceGroupCheckDeleteOut
 from .resource_group_get_path import ResourceGroupGetPath
 from .resource_group_item_path import ResourceGroupItemPath
 from .resource_group_patch_in_patch import ResourceGroupPatchInPatch
@@ -829,7 +831,9 @@ from .retrieve_bim_views_in_project_post_out import RetrieveBimViewsInProjectPos
 from .retrieve_bim_views_in_project_post_out_data_type_1_item import RetrieveBimViewsInProjectPostOutDataType1Item
 from .retrieve_bim_views_in_sheet_get_out import RetrieveBimViewsInSheetGetOut
 from .retrieve_bim_views_in_sheet_get_out_data_item_type_1 import RetrieveBimViewsInSheetGetOutDataItemType1
+from .role_entity_context import RoleEntityContext
 from .role_name import RoleName
+from .role_project_context import RoleProjectContext
 from .run_artifact_post_in import RunArtifactPostIn
 from .run_artifact_post_in_body_type_0 import RunArtifactPostInBodyType0
 from .run_artifact_post_out import RunArtifactPostOut
@@ -1001,6 +1005,7 @@ from .verify_otp_post_in import VerifyOTPPostIn
 __all__ = (
     "ABimProjectElementTypePath",
     "ADataspacePathParams",
+    "AffectedRequirementOut",
     "AggregatedLLMUsagePostOut",
     "AggregatedUsageByModel",
     "AggregateLLMUsagePostIn",
@@ -1030,8 +1035,6 @@ __all__ = (
     "ArtifactPostOut",
     "ArtifactPostPath",
     "ASimulateLongCallPostOut",
-    "AssignedRoleContextObjectSchemaOut",
-    "AssignedRoleProjectObjectSchemaOut",
     "AssignedRoleSchemaOut",
     "Assistants",
     "AssistantsCallbackPayload",
@@ -1260,6 +1263,7 @@ __all__ = (
     "DeleteGeneralAttributeAttributeObjectTypes",
     "DeleteGeneralLawtalkAttributeAttributeObjectTypes",
     "DeleteLawtalkAttributeAttributeObjectTypes",
+    "DeleteResourceGroupQuery",
     "DeleteResourceSectionPath",
     "DeleteSystemAttributeAttributeObjectTypes",
     "DeleteTableAttributeRowAttributeObjectTypes",
@@ -1542,6 +1546,7 @@ __all__ = (
     "MePatchOut",
     "MergeResult",
     "MergeResultSearchResultsItem",
+    "NonPrimitiveRoleName",
     "NotificationGetOut",
     "NotificationGetOutMetadata",
     "NotificationPath",
@@ -1750,6 +1755,7 @@ __all__ = (
     "ResourceGetManySchemaPostOutItems",
     "ResourceGroup",
     "ResourceGroupAnyIn",
+    "ResourceGroupCheckDeleteOut",
     "ResourceGroupGetPath",
     "ResourceGroupItemPath",
     "ResourceGroupPatchInPatch",
@@ -1784,7 +1790,9 @@ __all__ = (
     "RetrieveBimViewsInProjectPostOutDataType1Item",
     "RetrieveBimViewsInSheetGetOut",
     "RetrieveBimViewsInSheetGetOutDataItemType1",
+    "RoleEntityContext",
     "RoleName",
+    "RoleProjectContext",
     "RunArtifactPostIn",
     "RunArtifactPostInBodyType0",
     "RunArtifactPostOut",

@@ -9,16 +9,20 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="AssignedRoleProjectObjectSchemaOut")
+T = TypeVar("T", bound="RoleProjectContext")
 
 
 @_attrs_define
-class AssignedRoleProjectObjectSchemaOut:
-    """
-    Attributes:
-        id (UUID):
-        name (str):
-        lawtalk_id (None | Unset | UUID):
+class RoleProjectContext:
+    """Model representing a Project context object for an assigned role.
+
+    Inherits from RoleEntityContext and adds:
+    lawtalk_id: Optional UUID of the associated Lawtalk project.
+
+        Attributes:
+            id (UUID):
+            name (str):
+            lawtalk_id (None | Unset | UUID):
     """
 
     id: UUID
@@ -76,14 +80,14 @@ class AssignedRoleProjectObjectSchemaOut:
 
         lawtalk_id = _parse_lawtalk_id(d.pop("lawtalk_id", UNSET))
 
-        assigned_role_project_object_schema_out = cls(
+        role_project_context = cls(
             id=id,
             name=name,
             lawtalk_id=lawtalk_id,
         )
 
-        assigned_role_project_object_schema_out.additional_properties = d
-        return assigned_role_project_object_schema_out
+        role_project_context.additional_properties = d
+        return role_project_context
 
     @property
     def additional_keys(self) -> list[str]:
