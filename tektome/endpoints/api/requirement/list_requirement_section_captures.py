@@ -16,6 +16,7 @@ def _get_kwargs(
     *,
     page_number: list[int] | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     json_page_number: list[int] | Unset = UNSET

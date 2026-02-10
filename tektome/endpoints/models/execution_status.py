@@ -3,7 +3,6 @@ from enum import Enum
 
 class ExecutionStatus(str, Enum):
     AUTO_APPROVED = "auto_approved"
-    CANCELLED = "cancelled"
     COMPLETED = "completed"
     FAILED = "failed"
     IN_PROGRESS = "in_progress"

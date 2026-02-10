@@ -14,6 +14,7 @@ def _get_kwargs(
     organization_id: UUID,
     template_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/api/core/agents/os/organizations/{organization_id}/templates/{template_id}/".format(

@@ -13,6 +13,7 @@ from ...types import Response
 def _get_kwargs(
     task_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/app/tektomebe/v1/documents/async_extraction/{task_id}/".format(

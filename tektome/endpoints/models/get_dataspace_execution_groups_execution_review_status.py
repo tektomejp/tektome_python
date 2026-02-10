@@ -2,7 +2,6 @@ from enum import Enum
 
 
 class GetDataspaceExecutionGroupsExecutionReviewStatus(str, Enum):
-    DISABLED = "disabled"
     NOT_REQUIRED = "not_required"
     PARTIALLY_REVIEWED = "partially_reviewed"
     PENDING = "pending"

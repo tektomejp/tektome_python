@@ -13,6 +13,7 @@ from ...types import Response
 def _get_kwargs(
     request_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/api/core/search/entities/requests/{request_id}/".format(

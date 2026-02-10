@@ -19,6 +19,7 @@ def _get_kwargs(
     *,
     id_only: bool | Unset = False,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["id_only"] = id_only

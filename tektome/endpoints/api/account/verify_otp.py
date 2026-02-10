@@ -52,16 +52,12 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def sync_detailed(
     *,
-    client: AuthenticatedClient | Client,
+    client: AuthenticatedClient,
     body: VerifyOTPPostIn,
 ) -> Response[LoginPostOut]:
     """Post Verify Otp
 
-     RBRm9tFb
-    Verify OTP sent to user email. Creates a session if successful.
-
-    Note: Returns the same error for non-existent users and missing OTP
-    to prevent user enumeration attacks.
+     Verify OTP sent to user email. Creates a session if successful.
 
     Args:
         body (VerifyOTPPostIn):
@@ -87,16 +83,12 @@ def sync_detailed(
 
 def sync(
     *,
-    client: AuthenticatedClient | Client,
+    client: AuthenticatedClient,
     body: VerifyOTPPostIn,
 ) -> LoginPostOut | None:
     """Post Verify Otp
 
-     RBRm9tFb
-    Verify OTP sent to user email. Creates a session if successful.
-
-    Note: Returns the same error for non-existent users and missing OTP
-    to prevent user enumeration attacks.
+     Verify OTP sent to user email. Creates a session if successful.
 
     Args:
         body (VerifyOTPPostIn):
@@ -117,16 +109,12 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: AuthenticatedClient | Client,
+    client: AuthenticatedClient,
     body: VerifyOTPPostIn,
 ) -> Response[LoginPostOut]:
     """Post Verify Otp
 
-     RBRm9tFb
-    Verify OTP sent to user email. Creates a session if successful.
-
-    Note: Returns the same error for non-existent users and missing OTP
-    to prevent user enumeration attacks.
+     Verify OTP sent to user email. Creates a session if successful.
 
     Args:
         body (VerifyOTPPostIn):
@@ -150,16 +138,12 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: AuthenticatedClient | Client,
+    client: AuthenticatedClient,
     body: VerifyOTPPostIn,
 ) -> LoginPostOut | None:
     """Post Verify Otp
 
-     RBRm9tFb
-    Verify OTP sent to user email. Creates a session if successful.
-
-    Note: Returns the same error for non-existent users and missing OTP
-    to prevent user enumeration attacks.
+     Verify OTP sent to user email. Creates a session if successful.
 
     Args:
         body (VerifyOTPPostIn):

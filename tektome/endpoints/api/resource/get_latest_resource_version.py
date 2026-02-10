@@ -16,6 +16,7 @@ def _get_kwargs(
     resource_group_id: UUID,
     resource_vc_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/core/resource-groups/{resource_group_id}/resources/version-control/{resource_vc_id}/version/latest/".format(

@@ -14,6 +14,7 @@ def _get_kwargs(
     dataspace_id: UUID,
     template_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/api/core/dataspaces/{dataspace_id}/templates/{template_id}/".format(

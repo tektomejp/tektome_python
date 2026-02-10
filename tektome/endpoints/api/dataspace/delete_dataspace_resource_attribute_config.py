@@ -13,6 +13,7 @@ from ...types import Response
 def _get_kwargs(
     attribute_config_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/api/core/dataspaces/resources/attribute-configs/{attribute_config_id}/".format(

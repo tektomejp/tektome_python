@@ -14,6 +14,7 @@ def _get_kwargs(
     reference_note_id: UUID,
     version_number: int,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/api/app/lawtalk/requirements/reference-notes/{reference_note_id}/versions/{version_number}/".format(

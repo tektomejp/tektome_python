@@ -15,25 +15,20 @@ class ExecutionApprovalPathParams:
     """Path parameters for retrieving execution approvals
 
     Attributes:
-        dataspace_id (UUID):
-        execution_id (UUID):
+        approval_id (UUID):
     """
 
-    dataspace_id: UUID
-    execution_id: UUID
+    approval_id: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        dataspace_id = str(self.dataspace_id)
-
-        execution_id = str(self.execution_id)
+        approval_id = str(self.approval_id)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "dataspace_id": dataspace_id,
-                "execution_id": execution_id,
+                "approval_id": approval_id,
             }
         )
 
@@ -42,13 +37,10 @@ class ExecutionApprovalPathParams:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        dataspace_id = UUID(d.pop("dataspace_id"))
-
-        execution_id = UUID(d.pop("execution_id"))
+        approval_id = UUID(d.pop("approval_id"))
 
         execution_approval_path_params = cls(
-            dataspace_id=dataspace_id,
-            execution_id=execution_id,
+            approval_id=approval_id,
         )
 
         execution_approval_path_params.additional_properties = d

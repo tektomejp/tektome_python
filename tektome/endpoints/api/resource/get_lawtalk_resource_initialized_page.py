@@ -14,6 +14,7 @@ def _get_kwargs(
     resource_id: str,
     page_num: int,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/app/lawtalk/resources/{resource_id}/initialized/page/{page_num}/".format(

@@ -15,6 +15,7 @@ def _get_kwargs(
     resource_id: UUID,
     page_num: int,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/core/resource-groups/resources/{resource_id}/pages/{page_num}/".format(
