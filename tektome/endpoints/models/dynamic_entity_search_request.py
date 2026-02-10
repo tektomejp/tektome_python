@@ -338,128 +338,128 @@ class DynamicEntitySearchRequest:
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        project_item_type_0 = StringSearchCondition.from_dict(data)
+                        project_item_type_0_type_0 = StringSearchCondition.from_dict(data)
 
-                        return project_item_type_0
+                        return project_item_type_0_type_0
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        project_item_type_1 = IntegerSearchCondition.from_dict(data)
+                        project_item_type_0_type_1 = IntegerSearchCondition.from_dict(data)
 
-                        return project_item_type_1
+                        return project_item_type_0_type_1
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        project_item_type_2 = FloatSearchCondition.from_dict(data)
+                        project_item_type_0_type_2 = FloatSearchCondition.from_dict(data)
 
-                        return project_item_type_2
+                        return project_item_type_0_type_2
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        project_item_type_3 = BooleanSearchCondition.from_dict(data)
+                        project_item_type_0_type_3 = BooleanSearchCondition.from_dict(data)
 
-                        return project_item_type_3
+                        return project_item_type_0_type_3
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        project_item_type_4 = DateSearchCondition.from_dict(data)
+                        project_item_type_0_type_4 = DateSearchCondition.from_dict(data)
 
-                        return project_item_type_4
+                        return project_item_type_0_type_4
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        project_item_type_5 = DateTimeSearchCondition.from_dict(data)
+                        project_item_type_0_type_5 = DateTimeSearchCondition.from_dict(data)
 
-                        return project_item_type_5
+                        return project_item_type_0_type_5
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        project_item_type_6 = TimeSearchCondition.from_dict(data)
+                        project_item_type_0_type_6 = TimeSearchCondition.from_dict(data)
 
-                        return project_item_type_6
+                        return project_item_type_0_type_6
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        project_item_type_7 = TableSearchCondition.from_dict(data)
+                        project_item_type_0_type_7 = TableSearchCondition.from_dict(data)
 
-                        return project_item_type_7
+                        return project_item_type_0_type_7
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        project_item_type_8 = DynamicStringSearchCondition.from_dict(data)
+                        project_item_type_1_type_0 = DynamicStringSearchCondition.from_dict(data)
 
-                        return project_item_type_8
+                        return project_item_type_1_type_0
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        project_item_type_9 = DynamicIntegerSearchCondition.from_dict(data)
+                        project_item_type_1_type_1 = DynamicIntegerSearchCondition.from_dict(data)
 
-                        return project_item_type_9
+                        return project_item_type_1_type_1
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        project_item_type_10 = DynamicFloatSearchCondition.from_dict(data)
+                        project_item_type_1_type_2 = DynamicFloatSearchCondition.from_dict(data)
 
-                        return project_item_type_10
+                        return project_item_type_1_type_2
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        project_item_type_11 = DynamicBooleanSearchCondition.from_dict(data)
+                        project_item_type_1_type_3 = DynamicBooleanSearchCondition.from_dict(data)
 
-                        return project_item_type_11
+                        return project_item_type_1_type_3
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        project_item_type_12 = DynamicDateSearchCondition.from_dict(data)
+                        project_item_type_1_type_4 = DynamicDateSearchCondition.from_dict(data)
 
-                        return project_item_type_12
+                        return project_item_type_1_type_4
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        project_item_type_13 = DynamicDateTimeSearchCondition.from_dict(data)
+                        project_item_type_1_type_5 = DynamicDateTimeSearchCondition.from_dict(data)
 
-                        return project_item_type_13
+                        return project_item_type_1_type_5
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        project_item_type_14 = DynamicTimeSearchCondition.from_dict(data)
+                        project_item_type_1_type_6 = DynamicTimeSearchCondition.from_dict(data)
 
-                        return project_item_type_14
+                        return project_item_type_1_type_6
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     if not isinstance(data, dict):
                         raise TypeError()
-                    project_item_type_15 = DynamicTableSearchCondition.from_dict(data)
+                    project_item_type_1_type_7 = DynamicTableSearchCondition.from_dict(data)
 
-                    return project_item_type_15
+                    return project_item_type_1_type_7
 
                 project_item = _parse_project_item(project_item_data)
 
@@ -514,128 +514,128 @@ class DynamicEntitySearchRequest:
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_group_item_type_0 = StringSearchCondition.from_dict(data)
+                        resource_group_item_type_0_type_0 = StringSearchCondition.from_dict(data)
 
-                        return resource_group_item_type_0
+                        return resource_group_item_type_0_type_0
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_group_item_type_1 = IntegerSearchCondition.from_dict(data)
+                        resource_group_item_type_0_type_1 = IntegerSearchCondition.from_dict(data)
 
-                        return resource_group_item_type_1
+                        return resource_group_item_type_0_type_1
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_group_item_type_2 = FloatSearchCondition.from_dict(data)
+                        resource_group_item_type_0_type_2 = FloatSearchCondition.from_dict(data)
 
-                        return resource_group_item_type_2
+                        return resource_group_item_type_0_type_2
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_group_item_type_3 = BooleanSearchCondition.from_dict(data)
+                        resource_group_item_type_0_type_3 = BooleanSearchCondition.from_dict(data)
 
-                        return resource_group_item_type_3
+                        return resource_group_item_type_0_type_3
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_group_item_type_4 = DateSearchCondition.from_dict(data)
+                        resource_group_item_type_0_type_4 = DateSearchCondition.from_dict(data)
 
-                        return resource_group_item_type_4
+                        return resource_group_item_type_0_type_4
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_group_item_type_5 = DateTimeSearchCondition.from_dict(data)
+                        resource_group_item_type_0_type_5 = DateTimeSearchCondition.from_dict(data)
 
-                        return resource_group_item_type_5
+                        return resource_group_item_type_0_type_5
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_group_item_type_6 = TimeSearchCondition.from_dict(data)
+                        resource_group_item_type_0_type_6 = TimeSearchCondition.from_dict(data)
 
-                        return resource_group_item_type_6
+                        return resource_group_item_type_0_type_6
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_group_item_type_7 = TableSearchCondition.from_dict(data)
+                        resource_group_item_type_0_type_7 = TableSearchCondition.from_dict(data)
 
-                        return resource_group_item_type_7
+                        return resource_group_item_type_0_type_7
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_group_item_type_8 = DynamicStringSearchCondition.from_dict(data)
+                        resource_group_item_type_1_type_0 = DynamicStringSearchCondition.from_dict(data)
 
-                        return resource_group_item_type_8
+                        return resource_group_item_type_1_type_0
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_group_item_type_9 = DynamicIntegerSearchCondition.from_dict(data)
+                        resource_group_item_type_1_type_1 = DynamicIntegerSearchCondition.from_dict(data)
 
-                        return resource_group_item_type_9
+                        return resource_group_item_type_1_type_1
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_group_item_type_10 = DynamicFloatSearchCondition.from_dict(data)
+                        resource_group_item_type_1_type_2 = DynamicFloatSearchCondition.from_dict(data)
 
-                        return resource_group_item_type_10
+                        return resource_group_item_type_1_type_2
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_group_item_type_11 = DynamicBooleanSearchCondition.from_dict(data)
+                        resource_group_item_type_1_type_3 = DynamicBooleanSearchCondition.from_dict(data)
 
-                        return resource_group_item_type_11
+                        return resource_group_item_type_1_type_3
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_group_item_type_12 = DynamicDateSearchCondition.from_dict(data)
+                        resource_group_item_type_1_type_4 = DynamicDateSearchCondition.from_dict(data)
 
-                        return resource_group_item_type_12
+                        return resource_group_item_type_1_type_4
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_group_item_type_13 = DynamicDateTimeSearchCondition.from_dict(data)
+                        resource_group_item_type_1_type_5 = DynamicDateTimeSearchCondition.from_dict(data)
 
-                        return resource_group_item_type_13
+                        return resource_group_item_type_1_type_5
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_group_item_type_14 = DynamicTimeSearchCondition.from_dict(data)
+                        resource_group_item_type_1_type_6 = DynamicTimeSearchCondition.from_dict(data)
 
-                        return resource_group_item_type_14
+                        return resource_group_item_type_1_type_6
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     if not isinstance(data, dict):
                         raise TypeError()
-                    resource_group_item_type_15 = DynamicTableSearchCondition.from_dict(data)
+                    resource_group_item_type_1_type_7 = DynamicTableSearchCondition.from_dict(data)
 
-                    return resource_group_item_type_15
+                    return resource_group_item_type_1_type_7
 
                 resource_group_item = _parse_resource_group_item(resource_group_item_data)
 
@@ -690,128 +690,128 @@ class DynamicEntitySearchRequest:
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_item_type_0 = StringSearchCondition.from_dict(data)
+                        resource_item_type_0_type_0 = StringSearchCondition.from_dict(data)
 
-                        return resource_item_type_0
+                        return resource_item_type_0_type_0
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_item_type_1 = IntegerSearchCondition.from_dict(data)
+                        resource_item_type_0_type_1 = IntegerSearchCondition.from_dict(data)
 
-                        return resource_item_type_1
+                        return resource_item_type_0_type_1
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_item_type_2 = FloatSearchCondition.from_dict(data)
+                        resource_item_type_0_type_2 = FloatSearchCondition.from_dict(data)
 
-                        return resource_item_type_2
+                        return resource_item_type_0_type_2
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_item_type_3 = BooleanSearchCondition.from_dict(data)
+                        resource_item_type_0_type_3 = BooleanSearchCondition.from_dict(data)
 
-                        return resource_item_type_3
+                        return resource_item_type_0_type_3
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_item_type_4 = DateSearchCondition.from_dict(data)
+                        resource_item_type_0_type_4 = DateSearchCondition.from_dict(data)
 
-                        return resource_item_type_4
+                        return resource_item_type_0_type_4
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_item_type_5 = DateTimeSearchCondition.from_dict(data)
+                        resource_item_type_0_type_5 = DateTimeSearchCondition.from_dict(data)
 
-                        return resource_item_type_5
+                        return resource_item_type_0_type_5
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_item_type_6 = TimeSearchCondition.from_dict(data)
+                        resource_item_type_0_type_6 = TimeSearchCondition.from_dict(data)
 
-                        return resource_item_type_6
+                        return resource_item_type_0_type_6
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_item_type_7 = TableSearchCondition.from_dict(data)
+                        resource_item_type_0_type_7 = TableSearchCondition.from_dict(data)
 
-                        return resource_item_type_7
+                        return resource_item_type_0_type_7
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_item_type_8 = DynamicStringSearchCondition.from_dict(data)
+                        resource_item_type_1_type_0 = DynamicStringSearchCondition.from_dict(data)
 
-                        return resource_item_type_8
+                        return resource_item_type_1_type_0
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_item_type_9 = DynamicIntegerSearchCondition.from_dict(data)
+                        resource_item_type_1_type_1 = DynamicIntegerSearchCondition.from_dict(data)
 
-                        return resource_item_type_9
+                        return resource_item_type_1_type_1
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_item_type_10 = DynamicFloatSearchCondition.from_dict(data)
+                        resource_item_type_1_type_2 = DynamicFloatSearchCondition.from_dict(data)
 
-                        return resource_item_type_10
+                        return resource_item_type_1_type_2
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_item_type_11 = DynamicBooleanSearchCondition.from_dict(data)
+                        resource_item_type_1_type_3 = DynamicBooleanSearchCondition.from_dict(data)
 
-                        return resource_item_type_11
+                        return resource_item_type_1_type_3
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_item_type_12 = DynamicDateSearchCondition.from_dict(data)
+                        resource_item_type_1_type_4 = DynamicDateSearchCondition.from_dict(data)
 
-                        return resource_item_type_12
+                        return resource_item_type_1_type_4
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_item_type_13 = DynamicDateTimeSearchCondition.from_dict(data)
+                        resource_item_type_1_type_5 = DynamicDateTimeSearchCondition.from_dict(data)
 
-                        return resource_item_type_13
+                        return resource_item_type_1_type_5
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     try:
                         if not isinstance(data, dict):
                             raise TypeError()
-                        resource_item_type_14 = DynamicTimeSearchCondition.from_dict(data)
+                        resource_item_type_1_type_6 = DynamicTimeSearchCondition.from_dict(data)
 
-                        return resource_item_type_14
+                        return resource_item_type_1_type_6
                     except (TypeError, ValueError, AttributeError, KeyError):
                         pass
                     if not isinstance(data, dict):
                         raise TypeError()
-                    resource_item_type_15 = DynamicTableSearchCondition.from_dict(data)
+                    resource_item_type_1_type_7 = DynamicTableSearchCondition.from_dict(data)
 
-                    return resource_item_type_15
+                    return resource_item_type_1_type_7
 
                 resource_item = _parse_resource_item(resource_item_data)
 

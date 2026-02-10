@@ -12,6 +12,7 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.resource_metadata_required_schema import ResourceMetadataRequiredSchema
     from ..models.resource_required_schema import ResourceRequiredSchema
     from ..models.user_metadata import UserMetadata
 
@@ -26,6 +27,7 @@ class DataspaceProjectResourcesGetOut:
     Attributes:
         file (str):
         core_attributes (ResourceRequiredSchema):
+        core_attributes_metadata (ResourceMetadataRequiredSchema):
         created_by (UserMetadata):
         updated_by (UserMetadata):
         created (datetime.datetime):
@@ -36,6 +38,7 @@ class DataspaceProjectResourcesGetOut:
 
     file: str
     core_attributes: ResourceRequiredSchema
+    core_attributes_metadata: ResourceMetadataRequiredSchema
     created_by: UserMetadata
     updated_by: UserMetadata
     created: datetime.datetime
@@ -48,6 +51,8 @@ class DataspaceProjectResourcesGetOut:
         file = self.file
 
         core_attributes = self.core_attributes.to_dict()
+
+        core_attributes_metadata = self.core_attributes_metadata.to_dict()
 
         created_by = self.created_by.to_dict()
 
@@ -79,6 +84,7 @@ class DataspaceProjectResourcesGetOut:
             {
                 "file": file,
                 "core_attributes": core_attributes,
+                "core_attributes_metadata": core_attributes_metadata,
                 "created_by": created_by,
                 "updated_by": updated_by,
                 "created": created,
@@ -94,6 +100,7 @@ class DataspaceProjectResourcesGetOut:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.resource_metadata_required_schema import ResourceMetadataRequiredSchema
         from ..models.resource_required_schema import ResourceRequiredSchema
         from ..models.user_metadata import UserMetadata
 
@@ -101,6 +108,8 @@ class DataspaceProjectResourcesGetOut:
         file = d.pop("file")
 
         core_attributes = ResourceRequiredSchema.from_dict(d.pop("core_attributes"))
+
+        core_attributes_metadata = ResourceMetadataRequiredSchema.from_dict(d.pop("core_attributes_metadata"))
 
         created_by = UserMetadata.from_dict(d.pop("created_by"))
 
@@ -147,6 +156,7 @@ class DataspaceProjectResourcesGetOut:
         dataspace_project_resources_get_out = cls(
             file=file,
             core_attributes=core_attributes,
+            core_attributes_metadata=core_attributes_metadata,
             created_by=created_by,
             updated_by=updated_by,
             created=created,

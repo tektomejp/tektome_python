@@ -23,6 +23,7 @@ class GetAPIKeyGetOut:
         updated (datetime.datetime):
         expires_at (datetime.datetime):
         id (None | Unset | UUID):
+        name (None | str | Unset):  Default: ''.
         key (str | Unset):
         scopes (list[Any] | Unset):
         is_system (bool | Unset):  Default: False.
@@ -32,6 +33,7 @@ class GetAPIKeyGetOut:
     updated: datetime.datetime
     expires_at: datetime.datetime
     id: None | Unset | UUID = UNSET
+    name: None | str | Unset = ""
     key: str | Unset = UNSET
     scopes: list[Any] | Unset = UNSET
     is_system: bool | Unset = False
@@ -52,6 +54,12 @@ class GetAPIKeyGetOut:
         else:
             id = self.id
 
+        name: None | str | Unset
+        if isinstance(self.name, Unset):
+            name = UNSET
+        else:
+            name = self.name
+
         key = self.key
 
         scopes: list[Any] | Unset = UNSET
@@ -71,6 +79,8 @@ class GetAPIKeyGetOut:
         )
         if id is not UNSET:
             field_dict["id"] = id
+        if name is not UNSET:
+            field_dict["name"] = name
         if key is not UNSET:
             field_dict["key"] = key
         if scopes is not UNSET:
@@ -106,6 +116,15 @@ class GetAPIKeyGetOut:
 
         id = _parse_id(d.pop("id", UNSET))
 
+        def _parse_name(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        name = _parse_name(d.pop("name", UNSET))
+
         key = d.pop("key", UNSET)
 
         scopes = cast(list[Any], d.pop("scopes", UNSET))
@@ -117,6 +136,7 @@ class GetAPIKeyGetOut:
             updated=updated,
             expires_at=expires_at,
             id=id,
+            name=name,
             key=key,
             scopes=scopes,
             is_system=is_system,

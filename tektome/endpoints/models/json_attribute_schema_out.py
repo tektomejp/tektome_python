@@ -30,6 +30,7 @@ class JSONAttributeSchemaOut:
         creation_method (None | str | Unset):  Default: 'automatic'.
         error_message (None | str | Unset):
         extraction_reasoning (None | str | Unset):
+        is_locked (bool | Unset): Indicates whether the attribute is locked from further edits. Default: False.
         value (JSONAttributeSchemaOutValueType0 | None | Unset):
     """
 
@@ -41,6 +42,7 @@ class JSONAttributeSchemaOut:
     creation_method: None | str | Unset = "automatic"
     error_message: None | str | Unset = UNSET
     extraction_reasoning: None | str | Unset = UNSET
+    is_locked: bool | Unset = False
     value: JSONAttributeSchemaOutValueType0 | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -85,6 +87,8 @@ class JSONAttributeSchemaOut:
         else:
             extraction_reasoning = self.extraction_reasoning
 
+        is_locked = self.is_locked
+
         value: dict[str, Any] | None | Unset
         if isinstance(self.value, Unset):
             value = UNSET
@@ -112,6 +116,8 @@ class JSONAttributeSchemaOut:
             field_dict["error_message"] = error_message
         if extraction_reasoning is not UNSET:
             field_dict["extraction_reasoning"] = extraction_reasoning
+        if is_locked is not UNSET:
+            field_dict["is_locked"] = is_locked
         if value is not UNSET:
             field_dict["value"] = value
 
@@ -181,6 +187,8 @@ class JSONAttributeSchemaOut:
 
         extraction_reasoning = _parse_extraction_reasoning(d.pop("extraction_reasoning", UNSET))
 
+        is_locked = d.pop("is_locked", UNSET)
+
         def _parse_value(data: object) -> JSONAttributeSchemaOutValueType0 | None | Unset:
             if data is None:
                 return data
@@ -207,6 +215,7 @@ class JSONAttributeSchemaOut:
             creation_method=creation_method,
             error_message=error_message,
             extraction_reasoning=extraction_reasoning,
+            is_locked=is_locked,
             value=value,
         )
 

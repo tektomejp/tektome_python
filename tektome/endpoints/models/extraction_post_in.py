@@ -26,6 +26,8 @@ class ExtractionPostIn:
         attributes (list[Attribute]):
         enduser_prompt (str): User prompt for the entire extraction, appended to the user prompt
         include_pdf_pages_as_images (bool | Unset):  Default: False.
+        for_approval (bool | Unset): Whether the extraction results should be marked as pending approval before being
+            finalized. Default: False.
     """
 
     section_id: UUID
@@ -33,6 +35,7 @@ class ExtractionPostIn:
     attributes: list[Attribute]
     enduser_prompt: str
     include_pdf_pages_as_images: bool | Unset = False
+    for_approval: bool | Unset = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -49,6 +52,8 @@ class ExtractionPostIn:
 
         include_pdf_pages_as_images = self.include_pdf_pages_as_images
 
+        for_approval = self.for_approval
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -61,6 +66,8 @@ class ExtractionPostIn:
         )
         if include_pdf_pages_as_images is not UNSET:
             field_dict["include_pdf_pages_as_images"] = include_pdf_pages_as_images
+        if for_approval is not UNSET:
+            field_dict["for_approval"] = for_approval
 
         return field_dict
 
@@ -84,12 +91,15 @@ class ExtractionPostIn:
 
         include_pdf_pages_as_images = d.pop("include_pdf_pages_as_images", UNSET)
 
+        for_approval = d.pop("for_approval", UNSET)
+
         extraction_post_in = cls(
             section_id=section_id,
             recipe=recipe,
             attributes=attributes,
             enduser_prompt=enduser_prompt,
             include_pdf_pages_as_images=include_pdf_pages_as_images,
+            for_approval=for_approval,
         )
 
         extraction_post_in.additional_properties = d

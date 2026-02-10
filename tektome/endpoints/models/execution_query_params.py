@@ -9,6 +9,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.execution_query_params_approval_category_types import ExecutionQueryParamsApprovalCategoryTypes
 from ..models.execution_query_params_execution_review_status import ExecutionQueryParamsExecutionReviewStatus
 from ..models.execution_query_params_execution_status import ExecutionQueryParamsExecutionStatus
 from ..models.execution_query_params_process_type_choices import ExecutionQueryParamsProcessTypeChoices
@@ -30,7 +31,13 @@ class ExecutionQueryParams:
         start_datetime (datetime.datetime | None | Unset): Filter execution groups started on or after this datetime
         end_datetime (datetime.datetime | None | Unset): Filter execution groups ended on or before this datetime
         memo (None | str | Unset): Filter execution groups containing this memo text
-        execution_groups (list[UUID] | Unset): Execution group IDs
+        execution_group_ids (list[UUID] | Unset): Execution group IDs
+        target_files_ids (list[UUID] | Unset): Target core resource file IDs
+        target_entity_ids (list[UUID] | Unset): Target DS entity IDs
+        category (list[ExecutionQueryParamsApprovalCategoryTypes] | Unset): Approval category to filter executions
+        file_attributes_extracted_ids (list[UUID] | Unset): Filter executions with these UUID file attributes extracted
+        entity_attributes_extracted_ids (list[UUID] | Unset): Filter executions with these UUID entity attributes
+            extracted
     """
 
     process_types: list[ExecutionQueryParamsProcessTypeChoices] | Unset = UNSET
@@ -41,7 +48,12 @@ class ExecutionQueryParams:
     start_datetime: datetime.datetime | None | Unset = UNSET
     end_datetime: datetime.datetime | None | Unset = UNSET
     memo: None | str | Unset = UNSET
-    execution_groups: list[UUID] | Unset = UNSET
+    execution_group_ids: list[UUID] | Unset = UNSET
+    target_files_ids: list[UUID] | Unset = UNSET
+    target_entity_ids: list[UUID] | Unset = UNSET
+    category: list[ExecutionQueryParamsApprovalCategoryTypes] | Unset = UNSET
+    file_attributes_extracted_ids: list[UUID] | Unset = UNSET
+    entity_attributes_extracted_ids: list[UUID] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -102,12 +114,47 @@ class ExecutionQueryParams:
         else:
             memo = self.memo
 
-        execution_groups: list[str] | Unset = UNSET
-        if not isinstance(self.execution_groups, Unset):
-            execution_groups = []
-            for execution_groups_item_data in self.execution_groups:
-                execution_groups_item = str(execution_groups_item_data)
-                execution_groups.append(execution_groups_item)
+        execution_group_ids: list[str] | Unset = UNSET
+        if not isinstance(self.execution_group_ids, Unset):
+            execution_group_ids = []
+            for execution_group_ids_item_data in self.execution_group_ids:
+                execution_group_ids_item = str(execution_group_ids_item_data)
+                execution_group_ids.append(execution_group_ids_item)
+
+        target_files_ids: list[str] | Unset = UNSET
+        if not isinstance(self.target_files_ids, Unset):
+            target_files_ids = []
+            for target_files_ids_item_data in self.target_files_ids:
+                target_files_ids_item = str(target_files_ids_item_data)
+                target_files_ids.append(target_files_ids_item)
+
+        target_entity_ids: list[str] | Unset = UNSET
+        if not isinstance(self.target_entity_ids, Unset):
+            target_entity_ids = []
+            for target_entity_ids_item_data in self.target_entity_ids:
+                target_entity_ids_item = str(target_entity_ids_item_data)
+                target_entity_ids.append(target_entity_ids_item)
+
+        category: list[str] | Unset = UNSET
+        if not isinstance(self.category, Unset):
+            category = []
+            for category_item_data in self.category:
+                category_item = category_item_data.value
+                category.append(category_item)
+
+        file_attributes_extracted_ids: list[str] | Unset = UNSET
+        if not isinstance(self.file_attributes_extracted_ids, Unset):
+            file_attributes_extracted_ids = []
+            for file_attributes_extracted_ids_item_data in self.file_attributes_extracted_ids:
+                file_attributes_extracted_ids_item = str(file_attributes_extracted_ids_item_data)
+                file_attributes_extracted_ids.append(file_attributes_extracted_ids_item)
+
+        entity_attributes_extracted_ids: list[str] | Unset = UNSET
+        if not isinstance(self.entity_attributes_extracted_ids, Unset):
+            entity_attributes_extracted_ids = []
+            for entity_attributes_extracted_ids_item_data in self.entity_attributes_extracted_ids:
+                entity_attributes_extracted_ids_item = str(entity_attributes_extracted_ids_item_data)
+                entity_attributes_extracted_ids.append(entity_attributes_extracted_ids_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -128,8 +175,18 @@ class ExecutionQueryParams:
             field_dict["end_datetime"] = end_datetime
         if memo is not UNSET:
             field_dict["memo"] = memo
-        if execution_groups is not UNSET:
-            field_dict["execution_groups"] = execution_groups
+        if execution_group_ids is not UNSET:
+            field_dict["execution_group_ids"] = execution_group_ids
+        if target_files_ids is not UNSET:
+            field_dict["target_files_ids"] = target_files_ids
+        if target_entity_ids is not UNSET:
+            field_dict["target_entity_ids"] = target_entity_ids
+        if category is not UNSET:
+            field_dict["category"] = category
+        if file_attributes_extracted_ids is not UNSET:
+            field_dict["file_attributes_extracted_ids"] = file_attributes_extracted_ids
+        if entity_attributes_extracted_ids is not UNSET:
+            field_dict["entity_attributes_extracted_ids"] = entity_attributes_extracted_ids
 
         return field_dict
 
@@ -224,14 +281,59 @@ class ExecutionQueryParams:
 
         memo = _parse_memo(d.pop("memo", UNSET))
 
-        _execution_groups = d.pop("execution_groups", UNSET)
-        execution_groups: list[UUID] | Unset = UNSET
-        if _execution_groups is not UNSET:
-            execution_groups = []
-            for execution_groups_item_data in _execution_groups:
-                execution_groups_item = UUID(execution_groups_item_data)
+        _execution_group_ids = d.pop("execution_group_ids", UNSET)
+        execution_group_ids: list[UUID] | Unset = UNSET
+        if _execution_group_ids is not UNSET:
+            execution_group_ids = []
+            for execution_group_ids_item_data in _execution_group_ids:
+                execution_group_ids_item = UUID(execution_group_ids_item_data)
 
-                execution_groups.append(execution_groups_item)
+                execution_group_ids.append(execution_group_ids_item)
+
+        _target_files_ids = d.pop("target_files_ids", UNSET)
+        target_files_ids: list[UUID] | Unset = UNSET
+        if _target_files_ids is not UNSET:
+            target_files_ids = []
+            for target_files_ids_item_data in _target_files_ids:
+                target_files_ids_item = UUID(target_files_ids_item_data)
+
+                target_files_ids.append(target_files_ids_item)
+
+        _target_entity_ids = d.pop("target_entity_ids", UNSET)
+        target_entity_ids: list[UUID] | Unset = UNSET
+        if _target_entity_ids is not UNSET:
+            target_entity_ids = []
+            for target_entity_ids_item_data in _target_entity_ids:
+                target_entity_ids_item = UUID(target_entity_ids_item_data)
+
+                target_entity_ids.append(target_entity_ids_item)
+
+        _category = d.pop("category", UNSET)
+        category: list[ExecutionQueryParamsApprovalCategoryTypes] | Unset = UNSET
+        if _category is not UNSET:
+            category = []
+            for category_item_data in _category:
+                category_item = ExecutionQueryParamsApprovalCategoryTypes(category_item_data)
+
+                category.append(category_item)
+
+        _file_attributes_extracted_ids = d.pop("file_attributes_extracted_ids", UNSET)
+        file_attributes_extracted_ids: list[UUID] | Unset = UNSET
+        if _file_attributes_extracted_ids is not UNSET:
+            file_attributes_extracted_ids = []
+            for file_attributes_extracted_ids_item_data in _file_attributes_extracted_ids:
+                file_attributes_extracted_ids_item = UUID(file_attributes_extracted_ids_item_data)
+
+                file_attributes_extracted_ids.append(file_attributes_extracted_ids_item)
+
+        _entity_attributes_extracted_ids = d.pop("entity_attributes_extracted_ids", UNSET)
+        entity_attributes_extracted_ids: list[UUID] | Unset = UNSET
+        if _entity_attributes_extracted_ids is not UNSET:
+            entity_attributes_extracted_ids = []
+            for entity_attributes_extracted_ids_item_data in _entity_attributes_extracted_ids:
+                entity_attributes_extracted_ids_item = UUID(entity_attributes_extracted_ids_item_data)
+
+                entity_attributes_extracted_ids.append(entity_attributes_extracted_ids_item)
 
         execution_query_params = cls(
             process_types=process_types,
@@ -242,7 +344,12 @@ class ExecutionQueryParams:
             start_datetime=start_datetime,
             end_datetime=end_datetime,
             memo=memo,
-            execution_groups=execution_groups,
+            execution_group_ids=execution_group_ids,
+            target_files_ids=target_files_ids,
+            target_entity_ids=target_entity_ids,
+            category=category,
+            file_attributes_extracted_ids=file_attributes_extracted_ids,
+            entity_attributes_extracted_ids=entity_attributes_extracted_ids,
         )
 
         execution_query_params.additional_properties = d
