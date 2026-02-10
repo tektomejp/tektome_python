@@ -13,6 +13,7 @@ from ...types import Response
 def _get_kwargs(
     job_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/core/agents/os/runners/jobs/{job_id}/logs/".format(

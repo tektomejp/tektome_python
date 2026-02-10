@@ -15,6 +15,7 @@ def _get_kwargs(
     project_id: UUID,
     user_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/api/app/lawtalk/projects/{project_id}/members/{user_id}/".format(

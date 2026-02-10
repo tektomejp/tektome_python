@@ -13,6 +13,7 @@ from ...types import Response
 def _get_kwargs(
     reference_note_template_id: UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/api/app/lawtalk/requirement-templates/reference-note-templates/{reference_note_template_id}/".format(

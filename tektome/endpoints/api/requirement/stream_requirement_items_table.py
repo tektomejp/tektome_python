@@ -16,6 +16,7 @@ def _get_kwargs(
     *,
     nonce: int,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["nonce"] = nonce

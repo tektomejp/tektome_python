@@ -11,10 +11,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.approval_ticket_candidate_out_data_container import ApprovalTicketCandidateOutDataContainer
-    from ..models.approval_ticket_candidate_out_reviewed_data_snapshot_type_0 import (
-        ApprovalTicketCandidateOutReviewedDataSnapshotType0,
-    )
-    from ..models.approval_ticket_get_out import ApprovalTicketGetOut
+    from ..models.approval_ticket_get_out_2 import ApprovalTicketGetOut2
 
 
 T = TypeVar("T", bound="ApprovalTicketCandidateOut")
@@ -25,27 +22,20 @@ class ApprovalTicketCandidateOut:
     """Serializer for ApprovalTicketCandidate details
 
     Attributes:
-        approval_ticket (ApprovalTicketGetOut): Serializer for ApprovalTicket details
+        approval_ticket (ApprovalTicketGetOut2): Serializer for ApprovalTicket details
         id (None | Unset | UUID):
         data_container (ApprovalTicketCandidateOutDataContainer | Unset): The data related to this approval ticket
             candidate. These are the payload changes proposed for approval
         status (str | Unset): The status of the approval ticket Default: 'Unselected'.
-        reviewed_data_snapshot (ApprovalTicketCandidateOutReviewedDataSnapshotType0 | None | Unset): Immutable snapshot
-            of the reviewed data captured at reviewed time for audit trail
     """
 
-    approval_ticket: ApprovalTicketGetOut
+    approval_ticket: ApprovalTicketGetOut2
     id: None | Unset | UUID = UNSET
     data_container: ApprovalTicketCandidateOutDataContainer | Unset = UNSET
     status: str | Unset = "Unselected"
-    reviewed_data_snapshot: ApprovalTicketCandidateOutReviewedDataSnapshotType0 | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.approval_ticket_candidate_out_reviewed_data_snapshot_type_0 import (
-            ApprovalTicketCandidateOutReviewedDataSnapshotType0,
-        )
-
         approval_ticket = self.approval_ticket.to_dict()
 
         id: None | str | Unset
@@ -62,14 +52,6 @@ class ApprovalTicketCandidateOut:
 
         status = self.status
 
-        reviewed_data_snapshot: dict[str, Any] | None | Unset
-        if isinstance(self.reviewed_data_snapshot, Unset):
-            reviewed_data_snapshot = UNSET
-        elif isinstance(self.reviewed_data_snapshot, ApprovalTicketCandidateOutReviewedDataSnapshotType0):
-            reviewed_data_snapshot = self.reviewed_data_snapshot.to_dict()
-        else:
-            reviewed_data_snapshot = self.reviewed_data_snapshot
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -83,21 +65,16 @@ class ApprovalTicketCandidateOut:
             field_dict["data_container"] = data_container
         if status is not UNSET:
             field_dict["status"] = status
-        if reviewed_data_snapshot is not UNSET:
-            field_dict["reviewed_data_snapshot"] = reviewed_data_snapshot
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.approval_ticket_candidate_out_data_container import ApprovalTicketCandidateOutDataContainer
-        from ..models.approval_ticket_candidate_out_reviewed_data_snapshot_type_0 import (
-            ApprovalTicketCandidateOutReviewedDataSnapshotType0,
-        )
-        from ..models.approval_ticket_get_out import ApprovalTicketGetOut
+        from ..models.approval_ticket_get_out_2 import ApprovalTicketGetOut2
 
         d = dict(src_dict)
-        approval_ticket = ApprovalTicketGetOut.from_dict(d.pop("approval_ticket"))
+        approval_ticket = ApprovalTicketGetOut2.from_dict(d.pop("approval_ticket"))
 
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -125,31 +102,11 @@ class ApprovalTicketCandidateOut:
 
         status = d.pop("status", UNSET)
 
-        def _parse_reviewed_data_snapshot(
-            data: object,
-        ) -> ApprovalTicketCandidateOutReviewedDataSnapshotType0 | None | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                reviewed_data_snapshot_type_0 = ApprovalTicketCandidateOutReviewedDataSnapshotType0.from_dict(data)
-
-                return reviewed_data_snapshot_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(ApprovalTicketCandidateOutReviewedDataSnapshotType0 | None | Unset, data)
-
-        reviewed_data_snapshot = _parse_reviewed_data_snapshot(d.pop("reviewed_data_snapshot", UNSET))
-
         approval_ticket_candidate_out = cls(
             approval_ticket=approval_ticket,
             id=id,
             data_container=data_container,
             status=status,
-            reviewed_data_snapshot=reviewed_data_snapshot,
         )
 
         approval_ticket_candidate_out.additional_properties = d

@@ -2,7 +2,6 @@ from enum import Enum
 
 
 class GetDataspaceExecutionGroupsExecutionGroupStatus(str, Enum):
-    CANCELLED = "cancelled"
     COMPLETED = "completed"
     FAILED = "failed"
     INITIALIZING = "initializing"

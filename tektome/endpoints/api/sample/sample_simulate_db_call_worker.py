@@ -12,6 +12,7 @@ def _get_kwargs(
     *,
     iterations: int | Unset = 1000,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["iterations"] = iterations

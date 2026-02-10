@@ -14,6 +14,7 @@ from ...types import Response
 def _get_kwargs(
     resource_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/app/lawtalk/resources/{resource_id}/initialize-status/".format(

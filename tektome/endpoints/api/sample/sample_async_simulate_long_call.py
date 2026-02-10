@@ -14,6 +14,7 @@ def _get_kwargs(
     sync_delay: float | Unset = 0.5,
     async_delay: float | Unset = 0.5,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["sync_delay"] = sync_delay

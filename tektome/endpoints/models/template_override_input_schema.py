@@ -17,8 +17,7 @@ T = TypeVar("T", bound="TemplateOverrideInputSchema")
 
 @_attrs_define
 class TemplateOverrideInputSchema:
-    """Override of the input schema of an OpenFlow, i.e. `openflow.schema`. Only partial fields are allowed.
-
+    """
     Attributes:
         required (list[str] | None | Unset):
         properties (None | TemplateOverrideInputSchemaPropertiesType0 | Unset):

@@ -16,6 +16,7 @@ def _get_kwargs(
     resource_vc_id: UUID,
     version_num: int,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/api/core/resource-groups/{resource_group_id}/resources/version-control/{resource_vc_id}/version/{version_num}/".format(

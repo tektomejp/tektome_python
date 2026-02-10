@@ -12,6 +12,7 @@ def _get_kwargs(
     *,
     artifact_id: str,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["artifact_id"] = artifact_id

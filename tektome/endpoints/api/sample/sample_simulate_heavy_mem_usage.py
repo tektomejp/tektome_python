@@ -12,6 +12,7 @@ def _get_kwargs(
     *,
     amount: int,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["amount"] = amount

@@ -13,7 +13,9 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.dataspace_search_filter_configuration_out import DataspaceSearchFilterConfigurationOut
-    from ..models.default_search_condition_schema import DefaultSearchConditionSchema
+    from ..models.dataspace_search_tag_config_out_default_search_conditions import (
+        DataspaceSearchTagConfigOutDefaultSearchConditions,
+    )
     from ..models.user_metadata import UserMetadata
 
 
@@ -32,7 +34,7 @@ class DataspaceSearchTagConfigOut:
         updated (datetime.datetime):
         filters (list[DataspaceSearchFilterConfigurationOut] | Unset):
         default_grouping_option (None | str | Unset):
-        default_search_conditions (list[DefaultSearchConditionSchema] | Unset):
+        default_search_conditions (DataspaceSearchTagConfigOutDefaultSearchConditions | Unset):
         id (None | Unset | UUID):
         description (None | str | Unset):
         is_active (bool | Unset):  Default: False.
@@ -46,7 +48,7 @@ class DataspaceSearchTagConfigOut:
     updated: datetime.datetime
     filters: list[DataspaceSearchFilterConfigurationOut] | Unset = UNSET
     default_grouping_option: None | str | Unset = UNSET
-    default_search_conditions: list[DefaultSearchConditionSchema] | Unset = UNSET
+    default_search_conditions: DataspaceSearchTagConfigOutDefaultSearchConditions | Unset = UNSET
     id: None | Unset | UUID = UNSET
     description: None | str | Unset = UNSET
     is_active: bool | Unset = False
@@ -77,12 +79,9 @@ class DataspaceSearchTagConfigOut:
         else:
             default_grouping_option = self.default_grouping_option
 
-        default_search_conditions: list[dict[str, Any]] | Unset = UNSET
+        default_search_conditions: dict[str, Any] | Unset = UNSET
         if not isinstance(self.default_search_conditions, Unset):
-            default_search_conditions = []
-            for default_search_conditions_item_data in self.default_search_conditions:
-                default_search_conditions_item = default_search_conditions_item_data.to_dict()
-                default_search_conditions.append(default_search_conditions_item)
+            default_search_conditions = self.default_search_conditions.to_dict()
 
         id: None | str | Unset
         if isinstance(self.id, Unset):
@@ -139,7 +138,9 @@ class DataspaceSearchTagConfigOut:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.dataspace_search_filter_configuration_out import DataspaceSearchFilterConfigurationOut
-        from ..models.default_search_condition_schema import DefaultSearchConditionSchema
+        from ..models.dataspace_search_tag_config_out_default_search_conditions import (
+            DataspaceSearchTagConfigOutDefaultSearchConditions,
+        )
         from ..models.user_metadata import UserMetadata
 
         d = dict(src_dict)
@@ -172,15 +173,13 @@ class DataspaceSearchTagConfigOut:
         default_grouping_option = _parse_default_grouping_option(d.pop("default_grouping_option", UNSET))
 
         _default_search_conditions = d.pop("default_search_conditions", UNSET)
-        default_search_conditions: list[DefaultSearchConditionSchema] | Unset = UNSET
-        if _default_search_conditions is not UNSET:
-            default_search_conditions = []
-            for default_search_conditions_item_data in _default_search_conditions:
-                default_search_conditions_item = DefaultSearchConditionSchema.from_dict(
-                    default_search_conditions_item_data
-                )
-
-                default_search_conditions.append(default_search_conditions_item)
+        default_search_conditions: DataspaceSearchTagConfigOutDefaultSearchConditions | Unset
+        if isinstance(_default_search_conditions, Unset):
+            default_search_conditions = UNSET
+        else:
+            default_search_conditions = DataspaceSearchTagConfigOutDefaultSearchConditions.from_dict(
+                _default_search_conditions
+            )
 
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:

@@ -17,6 +17,7 @@ def _get_kwargs(
     bim_type: DeleteBimElementBimElementTypePath,
     bim_element_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/api/core/resource-groups/bim/bim-project/{bim_project_id}/{bim_type}/{bim_element_id}/".format(

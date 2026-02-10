@@ -1,13 +1,11 @@
 from __future__ import annotations
 
-import datetime
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
-from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
 
@@ -28,8 +26,6 @@ class DataspaceFuzzySearchConfigurationGetOut:
         updated_by (UserMetadata):
         excluded_project_attributes (list[DataspaceProjectAttributePostOut]):
         excluded_resource_attributes (list[DataspaceResourceFileAttributePostOut]):
-        created (datetime.datetime):
-        updated (datetime.datetime):
         id (None | Unset | UUID):
     """
 
@@ -37,8 +33,6 @@ class DataspaceFuzzySearchConfigurationGetOut:
     updated_by: UserMetadata
     excluded_project_attributes: list[DataspaceProjectAttributePostOut]
     excluded_resource_attributes: list[DataspaceResourceFileAttributePostOut]
-    created: datetime.datetime
-    updated: datetime.datetime
     id: None | Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -57,10 +51,6 @@ class DataspaceFuzzySearchConfigurationGetOut:
             excluded_resource_attributes_item = excluded_resource_attributes_item_data.to_dict()
             excluded_resource_attributes.append(excluded_resource_attributes_item)
 
-        created = self.created.isoformat()
-
-        updated = self.updated.isoformat()
-
         id: None | str | Unset
         if isinstance(self.id, Unset):
             id = UNSET
@@ -77,8 +67,6 @@ class DataspaceFuzzySearchConfigurationGetOut:
                 "updated_by": updated_by,
                 "excluded_project_attributes": excluded_project_attributes,
                 "excluded_resource_attributes": excluded_resource_attributes,
-                "created": created,
-                "updated": updated,
             }
         )
         if id is not UNSET:
@@ -115,10 +103,6 @@ class DataspaceFuzzySearchConfigurationGetOut:
 
             excluded_resource_attributes.append(excluded_resource_attributes_item)
 
-        created = isoparse(d.pop("created"))
-
-        updated = isoparse(d.pop("updated"))
-
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:
                 return data
@@ -141,8 +125,6 @@ class DataspaceFuzzySearchConfigurationGetOut:
             updated_by=updated_by,
             excluded_project_attributes=excluded_project_attributes,
             excluded_resource_attributes=excluded_resource_attributes,
-            created=created,
-            updated=updated,
             id=id,
         )
 

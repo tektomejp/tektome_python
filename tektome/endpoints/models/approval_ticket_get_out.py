@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -11,54 +11,46 @@ from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
 
-if TYPE_CHECKING:
-    from ..models.user_metadata import UserMetadata
-
-
 T = TypeVar("T", bound="ApprovalTicketGetOut")
 
 
 @_attrs_define
 class ApprovalTicketGetOut:
-    """Serializer for ApprovalTicket details
+    """Serializer for ApprovalTicket details with candidates
 
     Attributes:
-        created_by (UserMetadata):
-        updated_by (UserMetadata):
+        created (datetime.datetime):
+        updated (datetime.datetime):
         category (str): The category of the approval ticket
         execution (UUID): The execution associated with this approval ticket
         process (UUID): The process associated with this approval ticket
-        created (datetime.datetime):
-        updated (datetime.datetime):
         id (None | Unset | UUID):
-        status (str | Unset): The status of the approval ticket Default: 'pending'.
+        created_by (None | Unset | UUID):
+        updated_by (None | Unset | UUID):
+        status (str | Unset): The status of the approval ticket Default: 'Pending'.
     """
 
-    created_by: UserMetadata
-    updated_by: UserMetadata
+    created: datetime.datetime
+    updated: datetime.datetime
     category: str
     execution: UUID
     process: UUID
-    created: datetime.datetime
-    updated: datetime.datetime
     id: None | Unset | UUID = UNSET
-    status: str | Unset = "pending"
+    created_by: None | Unset | UUID = UNSET
+    updated_by: None | Unset | UUID = UNSET
+    status: str | Unset = "Pending"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        created_by = self.created_by.to_dict()
+        created = self.created.isoformat()
 
-        updated_by = self.updated_by.to_dict()
+        updated = self.updated.isoformat()
 
         category = self.category
 
         execution = str(self.execution)
 
         process = str(self.process)
-
-        created = self.created.isoformat()
-
-        updated = self.updated.isoformat()
 
         id: None | str | Unset
         if isinstance(self.id, Unset):
@@ -68,23 +60,41 @@ class ApprovalTicketGetOut:
         else:
             id = self.id
 
+        created_by: None | str | Unset
+        if isinstance(self.created_by, Unset):
+            created_by = UNSET
+        elif isinstance(self.created_by, UUID):
+            created_by = str(self.created_by)
+        else:
+            created_by = self.created_by
+
+        updated_by: None | str | Unset
+        if isinstance(self.updated_by, Unset):
+            updated_by = UNSET
+        elif isinstance(self.updated_by, UUID):
+            updated_by = str(self.updated_by)
+        else:
+            updated_by = self.updated_by
+
         status = self.status
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "created_by": created_by,
-                "updated_by": updated_by,
+                "created": created,
+                "updated": updated,
                 "category": category,
                 "execution": execution,
                 "process": process,
-                "created": created,
-                "updated": updated,
             }
         )
         if id is not UNSET:
             field_dict["id"] = id
+        if created_by is not UNSET:
+            field_dict["created_by"] = created_by
+        if updated_by is not UNSET:
+            field_dict["updated_by"] = updated_by
         if status is not UNSET:
             field_dict["status"] = status
 
@@ -92,22 +102,16 @@ class ApprovalTicketGetOut:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.user_metadata import UserMetadata
-
         d = dict(src_dict)
-        created_by = UserMetadata.from_dict(d.pop("created_by"))
+        created = isoparse(d.pop("created"))
 
-        updated_by = UserMetadata.from_dict(d.pop("updated_by"))
+        updated = isoparse(d.pop("updated"))
 
         category = d.pop("category")
 
         execution = UUID(d.pop("execution"))
 
         process = UUID(d.pop("process"))
-
-        created = isoparse(d.pop("created"))
-
-        updated = isoparse(d.pop("updated"))
 
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -126,17 +130,51 @@ class ApprovalTicketGetOut:
 
         id = _parse_id(d.pop("id", UNSET))
 
+        def _parse_created_by(data: object) -> None | Unset | UUID:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                created_by_type_0 = UUID(data)
+
+                return created_by_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | Unset | UUID, data)
+
+        created_by = _parse_created_by(d.pop("created_by", UNSET))
+
+        def _parse_updated_by(data: object) -> None | Unset | UUID:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                updated_by_type_0 = UUID(data)
+
+                return updated_by_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | Unset | UUID, data)
+
+        updated_by = _parse_updated_by(d.pop("updated_by", UNSET))
+
         status = d.pop("status", UNSET)
 
         approval_ticket_get_out = cls(
-            created_by=created_by,
-            updated_by=updated_by,
+            created=created,
+            updated=updated,
             category=category,
             execution=execution,
             process=process,
-            created=created,
-            updated=updated,
             id=id,
+            created_by=created_by,
+            updated_by=updated_by,
             status=status,
         )
 
