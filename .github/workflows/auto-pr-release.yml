@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - 'pipeline/autogen_sdk_*'
-      - 'fix/1578-workflow'
 
 jobs:
   create-pr-and-release:
@@ -46,13 +45,13 @@ jobs:
           VERSION=${{ steps.read_version.outputs.version }}
           echo "Version to use: $VERSION"
 
-          # gh pr create \
-          #   --title "feat: update endpoints from gateway $VERSION" \
-          #   --body "Automated update of endpoints from gateway version $VERSION" \
-          #   --base main
+          gh pr create \
+            --title "feat: update endpoints from gateway $VERSION" \
+            --body "Automated update of endpoints from gateway version $VERSION" \
+            --base main
 
-          # gh pr merge --squash --delete-branch
+          gh pr merge --squash --delete-branch
 
-          # gh release create "$VERSION" \
-          #   --title "$VERSION" \
-          #   --notes "Update endpoints from gateway version $VERSION"
+          gh release create "$VERSION" \
+            --title "$VERSION" \
+            --notes "Update endpoints from gateway version $VERSION"
