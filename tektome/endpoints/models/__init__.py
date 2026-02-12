@@ -419,8 +419,10 @@ from .fire_dataspace_search_target_entity import FireDataspaceSearchTargetEntity
 from .float_attribute_schema_in import FloatAttributeSchemaIn
 from .float_attribute_schema_out import FloatAttributeSchemaOut
 from .float_search_condition import FloatSearchCondition
+from .folder_check_delete_out import FolderCheckDeleteOut
 from .folder_children_get_out import FolderChildrenGetOut
 from .folder_children_query import FolderChildrenQuery
+from .folder_delete_query import FolderDeleteQuery
 from .folder_get_out import FolderGetOut
 from .folder_import_request import FolderImportRequest
 from .folder_level_children import FolderLevelChildren
@@ -1396,8 +1398,10 @@ __all__ = (
     "FloatAttributeSchemaIn",
     "FloatAttributeSchemaOut",
     "FloatSearchCondition",
+    "FolderCheckDeleteOut",
     "FolderChildrenGetOut",
     "FolderChildrenQuery",
+    "FolderDeleteQuery",
     "FolderGetOut",
     "FolderImportRequest",
     "FolderLevelChildren",
