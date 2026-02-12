@@ -30,7 +30,7 @@ jobs:
           tag=$(awk '{print $2}' VERSION)
           hash=$(awk '{print $4}' VERSION)
           
-          if [[ "$version" == "no-tag" ]]; then
+          if [[ "$tag" == "no-tag" ]]; then
             echo "version=${hash}" >> $GITHUB_OUTPUT
             exit 0
           fi
