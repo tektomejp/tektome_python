@@ -23,12 +23,6 @@ uv run pytest tests/test_resource.py
 
 # Run tests with coverage
 uv run pytest --cov=tektome --cov-report=term-missing
-
-# Build documentation
-uv run mkdocs build
-
-# Serve documentation locally
-uv run mkdocs serve
 ```
 
 ## Architecture
