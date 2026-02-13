@@ -8,7 +8,7 @@ Tektome is a Python SDK for interacting with the Tektome API. It provides:
 1. **Schema classes** - Pydantic models for validating Tektome data structures
 2. **API client** - HTTP client for making authenticated requests to Tektome API
 3. **API endpoints** - Auto-generated endpoint functions for all Tektome API operations
-4. **Data models** - 700+ Pydantic models for API request/response types
+4. **Data models** - 900+ Pydantic models for API request/response types
 
 ## Installation
 
@@ -29,19 +29,25 @@ tektome/
     ├── client.py        # HTTP client classes (sync and async)
     ├── errors.py        # UnexpectedStatus exception
     ├── types.py         # Shared types: UNSET, File, Response
-    ├── api/             # API endpoint modules (40 modules)
+    ├── api/             # API endpoint modules (47 modules)
     │   ├── access/
     │   ├── account/
     │   ├── attribute/
     │   ├── bim/
+    │   ├── blob_upload/
     │   ├── chats/
+    │   ├── chunk_group/
     │   ├── dataspace/
+    │   ├── dataspace_approval_tickets/
+    │   ├── dataspace_attributes/
+    │   ├── dataspace_execution_groups/
+    │   ├── dataspace_executions/
+    │   ├── dataspace_search/
     │   ├── folder/
-    │   ├── project/
     │   ├── resource/
     │   ├── search/
-    │   └── ... (30 more)
-    └── models/          # Data models (700+ classes)
+    │   └── ... (31 more)
+    └── models/          # Data models (900+ classes)
 ```
 
 ## Quick Start
@@ -218,10 +224,21 @@ attr_defs = AttributeDefinitions(
 ### Context
 Represents the execution context for Tektome operations. Automatically injected by Tektome system.
 
-**Fields:**
-- `user_api_key: str` - User's API key for authentication
-- `base_url: AnyHttpUrl` - Tektome deployment base URL (e.g., https://gateway.tektome.com)
-- `execution_id: UUID` - Execution ID for obtaining additional context
+**Required Fields:**
+- `system_user_api_key: str` - User's API key for authentication
+- `system_base_url: AnyHttpUrl` - Tektome deployment base URL (e.g., https://gateway.tektome.com)
+
+**Optional Fields (guarded):**
+- `system_chatroom_id: UUID | None` - The chatroom this code is invoked from, if applicable
+- `system_execution_id: UUID | None` - Execution ID for obtaining additional extraction context
+- `system_dataspace_id: UUID | None` - Dataspace ID for dataspace-specific settings
+- `system_project_id: UUID | None` - Project ID for project-specific settings
+- `system_resource_id: UUID | None` - Resource ID for resource-specific settings
+
+**Optional Fields (non-guarded):**
+- `system_attribute_definition_ids: list[UUID] | None` - Attribute definition IDs
+
+**Guarded fields** (`system_chatroom_id`, `system_execution_id`, `system_dataspace_id`, `system_project_id`, `system_resource_id`) raise `AttributeError` when accessed if their value is `None`. This means no explicit `None` checks are needed — just access the field and handle `AttributeError` if it may not be present.
 
 **Methods:**
 - `client(**kwargs) -> AuthenticatedClient` - Create an authenticated API client from context
@@ -231,9 +248,9 @@ Represents the execution context for Tektome operations. Automatically injected 
 from tektome import Context
 
 ctx = Context(
-    user_api_key="your-api-key",
-    base_url="https://gateway.tektome.com",
-    execution_id="123e4567-e89b-12d3-a456-426614174000"
+    system_user_api_key="your-api-key",
+    system_base_url="https://gateway.tektome.com",
+    system_execution_id="123e4567-e89b-12d3-a456-426614174000"
 )
 
 # Create client directly from context (recommended)
@@ -242,7 +259,13 @@ with ctx.client() as client:
     pass
 
 # Or manually construct headers
-headers = {"Authorization": f"Bearer {ctx.user_api_key}"}
+headers = {"Authorization": f"Bearer {ctx.system_user_api_key}"}
+
+# Guarded field access — raises AttributeError if not available
+try:
+    chatroom_id = ctx.system_chatroom_id
+except AttributeError:
+    chatroom_id = None  # not available in this context
 ```
 
 ### Date
@@ -344,15 +367,23 @@ Endpoints are organized by domain in `tektome.endpoints.api.*`:
 | `account` | Account management |
 | `attribute` | Attribute operations |
 | `bim` | BIM (Building Information Modeling) |
+| `blob_upload` | Blob/file upload |
 | `chats` | Chat functionality |
 | `chunk_group` | Chunk group operations |
 | `dataspace` | Dataspace management |
+| `dataspace_approval_tickets` | Dataspace approval workflows |
+| `dataspace_attributes` | Dataspace attribute operations |
+| `dataspace_execution_groups` | Dataspace execution group management |
+| `dataspace_executions` | Dataspace execution operations |
+| `dataspace_search` | Dataspace search functionality |
 | `default` | Default endpoints |
 | `entity_tracker` | Entity tracking |
+| `environment_variables` | Environment variable management |
 | `extraction` | Document extraction |
 | `folder` | Folder operations |
 | `lawtalk_project` | Lawtalk project operations |
 | `llm` | LLM operations |
+| `notification` | Notification management |
 | `observability` | Observability/monitoring |
 | `organizations` | Organization management |
 | `page` | Page operations |
@@ -558,15 +589,17 @@ resource = Resource(id="...", kind="resource", extra="not allowed")
 
 ## Key Points for LLMs
 
-1. **Field Names**: Use `id`/`ids` (not `uuid`/`uuids`) and `user_api_key` (not `api_key`)
-2. **Kind Values**: Each class requires specific `kind` value that must match exactly
-3. **Validation**: All classes validate UUID strings and convert to UUID objects
-4. **Extra Fields**: All classes inherit BaseSchema which forbids extra fields
-5. **Context Client**: Use `ctx.client()` to create authenticated client directly from context
-6. **Default Base URL**: `https://gateway.tektome.com`
-7. **Client Types**: Use `Client` for unauthenticated, `AuthenticatedClient` for authenticated requests
-8. **Async Support**: Both clients support sync and async via context managers
-9. **Decorator**: Use `@parseio` from `tektome.decorators` for input/output validation
+1. **Field Names**: Use `id`/`ids` (not `uuid`/`uuids`) and `system_user_api_key` (not `api_key` or `user_api_key`)
+2. **Context Fields**: All Context fields use `system_` prefix: `system_user_api_key`, `system_base_url`, `system_execution_id`, etc.
+3. **Guarded Fields**: Context fields `system_chatroom_id`, `system_execution_id`, `system_dataspace_id`, `system_project_id`, `system_resource_id` raise `AttributeError` when `None` — no explicit None checks needed
+4. **Kind Values**: Each class requires specific `kind` value that must match exactly
+5. **Validation**: All classes validate UUID strings and convert to UUID objects
+6. **Extra Fields**: All classes inherit BaseSchema which forbids extra fields
+7. **Context Client**: Use `ctx.client()` to create authenticated client directly from context (raises on unexpected status by default)
+8. **Default Base URL**: `https://gateway.tektome.com`
+9. **Client Types**: Use `Client` for unauthenticated, `AuthenticatedClient` for authenticated requests
+10. **Async Support**: Both clients support sync and async via context managers
+11. **Decorator**: Use `@parseio` from `tektome.decorators` for input/output validation
 
 ---
 
@@ -579,7 +612,7 @@ resource = Resource(id="...", kind="resource", extra="not allowed")
 
 ## Version
 
-Current version: 0.4.2
+Current version: 0.3.1
 
 ## Documentation
 
