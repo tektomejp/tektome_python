@@ -673,6 +673,7 @@ from .project_accept_invite_post_in import ProjectAcceptInvitePostIn
 from .project_attribute_path_in import ProjectAttributePathIn
 from .project_attribute_post_in import ProjectAttributePostIn
 from .project_attribute_post_in_value_type_7 import ProjectAttributePostInValueType7
+from .project_check_delete_out import ProjectCheckDeleteOut
 from .project_choices_get_out import ProjectChoicesGetOut
 from .project_default_path import ProjectDefaultPath
 from .project_invite_accept_post_out import ProjectInviteAcceptPostOut
@@ -1646,6 +1647,7 @@ __all__ = (
     "ProjectAttributePathIn",
     "ProjectAttributePostIn",
     "ProjectAttributePostInValueType7",
+    "ProjectCheckDeleteOut",
     "ProjectChoicesGetOut",
     "ProjectDefaultPath",
     "ProjectInviteAcceptPostOut",
