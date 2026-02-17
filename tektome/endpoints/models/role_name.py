@@ -13,7 +13,7 @@ class RoleName(str, Enum):
     PROJECT_MEMBER = "Project Member"
     PROJECT_OWNER = "Project Owner"
     PROJECT_VIEWER = "Project Viewer"
-    TEKTOME_SUPER_ADMIN = "Tektome Super Admin"
+    SYSTEM_SUPER_ADMIN = "System Super Admin"
 
     def __str__(self) -> str:
         return str(self.value)
