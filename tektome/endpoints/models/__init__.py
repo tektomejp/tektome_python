@@ -577,11 +577,15 @@ from .me_patch_out import MePatchOut
 from .merge_result import MergeResult
 from .merge_result_search_results_item import MergeResultSearchResultsItem
 from .non_primitive_role_name import NonPrimitiveRoleName
+from .notification_entity_type import NotificationEntityType
 from .notification_get_out import NotificationGetOut
 from .notification_get_out_metadata import NotificationGetOutMetadata
 from .notification_path import NotificationPath
 from .notification_query import NotificationQuery
 from .notification_read_out import NotificationReadOut
+from .notification_testing_post_in import NotificationTestingPostIn
+from .notification_testing_post_in_extras import NotificationTestingPostInExtras
+from .notification_type import NotificationType
 from .numeric_condition_action import NumericConditionAction
 from .observability_ids_in import ObservabilityIdsIn
 from .observability_put_in import ObservabilityPutIn
@@ -1554,11 +1558,15 @@ __all__ = (
     "MergeResult",
     "MergeResultSearchResultsItem",
     "NonPrimitiveRoleName",
+    "NotificationEntityType",
     "NotificationGetOut",
     "NotificationGetOutMetadata",
     "NotificationPath",
     "NotificationQuery",
     "NotificationReadOut",
+    "NotificationTestingPostIn",
+    "NotificationTestingPostInExtras",
+    "NotificationType",
     "NumericConditionAction",
     "ObservabilityIdsIn",
     "ObservabilityPutIn",
