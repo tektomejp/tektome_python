@@ -209,6 +209,9 @@ from .dataspace_project_attribute_schema_out_attribute_metadata_type_0 import (
 from .dataspace_project_path import DataspaceProjectPath
 from .dataspace_project_reorder_column_post_in import DataspaceProjectReorderColumnPostIn
 from .dataspace_project_resources_get_out import DataspaceProjectResourcesGetOut
+from .dataspace_project_result_hit import DataspaceProjectResultHit
+from .dataspace_project_search_result import DataspaceProjectSearchResult
+from .dataspace_project_search_result_debug_type_0 import DataspaceProjectSearchResultDebugType0
 from .dataspace_projects_get_out import DataspaceProjectsGetOut
 from .dataspace_projects_path import DataspaceProjectsPath
 from .dataspace_projects_schema_out import DataspaceProjectsSchemaOut
@@ -229,6 +232,9 @@ from .dataspace_resource_file_attribute_schema_out_attribute_metadata_type_0 imp
 from .dataspace_resource_ocr_path import DataspaceResourceOCRPath
 from .dataspace_resource_path import DataspaceResourcePath
 from .dataspace_resource_reorder_column_post_in import DataspaceResourceReorderColumnPostIn
+from .dataspace_resource_result_hit import DataspaceResourceResultHit
+from .dataspace_resource_search_result import DataspaceResourceSearchResult
+from .dataspace_resource_search_result_debug_type_0 import DataspaceResourceSearchResultDebugType0
 from .dataspace_resource_upload_in import DataspaceResourceUploadIn
 from .dataspace_schema import DataspaceSchema
 from .dataspace_search_filter_configuration_in import DataspaceSearchFilterConfigurationIn
@@ -248,9 +254,9 @@ from .dataspace_search_request_get_out_highlight_keywords_type_0 import (
 )
 from .dataspace_search_request_is_saved_patch_in import DataspaceSearchRequestIsSavedPatchIn
 from .dataspace_search_request_path import DataspaceSearchRequestPath
-from .dataspace_search_request_query_in import DataspaceSearchRequestQueryIn
-from .dataspace_search_request_query_in_target_entity import DataspaceSearchRequestQueryInTargetEntity
 from .dataspace_search_request_schema import DataspaceSearchRequestSchema
+from .dataspace_search_request_schema_keyword_match_mode import DataspaceSearchRequestSchemaKeywordMatchMode
+from .dataspace_search_result_hit import DataspaceSearchResultHit
 from .dataspace_search_result_out import DataspaceSearchResultOut
 from .dataspace_search_schema import DataspaceSearchSchema
 from .dataspace_search_tag_config_out import DataspaceSearchTagConfigOut
@@ -415,7 +421,6 @@ from .file_reviewed_data import FileReviewedData
 from .file_table_attribute import FileTableAttribute
 from .file_table_attribute_extraction import FileTableAttributeExtraction
 from .file_upload_candidate_payload import FileUploadCandidatePayload
-from .fire_dataspace_search_target_entity import FireDataspaceSearchTargetEntity
 from .float_attribute_schema_in import FloatAttributeSchemaIn
 from .float_attribute_schema_out import FloatAttributeSchemaOut
 from .float_search_condition import FloatSearchCondition
@@ -645,7 +650,6 @@ from .paginated_response_requirement_template_container_get_out import (
     PaginatedResponseRequirementTemplateContainerGetOut,
 )
 from .paginated_response_requirement_template_get_out import PaginatedResponseRequirementTemplateGetOut
-from .paginated_search_result_hits import PaginatedSearchResultHits
 from .parsed_tektome_response_entry import ParsedTektomeResponseEntry
 from .parsed_tektome_response_entry_resource_text_highlights import ParsedTektomeResponseEntryResourceTextHighlights
 from .payment_record_out import PaymentRecordOut
@@ -722,7 +726,6 @@ from .reference_note_version_path import ReferenceNoteVersionPath
 from .reference_notes_query import ReferenceNotesQuery
 from .reference_notes_query_sort import ReferenceNotesQuerySort
 from .reference_notes_version_path import ReferenceNotesVersionPath
-from .refire_dataspace_search_target_entity import RefireDataspaceSearchTargetEntity
 from .refresh_post_in import RefreshPostIn
 from .refresh_post_out import RefreshPostOut
 from .remove_resource_group_post_in import RemoveResourceGroupPostIn
@@ -1207,6 +1210,9 @@ __all__ = (
     "DataspaceProjectPath",
     "DataspaceProjectReorderColumnPostIn",
     "DataspaceProjectResourcesGetOut",
+    "DataspaceProjectResultHit",
+    "DataspaceProjectSearchResult",
+    "DataspaceProjectSearchResultDebugType0",
     "DataspaceProjectsGetOut",
     "DataspaceProjectsPath",
     "DataspaceProjectsSchemaOut",
@@ -1221,6 +1227,9 @@ __all__ = (
     "DataspaceResourceOCRPath",
     "DataspaceResourcePath",
     "DataspaceResourceReorderColumnPostIn",
+    "DataspaceResourceResultHit",
+    "DataspaceResourceSearchResult",
+    "DataspaceResourceSearchResultDebugType0",
     "DataspaceResourceUploadIn",
     "DataspaceSchema",
     "DataspaceSearchFilterConfigurationIn",
@@ -1236,9 +1245,9 @@ __all__ = (
     "DataspaceSearchRequestGetOutHighlightKeywordsType0",
     "DataspaceSearchRequestIsSavedPatchIn",
     "DataspaceSearchRequestPath",
-    "DataspaceSearchRequestQueryIn",
-    "DataspaceSearchRequestQueryInTargetEntity",
     "DataspaceSearchRequestSchema",
+    "DataspaceSearchRequestSchemaKeywordMatchMode",
+    "DataspaceSearchResultHit",
     "DataspaceSearchResultOut",
     "DataspaceSearchSchema",
     "DataspaceSearchTagConfigOut",
@@ -1400,7 +1409,6 @@ __all__ = (
     "FileTableAttribute",
     "FileTableAttributeExtraction",
     "FileUploadCandidatePayload",
-    "FireDataspaceSearchTargetEntity",
     "FloatAttributeSchemaIn",
     "FloatAttributeSchemaOut",
     "FloatSearchCondition",
@@ -1624,7 +1632,6 @@ __all__ = (
     "PagedTemplateOut",
     "PaginatedResponseRequirementTemplateContainerGetOut",
     "PaginatedResponseRequirementTemplateGetOut",
-    "PaginatedSearchResultHits",
     "ParsedTektomeResponseEntry",
     "ParsedTektomeResponseEntryResourceTextHighlights",
     "PaymentRecordOut",
@@ -1701,7 +1708,6 @@ __all__ = (
     "ReferenceNoteVersionGetOut",
     "ReferenceNoteVersionPatchInPatch",
     "ReferenceNoteVersionPath",
-    "RefireDataspaceSearchTargetEntity",
     "RefreshPostIn",
     "RefreshPostOut",
     "RemoveResourceGroupPostIn",

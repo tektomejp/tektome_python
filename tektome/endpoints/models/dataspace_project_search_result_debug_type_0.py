@@ -6,12 +6,12 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="FireDataspaceSearchTargetEntity")
+T = TypeVar("T", bound="DataspaceProjectSearchResultDebugType0")
 
 
 @_attrs_define
-class FireDataspaceSearchTargetEntity:
-    """Target entity type to search (project or resource)"""
+class DataspaceProjectSearchResultDebugType0:
+    """ """
 
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -25,10 +25,10 @@ class FireDataspaceSearchTargetEntity:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        fire_dataspace_search_target_entity = cls()
+        dataspace_project_search_result_debug_type_0 = cls()
 
-        fire_dataspace_search_target_entity.additional_properties = d
-        return fire_dataspace_search_target_entity
+        dataspace_project_search_result_debug_type_0.additional_properties = d
+        return dataspace_project_search_result_debug_type_0
 
     @property
     def additional_keys(self) -> list[str]:
