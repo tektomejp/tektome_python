@@ -2,6 +2,7 @@ from enum import Enum
 
 
 class DeleteLawtalkAttributeAttributeObjectTypes(str, Enum):
+    FOLDER = "folder"
     PROJECT = "project"
     REQUIREMENT = "requirement"
     RESOURCE = "resource"

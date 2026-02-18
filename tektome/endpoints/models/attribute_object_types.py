@@ -2,6 +2,7 @@ from enum import Enum
 
 
 class AttributeObjectTypes(str, Enum):
+    FOLDER = "folder"
     PROJECT = "project"
     REQUIREMENT = "requirement"
     RESOURCE = "resource"
