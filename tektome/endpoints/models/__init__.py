@@ -10,6 +10,7 @@ from .aggregate_llm_usage_post_in import AggregateLLMUsagePostIn
 from .aggregated_llm_usage_post_out import AggregatedLLMUsagePostOut
 from .aggregated_usage_by_model import AggregatedUsageByModel
 from .all_attributes_schema_out import AllAttributesSchemaOut
+from .any_attribute_schema_in import AnyAttributeSchemaIn
 from .any_resource_schema_in import AnyResourceSchemaIn
 from .any_valued_attribute_schema_in import AnyValuedAttributeSchemaIn
 from .approval_candidates_path_params import ApprovalCandidatesPathParams
@@ -175,6 +176,8 @@ from .create_resource_section_path import CreateResourceSectionPath
 from .create_resource_with_version_control_file_params import CreateResourceWithVersionControlFileParams
 from .current_organization_schema import CurrentOrganizationSchema
 from .data_type_enum import DataTypeEnum
+from .dataspace_attribute_object_types import DataspaceAttributeObjectTypes
+from .dataspace_attribute_path import DataspaceAttributePath
 from .dataspace_delete_path import DataspaceDeletePath
 from .dataspace_entity_list_query import DataspaceEntityListQuery
 from .dataspace_entity_type import DataspaceEntityType
@@ -284,7 +287,6 @@ from .date_time_search_condition import DateTimeSearchCondition
 from .deep_research_chat_post_in import DeepResearchChatPostIn
 from .deep_research_models_type import DeepResearchModelsType
 from .default_attribute_body_put_in import DefaultAttributeBodyPutIn
-from .default_attribute_body_put_in_list_object_attributes_item import DefaultAttributeBodyPutInListObjectAttributesItem
 from .default_search_condition_schema import DefaultSearchConditionSchema
 from .delete_bim_element_bim_element_type_path import DeleteBimElementBimElementTypePath
 from .delete_capture_section_component_path import DeleteCaptureSectionComponentPath
@@ -295,7 +297,9 @@ from .delete_lawtalk_attribute_attribute_object_types import DeleteLawtalkAttrib
 from .delete_resource_group_query import DeleteResourceGroupQuery
 from .delete_resource_section_path import DeleteResourceSectionPath
 from .delete_system_attribute_attribute_object_types import DeleteSystemAttributeAttributeObjectTypes
-from .delete_table_attribute_row_attribute_object_types import DeleteTableAttributeRowAttributeObjectTypes
+from .delete_table_attribute_row_dataspace_attribute_object_types import (
+    DeleteTableAttributeRowDataspaceAttributeObjectTypes,
+)
 from .document import Document
 from .document_async_extraction_task_result import DocumentAsyncExtractionTaskResult
 from .document_async_extraction_task_submission import DocumentAsyncExtractionTaskSubmission
@@ -495,7 +499,9 @@ from .import_result_failed import ImportResultFailed
 from .import_storage_folders_response import ImportStorageFoldersResponse
 from .improve_user_prompt_query_in import ImproveUserPromptQueryIn
 from .input_ import Input
-from .insert_table_attribute_row_attribute_object_types import InsertTableAttributeRowAttributeObjectTypes
+from .insert_table_attribute_row_dataspace_attribute_object_types import (
+    InsertTableAttributeRowDataspaceAttributeObjectTypes,
+)
 from .integer_attribute_schema_in import IntegerAttributeSchemaIn
 from .integer_attribute_schema_out import IntegerAttributeSchemaOut
 from .integer_search_condition import IntegerSearchCondition
@@ -525,9 +531,6 @@ from .lawtalk_float_attribute_schema import LawtalkFloatAttributeSchema
 from .lawtalk_folder_children_get_out import LawtalkFolderChildrenGetOut
 from .lawtalk_folder_get_out import LawtalkFolderGetOut
 from .lawtalk_general_attribute_body_put_in import LawtalkGeneralAttributeBodyPutIn
-from .lawtalk_general_attribute_body_put_in_list_object_attributes_item import (
-    LawtalkGeneralAttributeBodyPutInListObjectAttributesItem,
-)
 from .lawtalk_int_attribute_schema import LawtalkIntAttributeSchema
 from .lawtalk_list_string_attribute_schema import LawtalkListStringAttributeSchema
 from .lawtalk_project_organization_schema import LawtalkProjectOrganizationSchema
@@ -581,6 +584,9 @@ from .me_patch_in import MePatchIn
 from .me_patch_out import MePatchOut
 from .merge_result import MergeResult
 from .merge_result_search_results_item import MergeResultSearchResultsItem
+from .multi_select_attribute_schema_in import MultiSelectAttributeSchemaIn
+from .multi_select_attribute_schema_out import MultiSelectAttributeSchemaOut
+from .multi_select_attribute_schema_out_value_type_0 import MultiSelectAttributeSchemaOutValueType0
 from .non_primitive_role_name import NonPrimitiveRoleName
 from .notification_entity_type import NotificationEntityType
 from .notification_get_out import NotificationGetOut
@@ -932,6 +938,9 @@ from .simulate_long_call_post_out import SimulateLongCallPostOut
 from .simulate_task_post_in import SimulateTaskPostIn
 from .simulate_task_post_out import SimulateTaskPostOut
 from .simulate_task_post_path import SimulateTaskPostPath
+from .single_select_attribute_schema_in import SingleSelectAttributeSchemaIn
+from .single_select_attribute_schema_out import SingleSelectAttributeSchemaOut
+from .single_select_attribute_schema_out_value_type_0 import SingleSelectAttributeSchemaOutValueType0
 from .stream_batch_bim_elements_bim_element_type_path import StreamBatchBimElementsBimElementTypePath
 from .stream_bim_element_key_value_search_bim_element_type_v2_path import (
     StreamBimElementKeyValueSearchBimElementTypeV2Path,
@@ -946,14 +955,10 @@ from .supported_dr_model import SupportedDRModel
 from .sync_storage_file_multi_part_body_params import SyncStorageFileMultiPartBodyParams
 from .sync_storage_file_response import SyncStorageFileResponse
 from .system_attribute_body_put_in import SystemAttributeBodyPutIn
-from .system_attribute_body_put_in_list_object_attributes_item import SystemAttributeBodyPutInListObjectAttributesItem
 from .system_attribute_query_delete_in import SystemAttributeQueryDeleteIn
-from .table import Table
 from .table_attribute_body_patch_in import TableAttributeBodyPatchIn
-from .table_attribute_schema_in import TableAttributeSchemaIn
 from .table_attribute_schema_out import TableAttributeSchemaOut
 from .table_attribute_schema_out_value_type_0 import TableAttributeSchemaOutValueType0
-from .table_cell import TableCell
 from .table_cell_update import TableCellUpdate
 from .table_column import TableColumn
 from .table_column_type import TableColumnType
@@ -1006,7 +1011,7 @@ from .upload_new_resource_version_file_params import UploadNewResourceVersionFil
 from .upload_payment_record_file_file_params import UploadPaymentRecordFileFileParams
 from .upsert_general_attributes_attribute_object_types import UpsertGeneralAttributesAttributeObjectTypes
 from .upsert_system_attributes_attribute_object_types import UpsertSystemAttributesAttributeObjectTypes
-from .upsert_table_attributes_attribute_object_types import UpsertTableAttributesAttributeObjectTypes
+from .upsert_table_attributes_dataspace_attribute_object_types import UpsertTableAttributesDataspaceAttributeObjectTypes
 from .user_invitation_skipped_schema import UserInvitationSkippedSchema
 from .user_invitation_success_schema import UserInvitationSuccessSchema
 from .user_metadata import UserMetadata
@@ -1021,6 +1026,7 @@ __all__ = (
     "AggregatedUsageByModel",
     "AggregateLLMUsagePostIn",
     "AllAttributesSchemaOut",
+    "AnyAttributeSchemaIn",
     "AnyResourceSchemaIn",
     "AnyValuedAttributeSchemaIn",
     "ApprovalCandidatesPathParams",
@@ -1184,6 +1190,8 @@ __all__ = (
     "CreateResourceSectionPath",
     "CreateResourceWithVersionControlFileParams",
     "CurrentOrganizationSchema",
+    "DataspaceAttributeObjectTypes",
+    "DataspaceAttributePath",
     "DataspaceDeletePath",
     "DataspaceEntityListQuery",
     "DataspaceEntityType",
@@ -1272,7 +1280,6 @@ __all__ = (
     "DeepResearchChatPostIn",
     "DeepResearchModelsType",
     "DefaultAttributeBodyPutIn",
-    "DefaultAttributeBodyPutInListObjectAttributesItem",
     "DefaultSearchConditionSchema",
     "DeleteBimElementBimElementTypePath",
     "DeleteCaptureSectionComponentPath",
@@ -1283,7 +1290,7 @@ __all__ = (
     "DeleteResourceGroupQuery",
     "DeleteResourceSectionPath",
     "DeleteSystemAttributeAttributeObjectTypes",
-    "DeleteTableAttributeRowAttributeObjectTypes",
+    "DeleteTableAttributeRowDataspaceAttributeObjectTypes",
     "Document",
     "DocumentAsyncExtractionTaskResult",
     "DocumentAsyncExtractionTaskSubmission",
@@ -1483,7 +1490,7 @@ __all__ = (
     "ImportStorageFoldersResponse",
     "ImproveUserPromptQueryIn",
     "Input",
-    "InsertTableAttributeRowAttributeObjectTypes",
+    "InsertTableAttributeRowDataspaceAttributeObjectTypes",
     "IntegerAttributeSchemaIn",
     "IntegerAttributeSchemaOut",
     "IntegerSearchCondition",
@@ -1513,7 +1520,6 @@ __all__ = (
     "LawtalkFolderChildrenGetOut",
     "LawtalkFolderGetOut",
     "LawtalkGeneralAttributeBodyPutIn",
-    "LawtalkGeneralAttributeBodyPutInListObjectAttributesItem",
     "LawtalkIntAttributeSchema",
     "LawtalkListStringAttributeSchema",
     "LawtalkProjectOrganizationSchema",
@@ -1565,6 +1571,9 @@ __all__ = (
     "MePatchOut",
     "MergeResult",
     "MergeResultSearchResultsItem",
+    "MultiSelectAttributeSchemaIn",
+    "MultiSelectAttributeSchemaOut",
+    "MultiSelectAttributeSchemaOutValueType0",
     "NonPrimitiveRoleName",
     "NotificationEntityType",
     "NotificationGetOut",
@@ -1892,6 +1901,9 @@ __all__ = (
     "SimulateTaskPostIn",
     "SimulateTaskPostOut",
     "SimulateTaskPostPath",
+    "SingleSelectAttributeSchemaIn",
+    "SingleSelectAttributeSchemaOut",
+    "SingleSelectAttributeSchemaOutValueType0",
     "StreamBatchBimElementsBimElementTypePath",
     "StreamBimElementKeyValueSearchBimElementTypeV2Path",
     "StreamBimElementsByProjectBimElementTypeV2Path",
@@ -1904,14 +1916,10 @@ __all__ = (
     "SyncStorageFileMultiPartBodyParams",
     "SyncStorageFileResponse",
     "SystemAttributeBodyPutIn",
-    "SystemAttributeBodyPutInListObjectAttributesItem",
     "SystemAttributeQueryDeleteIn",
-    "Table",
     "TableAttributeBodyPatchIn",
-    "TableAttributeSchemaIn",
     "TableAttributeSchemaOut",
     "TableAttributeSchemaOutValueType0",
-    "TableCell",
     "TableCellUpdate",
     "TableColumn",
     "TableColumnType",
@@ -1962,7 +1970,7 @@ __all__ = (
     "UploadPaymentRecordFileFileParams",
     "UpsertGeneralAttributesAttributeObjectTypes",
     "UpsertSystemAttributesAttributeObjectTypes",
-    "UpsertTableAttributesAttributeObjectTypes",
+    "UpsertTableAttributesDataspaceAttributeObjectTypes",
     "UserInvitationSkippedSchema",
     "UserInvitationSuccessSchema",
     "UserMetadata",

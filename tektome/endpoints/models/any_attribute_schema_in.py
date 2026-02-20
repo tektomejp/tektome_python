@@ -6,29 +6,52 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="SystemAttributeBodyPutInListObjectAttributesItem")
+T = TypeVar("T", bound="AnyAttributeSchemaIn")
 
 
 @_attrs_define
-class SystemAttributeBodyPutInListObjectAttributesItem:
-    """ """
+class AnyAttributeSchemaIn:
+    """A generic attribute schema for cases where the type of the attribute does not matter.
 
+    Attributes:
+        name (str):
+        value (Any):
+    """
+
+    name: str
+    value: Any
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        name = self.name
+
+        value = self.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "name": name,
+                "value": value,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        system_attribute_body_put_in_list_object_attributes_item = cls()
+        name = d.pop("name")
 
-        system_attribute_body_put_in_list_object_attributes_item.additional_properties = d
-        return system_attribute_body_put_in_list_object_attributes_item
+        value = d.pop("value")
+
+        any_attribute_schema_in = cls(
+            name=name,
+            value=value,
+        )
+
+        any_attribute_schema_in.additional_properties = d
+        return any_attribute_schema_in
 
     @property
     def additional_keys(self) -> list[str]:

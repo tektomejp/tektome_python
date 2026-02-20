@@ -7,12 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.delete_table_attribute_row_attribute_object_types import DeleteTableAttributeRowAttributeObjectTypes
+from ...models.delete_table_attribute_row_dataspace_attribute_object_types import (
+    DeleteTableAttributeRowDataspaceAttributeObjectTypes,
+)
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    object_type: DeleteTableAttributeRowAttributeObjectTypes,
+    object_type: DeleteTableAttributeRowDataspaceAttributeObjectTypes,
     object_id: UUID,
     *,
     name: str,
@@ -67,7 +69,7 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 
 def sync_detailed(
-    object_type: DeleteTableAttributeRowAttributeObjectTypes,
+    object_type: DeleteTableAttributeRowDataspaceAttributeObjectTypes,
     object_id: UUID,
     *,
     client: AuthenticatedClient,
@@ -82,7 +84,7 @@ def sync_detailed(
     Delete a row from a table attribute.
 
     Args:
-        object_type (DeleteTableAttributeRowAttributeObjectTypes):
+        object_type (DeleteTableAttributeRowDataspaceAttributeObjectTypes):
         object_id (UUID):
         name (str):
         row_index (int):
@@ -112,7 +114,7 @@ def sync_detailed(
 
 
 async def asyncio_detailed(
-    object_type: DeleteTableAttributeRowAttributeObjectTypes,
+    object_type: DeleteTableAttributeRowDataspaceAttributeObjectTypes,
     object_id: UUID,
     *,
     client: AuthenticatedClient,
@@ -127,7 +129,7 @@ async def asyncio_detailed(
     Delete a row from a table attribute.
 
     Args:
-        object_type (DeleteTableAttributeRowAttributeObjectTypes):
+        object_type (DeleteTableAttributeRowDataspaceAttributeObjectTypes):
         object_id (UUID):
         name (str):
         row_index (int):
