@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, Literal, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -22,15 +22,14 @@ class RunArtifactPostIn:
     Attributes:
         result_artifact_id (None | Unset | UUID): The ID of target artifact to save the result to. If not provided, a
             new artifact will be created.
-        result_artifact_name (None | str | Unset): The name of the artifact to create for the result.
-        result_artifact_extension (Literal['json'] | None | Unset): The extension of the artifact to create. E.g. 'json'
+        result_artifact_path (None | str | Unset): The path of the artifact to create for the result (e.g.,
+            'result.json').
         body (None | RunArtifactPostInBodyType0 | Unset): The body to pass to the artifact when running it. This is the
             input data in Windmill flow/Script
     """
 
     result_artifact_id: None | Unset | UUID = UNSET
-    result_artifact_name: None | str | Unset = UNSET
-    result_artifact_extension: Literal["json"] | None | Unset = UNSET
+    result_artifact_path: None | str | Unset = UNSET
     body: None | RunArtifactPostInBodyType0 | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -45,17 +44,11 @@ class RunArtifactPostIn:
         else:
             result_artifact_id = self.result_artifact_id
 
-        result_artifact_name: None | str | Unset
-        if isinstance(self.result_artifact_name, Unset):
-            result_artifact_name = UNSET
+        result_artifact_path: None | str | Unset
+        if isinstance(self.result_artifact_path, Unset):
+            result_artifact_path = UNSET
         else:
-            result_artifact_name = self.result_artifact_name
-
-        result_artifact_extension: Literal["json"] | None | Unset
-        if isinstance(self.result_artifact_extension, Unset):
-            result_artifact_extension = UNSET
-        else:
-            result_artifact_extension = self.result_artifact_extension
+            result_artifact_path = self.result_artifact_path
 
         body: dict[str, Any] | None | Unset
         if isinstance(self.body, Unset):
@@ -70,10 +63,8 @@ class RunArtifactPostIn:
         field_dict.update({})
         if result_artifact_id is not UNSET:
             field_dict["result_artifact_id"] = result_artifact_id
-        if result_artifact_name is not UNSET:
-            field_dict["result_artifact_name"] = result_artifact_name
-        if result_artifact_extension is not UNSET:
-            field_dict["result_artifact_extension"] = result_artifact_extension
+        if result_artifact_path is not UNSET:
+            field_dict["result_artifact_path"] = result_artifact_path
         if body is not UNSET:
             field_dict["body"] = body
 
@@ -102,29 +93,14 @@ class RunArtifactPostIn:
 
         result_artifact_id = _parse_result_artifact_id(d.pop("result_artifact_id", UNSET))
 
-        def _parse_result_artifact_name(data: object) -> None | str | Unset:
+        def _parse_result_artifact_path(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
             return cast(None | str | Unset, data)
 
-        result_artifact_name = _parse_result_artifact_name(d.pop("result_artifact_name", UNSET))
-
-        def _parse_result_artifact_extension(data: object) -> Literal["json"] | None | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            result_artifact_extension_type_0 = cast(Literal["json"], data)
-            if result_artifact_extension_type_0 != "json":
-                raise ValueError(
-                    f"result_artifact_extension_type_0 must match const 'json', got '{result_artifact_extension_type_0}'"
-                )
-            return result_artifact_extension_type_0
-            return cast(Literal["json"] | None | Unset, data)
-
-        result_artifact_extension = _parse_result_artifact_extension(d.pop("result_artifact_extension", UNSET))
+        result_artifact_path = _parse_result_artifact_path(d.pop("result_artifact_path", UNSET))
 
         def _parse_body(data: object) -> None | RunArtifactPostInBodyType0 | Unset:
             if data is None:
@@ -145,8 +121,7 @@ class RunArtifactPostIn:
 
         run_artifact_post_in = cls(
             result_artifact_id=result_artifact_id,
-            result_artifact_name=result_artifact_name,
-            result_artifact_extension=result_artifact_extension,
+            result_artifact_path=result_artifact_path,
             body=body,
         )
 

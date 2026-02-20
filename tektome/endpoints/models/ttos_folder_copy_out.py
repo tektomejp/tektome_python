@@ -6,37 +6,27 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ArtifactPostIn")
+T = TypeVar("T", bound="TtosFolderCopyOut")
 
 
 @_attrs_define
-class ArtifactPostIn:
+class TtosFolderCopyOut:
     """
     Attributes:
-        path (str):
-        description (str):
-        content (str):
+        copied_count (int):
     """
 
-    path: str
-    description: str
-    content: str
+    copied_count: int
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        path = self.path
-
-        description = self.description
-
-        content = self.content
+        copied_count = self.copied_count
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "path": path,
-                "description": description,
-                "content": content,
+                "copied_count": copied_count,
             }
         )
 
@@ -45,20 +35,14 @@ class ArtifactPostIn:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        path = d.pop("path")
+        copied_count = d.pop("copied_count")
 
-        description = d.pop("description")
-
-        content = d.pop("content")
-
-        artifact_post_in = cls(
-            path=path,
-            description=description,
-            content=content,
+        ttos_folder_copy_out = cls(
+            copied_count=copied_count,
         )
 
-        artifact_post_in.additional_properties = d
-        return artifact_post_in
+        ttos_folder_copy_out.additional_properties = d
+        return ttos_folder_copy_out
 
     @property
     def additional_keys(self) -> list[str]:

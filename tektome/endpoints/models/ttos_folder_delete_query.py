@@ -6,37 +6,27 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ArtifactPostIn")
+T = TypeVar("T", bound="TtosFolderDeleteQuery")
 
 
 @_attrs_define
-class ArtifactPostIn:
+class TtosFolderDeleteQuery:
     """
     Attributes:
         path (str):
-        description (str):
-        content (str):
     """
 
     path: str
-    description: str
-    content: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         path = self.path
-
-        description = self.description
-
-        content = self.content
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "path": path,
-                "description": description,
-                "content": content,
             }
         )
 
@@ -47,18 +37,12 @@ class ArtifactPostIn:
         d = dict(src_dict)
         path = d.pop("path")
 
-        description = d.pop("description")
-
-        content = d.pop("content")
-
-        artifact_post_in = cls(
+        ttos_folder_delete_query = cls(
             path=path,
-            description=description,
-            content=content,
         )
 
-        artifact_post_in.additional_properties = d
-        return artifact_post_in
+        ttos_folder_delete_query.additional_properties = d
+        return ttos_folder_delete_query
 
     @property
     def additional_keys(self) -> list[str]:
