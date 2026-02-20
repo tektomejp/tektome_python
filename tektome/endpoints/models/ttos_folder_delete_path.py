@@ -2,41 +2,32 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ArtifactPostIn")
+T = TypeVar("T", bound="TtosFolderDeletePath")
 
 
 @_attrs_define
-class ArtifactPostIn:
+class TtosFolderDeletePath:
     """
     Attributes:
-        path (str):
-        description (str):
-        content (str):
+        chatroom_id (UUID):
     """
 
-    path: str
-    description: str
-    content: str
+    chatroom_id: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        path = self.path
-
-        description = self.description
-
-        content = self.content
+        chatroom_id = str(self.chatroom_id)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "path": path,
-                "description": description,
-                "content": content,
+                "chatroom_id": chatroom_id,
             }
         )
 
@@ -45,20 +36,14 @@ class ArtifactPostIn:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        path = d.pop("path")
+        chatroom_id = UUID(d.pop("chatroom_id"))
 
-        description = d.pop("description")
-
-        content = d.pop("content")
-
-        artifact_post_in = cls(
-            path=path,
-            description=description,
-            content=content,
+        ttos_folder_delete_path = cls(
+            chatroom_id=chatroom_id,
         )
 
-        artifact_post_in.additional_properties = d
-        return artifact_post_in
+        ttos_folder_delete_path.additional_properties = d
+        return ttos_folder_delete_path
 
     @property
     def additional_keys(self) -> list[str]:

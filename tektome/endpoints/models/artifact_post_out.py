@@ -21,8 +21,7 @@ class ArtifactPostOut:
         created (datetime.datetime):
         updated (datetime.datetime):
         chatroom (UUID):
-        name (str):
-        extension (str):
+        path (str):
         id (None | Unset | UUID):
         created_by (None | Unset | UUID):
         updated_by (None | Unset | UUID):
@@ -36,8 +35,7 @@ class ArtifactPostOut:
     created: datetime.datetime
     updated: datetime.datetime
     chatroom: UUID
-    name: str
-    extension: str
+    path: str
     id: None | Unset | UUID = UNSET
     created_by: None | Unset | UUID = UNSET
     updated_by: None | Unset | UUID = UNSET
@@ -55,9 +53,7 @@ class ArtifactPostOut:
 
         chatroom = str(self.chatroom)
 
-        name = self.name
-
-        extension = self.extension
+        path = self.path
 
         id: None | str | Unset
         if isinstance(self.id, Unset):
@@ -114,8 +110,7 @@ class ArtifactPostOut:
                 "created": created,
                 "updated": updated,
                 "chatroom": chatroom,
-                "name": name,
-                "extension": extension,
+                "path": path,
             }
         )
         if id is not UNSET:
@@ -146,9 +141,7 @@ class ArtifactPostOut:
 
         chatroom = UUID(d.pop("chatroom"))
 
-        name = d.pop("name")
-
-        extension = d.pop("extension")
+        path = d.pop("path")
 
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -244,8 +237,7 @@ class ArtifactPostOut:
             created=created,
             updated=updated,
             chatroom=chatroom,
-            name=name,
-            extension=extension,
+            path=path,
             id=id,
             created_by=created_by,
             updated_by=updated_by,

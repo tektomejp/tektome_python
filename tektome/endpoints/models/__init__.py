@@ -26,7 +26,13 @@ from .approval_ticket_patch_in_patch import ApprovalTicketPatchInPatch
 from .approval_ticket_post_in import ApprovalTicketPostIn
 from .approval_user_profile_schema import ApprovalUserProfileSchema
 from .approval_user_schema import ApprovalUserSchema
+from .artifact_copy_in import ArtifactCopyIn
+from .artifact_copy_out import ArtifactCopyOut
+from .artifact_copy_path import ArtifactCopyPath
 from .artifact_delete_path import ArtifactDeletePath
+from .artifact_move_in import ArtifactMoveIn
+from .artifact_move_out import ArtifactMoveOut
+from .artifact_move_path import ArtifactMovePath
 from .artifact_patch_in import ArtifactPatchIn
 from .artifact_patch_out import ArtifactPatchOut
 from .artifact_patch_path import ArtifactPatchPath
@@ -996,6 +1002,14 @@ from .time_attribute_schema_out import TimeAttributeSchemaOut
 from .time_search_condition import TimeSearchCondition
 from .transaction_types import TransactionTypes
 from .transform import Transform
+from .ttos_folder_copy_out import TtosFolderCopyOut
+from .ttos_folder_delete_out import TtosFolderDeleteOut
+from .ttos_folder_delete_path import TtosFolderDeletePath
+from .ttos_folder_delete_query import TtosFolderDeleteQuery
+from .ttos_folder_move_out import TtosFolderMoveOut
+from .ttos_folder_post_in import TtosFolderPostIn
+from .ttos_folder_post_out import TtosFolderPostOut
+from .ttos_folder_post_path import TtosFolderPostPath
 from .ui_trigger_kind_choices import UiTriggerKindChoices
 from .united_kingdom_project_attributes import UnitedKingdomProjectAttributes
 from .united_states_project_attributes import UnitedStatesProjectAttributes
@@ -1044,7 +1058,13 @@ __all__ = (
     "ApprovalUserSchema",
     "AProjectDefaultPath",
     "ARequirementPath",
+    "ArtifactCopyIn",
+    "ArtifactCopyOut",
+    "ArtifactCopyPath",
     "ArtifactDeletePath",
+    "ArtifactMoveIn",
+    "ArtifactMoveOut",
+    "ArtifactMovePath",
     "ArtifactPatchIn",
     "ArtifactPatchOut",
     "ArtifactPatchPath",
@@ -1955,6 +1975,14 @@ __all__ = (
     "TimeSearchCondition",
     "TransactionTypes",
     "Transform",
+    "TtosFolderCopyOut",
+    "TtosFolderDeleteOut",
+    "TtosFolderDeletePath",
+    "TtosFolderDeleteQuery",
+    "TtosFolderMoveOut",
+    "TtosFolderPostIn",
+    "TtosFolderPostOut",
+    "TtosFolderPostPath",
     "UiTriggerKindChoices",
     "UnitedKingdomProjectAttributes",
     "UnitedStatesProjectAttributes",

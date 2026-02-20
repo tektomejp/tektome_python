@@ -2,41 +2,32 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ArtifactPostIn")
+T = TypeVar("T", bound="ArtifactMovePath")
 
 
 @_attrs_define
-class ArtifactPostIn:
+class ArtifactMovePath:
     """
     Attributes:
-        path (str):
-        description (str):
-        content (str):
+        artifact_id (UUID):
     """
 
-    path: str
-    description: str
-    content: str
+    artifact_id: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        path = self.path
-
-        description = self.description
-
-        content = self.content
+        artifact_id = str(self.artifact_id)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "path": path,
-                "description": description,
-                "content": content,
+                "artifact_id": artifact_id,
             }
         )
 
@@ -45,20 +36,14 @@ class ArtifactPostIn:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        path = d.pop("path")
+        artifact_id = UUID(d.pop("artifact_id"))
 
-        description = d.pop("description")
-
-        content = d.pop("content")
-
-        artifact_post_in = cls(
-            path=path,
-            description=description,
-            content=content,
+        artifact_move_path = cls(
+            artifact_id=artifact_id,
         )
 
-        artifact_post_in.additional_properties = d
-        return artifact_post_in
+        artifact_move_path.additional_properties = d
+        return artifact_move_path
 
     @property
     def additional_keys(self) -> list[str]:

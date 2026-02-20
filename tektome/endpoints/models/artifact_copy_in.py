@@ -6,37 +6,27 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ArtifactPostIn")
+T = TypeVar("T", bound="ArtifactCopyIn")
 
 
 @_attrs_define
-class ArtifactPostIn:
+class ArtifactCopyIn:
     """
     Attributes:
-        path (str):
-        description (str):
-        content (str):
+        new_path (str):
     """
 
-    path: str
-    description: str
-    content: str
+    new_path: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        path = self.path
-
-        description = self.description
-
-        content = self.content
+        new_path = self.new_path
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "path": path,
-                "description": description,
-                "content": content,
+                "new_path": new_path,
             }
         )
 
@@ -45,20 +35,14 @@ class ArtifactPostIn:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        path = d.pop("path")
+        new_path = d.pop("new_path")
 
-        description = d.pop("description")
-
-        content = d.pop("content")
-
-        artifact_post_in = cls(
-            path=path,
-            description=description,
-            content=content,
+        artifact_copy_in = cls(
+            new_path=new_path,
         )
 
-        artifact_post_in.additional_properties = d
-        return artifact_post_in
+        artifact_copy_in.additional_properties = d
+        return artifact_copy_in
 
     @property
     def additional_keys(self) -> list[str]:
