@@ -8,12 +8,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.table_attribute_body_patch_in import TableAttributeBodyPatchIn
-from ...models.upsert_table_attributes_attribute_object_types import UpsertTableAttributesAttributeObjectTypes
+from ...models.upsert_table_attributes_dataspace_attribute_object_types import (
+    UpsertTableAttributesDataspaceAttributeObjectTypes,
+)
 from ...types import Response
 
 
 def _get_kwargs(
-    object_type: UpsertTableAttributesAttributeObjectTypes,
+    object_type: UpsertTableAttributesDataspaceAttributeObjectTypes,
     object_id: UUID,
     *,
     body: TableAttributeBodyPatchIn,
@@ -56,7 +58,7 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 
 def sync_detailed(
-    object_type: UpsertTableAttributesAttributeObjectTypes,
+    object_type: UpsertTableAttributesDataspaceAttributeObjectTypes,
     object_id: UUID,
     *,
     client: AuthenticatedClient,
@@ -69,7 +71,7 @@ def sync_detailed(
     Set cells of a table attribute.
 
     Args:
-        object_type (UpsertTableAttributesAttributeObjectTypes):
+        object_type (UpsertTableAttributesDataspaceAttributeObjectTypes):
         object_id (UUID):
         body (TableAttributeBodyPatchIn):
 
@@ -95,7 +97,7 @@ def sync_detailed(
 
 
 async def asyncio_detailed(
-    object_type: UpsertTableAttributesAttributeObjectTypes,
+    object_type: UpsertTableAttributesDataspaceAttributeObjectTypes,
     object_id: UUID,
     *,
     client: AuthenticatedClient,
@@ -108,7 +110,7 @@ async def asyncio_detailed(
     Set cells of a table attribute.
 
     Args:
-        object_type (UpsertTableAttributesAttributeObjectTypes):
+        object_type (UpsertTableAttributesDataspaceAttributeObjectTypes):
         object_id (UUID):
         body (TableAttributeBodyPatchIn):
 

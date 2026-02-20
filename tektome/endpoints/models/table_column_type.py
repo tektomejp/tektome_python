@@ -7,6 +7,9 @@ class TableColumnType(str, Enum):
     DATETIME = "datetime"
     FLOAT = "float"
     INTEGER = "integer"
+    JSON = "json"
+    MULTI_SELECT = "multi_select"
+    SINGLE_SELECT = "single_select"
     STRING = "string"
     TIME = "time"
 

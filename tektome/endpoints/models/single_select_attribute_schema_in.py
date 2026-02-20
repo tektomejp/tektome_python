@@ -1,49 +1,42 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-if TYPE_CHECKING:
-    from ..models.table import Table
-
-
-T = TypeVar("T", bound="TableAttributeSchemaIn")
+T = TypeVar("T", bound="SingleSelectAttributeSchemaIn")
 
 
 @_attrs_define
-class TableAttributeSchemaIn:
+class SingleSelectAttributeSchemaIn:
     """
     Attributes:
         name (str):
-        value (Table): Data model representing a table with columns and rows.
-
-            Attributes:
-                columns: Column definitions (must have unique names, at least one required).
-                rows: List of rows, each row is a list of cells matching column order.
-                version: Optimistic locking version for structural changes only.
-
-            Version is used to detect conflicts when rows are inserted, deleted, or reordered.
-            Cell value updates use last-write-wins semantics and don't require version checks,
-            since they don't affect other cells or row indices.
+        options (list[str]):
+        value (None | str):
     """
 
     name: str
-    value: Table
+    options: list[str]
+    value: None | str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        value = self.value.to_dict()
+        options = self.options
+
+        value: None | str
+        value = self.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "name": name,
+                "options": options,
                 "value": value,
             }
         )
@@ -52,20 +45,26 @@ class TableAttributeSchemaIn:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.table import Table
-
         d = dict(src_dict)
         name = d.pop("name")
 
-        value = Table.from_dict(d.pop("value"))
+        options = cast(list[str], d.pop("options"))
 
-        table_attribute_schema_in = cls(
+        def _parse_value(data: object) -> None | str:
+            if data is None:
+                return data
+            return cast(None | str, data)
+
+        value = _parse_value(d.pop("value"))
+
+        single_select_attribute_schema_in = cls(
             name=name,
+            options=options,
             value=value,
         )
 
-        table_attribute_schema_in.additional_properties = d
-        return table_attribute_schema_in
+        single_select_attribute_schema_in.additional_properties = d
+        return single_select_attribute_schema_in
 
     @property
     def additional_keys(self) -> list[str]:

@@ -14,7 +14,9 @@ if TYPE_CHECKING:
     from ..models.float_attribute_schema_out import FloatAttributeSchemaOut
     from ..models.integer_attribute_schema_out import IntegerAttributeSchemaOut
     from ..models.json_attribute_schema_out import JSONAttributeSchemaOut
+    from ..models.multi_select_attribute_schema_out import MultiSelectAttributeSchemaOut
     from ..models.polygon_attribute_schema_out import PolygonAttributeSchemaOut
+    from ..models.single_select_attribute_schema_out import SingleSelectAttributeSchemaOut
     from ..models.string_attribute_schema_out import StringAttributeSchemaOut
     from ..models.table_attribute_schema_out import TableAttributeSchemaOut
     from ..models.time_attribute_schema_out import TimeAttributeSchemaOut
@@ -38,6 +40,8 @@ class AllAttributesSchemaOut:
         polygon_attributes (list[PolygonAttributeSchemaOut]):
         table_attributes (list[TableAttributeSchemaOut]):
         json_attributes (list[JSONAttributeSchemaOut]):
+        single_select_attributes (list[SingleSelectAttributeSchemaOut]):
+        multi_select_attributes (list[MultiSelectAttributeSchemaOut]):
     """
 
     string_attributes: list[StringAttributeSchemaOut]
@@ -51,6 +55,8 @@ class AllAttributesSchemaOut:
     polygon_attributes: list[PolygonAttributeSchemaOut]
     table_attributes: list[TableAttributeSchemaOut]
     json_attributes: list[JSONAttributeSchemaOut]
+    single_select_attributes: list[SingleSelectAttributeSchemaOut]
+    multi_select_attributes: list[MultiSelectAttributeSchemaOut]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -109,6 +115,16 @@ class AllAttributesSchemaOut:
             json_attributes_item = json_attributes_item_data.to_dict()
             json_attributes.append(json_attributes_item)
 
+        single_select_attributes = []
+        for single_select_attributes_item_data in self.single_select_attributes:
+            single_select_attributes_item = single_select_attributes_item_data.to_dict()
+            single_select_attributes.append(single_select_attributes_item)
+
+        multi_select_attributes = []
+        for multi_select_attributes_item_data in self.multi_select_attributes:
+            multi_select_attributes_item = multi_select_attributes_item_data.to_dict()
+            multi_select_attributes.append(multi_select_attributes_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -124,6 +140,8 @@ class AllAttributesSchemaOut:
                 "polygon_attributes": polygon_attributes,
                 "table_attributes": table_attributes,
                 "json_attributes": json_attributes,
+                "single_select_attributes": single_select_attributes,
+                "multi_select_attributes": multi_select_attributes,
             }
         )
 
@@ -138,7 +156,9 @@ class AllAttributesSchemaOut:
         from ..models.float_attribute_schema_out import FloatAttributeSchemaOut
         from ..models.integer_attribute_schema_out import IntegerAttributeSchemaOut
         from ..models.json_attribute_schema_out import JSONAttributeSchemaOut
+        from ..models.multi_select_attribute_schema_out import MultiSelectAttributeSchemaOut
         from ..models.polygon_attribute_schema_out import PolygonAttributeSchemaOut
+        from ..models.single_select_attribute_schema_out import SingleSelectAttributeSchemaOut
         from ..models.string_attribute_schema_out import StringAttributeSchemaOut
         from ..models.table_attribute_schema_out import TableAttributeSchemaOut
         from ..models.time_attribute_schema_out import TimeAttributeSchemaOut
@@ -221,6 +241,20 @@ class AllAttributesSchemaOut:
 
             json_attributes.append(json_attributes_item)
 
+        single_select_attributes = []
+        _single_select_attributes = d.pop("single_select_attributes")
+        for single_select_attributes_item_data in _single_select_attributes:
+            single_select_attributes_item = SingleSelectAttributeSchemaOut.from_dict(single_select_attributes_item_data)
+
+            single_select_attributes.append(single_select_attributes_item)
+
+        multi_select_attributes = []
+        _multi_select_attributes = d.pop("multi_select_attributes")
+        for multi_select_attributes_item_data in _multi_select_attributes:
+            multi_select_attributes_item = MultiSelectAttributeSchemaOut.from_dict(multi_select_attributes_item_data)
+
+            multi_select_attributes.append(multi_select_attributes_item)
+
         all_attributes_schema_out = cls(
             string_attributes=string_attributes,
             integer_attributes=integer_attributes,
@@ -233,6 +267,8 @@ class AllAttributesSchemaOut:
             polygon_attributes=polygon_attributes,
             table_attributes=table_attributes,
             json_attributes=json_attributes,
+            single_select_attributes=single_select_attributes,
+            multi_select_attributes=multi_select_attributes,
         )
 
         all_attributes_schema_out.additional_properties = d

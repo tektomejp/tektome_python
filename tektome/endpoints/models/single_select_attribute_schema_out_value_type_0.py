@@ -6,11 +6,11 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="LawtalkGeneralAttributeBodyPutInListObjectAttributesItem")
+T = TypeVar("T", bound="SingleSelectAttributeSchemaOutValueType0")
 
 
 @_attrs_define
-class LawtalkGeneralAttributeBodyPutInListObjectAttributesItem:
+class SingleSelectAttributeSchemaOutValueType0:
     """ """
 
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -25,10 +25,10 @@ class LawtalkGeneralAttributeBodyPutInListObjectAttributesItem:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        lawtalk_general_attribute_body_put_in_list_object_attributes_item = cls()
+        single_select_attribute_schema_out_value_type_0 = cls()
 
-        lawtalk_general_attribute_body_put_in_list_object_attributes_item.additional_properties = d
-        return lawtalk_general_attribute_body_put_in_list_object_attributes_item
+        single_select_attribute_schema_out_value_type_0.additional_properties = d
+        return single_select_attribute_schema_out_value_type_0
 
     @property
     def additional_keys(self) -> list[str]:
