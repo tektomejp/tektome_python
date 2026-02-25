@@ -2,12 +2,14 @@ from __future__ import annotations
 
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, Literal, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
+
+from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.user_metadata import UserMetadata
@@ -20,67 +22,74 @@ T = TypeVar("T", bound="RawTextCitationSchemaOut")
 class RawTextCitationSchemaOut:
     """
     Attributes:
-        id (UUID):
-        title (str):
-        attribute_content_type (str):
-        attribute_object_id (UUID):
-        created (datetime.datetime):
-        updated (datetime.datetime):
         created_by (UserMetadata):
         updated_by (UserMetadata):
-        highlights (list[str]):
-        resource_id (UUID):
+        created (datetime.datetime):
+        updated (datetime.datetime):
+        resource (UUID):
+        citation_type (Literal['rawtext_citation'] | Unset):  Default: 'rawtext_citation'.
+        id (None | Unset | UUID):
+        title (str | Unset):  Default: ''.
+        keywords (list[Any] | Unset): List of keywords that may or may not be present in the cited resource.
     """
 
-    id: UUID
-    title: str
-    attribute_content_type: str
-    attribute_object_id: UUID
-    created: datetime.datetime
-    updated: datetime.datetime
     created_by: UserMetadata
     updated_by: UserMetadata
-    highlights: list[str]
-    resource_id: UUID
+    created: datetime.datetime
+    updated: datetime.datetime
+    resource: UUID
+    citation_type: Literal["rawtext_citation"] | Unset = "rawtext_citation"
+    id: None | Unset | UUID = UNSET
+    title: str | Unset = ""
+    keywords: list[Any] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id = str(self.id)
+        created_by = self.created_by.to_dict()
 
-        title = self.title
-
-        attribute_content_type = self.attribute_content_type
-
-        attribute_object_id = str(self.attribute_object_id)
+        updated_by = self.updated_by.to_dict()
 
         created = self.created.isoformat()
 
         updated = self.updated.isoformat()
 
-        created_by = self.created_by.to_dict()
+        resource = str(self.resource)
 
-        updated_by = self.updated_by.to_dict()
+        citation_type = self.citation_type
 
-        highlights = self.highlights
+        id: None | str | Unset
+        if isinstance(self.id, Unset):
+            id = UNSET
+        elif isinstance(self.id, UUID):
+            id = str(self.id)
+        else:
+            id = self.id
 
-        resource_id = str(self.resource_id)
+        title = self.title
+
+        keywords: list[Any] | Unset = UNSET
+        if not isinstance(self.keywords, Unset):
+            keywords = self.keywords
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "id": id,
-                "title": title,
-                "attribute_content_type": attribute_content_type,
-                "attribute_object_id": attribute_object_id,
-                "created": created,
-                "updated": updated,
                 "created_by": created_by,
                 "updated_by": updated_by,
-                "highlights": highlights,
-                "resource_id": resource_id,
+                "created": created,
+                "updated": updated,
+                "resource": resource,
             }
         )
+        if citation_type is not UNSET:
+            field_dict["citation_type"] = citation_type
+        if id is not UNSET:
+            field_dict["id"] = id
+        if title is not UNSET:
+            field_dict["title"] = title
+        if keywords is not UNSET:
+            field_dict["keywords"] = keywords
 
         return field_dict
 
@@ -89,37 +98,51 @@ class RawTextCitationSchemaOut:
         from ..models.user_metadata import UserMetadata
 
         d = dict(src_dict)
-        id = UUID(d.pop("id"))
+        created_by = UserMetadata.from_dict(d.pop("created_by"))
 
-        title = d.pop("title")
-
-        attribute_content_type = d.pop("attribute_content_type")
-
-        attribute_object_id = UUID(d.pop("attribute_object_id"))
+        updated_by = UserMetadata.from_dict(d.pop("updated_by"))
 
         created = isoparse(d.pop("created"))
 
         updated = isoparse(d.pop("updated"))
 
-        created_by = UserMetadata.from_dict(d.pop("created_by"))
+        resource = UUID(d.pop("resource"))
 
-        updated_by = UserMetadata.from_dict(d.pop("updated_by"))
+        citation_type = cast(Literal["rawtext_citation"] | Unset, d.pop("citation_type", UNSET))
+        if citation_type != "rawtext_citation" and not isinstance(citation_type, Unset):
+            raise ValueError(f"citation_type must match const 'rawtext_citation', got '{citation_type}'")
 
-        highlights = cast(list[str], d.pop("highlights"))
+        def _parse_id(data: object) -> None | Unset | UUID:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                id_type_0 = UUID(data)
 
-        resource_id = UUID(d.pop("resource_id"))
+                return id_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | Unset | UUID, data)
+
+        id = _parse_id(d.pop("id", UNSET))
+
+        title = d.pop("title", UNSET)
+
+        keywords = cast(list[Any], d.pop("keywords", UNSET))
 
         raw_text_citation_schema_out = cls(
-            id=id,
-            title=title,
-            attribute_content_type=attribute_content_type,
-            attribute_object_id=attribute_object_id,
-            created=created,
-            updated=updated,
             created_by=created_by,
             updated_by=updated_by,
-            highlights=highlights,
-            resource_id=resource_id,
+            created=created,
+            updated=updated,
+            resource=resource,
+            citation_type=citation_type,
+            id=id,
+            title=title,
+            keywords=keywords,
         )
 
         raw_text_citation_schema_out.additional_properties = d
