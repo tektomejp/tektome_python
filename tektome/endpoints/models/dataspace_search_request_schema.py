@@ -8,7 +8,6 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.dataspace_entity_type import DataspaceEntityType
-from ..models.dataspace_search_request_schema_keyword_match_mode import DataspaceSearchRequestSchemaKeywordMatchMode
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -30,9 +29,6 @@ class DataspaceSearchRequestSchema:
         conditions (list[FieldConditionInput] | Unset): List of field-based search conditions (field_id, action, value)
         page (int | Unset): Page number for pagination, starting from 1, default to 1 Default: 1.
         page_size (int | Unset): Page size for pagination, range between 1 and 100 default to 30 Default: 30.
-        keyword_match_mode (DataspaceSearchRequestSchemaKeywordMatchMode | Unset): How to treat provided keywords: 'any'
-            matches any keyword, 'all' requires all keywords. Defaults to any. Default:
-            DataspaceSearchRequestSchemaKeywordMatchMode.ANY.
         max_chunks_per_resource (int | Unset): Maximum number of OCR chunk inner_hits to return per resource, be careful
             with high values as it may impact performance. Range between 1 and 100. Defaults to 5. Default: 5.
         max_resource_per_project (int | Unset): Maximum number of resource inner_hits to return per project be careful
@@ -48,9 +44,6 @@ class DataspaceSearchRequestSchema:
     conditions: list[FieldConditionInput] | Unset = UNSET
     page: int | Unset = 1
     page_size: int | Unset = 30
-    keyword_match_mode: DataspaceSearchRequestSchemaKeywordMatchMode | Unset = (
-        DataspaceSearchRequestSchemaKeywordMatchMode.ANY
-    )
     max_chunks_per_resource: int | Unset = 5
     max_resource_per_project: int | Unset = 25
     target_entity: DataspaceEntityType | Unset = DataspaceEntityType.PROJECT
@@ -94,10 +87,6 @@ class DataspaceSearchRequestSchema:
 
         page_size = self.page_size
 
-        keyword_match_mode: str | Unset = UNSET
-        if not isinstance(self.keyword_match_mode, Unset):
-            keyword_match_mode = self.keyword_match_mode.value
-
         max_chunks_per_resource = self.max_chunks_per_resource
 
         max_resource_per_project = self.max_resource_per_project
@@ -125,8 +114,6 @@ class DataspaceSearchRequestSchema:
             field_dict["page"] = page
         if page_size is not UNSET:
             field_dict["page_size"] = page_size
-        if keyword_match_mode is not UNSET:
-            field_dict["keyword_match_mode"] = keyword_match_mode
         if max_chunks_per_resource is not UNSET:
             field_dict["max_chunks_per_resource"] = max_chunks_per_resource
         if max_resource_per_project is not UNSET:
@@ -194,13 +181,6 @@ class DataspaceSearchRequestSchema:
 
         page_size = d.pop("page_size", UNSET)
 
-        _keyword_match_mode = d.pop("keyword_match_mode", UNSET)
-        keyword_match_mode: DataspaceSearchRequestSchemaKeywordMatchMode | Unset
-        if isinstance(_keyword_match_mode, Unset):
-            keyword_match_mode = UNSET
-        else:
-            keyword_match_mode = DataspaceSearchRequestSchemaKeywordMatchMode(_keyword_match_mode)
-
         max_chunks_per_resource = d.pop("max_chunks_per_resource", UNSET)
 
         max_resource_per_project = d.pop("max_resource_per_project", UNSET)
@@ -222,7 +202,6 @@ class DataspaceSearchRequestSchema:
             conditions=conditions,
             page=page,
             page_size=page_size,
-            keyword_match_mode=keyword_match_mode,
             max_chunks_per_resource=max_chunks_per_resource,
             max_resource_per_project=max_resource_per_project,
             target_entity=target_entity,

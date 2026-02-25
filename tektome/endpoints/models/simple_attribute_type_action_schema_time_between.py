@@ -6,19 +6,19 @@ from typing import Any, Literal, TypeVar, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="SimpleAttributeTypeActionSchemaStringMeans")
+T = TypeVar("T", bound="SimpleAttributeTypeActionSchemaTimeBetween")
 
 
 @_attrs_define
-class SimpleAttributeTypeActionSchemaStringMeans:
+class SimpleAttributeTypeActionSchemaTimeBetween:
     """
     Attributes:
-        action (Literal['means']):
-        value_type (Literal['string']):
+        action (Literal['between']):
+        value_type (Literal['time, tuple[time, time] if action is between']):
     """
 
-    action: Literal["means"]
-    value_type: Literal["string"]
+    action: Literal["between"]
+    value_type: Literal["time, tuple[time, time] if action is between"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,21 +40,23 @@ class SimpleAttributeTypeActionSchemaStringMeans:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        action = cast(Literal["means"], d.pop("action"))
-        if action != "means":
-            raise ValueError(f"action must match const 'means', got '{action}'")
+        action = cast(Literal["between"], d.pop("action"))
+        if action != "between":
+            raise ValueError(f"action must match const 'between', got '{action}'")
 
-        value_type = cast(Literal["string"], d.pop("value_type"))
-        if value_type != "string":
-            raise ValueError(f"value_type must match const 'string', got '{value_type}'")
+        value_type = cast(Literal["time, tuple[time, time] if action is between"], d.pop("value_type"))
+        if value_type != "time, tuple[time, time] if action is between":
+            raise ValueError(
+                f"value_type must match const 'time, tuple[time, time] if action is between', got '{value_type}'"
+            )
 
-        simple_attribute_type_action_schema_string_means = cls(
+        simple_attribute_type_action_schema_time_between = cls(
             action=action,
             value_type=value_type,
         )
 
-        simple_attribute_type_action_schema_string_means.additional_properties = d
-        return simple_attribute_type_action_schema_string_means
+        simple_attribute_type_action_schema_time_between.additional_properties = d
+        return simple_attribute_type_action_schema_time_between
 
     @property
     def additional_keys(self) -> list[str]:

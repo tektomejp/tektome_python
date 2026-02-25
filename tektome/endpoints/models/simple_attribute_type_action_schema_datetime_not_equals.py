@@ -14,11 +14,11 @@ class SimpleAttributeTypeActionSchemaDatetimeNotEquals:
     """
     Attributes:
         action (Literal['not_equals']):
-        value_type (Literal['datetime']):
+        value_type (Literal['datetime, tuple[datetime, datetime] if action is between']):
     """
 
     action: Literal["not_equals"]
-    value_type: Literal["datetime"]
+    value_type: Literal["datetime, tuple[datetime, datetime] if action is between"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,9 +44,11 @@ class SimpleAttributeTypeActionSchemaDatetimeNotEquals:
         if action != "not_equals":
             raise ValueError(f"action must match const 'not_equals', got '{action}'")
 
-        value_type = cast(Literal["datetime"], d.pop("value_type"))
-        if value_type != "datetime":
-            raise ValueError(f"value_type must match const 'datetime', got '{value_type}'")
+        value_type = cast(Literal["datetime, tuple[datetime, datetime] if action is between"], d.pop("value_type"))
+        if value_type != "datetime, tuple[datetime, datetime] if action is between":
+            raise ValueError(
+                f"value_type must match const 'datetime, tuple[datetime, datetime] if action is between', got '{value_type}'"
+            )
 
         simple_attribute_type_action_schema_datetime_not_equals = cls(
             action=action,

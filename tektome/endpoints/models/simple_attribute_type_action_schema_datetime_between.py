@@ -6,19 +6,19 @@ from typing import Any, Literal, TypeVar, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="SimpleAttributeTypeActionSchemaTimeEquals")
+T = TypeVar("T", bound="SimpleAttributeTypeActionSchemaDatetimeBetween")
 
 
 @_attrs_define
-class SimpleAttributeTypeActionSchemaTimeEquals:
+class SimpleAttributeTypeActionSchemaDatetimeBetween:
     """
     Attributes:
-        action (Literal['equals']):
-        value_type (Literal['time, tuple[time, time] if action is between']):
+        action (Literal['between']):
+        value_type (Literal['datetime, tuple[datetime, datetime] if action is between']):
     """
 
-    action: Literal["equals"]
-    value_type: Literal["time, tuple[time, time] if action is between"]
+    action: Literal["between"]
+    value_type: Literal["datetime, tuple[datetime, datetime] if action is between"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,23 +40,23 @@ class SimpleAttributeTypeActionSchemaTimeEquals:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        action = cast(Literal["equals"], d.pop("action"))
-        if action != "equals":
-            raise ValueError(f"action must match const 'equals', got '{action}'")
+        action = cast(Literal["between"], d.pop("action"))
+        if action != "between":
+            raise ValueError(f"action must match const 'between', got '{action}'")
 
-        value_type = cast(Literal["time, tuple[time, time] if action is between"], d.pop("value_type"))
-        if value_type != "time, tuple[time, time] if action is between":
+        value_type = cast(Literal["datetime, tuple[datetime, datetime] if action is between"], d.pop("value_type"))
+        if value_type != "datetime, tuple[datetime, datetime] if action is between":
             raise ValueError(
-                f"value_type must match const 'time, tuple[time, time] if action is between', got '{value_type}'"
+                f"value_type must match const 'datetime, tuple[datetime, datetime] if action is between', got '{value_type}'"
             )
 
-        simple_attribute_type_action_schema_time_equals = cls(
+        simple_attribute_type_action_schema_datetime_between = cls(
             action=action,
             value_type=value_type,
         )
 
-        simple_attribute_type_action_schema_time_equals.additional_properties = d
-        return simple_attribute_type_action_schema_time_equals
+        simple_attribute_type_action_schema_datetime_between.additional_properties = d
+        return simple_attribute_type_action_schema_datetime_between
 
     @property
     def additional_keys(self) -> list[str]:

@@ -42,6 +42,7 @@ class DataspaceResourceResultHit:
         table_attributes (list[EntitySearchResultHitAttribute] | Unset):
         created (datetime.datetime | None | Unset):
         created_by (None | Unset | UserMetadata):
+        updated (datetime.datetime | None | Unset):
         project (DataspaceSearchResultHit | None | Unset):
     """
 
@@ -62,6 +63,7 @@ class DataspaceResourceResultHit:
     table_attributes: list[EntitySearchResultHitAttribute] | Unset = UNSET
     created: datetime.datetime | None | Unset = UNSET
     created_by: None | Unset | UserMetadata = UNSET
+    updated: datetime.datetime | None | Unset = UNSET
     project: DataspaceSearchResultHit | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -182,6 +184,14 @@ class DataspaceResourceResultHit:
         else:
             created_by = self.created_by
 
+        updated: None | str | Unset
+        if isinstance(self.updated, Unset):
+            updated = UNSET
+        elif isinstance(self.updated, datetime.datetime):
+            updated = self.updated.isoformat()
+        else:
+            updated = self.updated
+
         project: dict[str, Any] | None | Unset
         if isinstance(self.project, Unset):
             project = UNSET
@@ -228,6 +238,8 @@ class DataspaceResourceResultHit:
             field_dict["created"] = created
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
+        if updated is not UNSET:
+            field_dict["updated"] = updated
         if project is not UNSET:
             field_dict["project"] = project
 
@@ -411,6 +423,23 @@ class DataspaceResourceResultHit:
 
         created_by = _parse_created_by(d.pop("created_by", UNSET))
 
+        def _parse_updated(data: object) -> datetime.datetime | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                updated_type_0 = isoparse(data)
+
+                return updated_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(datetime.datetime | None | Unset, data)
+
+        updated = _parse_updated(d.pop("updated", UNSET))
+
         def _parse_project(data: object) -> DataspaceSearchResultHit | None | Unset:
             if data is None:
                 return data
@@ -446,6 +475,7 @@ class DataspaceResourceResultHit:
             table_attributes=table_attributes,
             created=created,
             created_by=created_by,
+            updated=updated,
             project=project,
         )
 

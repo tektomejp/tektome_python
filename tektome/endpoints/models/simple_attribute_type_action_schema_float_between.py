@@ -1,33 +1,37 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
-from uuid import UUID
+from typing import Any, Literal, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="EntitySearchRequestPath")
+T = TypeVar("T", bound="SimpleAttributeTypeActionSchemaFloatBetween")
 
 
 @_attrs_define
-class EntitySearchRequestPath:
+class SimpleAttributeTypeActionSchemaFloatBetween:
     """
     Attributes:
-        request_id (UUID):
+        action (Literal['between']):
+        value_type (Literal['float']):
     """
 
-    request_id: UUID
+    action: Literal["between"]
+    value_type: Literal["float"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        request_id = str(self.request_id)
+        action = self.action
+
+        value_type = self.value_type
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "request_id": request_id,
+                "action": action,
+                "value_type": value_type,
             }
         )
 
@@ -36,14 +40,21 @@ class EntitySearchRequestPath:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        request_id = UUID(d.pop("request_id"))
+        action = cast(Literal["between"], d.pop("action"))
+        if action != "between":
+            raise ValueError(f"action must match const 'between', got '{action}'")
 
-        entity_search_request_path = cls(
-            request_id=request_id,
+        value_type = cast(Literal["float"], d.pop("value_type"))
+        if value_type != "float":
+            raise ValueError(f"value_type must match const 'float', got '{value_type}'")
+
+        simple_attribute_type_action_schema_float_between = cls(
+            action=action,
+            value_type=value_type,
         )
 
-        entity_search_request_path.additional_properties = d
-        return entity_search_request_path
+        simple_attribute_type_action_schema_float_between.additional_properties = d
+        return simple_attribute_type_action_schema_float_between
 
     @property
     def additional_keys(self) -> list[str]:
