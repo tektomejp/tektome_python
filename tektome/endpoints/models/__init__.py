@@ -122,15 +122,12 @@ from .blob_upload_request_post_out import BlobUploadRequestPostOut
 from .blob_upload_response_out import BlobUploadResponseOut
 from .boolean_attribute_schema_in import BooleanAttributeSchemaIn
 from .boolean_attribute_schema_out import BooleanAttributeSchemaOut
-from .boolean_condition_action import BooleanConditionAction
-from .boolean_search_condition import BooleanSearchCondition
 from .bulk_move_folder_resources_schema import BulkMoveFolderResourcesSchema
 from .bulk_review_post_in import BulkReviewPostIn
 from .bulk_review_post_in_action import BulkReviewPostInAction
 from .bulk_user_invitation_schema_out import BulkUserInvitationSchemaOut
 from .candidate_item import CandidateItem
 from .candidate_item_kind import CandidateItemKind
-from .cell_coordinate import CellCoordinate
 from .chat import Chat
 from .chat_chunks_type_0_item import ChatChunksType0Item
 from .chat_post_in import ChatPostIn
@@ -264,7 +261,6 @@ from .dataspace_search_request_get_out_highlight_keywords_type_0 import (
 from .dataspace_search_request_is_saved_patch_in import DataspaceSearchRequestIsSavedPatchIn
 from .dataspace_search_request_path import DataspaceSearchRequestPath
 from .dataspace_search_request_schema import DataspaceSearchRequestSchema
-from .dataspace_search_request_schema_keyword_match_mode import DataspaceSearchRequestSchemaKeywordMatchMode
 from .dataspace_search_result_hit import DataspaceSearchResultHit
 from .dataspace_search_result_out import DataspaceSearchResultOut
 from .dataspace_search_schema import DataspaceSearchSchema
@@ -285,11 +281,8 @@ from .dataspace_template_path import DataspaceTemplatePath
 from .dataspaces_organization_schema import DataspacesOrganizationSchema
 from .date_attribute_schema_in import DateAttributeSchemaIn
 from .date_attribute_schema_out import DateAttributeSchemaOut
-from .date_search_condition import DateSearchCondition
 from .date_time_attribute_schema_in import DateTimeAttributeSchemaIn
 from .date_time_attribute_schema_out import DateTimeAttributeSchemaOut
-from .date_time_condition_action import DateTimeConditionAction
-from .date_time_search_condition import DateTimeSearchCondition
 from .deep_research_chat_post_in import DeepResearchChatPostIn
 from .deep_research_models_type import DeepResearchModelsType
 from .default_attribute_body_put_in import DefaultAttributeBodyPutIn
@@ -323,40 +316,12 @@ from .document_search_type import DocumentSearchType
 from .document_source_enum import DocumentSourceEnum
 from .documents import Documents
 from .documents_positional_text_item import DocumentsPositionalTextItem
-from .dynamic_boolean_search_condition import DynamicBooleanSearchCondition
-from .dynamic_boolean_value import DynamicBooleanValue
-from .dynamic_date_search_condition import DynamicDateSearchCondition
-from .dynamic_date_time_search_condition import DynamicDateTimeSearchCondition
-from .dynamic_date_time_value import DynamicDateTimeValue
-from .dynamic_date_value import DynamicDateValue
-from .dynamic_entity_search_request import DynamicEntitySearchRequest
-from .dynamic_float_search_condition import DynamicFloatSearchCondition
-from .dynamic_float_value import DynamicFloatValue
-from .dynamic_integer_search_condition import DynamicIntegerSearchCondition
-from .dynamic_integer_value import DynamicIntegerValue
-from .dynamic_string_search_condition import DynamicStringSearchCondition
-from .dynamic_string_value import DynamicStringValue
-from .dynamic_table_search_condition import DynamicTableSearchCondition
-from .dynamic_time_search_condition import DynamicTimeSearchCondition
-from .dynamic_time_value import DynamicTimeValue
 from .embedding_model_enum import EmbeddingModelEnum
 from .entity_attributes_extracted_filter_options import EntityAttributesExtractedFilterOptions
-from .entity_search_request_path import EntitySearchRequestPath
-from .entity_search_request_schema_get_out import EntitySearchRequestSchemaGetOut
-from .entity_search_request_schema_get_out_conditions import EntitySearchRequestSchemaGetOutConditions
-from .entity_search_request_schema_patch_in import EntitySearchRequestSchemaPatchIn
-from .entity_search_request_schema_patch_out import EntitySearchRequestSchemaPatchOut
-from .entity_search_request_schema_patch_out_conditions import EntitySearchRequestSchemaPatchOutConditions
-from .entity_search_request_schema_post_in import EntitySearchRequestSchemaPostIn
-from .entity_search_request_schema_post_out import EntitySearchRequestSchemaPostOut
-from .entity_search_request_schema_post_out_conditions import EntitySearchRequestSchemaPostOutConditions
-from .entity_search_result import EntitySearchResult
-from .entity_search_result_hit import EntitySearchResultHit
 from .entity_search_result_hit_attribute import EntitySearchResultHitAttribute
 from .entity_tracker_data_in import EntityTrackerDataIn
 from .entity_tracker_get_out import EntityTrackerGetOut
 from .entity_tracker_put_in import EntityTrackerPutIn
-from .entity_type import EntityType
 from .environment_variable_common_path import EnvironmentVariableCommonPath
 from .environment_variable_filter_in import EnvironmentVariableFilterIn
 from .environment_variable_patch_in import EnvironmentVariablePatchIn
@@ -433,7 +398,6 @@ from .file_table_attribute_extraction import FileTableAttributeExtraction
 from .file_upload_candidate_payload import FileUploadCandidatePayload
 from .float_attribute_schema_in import FloatAttributeSchemaIn
 from .float_attribute_schema_out import FloatAttributeSchemaOut
-from .float_search_condition import FloatSearchCondition
 from .folder_bulk_move_post_in import FolderBulkMovePostIn
 from .folder_check_delete_out import FolderCheckDeleteOut
 from .folder_children_get_out import FolderChildrenGetOut
@@ -510,7 +474,6 @@ from .insert_table_attribute_row_dataspace_attribute_object_types import (
 )
 from .integer_attribute_schema_in import IntegerAttributeSchemaIn
 from .integer_attribute_schema_out import IntegerAttributeSchemaOut
-from .integer_search_condition import IntegerSearchCondition
 from .invite_user_by_email_schema_in import InviteUserByEmailSchemaIn
 from .japan_project_attributes import JapanProjectAttributes
 from .json_attribute_schema_in import JSONAttributeSchemaIn
@@ -603,7 +566,6 @@ from .notification_read_out import NotificationReadOut
 from .notification_testing_post_in import NotificationTestingPostIn
 from .notification_testing_post_in_extras import NotificationTestingPostInExtras
 from .notification_type import NotificationType
-from .numeric_condition_action import NumericConditionAction
 from .observability_ids_in import ObservabilityIdsIn
 from .observability_put_in import ObservabilityPutIn
 from .observability_schema_in import ObservabilitySchemaIn
@@ -867,7 +829,6 @@ from .search_bim_elements_bim_element_type_path import SearchBimElementsBimEleme
 from .search_document_post_in import SearchDocumentPostIn
 from .search_document_result_post_out import SearchDocumentResultPostOut
 from .search_document_result_post_out_result_item import SearchDocumentResultPostOutResultItem
-from .search_entities_response import SearchEntitiesResponse
 from .search_lawtalk_project_ocr_v3_azure_embedding_model import SearchLawtalkProjectOcrV3AzureEmbeddingModel
 from .search_mode import SearchMode
 from .search_payload_v4_get_in import SearchPayloadV4GetIn
@@ -887,22 +848,24 @@ from .section_path_in import SectionPathIn
 from .section_table_path import SectionTablePath
 from .section_table_path_mode import SectionTablePathMode
 from .send_msg_post_in import SendMsgPostIn
-from .simple_attribute_type import SimpleAttributeType
 from .simple_attribute_type_action_schema import SimpleAttributeTypeActionSchema
 from .simple_attribute_type_action_schema_boolean_equals import SimpleAttributeTypeActionSchemaBooleanEquals
 from .simple_attribute_type_action_schema_boolean_not_equals import SimpleAttributeTypeActionSchemaBooleanNotEquals
 from .simple_attribute_type_action_schema_date_after import SimpleAttributeTypeActionSchemaDateAfter
 from .simple_attribute_type_action_schema_date_before import SimpleAttributeTypeActionSchemaDateBefore
+from .simple_attribute_type_action_schema_date_between import SimpleAttributeTypeActionSchemaDateBetween
 from .simple_attribute_type_action_schema_date_equals import SimpleAttributeTypeActionSchemaDateEquals
 from .simple_attribute_type_action_schema_date_not_equals import SimpleAttributeTypeActionSchemaDateNotEquals
 from .simple_attribute_type_action_schema_date_on_or_after import SimpleAttributeTypeActionSchemaDateOnOrAfter
 from .simple_attribute_type_action_schema_date_on_or_before import SimpleAttributeTypeActionSchemaDateOnOrBefore
 from .simple_attribute_type_action_schema_datetime_after import SimpleAttributeTypeActionSchemaDatetimeAfter
 from .simple_attribute_type_action_schema_datetime_before import SimpleAttributeTypeActionSchemaDatetimeBefore
+from .simple_attribute_type_action_schema_datetime_between import SimpleAttributeTypeActionSchemaDatetimeBetween
 from .simple_attribute_type_action_schema_datetime_equals import SimpleAttributeTypeActionSchemaDatetimeEquals
 from .simple_attribute_type_action_schema_datetime_not_equals import SimpleAttributeTypeActionSchemaDatetimeNotEquals
 from .simple_attribute_type_action_schema_datetime_on_or_after import SimpleAttributeTypeActionSchemaDatetimeOnOrAfter
 from .simple_attribute_type_action_schema_datetime_on_or_before import SimpleAttributeTypeActionSchemaDatetimeOnOrBefore
+from .simple_attribute_type_action_schema_float_between import SimpleAttributeTypeActionSchemaFloatBetween
 from .simple_attribute_type_action_schema_float_equals import SimpleAttributeTypeActionSchemaFloatEquals
 from .simple_attribute_type_action_schema_float_greater_than import SimpleAttributeTypeActionSchemaFloatGreaterThan
 from .simple_attribute_type_action_schema_float_greater_than_or_equal_to import (
@@ -913,6 +876,7 @@ from .simple_attribute_type_action_schema_float_less_than_or_equal_to import (
     SimpleAttributeTypeActionSchemaFloatLessThanOrEqualTo,
 )
 from .simple_attribute_type_action_schema_float_not_equals import SimpleAttributeTypeActionSchemaFloatNotEquals
+from .simple_attribute_type_action_schema_integer_between import SimpleAttributeTypeActionSchemaIntegerBetween
 from .simple_attribute_type_action_schema_integer_equals import SimpleAttributeTypeActionSchemaIntegerEquals
 from .simple_attribute_type_action_schema_integer_greater_than import SimpleAttributeTypeActionSchemaIntegerGreaterThan
 from .simple_attribute_type_action_schema_integer_greater_than_or_equal_to import (
@@ -927,8 +891,6 @@ from .simple_attribute_type_action_schema_string_contains import SimpleAttribute
 from .simple_attribute_type_action_schema_string_exact import SimpleAttributeTypeActionSchemaStringExact
 from .simple_attribute_type_action_schema_string_excludes import SimpleAttributeTypeActionSchemaStringExcludes
 from .simple_attribute_type_action_schema_string_includes import SimpleAttributeTypeActionSchemaStringIncludes
-from .simple_attribute_type_action_schema_string_matches import SimpleAttributeTypeActionSchemaStringMatches
-from .simple_attribute_type_action_schema_string_means import SimpleAttributeTypeActionSchemaStringMeans
 from .simple_attribute_type_action_schema_string_not_contains import SimpleAttributeTypeActionSchemaStringNotContains
 from .simple_attribute_type_action_schema_table_cell_matches import SimpleAttributeTypeActionSchemaTableCellMatches
 from .simple_attribute_type_action_schema_table_column_contains import (
@@ -936,6 +898,7 @@ from .simple_attribute_type_action_schema_table_column_contains import (
 )
 from .simple_attribute_type_action_schema_time_after import SimpleAttributeTypeActionSchemaTimeAfter
 from .simple_attribute_type_action_schema_time_before import SimpleAttributeTypeActionSchemaTimeBefore
+from .simple_attribute_type_action_schema_time_between import SimpleAttributeTypeActionSchemaTimeBetween
 from .simple_attribute_type_action_schema_time_equals import SimpleAttributeTypeActionSchemaTimeEquals
 from .simple_attribute_type_action_schema_time_not_equals import SimpleAttributeTypeActionSchemaTimeNotEquals
 from .simple_attribute_type_action_schema_time_on_or_after import SimpleAttributeTypeActionSchemaTimeOnOrAfter
@@ -955,8 +918,6 @@ from .stream_bim_elements_by_project_bim_element_type_v2_path import StreamBimEl
 from .stream_trim_batch_bim_elements_bim_element_type_path import StreamTrimBatchBimElementsBimElementTypePath
 from .string_attribute_schema_in import StringAttributeSchemaIn
 from .string_attribute_schema_out import StringAttributeSchemaOut
-from .string_condition_action import StringConditionAction
-from .string_search_condition import StringSearchCondition
 from .supported_dr_model import SupportedDRModel
 from .sync_storage_file_multi_part_body_params import SyncStorageFileMultiPartBodyParams
 from .sync_storage_file_response import SyncStorageFileResponse
@@ -968,11 +929,9 @@ from .table_attribute_schema_out_value_type_0 import TableAttributeSchemaOutValu
 from .table_cell_update import TableCellUpdate
 from .table_column import TableColumn
 from .table_column_type import TableColumnType
-from .table_condition_action import TableConditionAction
 from .table_metadata_update_request import TableMetadataUpdateRequest
 from .table_metadata_update_request_rename_columns_type_0 import TableMetadataUpdateRequestRenameColumnsType0
 from .table_row_operation_in import TableRowOperationIn
-from .table_search_condition import TableSearchCondition
 from .target_model_entity_filter_options import TargetModelEntityFilterOptions
 from .target_user_in_schema import TargetUserInSchema
 from .task_post_out import TaskPostOut
@@ -999,7 +958,6 @@ from .template_update_in import TemplateUpdateIn
 from .text_highlights import TextHighlights
 from .time_attribute_schema_in import TimeAttributeSchemaIn
 from .time_attribute_schema_out import TimeAttributeSchemaOut
-from .time_search_condition import TimeSearchCondition
 from .transaction_types import TransactionTypes
 from .transform import Transform
 from .ttos_folder_copy_out import TtosFolderCopyOut
@@ -1155,15 +1113,12 @@ __all__ = (
     "BlobUploadResponseOut",
     "BooleanAttributeSchemaIn",
     "BooleanAttributeSchemaOut",
-    "BooleanConditionAction",
-    "BooleanSearchCondition",
     "BulkMoveFolderResourcesSchema",
     "BulkReviewPostIn",
     "BulkReviewPostInAction",
     "BulkUserInvitationSchemaOut",
     "CandidateItem",
     "CandidateItemKind",
-    "CellCoordinate",
     "Chat",
     "ChatChunksType0Item",
     "ChatPostIn",
@@ -1274,7 +1229,6 @@ __all__ = (
     "DataspaceSearchRequestIsSavedPatchIn",
     "DataspaceSearchRequestPath",
     "DataspaceSearchRequestSchema",
-    "DataspaceSearchRequestSchemaKeywordMatchMode",
     "DataspaceSearchResultHit",
     "DataspaceSearchResultOut",
     "DataspaceSearchSchema",
@@ -1292,11 +1246,8 @@ __all__ = (
     "DataTypeEnum",
     "DateAttributeSchemaIn",
     "DateAttributeSchemaOut",
-    "DateSearchCondition",
     "DateTimeAttributeSchemaIn",
     "DateTimeAttributeSchemaOut",
-    "DateTimeConditionAction",
-    "DateTimeSearchCondition",
     "DeepResearchChatPostIn",
     "DeepResearchModelsType",
     "DefaultAttributeBodyPutIn",
@@ -1328,40 +1279,12 @@ __all__ = (
     "DocumentSearchType",
     "DocumentSourceEnum",
     "DocumentsPositionalTextItem",
-    "DynamicBooleanSearchCondition",
-    "DynamicBooleanValue",
-    "DynamicDateSearchCondition",
-    "DynamicDateTimeSearchCondition",
-    "DynamicDateTimeValue",
-    "DynamicDateValue",
-    "DynamicEntitySearchRequest",
-    "DynamicFloatSearchCondition",
-    "DynamicFloatValue",
-    "DynamicIntegerSearchCondition",
-    "DynamicIntegerValue",
-    "DynamicStringSearchCondition",
-    "DynamicStringValue",
-    "DynamicTableSearchCondition",
-    "DynamicTimeSearchCondition",
-    "DynamicTimeValue",
     "EmbeddingModelEnum",
     "EntityAttributesExtractedFilterOptions",
-    "EntitySearchRequestPath",
-    "EntitySearchRequestSchemaGetOut",
-    "EntitySearchRequestSchemaGetOutConditions",
-    "EntitySearchRequestSchemaPatchIn",
-    "EntitySearchRequestSchemaPatchOut",
-    "EntitySearchRequestSchemaPatchOutConditions",
-    "EntitySearchRequestSchemaPostIn",
-    "EntitySearchRequestSchemaPostOut",
-    "EntitySearchRequestSchemaPostOutConditions",
-    "EntitySearchResult",
-    "EntitySearchResultHit",
     "EntitySearchResultHitAttribute",
     "EntityTrackerDataIn",
     "EntityTrackerGetOut",
     "EntityTrackerPutIn",
-    "EntityType",
     "EnvironmentVariableCommonPath",
     "EnvironmentVariableFilterIn",
     "EnvironmentVariablePatchIn",
@@ -1438,7 +1361,6 @@ __all__ = (
     "FileUploadCandidatePayload",
     "FloatAttributeSchemaIn",
     "FloatAttributeSchemaOut",
-    "FloatSearchCondition",
     "FolderBulkMovePostIn",
     "FolderCheckDeleteOut",
     "FolderChildrenGetOut",
@@ -1513,7 +1435,6 @@ __all__ = (
     "InsertTableAttributeRowDataspaceAttributeObjectTypes",
     "IntegerAttributeSchemaIn",
     "IntegerAttributeSchemaOut",
-    "IntegerSearchCondition",
     "InviteUserByEmailSchemaIn",
     "JapanProjectAttributes",
     "JSONAttributeSchemaIn",
@@ -1604,7 +1525,6 @@ __all__ = (
     "NotificationTestingPostIn",
     "NotificationTestingPostInExtras",
     "NotificationType",
-    "NumericConditionAction",
     "ObservabilityIdsIn",
     "ObservabilityPutIn",
     "ObservabilitySchemaIn",
@@ -1854,7 +1774,6 @@ __all__ = (
     "SearchDocumentPostIn",
     "SearchDocumentResultPostOut",
     "SearchDocumentResultPostOutResultItem",
-    "SearchEntitiesResponse",
     "SearchLawtalkProjectOcrV3AzureEmbeddingModel",
     "SearchMode",
     "SearchPayloadV4GetIn",
@@ -1874,28 +1793,31 @@ __all__ = (
     "SectionTablePath",
     "SectionTablePathMode",
     "SendMsgPostIn",
-    "SimpleAttributeType",
     "SimpleAttributeTypeActionSchema",
     "SimpleAttributeTypeActionSchemaBooleanEquals",
     "SimpleAttributeTypeActionSchemaBooleanNotEquals",
     "SimpleAttributeTypeActionSchemaDateAfter",
     "SimpleAttributeTypeActionSchemaDateBefore",
+    "SimpleAttributeTypeActionSchemaDateBetween",
     "SimpleAttributeTypeActionSchemaDateEquals",
     "SimpleAttributeTypeActionSchemaDateNotEquals",
     "SimpleAttributeTypeActionSchemaDateOnOrAfter",
     "SimpleAttributeTypeActionSchemaDateOnOrBefore",
     "SimpleAttributeTypeActionSchemaDatetimeAfter",
     "SimpleAttributeTypeActionSchemaDatetimeBefore",
+    "SimpleAttributeTypeActionSchemaDatetimeBetween",
     "SimpleAttributeTypeActionSchemaDatetimeEquals",
     "SimpleAttributeTypeActionSchemaDatetimeNotEquals",
     "SimpleAttributeTypeActionSchemaDatetimeOnOrAfter",
     "SimpleAttributeTypeActionSchemaDatetimeOnOrBefore",
+    "SimpleAttributeTypeActionSchemaFloatBetween",
     "SimpleAttributeTypeActionSchemaFloatEquals",
     "SimpleAttributeTypeActionSchemaFloatGreaterThan",
     "SimpleAttributeTypeActionSchemaFloatGreaterThanOrEqualTo",
     "SimpleAttributeTypeActionSchemaFloatLessThan",
     "SimpleAttributeTypeActionSchemaFloatLessThanOrEqualTo",
     "SimpleAttributeTypeActionSchemaFloatNotEquals",
+    "SimpleAttributeTypeActionSchemaIntegerBetween",
     "SimpleAttributeTypeActionSchemaIntegerEquals",
     "SimpleAttributeTypeActionSchemaIntegerGreaterThan",
     "SimpleAttributeTypeActionSchemaIntegerGreaterThanOrEqualTo",
@@ -1906,13 +1828,12 @@ __all__ = (
     "SimpleAttributeTypeActionSchemaStringExact",
     "SimpleAttributeTypeActionSchemaStringExcludes",
     "SimpleAttributeTypeActionSchemaStringIncludes",
-    "SimpleAttributeTypeActionSchemaStringMatches",
-    "SimpleAttributeTypeActionSchemaStringMeans",
     "SimpleAttributeTypeActionSchemaStringNotContains",
     "SimpleAttributeTypeActionSchemaTableCellMatches",
     "SimpleAttributeTypeActionSchemaTableColumnContains",
     "SimpleAttributeTypeActionSchemaTimeAfter",
     "SimpleAttributeTypeActionSchemaTimeBefore",
+    "SimpleAttributeTypeActionSchemaTimeBetween",
     "SimpleAttributeTypeActionSchemaTimeEquals",
     "SimpleAttributeTypeActionSchemaTimeNotEquals",
     "SimpleAttributeTypeActionSchemaTimeOnOrAfter",
@@ -1930,8 +1851,6 @@ __all__ = (
     "StreamTrimBatchBimElementsBimElementTypePath",
     "StringAttributeSchemaIn",
     "StringAttributeSchemaOut",
-    "StringConditionAction",
-    "StringSearchCondition",
     "SupportedDRModel",
     "SyncStorageFileMultiPartBodyParams",
     "SyncStorageFileResponse",
@@ -1943,11 +1862,9 @@ __all__ = (
     "TableCellUpdate",
     "TableColumn",
     "TableColumnType",
-    "TableConditionAction",
     "TableMetadataUpdateRequest",
     "TableMetadataUpdateRequestRenameColumnsType0",
     "TableRowOperationIn",
-    "TableSearchCondition",
     "TargetModelEntityFilterOptions",
     "TargetUserInSchema",
     "TaskPostOut",
@@ -1972,7 +1889,6 @@ __all__ = (
     "TextHighlights",
     "TimeAttributeSchemaIn",
     "TimeAttributeSchemaOut",
-    "TimeSearchCondition",
     "TransactionTypes",
     "Transform",
     "TtosFolderCopyOut",

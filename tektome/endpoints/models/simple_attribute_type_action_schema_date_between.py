@@ -6,19 +6,19 @@ from typing import Any, Literal, TypeVar, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="SimpleAttributeTypeActionSchemaStringMatches")
+T = TypeVar("T", bound="SimpleAttributeTypeActionSchemaDateBetween")
 
 
 @_attrs_define
-class SimpleAttributeTypeActionSchemaStringMatches:
+class SimpleAttributeTypeActionSchemaDateBetween:
     """
     Attributes:
-        action (Literal['matches']):
-        value_type (Literal['string']):
+        action (Literal['between']):
+        value_type (Literal['date, tuple[date, date] if action is between']):
     """
 
-    action: Literal["matches"]
-    value_type: Literal["string"]
+    action: Literal["between"]
+    value_type: Literal["date, tuple[date, date] if action is between"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,21 +40,23 @@ class SimpleAttributeTypeActionSchemaStringMatches:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        action = cast(Literal["matches"], d.pop("action"))
-        if action != "matches":
-            raise ValueError(f"action must match const 'matches', got '{action}'")
+        action = cast(Literal["between"], d.pop("action"))
+        if action != "between":
+            raise ValueError(f"action must match const 'between', got '{action}'")
 
-        value_type = cast(Literal["string"], d.pop("value_type"))
-        if value_type != "string":
-            raise ValueError(f"value_type must match const 'string', got '{value_type}'")
+        value_type = cast(Literal["date, tuple[date, date] if action is between"], d.pop("value_type"))
+        if value_type != "date, tuple[date, date] if action is between":
+            raise ValueError(
+                f"value_type must match const 'date, tuple[date, date] if action is between', got '{value_type}'"
+            )
 
-        simple_attribute_type_action_schema_string_matches = cls(
+        simple_attribute_type_action_schema_date_between = cls(
             action=action,
             value_type=value_type,
         )
 
-        simple_attribute_type_action_schema_string_matches.additional_properties = d
-        return simple_attribute_type_action_schema_string_matches
+        simple_attribute_type_action_schema_date_between.additional_properties = d
+        return simple_attribute_type_action_schema_date_between
 
     @property
     def additional_keys(self) -> list[str]:

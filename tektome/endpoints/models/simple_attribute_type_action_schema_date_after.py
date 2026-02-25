@@ -14,11 +14,11 @@ class SimpleAttributeTypeActionSchemaDateAfter:
     """
     Attributes:
         action (Literal['after']):
-        value_type (Literal['date']):
+        value_type (Literal['date, tuple[date, date] if action is between']):
     """
 
     action: Literal["after"]
-    value_type: Literal["date"]
+    value_type: Literal["date, tuple[date, date] if action is between"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,9 +44,11 @@ class SimpleAttributeTypeActionSchemaDateAfter:
         if action != "after":
             raise ValueError(f"action must match const 'after', got '{action}'")
 
-        value_type = cast(Literal["date"], d.pop("value_type"))
-        if value_type != "date":
-            raise ValueError(f"value_type must match const 'date', got '{value_type}'")
+        value_type = cast(Literal["date, tuple[date, date] if action is between"], d.pop("value_type"))
+        if value_type != "date, tuple[date, date] if action is between":
+            raise ValueError(
+                f"value_type must match const 'date, tuple[date, date] if action is between', got '{value_type}'"
+            )
 
         simple_attribute_type_action_schema_date_after = cls(
             action=action,

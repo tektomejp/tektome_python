@@ -1,37 +1,37 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, Literal, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="CellCoordinate")
+T = TypeVar("T", bound="SimpleAttributeTypeActionSchemaIntegerBetween")
 
 
 @_attrs_define
-class CellCoordinate:
+class SimpleAttributeTypeActionSchemaIntegerBetween:
     """
     Attributes:
-        column (str):
-        row (int):
+        action (Literal['between']):
+        value_type (Literal['integer']):
     """
 
-    column: str
-    row: int
+    action: Literal["between"]
+    value_type: Literal["integer"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        column = self.column
+        action = self.action
 
-        row = self.row
+        value_type = self.value_type
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "column": column,
-                "row": row,
+                "action": action,
+                "value_type": value_type,
             }
         )
 
@@ -40,17 +40,21 @@ class CellCoordinate:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        column = d.pop("column")
+        action = cast(Literal["between"], d.pop("action"))
+        if action != "between":
+            raise ValueError(f"action must match const 'between', got '{action}'")
 
-        row = d.pop("row")
+        value_type = cast(Literal["integer"], d.pop("value_type"))
+        if value_type != "integer":
+            raise ValueError(f"value_type must match const 'integer', got '{value_type}'")
 
-        cell_coordinate = cls(
-            column=column,
-            row=row,
+        simple_attribute_type_action_schema_integer_between = cls(
+            action=action,
+            value_type=value_type,
         )
 
-        cell_coordinate.additional_properties = d
-        return cell_coordinate
+        simple_attribute_type_action_schema_integer_between.additional_properties = d
+        return simple_attribute_type_action_schema_integer_between
 
     @property
     def additional_keys(self) -> list[str]:

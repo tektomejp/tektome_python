@@ -42,6 +42,10 @@ class DataspaceProjectResultHit:
         table_attributes (list[EntitySearchResultHitAttribute] | Unset):
         created (datetime.datetime | None | Unset):
         created_by (None | Unset | UserMetadata):
+        updated (datetime.datetime | None | Unset):
+        matched_resources_count (int | Unset): Number of resources in this project that matched the query Default: 0.
+        matched_pages_count (int | Unset): Total number of pages across matched resources that matched the keyword
+            Default: 0.
         resource_hits (list[DataspaceSearchResultHit] | Unset):
     """
 
@@ -62,6 +66,9 @@ class DataspaceProjectResultHit:
     table_attributes: list[EntitySearchResultHitAttribute] | Unset = UNSET
     created: datetime.datetime | None | Unset = UNSET
     created_by: None | Unset | UserMetadata = UNSET
+    updated: datetime.datetime | None | Unset = UNSET
+    matched_resources_count: int | Unset = 0
+    matched_pages_count: int | Unset = 0
     resource_hits: list[DataspaceSearchResultHit] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -181,6 +188,18 @@ class DataspaceProjectResultHit:
         else:
             created_by = self.created_by
 
+        updated: None | str | Unset
+        if isinstance(self.updated, Unset):
+            updated = UNSET
+        elif isinstance(self.updated, datetime.datetime):
+            updated = self.updated.isoformat()
+        else:
+            updated = self.updated
+
+        matched_resources_count = self.matched_resources_count
+
+        matched_pages_count = self.matched_pages_count
+
         resource_hits: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.resource_hits, Unset):
             resource_hits = []
@@ -226,6 +245,12 @@ class DataspaceProjectResultHit:
             field_dict["created"] = created
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
+        if updated is not UNSET:
+            field_dict["updated"] = updated
+        if matched_resources_count is not UNSET:
+            field_dict["matched_resources_count"] = matched_resources_count
+        if matched_pages_count is not UNSET:
+            field_dict["matched_pages_count"] = matched_pages_count
         if resource_hits is not UNSET:
             field_dict["resource_hits"] = resource_hits
 
@@ -409,6 +434,27 @@ class DataspaceProjectResultHit:
 
         created_by = _parse_created_by(d.pop("created_by", UNSET))
 
+        def _parse_updated(data: object) -> datetime.datetime | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                updated_type_0 = isoparse(data)
+
+                return updated_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(datetime.datetime | None | Unset, data)
+
+        updated = _parse_updated(d.pop("updated", UNSET))
+
+        matched_resources_count = d.pop("matched_resources_count", UNSET)
+
+        matched_pages_count = d.pop("matched_pages_count", UNSET)
+
         _resource_hits = d.pop("resource_hits", UNSET)
         resource_hits: list[DataspaceSearchResultHit] | Unset = UNSET
         if _resource_hits is not UNSET:
@@ -436,6 +482,9 @@ class DataspaceProjectResultHit:
             table_attributes=table_attributes,
             created=created,
             created_by=created_by,
+            updated=updated,
+            matched_resources_count=matched_resources_count,
+            matched_pages_count=matched_pages_count,
             resource_hits=resource_hits,
         )
 
