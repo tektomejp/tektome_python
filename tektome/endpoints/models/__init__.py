@@ -46,8 +46,8 @@ from .async_generate_markdown_path import AsyncGenerateMarkdownPath
 from .attribute import Attribute
 from .attribute_candidate_payload import AttributeCandidatePayload
 from .attribute_citation_path import AttributeCitationPath
-from .attribute_citation_schema_out import AttributeCitationSchemaOut
-from .attribute_citation_schema_out_value_type_7 import AttributeCitationSchemaOutValueType7
+from .attribute_citation_post_in import AttributeCitationPostIn
+from .attribute_citations_get_out import AttributeCitationsGetOut
 from .attribute_data_snapshot import AttributeDataSnapshot
 from .attribute_data_snapshot_state import AttributeDataSnapshotState
 from .attribute_extraction_post_out import AttributeExtractionPostOut
@@ -64,7 +64,6 @@ from .attribute_path_in import AttributePathIn
 from .attribute_query_delete_in import AttributeQueryDeleteIn
 from .attribute_reviewed_data import AttributeReviewedData
 from .attribute_schema import AttributeSchema
-from .attribute_schema_in import AttributeSchemaIn
 from .attribute_type import AttributeType
 from .available_language import AvailableLanguage
 from .azure_embedding_model import AzureEmbeddingModel
@@ -72,6 +71,7 @@ from .azure_presigned_upload_input_schema import AzurePresignedUploadInputSchema
 from .azure_presigned_upload_output_schema import AzurePresignedUploadOutputSchema
 from .background_task_id_out import BackgroundTaskIdOut
 from .background_task_status_out import BackgroundTaskStatusOut
+from .base_annotated_polygon_schema_out import BaseAnnotatedPolygonSchemaOut
 from .base_resource_path_in import BaseResourcePathIn
 from .bim_batch_element_request_post_in import BimBatchElementRequestPostIn
 from .bim_batch_trim_element_request_post_in import BimBatchTrimElementRequestPostIn
@@ -79,17 +79,15 @@ from .bim_citation_patch_in_patch import BIMCitationPatchInPatch
 from .bim_citation_path import BIMCitationPath
 from .bim_citation_post_in import BIMCitationPostIn
 from .bim_citation_schema_out import BIMCitationSchemaOut
-from .bim_citation_schema_out_bim_helpers import BIMCitationSchemaOutBimHelpers
-from .bim_citation_schema_out_highlights import BIMCitationSchemaOutHighlights
+from .bim_citations_get_out import BIMCitationsGetOut
 from .bim_clash_check_post_in import BimClashCheckPostIn
 from .bim_clash_check_post_out import BimClashCheckPostOut
+from .bim_element_in import BIMElementIn
 from .bim_element_key_value_search_bim_element_type_v2_path import BimElementKeyValueSearchBimElementTypeV2Path
 from .bim_element_link_parent_children import BimElementLinkParentChildren
 from .bim_element_link_path import BimElementLinkPath
 from .bim_element_type_path import BimElementTypePath
 from .bim_element_type_v2_path import BimElementTypeV2Path
-from .bim_helpers import BIMHelpers
-from .bim_helpers_bim_helper_elements_item import BIMHelpersBimHelperElementsItem
 from .bim_key_value_search_item_post_out import BimKeyValueSearchItemPostOut
 from .bim_key_value_search_item_post_out_result import BimKeyValueSearchItemPostOutResult
 from .bim_key_value_search_post_in import BimKeyValueSearchPostIn
@@ -109,7 +107,6 @@ from .bim_search_detail_post_in import BimSearchDetailPostIn
 from .bim_search_item_result_post_out import BimSearchItemResultPostOut
 from .bim_search_item_result_post_out_file_content_type_0 import BimSearchItemResultPostOutFileContentType0
 from .bim_search_result_post_out import BimSearchResultPostOut
-from .bim_text_highlights import BIMTextHighlights
 from .bim_trim_query_item import BimTrimQueryItem
 from .bim_view_object_link_post_out import BimViewObjectLinkPostOut
 from .bim_view_post_out import BimViewPostOut
@@ -142,9 +139,11 @@ from .choice_schema import ChoiceSchema
 from .chunk import Chunk
 from .chunk_group_component_schema_get_out import ChunkGroupComponentSchemaGetOut
 from .chunk_group_component_schema_path_in import ChunkGroupComponentSchemaPathIn
-from .citation_path import CitationPath
-from .citation_post_in import CitationPostIn
-from .citations_schema_out import CitationsSchemaOut
+from .citation_category_path import CitationCategoryPath
+from .citations_query_in import CitationsQueryIn
+from .citations_query_in_order_by import CitationsQueryInOrderBy
+from .citations_sort_keys import CitationsSortKeys
+from .cited_bim_element_schema_out import CitedBIMElementSchemaOut
 from .component_schema_path_in import ComponentSchemaPathIn
 from .convert_ifc_to_bim_elements_file_params import ConvertIfcToBimElementsFileParams
 from .coordinate import Coordinate
@@ -156,6 +155,13 @@ from .core_project_required_schema import CoreProjectRequiredSchema
 from .core_project_schema import CoreProjectSchema
 from .create_api_key_post_in import CreateAPIKeyPostIn
 from .create_api_key_post_out import CreateAPIKeyPostOut
+from .create_attribute_attribute_citation_dataspace_entity_type import (
+    CreateAttributeAttributeCitationDataspaceEntityType,
+)
+from .create_attribute_bim_citation_dataspace_entity_type import CreateAttributeBimCitationDataspaceEntityType
+from .create_attribute_image_citation_dataspace_entity_type import CreateAttributeImageCitationDataspaceEntityType
+from .create_attribute_pdf_citation_dataspace_entity_type import CreateAttributePdfCitationDataspaceEntityType
+from .create_attribute_rawtext_citation_dataspace_entity_type import CreateAttributeRawtextCitationDataspaceEntityType
 from .create_bim_element_bim_element_type_path import CreateBimElementBimElementTypePath
 from .create_bim_element_file_params import CreateBimElementFileParams
 from .create_bim_resource_file_params import CreateBimResourceFileParams
@@ -287,6 +293,13 @@ from .deep_research_chat_post_in import DeepResearchChatPostIn
 from .deep_research_models_type import DeepResearchModelsType
 from .default_attribute_body_put_in import DefaultAttributeBodyPutIn
 from .default_search_condition_schema import DefaultSearchConditionSchema
+from .delete_attribute_attribute_citation_dataspace_entity_type import (
+    DeleteAttributeAttributeCitationDataspaceEntityType,
+)
+from .delete_attribute_bim_citation_dataspace_entity_type import DeleteAttributeBimCitationDataspaceEntityType
+from .delete_attribute_image_citation_dataspace_entity_type import DeleteAttributeImageCitationDataspaceEntityType
+from .delete_attribute_pdf_citation_dataspace_entity_type import DeleteAttributePdfCitationDataspaceEntityType
+from .delete_attribute_rawtext_citation_dataspace_entity_type import DeleteAttributeRawtextCitationDataspaceEntityType
 from .delete_bim_element_bim_element_type_path import DeleteBimElementBimElementTypePath
 from .delete_capture_section_component_path import DeleteCaptureSectionComponentPath
 from .delete_folder_resources_schema import DeleteFolderResourcesSchema
@@ -426,11 +439,13 @@ from .generic_http_error import GenericHttpError
 from .geometry import Geometry
 from .get_api_key_filter_in import GetAPIKeyFilterIn
 from .get_api_key_get_out import GetAPIKeyGetOut
+from .get_attribute_citations_order_by import GetAttributeCitationsOrderBy
 from .get_batch_bim_elements_bim_element_type_path import GetBatchBimElementsBimElementTypePath
+from .get_bim_citation_path import GetBIMCitationPath
 from .get_bim_element_bim_element_type_path import GetBimElementBimElementTypePath
 from .get_capture_section_component_path import GetCaptureSectionComponentPath
 from .get_capture_section_component_query import GetCaptureSectionComponentQuery
-from .get_citing_attributes_get_out import GetCitingAttributesGetOut
+from .get_citation_path import GetCitationPath
 from .get_dataspace_execution_groups_execution_group_status import GetDataspaceExecutionGroupsExecutionGroupStatus
 from .get_dataspace_execution_groups_execution_review_status import GetDataspaceExecutionGroupsExecutionReviewStatus
 from .get_dataspace_execution_groups_process_type_choices import GetDataspaceExecutionGroupsProcessTypeChoices
@@ -446,13 +461,10 @@ from .get_execution_approvals_process_type_choices import GetExecutionApprovalsP
 from .get_extracted_page_get_out import GetExtractedPageGetOut
 from .get_extracted_page_get_out_tables_type_0 import GetExtractedPageGetOutTablesType0
 from .get_extracted_result_get_out import GetExtractedResultGetOut
+from .get_image_citation_path import GetImageCitationPath
 from .get_initialized_page_path import GetInitializedPagePath
+from .get_raw_text_citation_path import GetRawTextCitationPath
 from .get_requirement_items_response_200_type_1 import GetRequirementItemsResponse200Type1
-from .get_resource_user_aids_get_out import GetResourceUserAidsGetOut
-from .get_resource_user_aids_image_get_out import GetResourceUserAidsImageGetOut
-from .get_resource_user_aids_pdf_get_out import GetResourceUserAidsPDFGetOut
-from .get_resource_user_aids_pdf_get_out_page_polygons import GetResourceUserAidsPDFGetOutPagePolygons
-from .get_resource_user_aids_pdf_get_out_text_highlights_type_0 import GetResourceUserAidsPDFGetOutTextHighlightsType0
 from .get_supported_dr_models_get_out import GetSupportedDRModelsGetOut
 from .get_ttos_job_response import GetTtosJobResponse
 from .get_users_info_response import GetUsersInfoResponse
@@ -460,8 +472,7 @@ from .image_citation_patch_in_patch import ImageCitationPatchInPatch
 from .image_citation_path import ImageCitationPath
 from .image_citation_post_in import ImageCitationPostIn
 from .image_citation_schema_out import ImageCitationSchemaOut
-from .image_citation_schema_out_polygons_item import ImageCitationSchemaOutPolygonsItem
-from .image_polygons import ImagePolygons
+from .image_citations_get_out import ImageCitationsGetOut
 from .import_folder import ImportFolder
 from .import_resource_group_post_in import ImportResourceGroupPostIn
 from .import_result import ImportResult
@@ -531,7 +542,6 @@ from .list_dataspace_templates_ui_trigger_kind_choices import ListDataspaceTempl
 from .list_llm_usage_reports_period_types import ListLlmUsageReportsPeriodTypes
 from .list_requirement_reference_notes_sort import ListRequirementReferenceNotesSort
 from .list_ttos_templates_ui_trigger_kind_choices import ListTtosTemplatesUiTriggerKindChoices
-from .literal_attribute_type import LiteralAttributeType
 from .llm_parser_post_in import LlmParserPostIn
 from .llm_parser_post_out import LlmParserPostOut
 from .llm_search import LLMSearch
@@ -586,6 +596,7 @@ from .page_component_schema_get_out import PageComponentSchemaGetOut
 from .page_component_schema_get_out_tables_type_0 import PageComponentSchemaGetOutTablesType0
 from .page_component_schema_path_in import PageComponentSchemaPathIn
 from .paged_approval_ticket_candidate_out import PagedApprovalTicketCandidateOut
+from .paged_citations import PagedCitations
 from .paged_core_project_schema import PagedCoreProjectSchema
 from .paged_dataspace_list_get_out import PagedDataspaceListGetOut
 from .paged_dataspace_project_attribute_post_out import PagedDataspaceProjectAttributePostOut
@@ -631,18 +642,19 @@ from .payment_record_out_base import PaymentRecordOutBase
 from .payment_record_patch_in_patch import PaymentRecordPatchInPatch
 from .payment_record_patch_path import PaymentRecordPatchPath
 from .payment_record_post_in import PaymentRecordPostIn
+from .pdf_citation_annotated_polygon_schema_out import PDFCitationAnnotatedPolygonSchemaOut
 from .pdf_citation_patch_in_patch import PDFCitationPatchInPatch
 from .pdf_citation_path import PDFCitationPath
 from .pdf_citation_post_in import PDFCitationPostIn
 from .pdf_citation_schema_out import PDFCitationSchemaOut
-from .pdf_citation_schema_out_highlights import PDFCitationSchemaOutHighlights
-from .pdf_citation_schema_out_polygons import PDFCitationSchemaOutPolygons
+from .pdf_citations_get_out import PDFCitationsGetOut
+from .pdf_polygon_schema_in import PDFPolygonSchemaIn
 from .period_types import PeriodTypes
 from .polygon_attribute_schema_in import PolygonAttributeSchemaIn
 from .polygon_attribute_schema_out import PolygonAttributeSchemaOut
 from .polygon_attribute_schema_out_value_type_0 import PolygonAttributeSchemaOutValueType0
-from .polygon_highlight import PolygonHighlight
 from .positional_text import PositionalText
+from .post_pdf_citation_path import PostPDFCitationPath
 from .process_filter_in import ProcessFilterIn
 from .process_filter_options import ProcessFilterOptions
 from .process_out import ProcessOut
@@ -684,6 +696,7 @@ from .raw_text_citation_patch_in_patch import RawTextCitationPatchInPatch
 from .raw_text_citation_path import RawTextCitationPath
 from .raw_text_citation_post_in import RawTextCitationPostIn
 from .raw_text_citation_schema_out import RawTextCitationSchemaOut
+from .raw_text_citations_get_out import RawTextCitationsGetOut
 from .recipeschoices import RECIPESCHOICES
 from .recommend_resource_group_get_out import RecommendResourceGroupGetOut
 from .recommend_resource_group_get_out_parsed_location import RecommendResourceGroupGetOutParsedLocation
@@ -955,7 +968,6 @@ from .template_override_out import TemplateOverrideOut
 from .template_override_out_input_schema_patch_type_0 import TemplateOverrideOutInputSchemaPatchType0
 from .template_path import TemplatePath
 from .template_update_in import TemplateUpdateIn
-from .text_highlights import TextHighlights
 from .time_attribute_schema_in import TimeAttributeSchemaIn
 from .time_attribute_schema_out import TimeAttributeSchemaOut
 from .transaction_types import TransactionTypes
@@ -973,6 +985,10 @@ from .united_kingdom_project_attributes import UnitedKingdomProjectAttributes
 from .united_states_project_attributes import UnitedStatesProjectAttributes
 from .unread_count_out import UnreadCountOut
 from .unread_count_query import UnreadCountQuery
+from .update_attribute_bim_citation_dataspace_entity_type import UpdateAttributeBimCitationDataspaceEntityType
+from .update_attribute_image_citation_dataspace_entity_type import UpdateAttributeImageCitationDataspaceEntityType
+from .update_attribute_pdf_citation_dataspace_entity_type import UpdateAttributePdfCitationDataspaceEntityType
+from .update_attribute_rawtext_citation_dataspace_entity_type import UpdateAttributeRawtextCitationDataspaceEntityType
 from .update_general_lawtalk_attributes_attribute_object_types import UpdateGeneralLawtalkAttributesAttributeObjectTypes
 from .update_lawtalk_attributes_attribute_object_types import UpdateLawtalkAttributesAttributeObjectTypes
 from .update_organization_multi_part_body_params import UpdateOrganizationMultiPartBodyParams
@@ -1037,8 +1053,8 @@ __all__ = (
     "Attribute",
     "AttributeCandidatePayload",
     "AttributeCitationPath",
-    "AttributeCitationSchemaOut",
-    "AttributeCitationSchemaOutValueType7",
+    "AttributeCitationPostIn",
+    "AttributeCitationsGetOut",
     "AttributeDataSnapshot",
     "AttributeDataSnapshotState",
     "AttributeExtractionPostOut",
@@ -1055,7 +1071,6 @@ __all__ = (
     "AttributeQueryDeleteIn",
     "AttributeReviewedData",
     "AttributeSchema",
-    "AttributeSchemaIn",
     "AttributeType",
     "AvailableLanguage",
     "AzureEmbeddingModel",
@@ -1063,6 +1078,7 @@ __all__ = (
     "AzurePresignedUploadOutputSchema",
     "BackgroundTaskIdOut",
     "BackgroundTaskStatusOut",
+    "BaseAnnotatedPolygonSchemaOut",
     "BaseResourcePathIn",
     "BimBatchElementRequestPostIn",
     "BimBatchTrimElementRequestPostIn",
@@ -1070,17 +1086,15 @@ __all__ = (
     "BIMCitationPath",
     "BIMCitationPostIn",
     "BIMCitationSchemaOut",
-    "BIMCitationSchemaOutBimHelpers",
-    "BIMCitationSchemaOutHighlights",
+    "BIMCitationsGetOut",
     "BimClashCheckPostIn",
     "BimClashCheckPostOut",
+    "BIMElementIn",
     "BimElementKeyValueSearchBimElementTypeV2Path",
     "BimElementLinkParentChildren",
     "BimElementLinkPath",
     "BimElementTypePath",
     "BimElementTypeV2Path",
-    "BIMHelpers",
-    "BIMHelpersBimHelperElementsItem",
     "BimKeyValueSearchItemPostOut",
     "BimKeyValueSearchItemPostOutResult",
     "BimKeyValueSearchPostIn",
@@ -1100,7 +1114,6 @@ __all__ = (
     "BimSearchItemResultPostOut",
     "BimSearchItemResultPostOutFileContentType0",
     "BimSearchResultPostOut",
-    "BIMTextHighlights",
     "BimTrimQueryItem",
     "BimViewObjectLinkPostOut",
     "BimViewPostOut",
@@ -1133,9 +1146,11 @@ __all__ = (
     "Chunk",
     "ChunkGroupComponentSchemaGetOut",
     "ChunkGroupComponentSchemaPathIn",
-    "CitationPath",
-    "CitationPostIn",
-    "CitationsSchemaOut",
+    "CitationCategoryPath",
+    "CitationsQueryIn",
+    "CitationsQueryInOrderBy",
+    "CitationsSortKeys",
+    "CitedBIMElementSchemaOut",
     "ComponentSchemaPathIn",
     "ConvertIfcToBimElementsFileParams",
     "Coordinate",
@@ -1147,6 +1162,11 @@ __all__ = (
     "CoreProjectSchema",
     "CreateAPIKeyPostIn",
     "CreateAPIKeyPostOut",
+    "CreateAttributeAttributeCitationDataspaceEntityType",
+    "CreateAttributeBimCitationDataspaceEntityType",
+    "CreateAttributeImageCitationDataspaceEntityType",
+    "CreateAttributePdfCitationDataspaceEntityType",
+    "CreateAttributeRawtextCitationDataspaceEntityType",
     "CreateBimElementBimElementTypePath",
     "CreateBimElementFileParams",
     "CreateBimResourceFileParams",
@@ -1252,6 +1272,11 @@ __all__ = (
     "DeepResearchModelsType",
     "DefaultAttributeBodyPutIn",
     "DefaultSearchConditionSchema",
+    "DeleteAttributeAttributeCitationDataspaceEntityType",
+    "DeleteAttributeBimCitationDataspaceEntityType",
+    "DeleteAttributeImageCitationDataspaceEntityType",
+    "DeleteAttributePdfCitationDataspaceEntityType",
+    "DeleteAttributeRawtextCitationDataspaceEntityType",
     "DeleteBimElementBimElementTypePath",
     "DeleteCaptureSectionComponentPath",
     "DeleteFolderResourcesSchema",
@@ -1389,11 +1414,13 @@ __all__ = (
     "Geometry",
     "GetAPIKeyFilterIn",
     "GetAPIKeyGetOut",
+    "GetAttributeCitationsOrderBy",
     "GetBatchBimElementsBimElementTypePath",
+    "GetBIMCitationPath",
     "GetBimElementBimElementTypePath",
     "GetCaptureSectionComponentPath",
     "GetCaptureSectionComponentQuery",
-    "GetCitingAttributesGetOut",
+    "GetCitationPath",
     "GetDataspaceExecutionGroupsExecutionGroupStatus",
     "GetDataspaceExecutionGroupsExecutionReviewStatus",
     "GetDataspaceExecutionGroupsProcessTypeChoices",
@@ -1409,13 +1436,10 @@ __all__ = (
     "GetExtractedPageGetOut",
     "GetExtractedPageGetOutTablesType0",
     "GetExtractedResultGetOut",
+    "GetImageCitationPath",
     "GetInitializedPagePath",
+    "GetRawTextCitationPath",
     "GetRequirementItemsResponse200Type1",
-    "GetResourceUserAidsGetOut",
-    "GetResourceUserAidsImageGetOut",
-    "GetResourceUserAidsPDFGetOut",
-    "GetResourceUserAidsPDFGetOutPagePolygons",
-    "GetResourceUserAidsPDFGetOutTextHighlightsType0",
     "GetSupportedDRModelsGetOut",
     "GetTtosJobResponse",
     "GetUsersInfoResponse",
@@ -1423,8 +1447,7 @@ __all__ = (
     "ImageCitationPath",
     "ImageCitationPostIn",
     "ImageCitationSchemaOut",
-    "ImageCitationSchemaOutPolygonsItem",
-    "ImagePolygons",
+    "ImageCitationsGetOut",
     "ImportFolder",
     "ImportResourceGroupPostIn",
     "ImportResult",
@@ -1490,7 +1513,6 @@ __all__ = (
     "ListLlmUsageReportsPeriodTypes",
     "ListRequirementReferenceNotesSort",
     "ListTtosTemplatesUiTriggerKindChoices",
-    "LiteralAttributeType",
     "LlmParserPostIn",
     "LlmParserPostOut",
     "LLMSearch",
@@ -1545,6 +1567,7 @@ __all__ = (
     "PageComponentSchemaGetOutTablesType0",
     "PageComponentSchemaPathIn",
     "PagedApprovalTicketCandidateOut",
+    "PagedCitations",
     "PagedCoreProjectSchema",
     "PagedDataspaceListGetOut",
     "PagedDataspaceProjectAttributePostOut",
@@ -1588,18 +1611,19 @@ __all__ = (
     "PaymentRecordPatchInPatch",
     "PaymentRecordPatchPath",
     "PaymentRecordPostIn",
+    "PDFCitationAnnotatedPolygonSchemaOut",
     "PDFCitationPatchInPatch",
     "PDFCitationPath",
     "PDFCitationPostIn",
     "PDFCitationSchemaOut",
-    "PDFCitationSchemaOutHighlights",
-    "PDFCitationSchemaOutPolygons",
+    "PDFCitationsGetOut",
+    "PDFPolygonSchemaIn",
     "PeriodTypes",
     "PolygonAttributeSchemaIn",
     "PolygonAttributeSchemaOut",
     "PolygonAttributeSchemaOutValueType0",
-    "PolygonHighlight",
     "PositionalText",
+    "PostPDFCitationPath",
     "ProcessFilterIn",
     "ProcessFilterOptions",
     "ProcessOut",
@@ -1641,6 +1665,7 @@ __all__ = (
     "RawTextCitationPath",
     "RawTextCitationPostIn",
     "RawTextCitationSchemaOut",
+    "RawTextCitationsGetOut",
     "RECIPESCHOICES",
     "RecommendResourceGroupGetOut",
     "RecommendResourceGroupGetOutParsedLocation",
@@ -1886,7 +1911,6 @@ __all__ = (
     "TemplateOverrideOutInputSchemaPatchType0",
     "TemplatePath",
     "TemplateUpdateIn",
-    "TextHighlights",
     "TimeAttributeSchemaIn",
     "TimeAttributeSchemaOut",
     "TransactionTypes",
@@ -1904,6 +1928,10 @@ __all__ = (
     "UnitedStatesProjectAttributes",
     "UnreadCountOut",
     "UnreadCountQuery",
+    "UpdateAttributeBimCitationDataspaceEntityType",
+    "UpdateAttributeImageCitationDataspaceEntityType",
+    "UpdateAttributePdfCitationDataspaceEntityType",
+    "UpdateAttributeRawtextCitationDataspaceEntityType",
     "UpdateGeneralLawtalkAttributesAttributeObjectTypes",
     "UpdateLawtalkAttributesAttributeObjectTypes",
     "UpdateOrganizationMultiPartBodyParams",

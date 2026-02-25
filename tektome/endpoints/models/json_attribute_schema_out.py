@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, Literal, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -25,6 +25,7 @@ class JSONAttributeSchemaOut:
         created (datetime.datetime):
         updated (datetime.datetime):
         name (str):
+        attribute_type (Literal['json_attributes'] | Unset):  Default: 'json_attributes'.
         id (None | Unset | UUID):
         extraction_status (None | str | Unset):  Default: 'pending'.
         creation_method (None | str | Unset):  Default: 'automatic'.
@@ -37,6 +38,7 @@ class JSONAttributeSchemaOut:
     created: datetime.datetime
     updated: datetime.datetime
     name: str
+    attribute_type: Literal["json_attributes"] | Unset = "json_attributes"
     id: None | Unset | UUID = UNSET
     extraction_status: None | str | Unset = "pending"
     creation_method: None | str | Unset = "automatic"
@@ -54,6 +56,8 @@ class JSONAttributeSchemaOut:
         updated = self.updated.isoformat()
 
         name = self.name
+
+        attribute_type = self.attribute_type
 
         id: None | str | Unset
         if isinstance(self.id, Unset):
@@ -106,6 +110,8 @@ class JSONAttributeSchemaOut:
                 "name": name,
             }
         )
+        if attribute_type is not UNSET:
+            field_dict["attribute_type"] = attribute_type
         if id is not UNSET:
             field_dict["id"] = id
         if extraction_status is not UNSET:
@@ -133,6 +139,10 @@ class JSONAttributeSchemaOut:
         updated = isoparse(d.pop("updated"))
 
         name = d.pop("name")
+
+        attribute_type = cast(Literal["json_attributes"] | Unset, d.pop("attribute_type", UNSET))
+        if attribute_type != "json_attributes" and not isinstance(attribute_type, Unset):
+            raise ValueError(f"attribute_type must match const 'json_attributes', got '{attribute_type}'")
 
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -210,6 +220,7 @@ class JSONAttributeSchemaOut:
             created=created,
             updated=updated,
             name=name,
+            attribute_type=attribute_type,
             id=id,
             extraction_status=extraction_status,
             creation_method=creation_method,
