@@ -2,6 +2,8 @@ from enum import Enum
 
 
 class NotificationType(str, Enum):
+    AGGREGATE_APPROVAL_AVAILABLE = "aggregate_approval_available"
+    AGGREGATE_APPROVAL_REQUIRED = "aggregate_approval_required"
     APPROVAL_AVAILABLE = "approval_available"
     APPROVAL_REQUIRED = "approval_required"
     EXECUTION_CANCELLED = "execution_cancelled"
