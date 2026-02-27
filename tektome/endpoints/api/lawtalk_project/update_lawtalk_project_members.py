@@ -61,18 +61,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: list[ProjectPatchMembersSchemaIn],
 ) -> Response[Any]:
-    """Update Project Members
+    """Update project member roles
 
-     6mNqfKX0
-
-    Update members of a project with specific roles.
-
-    Args:
-        request: Request object.
-        path_params: Path params of type ProjectDefaultPath
-        user_role_assignments: List of user role assignments.
-
-    Returns: 204, None
+     Update the roles of one or more existing project members.
 
     Args:
         project_id (UUID):
@@ -104,18 +95,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: list[ProjectPatchMembersSchemaIn],
 ) -> Response[Any]:
-    """Update Project Members
+    """Update project member roles
 
-     6mNqfKX0
-
-    Update members of a project with specific roles.
-
-    Args:
-        request: Request object.
-        path_params: Path params of type ProjectDefaultPath
-        user_role_assignments: List of user role assignments.
-
-    Returns: 204, None
+     Update the roles of one or more existing project members.
 
     Args:
         project_id (UUID):

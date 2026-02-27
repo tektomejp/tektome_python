@@ -55,11 +55,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ResourceGroupCheckDeleteOut]:
-    """Check Resource Group Delete
+    """Check resource group deletion eligibility
 
-     J7kL9_xZ
-
-    Check if a resource group can be deleted and return related information.
+     Check whether a resource group can be deleted and return information about related entities that
+    would be affected.
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -88,11 +87,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ResourceGroupCheckDeleteOut | None:
-    """Check Resource Group Delete
+    """Check resource group deletion eligibility
 
-     J7kL9_xZ
-
-    Check if a resource group can be deleted and return related information.
+     Check whether a resource group can be deleted and return information about related entities that
+    would be affected.
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -116,11 +114,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ResourceGroupCheckDeleteOut]:
-    """Check Resource Group Delete
+    """Check resource group deletion eligibility
 
-     J7kL9_xZ
-
-    Check if a resource group can be deleted and return related information.
+     Check whether a resource group can be deleted and return information about related entities that
+    would be affected.
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -147,11 +144,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ResourceGroupCheckDeleteOut | None:
-    """Check Resource Group Delete
+    """Check resource group deletion eligibility
 
-     J7kL9_xZ
-
-    Check if a resource group can be deleted and return related information.
+     Check whether a resource group can be deleted and return information about related entities that
+    would be affected.
 
     Args:
         resource_group_id (UUID): Resource group ID

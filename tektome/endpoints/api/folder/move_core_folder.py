@@ -58,18 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: FolderMovePatchIn,
 ) -> Response[Any]:
-    """Patch Move Folder Parent
+    """Move a folder to a new parent
 
-     d0qaLmaN
-
-    Move a folder to a new parent folder.
-
-    Args:
-        request: Request object
-        path_params: Path parameters containing folder_id
-        payload: FolderMovePatchIn object containing parent_folder_id
-
-    Returns: 204, None
+     Move a folder to a different parent folder. Cannot move root folders or move a folder into its own
+    subfolder.
 
     Args:
         folder_id (UUID):
@@ -101,18 +93,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: FolderMovePatchIn,
 ) -> Response[Any]:
-    """Patch Move Folder Parent
+    """Move a folder to a new parent
 
-     d0qaLmaN
-
-    Move a folder to a new parent folder.
-
-    Args:
-        request: Request object
-        path_params: Path parameters containing folder_id
-        payload: FolderMovePatchIn object containing parent_folder_id
-
-    Returns: 204, None
+     Move a folder to a different parent folder. Cannot move root folders or move a folder into its own
+    subfolder.
 
     Args:
         folder_id (UUID):

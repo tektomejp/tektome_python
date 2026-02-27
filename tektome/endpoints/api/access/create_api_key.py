@@ -55,18 +55,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: CreateAPIKeyPostIn,
 ) -> Response[CreateAPIKeyPostOut]:
-    r"""Create Api Key
+    """Create an API key
 
-     Create a new API key for the current user.
-    API Keys can be used to authenticate and authorize API requests according to the specified scopes.
-    API Keys can be used in place as the user bearer token ex
-    in the Authorization header as
-    ```
-    Authorization: Bearer <sk-xxxx-xxxx-xxxx-xxxx>
-    ```
-    Available scopes:
-        - \"user:all\": Full access as the user.
-    API Keys can be set valid up to one year from the creation date.
+     Create a new API key for the authenticated user. API keys can be used in the Authorization header as
+    'Bearer sk-xxxx' to authenticate requests. Keys can be valid for up to one year. A maximum of 100
+    keys per user is enforced.
 
     Args:
         body (CreateAPIKeyPostIn): Schema for creating a new API key.
@@ -95,18 +88,11 @@ def sync(
     client: AuthenticatedClient,
     body: CreateAPIKeyPostIn,
 ) -> CreateAPIKeyPostOut | None:
-    r"""Create Api Key
+    """Create an API key
 
-     Create a new API key for the current user.
-    API Keys can be used to authenticate and authorize API requests according to the specified scopes.
-    API Keys can be used in place as the user bearer token ex
-    in the Authorization header as
-    ```
-    Authorization: Bearer <sk-xxxx-xxxx-xxxx-xxxx>
-    ```
-    Available scopes:
-        - \"user:all\": Full access as the user.
-    API Keys can be set valid up to one year from the creation date.
+     Create a new API key for the authenticated user. API keys can be used in the Authorization header as
+    'Bearer sk-xxxx' to authenticate requests. Keys can be valid for up to one year. A maximum of 100
+    keys per user is enforced.
 
     Args:
         body (CreateAPIKeyPostIn): Schema for creating a new API key.
@@ -130,18 +116,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: CreateAPIKeyPostIn,
 ) -> Response[CreateAPIKeyPostOut]:
-    r"""Create Api Key
+    """Create an API key
 
-     Create a new API key for the current user.
-    API Keys can be used to authenticate and authorize API requests according to the specified scopes.
-    API Keys can be used in place as the user bearer token ex
-    in the Authorization header as
-    ```
-    Authorization: Bearer <sk-xxxx-xxxx-xxxx-xxxx>
-    ```
-    Available scopes:
-        - \"user:all\": Full access as the user.
-    API Keys can be set valid up to one year from the creation date.
+     Create a new API key for the authenticated user. API keys can be used in the Authorization header as
+    'Bearer sk-xxxx' to authenticate requests. Keys can be valid for up to one year. A maximum of 100
+    keys per user is enforced.
 
     Args:
         body (CreateAPIKeyPostIn): Schema for creating a new API key.
@@ -168,18 +147,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: CreateAPIKeyPostIn,
 ) -> CreateAPIKeyPostOut | None:
-    r"""Create Api Key
+    """Create an API key
 
-     Create a new API key for the current user.
-    API Keys can be used to authenticate and authorize API requests according to the specified scopes.
-    API Keys can be used in place as the user bearer token ex
-    in the Authorization header as
-    ```
-    Authorization: Bearer <sk-xxxx-xxxx-xxxx-xxxx>
-    ```
-    Available scopes:
-        - \"user:all\": Full access as the user.
-    API Keys can be set valid up to one year from the creation date.
+     Create a new API key for the authenticated user. API keys can be used in the Authorization header as
+    'Bearer sk-xxxx' to authenticate requests. Keys can be valid for up to one year. A maximum of 100
+    keys per user is enforced.
 
     Args:
         body (CreateAPIKeyPostIn): Schema for creating a new API key.

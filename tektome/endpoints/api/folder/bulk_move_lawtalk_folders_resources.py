@@ -146,27 +146,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: FolderBulkMovePostIn,
 ) -> Response[Any | GenericHttpError]:
-    """Post Bulk Move
+    """Bulk move folders and resources
 
-     wK8mN3pL
-
-    This API purpose is to move multiple folders and/or resources to a target folder in bulk.
-
-    This endpoint allows moving multiple folders and resources to a specified
-    target folder. It validates that no name collisions occur (unless disabled)
-    and prevents circular references when moving folders.
-
-    Args:
-    payload: Input schema containing:
-        - folder_id: Destination folder UUID (target)
-        - folder_ids: List of folder UUIDs to move (optional)
-        - resource_ids: List of resource UUIDs to move (optional)
-        - check_collisions: Whether to check for name collisions (default: True)
-
-    Returns:
-        204: No Content if successful.
-        400: Bad Request if name collisions detected or validation fails.
-        404: Not Found if target folder or any items don't exist.
+     Move multiple folders and/or resources to a target folder in bulk. Validates for name collisions and
+    prevents circular references.
 
     Args:
         body (FolderBulkMovePostIn): Schema for bulk moving folders and resources to a target
@@ -196,27 +179,10 @@ def sync(
     client: AuthenticatedClient,
     body: FolderBulkMovePostIn,
 ) -> Any | GenericHttpError | None:
-    """Post Bulk Move
+    """Bulk move folders and resources
 
-     wK8mN3pL
-
-    This API purpose is to move multiple folders and/or resources to a target folder in bulk.
-
-    This endpoint allows moving multiple folders and resources to a specified
-    target folder. It validates that no name collisions occur (unless disabled)
-    and prevents circular references when moving folders.
-
-    Args:
-    payload: Input schema containing:
-        - folder_id: Destination folder UUID (target)
-        - folder_ids: List of folder UUIDs to move (optional)
-        - resource_ids: List of resource UUIDs to move (optional)
-        - check_collisions: Whether to check for name collisions (default: True)
-
-    Returns:
-        204: No Content if successful.
-        400: Bad Request if name collisions detected or validation fails.
-        404: Not Found if target folder or any items don't exist.
+     Move multiple folders and/or resources to a target folder in bulk. Validates for name collisions and
+    prevents circular references.
 
     Args:
         body (FolderBulkMovePostIn): Schema for bulk moving folders and resources to a target
@@ -241,27 +207,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: FolderBulkMovePostIn,
 ) -> Response[Any | GenericHttpError]:
-    """Post Bulk Move
+    """Bulk move folders and resources
 
-     wK8mN3pL
-
-    This API purpose is to move multiple folders and/or resources to a target folder in bulk.
-
-    This endpoint allows moving multiple folders and resources to a specified
-    target folder. It validates that no name collisions occur (unless disabled)
-    and prevents circular references when moving folders.
-
-    Args:
-    payload: Input schema containing:
-        - folder_id: Destination folder UUID (target)
-        - folder_ids: List of folder UUIDs to move (optional)
-        - resource_ids: List of resource UUIDs to move (optional)
-        - check_collisions: Whether to check for name collisions (default: True)
-
-    Returns:
-        204: No Content if successful.
-        400: Bad Request if name collisions detected or validation fails.
-        404: Not Found if target folder or any items don't exist.
+     Move multiple folders and/or resources to a target folder in bulk. Validates for name collisions and
+    prevents circular references.
 
     Args:
         body (FolderBulkMovePostIn): Schema for bulk moving folders and resources to a target
@@ -289,27 +238,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: FolderBulkMovePostIn,
 ) -> Any | GenericHttpError | None:
-    """Post Bulk Move
+    """Bulk move folders and resources
 
-     wK8mN3pL
-
-    This API purpose is to move multiple folders and/or resources to a target folder in bulk.
-
-    This endpoint allows moving multiple folders and resources to a specified
-    target folder. It validates that no name collisions occur (unless disabled)
-    and prevents circular references when moving folders.
-
-    Args:
-    payload: Input schema containing:
-        - folder_id: Destination folder UUID (target)
-        - folder_ids: List of folder UUIDs to move (optional)
-        - resource_ids: List of resource UUIDs to move (optional)
-        - check_collisions: Whether to check for name collisions (default: True)
-
-    Returns:
-        204: No Content if successful.
-        400: Bad Request if name collisions detected or validation fails.
-        404: Not Found if target folder or any items don't exist.
+     Move multiple folders and/or resources to a target folder in bulk. Validates for name collisions and
+    prevents circular references.
 
     Args:
         body (FolderBulkMovePostIn): Schema for bulk moving folders and resources to a target

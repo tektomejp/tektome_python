@@ -55,10 +55,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: LoginPostIn,
 ) -> Response[LoginPostOut]:
-    """Post Login
+    """Login (deprecated)
 
-     8t_Xl9AP
-    Login through API. It creates a session, and a user if not exist.
+     Deprecated. Use the /login/v2/ endpoint instead. Authenticates a user and creates a session.
 
     Args:
         body (LoginPostIn):
@@ -87,10 +86,9 @@ def sync(
     client: AuthenticatedClient,
     body: LoginPostIn,
 ) -> LoginPostOut | None:
-    """Post Login
+    """Login (deprecated)
 
-     8t_Xl9AP
-    Login through API. It creates a session, and a user if not exist.
+     Deprecated. Use the /login/v2/ endpoint instead. Authenticates a user and creates a session.
 
     Args:
         body (LoginPostIn):
@@ -114,10 +112,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: LoginPostIn,
 ) -> Response[LoginPostOut]:
-    """Post Login
+    """Login (deprecated)
 
-     8t_Xl9AP
-    Login through API. It creates a session, and a user if not exist.
+     Deprecated. Use the /login/v2/ endpoint instead. Authenticates a user and creates a session.
 
     Args:
         body (LoginPostIn):
@@ -144,10 +141,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: LoginPostIn,
 ) -> LoginPostOut | None:
-    """Post Login
+    """Login (deprecated)
 
-     8t_Xl9AP
-    Login through API. It creates a session, and a user if not exist.
+     Deprecated. Use the /login/v2/ endpoint instead. Authenticates a user and creates a session.
 
     Args:
         body (LoginPostIn):

@@ -60,11 +60,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list[DataspaceSearchTagConfigOut]]:
-    """Get All Dataspace Tag Configs
+    """List all search tag configurations
 
-     mm1vdZxJ
-
-    Retrieve all tag configurations for the current dataspace.
+     Retrieve all search tag configurations for a dataspace. Tag configurations group search filters
+    together under a named tag.
 
     Args:
         dataspace_id (UUID):
@@ -93,11 +92,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> list[DataspaceSearchTagConfigOut] | None:
-    """Get All Dataspace Tag Configs
+    """List all search tag configurations
 
-     mm1vdZxJ
-
-    Retrieve all tag configurations for the current dataspace.
+     Retrieve all search tag configurations for a dataspace. Tag configurations group search filters
+    together under a named tag.
 
     Args:
         dataspace_id (UUID):
@@ -121,11 +119,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list[DataspaceSearchTagConfigOut]]:
-    """Get All Dataspace Tag Configs
+    """List all search tag configurations
 
-     mm1vdZxJ
-
-    Retrieve all tag configurations for the current dataspace.
+     Retrieve all search tag configurations for a dataspace. Tag configurations group search filters
+    together under a named tag.
 
     Args:
         dataspace_id (UUID):
@@ -152,11 +149,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> list[DataspaceSearchTagConfigOut] | None:
-    """Get All Dataspace Tag Configs
+    """List all search tag configurations
 
-     mm1vdZxJ
-
-    Retrieve all tag configurations for the current dataspace.
+     Retrieve all search tag configurations for a dataspace. Tag configurations group search filters
+    together under a named tag.
 
     Args:
         dataspace_id (UUID):

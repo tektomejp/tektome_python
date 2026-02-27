@@ -94,19 +94,10 @@ def sync_detailed(
     page_size: int | Unset = 10,
     dataspace_id: None | Unset | UUID = UNSET,
 ) -> Response[FolderChildrenGetOut]:
-    """Get Folder Children
+    """List folder children and resources
 
-     g7i4ub59
-
-    Retrieve both folders and resources in current level. Folder will appear first in alphabetical
-    order.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path[FolderPathIn] object containing folder_id
-        query_params: Query[FolderQuery] object containing pagination parameters
-
-    Returns:
+     Retrieve both subfolders and resources at the current folder level. Folders appear first in
+    alphabetical order.
 
     Args:
         folder_id (UUID):
@@ -150,19 +141,10 @@ def sync(
     page_size: int | Unset = 10,
     dataspace_id: None | Unset | UUID = UNSET,
 ) -> FolderChildrenGetOut | None:
-    """Get Folder Children
+    """List folder children and resources
 
-     g7i4ub59
-
-    Retrieve both folders and resources in current level. Folder will appear first in alphabetical
-    order.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path[FolderPathIn] object containing folder_id
-        query_params: Query[FolderQuery] object containing pagination parameters
-
-    Returns:
+     Retrieve both subfolders and resources at the current folder level. Folders appear first in
+    alphabetical order.
 
     Args:
         folder_id (UUID):
@@ -201,19 +183,10 @@ async def asyncio_detailed(
     page_size: int | Unset = 10,
     dataspace_id: None | Unset | UUID = UNSET,
 ) -> Response[FolderChildrenGetOut]:
-    """Get Folder Children
+    """List folder children and resources
 
-     g7i4ub59
-
-    Retrieve both folders and resources in current level. Folder will appear first in alphabetical
-    order.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path[FolderPathIn] object containing folder_id
-        query_params: Query[FolderQuery] object containing pagination parameters
-
-    Returns:
+     Retrieve both subfolders and resources at the current folder level. Folders appear first in
+    alphabetical order.
 
     Args:
         folder_id (UUID):
@@ -255,19 +228,10 @@ async def asyncio(
     page_size: int | Unset = 10,
     dataspace_id: None | Unset | UUID = UNSET,
 ) -> FolderChildrenGetOut | None:
-    """Get Folder Children
+    """List folder children and resources
 
-     g7i4ub59
-
-    Retrieve both folders and resources in current level. Folder will appear first in alphabetical
-    order.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path[FolderPathIn] object containing folder_id
-        query_params: Query[FolderQuery] object containing pagination parameters
-
-    Returns:
+     Retrieve both subfolders and resources at the current folder level. Folders appear first in
+    alphabetical order.
 
     Args:
         folder_id (UUID):

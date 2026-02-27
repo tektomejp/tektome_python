@@ -59,17 +59,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ImageCitationSchemaOut]:
-    """Get Attribute Image Citation
+    """Get an image citation by ID
 
-     xaCLr1QV
-
-    Retrieve an Image citation given its ID.
-
-    Args:
-        request:
-        path_params:
-
-    Returns: 200, the image citation object if found and the user has permission to view it
+     Retrieve the details of a specific image citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -104,17 +96,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ImageCitationSchemaOut | None:
-    """Get Attribute Image Citation
+    """Get an image citation by ID
 
-     xaCLr1QV
-
-    Retrieve an Image citation given its ID.
-
-    Args:
-        request:
-        path_params:
-
-    Returns: 200, the image citation object if found and the user has permission to view it
+     Retrieve the details of a specific image citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -144,17 +128,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ImageCitationSchemaOut]:
-    """Get Attribute Image Citation
+    """Get an image citation by ID
 
-     xaCLr1QV
-
-    Retrieve an Image citation given its ID.
-
-    Args:
-        request:
-        path_params:
-
-    Returns: 200, the image citation object if found and the user has permission to view it
+     Retrieve the details of a specific image citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -187,17 +163,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ImageCitationSchemaOut | None:
-    """Get Attribute Image Citation
+    """Get an image citation by ID
 
-     xaCLr1QV
-
-    Retrieve an Image citation given its ID.
-
-    Args:
-        request:
-        path_params:
-
-    Returns: 200, the image citation object if found and the user has permission to view it
+     Retrieve the details of a specific image citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):

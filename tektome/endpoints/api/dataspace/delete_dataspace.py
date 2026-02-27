@@ -51,11 +51,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Dataspace
+    """Delete a dataspace by ID
 
-     tkE0kGxA
-
-    Delete a dataspace by ID
+     Permanently delete a dataspace and its associated data. Requires dataspace destruction permissions.
 
     Args:
         dataspace_id (UUID):
@@ -84,11 +82,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Dataspace
+    """Delete a dataspace by ID
 
-     tkE0kGxA
-
-    Delete a dataspace by ID
+     Permanently delete a dataspace and its associated data. Requires dataspace destruction permissions.
 
     Args:
         dataspace_id (UUID):

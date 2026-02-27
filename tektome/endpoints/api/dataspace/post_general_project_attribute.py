@@ -61,18 +61,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ProjectAttributePostIn,
 ) -> Response[AttributeGetOut]:
-    """Post General Project Attribute
+    """Create a project attribute in a dataspace
 
-     N6nCOxG8
-
-    Create a dataspace attribute based on configured dataspace settings.
-
-    Args:
-        path_params: The path parameters containing the dataspace ID.
-        request: The incoming request object.
-        payload: The payload containing attribute details.
-
-    Returns:
+     Create a new attribute for a project, validated against the dataspace's configured attribute
+    settings.
 
     Args:
         dataspace_id (UUID):
@@ -104,18 +96,10 @@ def sync(
     client: AuthenticatedClient,
     body: ProjectAttributePostIn,
 ) -> AttributeGetOut | None:
-    """Post General Project Attribute
+    """Create a project attribute in a dataspace
 
-     N6nCOxG8
-
-    Create a dataspace attribute based on configured dataspace settings.
-
-    Args:
-        path_params: The path parameters containing the dataspace ID.
-        request: The incoming request object.
-        payload: The payload containing attribute details.
-
-    Returns:
+     Create a new attribute for a project, validated against the dataspace's configured attribute
+    settings.
 
     Args:
         dataspace_id (UUID):
@@ -142,18 +126,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ProjectAttributePostIn,
 ) -> Response[AttributeGetOut]:
-    """Post General Project Attribute
+    """Create a project attribute in a dataspace
 
-     N6nCOxG8
-
-    Create a dataspace attribute based on configured dataspace settings.
-
-    Args:
-        path_params: The path parameters containing the dataspace ID.
-        request: The incoming request object.
-        payload: The payload containing attribute details.
-
-    Returns:
+     Create a new attribute for a project, validated against the dataspace's configured attribute
+    settings.
 
     Args:
         dataspace_id (UUID):
@@ -183,18 +159,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ProjectAttributePostIn,
 ) -> AttributeGetOut | None:
-    """Post General Project Attribute
+    """Create a project attribute in a dataspace
 
-     N6nCOxG8
-
-    Create a dataspace attribute based on configured dataspace settings.
-
-    Args:
-        path_params: The path parameters containing the dataspace ID.
-        request: The incoming request object.
-        payload: The payload containing attribute details.
-
-    Returns:
+     Create a new attribute for a project, validated against the dataspace's configured attribute
+    settings.
 
     Args:
         dataspace_id (UUID):

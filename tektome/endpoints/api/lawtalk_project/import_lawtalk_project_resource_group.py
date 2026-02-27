@@ -58,11 +58,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ImportResourceGroupPostIn,
 ) -> Response[Any]:
-    """Post Import Resource Group
+    """Import resource groups to project
 
-     vJFN9knE
-
-    Import Lawtalk's Resource Groups to a project.
+     Import existing resource groups into a project by linking them as imported resource groups.
 
     Args:
         project_id (UUID):
@@ -94,11 +92,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ImportResourceGroupPostIn,
 ) -> Response[Any]:
-    """Post Import Resource Group
+    """Import resource groups to project
 
-     vJFN9knE
-
-    Import Lawtalk's Resource Groups to a project.
+     Import existing resource groups into a project by linking them as imported resource groups.
 
     Args:
         project_id (UUID):

@@ -58,18 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceResourceReorderColumnPostIn,
 ) -> Response[Any]:
-    """Patch Dataspace Resource Reorder Column
+    """Reorder a resource attribute column
 
-     x16N0f5G
-
-    Reorder a column in a dataspace resource.
-
-    Args:
-        request: The request object containing authentication and user information.
-        path_params: The path parameters containing the dataspace ID.
-        payload: The payload containing the column ID and the new index.
-
-    Returns: 204, None
+     Change the display order of an attribute column for resources within a dataspace by specifying a new
+    index position.
 
     Args:
         dataspace_id (UUID):
@@ -102,18 +94,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceResourceReorderColumnPostIn,
 ) -> Response[Any]:
-    """Patch Dataspace Resource Reorder Column
+    """Reorder a resource attribute column
 
-     x16N0f5G
-
-    Reorder a column in a dataspace resource.
-
-    Args:
-        request: The request object containing authentication and user information.
-        path_params: The path parameters containing the dataspace ID.
-        payload: The payload containing the column ID and the new index.
-
-    Returns: 204, None
+     Change the display order of an attribute column for resources within a dataspace by specifying a new
+    index position.
 
     Args:
         dataspace_id (UUID):

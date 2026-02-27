@@ -181,36 +181,10 @@ def sync_detailed(
     sort_by_pages: bool | Unset = False,
     debug: bool | Unset = False,
 ) -> Response[ErrorOut | SearchPayloadV4GetOut]:
-    r"""Search Ocr Page V4
+    """Search project resource pages (v4)
 
-     c1Jmj7Br
-
-    Searching for OCR result from the given query and keywords.
-
-    Logic:
-
-        - If only query is provided, will perform vector search
-            (Score is based on cosine similarity)
-
-            PS. Current embedding model is Azure Text Embedding ADA002
-            Will change to 003 - Large once re-embedding is done
-
-        - If only keyword is provided, will perform exact search
-            (Score is based on BM25)
-
-        - If both query and keyword are provided, will perform hybrid search
-            (Score is based on RRF - Reciprocal Rank Fusion)
-
-    Results:
-        {
-            \"tektome_response\": return a list of all hits with its matching chunk info.
-            \"parsed_tektome_response\": return a list of grouped sections in each resource-group.
-        }
-
-    Noted:
-        if sort_by_pages is True, the list result will be sorted by (page number ascending, score
-    descending)
-        else, the list result will be sorted by (score descending, page number ascending)
+     Search extracted pages in project resources using vector, exact, or hybrid search modes. Supports
+    query-based semantic search and keyword-based exact matching.
 
     Args:
         project_id (UUID):
@@ -257,36 +231,10 @@ def sync(
     sort_by_pages: bool | Unset = False,
     debug: bool | Unset = False,
 ) -> ErrorOut | SearchPayloadV4GetOut | None:
-    r"""Search Ocr Page V4
+    """Search project resource pages (v4)
 
-     c1Jmj7Br
-
-    Searching for OCR result from the given query and keywords.
-
-    Logic:
-
-        - If only query is provided, will perform vector search
-            (Score is based on cosine similarity)
-
-            PS. Current embedding model is Azure Text Embedding ADA002
-            Will change to 003 - Large once re-embedding is done
-
-        - If only keyword is provided, will perform exact search
-            (Score is based on BM25)
-
-        - If both query and keyword are provided, will perform hybrid search
-            (Score is based on RRF - Reciprocal Rank Fusion)
-
-    Results:
-        {
-            \"tektome_response\": return a list of all hits with its matching chunk info.
-            \"parsed_tektome_response\": return a list of grouped sections in each resource-group.
-        }
-
-    Noted:
-        if sort_by_pages is True, the list result will be sorted by (page number ascending, score
-    descending)
-        else, the list result will be sorted by (score descending, page number ascending)
+     Search extracted pages in project resources using vector, exact, or hybrid search modes. Supports
+    query-based semantic search and keyword-based exact matching.
 
     Args:
         project_id (UUID):
@@ -328,36 +276,10 @@ async def asyncio_detailed(
     sort_by_pages: bool | Unset = False,
     debug: bool | Unset = False,
 ) -> Response[ErrorOut | SearchPayloadV4GetOut]:
-    r"""Search Ocr Page V4
+    """Search project resource pages (v4)
 
-     c1Jmj7Br
-
-    Searching for OCR result from the given query and keywords.
-
-    Logic:
-
-        - If only query is provided, will perform vector search
-            (Score is based on cosine similarity)
-
-            PS. Current embedding model is Azure Text Embedding ADA002
-            Will change to 003 - Large once re-embedding is done
-
-        - If only keyword is provided, will perform exact search
-            (Score is based on BM25)
-
-        - If both query and keyword are provided, will perform hybrid search
-            (Score is based on RRF - Reciprocal Rank Fusion)
-
-    Results:
-        {
-            \"tektome_response\": return a list of all hits with its matching chunk info.
-            \"parsed_tektome_response\": return a list of grouped sections in each resource-group.
-        }
-
-    Noted:
-        if sort_by_pages is True, the list result will be sorted by (page number ascending, score
-    descending)
-        else, the list result will be sorted by (score descending, page number ascending)
+     Search extracted pages in project resources using vector, exact, or hybrid search modes. Supports
+    query-based semantic search and keyword-based exact matching.
 
     Args:
         project_id (UUID):
@@ -402,36 +324,10 @@ async def asyncio(
     sort_by_pages: bool | Unset = False,
     debug: bool | Unset = False,
 ) -> ErrorOut | SearchPayloadV4GetOut | None:
-    r"""Search Ocr Page V4
+    """Search project resource pages (v4)
 
-     c1Jmj7Br
-
-    Searching for OCR result from the given query and keywords.
-
-    Logic:
-
-        - If only query is provided, will perform vector search
-            (Score is based on cosine similarity)
-
-            PS. Current embedding model is Azure Text Embedding ADA002
-            Will change to 003 - Large once re-embedding is done
-
-        - If only keyword is provided, will perform exact search
-            (Score is based on BM25)
-
-        - If both query and keyword are provided, will perform hybrid search
-            (Score is based on RRF - Reciprocal Rank Fusion)
-
-    Results:
-        {
-            \"tektome_response\": return a list of all hits with its matching chunk info.
-            \"parsed_tektome_response\": return a list of grouped sections in each resource-group.
-        }
-
-    Noted:
-        if sort_by_pages is True, the list result will be sorted by (page number ascending, score
-    descending)
-        else, the list result will be sorted by (score descending, page number ascending)
+     Search extracted pages in project resources using vector, exact, or hybrid search modes. Supports
+    query-based semantic search and keyword-based exact matching.
 
     Args:
         project_id (UUID):

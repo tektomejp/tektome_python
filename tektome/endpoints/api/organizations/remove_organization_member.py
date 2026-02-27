@@ -69,13 +69,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: UsersSchemaIn,
 ) -> Response[Any | ErrorOutputSchemaOut]:
-    """Remove Organization Member
+    """Remove organization members
 
-     k3MWcA12
-
-    Remove a member from an organization.
-
-    Prevents removal of users who own dataspaces or projects in the organization.
+     Remove one or more members from an organization. Users who own dataspaces or projects must transfer
+    ownership before they can be removed.
 
     Args:
         organization_id (UUID):
@@ -107,13 +104,10 @@ def sync(
     client: AuthenticatedClient,
     body: UsersSchemaIn,
 ) -> Any | ErrorOutputSchemaOut | None:
-    """Remove Organization Member
+    """Remove organization members
 
-     k3MWcA12
-
-    Remove a member from an organization.
-
-    Prevents removal of users who own dataspaces or projects in the organization.
+     Remove one or more members from an organization. Users who own dataspaces or projects must transfer
+    ownership before they can be removed.
 
     Args:
         organization_id (UUID):
@@ -140,13 +134,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: UsersSchemaIn,
 ) -> Response[Any | ErrorOutputSchemaOut]:
-    """Remove Organization Member
+    """Remove organization members
 
-     k3MWcA12
-
-    Remove a member from an organization.
-
-    Prevents removal of users who own dataspaces or projects in the organization.
+     Remove one or more members from an organization. Users who own dataspaces or projects must transfer
+    ownership before they can be removed.
 
     Args:
         organization_id (UUID):
@@ -176,13 +167,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: UsersSchemaIn,
 ) -> Any | ErrorOutputSchemaOut | None:
-    """Remove Organization Member
+    """Remove organization members
 
-     k3MWcA12
-
-    Remove a member from an organization.
-
-    Prevents removal of users who own dataspaces or projects in the organization.
+     Remove one or more members from an organization. Users who own dataspaces or projects must transfer
+    ownership before they can be removed.
 
     Args:
         organization_id (UUID):

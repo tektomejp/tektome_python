@@ -68,11 +68,9 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedResourceGroupSchema]:
-    """Get Resource Groups
+    """List all resource groups
 
-     gtU7xd9a
-
-    Get all core projects belonging to user's current organization.
+     Retrieve a paginated list of all resource groups in the current organization.
 
     Args:
         page (int | Unset):  Default: 1.
@@ -104,11 +102,9 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedResourceGroupSchema | None:
-    """Get Resource Groups
+    """List all resource groups
 
-     gtU7xd9a
-
-    Get all core projects belonging to user's current organization.
+     Retrieve a paginated list of all resource groups in the current organization.
 
     Args:
         page (int | Unset):  Default: 1.
@@ -135,11 +131,9 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedResourceGroupSchema]:
-    """Get Resource Groups
+    """List all resource groups
 
-     gtU7xd9a
-
-    Get all core projects belonging to user's current organization.
+     Retrieve a paginated list of all resource groups in the current organization.
 
     Args:
         page (int | Unset):  Default: 1.
@@ -169,11 +163,9 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedResourceGroupSchema | None:
-    """Get Resource Groups
+    """List all resource groups
 
-     gtU7xd9a
-
-    Get all core projects belonging to user's current organization.
+     Retrieve a paginated list of all resource groups in the current organization.
 
     Args:
         page (int | Unset):  Default: 1.

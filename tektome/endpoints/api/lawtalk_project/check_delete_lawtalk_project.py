@@ -53,12 +53,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ProjectCheckDeleteOut]:
-    """Check Delete Lawtalk Project
+    """Check project deletion eligibility
 
-     vK9zL1mX
-
-    Check if a project can be deleted by verifying if there are any associated
-    resource groups or requirements.
+     Check whether a project can be deleted by verifying if there are any associated resource groups or
+    requirements.
 
     Args:
         project_id (UUID):
@@ -87,12 +85,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ProjectCheckDeleteOut | None:
-    """Check Delete Lawtalk Project
+    """Check project deletion eligibility
 
-     vK9zL1mX
-
-    Check if a project can be deleted by verifying if there are any associated
-    resource groups or requirements.
+     Check whether a project can be deleted by verifying if there are any associated resource groups or
+    requirements.
 
     Args:
         project_id (UUID):
@@ -116,12 +112,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ProjectCheckDeleteOut]:
-    """Check Delete Lawtalk Project
+    """Check project deletion eligibility
 
-     vK9zL1mX
-
-    Check if a project can be deleted by verifying if there are any associated
-    resource groups or requirements.
+     Check whether a project can be deleted by verifying if there are any associated resource groups or
+    requirements.
 
     Args:
         project_id (UUID):
@@ -148,12 +142,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ProjectCheckDeleteOut | None:
-    """Check Delete Lawtalk Project
+    """Check project deletion eligibility
 
-     vK9zL1mX
-
-    Check if a project can be deleted by verifying if there are any associated
-    resource groups or requirements.
+     Check whether a project can be deleted by verifying if there are any associated resource groups or
+    requirements.
 
     Args:
         project_id (UUID):

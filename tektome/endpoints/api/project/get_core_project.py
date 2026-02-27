@@ -51,11 +51,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[CoreProjectSchema]:
-    """Retrieve Project
+    """Get a project by ID
 
-     fuxX7loS
-
-    Get a core project.
+     Retrieve the details of a specific project by its ID.
 
     Args:
         project_id (UUID):
@@ -84,11 +82,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> CoreProjectSchema | None:
-    """Retrieve Project
+    """Get a project by ID
 
-     fuxX7loS
-
-    Get a core project.
+     Retrieve the details of a specific project by its ID.
 
     Args:
         project_id (UUID):
@@ -112,11 +108,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[CoreProjectSchema]:
-    """Retrieve Project
+    """Get a project by ID
 
-     fuxX7loS
-
-    Get a core project.
+     Retrieve the details of a specific project by its ID.
 
     Args:
         project_id (UUID):
@@ -143,11 +137,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> CoreProjectSchema | None:
-    """Retrieve Project
+    """Get a project by ID
 
-     fuxX7loS
-
-    Get a core project.
+     Retrieve the details of a specific project by its ID.
 
     Args:
         project_id (UUID):

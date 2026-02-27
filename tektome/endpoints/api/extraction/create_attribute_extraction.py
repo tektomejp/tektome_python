@@ -59,30 +59,12 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ExtractionPostIn,
 ) -> Response[AttributeExtractionPostOut]:
-    r"""Post Attribute Extraction
+    """Extract attributes from a section
 
-     # ATTN:<br>
-    attributes[0].id is not required, if provided it needs to be uuid4, and unique, otherwise the whole
-    process is forced to fail, and db tx reverted.<br>
-    unless there is a specific reason to use the id, it is better to let the system generate it.<br>
-    if Section.*Attribute already exists, it will not be created again, but the id will be replaced, and
-    returned in the created list.<br>
-
-    This endpoint extracts *Attributes from a Section. Multiple *Attributes can be extracted at once.
-    When multiple attributes are provided, <br>
-    they are extracted in one shot.<br>
-    To extract in multiple shots, call this endpoint multiple times with different attributes.<br>
-    # Usage:
-    section_id: is the ID of the Section from which to extract attributes.<br> It is converted to an LLM
-    friendly format.
-    recipe: is the versioned extraction recipe to use for the extraction.<br>
-    attributes: is a list of attributes to extract. Each attribute has a name, prompt, and kind.<br>
-        id(optional): is the UUID of the attribute. If provided, it must be unique.
-        name: is the name of the attribute. It must be lowercased, and cannot contain spaces or start
-    with \"system:\", it must not end with _error_message, nor _sources.
-        kind: is the kind of the attribute, it must be one of the AttributeType enum values.
-    enduser_prompt: is the prompt provided by the end user, it is appended LAST to the user prompt.
-    include_pdf_pages_as_images: if true, includes the PDF pages as images in the extraction context.
+     Submit an attribute extraction job for a section. The section should be specifically created for
+    attribute extraction, and contain all relevant data. section_id is not the same as the section_is
+    listed on OCR chunks. Multiple attributes can be extracted in a single request. This is an
+    asynchronous operation. Check the attributes' statuses to see when the extraction is done.
 
     Args:
         body (ExtractionPostIn):
@@ -111,30 +93,12 @@ def sync(
     client: AuthenticatedClient,
     body: ExtractionPostIn,
 ) -> AttributeExtractionPostOut | None:
-    r"""Post Attribute Extraction
+    """Extract attributes from a section
 
-     # ATTN:<br>
-    attributes[0].id is not required, if provided it needs to be uuid4, and unique, otherwise the whole
-    process is forced to fail, and db tx reverted.<br>
-    unless there is a specific reason to use the id, it is better to let the system generate it.<br>
-    if Section.*Attribute already exists, it will not be created again, but the id will be replaced, and
-    returned in the created list.<br>
-
-    This endpoint extracts *Attributes from a Section. Multiple *Attributes can be extracted at once.
-    When multiple attributes are provided, <br>
-    they are extracted in one shot.<br>
-    To extract in multiple shots, call this endpoint multiple times with different attributes.<br>
-    # Usage:
-    section_id: is the ID of the Section from which to extract attributes.<br> It is converted to an LLM
-    friendly format.
-    recipe: is the versioned extraction recipe to use for the extraction.<br>
-    attributes: is a list of attributes to extract. Each attribute has a name, prompt, and kind.<br>
-        id(optional): is the UUID of the attribute. If provided, it must be unique.
-        name: is the name of the attribute. It must be lowercased, and cannot contain spaces or start
-    with \"system:\", it must not end with _error_message, nor _sources.
-        kind: is the kind of the attribute, it must be one of the AttributeType enum values.
-    enduser_prompt: is the prompt provided by the end user, it is appended LAST to the user prompt.
-    include_pdf_pages_as_images: if true, includes the PDF pages as images in the extraction context.
+     Submit an attribute extraction job for a section. The section should be specifically created for
+    attribute extraction, and contain all relevant data. section_id is not the same as the section_is
+    listed on OCR chunks. Multiple attributes can be extracted in a single request. This is an
+    asynchronous operation. Check the attributes' statuses to see when the extraction is done.
 
     Args:
         body (ExtractionPostIn):
@@ -158,30 +122,12 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ExtractionPostIn,
 ) -> Response[AttributeExtractionPostOut]:
-    r"""Post Attribute Extraction
+    """Extract attributes from a section
 
-     # ATTN:<br>
-    attributes[0].id is not required, if provided it needs to be uuid4, and unique, otherwise the whole
-    process is forced to fail, and db tx reverted.<br>
-    unless there is a specific reason to use the id, it is better to let the system generate it.<br>
-    if Section.*Attribute already exists, it will not be created again, but the id will be replaced, and
-    returned in the created list.<br>
-
-    This endpoint extracts *Attributes from a Section. Multiple *Attributes can be extracted at once.
-    When multiple attributes are provided, <br>
-    they are extracted in one shot.<br>
-    To extract in multiple shots, call this endpoint multiple times with different attributes.<br>
-    # Usage:
-    section_id: is the ID of the Section from which to extract attributes.<br> It is converted to an LLM
-    friendly format.
-    recipe: is the versioned extraction recipe to use for the extraction.<br>
-    attributes: is a list of attributes to extract. Each attribute has a name, prompt, and kind.<br>
-        id(optional): is the UUID of the attribute. If provided, it must be unique.
-        name: is the name of the attribute. It must be lowercased, and cannot contain spaces or start
-    with \"system:\", it must not end with _error_message, nor _sources.
-        kind: is the kind of the attribute, it must be one of the AttributeType enum values.
-    enduser_prompt: is the prompt provided by the end user, it is appended LAST to the user prompt.
-    include_pdf_pages_as_images: if true, includes the PDF pages as images in the extraction context.
+     Submit an attribute extraction job for a section. The section should be specifically created for
+    attribute extraction, and contain all relevant data. section_id is not the same as the section_is
+    listed on OCR chunks. Multiple attributes can be extracted in a single request. This is an
+    asynchronous operation. Check the attributes' statuses to see when the extraction is done.
 
     Args:
         body (ExtractionPostIn):
@@ -208,30 +154,12 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ExtractionPostIn,
 ) -> AttributeExtractionPostOut | None:
-    r"""Post Attribute Extraction
+    """Extract attributes from a section
 
-     # ATTN:<br>
-    attributes[0].id is not required, if provided it needs to be uuid4, and unique, otherwise the whole
-    process is forced to fail, and db tx reverted.<br>
-    unless there is a specific reason to use the id, it is better to let the system generate it.<br>
-    if Section.*Attribute already exists, it will not be created again, but the id will be replaced, and
-    returned in the created list.<br>
-
-    This endpoint extracts *Attributes from a Section. Multiple *Attributes can be extracted at once.
-    When multiple attributes are provided, <br>
-    they are extracted in one shot.<br>
-    To extract in multiple shots, call this endpoint multiple times with different attributes.<br>
-    # Usage:
-    section_id: is the ID of the Section from which to extract attributes.<br> It is converted to an LLM
-    friendly format.
-    recipe: is the versioned extraction recipe to use for the extraction.<br>
-    attributes: is a list of attributes to extract. Each attribute has a name, prompt, and kind.<br>
-        id(optional): is the UUID of the attribute. If provided, it must be unique.
-        name: is the name of the attribute. It must be lowercased, and cannot contain spaces or start
-    with \"system:\", it must not end with _error_message, nor _sources.
-        kind: is the kind of the attribute, it must be one of the AttributeType enum values.
-    enduser_prompt: is the prompt provided by the end user, it is appended LAST to the user prompt.
-    include_pdf_pages_as_images: if true, includes the PDF pages as images in the extraction context.
+     Submit an attribute extraction job for a section. The section should be specifically created for
+    attribute extraction, and contain all relevant data. section_id is not the same as the section_is
+    listed on OCR chunks. Multiple attributes can be extracted in a single request. This is an
+    asynchronous operation. Check the attributes' statuses to see when the extraction is done.
 
     Args:
         body (ExtractionPostIn):

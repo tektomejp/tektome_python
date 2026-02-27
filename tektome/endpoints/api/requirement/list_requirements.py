@@ -87,11 +87,10 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedRequirementsListGetOut]:
-    """Get Requirements
+    """List requirements
 
-     9yNtf4iG
-
-    Get all requirements given a project id in query parameters
+     Retrieve a paginated list of requirements for a project. Supports filtering by name and sorting by
+    recently created.
 
     Args:
         project_id (UUID):
@@ -132,11 +131,10 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedRequirementsListGetOut | None:
-    """Get Requirements
+    """List requirements
 
-     9yNtf4iG
-
-    Get all requirements given a project id in query parameters
+     Retrieve a paginated list of requirements for a project. Supports filtering by name and sorting by
+    recently created.
 
     Args:
         project_id (UUID):
@@ -172,11 +170,10 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedRequirementsListGetOut]:
-    """Get Requirements
+    """List requirements
 
-     9yNtf4iG
-
-    Get all requirements given a project id in query parameters
+     Retrieve a paginated list of requirements for a project. Supports filtering by name and sorting by
+    recently created.
 
     Args:
         project_id (UUID):
@@ -215,11 +212,10 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedRequirementsListGetOut | None:
-    """Get Requirements
+    """List requirements
 
-     9yNtf4iG
-
-    Get all requirements given a project id in query parameters
+     Retrieve a paginated list of requirements for a project. Supports filtering by name and sorting by
+    recently created.
 
     Args:
         project_id (UUID):

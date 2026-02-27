@@ -173,11 +173,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ArtifactMoveIn,
 ) -> Response[ArtifactMoveOut | TtosFolderMoveOut | GenericHttpError]:
-    """Move or rename an artifact or folder
+    """Move or rename an artifact
 
-     OOvPVfl3
-    Move/rename an artifact to a new path. For .keep artifacts (folders),
-    moves all artifacts under the folder prefix.
+     Move or rename an artifact to a new path. For folder artifacts, all artifacts within the folder are
+    moved as well.
 
     Args:
         artifact_id (UUID):
@@ -209,11 +208,10 @@ def sync(
     client: AuthenticatedClient,
     body: ArtifactMoveIn,
 ) -> ArtifactMoveOut | TtosFolderMoveOut | GenericHttpError | None:
-    """Move or rename an artifact or folder
+    """Move or rename an artifact
 
-     OOvPVfl3
-    Move/rename an artifact to a new path. For .keep artifacts (folders),
-    moves all artifacts under the folder prefix.
+     Move or rename an artifact to a new path. For folder artifacts, all artifacts within the folder are
+    moved as well.
 
     Args:
         artifact_id (UUID):
@@ -240,11 +238,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ArtifactMoveIn,
 ) -> Response[ArtifactMoveOut | TtosFolderMoveOut | GenericHttpError]:
-    """Move or rename an artifact or folder
+    """Move or rename an artifact
 
-     OOvPVfl3
-    Move/rename an artifact to a new path. For .keep artifacts (folders),
-    moves all artifacts under the folder prefix.
+     Move or rename an artifact to a new path. For folder artifacts, all artifacts within the folder are
+    moved as well.
 
     Args:
         artifact_id (UUID):
@@ -274,11 +271,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ArtifactMoveIn,
 ) -> ArtifactMoveOut | TtosFolderMoveOut | GenericHttpError | None:
-    """Move or rename an artifact or folder
+    """Move or rename an artifact
 
-     OOvPVfl3
-    Move/rename an artifact to a new path. For .keep artifacts (folders),
-    moves all artifacts under the folder prefix.
+     Move or rename an artifact to a new path. For folder artifacts, all artifacts within the folder are
+    moved as well.
 
     Args:
         artifact_id (UUID):

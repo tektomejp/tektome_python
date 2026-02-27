@@ -75,24 +75,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: LawtalkEmptyProjectPostIn,
 ) -> Response[ErrorOut | LawtalkEmptyProjectPostOut]:
-    """Post Create Empty Project
+    """Create an empty project
 
-     0QhuKpae
-
-    Creates and returns a new empty Lawtalk project with default attributes.
-
-    default attributes:
-        name: name of project
-        description: description of project
-
-    Args:
-        request: The HTTP request object.
-        payload: Contains the input data for the project, including name and
-            description.
-
-    Returns:
-        LawtalkProject: The newly created project instance with its attributes
-        set accordingly.
+     Create a new project with only a name and description. The project is initialized with default
+    settings and the creator is assigned as project owner.
 
     Args:
         body (LawtalkEmptyProjectPostIn):
@@ -121,24 +107,10 @@ def sync(
     client: AuthenticatedClient,
     body: LawtalkEmptyProjectPostIn,
 ) -> ErrorOut | LawtalkEmptyProjectPostOut | None:
-    """Post Create Empty Project
+    """Create an empty project
 
-     0QhuKpae
-
-    Creates and returns a new empty Lawtalk project with default attributes.
-
-    default attributes:
-        name: name of project
-        description: description of project
-
-    Args:
-        request: The HTTP request object.
-        payload: Contains the input data for the project, including name and
-            description.
-
-    Returns:
-        LawtalkProject: The newly created project instance with its attributes
-        set accordingly.
+     Create a new project with only a name and description. The project is initialized with default
+    settings and the creator is assigned as project owner.
 
     Args:
         body (LawtalkEmptyProjectPostIn):
@@ -162,24 +134,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: LawtalkEmptyProjectPostIn,
 ) -> Response[ErrorOut | LawtalkEmptyProjectPostOut]:
-    """Post Create Empty Project
+    """Create an empty project
 
-     0QhuKpae
-
-    Creates and returns a new empty Lawtalk project with default attributes.
-
-    default attributes:
-        name: name of project
-        description: description of project
-
-    Args:
-        request: The HTTP request object.
-        payload: Contains the input data for the project, including name and
-            description.
-
-    Returns:
-        LawtalkProject: The newly created project instance with its attributes
-        set accordingly.
+     Create a new project with only a name and description. The project is initialized with default
+    settings and the creator is assigned as project owner.
 
     Args:
         body (LawtalkEmptyProjectPostIn):
@@ -206,24 +164,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: LawtalkEmptyProjectPostIn,
 ) -> ErrorOut | LawtalkEmptyProjectPostOut | None:
-    """Post Create Empty Project
+    """Create an empty project
 
-     0QhuKpae
-
-    Creates and returns a new empty Lawtalk project with default attributes.
-
-    default attributes:
-        name: name of project
-        description: description of project
-
-    Args:
-        request: The HTTP request object.
-        payload: Contains the input data for the project, including name and
-            description.
-
-    Returns:
-        LawtalkProject: The newly created project instance with its attributes
-        set accordingly.
+     Create a new project with only a name and description. The project is initialized with default
+    settings and the creator is assigned as project owner.
 
     Args:
         body (LawtalkEmptyProjectPostIn):

@@ -55,9 +55,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: LoginV2PostIn,
 ) -> Response[LoginPostOut]:
-    """Post Login V2
+    """Login with OAuth provider
 
-     Log in using an access token; creates a session and user if not present.
+     Authenticate using an OAuth provider access token (Google or Microsoft). Creates a session and
+    returns access and refresh tokens. The user must have been invited to at least one organization.
 
     Args:
         body (LoginV2PostIn):
@@ -86,9 +87,10 @@ def sync(
     client: AuthenticatedClient,
     body: LoginV2PostIn,
 ) -> LoginPostOut | None:
-    """Post Login V2
+    """Login with OAuth provider
 
-     Log in using an access token; creates a session and user if not present.
+     Authenticate using an OAuth provider access token (Google or Microsoft). Creates a session and
+    returns access and refresh tokens. The user must have been invited to at least one organization.
 
     Args:
         body (LoginV2PostIn):
@@ -112,9 +114,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: LoginV2PostIn,
 ) -> Response[LoginPostOut]:
-    """Post Login V2
+    """Login with OAuth provider
 
-     Log in using an access token; creates a session and user if not present.
+     Authenticate using an OAuth provider access token (Google or Microsoft). Creates a session and
+    returns access and refresh tokens. The user must have been invited to at least one organization.
 
     Args:
         body (LoginV2PostIn):
@@ -141,9 +144,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: LoginV2PostIn,
 ) -> LoginPostOut | None:
-    """Post Login V2
+    """Login with OAuth provider
 
-     Log in using an access token; creates a session and user if not present.
+     Authenticate using an OAuth provider access token (Google or Microsoft). Creates a session and
+    returns access and refresh tokens. The user must have been invited to at least one organization.
 
     Args:
         body (LoginV2PostIn):

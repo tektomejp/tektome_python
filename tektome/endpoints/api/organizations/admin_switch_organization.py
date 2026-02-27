@@ -52,17 +52,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OrganizationSwitchSchemaIn,
 ) -> Response[Any]:
-    """Switch Admin User Organization
+    """Admin: Switch active organization
 
-     dooSJbCv
-
-    Switch the current organization for the admin user.
-
-    Args:
-        request: http request object
-        payload: OrganizationSwitchSchemaIn
-
-    Returns: 204, None
+     Switch the authenticated admin user's active organization context. Requires super admin privileges.
 
     Args:
         body (OrganizationSwitchSchemaIn):
@@ -91,17 +83,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OrganizationSwitchSchemaIn,
 ) -> Response[Any]:
-    """Switch Admin User Organization
+    """Admin: Switch active organization
 
-     dooSJbCv
-
-    Switch the current organization for the admin user.
-
-    Args:
-        request: http request object
-        payload: OrganizationSwitchSchemaIn
-
-    Returns: 204, None
+     Switch the authenticated admin user's active organization context. Requires super admin privileges.
 
     Args:
         body (OrganizationSwitchSchemaIn):

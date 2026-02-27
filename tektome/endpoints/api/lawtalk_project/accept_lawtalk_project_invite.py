@@ -150,15 +150,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ProjectAcceptInvitePostIn,
 ) -> Response[ErrorOut | ProjectInviteAcceptPostOut]:
-    """Post Accept Project Invite
+    """Accept a project invitation
 
-     fVBx7r4w
-
-    Accept a project invite.
-
-    Args:
-        payload: ProjectAcceptInvitePostIn
-        request: Request object.
+     Accept a pending project invitation using the invitation token. Returns the project ID on success.
 
     Args:
         body (ProjectAcceptInvitePostIn):
@@ -187,15 +181,9 @@ def sync(
     client: AuthenticatedClient,
     body: ProjectAcceptInvitePostIn,
 ) -> ErrorOut | ProjectInviteAcceptPostOut | None:
-    """Post Accept Project Invite
+    """Accept a project invitation
 
-     fVBx7r4w
-
-    Accept a project invite.
-
-    Args:
-        payload: ProjectAcceptInvitePostIn
-        request: Request object.
+     Accept a pending project invitation using the invitation token. Returns the project ID on success.
 
     Args:
         body (ProjectAcceptInvitePostIn):
@@ -219,15 +207,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ProjectAcceptInvitePostIn,
 ) -> Response[ErrorOut | ProjectInviteAcceptPostOut]:
-    """Post Accept Project Invite
+    """Accept a project invitation
 
-     fVBx7r4w
-
-    Accept a project invite.
-
-    Args:
-        payload: ProjectAcceptInvitePostIn
-        request: Request object.
+     Accept a pending project invitation using the invitation token. Returns the project ID on success.
 
     Args:
         body (ProjectAcceptInvitePostIn):
@@ -254,15 +236,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ProjectAcceptInvitePostIn,
 ) -> ErrorOut | ProjectInviteAcceptPostOut | None:
-    """Post Accept Project Invite
+    """Accept a project invitation
 
-     fVBx7r4w
-
-    Accept a project invite.
-
-    Args:
-        payload: ProjectAcceptInvitePostIn
-        request: Request object.
+     Accept a pending project invitation using the invitation token. Returns the project ID on success.
 
     Args:
         body (ProjectAcceptInvitePostIn):

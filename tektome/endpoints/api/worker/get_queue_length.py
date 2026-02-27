@@ -52,11 +52,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[QueueLengthStatusGetOut | str]:
-    """Get Queue Length
+    """Get message queue lengths
 
-     Get the total length of the celery and faststream queues using the RabbitMQ API.
-
-    This endpoint returns the number of messages in the celery and faststream queues.
+     Retrieve the current number of pending messages in background processing and streaming queues.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -79,11 +77,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> QueueLengthStatusGetOut | str | None:
-    """Get Queue Length
+    """Get message queue lengths
 
-     Get the total length of the celery and faststream queues using the RabbitMQ API.
-
-    This endpoint returns the number of messages in the celery and faststream queues.
+     Retrieve the current number of pending messages in background processing and streaming queues.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -102,11 +98,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[QueueLengthStatusGetOut | str]:
-    """Get Queue Length
+    """Get message queue lengths
 
-     Get the total length of the celery and faststream queues using the RabbitMQ API.
-
-    This endpoint returns the number of messages in the celery and faststream queues.
+     Retrieve the current number of pending messages in background processing and streaming queues.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -127,11 +121,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> QueueLengthStatusGetOut | str | None:
-    """Get Queue Length
+    """Get message queue lengths
 
-     Get the total length of the celery and faststream queues using the RabbitMQ API.
-
-    This endpoint returns the number of messages in the celery and faststream queues.
+     Retrieve the current number of pending messages in background processing and streaming queues.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -77,11 +77,10 @@ def sync_detailed(
     row_index: int,
     version: int | None | Unset = UNSET,
 ) -> Response[Any]:
-    """Insert Table Row
+    """Insert a table attribute row
 
-     o5TARRr7
-
-    Insert a row to a table attribute.
+     Insert a new row into a table attribute at the specified row index. Includes optimistic concurrency
+    control via version to prevent conflicting edits.
 
     Args:
         object_type (InsertTableAttributeRowDataspaceAttributeObjectTypes):
@@ -122,11 +121,10 @@ async def asyncio_detailed(
     row_index: int,
     version: int | None | Unset = UNSET,
 ) -> Response[Any]:
-    """Insert Table Row
+    """Insert a table attribute row
 
-     o5TARRr7
-
-    Insert a row to a table attribute.
+     Insert a new row into a table attribute at the specified row index. Includes optimistic concurrency
+    control via version to prevent conflicting edits.
 
     Args:
         object_type (InsertTableAttributeRowDataspaceAttributeObjectTypes):

@@ -156,10 +156,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ArtifactPostIn,
 ) -> Response[ArtifactPostOut | GenericHttpError]:
-    """Create a new artifact
+    """Create an artifact
 
-     9algNqBm
-    Create a new artifact for a chatroom.
+     Create a new artifact in a chatroom with specified path, description, and content.
 
     Args:
         chatroom_id (UUID):
@@ -191,10 +190,9 @@ def sync(
     client: AuthenticatedClient,
     body: ArtifactPostIn,
 ) -> ArtifactPostOut | GenericHttpError | None:
-    """Create a new artifact
+    """Create an artifact
 
-     9algNqBm
-    Create a new artifact for a chatroom.
+     Create a new artifact in a chatroom with specified path, description, and content.
 
     Args:
         chatroom_id (UUID):
@@ -221,10 +219,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ArtifactPostIn,
 ) -> Response[ArtifactPostOut | GenericHttpError]:
-    """Create a new artifact
+    """Create an artifact
 
-     9algNqBm
-    Create a new artifact for a chatroom.
+     Create a new artifact in a chatroom with specified path, description, and content.
 
     Args:
         chatroom_id (UUID):
@@ -254,10 +251,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ArtifactPostIn,
 ) -> ArtifactPostOut | GenericHttpError | None:
-    """Create a new artifact
+    """Create an artifact
 
-     9algNqBm
-    Create a new artifact for a chatroom.
+     Create a new artifact in a chatroom with specified path, description, and content.
 
     Args:
         chatroom_id (UUID):

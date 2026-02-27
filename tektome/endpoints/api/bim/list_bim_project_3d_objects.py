@@ -69,17 +69,9 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | Unset = 50,
 ) -> Response[BimObject3DResponseGetOut]:
-    """Get Bim Project 3D Objects
+    """List 3D BIM objects for a project
 
-     96ce9cff
-
-    Get all 3D BIM objects for a project with pagination.
-    Returns base64-encoded file content for each object.
-
-    Args:
-        path: Path parameters containing the BIM project ID
-        page: Page number (starts from 1)
-        page_size: Number of objects per page (between 1 and 250)
+     Retrieve a paginated list of 3D BIM objects for a project, including base64-encoded file content.
 
     Args:
         bim_project_id (UUID):
@@ -114,17 +106,9 @@ def sync(
     page: int | Unset = 1,
     page_size: int | Unset = 50,
 ) -> BimObject3DResponseGetOut | None:
-    """Get Bim Project 3D Objects
+    """List 3D BIM objects for a project
 
-     96ce9cff
-
-    Get all 3D BIM objects for a project with pagination.
-    Returns base64-encoded file content for each object.
-
-    Args:
-        path: Path parameters containing the BIM project ID
-        page: Page number (starts from 1)
-        page_size: Number of objects per page (between 1 and 250)
+     Retrieve a paginated list of 3D BIM objects for a project, including base64-encoded file content.
 
     Args:
         bim_project_id (UUID):
@@ -154,17 +138,9 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | Unset = 50,
 ) -> Response[BimObject3DResponseGetOut]:
-    """Get Bim Project 3D Objects
+    """List 3D BIM objects for a project
 
-     96ce9cff
-
-    Get all 3D BIM objects for a project with pagination.
-    Returns base64-encoded file content for each object.
-
-    Args:
-        path: Path parameters containing the BIM project ID
-        page: Page number (starts from 1)
-        page_size: Number of objects per page (between 1 and 250)
+     Retrieve a paginated list of 3D BIM objects for a project, including base64-encoded file content.
 
     Args:
         bim_project_id (UUID):
@@ -197,17 +173,9 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | Unset = 50,
 ) -> BimObject3DResponseGetOut | None:
-    """Get Bim Project 3D Objects
+    """List 3D BIM objects for a project
 
-     96ce9cff
-
-    Get all 3D BIM objects for a project with pagination.
-    Returns base64-encoded file content for each object.
-
-    Args:
-        path: Path parameters containing the BIM project ID
-        page: Page number (starts from 1)
-        page_size: Number of objects per page (between 1 and 250)
+     Retrieve a paginated list of 3D BIM objects for a project, including base64-encoded file content.
 
     Args:
         bim_project_id (UUID):

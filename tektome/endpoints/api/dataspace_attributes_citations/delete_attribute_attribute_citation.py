@@ -60,17 +60,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Attribute Attribute Citation
+    """Delete an attribute citation from an attribute
 
-     nODfeQMC
-
-    Delete an attribute citation from an attribute based on the cited attribute ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and cited attribute ID.
-
-    Returns: 204, None
+     Remove a specific attribute-to-attribute citation by the cited attribute ID.
 
     Args:
         dataspace_id (UUID):
@@ -108,17 +100,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Attribute Attribute Citation
+    """Delete an attribute citation from an attribute
 
-     nODfeQMC
-
-    Delete an attribute citation from an attribute based on the cited attribute ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and cited attribute ID.
-
-    Returns: 204, None
+     Remove a specific attribute-to-attribute citation by the cited attribute ID.
 
     Args:
         dataspace_id (UUID):

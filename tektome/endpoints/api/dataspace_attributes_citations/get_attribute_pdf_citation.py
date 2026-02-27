@@ -59,17 +59,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[PDFCitationSchemaOut]:
-    """Get Attribute Pdf Citation
+    """Get a PDF citation by ID
 
-     xaPPredQ
-
-    Retrieve a PDF citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and PDF citation ID.
-
-    Returns: 200, the PDF citation object
+     Retrieve the details of a specific PDF citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -104,17 +96,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> PDFCitationSchemaOut | None:
-    """Get Attribute Pdf Citation
+    """Get a PDF citation by ID
 
-     xaPPredQ
-
-    Retrieve a PDF citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and PDF citation ID.
-
-    Returns: 200, the PDF citation object
+     Retrieve the details of a specific PDF citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -144,17 +128,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[PDFCitationSchemaOut]:
-    """Get Attribute Pdf Citation
+    """Get a PDF citation by ID
 
-     xaPPredQ
-
-    Retrieve a PDF citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and PDF citation ID.
-
-    Returns: 200, the PDF citation object
+     Retrieve the details of a specific PDF citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -187,17 +163,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> PDFCitationSchemaOut | None:
-    """Get Attribute Pdf Citation
+    """Get a PDF citation by ID
 
-     xaPPredQ
-
-    Retrieve a PDF citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and PDF citation ID.
-
-    Returns: 200, the PDF citation object
+     Retrieve the details of a specific PDF citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):

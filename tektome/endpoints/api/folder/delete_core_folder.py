@@ -62,18 +62,9 @@ def sync_detailed(
     include_resources: bool | Unset = False,
     force: bool | Unset = False,
 ) -> Response[Any]:
-    """Delete Folder
+    """Delete a folder
 
-     k4-aSnXD
-
-    Delete a folder. User may choose to also delete all resources in the folder.
-
-    Args:
-        request: Request object
-        path_params: FolderPathIn object containing folder_id
-        query_params: FolderDeleteQuery object containing delete options
-
-    Returns: None
+     Delete a folder. Optionally delete all resources within it. Root folders cannot be deleted.
 
     Args:
         folder_id (UUID):
@@ -108,18 +99,9 @@ async def asyncio_detailed(
     include_resources: bool | Unset = False,
     force: bool | Unset = False,
 ) -> Response[Any]:
-    """Delete Folder
+    """Delete a folder
 
-     k4-aSnXD
-
-    Delete a folder. User may choose to also delete all resources in the folder.
-
-    Args:
-        request: Request object
-        path_params: FolderPathIn object containing folder_id
-        query_params: FolderDeleteQuery object containing delete options
-
-    Returns: None
+     Delete a folder. Optionally delete all resources within it. Root folders cannot be deleted.
 
     Args:
         folder_id (UUID):

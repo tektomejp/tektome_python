@@ -165,19 +165,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: AttributeCitationPostIn,
 ) -> Response[AttributeCitationsGetOut | ErrorOut]:
-    """Post Attribute Citation From Another Attribute
+    """Create an attribute citation from another attribute
 
-     zRMnQQ1g
-
-    Create an attribute citation to another attribute.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and dataspace ID.
-        payload: The payload containing the data of type AttributeCitationPostIn, including the cited
-    attribute ID and attribute type.
-
-    Returns: 201, The cited attribute linked to the attribute
+     Create a new citation on an attribute that references another attribute as its source.
 
     Args:
         dataspace_id (UUID):
@@ -215,19 +205,9 @@ def sync(
     client: AuthenticatedClient,
     body: AttributeCitationPostIn,
 ) -> AttributeCitationsGetOut | ErrorOut | None:
-    """Post Attribute Citation From Another Attribute
+    """Create an attribute citation from another attribute
 
-     zRMnQQ1g
-
-    Create an attribute citation to another attribute.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and dataspace ID.
-        payload: The payload containing the data of type AttributeCitationPostIn, including the cited
-    attribute ID and attribute type.
-
-    Returns: 201, The cited attribute linked to the attribute
+     Create a new citation on an attribute that references another attribute as its source.
 
     Args:
         dataspace_id (UUID):
@@ -260,19 +240,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: AttributeCitationPostIn,
 ) -> Response[AttributeCitationsGetOut | ErrorOut]:
-    """Post Attribute Citation From Another Attribute
+    """Create an attribute citation from another attribute
 
-     zRMnQQ1g
-
-    Create an attribute citation to another attribute.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and dataspace ID.
-        payload: The payload containing the data of type AttributeCitationPostIn, including the cited
-    attribute ID and attribute type.
-
-    Returns: 201, The cited attribute linked to the attribute
+     Create a new citation on an attribute that references another attribute as its source.
 
     Args:
         dataspace_id (UUID):
@@ -308,19 +278,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: AttributeCitationPostIn,
 ) -> AttributeCitationsGetOut | ErrorOut | None:
-    """Post Attribute Citation From Another Attribute
+    """Create an attribute citation from another attribute
 
-     zRMnQQ1g
-
-    Create an attribute citation to another attribute.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and dataspace ID.
-        payload: The payload containing the data of type AttributeCitationPostIn, including the cited
-    attribute ID and attribute type.
-
-    Returns: 201, The cited attribute linked to the attribute
+     Create a new citation on an attribute that references another attribute as its source.
 
     Args:
         dataspace_id (UUID):

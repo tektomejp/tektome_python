@@ -58,15 +58,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ReferenceNoteVersionGetOut]:
-    """Get Reference Note Version
+    """Get a reference note version
 
-     JnQkM31H
-
-    Get specific versions of a reference note associated to a requirement
-
-    Args:
-        request: Request object
-        path_params: path params of type ReferenceNoteVersionPath
+     Retrieve a specific version of a reference note by version number.
 
     Args:
         reference_note_id (UUID):
@@ -98,15 +92,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ReferenceNoteVersionGetOut | None:
-    """Get Reference Note Version
+    """Get a reference note version
 
-     JnQkM31H
-
-    Get specific versions of a reference note associated to a requirement
-
-    Args:
-        request: Request object
-        path_params: path params of type ReferenceNoteVersionPath
+     Retrieve a specific version of a reference note by version number.
 
     Args:
         reference_note_id (UUID):
@@ -133,15 +121,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ReferenceNoteVersionGetOut]:
-    """Get Reference Note Version
+    """Get a reference note version
 
-     JnQkM31H
-
-    Get specific versions of a reference note associated to a requirement
-
-    Args:
-        request: Request object
-        path_params: path params of type ReferenceNoteVersionPath
+     Retrieve a specific version of a reference note by version number.
 
     Args:
         reference_note_id (UUID):
@@ -171,15 +153,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ReferenceNoteVersionGetOut | None:
-    """Get Reference Note Version
+    """Get a reference note version
 
-     JnQkM31H
-
-    Get specific versions of a reference note associated to a requirement
-
-    Args:
-        request: Request object
-        path_params: path params of type ReferenceNoteVersionPath
+     Retrieve a specific version of a reference note by version number.
 
     Args:
         reference_note_id (UUID):

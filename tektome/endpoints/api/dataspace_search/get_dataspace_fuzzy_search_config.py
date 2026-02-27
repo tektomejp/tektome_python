@@ -55,11 +55,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DataspaceFuzzySearchConfigurationGetOut]:
-    """Get Dataspace Fuzzy Search Config
+    """Get fuzzy search configuration
 
-     DGdHN7zW
-
-    Retrieve fuzzy search configuration (excluded attributes name and types) for the current dataspace.
+     Retrieve the fuzzy search configuration for a dataspace, including excluded attribute names and
+    types. Creates a default configuration if one does not yet exist.
 
     Args:
         dataspace_id (UUID):
@@ -88,11 +87,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> DataspaceFuzzySearchConfigurationGetOut | None:
-    """Get Dataspace Fuzzy Search Config
+    """Get fuzzy search configuration
 
-     DGdHN7zW
-
-    Retrieve fuzzy search configuration (excluded attributes name and types) for the current dataspace.
+     Retrieve the fuzzy search configuration for a dataspace, including excluded attribute names and
+    types. Creates a default configuration if one does not yet exist.
 
     Args:
         dataspace_id (UUID):
@@ -116,11 +114,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DataspaceFuzzySearchConfigurationGetOut]:
-    """Get Dataspace Fuzzy Search Config
+    """Get fuzzy search configuration
 
-     DGdHN7zW
-
-    Retrieve fuzzy search configuration (excluded attributes name and types) for the current dataspace.
+     Retrieve the fuzzy search configuration for a dataspace, including excluded attribute names and
+    types. Creates a default configuration if one does not yet exist.
 
     Args:
         dataspace_id (UUID):
@@ -147,11 +144,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> DataspaceFuzzySearchConfigurationGetOut | None:
-    """Get Dataspace Fuzzy Search Config
+    """Get fuzzy search configuration
 
-     DGdHN7zW
-
-    Retrieve fuzzy search configuration (excluded attributes name and types) for the current dataspace.
+     Retrieve the fuzzy search configuration for a dataspace, including excluded attribute names and
+    types. Creates a default configuration if one does not yet exist.
 
     Args:
         dataspace_id (UUID):

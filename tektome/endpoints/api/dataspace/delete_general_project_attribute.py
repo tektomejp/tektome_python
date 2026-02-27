@@ -51,17 +51,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete General Project Attribute
+    """Delete a project attribute in a dataspace
 
-     fD0kGxD2
-
-    Deletes a general project attribute. validated against dataspace settings.
-
-    Args:
-        request: The request object.
-        path_params: The path parameters containing dataspace and attribute IDs.
-
-    Returns: 204, None
+     Delete a project attribute. Locked and disabled attributes cannot be deleted.
 
     Args:
         dataspace_id (UUID):
@@ -93,17 +85,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete General Project Attribute
+    """Delete a project attribute in a dataspace
 
-     fD0kGxD2
-
-    Deletes a general project attribute. validated against dataspace settings.
-
-    Args:
-        request: The request object.
-        path_params: The path parameters containing dataspace and attribute IDs.
-
-    Returns: 204, None
+     Delete a project attribute. Locked and disabled attributes cannot be deleted.
 
     Args:
         dataspace_id (UUID):

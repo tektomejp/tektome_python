@@ -75,24 +75,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ImageCitationPatchInPatch,
 ) -> Response[ImageCitationSchemaOut]:
-    """Patch Attribute Image Citation
+    """Update an image citation
 
-     9G12cNa3
-
-    Patch Image citation given its ID.
-
-    Only the following fields can be updated:
-    - title
-    - keywords
-
-    Updates the updated_by field to the user making the request.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and image citation ID.
-        payload: The payload only containing the fields to update of type ImageCitationPatchIn
-
-    Returns: 200, updated citation object
+     Update the details of a specific image citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -133,24 +118,9 @@ def sync(
     client: AuthenticatedClient,
     body: ImageCitationPatchInPatch,
 ) -> ImageCitationSchemaOut | None:
-    """Patch Attribute Image Citation
+    """Update an image citation
 
-     9G12cNa3
-
-    Patch Image citation given its ID.
-
-    Only the following fields can be updated:
-    - title
-    - keywords
-
-    Updates the updated_by field to the user making the request.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and image citation ID.
-        payload: The payload only containing the fields to update of type ImageCitationPatchIn
-
-    Returns: 200, updated citation object
+     Update the details of a specific image citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -186,24 +156,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ImageCitationPatchInPatch,
 ) -> Response[ImageCitationSchemaOut]:
-    """Patch Attribute Image Citation
+    """Update an image citation
 
-     9G12cNa3
-
-    Patch Image citation given its ID.
-
-    Only the following fields can be updated:
-    - title
-    - keywords
-
-    Updates the updated_by field to the user making the request.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and image citation ID.
-        payload: The payload only containing the fields to update of type ImageCitationPatchIn
-
-    Returns: 200, updated citation object
+     Update the details of a specific image citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -242,24 +197,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ImageCitationPatchInPatch,
 ) -> ImageCitationSchemaOut | None:
-    """Patch Attribute Image Citation
+    """Update an image citation
 
-     9G12cNa3
-
-    Patch Image citation given its ID.
-
-    Only the following fields can be updated:
-    - title
-    - keywords
-
-    Updates the updated_by field to the user making the request.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and image citation ID.
-        payload: The payload only containing the fields to update of type ImageCitationPatchIn
-
-    Returns: 200, updated citation object
+     Update the details of a specific image citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):

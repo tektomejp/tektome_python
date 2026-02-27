@@ -52,11 +52,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: EntityTrackerPutIn,
 ) -> Response[Any]:
-    """Put Entity Tracker
+    """Upsert entity view tracking
 
-     1AbIfjMA
-
-    Create or mark entities as viewed by the user.
+     Create or update view tracking records for entities. Records when the authenticated user last viewed
+    each entity.
 
     Args:
         body (EntityTrackerPutIn):
@@ -85,11 +84,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: EntityTrackerPutIn,
 ) -> Response[Any]:
-    """Put Entity Tracker
+    """Upsert entity view tracking
 
-     1AbIfjMA
-
-    Create or mark entities as viewed by the user.
+     Create or update view tracking records for entities. Records when the authenticated user last viewed
+    each entity.
 
     Args:
         body (EntityTrackerPutIn):

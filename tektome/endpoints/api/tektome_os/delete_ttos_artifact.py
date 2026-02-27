@@ -144,7 +144,7 @@ def sync_detailed(
 ) -> Response[Any | GenericHttpError]:
     """Delete an artifact
 
-     Delete an artifact by its ID.
+     Permanently delete an artifact by its ID. Read-only artifacts cannot be deleted.
 
     Args:
         artifact_id (UUID):
@@ -175,7 +175,7 @@ def sync(
 ) -> Any | GenericHttpError | None:
     """Delete an artifact
 
-     Delete an artifact by its ID.
+     Permanently delete an artifact by its ID. Read-only artifacts cannot be deleted.
 
     Args:
         artifact_id (UUID):
@@ -201,7 +201,7 @@ async def asyncio_detailed(
 ) -> Response[Any | GenericHttpError]:
     """Delete an artifact
 
-     Delete an artifact by its ID.
+     Permanently delete an artifact by its ID. Read-only artifacts cannot be deleted.
 
     Args:
         artifact_id (UUID):
@@ -230,7 +230,7 @@ async def asyncio(
 ) -> Any | GenericHttpError | None:
     """Delete an artifact
 
-     Delete an artifact by its ID.
+     Permanently delete an artifact by its ID. Read-only artifacts cannot be deleted.
 
     Args:
         artifact_id (UUID):

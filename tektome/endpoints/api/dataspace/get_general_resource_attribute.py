@@ -54,19 +54,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[AttributeGetOut]:
-    """Get General Resource Attribute
+    """Get a dataspace attribute by ID
 
-     CpgPOHHA
-
-    Retrieve a general dataspace attribute by ID.
-    Can either be a resource attribute or project attribute.
-
-    Args:
-        path_params: The path parameters containing the dataspace ID and attribute ID.
-        request: The incoming request object.
-        payload: The payload containing attribute details.
-
-    Returns: 200, attribute
+     Retrieve a specific dataspace attribute by its ID. The attribute can belong to either a resource or
+    a project.
 
     Args:
         dataspace_id (UUID):
@@ -98,19 +89,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> AttributeGetOut | None:
-    """Get General Resource Attribute
+    """Get a dataspace attribute by ID
 
-     CpgPOHHA
-
-    Retrieve a general dataspace attribute by ID.
-    Can either be a resource attribute or project attribute.
-
-    Args:
-        path_params: The path parameters containing the dataspace ID and attribute ID.
-        request: The incoming request object.
-        payload: The payload containing attribute details.
-
-    Returns: 200, attribute
+     Retrieve a specific dataspace attribute by its ID. The attribute can belong to either a resource or
+    a project.
 
     Args:
         dataspace_id (UUID):
@@ -137,19 +119,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[AttributeGetOut]:
-    """Get General Resource Attribute
+    """Get a dataspace attribute by ID
 
-     CpgPOHHA
-
-    Retrieve a general dataspace attribute by ID.
-    Can either be a resource attribute or project attribute.
-
-    Args:
-        path_params: The path parameters containing the dataspace ID and attribute ID.
-        request: The incoming request object.
-        payload: The payload containing attribute details.
-
-    Returns: 200, attribute
+     Retrieve a specific dataspace attribute by its ID. The attribute can belong to either a resource or
+    a project.
 
     Args:
         dataspace_id (UUID):
@@ -179,19 +152,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> AttributeGetOut | None:
-    """Get General Resource Attribute
+    """Get a dataspace attribute by ID
 
-     CpgPOHHA
-
-    Retrieve a general dataspace attribute by ID.
-    Can either be a resource attribute or project attribute.
-
-    Args:
-        path_params: The path parameters containing the dataspace ID and attribute ID.
-        request: The incoming request object.
-        payload: The payload containing attribute details.
-
-    Returns: 200, attribute
+     Retrieve a specific dataspace attribute by its ID. The attribute can belong to either a resource or
+    a project.
 
     Args:
         dataspace_id (UUID):

@@ -94,11 +94,10 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedCitations]:
-    """Get Attribute Citations
+    """List all citations for an attribute
 
-     rkLlaCda
-
-    Get all citations associated to an attribute.
+     Retrieve all citations (PDF, raw text, BIM, image, and attribute) associated with the specified
+    attribute.
 
     Args:
         dataspace_id (UUID):
@@ -143,11 +142,10 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedCitations | None:
-    """Get Attribute Citations
+    """List all citations for an attribute
 
-     rkLlaCda
-
-    Get all citations associated to an attribute.
+     Retrieve all citations (PDF, raw text, BIM, image, and attribute) associated with the specified
+    attribute.
 
     Args:
         dataspace_id (UUID):
@@ -187,11 +185,10 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedCitations]:
-    """Get Attribute Citations
+    """List all citations for an attribute
 
-     rkLlaCda
-
-    Get all citations associated to an attribute.
+     Retrieve all citations (PDF, raw text, BIM, image, and attribute) associated with the specified
+    attribute.
 
     Args:
         dataspace_id (UUID):
@@ -234,11 +231,10 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedCitations | None:
-    """Get Attribute Citations
+    """List all citations for an attribute
 
-     rkLlaCda
-
-    Get all citations associated to an attribute.
+     Retrieve all citations (PDF, raw text, BIM, image, and attribute) associated with the specified
+    attribute.
 
     Args:
         dataspace_id (UUID):

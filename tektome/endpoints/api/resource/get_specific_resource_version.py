@@ -152,11 +152,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ErrorOut | ResourceSchemaPostOut]:
-    """Get Specific Version Resource
+    """Get a specific resource version
 
-     Ke_v_uuH
-
-    Get specific version of resource given resource_vc_id
+     Retrieve a specific version of a resource by its version control ID and version number.
 
     Args:
         resource_group_id (UUID):
@@ -191,11 +189,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ErrorOut | ResourceSchemaPostOut | None:
-    """Get Specific Version Resource
+    """Get a specific resource version
 
-     Ke_v_uuH
-
-    Get specific version of resource given resource_vc_id
+     Retrieve a specific version of a resource by its version control ID and version number.
 
     Args:
         resource_group_id (UUID):
@@ -225,11 +221,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ErrorOut | ResourceSchemaPostOut]:
-    """Get Specific Version Resource
+    """Get a specific resource version
 
-     Ke_v_uuH
-
-    Get specific version of resource given resource_vc_id
+     Retrieve a specific version of a resource by its version control ID and version number.
 
     Args:
         resource_group_id (UUID):
@@ -262,11 +256,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ErrorOut | ResourceSchemaPostOut | None:
-    """Get Specific Version Resource
+    """Get a specific resource version
 
-     Ke_v_uuH
-
-    Get specific version of resource given resource_vc_id
+     Retrieve a specific version of a resource by its version control ID and version number.
 
     Args:
         resource_group_id (UUID):

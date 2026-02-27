@@ -59,17 +59,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[BIMCitationSchemaOut]:
-    """Get Attribute Bim Citation
+    """Get a BIM citation by ID
 
-     ysYketle
-
-    Retrieve a BIM citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and BIM citation ID.
-
-    Returns: 200, the BIM citation object if found and the user has permission to view it
+     Retrieve the details of a specific BIM citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -104,17 +96,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> BIMCitationSchemaOut | None:
-    """Get Attribute Bim Citation
+    """Get a BIM citation by ID
 
-     ysYketle
-
-    Retrieve a BIM citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and BIM citation ID.
-
-    Returns: 200, the BIM citation object if found and the user has permission to view it
+     Retrieve the details of a specific BIM citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -144,17 +128,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[BIMCitationSchemaOut]:
-    """Get Attribute Bim Citation
+    """Get a BIM citation by ID
 
-     ysYketle
-
-    Retrieve a BIM citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and BIM citation ID.
-
-    Returns: 200, the BIM citation object if found and the user has permission to view it
+     Retrieve the details of a specific BIM citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -187,17 +163,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> BIMCitationSchemaOut | None:
-    """Get Attribute Bim Citation
+    """Get a BIM citation by ID
 
-     ysYketle
-
-    Retrieve a BIM citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and BIM citation ID.
-
-    Returns: 200, the BIM citation object if found and the user has permission to view it
+     Retrieve the details of a specific BIM citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):

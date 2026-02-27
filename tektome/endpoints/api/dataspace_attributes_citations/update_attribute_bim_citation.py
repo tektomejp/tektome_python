@@ -73,18 +73,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: BIMCitationPatchInPatch,
 ) -> Response[BIMCitationSchemaOut]:
-    """Patch Attribute Bim Citation
+    """Update a BIM citation
 
-     8uaRgQQn
-
-    Patch BIM citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and BIM citation ID.
-        payload: The payload only containing the fields to update of type BIMCitationPatchIn
-
-    Returns: 200, updated citation object
+     Update the details of a specific BIM citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -125,18 +116,9 @@ def sync(
     client: AuthenticatedClient,
     body: BIMCitationPatchInPatch,
 ) -> BIMCitationSchemaOut | None:
-    """Patch Attribute Bim Citation
+    """Update a BIM citation
 
-     8uaRgQQn
-
-    Patch BIM citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and BIM citation ID.
-        payload: The payload only containing the fields to update of type BIMCitationPatchIn
-
-    Returns: 200, updated citation object
+     Update the details of a specific BIM citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -172,18 +154,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: BIMCitationPatchInPatch,
 ) -> Response[BIMCitationSchemaOut]:
-    """Patch Attribute Bim Citation
+    """Update a BIM citation
 
-     8uaRgQQn
-
-    Patch BIM citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and BIM citation ID.
-        payload: The payload only containing the fields to update of type BIMCitationPatchIn
-
-    Returns: 200, updated citation object
+     Update the details of a specific BIM citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -222,18 +195,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: BIMCitationPatchInPatch,
 ) -> BIMCitationSchemaOut | None:
-    """Patch Attribute Bim Citation
+    """Update a BIM citation
 
-     8uaRgQQn
-
-    Patch BIM citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and BIM citation ID.
-        payload: The payload only containing the fields to update of type BIMCitationPatchIn
-
-    Returns: 200, updated citation object
+     Update the details of a specific BIM citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):

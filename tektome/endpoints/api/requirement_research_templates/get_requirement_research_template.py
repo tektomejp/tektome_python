@@ -55,16 +55,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[RequirementResearchTemplateGetOut]:
-    """Retrieve Research Template
+    """Get an AI research template by ID
 
-     R1C1E1A4
-
-    Retrieve a research template by its ID.
-
-    Args:
-        path_params: Path parameters containing the research_template_id.
-
-    Returns: The retrieved ResearchTemplate instance.
+     Retrieve a specific AI research template by its ID.
 
     Args:
         research_template_id (UUID):
@@ -93,16 +86,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> RequirementResearchTemplateGetOut | None:
-    """Retrieve Research Template
+    """Get an AI research template by ID
 
-     R1C1E1A4
-
-    Retrieve a research template by its ID.
-
-    Args:
-        path_params: Path parameters containing the research_template_id.
-
-    Returns: The retrieved ResearchTemplate instance.
+     Retrieve a specific AI research template by its ID.
 
     Args:
         research_template_id (UUID):
@@ -126,16 +112,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[RequirementResearchTemplateGetOut]:
-    """Retrieve Research Template
+    """Get an AI research template by ID
 
-     R1C1E1A4
-
-    Retrieve a research template by its ID.
-
-    Args:
-        path_params: Path parameters containing the research_template_id.
-
-    Returns: The retrieved ResearchTemplate instance.
+     Retrieve a specific AI research template by its ID.
 
     Args:
         research_template_id (UUID):
@@ -162,16 +141,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> RequirementResearchTemplateGetOut | None:
-    """Retrieve Research Template
+    """Get an AI research template by ID
 
-     R1C1E1A4
-
-    Retrieve a research template by its ID.
-
-    Args:
-        path_params: Path parameters containing the research_template_id.
-
-    Returns: The retrieved ResearchTemplate instance.
+     Retrieve a specific AI research template by its ID.
 
     Args:
         research_template_id (UUID):

@@ -146,11 +146,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | ErrorOut]:
-    """Delete Search Filter Configuration Field
+    """Delete a search filter field
 
-     krOm2LLz
-
-    Delete a dataspace search filter configuration field
+     Remove a field from a search filter configuration.
 
     Args:
         dataspace_id (UUID):
@@ -185,11 +183,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Any | ErrorOut | None:
-    """Delete Search Filter Configuration Field
+    """Delete a search filter field
 
-     krOm2LLz
-
-    Delete a dataspace search filter configuration field
+     Remove a field from a search filter configuration.
 
     Args:
         dataspace_id (UUID):
@@ -219,11 +215,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | ErrorOut]:
-    """Delete Search Filter Configuration Field
+    """Delete a search filter field
 
-     krOm2LLz
-
-    Delete a dataspace search filter configuration field
+     Remove a field from a search filter configuration.
 
     Args:
         dataspace_id (UUID):
@@ -256,11 +250,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Any | ErrorOut | None:
-    """Delete Search Filter Configuration Field
+    """Delete a search filter field
 
-     krOm2LLz
-
-    Delete a dataspace search filter configuration field
+     Remove a field from a search filter configuration.
 
     Args:
         dataspace_id (UUID):

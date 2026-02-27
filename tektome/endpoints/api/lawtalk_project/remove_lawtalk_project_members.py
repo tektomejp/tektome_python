@@ -58,19 +58,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: UsersSchemaIn,
 ) -> Response[Any]:
-    """Remove Project Members
+    """Remove members from a project
 
-     Xh2JkL9m
-
-    Remove multiple members from a project. If member has no account login yet and member has no other
-    invitations, then delete the user member.
-
-    Args:
-        request: Request object.
-        path_params: Path params of type ProjectDefaultPath
-        payload: payload of type ProjectBulkRemoveMembersIn
-
-    Returns: 204, None
+     Remove one or more members from a project. Removes their role assignments from the project.
 
     Args:
         project_id (UUID):
@@ -102,19 +92,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: UsersSchemaIn,
 ) -> Response[Any]:
-    """Remove Project Members
+    """Remove members from a project
 
-     Xh2JkL9m
-
-    Remove multiple members from a project. If member has no account login yet and member has no other
-    invitations, then delete the user member.
-
-    Args:
-        request: Request object.
-        path_params: Path params of type ProjectDefaultPath
-        payload: payload of type ProjectBulkRemoveMembersIn
-
-    Returns: 204, None
+     Remove one or more members from a project. Removes their role assignments from the project.
 
     Args:
         project_id (UUID):

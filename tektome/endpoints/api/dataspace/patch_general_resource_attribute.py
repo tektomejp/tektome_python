@@ -64,18 +64,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: AttributePatchInPatch,
 ) -> Response[AttributeGetOut]:
-    """Patch General Resource Attribute
+    """Update a resource attribute in a dataspace
 
-     DUfd8UkG
-
-    Update a general resource attribute. validated against dataspace settings.
-
-    Args:
-        request: The request object.
-        path_params: The path parameters containing dataspace and attribute IDs.
-        payload: The payload containing attribute updates.
-
-    Returns: 200, updated attribute
+     Partially update a resource attribute. The update is validated against the dataspace's configured
+    attribute settings. Disabled attributes cannot be modified.
 
     Args:
         dataspace_id (UUID):
@@ -110,18 +102,10 @@ def sync(
     client: AuthenticatedClient,
     body: AttributePatchInPatch,
 ) -> AttributeGetOut | None:
-    """Patch General Resource Attribute
+    """Update a resource attribute in a dataspace
 
-     DUfd8UkG
-
-    Update a general resource attribute. validated against dataspace settings.
-
-    Args:
-        request: The request object.
-        path_params: The path parameters containing dataspace and attribute IDs.
-        payload: The payload containing attribute updates.
-
-    Returns: 200, updated attribute
+     Partially update a resource attribute. The update is validated against the dataspace's configured
+    attribute settings. Disabled attributes cannot be modified.
 
     Args:
         dataspace_id (UUID):
@@ -151,18 +135,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: AttributePatchInPatch,
 ) -> Response[AttributeGetOut]:
-    """Patch General Resource Attribute
+    """Update a resource attribute in a dataspace
 
-     DUfd8UkG
-
-    Update a general resource attribute. validated against dataspace settings.
-
-    Args:
-        request: The request object.
-        path_params: The path parameters containing dataspace and attribute IDs.
-        payload: The payload containing attribute updates.
-
-    Returns: 200, updated attribute
+     Partially update a resource attribute. The update is validated against the dataspace's configured
+    attribute settings. Disabled attributes cannot be modified.
 
     Args:
         dataspace_id (UUID):
@@ -195,18 +171,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: AttributePatchInPatch,
 ) -> AttributeGetOut | None:
-    """Patch General Resource Attribute
+    """Update a resource attribute in a dataspace
 
-     DUfd8UkG
-
-    Update a general resource attribute. validated against dataspace settings.
-
-    Args:
-        request: The request object.
-        path_params: The path parameters containing dataspace and attribute IDs.
-        payload: The payload containing attribute updates.
-
-    Returns: 200, updated attribute
+     Partially update a resource attribute. The update is validated against the dataspace's configured
+    attribute settings. Disabled attributes cannot be modified.
 
     Args:
         dataspace_id (UUID):

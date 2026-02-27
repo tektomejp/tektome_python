@@ -163,16 +163,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PDFCitationPostIn,
 ) -> Response[ErrorOut | PDFCitationSchemaOut]:
-    """Post Attribute Pdf Citation
+    """Create a PDF citation for an attribute
 
-     zkaXa110
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and dataspace ID.
-        payload: The payload containing the data of type PDFCitationPostIn
-
-    Returns: 201, the created PDF citation object
+     Create a new PDF citation linking a PDF source to the specified attribute.
 
     Args:
         dataspace_id (UUID):
@@ -210,16 +203,9 @@ def sync(
     client: AuthenticatedClient,
     body: PDFCitationPostIn,
 ) -> ErrorOut | PDFCitationSchemaOut | None:
-    """Post Attribute Pdf Citation
+    """Create a PDF citation for an attribute
 
-     zkaXa110
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and dataspace ID.
-        payload: The payload containing the data of type PDFCitationPostIn
-
-    Returns: 201, the created PDF citation object
+     Create a new PDF citation linking a PDF source to the specified attribute.
 
     Args:
         dataspace_id (UUID):
@@ -252,16 +238,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PDFCitationPostIn,
 ) -> Response[ErrorOut | PDFCitationSchemaOut]:
-    """Post Attribute Pdf Citation
+    """Create a PDF citation for an attribute
 
-     zkaXa110
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and dataspace ID.
-        payload: The payload containing the data of type PDFCitationPostIn
-
-    Returns: 201, the created PDF citation object
+     Create a new PDF citation linking a PDF source to the specified attribute.
 
     Args:
         dataspace_id (UUID):
@@ -297,16 +276,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PDFCitationPostIn,
 ) -> ErrorOut | PDFCitationSchemaOut | None:
-    """Post Attribute Pdf Citation
+    """Create a PDF citation for an attribute
 
-     zkaXa110
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and dataspace ID.
-        payload: The payload containing the data of type PDFCitationPostIn
-
-    Returns: 201, the created PDF citation object
+     Create a new PDF citation linking a PDF source to the specified attribute.
 
     Args:
         dataspace_id (UUID):

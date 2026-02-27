@@ -69,39 +69,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     nonce: int,
 ) -> Response[Any | ProjectRequirementItemGetOut]:
-    """Get Stream Table Requirement Items
+    """Stream requirement items table generation
 
-     JnQkM31Z
-
-    Streams a new requirement items table using Server-Sent Events (SSE).
-    The new requirement items table is saved to the requirement after streaming is complete.
-
-    If there is no change, the following event is sent:
-
-    ```
-    event: end
-    data: NO_CHANGE
-    ```
-
-    If there is an error, the following event is sent:
-
-    ```
-    event: error
-    data: error message
-    ```
-
-    Otherwise, the generated rows are sent as they are produced:
-
-    ```
-    data: [{row1}]
-
-    data: [{row1},{row2}]
-
-    ...
-
-    event: end
-    data: DONE
-    ```
+     Stream AI-generated requirement items table using Server-Sent Events (SSE). Rows are streamed
+    incrementally as they are produced and saved after completion.
 
     Args:
         requirement_id (UUID):
@@ -133,39 +104,10 @@ def sync(
     client: AuthenticatedClient,
     nonce: int,
 ) -> Any | ProjectRequirementItemGetOut | None:
-    """Get Stream Table Requirement Items
+    """Stream requirement items table generation
 
-     JnQkM31Z
-
-    Streams a new requirement items table using Server-Sent Events (SSE).
-    The new requirement items table is saved to the requirement after streaming is complete.
-
-    If there is no change, the following event is sent:
-
-    ```
-    event: end
-    data: NO_CHANGE
-    ```
-
-    If there is an error, the following event is sent:
-
-    ```
-    event: error
-    data: error message
-    ```
-
-    Otherwise, the generated rows are sent as they are produced:
-
-    ```
-    data: [{row1}]
-
-    data: [{row1},{row2}]
-
-    ...
-
-    event: end
-    data: DONE
-    ```
+     Stream AI-generated requirement items table using Server-Sent Events (SSE). Rows are streamed
+    incrementally as they are produced and saved after completion.
 
     Args:
         requirement_id (UUID):
@@ -192,39 +134,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     nonce: int,
 ) -> Response[Any | ProjectRequirementItemGetOut]:
-    """Get Stream Table Requirement Items
+    """Stream requirement items table generation
 
-     JnQkM31Z
-
-    Streams a new requirement items table using Server-Sent Events (SSE).
-    The new requirement items table is saved to the requirement after streaming is complete.
-
-    If there is no change, the following event is sent:
-
-    ```
-    event: end
-    data: NO_CHANGE
-    ```
-
-    If there is an error, the following event is sent:
-
-    ```
-    event: error
-    data: error message
-    ```
-
-    Otherwise, the generated rows are sent as they are produced:
-
-    ```
-    data: [{row1}]
-
-    data: [{row1},{row2}]
-
-    ...
-
-    event: end
-    data: DONE
-    ```
+     Stream AI-generated requirement items table using Server-Sent Events (SSE). Rows are streamed
+    incrementally as they are produced and saved after completion.
 
     Args:
         requirement_id (UUID):
@@ -254,39 +167,10 @@ async def asyncio(
     client: AuthenticatedClient,
     nonce: int,
 ) -> Any | ProjectRequirementItemGetOut | None:
-    """Get Stream Table Requirement Items
+    """Stream requirement items table generation
 
-     JnQkM31Z
-
-    Streams a new requirement items table using Server-Sent Events (SSE).
-    The new requirement items table is saved to the requirement after streaming is complete.
-
-    If there is no change, the following event is sent:
-
-    ```
-    event: end
-    data: NO_CHANGE
-    ```
-
-    If there is an error, the following event is sent:
-
-    ```
-    event: error
-    data: error message
-    ```
-
-    Otherwise, the generated rows are sent as they are produced:
-
-    ```
-    data: [{row1}]
-
-    data: [{row1},{row2}]
-
-    ...
-
-    event: end
-    data: DONE
-    ```
+     Stream AI-generated requirement items table using Server-Sent Events (SSE). Rows are streamed
+    incrementally as they are produced and saved after completion.
 
     Args:
         requirement_id (UUID):

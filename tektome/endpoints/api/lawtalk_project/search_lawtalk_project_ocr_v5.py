@@ -186,33 +186,10 @@ def sync_detailed(
     skip: int | Unset = 0,
     sort_by_pages: bool | Unset = False,
 ) -> Response[Any | ErrorOut]:
-    """Search Ocr Page V5
+    """Search project resource pages (v5)
 
-     Wp_rJkTS
-
-    Searching for OCR result from the given query and keywords.
-
-    Logic:
-
-        - If only query is provided, will perform vector search
-            (Score is based on cosine similarity)
-
-            PS. Current embedding model is Azure Text Embedding ADA002
-            Will change to 003 - Large once re-embedding is done
-
-        - If only keyword is provided, will perform exact search
-            (Score is based on BM25)
-
-        - If both query and keyword are provided, will perform hybrid search
-            (Score is based on RRF - Reciprocal Rank Fusion)
-
-    Results:
-        # TBD
-
-    Noted:
-        if sort_by_pages is True, the list result will be sorted by (page number ascending, score
-    descending)
-        else, the list result will be sorted by (score descending, page number ascending)
+     Search extracted pages in project resources using vector, exact, or hybrid search modes. Supports
+    filtering by resource group IDs and keyword lists.
 
     Args:
         project_id (UUID):
@@ -259,33 +236,10 @@ def sync(
     skip: int | Unset = 0,
     sort_by_pages: bool | Unset = False,
 ) -> Any | ErrorOut | None:
-    """Search Ocr Page V5
+    """Search project resource pages (v5)
 
-     Wp_rJkTS
-
-    Searching for OCR result from the given query and keywords.
-
-    Logic:
-
-        - If only query is provided, will perform vector search
-            (Score is based on cosine similarity)
-
-            PS. Current embedding model is Azure Text Embedding ADA002
-            Will change to 003 - Large once re-embedding is done
-
-        - If only keyword is provided, will perform exact search
-            (Score is based on BM25)
-
-        - If both query and keyword are provided, will perform hybrid search
-            (Score is based on RRF - Reciprocal Rank Fusion)
-
-    Results:
-        # TBD
-
-    Noted:
-        if sort_by_pages is True, the list result will be sorted by (page number ascending, score
-    descending)
-        else, the list result will be sorted by (score descending, page number ascending)
+     Search extracted pages in project resources using vector, exact, or hybrid search modes. Supports
+    filtering by resource group IDs and keyword lists.
 
     Args:
         project_id (UUID):
@@ -327,33 +281,10 @@ async def asyncio_detailed(
     skip: int | Unset = 0,
     sort_by_pages: bool | Unset = False,
 ) -> Response[Any | ErrorOut]:
-    """Search Ocr Page V5
+    """Search project resource pages (v5)
 
-     Wp_rJkTS
-
-    Searching for OCR result from the given query and keywords.
-
-    Logic:
-
-        - If only query is provided, will perform vector search
-            (Score is based on cosine similarity)
-
-            PS. Current embedding model is Azure Text Embedding ADA002
-            Will change to 003 - Large once re-embedding is done
-
-        - If only keyword is provided, will perform exact search
-            (Score is based on BM25)
-
-        - If both query and keyword are provided, will perform hybrid search
-            (Score is based on RRF - Reciprocal Rank Fusion)
-
-    Results:
-        # TBD
-
-    Noted:
-        if sort_by_pages is True, the list result will be sorted by (page number ascending, score
-    descending)
-        else, the list result will be sorted by (score descending, page number ascending)
+     Search extracted pages in project resources using vector, exact, or hybrid search modes. Supports
+    filtering by resource group IDs and keyword lists.
 
     Args:
         project_id (UUID):
@@ -398,33 +329,10 @@ async def asyncio(
     skip: int | Unset = 0,
     sort_by_pages: bool | Unset = False,
 ) -> Any | ErrorOut | None:
-    """Search Ocr Page V5
+    """Search project resource pages (v5)
 
-     Wp_rJkTS
-
-    Searching for OCR result from the given query and keywords.
-
-    Logic:
-
-        - If only query is provided, will perform vector search
-            (Score is based on cosine similarity)
-
-            PS. Current embedding model is Azure Text Embedding ADA002
-            Will change to 003 - Large once re-embedding is done
-
-        - If only keyword is provided, will perform exact search
-            (Score is based on BM25)
-
-        - If both query and keyword are provided, will perform hybrid search
-            (Score is based on RRF - Reciprocal Rank Fusion)
-
-    Results:
-        # TBD
-
-    Noted:
-        if sort_by_pages is True, the list result will be sorted by (page number ascending, score
-    descending)
-        else, the list result will be sorted by (score descending, page number ascending)
+     Search extracted pages in project resources using vector, exact, or hybrid search modes. Supports
+    filtering by resource group IDs and keyword lists.
 
     Args:
         project_id (UUID):

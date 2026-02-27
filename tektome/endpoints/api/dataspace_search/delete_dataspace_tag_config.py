@@ -51,11 +51,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Dataspace Tag Config
+    """Delete a search tag configuration
 
-     TIPeMtSh
-
-    Delete a tag configuration for the current dataspace.
+     Permanently delete a search tag configuration and its associated data from a dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -87,11 +85,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Dataspace Tag Config
+    """Delete a search tag configuration
 
-     TIPeMtSh
-
-    Delete a tag configuration for the current dataspace.
+     Permanently delete a search tag configuration and its associated data from a dataspace.
 
     Args:
         dataspace_id (UUID):

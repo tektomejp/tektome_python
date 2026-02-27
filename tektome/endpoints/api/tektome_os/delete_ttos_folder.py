@@ -156,10 +156,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     path: str,
 ) -> Response[GenericHttpError | TtosFolderDeleteOut]:
-    """Delete a folder and all its contents
+    """Delete a folder
 
-     Wa4rL0Ne
-    Recursively delete a folder and all artifacts within it.
+     Recursively delete a folder and all artifacts within it from a chatroom.
 
     Args:
         chatroom_id (UUID):
@@ -191,10 +190,9 @@ def sync(
     client: AuthenticatedClient,
     path: str,
 ) -> GenericHttpError | TtosFolderDeleteOut | None:
-    """Delete a folder and all its contents
+    """Delete a folder
 
-     Wa4rL0Ne
-    Recursively delete a folder and all artifacts within it.
+     Recursively delete a folder and all artifacts within it from a chatroom.
 
     Args:
         chatroom_id (UUID):
@@ -221,10 +219,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     path: str,
 ) -> Response[GenericHttpError | TtosFolderDeleteOut]:
-    """Delete a folder and all its contents
+    """Delete a folder
 
-     Wa4rL0Ne
-    Recursively delete a folder and all artifacts within it.
+     Recursively delete a folder and all artifacts within it from a chatroom.
 
     Args:
         chatroom_id (UUID):
@@ -254,10 +251,9 @@ async def asyncio(
     client: AuthenticatedClient,
     path: str,
 ) -> GenericHttpError | TtosFolderDeleteOut | None:
-    """Delete a folder and all its contents
+    """Delete a folder
 
-     Wa4rL0Ne
-    Recursively delete a folder and all artifacts within it.
+     Recursively delete a folder and all artifacts within it from a chatroom.
 
     Args:
         chatroom_id (UUID):

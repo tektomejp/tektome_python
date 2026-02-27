@@ -59,20 +59,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: UploadLawtalkResourceMultiPartBodyParams,
 ) -> Response[ResourceSchema2]:
-    """Post Resource
+    """Upload a resource file
 
-     KYnire59
-
-
-    Upload a file to a resource group and create a Lawtalk resource.
-
-    This endpoint allows uploading a file (e.g., PDF, DOCX, IFC) to a specified resource group.
-    It creates a new LawtalkResource and a corresponding core resource with version control.
-    The uploaded file's metadata (name, kind) is stored as string attributes.
-    Optionally, OCR extraction or BIM conversion can be initialized on upload.
-
-    **Notes:**
-    - If `initialize` is true, OCR extraction or BIM conversion is started for the uploaded file.
+     Upload a file to a resource group and create a new resource. Supports PDF, DOCX, IFC, and other file
+    types. Optionally triggers OCR extraction or BIM conversion on upload.
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -104,20 +94,10 @@ def sync(
     client: AuthenticatedClient,
     body: UploadLawtalkResourceMultiPartBodyParams,
 ) -> ResourceSchema2 | None:
-    """Post Resource
+    """Upload a resource file
 
-     KYnire59
-
-
-    Upload a file to a resource group and create a Lawtalk resource.
-
-    This endpoint allows uploading a file (e.g., PDF, DOCX, IFC) to a specified resource group.
-    It creates a new LawtalkResource and a corresponding core resource with version control.
-    The uploaded file's metadata (name, kind) is stored as string attributes.
-    Optionally, OCR extraction or BIM conversion can be initialized on upload.
-
-    **Notes:**
-    - If `initialize` is true, OCR extraction or BIM conversion is started for the uploaded file.
+     Upload a file to a resource group and create a new resource. Supports PDF, DOCX, IFC, and other file
+    types. Optionally triggers OCR extraction or BIM conversion on upload.
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -144,20 +124,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: UploadLawtalkResourceMultiPartBodyParams,
 ) -> Response[ResourceSchema2]:
-    """Post Resource
+    """Upload a resource file
 
-     KYnire59
-
-
-    Upload a file to a resource group and create a Lawtalk resource.
-
-    This endpoint allows uploading a file (e.g., PDF, DOCX, IFC) to a specified resource group.
-    It creates a new LawtalkResource and a corresponding core resource with version control.
-    The uploaded file's metadata (name, kind) is stored as string attributes.
-    Optionally, OCR extraction or BIM conversion can be initialized on upload.
-
-    **Notes:**
-    - If `initialize` is true, OCR extraction or BIM conversion is started for the uploaded file.
+     Upload a file to a resource group and create a new resource. Supports PDF, DOCX, IFC, and other file
+    types. Optionally triggers OCR extraction or BIM conversion on upload.
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -187,20 +157,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: UploadLawtalkResourceMultiPartBodyParams,
 ) -> ResourceSchema2 | None:
-    """Post Resource
+    """Upload a resource file
 
-     KYnire59
-
-
-    Upload a file to a resource group and create a Lawtalk resource.
-
-    This endpoint allows uploading a file (e.g., PDF, DOCX, IFC) to a specified resource group.
-    It creates a new LawtalkResource and a corresponding core resource with version control.
-    The uploaded file's metadata (name, kind) is stored as string attributes.
-    Optionally, OCR extraction or BIM conversion can be initialized on upload.
-
-    **Notes:**
-    - If `initialize` is true, OCR extraction or BIM conversion is started for the uploaded file.
+     Upload a file to a resource group and create a new resource. Supports PDF, DOCX, IFC, and other file
+    types. Optionally triggers OCR extraction or BIM conversion on upload.
 
     Args:
         resource_group_id (UUID): Resource group ID

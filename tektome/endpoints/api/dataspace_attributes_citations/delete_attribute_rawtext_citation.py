@@ -60,17 +60,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Attribute Rawtext Citation
+    """Delete a raw text citation from an attribute
 
-     RcvzXkp1
-
-    Delete a RawText citation from an attribute.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and raw text citation ID.
-
-    Returns: 204, None
+     Remove a specific raw text citation from an attribute by citation ID.
 
     Args:
         dataspace_id (UUID):
@@ -108,17 +100,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Attribute Rawtext Citation
+    """Delete a raw text citation from an attribute
 
-     RcvzXkp1
-
-    Delete a RawText citation from an attribute.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and raw text citation ID.
-
-    Returns: 204, None
+     Remove a specific raw text citation from an attribute by citation ID.
 
     Args:
         dataspace_id (UUID):

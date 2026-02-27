@@ -58,17 +58,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Attribute Pdf Citation
+    """Delete a PDF citation from an attribute
 
-     acBfega0
-
-    Delete a PDF citation from an attribute based on the PDF citation ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and PDF citation ID.
-
-    Returns: 204, None if the deletion is successful
+     Remove a specific PDF citation from an attribute by citation ID.
 
     Args:
         dataspace_id (UUID):
@@ -106,17 +98,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Attribute Pdf Citation
+    """Delete a PDF citation from an attribute
 
-     acBfega0
-
-    Delete a PDF citation from an attribute based on the PDF citation ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and PDF citation ID.
-
-    Returns: 204, None if the deletion is successful
+     Remove a specific PDF citation from an attribute by citation ID.
 
     Args:
         dataspace_id (UUID):
