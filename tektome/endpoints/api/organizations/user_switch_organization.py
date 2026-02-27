@@ -17,7 +17,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "patch",
-        "url": "/api/core/admin/account/organizations/switch/",
+        "url": "/api/core/account/organizations/switch/",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -52,9 +52,18 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OrganizationSwitchSchemaIn,
 ) -> Response[Any]:
-    """Admin: Switch active organization
+    """Switch Admin User Organization
 
-     Switch the authenticated admin user's active organization context. Requires super admin privileges.
+     dooSJbCv
+
+    Switch the current organization to the target organization
+    for all user roles with CAN_SWITCH_ORGANIZATION permission including system super admin.
+
+    Args:
+        request: http request object
+        payload: OrganizationSwitchSchemaIn
+
+    Returns: 204, None
 
     Args:
         body (OrganizationSwitchSchemaIn):
@@ -83,9 +92,18 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OrganizationSwitchSchemaIn,
 ) -> Response[Any]:
-    """Admin: Switch active organization
+    """Switch Admin User Organization
 
-     Switch the authenticated admin user's active organization context. Requires super admin privileges.
+     dooSJbCv
+
+    Switch the current organization to the target organization
+    for all user roles with CAN_SWITCH_ORGANIZATION permission including system super admin.
+
+    Args:
+        request: http request object
+        payload: OrganizationSwitchSchemaIn
+
+    Returns: 204, None
 
     Args:
         body (OrganizationSwitchSchemaIn):
