@@ -10,11 +10,11 @@ if TYPE_CHECKING:
     from ..models.affected_requirement_out import AffectedRequirementOut
 
 
-T = TypeVar("T", bound="FolderCheckDeleteOut")
+T = TypeVar("T", bound="GenericCheckDeleteOut")
 
 
 @_attrs_define
-class FolderCheckDeleteOut:
+class GenericCheckDeleteOut:
     """
     Attributes:
         can_delete (bool):
@@ -93,7 +93,7 @@ class FolderCheckDeleteOut:
 
         deep_research_notes_count = d.pop("deep_research_notes_count")
 
-        folder_check_delete_out = cls(
+        generic_check_delete_out = cls(
             can_delete=can_delete,
             has_nested_items=has_nested_items,
             nested_folder_count=nested_folder_count,
@@ -103,8 +103,8 @@ class FolderCheckDeleteOut:
             deep_research_notes_count=deep_research_notes_count,
         )
 
-        folder_check_delete_out.additional_properties = d
-        return folder_check_delete_out
+        generic_check_delete_out.additional_properties = d
+        return generic_check_delete_out
 
     @property
     def additional_keys(self) -> list[str]:
