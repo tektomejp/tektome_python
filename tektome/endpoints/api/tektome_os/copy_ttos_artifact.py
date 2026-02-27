@@ -175,9 +175,8 @@ def sync_detailed(
 ) -> Response[ArtifactCopyOut | TtosFolderCopyOut | GenericHttpError]:
     """Copy an artifact or folder
 
-     MTeWkhGV
-    Copy an artifact to a new path. For .keep artifacts (folders),
-    copies all artifacts under the folder prefix.
+     Copy an artifact to a new path. For folder artifacts, all artifacts within the folder are copied as
+    well.
 
     Args:
         artifact_id (UUID):
@@ -211,9 +210,8 @@ def sync(
 ) -> ArtifactCopyOut | TtosFolderCopyOut | GenericHttpError | None:
     """Copy an artifact or folder
 
-     MTeWkhGV
-    Copy an artifact to a new path. For .keep artifacts (folders),
-    copies all artifacts under the folder prefix.
+     Copy an artifact to a new path. For folder artifacts, all artifacts within the folder are copied as
+    well.
 
     Args:
         artifact_id (UUID):
@@ -242,9 +240,8 @@ async def asyncio_detailed(
 ) -> Response[ArtifactCopyOut | TtosFolderCopyOut | GenericHttpError]:
     """Copy an artifact or folder
 
-     MTeWkhGV
-    Copy an artifact to a new path. For .keep artifacts (folders),
-    copies all artifacts under the folder prefix.
+     Copy an artifact to a new path. For folder artifacts, all artifacts within the folder are copied as
+    well.
 
     Args:
         artifact_id (UUID):
@@ -276,9 +273,8 @@ async def asyncio(
 ) -> ArtifactCopyOut | TtosFolderCopyOut | GenericHttpError | None:
     """Copy an artifact or folder
 
-     MTeWkhGV
-    Copy an artifact to a new path. For .keep artifacts (folders),
-    copies all artifacts under the folder prefix.
+     Copy an artifact to a new path. For folder artifacts, all artifacts within the folder are copied as
+    well.
 
     Args:
         artifact_id (UUID):

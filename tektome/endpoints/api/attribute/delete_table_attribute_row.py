@@ -77,11 +77,10 @@ def sync_detailed(
     row_index: int,
     version: int | None | Unset = UNSET,
 ) -> Response[Any]:
-    """Delete Table Row
+    """Delete a table attribute row
 
-     TuDNpTaM
-
-    Delete a row from a table attribute.
+     Delete a row from a table attribute by row index. Includes optimistic concurrency control via
+    version to prevent conflicting edits.
 
     Args:
         object_type (DeleteTableAttributeRowDataspaceAttributeObjectTypes):
@@ -122,11 +121,10 @@ async def asyncio_detailed(
     row_index: int,
     version: int | None | Unset = UNSET,
 ) -> Response[Any]:
-    """Delete Table Row
+    """Delete a table attribute row
 
-     TuDNpTaM
-
-    Delete a row from a table attribute.
+     Delete a row from a table attribute by row index. Includes optimistic concurrency control via
+    version to prevent conflicting edits.
 
     Args:
         object_type (DeleteTableAttributeRowDataspaceAttributeObjectTypes):

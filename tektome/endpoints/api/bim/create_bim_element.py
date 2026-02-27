@@ -109,12 +109,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: CreateBimElementFileParams,
 ) -> Response[BimObjectPostOut | BimViewObjectLinkPostOut | BimViewPostOut | ErrorResponsePostOut]:
-    """Post Bim Element Handler
+    """Upload BIM elements to a project
 
-     1lv861wz
-
-    Post a BIM element. Could be BIM object, BIM view, or agnostically wherein the handler will try to
-    determine the type of the element submitted.
+     Upload BIM element files (objects, views, or agnostic) to a project for processing. This is an
+    asynchronous operation. To retrieve the results, use the get_celery_task
+    (/api/core/tasks/{task_id}/) endpoint with the task/process ID returned in this response.
 
     Args:
         bim_project_id (UUID):
@@ -149,12 +148,11 @@ def sync(
     client: AuthenticatedClient,
     body: CreateBimElementFileParams,
 ) -> BimObjectPostOut | BimViewObjectLinkPostOut | BimViewPostOut | ErrorResponsePostOut | None:
-    """Post Bim Element Handler
+    """Upload BIM elements to a project
 
-     1lv861wz
-
-    Post a BIM element. Could be BIM object, BIM view, or agnostically wherein the handler will try to
-    determine the type of the element submitted.
+     Upload BIM element files (objects, views, or agnostic) to a project for processing. This is an
+    asynchronous operation. To retrieve the results, use the get_celery_task
+    (/api/core/tasks/{task_id}/) endpoint with the task/process ID returned in this response.
 
     Args:
         bim_project_id (UUID):
@@ -184,12 +182,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: CreateBimElementFileParams,
 ) -> Response[BimObjectPostOut | BimViewObjectLinkPostOut | BimViewPostOut | ErrorResponsePostOut]:
-    """Post Bim Element Handler
+    """Upload BIM elements to a project
 
-     1lv861wz
-
-    Post a BIM element. Could be BIM object, BIM view, or agnostically wherein the handler will try to
-    determine the type of the element submitted.
+     Upload BIM element files (objects, views, or agnostic) to a project for processing. This is an
+    asynchronous operation. To retrieve the results, use the get_celery_task
+    (/api/core/tasks/{task_id}/) endpoint with the task/process ID returned in this response.
 
     Args:
         bim_project_id (UUID):
@@ -222,12 +219,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: CreateBimElementFileParams,
 ) -> BimObjectPostOut | BimViewObjectLinkPostOut | BimViewPostOut | ErrorResponsePostOut | None:
-    """Post Bim Element Handler
+    """Upload BIM elements to a project
 
-     1lv861wz
-
-    Post a BIM element. Could be BIM object, BIM view, or agnostically wherein the handler will try to
-    determine the type of the element submitted.
+     Upload BIM element files (objects, views, or agnostic) to a project for processing. This is an
+    asynchronous operation. To retrieve the results, use the get_celery_task
+    (/api/core/tasks/{task_id}/) endpoint with the task/process ID returned in this response.
 
     Args:
         bim_project_id (UUID):

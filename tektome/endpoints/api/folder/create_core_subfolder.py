@@ -61,18 +61,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: FolderPostIn,
 ) -> Response[FolderPostOut]:
-    """Post Create Subfolder
+    """Create a subfolder
 
-     SPUDyo5b
-
-    Create a new subfolder
-
-    Args:
-        request: Request object
-        path_params: FolderPathIn object containing folder_id
-        payload: FolderPostIn object containing name of the new folder
-
-    Returns: Folder object containing the new folder
+     Create a new subfolder within the specified parent folder.
 
     Args:
         folder_id (UUID):
@@ -104,18 +95,9 @@ def sync(
     client: AuthenticatedClient,
     body: FolderPostIn,
 ) -> FolderPostOut | None:
-    """Post Create Subfolder
+    """Create a subfolder
 
-     SPUDyo5b
-
-    Create a new subfolder
-
-    Args:
-        request: Request object
-        path_params: FolderPathIn object containing folder_id
-        payload: FolderPostIn object containing name of the new folder
-
-    Returns: Folder object containing the new folder
+     Create a new subfolder within the specified parent folder.
 
     Args:
         folder_id (UUID):
@@ -142,18 +124,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: FolderPostIn,
 ) -> Response[FolderPostOut]:
-    """Post Create Subfolder
+    """Create a subfolder
 
-     SPUDyo5b
-
-    Create a new subfolder
-
-    Args:
-        request: Request object
-        path_params: FolderPathIn object containing folder_id
-        payload: FolderPostIn object containing name of the new folder
-
-    Returns: Folder object containing the new folder
+     Create a new subfolder within the specified parent folder.
 
     Args:
         folder_id (UUID):
@@ -183,18 +156,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: FolderPostIn,
 ) -> FolderPostOut | None:
-    """Post Create Subfolder
+    """Create a subfolder
 
-     SPUDyo5b
-
-    Create a new subfolder
-
-    Args:
-        request: Request object
-        path_params: FolderPathIn object containing folder_id
-        payload: FolderPostIn object containing name of the new folder
-
-    Returns: Folder object containing the new folder
+     Create a new subfolder within the specified parent folder.
 
     Args:
         folder_id (UUID):

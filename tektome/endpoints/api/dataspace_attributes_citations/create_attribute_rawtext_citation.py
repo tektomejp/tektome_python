@@ -165,18 +165,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RawTextCitationPostIn,
 ) -> Response[ErrorOut | RawTextCitationSchemaOut]:
-    """Post Attribute Rawtext Citation
+    """Create a raw text citation for an attribute
 
-     zRMnax11
-
-    Create a RawText citation to an attribute.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and dataspace ID.
-        payload: The payload containing the data of type RawTextCitationPostIn
-
-    Returns: 201, the created RawText citation object
+     Create a new raw text citation linking a text source to the specified attribute.
 
     Args:
         dataspace_id (UUID):
@@ -214,18 +205,9 @@ def sync(
     client: AuthenticatedClient,
     body: RawTextCitationPostIn,
 ) -> ErrorOut | RawTextCitationSchemaOut | None:
-    """Post Attribute Rawtext Citation
+    """Create a raw text citation for an attribute
 
-     zRMnax11
-
-    Create a RawText citation to an attribute.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and dataspace ID.
-        payload: The payload containing the data of type RawTextCitationPostIn
-
-    Returns: 201, the created RawText citation object
+     Create a new raw text citation linking a text source to the specified attribute.
 
     Args:
         dataspace_id (UUID):
@@ -258,18 +240,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RawTextCitationPostIn,
 ) -> Response[ErrorOut | RawTextCitationSchemaOut]:
-    """Post Attribute Rawtext Citation
+    """Create a raw text citation for an attribute
 
-     zRMnax11
-
-    Create a RawText citation to an attribute.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and dataspace ID.
-        payload: The payload containing the data of type RawTextCitationPostIn
-
-    Returns: 201, the created RawText citation object
+     Create a new raw text citation linking a text source to the specified attribute.
 
     Args:
         dataspace_id (UUID):
@@ -305,18 +278,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RawTextCitationPostIn,
 ) -> ErrorOut | RawTextCitationSchemaOut | None:
-    """Post Attribute Rawtext Citation
+    """Create a raw text citation for an attribute
 
-     zRMnax11
-
-    Create a RawText citation to an attribute.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and dataspace ID.
-        payload: The payload containing the data of type RawTextCitationPostIn
-
-    Returns: 201, the created RawText citation object
+     Create a new raw text citation linking a text source to the specified attribute.
 
     Args:
         dataspace_id (UUID):

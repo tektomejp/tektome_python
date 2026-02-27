@@ -165,18 +165,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ImageCitationPostIn,
 ) -> Response[ErrorOut | ImageCitationSchemaOut]:
-    """Post Attribute Image Citation
+    """Create an image citation for an attribute
 
-     nnLXax1w
-
-    Create an Image citation to an attribute.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID.
-        payload: The payload containing the details of the image citation to be created, including:
-
-    Returns: 201, the created image citation object
+     Create a new image citation linking an image source to the specified attribute.
 
     Args:
         dataspace_id (UUID):
@@ -214,18 +205,9 @@ def sync(
     client: AuthenticatedClient,
     body: ImageCitationPostIn,
 ) -> ErrorOut | ImageCitationSchemaOut | None:
-    """Post Attribute Image Citation
+    """Create an image citation for an attribute
 
-     nnLXax1w
-
-    Create an Image citation to an attribute.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID.
-        payload: The payload containing the details of the image citation to be created, including:
-
-    Returns: 201, the created image citation object
+     Create a new image citation linking an image source to the specified attribute.
 
     Args:
         dataspace_id (UUID):
@@ -258,18 +240,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ImageCitationPostIn,
 ) -> Response[ErrorOut | ImageCitationSchemaOut]:
-    """Post Attribute Image Citation
+    """Create an image citation for an attribute
 
-     nnLXax1w
-
-    Create an Image citation to an attribute.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID.
-        payload: The payload containing the details of the image citation to be created, including:
-
-    Returns: 201, the created image citation object
+     Create a new image citation linking an image source to the specified attribute.
 
     Args:
         dataspace_id (UUID):
@@ -305,18 +278,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ImageCitationPostIn,
 ) -> ErrorOut | ImageCitationSchemaOut | None:
-    """Post Attribute Image Citation
+    """Create an image citation for an attribute
 
-     nnLXax1w
-
-    Create an Image citation to an attribute.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID.
-        payload: The payload containing the details of the image citation to be created, including:
-
-    Returns: 201, the created image citation object
+     Create a new image citation linking an image source to the specified attribute.
 
     Args:
         dataspace_id (UUID):

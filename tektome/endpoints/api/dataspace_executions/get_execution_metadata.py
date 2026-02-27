@@ -54,17 +54,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ExecutionGetOut]:
-    """Get Execution Metadata
+    """Get execution metadata
 
-     p6cozWCR
-
-    Retrieve details of a specific execution by its ID.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionPathParams - The path parameters containing the execution ID.
-
-    Returns: Execution - The execution group instance with serialized detailed metadata.
+     Retrieve detailed metadata for a specific execution by its ID, including status and processing
+    details.
 
     Args:
         dataspace_id (UUID):
@@ -96,17 +89,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ExecutionGetOut | None:
-    """Get Execution Metadata
+    """Get execution metadata
 
-     p6cozWCR
-
-    Retrieve details of a specific execution by its ID.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionPathParams - The path parameters containing the execution ID.
-
-    Returns: Execution - The execution group instance with serialized detailed metadata.
+     Retrieve detailed metadata for a specific execution by its ID, including status and processing
+    details.
 
     Args:
         dataspace_id (UUID):
@@ -133,17 +119,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ExecutionGetOut]:
-    """Get Execution Metadata
+    """Get execution metadata
 
-     p6cozWCR
-
-    Retrieve details of a specific execution by its ID.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionPathParams - The path parameters containing the execution ID.
-
-    Returns: Execution - The execution group instance with serialized detailed metadata.
+     Retrieve detailed metadata for a specific execution by its ID, including status and processing
+    details.
 
     Args:
         dataspace_id (UUID):
@@ -173,17 +152,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ExecutionGetOut | None:
-    """Get Execution Metadata
+    """Get execution metadata
 
-     p6cozWCR
-
-    Retrieve details of a specific execution by its ID.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionPathParams - The path parameters containing the execution ID.
-
-    Returns: Execution - The execution group instance with serialized detailed metadata.
+     Retrieve detailed metadata for a specific execution by its ID, including status and processing
+    details.
 
     Args:
         dataspace_id (UUID):

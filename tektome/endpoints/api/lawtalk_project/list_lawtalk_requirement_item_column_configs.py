@@ -74,11 +74,9 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedProjectRequirementItemColumnConfigOut]:
-    """Get Project Requirement Item Column Configs
+    """List requirement item column configs
 
-     5e6f7g8H
-
-    Get all requirement item column configurations for a project.
+     Retrieve all requirement item column configurations for a project.
 
     Args:
         project_id (UUID):
@@ -113,11 +111,9 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedProjectRequirementItemColumnConfigOut | None:
-    """Get Project Requirement Item Column Configs
+    """List requirement item column configs
 
-     5e6f7g8H
-
-    Get all requirement item column configurations for a project.
+     Retrieve all requirement item column configurations for a project.
 
     Args:
         project_id (UUID):
@@ -147,11 +143,9 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedProjectRequirementItemColumnConfigOut]:
-    """Get Project Requirement Item Column Configs
+    """List requirement item column configs
 
-     5e6f7g8H
-
-    Get all requirement item column configurations for a project.
+     Retrieve all requirement item column configurations for a project.
 
     Args:
         project_id (UUID):
@@ -184,11 +178,9 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedProjectRequirementItemColumnConfigOut | None:
-    """Get Project Requirement Item Column Configs
+    """List requirement item column configs
 
-     5e6f7g8H
-
-    Get all requirement item column configurations for a project.
+     Retrieve all requirement item column configurations for a project.
 
     Args:
         project_id (UUID):

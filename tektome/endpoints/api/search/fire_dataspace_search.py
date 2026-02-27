@@ -71,16 +71,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchRequestSchema,
 ) -> Response[DataspaceSearchResultOut | ErrorOut]:
-    """Post Fire Search
+    """Execute a new search
 
-     sR8Kj2Lm
-
-    Fire a new search request.
-
-    Creates a new search request, executes the search with caching,
-    and returns paginated results along with the search request info.
-
-    Only keeps the latest 8 (configurable) unsaved requests per user.
+     Execute a new search request within a dataspace and return paginated results. Only the most recent
+    unsaved requests per user are retained.
 
     Args:
         dataspace_id (UUID):
@@ -112,16 +106,10 @@ def sync(
     client: AuthenticatedClient,
     body: DataspaceSearchRequestSchema,
 ) -> DataspaceSearchResultOut | ErrorOut | None:
-    """Post Fire Search
+    """Execute a new search
 
-     sR8Kj2Lm
-
-    Fire a new search request.
-
-    Creates a new search request, executes the search with caching,
-    and returns paginated results along with the search request info.
-
-    Only keeps the latest 8 (configurable) unsaved requests per user.
+     Execute a new search request within a dataspace and return paginated results. Only the most recent
+    unsaved requests per user are retained.
 
     Args:
         dataspace_id (UUID):
@@ -148,16 +136,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchRequestSchema,
 ) -> Response[DataspaceSearchResultOut | ErrorOut]:
-    """Post Fire Search
+    """Execute a new search
 
-     sR8Kj2Lm
-
-    Fire a new search request.
-
-    Creates a new search request, executes the search with caching,
-    and returns paginated results along with the search request info.
-
-    Only keeps the latest 8 (configurable) unsaved requests per user.
+     Execute a new search request within a dataspace and return paginated results. Only the most recent
+    unsaved requests per user are retained.
 
     Args:
         dataspace_id (UUID):
@@ -187,16 +169,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DataspaceSearchRequestSchema,
 ) -> DataspaceSearchResultOut | ErrorOut | None:
-    """Post Fire Search
+    """Execute a new search
 
-     sR8Kj2Lm
-
-    Fire a new search request.
-
-    Creates a new search request, executes the search with caching,
-    and returns paginated results along with the search request info.
-
-    Only keeps the latest 8 (configurable) unsaved requests per user.
+     Execute a new search request within a dataspace and return paginated results. Only the most recent
+    unsaved requests per user are retained.
 
     Args:
         dataspace_id (UUID):

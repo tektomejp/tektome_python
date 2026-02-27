@@ -159,14 +159,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchRequestSchema,
 ) -> Response[DataspaceSearchResultOut | ErrorOut]:
-    """Post Refire Search
+    """Re-execute an existing search request
 
-     tP9Xn3Mq
-
-    Refire an existing search request with optional updates.
-
-    Updates the search request with new parameters if provided,
-    then executes the search and returns paginated results.
+     Re-execute a previously created search request with optional updated parameters. The search request
+    is updated with the new values before execution.
 
     Args:
         dataspace_id (UUID):
@@ -201,14 +197,10 @@ def sync(
     client: AuthenticatedClient,
     body: DataspaceSearchRequestSchema,
 ) -> DataspaceSearchResultOut | ErrorOut | None:
-    """Post Refire Search
+    """Re-execute an existing search request
 
-     tP9Xn3Mq
-
-    Refire an existing search request with optional updates.
-
-    Updates the search request with new parameters if provided,
-    then executes the search and returns paginated results.
+     Re-execute a previously created search request with optional updated parameters. The search request
+    is updated with the new values before execution.
 
     Args:
         dataspace_id (UUID):
@@ -238,14 +230,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchRequestSchema,
 ) -> Response[DataspaceSearchResultOut | ErrorOut]:
-    """Post Refire Search
+    """Re-execute an existing search request
 
-     tP9Xn3Mq
-
-    Refire an existing search request with optional updates.
-
-    Updates the search request with new parameters if provided,
-    then executes the search and returns paginated results.
+     Re-execute a previously created search request with optional updated parameters. The search request
+    is updated with the new values before execution.
 
     Args:
         dataspace_id (UUID):
@@ -278,14 +266,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DataspaceSearchRequestSchema,
 ) -> DataspaceSearchResultOut | ErrorOut | None:
-    """Post Refire Search
+    """Re-execute an existing search request
 
-     tP9Xn3Mq
-
-    Refire an existing search request with optional updates.
-
-    Updates the search request with new parameters if provided,
-    then executes the search and returns paginated results.
+     Re-execute a previously created search request with optional updated parameters. The search request
+    is updated with the new values before execution.
 
     Args:
         dataspace_id (UUID):

@@ -51,11 +51,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DataspaceGetOut]:
-    """Retrieve Dataspace
+    """Get a dataspace by ID
 
-     tkE0kGxC
-
-    Retrieve a dataspace by ID
+     Retrieve detailed information about a specific dataspace, including whether it is external to the
+    user's organization.
 
     Args:
         dataspace_id (UUID):
@@ -84,11 +83,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> DataspaceGetOut | None:
-    """Retrieve Dataspace
+    """Get a dataspace by ID
 
-     tkE0kGxC
-
-    Retrieve a dataspace by ID
+     Retrieve detailed information about a specific dataspace, including whether it is external to the
+    user's organization.
 
     Args:
         dataspace_id (UUID):
@@ -112,11 +110,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DataspaceGetOut]:
-    """Retrieve Dataspace
+    """Get a dataspace by ID
 
-     tkE0kGxC
-
-    Retrieve a dataspace by ID
+     Retrieve detailed information about a specific dataspace, including whether it is external to the
+    user's organization.
 
     Args:
         dataspace_id (UUID):
@@ -143,11 +140,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> DataspaceGetOut | None:
-    """Retrieve Dataspace
+    """Get a dataspace by ID
 
-     tkE0kGxC
-
-    Retrieve a dataspace by ID
+     Retrieve detailed information about a specific dataspace, including whether it is external to the
+    user's organization.
 
     Args:
         dataspace_id (UUID):

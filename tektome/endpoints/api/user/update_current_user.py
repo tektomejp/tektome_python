@@ -55,17 +55,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: MePatchIn,
 ) -> Response[MePatchOut]:
-    r"""Patch Me
+    """Update current user profile
 
-     Mq2DXyAx
-    Patch current user profile
-    gender can be one of:
-    ```
-    \"m\": \"Male\",
-    \"f\": \"Female\",
-    \"n\": \"Non-binary\",
-    \"o\": \"Other\",
-    ```
+     Update the authenticated user's profile fields such as username, language, gender, and timezone
+    preferences.
 
     Args:
         body (MePatchIn):
@@ -94,17 +87,10 @@ def sync(
     client: AuthenticatedClient,
     body: MePatchIn,
 ) -> MePatchOut | None:
-    r"""Patch Me
+    """Update current user profile
 
-     Mq2DXyAx
-    Patch current user profile
-    gender can be one of:
-    ```
-    \"m\": \"Male\",
-    \"f\": \"Female\",
-    \"n\": \"Non-binary\",
-    \"o\": \"Other\",
-    ```
+     Update the authenticated user's profile fields such as username, language, gender, and timezone
+    preferences.
 
     Args:
         body (MePatchIn):
@@ -128,17 +114,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: MePatchIn,
 ) -> Response[MePatchOut]:
-    r"""Patch Me
+    """Update current user profile
 
-     Mq2DXyAx
-    Patch current user profile
-    gender can be one of:
-    ```
-    \"m\": \"Male\",
-    \"f\": \"Female\",
-    \"n\": \"Non-binary\",
-    \"o\": \"Other\",
-    ```
+     Update the authenticated user's profile fields such as username, language, gender, and timezone
+    preferences.
 
     Args:
         body (MePatchIn):
@@ -165,17 +144,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: MePatchIn,
 ) -> MePatchOut | None:
-    r"""Patch Me
+    """Update current user profile
 
-     Mq2DXyAx
-    Patch current user profile
-    gender can be one of:
-    ```
-    \"m\": \"Male\",
-    \"f\": \"Female\",
-    \"n\": \"Non-binary\",
-    \"o\": \"Other\",
-    ```
+     Update the authenticated user's profile fields such as username, language, gender, and timezone
+    preferences.
 
     Args:
         body (MePatchIn):

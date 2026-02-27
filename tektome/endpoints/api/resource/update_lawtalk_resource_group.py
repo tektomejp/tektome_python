@@ -61,14 +61,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ResourceGroupPatchInPatch,
 ) -> Response[ResourceGroupSchema]:
-    """Patch Resource Group
+    """Update a resource group
 
-     KkjLHa2iM
-
-    Updates core resource group details.
-    Attributes:
-        - name
-        - description
+     Update resource group attributes such as name and description.
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -100,14 +95,9 @@ def sync(
     client: AuthenticatedClient,
     body: ResourceGroupPatchInPatch,
 ) -> ResourceGroupSchema | None:
-    """Patch Resource Group
+    """Update a resource group
 
-     KkjLHa2iM
-
-    Updates core resource group details.
-    Attributes:
-        - name
-        - description
+     Update resource group attributes such as name and description.
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -134,14 +124,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ResourceGroupPatchInPatch,
 ) -> Response[ResourceGroupSchema]:
-    """Patch Resource Group
+    """Update a resource group
 
-     KkjLHa2iM
-
-    Updates core resource group details.
-    Attributes:
-        - name
-        - description
+     Update resource group attributes such as name and description.
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -171,14 +156,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ResourceGroupPatchInPatch,
 ) -> ResourceGroupSchema | None:
-    """Patch Resource Group
+    """Update a resource group
 
-     KkjLHa2iM
-
-    Updates core resource group details.
-    Attributes:
-        - name
-        - description
+     Update resource group attributes such as name and description.
 
     Args:
         resource_group_id (UUID): Resource group ID

@@ -63,13 +63,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: CreateOrganizationMultiPartBodyParams,
 ) -> Response[CreateOrganizationResponse | OrganizationsGetOut]:
-    """Post Organization
+    """Create an organization
 
-     YSCUc2Fk
-
-    Create a new organization.
-
-    Allows optional custom UUID for tektome users.
+     Create a new organization with the specified name, description, timezone, and language. An optional
+    logo file can be uploaded.
 
     Args:
         body (CreateOrganizationMultiPartBodyParams):
@@ -98,13 +95,10 @@ def sync(
     client: AuthenticatedClient,
     body: CreateOrganizationMultiPartBodyParams,
 ) -> CreateOrganizationResponse | OrganizationsGetOut | None:
-    """Post Organization
+    """Create an organization
 
-     YSCUc2Fk
-
-    Create a new organization.
-
-    Allows optional custom UUID for tektome users.
+     Create a new organization with the specified name, description, timezone, and language. An optional
+    logo file can be uploaded.
 
     Args:
         body (CreateOrganizationMultiPartBodyParams):
@@ -128,13 +122,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: CreateOrganizationMultiPartBodyParams,
 ) -> Response[CreateOrganizationResponse | OrganizationsGetOut]:
-    """Post Organization
+    """Create an organization
 
-     YSCUc2Fk
-
-    Create a new organization.
-
-    Allows optional custom UUID for tektome users.
+     Create a new organization with the specified name, description, timezone, and language. An optional
+    logo file can be uploaded.
 
     Args:
         body (CreateOrganizationMultiPartBodyParams):
@@ -161,13 +152,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: CreateOrganizationMultiPartBodyParams,
 ) -> CreateOrganizationResponse | OrganizationsGetOut | None:
-    """Post Organization
+    """Create an organization
 
-     YSCUc2Fk
-
-    Create a new organization.
-
-    Allows optional custom UUID for tektome users.
+     Create a new organization with the specified name, description, timezone, and language. An optional
+    logo file can be uploaded.
 
     Args:
         body (CreateOrganizationMultiPartBodyParams):

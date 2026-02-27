@@ -61,18 +61,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ResourceAttributePostIn,
 ) -> Response[AttributeGetOut]:
-    """Post General Resource Attribute
+    """Create a resource attribute in a dataspace
 
-     CpgPOHHL
-
-    Create a dataspace attribute based on configured dataspace settings.
-
-    Args:
-        path_params: The path parameters containing the dataspace ID.
-        request: The incoming request object.
-        payload: The payload containing attribute details.
-
-    Returns:
+     Create a new attribute for a resource, validated against the dataspace's configured attribute
+    settings.
 
     Args:
         dataspace_id (UUID):
@@ -104,18 +96,10 @@ def sync(
     client: AuthenticatedClient,
     body: ResourceAttributePostIn,
 ) -> AttributeGetOut | None:
-    """Post General Resource Attribute
+    """Create a resource attribute in a dataspace
 
-     CpgPOHHL
-
-    Create a dataspace attribute based on configured dataspace settings.
-
-    Args:
-        path_params: The path parameters containing the dataspace ID.
-        request: The incoming request object.
-        payload: The payload containing attribute details.
-
-    Returns:
+     Create a new attribute for a resource, validated against the dataspace's configured attribute
+    settings.
 
     Args:
         dataspace_id (UUID):
@@ -142,18 +126,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ResourceAttributePostIn,
 ) -> Response[AttributeGetOut]:
-    """Post General Resource Attribute
+    """Create a resource attribute in a dataspace
 
-     CpgPOHHL
-
-    Create a dataspace attribute based on configured dataspace settings.
-
-    Args:
-        path_params: The path parameters containing the dataspace ID.
-        request: The incoming request object.
-        payload: The payload containing attribute details.
-
-    Returns:
+     Create a new attribute for a resource, validated against the dataspace's configured attribute
+    settings.
 
     Args:
         dataspace_id (UUID):
@@ -183,18 +159,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ResourceAttributePostIn,
 ) -> AttributeGetOut | None:
-    """Post General Resource Attribute
+    """Create a resource attribute in a dataspace
 
-     CpgPOHHL
-
-    Create a dataspace attribute based on configured dataspace settings.
-
-    Args:
-        path_params: The path parameters containing the dataspace ID.
-        request: The incoming request object.
-        payload: The payload containing attribute details.
-
-    Returns:
+     Create a new attribute for a resource, validated against the dataspace's configured attribute
+    settings.
 
     Args:
         dataspace_id (UUID):

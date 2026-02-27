@@ -65,11 +65,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RequirementTemplatePatchIn,
 ) -> Response[RequirementTemplateGetOut]:
-    """Patch Requirement Template
+    """Update a requirement template
 
-     B7GNMWvb
-
-    Update a requirement template inside a requirement template container.
+     Partially update a requirement template by its ID. The template name must remain unique within the
+    organization.
 
     Args:
         requirement_template_id (UUID):
@@ -101,11 +100,10 @@ def sync(
     client: AuthenticatedClient,
     body: RequirementTemplatePatchIn,
 ) -> RequirementTemplateGetOut | None:
-    """Patch Requirement Template
+    """Update a requirement template
 
-     B7GNMWvb
-
-    Update a requirement template inside a requirement template container.
+     Partially update a requirement template by its ID. The template name must remain unique within the
+    organization.
 
     Args:
         requirement_template_id (UUID):
@@ -132,11 +130,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RequirementTemplatePatchIn,
 ) -> Response[RequirementTemplateGetOut]:
-    """Patch Requirement Template
+    """Update a requirement template
 
-     B7GNMWvb
-
-    Update a requirement template inside a requirement template container.
+     Partially update a requirement template by its ID. The template name must remain unique within the
+    organization.
 
     Args:
         requirement_template_id (UUID):
@@ -166,11 +163,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RequirementTemplatePatchIn,
 ) -> RequirementTemplateGetOut | None:
-    """Patch Requirement Template
+    """Update a requirement template
 
-     B7GNMWvb
-
-    Update a requirement template inside a requirement template container.
+     Partially update a requirement template by its ID. The template name must remain unique within the
+    organization.
 
     Args:
         requirement_template_id (UUID):

@@ -41,9 +41,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Simulate Db Call
+    """Simulate a long database call
 
-     Simulate long database call
+     Sample endpoint that simulates a long-running database query for testing database connection
+    behavior.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -66,9 +67,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Simulate Db Call
+    """Simulate a long database call
 
-     Simulate long database call
+     Sample endpoint that simulates a long-running database query for testing database connection
+    behavior.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

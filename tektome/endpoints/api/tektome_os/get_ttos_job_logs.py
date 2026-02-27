@@ -49,10 +49,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[str]:
-    """Get Job Logs
+    """Get job logs
 
-     azwnkEpo
-    Get job's logs by job ID.
+     Retrieve the execution logs for a job by its ID.
 
     Args:
         job_id (UUID):
@@ -81,10 +80,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> str | None:
-    """Get Job Logs
+    """Get job logs
 
-     azwnkEpo
-    Get job's logs by job ID.
+     Retrieve the execution logs for a job by its ID.
 
     Args:
         job_id (UUID):
@@ -108,10 +106,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[str]:
-    """Get Job Logs
+    """Get job logs
 
-     azwnkEpo
-    Get job's logs by job ID.
+     Retrieve the execution logs for a job by its ID.
 
     Args:
         job_id (UUID):
@@ -138,10 +135,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> str | None:
-    """Get Job Logs
+    """Get job logs
 
-     azwnkEpo
-    Get job's logs by job ID.
+     Retrieve the execution logs for a job by its ID.
 
     Args:
         job_id (UUID):

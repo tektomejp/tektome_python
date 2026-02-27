@@ -48,15 +48,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[GetDRDefaultOutputFormatGetOut]:
-    """Get Deep Research Default Output Format
+    """Get deep research default output format
 
-     jxg-Cooc
-
-    Get the default output format for Deep Research.
-    If no default exists, returns an empty string.
-
-    Returns:
-        str: The default output format for Deep Research, or an empty string if not set.
+     Retrieve the default output format setting for deep research. Returns an empty string if no default
+    is configured.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -79,15 +74,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> GetDRDefaultOutputFormatGetOut | None:
-    """Get Deep Research Default Output Format
+    """Get deep research default output format
 
-     jxg-Cooc
-
-    Get the default output format for Deep Research.
-    If no default exists, returns an empty string.
-
-    Returns:
-        str: The default output format for Deep Research, or an empty string if not set.
+     Retrieve the default output format setting for deep research. Returns an empty string if no default
+    is configured.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -106,15 +96,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[GetDRDefaultOutputFormatGetOut]:
-    """Get Deep Research Default Output Format
+    """Get deep research default output format
 
-     jxg-Cooc
-
-    Get the default output format for Deep Research.
-    If no default exists, returns an empty string.
-
-    Returns:
-        str: The default output format for Deep Research, or an empty string if not set.
+     Retrieve the default output format setting for deep research. Returns an empty string if no default
+    is configured.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -135,15 +120,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> GetDRDefaultOutputFormatGetOut | None:
-    """Get Deep Research Default Output Format
+    """Get deep research default output format
 
-     jxg-Cooc
-
-    Get the default output format for Deep Research.
-    If no default exists, returns an empty string.
-
-    Returns:
-        str: The default output format for Deep Research, or an empty string if not set.
+     Retrieve the default output format setting for deep research. Returns an empty string if no default
+    is configured.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

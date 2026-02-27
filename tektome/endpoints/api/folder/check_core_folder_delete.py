@@ -53,11 +53,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[FolderCheckDeleteOut]:
-    """Check Folder Delete
+    """Check if a folder can be deleted
 
-     Hn7bK9mL
-
-    Check if a folder can be deleted and return related information.
+     Validate whether a folder can be deleted and return information about affected resources and
+    subfolders.
 
     Args:
         folder_id (UUID):
@@ -86,11 +85,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> FolderCheckDeleteOut | None:
-    """Check Folder Delete
+    """Check if a folder can be deleted
 
-     Hn7bK9mL
-
-    Check if a folder can be deleted and return related information.
+     Validate whether a folder can be deleted and return information about affected resources and
+    subfolders.
 
     Args:
         folder_id (UUID):
@@ -114,11 +112,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[FolderCheckDeleteOut]:
-    """Check Folder Delete
+    """Check if a folder can be deleted
 
-     Hn7bK9mL
-
-    Check if a folder can be deleted and return related information.
+     Validate whether a folder can be deleted and return information about affected resources and
+    subfolders.
 
     Args:
         folder_id (UUID):
@@ -145,11 +142,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> FolderCheckDeleteOut | None:
-    """Check Folder Delete
+    """Check if a folder can be deleted
 
-     Hn7bK9mL
-
-    Check if a folder can be deleted and return related information.
+     Validate whether a folder can be deleted and return information about affected resources and
+    subfolders.
 
     Args:
         folder_id (UUID):

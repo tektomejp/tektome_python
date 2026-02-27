@@ -156,25 +156,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: BlobUploadCompleteIn,
 ) -> Response[BlobUploadCompleteOut | ErrorOut]:
-    """Post Blob Upload Complete
+    """Complete a blob upload
 
-     BYYWWCp2
-
-    Complete a blob upload and create the Resource record.
-
-    After uploading a file directly to Azure Blob Storage using the SAS URL
-    from the upload request endpoint, call this endpoint to create the
-    Resource and ResourceVersionControl records.
-
-    **Flow:**
-    1. Validates the upload_id exists in cache
-    2. Verifies the blob exists in Azure Blob Storage
-    3. Creates Resource and ResourceVersionControl records
-    4. Optionally starts OCR extraction if `initialize` is true
-
-    **Error Codes:**
-    - 400: Invalid upload_id or metadata mismatch
-    - 404: Blob not found in Azure (upload not completed)
+     Finalize a blob upload after the file has been uploaded to the pre-signed URL. This creates the
+    resource record and optionally starts OCR processing.
 
     Args:
         project_id (UUID):
@@ -206,25 +191,10 @@ def sync(
     client: AuthenticatedClient,
     body: BlobUploadCompleteIn,
 ) -> BlobUploadCompleteOut | ErrorOut | None:
-    """Post Blob Upload Complete
+    """Complete a blob upload
 
-     BYYWWCp2
-
-    Complete a blob upload and create the Resource record.
-
-    After uploading a file directly to Azure Blob Storage using the SAS URL
-    from the upload request endpoint, call this endpoint to create the
-    Resource and ResourceVersionControl records.
-
-    **Flow:**
-    1. Validates the upload_id exists in cache
-    2. Verifies the blob exists in Azure Blob Storage
-    3. Creates Resource and ResourceVersionControl records
-    4. Optionally starts OCR extraction if `initialize` is true
-
-    **Error Codes:**
-    - 400: Invalid upload_id or metadata mismatch
-    - 404: Blob not found in Azure (upload not completed)
+     Finalize a blob upload after the file has been uploaded to the pre-signed URL. This creates the
+    resource record and optionally starts OCR processing.
 
     Args:
         project_id (UUID):
@@ -251,25 +221,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: BlobUploadCompleteIn,
 ) -> Response[BlobUploadCompleteOut | ErrorOut]:
-    """Post Blob Upload Complete
+    """Complete a blob upload
 
-     BYYWWCp2
-
-    Complete a blob upload and create the Resource record.
-
-    After uploading a file directly to Azure Blob Storage using the SAS URL
-    from the upload request endpoint, call this endpoint to create the
-    Resource and ResourceVersionControl records.
-
-    **Flow:**
-    1. Validates the upload_id exists in cache
-    2. Verifies the blob exists in Azure Blob Storage
-    3. Creates Resource and ResourceVersionControl records
-    4. Optionally starts OCR extraction if `initialize` is true
-
-    **Error Codes:**
-    - 400: Invalid upload_id or metadata mismatch
-    - 404: Blob not found in Azure (upload not completed)
+     Finalize a blob upload after the file has been uploaded to the pre-signed URL. This creates the
+    resource record and optionally starts OCR processing.
 
     Args:
         project_id (UUID):
@@ -299,25 +254,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: BlobUploadCompleteIn,
 ) -> BlobUploadCompleteOut | ErrorOut | None:
-    """Post Blob Upload Complete
+    """Complete a blob upload
 
-     BYYWWCp2
-
-    Complete a blob upload and create the Resource record.
-
-    After uploading a file directly to Azure Blob Storage using the SAS URL
-    from the upload request endpoint, call this endpoint to create the
-    Resource and ResourceVersionControl records.
-
-    **Flow:**
-    1. Validates the upload_id exists in cache
-    2. Verifies the blob exists in Azure Blob Storage
-    3. Creates Resource and ResourceVersionControl records
-    4. Optionally starts OCR extraction if `initialize` is true
-
-    **Error Codes:**
-    - 400: Invalid upload_id or metadata mismatch
-    - 404: Blob not found in Azure (upload not completed)
+     Finalize a blob upload after the file has been uploaded to the pre-signed URL. This creates the
+    resource record and optionally starts OCR processing.
 
     Args:
         project_id (UUID):

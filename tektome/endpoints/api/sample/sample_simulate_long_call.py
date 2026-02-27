@@ -59,10 +59,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     delay: float | Unset = 1.0,
 ) -> Response[SimulateLongCallPostOut]:
-    """Simulate Long Call
+    """Simulate a long synchronous call
 
-     S0PPLHxz
-    Simulate a long call in sync routes
+     Sample endpoint that simulates a blocking synchronous call with a configurable delay for testing
+    purposes.
 
     Args:
         delay (float | Unset):  Default: 1.0.
@@ -91,10 +91,10 @@ def sync(
     client: AuthenticatedClient,
     delay: float | Unset = 1.0,
 ) -> SimulateLongCallPostOut | None:
-    """Simulate Long Call
+    """Simulate a long synchronous call
 
-     S0PPLHxz
-    Simulate a long call in sync routes
+     Sample endpoint that simulates a blocking synchronous call with a configurable delay for testing
+    purposes.
 
     Args:
         delay (float | Unset):  Default: 1.0.
@@ -118,10 +118,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     delay: float | Unset = 1.0,
 ) -> Response[SimulateLongCallPostOut]:
-    """Simulate Long Call
+    """Simulate a long synchronous call
 
-     S0PPLHxz
-    Simulate a long call in sync routes
+     Sample endpoint that simulates a blocking synchronous call with a configurable delay for testing
+    purposes.
 
     Args:
         delay (float | Unset):  Default: 1.0.
@@ -148,10 +148,10 @@ async def asyncio(
     client: AuthenticatedClient,
     delay: float | Unset = 1.0,
 ) -> SimulateLongCallPostOut | None:
-    """Simulate Long Call
+    """Simulate a long synchronous call
 
-     S0PPLHxz
-    Simulate a long call in sync routes
+     Sample endpoint that simulates a blocking synchronous call with a configurable delay for testing
+    purposes.
 
     Args:
         delay (float | Unset):  Default: 1.0.

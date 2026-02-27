@@ -55,16 +55,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: SectionCreationPostIn,
 ) -> Response[SectionGetOut]:
-    """Create Section
+    """Create a new section
 
-     JEi1TvH6
-
-    Create a new section.
-
-    Args:
-        request: Request object.
-
-    Returns: newly created section.
+     Create a new section for organizing resources and attributes within a project.
 
     Args:
         body (SectionCreationPostIn): Serializer for creating a new section.
@@ -110,16 +103,9 @@ def sync(
     client: AuthenticatedClient,
     body: SectionCreationPostIn,
 ) -> SectionGetOut | None:
-    """Create Section
+    """Create a new section
 
-     JEi1TvH6
-
-    Create a new section.
-
-    Args:
-        request: Request object.
-
-    Returns: newly created section.
+     Create a new section for organizing resources and attributes within a project.
 
     Args:
         body (SectionCreationPostIn): Serializer for creating a new section.
@@ -160,16 +146,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: SectionCreationPostIn,
 ) -> Response[SectionGetOut]:
-    """Create Section
+    """Create a new section
 
-     JEi1TvH6
-
-    Create a new section.
-
-    Args:
-        request: Request object.
-
-    Returns: newly created section.
+     Create a new section for organizing resources and attributes within a project.
 
     Args:
         body (SectionCreationPostIn): Serializer for creating a new section.
@@ -213,16 +192,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: SectionCreationPostIn,
 ) -> SectionGetOut | None:
-    """Create Section
+    """Create a new section
 
-     JEi1TvH6
-
-    Create a new section.
-
-    Args:
-        request: Request object.
-
-    Returns: newly created section.
+     Create a new section for organizing resources and attributes within a project.
 
     Args:
         body (SectionCreationPostIn): Serializer for creating a new section.

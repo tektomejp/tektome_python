@@ -63,12 +63,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ErrorOut | TaskPostOut]:
-    """Convert Bim Resource
+    """Convert BIM resource
 
-     38rIXHH0
-
-    Convert BIM resource from a file attached to a resource.
-    Returns: core resource BimTask id as task id
+     Start BIM file conversion for a resource containing a BIM file (e.g., IFC). This is an asynchronous
+    operation. To retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint
+    with the task/process ID returned in this response.
 
     Args:
         resource_id (str):
@@ -97,12 +96,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ErrorOut | TaskPostOut | None:
-    """Convert Bim Resource
+    """Convert BIM resource
 
-     38rIXHH0
-
-    Convert BIM resource from a file attached to a resource.
-    Returns: core resource BimTask id as task id
+     Start BIM file conversion for a resource containing a BIM file (e.g., IFC). This is an asynchronous
+    operation. To retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint
+    with the task/process ID returned in this response.
 
     Args:
         resource_id (str):
@@ -126,12 +124,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ErrorOut | TaskPostOut]:
-    """Convert Bim Resource
+    """Convert BIM resource
 
-     38rIXHH0
-
-    Convert BIM resource from a file attached to a resource.
-    Returns: core resource BimTask id as task id
+     Start BIM file conversion for a resource containing a BIM file (e.g., IFC). This is an asynchronous
+    operation. To retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint
+    with the task/process ID returned in this response.
 
     Args:
         resource_id (str):
@@ -158,12 +155,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ErrorOut | TaskPostOut | None:
-    """Convert Bim Resource
+    """Convert BIM resource
 
-     38rIXHH0
-
-    Convert BIM resource from a file attached to a resource.
-    Returns: core resource BimTask id as task id
+     Start BIM file conversion for a resource containing a BIM file (e.g., IFC). This is an asynchronous
+    operation. To retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint
+    with the task/process ID returned in this response.
 
     Args:
         resource_id (str):

@@ -68,16 +68,9 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | Unset = 100,
 ) -> Response[list[BimProjectStatsGetOut]]:
-    """Get All Bim Projects Stats
+    """List all BIM project statistics
 
-     b2e0a67c
-
-    Get statistics for all BIM projects with pagination.
-    Default (and maximum) page size is 100 projects.
-
-    Args:
-        page: Page number (starts from 1)
-        page_size: Number of projects per page (default and maximum 100)
+     Retrieve paginated statistics for all BIM projects, including object, view, and sheet counts.
 
     Args:
         page (int | Unset):  Default: 1.
@@ -109,16 +102,9 @@ def sync(
     page: int | Unset = 1,
     page_size: int | Unset = 100,
 ) -> list[BimProjectStatsGetOut] | None:
-    """Get All Bim Projects Stats
+    """List all BIM project statistics
 
-     b2e0a67c
-
-    Get statistics for all BIM projects with pagination.
-    Default (and maximum) page size is 100 projects.
-
-    Args:
-        page: Page number (starts from 1)
-        page_size: Number of projects per page (default and maximum 100)
+     Retrieve paginated statistics for all BIM projects, including object, view, and sheet counts.
 
     Args:
         page (int | Unset):  Default: 1.
@@ -145,16 +131,9 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | Unset = 100,
 ) -> Response[list[BimProjectStatsGetOut]]:
-    """Get All Bim Projects Stats
+    """List all BIM project statistics
 
-     b2e0a67c
-
-    Get statistics for all BIM projects with pagination.
-    Default (and maximum) page size is 100 projects.
-
-    Args:
-        page: Page number (starts from 1)
-        page_size: Number of projects per page (default and maximum 100)
+     Retrieve paginated statistics for all BIM projects, including object, view, and sheet counts.
 
     Args:
         page (int | Unset):  Default: 1.
@@ -184,16 +163,9 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | Unset = 100,
 ) -> list[BimProjectStatsGetOut] | None:
-    """Get All Bim Projects Stats
+    """List all BIM project statistics
 
-     b2e0a67c
-
-    Get statistics for all BIM projects with pagination.
-    Default (and maximum) page size is 100 projects.
-
-    Args:
-        page: Page number (starts from 1)
-        page_size: Number of projects per page (default and maximum 100)
+     Retrieve paginated statistics for all BIM projects, including object, view, and sheet counts.
 
     Args:
         page (int | Unset):  Default: 1.

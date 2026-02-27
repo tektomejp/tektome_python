@@ -163,18 +163,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: BIMCitationPostIn,
 ) -> Response[BIMCitationSchemaOut | ErrorOut]:
-    """Post Attribute Bim Citation
+    """Create a BIM citation for an attribute
 
-     opMn3x1z
-
-    Create a BIM citation to an attribute.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and dataspace ID.
-        payload: The payload containing the data of type BIMCitationPostIn
-
-    Returns: 201, the created BIM citation object
+     Create a new BIM (Building Information Model) citation linking a BIM source to the specified
+    attribute.
 
     Args:
         dataspace_id (UUID):
@@ -212,18 +204,10 @@ def sync(
     client: AuthenticatedClient,
     body: BIMCitationPostIn,
 ) -> BIMCitationSchemaOut | ErrorOut | None:
-    """Post Attribute Bim Citation
+    """Create a BIM citation for an attribute
 
-     opMn3x1z
-
-    Create a BIM citation to an attribute.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and dataspace ID.
-        payload: The payload containing the data of type BIMCitationPostIn
-
-    Returns: 201, the created BIM citation object
+     Create a new BIM (Building Information Model) citation linking a BIM source to the specified
+    attribute.
 
     Args:
         dataspace_id (UUID):
@@ -256,18 +240,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: BIMCitationPostIn,
 ) -> Response[BIMCitationSchemaOut | ErrorOut]:
-    """Post Attribute Bim Citation
+    """Create a BIM citation for an attribute
 
-     opMn3x1z
-
-    Create a BIM citation to an attribute.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and dataspace ID.
-        payload: The payload containing the data of type BIMCitationPostIn
-
-    Returns: 201, the created BIM citation object
+     Create a new BIM (Building Information Model) citation linking a BIM source to the specified
+    attribute.
 
     Args:
         dataspace_id (UUID):
@@ -303,18 +279,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: BIMCitationPostIn,
 ) -> BIMCitationSchemaOut | ErrorOut | None:
-    """Post Attribute Bim Citation
+    """Create a BIM citation for an attribute
 
-     opMn3x1z
-
-    Create a BIM citation to an attribute.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and dataspace ID.
-        payload: The payload containing the data of type BIMCitationPostIn
-
-    Returns: 201, the created BIM citation object
+     Create a new BIM (Building Information Model) citation linking a BIM source to the specified
+    attribute.
 
     Args:
         dataspace_id (UUID):

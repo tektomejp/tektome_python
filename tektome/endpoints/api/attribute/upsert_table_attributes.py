@@ -64,11 +64,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: TableAttributeBodyPatchIn,
 ) -> Response[Any]:
-    """Patch Table Attribute
+    """Update table attribute cells
 
-     uTCGMAKt
-
-    Set cells of a table attribute.
+     Set or update individual cells of a table attribute. Includes optimistic concurrency control via
+    version to prevent conflicting edits.
 
     Args:
         object_type (UpsertTableAttributesDataspaceAttributeObjectTypes):
@@ -103,11 +102,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: TableAttributeBodyPatchIn,
 ) -> Response[Any]:
-    """Patch Table Attribute
+    """Update table attribute cells
 
-     uTCGMAKt
-
-    Set cells of a table attribute.
+     Set or update individual cells of a table attribute. Includes optimistic concurrency control via
+    version to prevent conflicting edits.
 
     Args:
         object_type (UpsertTableAttributesDataspaceAttributeObjectTypes):

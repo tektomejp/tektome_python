@@ -156,10 +156,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: TtosFolderPostIn,
 ) -> Response[GenericHttpError | TtosFolderPostOut]:
-    """Create a new folder
+    """Create a folder
 
-     J8RqrdFf
-    Create a new folder by placing a .keep marker artifact.
+     Create a new folder in a chatroom at the specified path.
 
     Args:
         chatroom_id (UUID):
@@ -191,10 +190,9 @@ def sync(
     client: AuthenticatedClient,
     body: TtosFolderPostIn,
 ) -> GenericHttpError | TtosFolderPostOut | None:
-    """Create a new folder
+    """Create a folder
 
-     J8RqrdFf
-    Create a new folder by placing a .keep marker artifact.
+     Create a new folder in a chatroom at the specified path.
 
     Args:
         chatroom_id (UUID):
@@ -221,10 +219,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: TtosFolderPostIn,
 ) -> Response[GenericHttpError | TtosFolderPostOut]:
-    """Create a new folder
+    """Create a folder
 
-     J8RqrdFf
-    Create a new folder by placing a .keep marker artifact.
+     Create a new folder in a chatroom at the specified path.
 
     Args:
         chatroom_id (UUID):
@@ -254,10 +251,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: TtosFolderPostIn,
 ) -> GenericHttpError | TtosFolderPostOut | None:
-    """Create a new folder
+    """Create a folder
 
-     J8RqrdFf
-    Create a new folder by placing a .keep marker artifact.
+     Create a new folder in a chatroom at the specified path.
 
     Args:
         chatroom_id (UUID):

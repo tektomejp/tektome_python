@@ -61,17 +61,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[RawTextCitationSchemaOut]:
-    """Get Attribute Rawtext Citation
+    """Get a raw text citation by ID
 
-     qaKNrel3
-
-    Retrieve a RawText citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and raw text citation ID.
-
-    Returns: 200, the RawText citation object if found and the user has permission to view it
+     Retrieve the details of a specific raw text citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -106,17 +98,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> RawTextCitationSchemaOut | None:
-    """Get Attribute Rawtext Citation
+    """Get a raw text citation by ID
 
-     qaKNrel3
-
-    Retrieve a RawText citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and raw text citation ID.
-
-    Returns: 200, the RawText citation object if found and the user has permission to view it
+     Retrieve the details of a specific raw text citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -146,17 +130,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[RawTextCitationSchemaOut]:
-    """Get Attribute Rawtext Citation
+    """Get a raw text citation by ID
 
-     qaKNrel3
-
-    Retrieve a RawText citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and raw text citation ID.
-
-    Returns: 200, the RawText citation object if found and the user has permission to view it
+     Retrieve the details of a specific raw text citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -189,17 +165,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> RawTextCitationSchemaOut | None:
-    """Get Attribute Rawtext Citation
+    """Get a raw text citation by ID
 
-     qaKNrel3
-
-    Retrieve a RawText citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and raw text citation ID.
-
-    Returns: 200, the RawText citation object if found and the user has permission to view it
+     Retrieve the details of a specific raw text citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):

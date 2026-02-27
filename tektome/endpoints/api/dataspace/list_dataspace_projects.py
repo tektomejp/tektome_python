@@ -90,12 +90,10 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedDataspaceProjectsGetOut]:
-    """Get Dataspace Projects
+    """List all projects in a dataspace
 
-     ttCTKUG4
-
-    Retrieve all projects for the current dataspace.
-    Filters and sorts projects based on query parameters.
+     Retrieve all projects within a dataspace with their file counts, page counts, and attributes.
+    Supports sorting and filtering via query parameters.
 
     Args:
         dataspace_id (UUID):
@@ -136,12 +134,10 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedDataspaceProjectsGetOut | None:
-    """Get Dataspace Projects
+    """List all projects in a dataspace
 
-     ttCTKUG4
-
-    Retrieve all projects for the current dataspace.
-    Filters and sorts projects based on query parameters.
+     Retrieve all projects within a dataspace with their file counts, page counts, and attributes.
+    Supports sorting and filtering via query parameters.
 
     Args:
         dataspace_id (UUID):
@@ -177,12 +173,10 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedDataspaceProjectsGetOut]:
-    """Get Dataspace Projects
+    """List all projects in a dataspace
 
-     ttCTKUG4
-
-    Retrieve all projects for the current dataspace.
-    Filters and sorts projects based on query parameters.
+     Retrieve all projects within a dataspace with their file counts, page counts, and attributes.
+    Supports sorting and filtering via query parameters.
 
     Args:
         dataspace_id (UUID):
@@ -221,12 +215,10 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedDataspaceProjectsGetOut | None:
-    """Get Dataspace Projects
+    """List all projects in a dataspace
 
-     ttCTKUG4
-
-    Retrieve all projects for the current dataspace.
-    Filters and sorts projects based on query parameters.
+     Retrieve all projects within a dataspace with their file counts, page counts, and attributes.
+    Supports sorting and filtering via query parameters.
 
     Args:
         dataspace_id (UUID):

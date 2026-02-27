@@ -58,11 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     force: bool | Unset = False,
 ) -> Response[Any]:
-    """Delete Resource Group
+    """Delete a resource group
 
-     RYb3o4Os
-
-    Delete an empty resource group, including root folder and all attributes
+     Delete a resource group, including its root folder and all attributes. Use the force parameter to
+    delete non-empty groups.
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -94,11 +93,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     force: bool | Unset = False,
 ) -> Response[Any]:
-    """Delete Resource Group
+    """Delete a resource group
 
-     RYb3o4Os
-
-    Delete an empty resource group, including root folder and all attributes
+     Delete a resource group, including its root folder and all attributes. Use the force parameter to
+    delete non-empty groups.
 
     Args:
         resource_group_id (UUID): Resource group ID

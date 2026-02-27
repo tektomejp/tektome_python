@@ -73,18 +73,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PDFCitationPatchInPatch,
 ) -> Response[PDFCitationSchemaOut]:
-    """Patch Attribute Pdf Citation
+    """Update a PDF citation
 
-     kDb1AMa0
-
-    Patch a PDF citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and PDF citation ID.
-        payload: The payload only containing the fields to update of type PDFCitationPatchIn
-
-    Returns: 200, updated citation object
+     Update the details of a specific PDF citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -125,18 +116,9 @@ def sync(
     client: AuthenticatedClient,
     body: PDFCitationPatchInPatch,
 ) -> PDFCitationSchemaOut | None:
-    """Patch Attribute Pdf Citation
+    """Update a PDF citation
 
-     kDb1AMa0
-
-    Patch a PDF citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and PDF citation ID.
-        payload: The payload only containing the fields to update of type PDFCitationPatchIn
-
-    Returns: 200, updated citation object
+     Update the details of a specific PDF citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -172,18 +154,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PDFCitationPatchInPatch,
 ) -> Response[PDFCitationSchemaOut]:
-    """Patch Attribute Pdf Citation
+    """Update a PDF citation
 
-     kDb1AMa0
-
-    Patch a PDF citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and PDF citation ID.
-        payload: The payload only containing the fields to update of type PDFCitationPatchIn
-
-    Returns: 200, updated citation object
+     Update the details of a specific PDF citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -222,18 +195,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PDFCitationPatchInPatch,
 ) -> PDFCitationSchemaOut | None:
-    """Patch Attribute Pdf Citation
+    """Update a PDF citation
 
-     kDb1AMa0
-
-    Patch a PDF citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and PDF citation ID.
-        payload: The payload only containing the fields to update of type PDFCitationPatchIn
-
-    Returns: 200, updated citation object
+     Update the details of a specific PDF citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):

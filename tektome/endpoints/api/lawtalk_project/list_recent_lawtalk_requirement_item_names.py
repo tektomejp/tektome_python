@@ -70,17 +70,9 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[Pagedstr]:
-    """Get Project Recent Requirement Item Names
+    """List recent requirement item names
 
-     9Lk1fuzC
-    Retrieves the 5 most recent requirement item names for a project.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path parameters containing the project ID.
-
-    Returns:
-        A list of recent requirement item names.
+     Retrieve the most recently created requirement item names for a project.
 
     Args:
         project_id (UUID):
@@ -115,17 +107,9 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Pagedstr | None:
-    """Get Project Recent Requirement Item Names
+    """List recent requirement item names
 
-     9Lk1fuzC
-    Retrieves the 5 most recent requirement item names for a project.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path parameters containing the project ID.
-
-    Returns:
-        A list of recent requirement item names.
+     Retrieve the most recently created requirement item names for a project.
 
     Args:
         project_id (UUID):
@@ -155,17 +139,9 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[Pagedstr]:
-    """Get Project Recent Requirement Item Names
+    """List recent requirement item names
 
-     9Lk1fuzC
-    Retrieves the 5 most recent requirement item names for a project.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path parameters containing the project ID.
-
-    Returns:
-        A list of recent requirement item names.
+     Retrieve the most recently created requirement item names for a project.
 
     Args:
         project_id (UUID):
@@ -198,17 +174,9 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Pagedstr | None:
-    """Get Project Recent Requirement Item Names
+    """List recent requirement item names
 
-     9Lk1fuzC
-    Retrieves the 5 most recent requirement item names for a project.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path parameters containing the project ID.
-
-    Returns:
-        A list of recent requirement item names.
+     Retrieve the most recently created requirement item names for a project.
 
     Args:
         project_id (UUID):

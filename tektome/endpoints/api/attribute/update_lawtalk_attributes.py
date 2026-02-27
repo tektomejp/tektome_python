@@ -62,23 +62,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: LawtalkAttributeBodyPutIn,
 ) -> Response[Any]:
-    r"""Put Lawtalk Attributes
+    """Set domain-specific attributes on an entity
 
-     Sczy4wEz
-
-    Set or update Lawtalk-specific attributes for an entity.
-
-    This endpoint handles both core attributes (via the core entity) and Lawtalk-specific
-    attributes (with operators). When the \"name\" string attribute is provided, it performs
-    validation and updates the entity's name on the core level.
-
-    Name Validation:
-        - For folders: Validates unique name within each parent folder
-        - For resource groups: Validates unique name within the project
-        - For resources: Validates unique name within the resource group
-
-    The \"name\" attribute is processed separately and removed from the payload before
-    processing other Lawtalk-specific attributes to avoid duplication.
+     Set or update domain-specific attributes for an entity such as a folder, resource group, or
+    resource. When the 'name' attribute is provided, uniqueness validation is performed within the
+    entity's parent scope.
 
     Args:
         object_type (UpdateLawtalkAttributesAttributeObjectTypes):
@@ -113,23 +101,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: LawtalkAttributeBodyPutIn,
 ) -> Response[Any]:
-    r"""Put Lawtalk Attributes
+    """Set domain-specific attributes on an entity
 
-     Sczy4wEz
-
-    Set or update Lawtalk-specific attributes for an entity.
-
-    This endpoint handles both core attributes (via the core entity) and Lawtalk-specific
-    attributes (with operators). When the \"name\" string attribute is provided, it performs
-    validation and updates the entity's name on the core level.
-
-    Name Validation:
-        - For folders: Validates unique name within each parent folder
-        - For resource groups: Validates unique name within the project
-        - For resources: Validates unique name within the resource group
-
-    The \"name\" attribute is processed separately and removed from the payload before
-    processing other Lawtalk-specific attributes to avoid duplication.
+     Set or update domain-specific attributes for an entity such as a folder, resource group, or
+    resource. When the 'name' attribute is provided, uniqueness validation is performed within the
+    entity's parent scope.
 
     Args:
         object_type (UpdateLawtalkAttributesAttributeObjectTypes):

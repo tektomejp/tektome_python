@@ -104,12 +104,10 @@ def sync_detailed(
     vector_project: None | str | Unset = UNSET,
     vector_data_space: None | str | Unset = UNSET,
 ) -> Response[Any]:
-    """Search Ocr Page V3
+    """Search project resource pages (v3)
 
-     rMqXpEPr
-
-    Search pages in a given resources on specific keywords and/or query
-    - also returns original tektome response
+     Deprecated. Search extracted pages in project resources by query and/or keywords. Returns matched
+    pages grouped by resource group with text highlights.
 
     Args:
         project_id (UUID):
@@ -162,12 +160,10 @@ async def asyncio_detailed(
     vector_project: None | str | Unset = UNSET,
     vector_data_space: None | str | Unset = UNSET,
 ) -> Response[Any]:
-    """Search Ocr Page V3
+    """Search project resource pages (v3)
 
-     rMqXpEPr
-
-    Search pages in a given resources on specific keywords and/or query
-    - also returns original tektome response
+     Deprecated. Search extracted pages in project resources by query and/or keywords. Returns matched
+    pages grouped by resource group with text highlights.
 
     Args:
         project_id (UUID):

@@ -48,11 +48,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Get Export Payment Record
+    """Export payment records as CSV
 
-     YSCUc2FE
-
-    Download payment record supporting zip file.
+     Download all payment records for an organization as a CSV file.
 
     Args:
         organization_id (UUID):
@@ -81,11 +79,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Get Export Payment Record
+    """Export payment records as CSV
 
-     YSCUc2FE
-
-    Download payment record supporting zip file.
+     Download all payment records for an organization as a CSV file.
 
     Args:
         organization_id (UUID):

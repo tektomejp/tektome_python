@@ -59,28 +59,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RetrieveBimSheetPostIn,
 ) -> Response[RetrieveBimSheetPostOut]:
-    """Retrieve Bim Sheets In Project
+    """List BIM sheets in a project
 
-     EmmyoTSu
-
-    Retrieve BIM sheets within a specified project, supporting both full and paginated retrieval.
-
-    Args:
-        request: The incoming request object (explicitly ignored in this function).
-        payload (RetrieveBimSheetPostIn): Input data containing retrieval options, including project ID,
-            pagination parameters, flags for retrieving all sheets or only IDs, and optional field
-    selection.
-
-    Returns:
-        dict: A dictionary with a single key 'data', containing either:
-            - A list of sheet IDs if 'only_ids' is True.
-            - A list of detailed sheet payloads if 'only_ids' is False.
-            - An empty list if no results are found.
-
-    Notes:
-        - Pagination defaults to page 1 and page_size 1 if invalid values are provided.
-        - Only instances of BimSheet are included in the detailed payload.
-        - The response always conforms to the expected schema: {'data': [...]}
+     Retrieve BIM sheets within a project, supporting both full retrieval and paginated queries.
+    Optionally return only sheet IDs.
 
     Args:
         body (RetrieveBimSheetPostIn):
@@ -109,28 +91,10 @@ def sync(
     client: AuthenticatedClient,
     body: RetrieveBimSheetPostIn,
 ) -> RetrieveBimSheetPostOut | None:
-    """Retrieve Bim Sheets In Project
+    """List BIM sheets in a project
 
-     EmmyoTSu
-
-    Retrieve BIM sheets within a specified project, supporting both full and paginated retrieval.
-
-    Args:
-        request: The incoming request object (explicitly ignored in this function).
-        payload (RetrieveBimSheetPostIn): Input data containing retrieval options, including project ID,
-            pagination parameters, flags for retrieving all sheets or only IDs, and optional field
-    selection.
-
-    Returns:
-        dict: A dictionary with a single key 'data', containing either:
-            - A list of sheet IDs if 'only_ids' is True.
-            - A list of detailed sheet payloads if 'only_ids' is False.
-            - An empty list if no results are found.
-
-    Notes:
-        - Pagination defaults to page 1 and page_size 1 if invalid values are provided.
-        - Only instances of BimSheet are included in the detailed payload.
-        - The response always conforms to the expected schema: {'data': [...]}
+     Retrieve BIM sheets within a project, supporting both full retrieval and paginated queries.
+    Optionally return only sheet IDs.
 
     Args:
         body (RetrieveBimSheetPostIn):
@@ -154,28 +118,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RetrieveBimSheetPostIn,
 ) -> Response[RetrieveBimSheetPostOut]:
-    """Retrieve Bim Sheets In Project
+    """List BIM sheets in a project
 
-     EmmyoTSu
-
-    Retrieve BIM sheets within a specified project, supporting both full and paginated retrieval.
-
-    Args:
-        request: The incoming request object (explicitly ignored in this function).
-        payload (RetrieveBimSheetPostIn): Input data containing retrieval options, including project ID,
-            pagination parameters, flags for retrieving all sheets or only IDs, and optional field
-    selection.
-
-    Returns:
-        dict: A dictionary with a single key 'data', containing either:
-            - A list of sheet IDs if 'only_ids' is True.
-            - A list of detailed sheet payloads if 'only_ids' is False.
-            - An empty list if no results are found.
-
-    Notes:
-        - Pagination defaults to page 1 and page_size 1 if invalid values are provided.
-        - Only instances of BimSheet are included in the detailed payload.
-        - The response always conforms to the expected schema: {'data': [...]}
+     Retrieve BIM sheets within a project, supporting both full retrieval and paginated queries.
+    Optionally return only sheet IDs.
 
     Args:
         body (RetrieveBimSheetPostIn):
@@ -202,28 +148,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RetrieveBimSheetPostIn,
 ) -> RetrieveBimSheetPostOut | None:
-    """Retrieve Bim Sheets In Project
+    """List BIM sheets in a project
 
-     EmmyoTSu
-
-    Retrieve BIM sheets within a specified project, supporting both full and paginated retrieval.
-
-    Args:
-        request: The incoming request object (explicitly ignored in this function).
-        payload (RetrieveBimSheetPostIn): Input data containing retrieval options, including project ID,
-            pagination parameters, flags for retrieving all sheets or only IDs, and optional field
-    selection.
-
-    Returns:
-        dict: A dictionary with a single key 'data', containing either:
-            - A list of sheet IDs if 'only_ids' is True.
-            - A list of detailed sheet payloads if 'only_ids' is False.
-            - An empty list if no results are found.
-
-    Notes:
-        - Pagination defaults to page 1 and page_size 1 if invalid values are provided.
-        - Only instances of BimSheet are included in the detailed payload.
-        - The response always conforms to the expected schema: {'data': [...]}
+     Retrieve BIM sheets within a project, supporting both full retrieval and paginated queries.
+    Optionally return only sheet IDs.
 
     Args:
         body (RetrieveBimSheetPostIn):

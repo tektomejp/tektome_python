@@ -61,11 +61,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RequirementPatchInPatch,
 ) -> Response[RequirementSchema]:
-    """Patch Requirement
+    """Update a requirement
 
-     L6y3h9iF
-
-    Update a requirement given a project id and requirement id
+     Update requirement attributes such as name and summary. Name changes automatically generate a new
+    embedding vector for search.
 
     Args:
         requirement_id (UUID):
@@ -97,11 +96,10 @@ def sync(
     client: AuthenticatedClient,
     body: RequirementPatchInPatch,
 ) -> RequirementSchema | None:
-    """Patch Requirement
+    """Update a requirement
 
-     L6y3h9iF
-
-    Update a requirement given a project id and requirement id
+     Update requirement attributes such as name and summary. Name changes automatically generate a new
+    embedding vector for search.
 
     Args:
         requirement_id (UUID):
@@ -128,11 +126,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RequirementPatchInPatch,
 ) -> Response[RequirementSchema]:
-    """Patch Requirement
+    """Update a requirement
 
-     L6y3h9iF
-
-    Update a requirement given a project id and requirement id
+     Update requirement attributes such as name and summary. Name changes automatically generate a new
+    embedding vector for search.
 
     Args:
         requirement_id (UUID):
@@ -162,11 +159,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RequirementPatchInPatch,
 ) -> RequirementSchema | None:
-    """Patch Requirement
+    """Update a requirement
 
-     L6y3h9iF
-
-    Update a requirement given a project id and requirement id
+     Update requirement attributes such as name and summary. Name changes automatically generate a new
+    embedding vector for search.
 
     Args:
         requirement_id (UUID):

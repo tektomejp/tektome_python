@@ -58,21 +58,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ExecutionGroupFilterGetOut]:
-    """Get Execution Group Filters
+    """Get execution group filter options
 
-     VNpQ2raA
-
-    Retrieve execution group details based on the provided execution group ID.
-
-
-    Attributes name are distinct on the context of the execution group as it belong to a specific
-    dataspace.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
-
-    Returns: ExecutionGroup - The execution group instance.
+     Retrieve available filter options for a specific execution group. Returns distinct values for
+    processes, process types, target files, target entities, and extracted attributes.
 
     Args:
         dataspace_id (UUID):
@@ -104,21 +93,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ExecutionGroupFilterGetOut | None:
-    """Get Execution Group Filters
+    """Get execution group filter options
 
-     VNpQ2raA
-
-    Retrieve execution group details based on the provided execution group ID.
-
-
-    Attributes name are distinct on the context of the execution group as it belong to a specific
-    dataspace.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
-
-    Returns: ExecutionGroup - The execution group instance.
+     Retrieve available filter options for a specific execution group. Returns distinct values for
+    processes, process types, target files, target entities, and extracted attributes.
 
     Args:
         dataspace_id (UUID):
@@ -145,21 +123,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ExecutionGroupFilterGetOut]:
-    """Get Execution Group Filters
+    """Get execution group filter options
 
-     VNpQ2raA
-
-    Retrieve execution group details based on the provided execution group ID.
-
-
-    Attributes name are distinct on the context of the execution group as it belong to a specific
-    dataspace.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
-
-    Returns: ExecutionGroup - The execution group instance.
+     Retrieve available filter options for a specific execution group. Returns distinct values for
+    processes, process types, target files, target entities, and extracted attributes.
 
     Args:
         dataspace_id (UUID):
@@ -189,21 +156,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ExecutionGroupFilterGetOut | None:
-    """Get Execution Group Filters
+    """Get execution group filter options
 
-     VNpQ2raA
-
-    Retrieve execution group details based on the provided execution group ID.
-
-
-    Attributes name are distinct on the context of the execution group as it belong to a specific
-    dataspace.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
-
-    Returns: ExecutionGroup - The execution group instance.
+     Retrieve available filter options for a specific execution group. Returns distinct values for
+    processes, process types, target files, target entities, and extracted attributes.
 
     Args:
         dataspace_id (UUID):

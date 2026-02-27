@@ -51,17 +51,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete General Resource Attribute
+    """Delete a resource attribute in a dataspace
 
-     _SGx682f
-
-    Delete a general resource attribute. validated against dataspace settings.
-
-    Args:
-        request: The request object.
-        path_params: The path parameters containing dataspace and attribute IDs.
-
-    Returns: 204, None
+     Delete a resource attribute. Locked and disabled attributes cannot be deleted.
 
     Args:
         dataspace_id (UUID):
@@ -93,17 +85,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete General Resource Attribute
+    """Delete a resource attribute in a dataspace
 
-     _SGx682f
-
-    Delete a general resource attribute. validated against dataspace settings.
-
-    Args:
-        request: The request object.
-        path_params: The path parameters containing dataspace and attribute IDs.
-
-    Returns: 204, None
+     Delete a resource attribute. Locked and disabled attributes cannot be deleted.
 
     Args:
         dataspace_id (UUID):

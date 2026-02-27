@@ -68,12 +68,10 @@ def sync_detailed(
     body: CreateBimResourceFileParams,
     project_name: str | Unset = "Default Project",
 ) -> Response[BimProjectPostOut]:
-    """Create Bim Resource
+    """Create a new BIM resource
 
-     jv0wF1EG
-
-    Create a new BIM resource with the given file.
-    Only accepts Revit files (.rvt, .rfa, .rte).
+     Upload a BIM file (Revit .rvt, .rfa, .rte) and create a new BIM resource with an associated BIM
+    project.
 
     Args:
         resource_group_id (UUID):
@@ -108,12 +106,10 @@ def sync(
     body: CreateBimResourceFileParams,
     project_name: str | Unset = "Default Project",
 ) -> BimProjectPostOut | None:
-    """Create Bim Resource
+    """Create a new BIM resource
 
-     jv0wF1EG
-
-    Create a new BIM resource with the given file.
-    Only accepts Revit files (.rvt, .rfa, .rte).
+     Upload a BIM file (Revit .rvt, .rfa, .rte) and create a new BIM resource with an associated BIM
+    project.
 
     Args:
         resource_group_id (UUID):
@@ -143,12 +139,10 @@ async def asyncio_detailed(
     body: CreateBimResourceFileParams,
     project_name: str | Unset = "Default Project",
 ) -> Response[BimProjectPostOut]:
-    """Create Bim Resource
+    """Create a new BIM resource
 
-     jv0wF1EG
-
-    Create a new BIM resource with the given file.
-    Only accepts Revit files (.rvt, .rfa, .rte).
+     Upload a BIM file (Revit .rvt, .rfa, .rte) and create a new BIM resource with an associated BIM
+    project.
 
     Args:
         resource_group_id (UUID):
@@ -181,12 +175,10 @@ async def asyncio(
     body: CreateBimResourceFileParams,
     project_name: str | Unset = "Default Project",
 ) -> BimProjectPostOut | None:
-    """Create Bim Resource
+    """Create a new BIM resource
 
-     jv0wF1EG
-
-    Create a new BIM resource with the given file.
-    Only accepts Revit files (.rvt, .rfa, .rte).
+     Upload a BIM file (Revit .rvt, .rfa, .rte) and create a new BIM resource with an associated BIM
+    project.
 
     Args:
         resource_group_id (UUID):

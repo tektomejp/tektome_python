@@ -72,17 +72,9 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedFolderMetadataOut]:
-    """Get Folder Descendants
+    """List all descendant folders
 
-     fPL6Udoi
-
-    Get all descendant folders under a folder.
-
-    Args:
-        request: Request object
-        path_params: Path parameters containing folder_id
-
-    Returns: All folders under the given folder.
+     Retrieve a paginated list of all descendant folders nested under the specified folder.
 
     Args:
         folder_id (UUID):
@@ -117,17 +109,9 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedFolderMetadataOut | None:
-    """Get Folder Descendants
+    """List all descendant folders
 
-     fPL6Udoi
-
-    Get all descendant folders under a folder.
-
-    Args:
-        request: Request object
-        path_params: Path parameters containing folder_id
-
-    Returns: All folders under the given folder.
+     Retrieve a paginated list of all descendant folders nested under the specified folder.
 
     Args:
         folder_id (UUID):
@@ -157,17 +141,9 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedFolderMetadataOut]:
-    """Get Folder Descendants
+    """List all descendant folders
 
-     fPL6Udoi
-
-    Get all descendant folders under a folder.
-
-    Args:
-        request: Request object
-        path_params: Path parameters containing folder_id
-
-    Returns: All folders under the given folder.
+     Retrieve a paginated list of all descendant folders nested under the specified folder.
 
     Args:
         folder_id (UUID):
@@ -200,17 +176,9 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedFolderMetadataOut | None:
-    """Get Folder Descendants
+    """List all descendant folders
 
-     fPL6Udoi
-
-    Get all descendant folders under a folder.
-
-    Args:
-        request: Request object
-        path_params: Path parameters containing folder_id
-
-    Returns: All folders under the given folder.
+     Retrieve a paginated list of all descendant folders nested under the specified folder.
 
     Args:
         folder_id (UUID):

@@ -150,19 +150,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ProjectInvitePostIn,
 ) -> Response[Any | ErrorOut]:
-    """Post Invite Project
+    """Invite a user to a project
 
-     UEpPWVIx
-
-    Invite a user to a project. Invites are automatically accepted.
-    Creates a new user if the invited user does not exist.
-
-    Args:
-        request: Request object.
-        path_params: Path params of type ProjectDefaultPath
-        payload: payload of type ProjectInvitePostIn
-
-    Returns: 204, None
+     Invite a user to a project by email. If the user does not exist, a new account is created. The
+    invitation is automatically accepted and an email notification is sent.
 
     Args:
         project_id (UUID):
@@ -194,19 +185,10 @@ def sync(
     client: AuthenticatedClient,
     body: ProjectInvitePostIn,
 ) -> Any | ErrorOut | None:
-    """Post Invite Project
+    """Invite a user to a project
 
-     UEpPWVIx
-
-    Invite a user to a project. Invites are automatically accepted.
-    Creates a new user if the invited user does not exist.
-
-    Args:
-        request: Request object.
-        path_params: Path params of type ProjectDefaultPath
-        payload: payload of type ProjectInvitePostIn
-
-    Returns: 204, None
+     Invite a user to a project by email. If the user does not exist, a new account is created. The
+    invitation is automatically accepted and an email notification is sent.
 
     Args:
         project_id (UUID):
@@ -233,19 +215,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ProjectInvitePostIn,
 ) -> Response[Any | ErrorOut]:
-    """Post Invite Project
+    """Invite a user to a project
 
-     UEpPWVIx
-
-    Invite a user to a project. Invites are automatically accepted.
-    Creates a new user if the invited user does not exist.
-
-    Args:
-        request: Request object.
-        path_params: Path params of type ProjectDefaultPath
-        payload: payload of type ProjectInvitePostIn
-
-    Returns: 204, None
+     Invite a user to a project by email. If the user does not exist, a new account is created. The
+    invitation is automatically accepted and an email notification is sent.
 
     Args:
         project_id (UUID):
@@ -275,19 +248,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ProjectInvitePostIn,
 ) -> Any | ErrorOut | None:
-    """Post Invite Project
+    """Invite a user to a project
 
-     UEpPWVIx
-
-    Invite a user to a project. Invites are automatically accepted.
-    Creates a new user if the invited user does not exist.
-
-    Args:
-        request: Request object.
-        path_params: Path params of type ProjectDefaultPath
-        payload: payload of type ProjectInvitePostIn
-
-    Returns: 204, None
+     Invite a user to a project by email. If the user does not exist, a new account is created. The
+    invitation is automatically accepted and an email notification is sent.
 
     Args:
         project_id (UUID):

@@ -93,6 +93,11 @@ from .bim_key_value_search_item_post_out_result import BimKeyValueSearchItemPost
 from .bim_key_value_search_post_in import BimKeyValueSearchPostIn
 from .bim_key_value_search_post_v2_in import BimKeyValueSearchPostV2In
 from .bim_key_value_search_result_post_out import BimKeyValueSearchResultPostOut
+from .bim_key_value_stats_out import BimKeyValueStatsOut
+from .bim_key_value_stats_out_bool_bucket_stats import BimKeyValueStatsOutBoolBucketStats
+from .bim_key_value_stats_out_num_bucket_stats import BimKeyValueStatsOutNumBucketStats
+from .bim_key_value_stats_out_text_bucket_stats import BimKeyValueStatsOutTextBucketStats
+from .bim_key_value_stats_post_out import BimKeyValueStatsPostOut
 from .bim_object_3d_item_get_out import BimObject3DItemGetOut
 from .bim_object_3d_response_get_out import BimObject3DResponseGetOut
 from .bim_object_post_out import BimObjectPostOut
@@ -103,6 +108,8 @@ from .bim_project_path_no_validation import BimProjectPathNoValidation
 from .bim_project_post_in import BimProjectPostIn
 from .bim_project_post_out import BimProjectPostOut
 from .bim_project_stats_get_out import BimProjectStatsGetOut
+from .bim_query_to_keys_values_in import BimQueryToKeysValuesIn
+from .bim_query_to_keys_values_out import BimQueryToKeysValuesOut
 from .bim_search_detail_post_in import BimSearchDetailPostIn
 from .bim_search_item_result_post_out import BimSearchItemResultPostOut
 from .bim_search_item_result_post_out_file_content_type_0 import BimSearchItemResultPostOutFileContentType0
@@ -1100,6 +1107,11 @@ __all__ = (
     "BimKeyValueSearchPostIn",
     "BimKeyValueSearchPostV2In",
     "BimKeyValueSearchResultPostOut",
+    "BimKeyValueStatsOut",
+    "BimKeyValueStatsOutBoolBucketStats",
+    "BimKeyValueStatsOutNumBucketStats",
+    "BimKeyValueStatsOutTextBucketStats",
+    "BimKeyValueStatsPostOut",
     "BimObject3DItemGetOut",
     "BimObject3DResponseGetOut",
     "BimObjectPostOut",
@@ -1110,6 +1122,8 @@ __all__ = (
     "BimProjectPostIn",
     "BimProjectPostOut",
     "BimProjectStatsGetOut",
+    "BimQueryToKeysValuesIn",
+    "BimQueryToKeysValuesOut",
     "BimSearchDetailPostIn",
     "BimSearchItemResultPostOut",
     "BimSearchItemResultPostOutFileContentType0",

@@ -96,24 +96,10 @@ def sync_detailed(
     page_size: int | Unset = 10,
     dataspace_id: None | Unset | UUID = UNSET,
 ) -> Response[LawtalkFolderChildrenGetOut]:
-    """Get Folder Children
+    """List folder children
 
-     g7i4ub58
-
-    Retrieve both folders and resources in current level. Folder will appear first in alphabetical
-    order.
-
-    Use cases:
-        This is used in both main application page and admin page to show folders and resources.
-        The uploaded resources in admin page are manually linked to resource group root folder.
-        This is to cater pagination for both folders and resources in *admin page* only.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path[FolderPathIn] object containing folder_id
-        query_params: Query[FolderQuery] object containing pagination parameters
-
-    Returns:
+     Retrieve paginated subfolders and resources at the current folder level. Folders appear first in
+    alphabetical order.
 
     Args:
         folder_id (UUID):
@@ -157,24 +143,10 @@ def sync(
     page_size: int | Unset = 10,
     dataspace_id: None | Unset | UUID = UNSET,
 ) -> LawtalkFolderChildrenGetOut | None:
-    """Get Folder Children
+    """List folder children
 
-     g7i4ub58
-
-    Retrieve both folders and resources in current level. Folder will appear first in alphabetical
-    order.
-
-    Use cases:
-        This is used in both main application page and admin page to show folders and resources.
-        The uploaded resources in admin page are manually linked to resource group root folder.
-        This is to cater pagination for both folders and resources in *admin page* only.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path[FolderPathIn] object containing folder_id
-        query_params: Query[FolderQuery] object containing pagination parameters
-
-    Returns:
+     Retrieve paginated subfolders and resources at the current folder level. Folders appear first in
+    alphabetical order.
 
     Args:
         folder_id (UUID):
@@ -213,24 +185,10 @@ async def asyncio_detailed(
     page_size: int | Unset = 10,
     dataspace_id: None | Unset | UUID = UNSET,
 ) -> Response[LawtalkFolderChildrenGetOut]:
-    """Get Folder Children
+    """List folder children
 
-     g7i4ub58
-
-    Retrieve both folders and resources in current level. Folder will appear first in alphabetical
-    order.
-
-    Use cases:
-        This is used in both main application page and admin page to show folders and resources.
-        The uploaded resources in admin page are manually linked to resource group root folder.
-        This is to cater pagination for both folders and resources in *admin page* only.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path[FolderPathIn] object containing folder_id
-        query_params: Query[FolderQuery] object containing pagination parameters
-
-    Returns:
+     Retrieve paginated subfolders and resources at the current folder level. Folders appear first in
+    alphabetical order.
 
     Args:
         folder_id (UUID):
@@ -272,24 +230,10 @@ async def asyncio(
     page_size: int | Unset = 10,
     dataspace_id: None | Unset | UUID = UNSET,
 ) -> LawtalkFolderChildrenGetOut | None:
-    """Get Folder Children
+    """List folder children
 
-     g7i4ub58
-
-    Retrieve both folders and resources in current level. Folder will appear first in alphabetical
-    order.
-
-    Use cases:
-        This is used in both main application page and admin page to show folders and resources.
-        The uploaded resources in admin page are manually linked to resource group root folder.
-        This is to cater pagination for both folders and resources in *admin page* only.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path[FolderPathIn] object containing folder_id
-        query_params: Query[FolderQuery] object containing pagination parameters
-
-    Returns:
+     Retrieve paginated subfolders and resources at the current folder level. Folders appear first in
+    alphabetical order.
 
     Args:
         folder_id (UUID):

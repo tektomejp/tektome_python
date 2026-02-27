@@ -60,17 +60,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Attribute Image Citation
+    """Delete an image citation from an attribute
 
-     xaM12gKL
-
-    Delete an Image citation from an attribute based from the image citation ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and image citation ID.
-
-    Returns: 204, None if the deletion is successful
+     Remove a specific image citation from an attribute by citation ID.
 
     Args:
         dataspace_id (UUID):
@@ -108,17 +100,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Attribute Image Citation
+    """Delete an image citation from an attribute
 
-     xaM12gKL
-
-    Delete an Image citation from an attribute based from the image citation ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and image citation ID.
-
-    Returns: 204, None if the deletion is successful
+     Remove a specific image citation from an attribute by citation ID.
 
     Args:
         dataspace_id (UUID):

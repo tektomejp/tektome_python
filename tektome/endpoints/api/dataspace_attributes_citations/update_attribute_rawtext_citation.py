@@ -77,18 +77,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RawTextCitationPatchInPatch,
 ) -> Response[RawTextCitationSchemaOut]:
-    """Patch Attribute Rawtext Citation
+    """Update a raw text citation
 
-     uuaZgMa1
-
-    Patch RawText citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and raw text citation ID.
-        payload: The payload only containing the fields to update of type RawTextCitationPatchIn
-
-    Returns: 200, updated citation object
+     Update the details of a specific raw text citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -129,18 +120,9 @@ def sync(
     client: AuthenticatedClient,
     body: RawTextCitationPatchInPatch,
 ) -> RawTextCitationSchemaOut | None:
-    """Patch Attribute Rawtext Citation
+    """Update a raw text citation
 
-     uuaZgMa1
-
-    Patch RawText citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and raw text citation ID.
-        payload: The payload only containing the fields to update of type RawTextCitationPatchIn
-
-    Returns: 200, updated citation object
+     Update the details of a specific raw text citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -176,18 +158,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RawTextCitationPatchInPatch,
 ) -> Response[RawTextCitationSchemaOut]:
-    """Patch Attribute Rawtext Citation
+    """Update a raw text citation
 
-     uuaZgMa1
-
-    Patch RawText citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and raw text citation ID.
-        payload: The payload only containing the fields to update of type RawTextCitationPatchIn
-
-    Returns: 200, updated citation object
+     Update the details of a specific raw text citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
@@ -226,18 +199,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RawTextCitationPatchInPatch,
 ) -> RawTextCitationSchemaOut | None:
-    """Patch Attribute Rawtext Citation
+    """Update a raw text citation
 
-     uuaZgMa1
-
-    Patch RawText citation given its ID.
-
-    Args:
-        request: The request object containing the user making the request.
-        path_params: The path parameters containing the attribute ID and raw text citation ID.
-        payload: The payload only containing the fields to update of type RawTextCitationPatchIn
-
-    Returns: 200, updated citation object
+     Update the details of a specific raw text citation associated with an attribute.
 
     Args:
         dataspace_id (UUID):
