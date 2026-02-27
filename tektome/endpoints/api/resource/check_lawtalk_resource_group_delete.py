@@ -7,29 +7,37 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.resource_group_check_delete_out import ResourceGroupCheckDeleteOut
-from ...types import Response
+from ...models.generic_check_delete_out import GenericCheckDeleteOut
+from ...types import UNSET, Response
 
 
 def _get_kwargs(
     resource_group_id: UUID,
+    *,
+    project_id: UUID,
 ) -> dict[str, Any]:
+
+    params: dict[str, Any] = {}
+
+    json_project_id = str(project_id)
+    params["project_id"] = json_project_id
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/app/lawtalk/resources/groups/{resource_group_id}/check-delete/".format(
             resource_group_id=quote(str(resource_group_id), safe=""),
         ),
+        "params": params,
     }
 
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ResourceGroupCheckDeleteOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> GenericCheckDeleteOut | None:
     if response.status_code == 200:
-        response_200 = ResourceGroupCheckDeleteOut.from_dict(response.json())
+        response_200 = GenericCheckDeleteOut.from_dict(response.json())
 
         return response_200
 
@@ -41,7 +49,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ResourceGroupCheckDeleteOut]:
+) -> Response[GenericCheckDeleteOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,25 +62,31 @@ def sync_detailed(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ResourceGroupCheckDeleteOut]:
-    """Check resource group deletion eligibility
+    project_id: UUID,
+) -> Response[GenericCheckDeleteOut]:
+    """Check Resource Group Delete
 
-     Check whether a resource group can be deleted and return information about related entities that
-    would be affected.
+     J7kL9_xZ
+
+    Check if a resource group can be deleted and return related information.
+    Same JSON schema as GET /api/core/folders/{folder_id}/check-delete/.
+    Only returns requirements within the given project that use the resource group.
 
     Args:
         resource_group_id (UUID): Resource group ID
+        project_id (UUID): Project ID to scope affected requirements
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceGroupCheckDeleteOut]
+        Response[GenericCheckDeleteOut]
     """
 
     kwargs = _get_kwargs(
         resource_group_id=resource_group_id,
+        project_id=project_id,
     )
 
     response = client.get_httpx_client().request(
@@ -86,26 +100,32 @@ def sync(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> ResourceGroupCheckDeleteOut | None:
-    """Check resource group deletion eligibility
+    project_id: UUID,
+) -> GenericCheckDeleteOut | None:
+    """Check Resource Group Delete
 
-     Check whether a resource group can be deleted and return information about related entities that
-    would be affected.
+     J7kL9_xZ
+
+    Check if a resource group can be deleted and return related information.
+    Same JSON schema as GET /api/core/folders/{folder_id}/check-delete/.
+    Only returns requirements within the given project that use the resource group.
 
     Args:
         resource_group_id (UUID): Resource group ID
+        project_id (UUID): Project ID to scope affected requirements
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceGroupCheckDeleteOut
+        GenericCheckDeleteOut
     """
 
     return sync_detailed(
         resource_group_id=resource_group_id,
         client=client,
+        project_id=project_id,
     ).parsed
 
 
@@ -113,25 +133,31 @@ async def asyncio_detailed(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ResourceGroupCheckDeleteOut]:
-    """Check resource group deletion eligibility
+    project_id: UUID,
+) -> Response[GenericCheckDeleteOut]:
+    """Check Resource Group Delete
 
-     Check whether a resource group can be deleted and return information about related entities that
-    would be affected.
+     J7kL9_xZ
+
+    Check if a resource group can be deleted and return related information.
+    Same JSON schema as GET /api/core/folders/{folder_id}/check-delete/.
+    Only returns requirements within the given project that use the resource group.
 
     Args:
         resource_group_id (UUID): Resource group ID
+        project_id (UUID): Project ID to scope affected requirements
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceGroupCheckDeleteOut]
+        Response[GenericCheckDeleteOut]
     """
 
     kwargs = _get_kwargs(
         resource_group_id=resource_group_id,
+        project_id=project_id,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -143,26 +169,32 @@ async def asyncio(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> ResourceGroupCheckDeleteOut | None:
-    """Check resource group deletion eligibility
+    project_id: UUID,
+) -> GenericCheckDeleteOut | None:
+    """Check Resource Group Delete
 
-     Check whether a resource group can be deleted and return information about related entities that
-    would be affected.
+     J7kL9_xZ
+
+    Check if a resource group can be deleted and return related information.
+    Same JSON schema as GET /api/core/folders/{folder_id}/check-delete/.
+    Only returns requirements within the given project that use the resource group.
 
     Args:
         resource_group_id (UUID): Resource group ID
+        project_id (UUID): Project ID to scope affected requirements
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceGroupCheckDeleteOut
+        GenericCheckDeleteOut
     """
 
     return (
         await asyncio_detailed(
             resource_group_id=resource_group_id,
             client=client,
+            project_id=project_id,
         )
     ).parsed

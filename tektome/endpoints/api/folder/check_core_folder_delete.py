@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.folder_check_delete_out import FolderCheckDeleteOut
+from ...models.generic_check_delete_out import GenericCheckDeleteOut
 from ...types import Response
 
 
@@ -25,9 +25,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> FolderCheckDeleteOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> GenericCheckDeleteOut | None:
     if response.status_code == 200:
-        response_200 = FolderCheckDeleteOut.from_dict(response.json())
+        response_200 = GenericCheckDeleteOut.from_dict(response.json())
 
         return response_200
 
@@ -39,7 +39,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[FolderCheckDeleteOut]:
+) -> Response[GenericCheckDeleteOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -52,11 +52,12 @@ def sync_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[FolderCheckDeleteOut]:
-    """Check if a folder can be deleted
+) -> Response[GenericCheckDeleteOut]:
+    """Check Folder Delete
 
-     Validate whether a folder can be deleted and return information about affected resources and
-    subfolders.
+     Hn7bK9mL
+
+    Check if a folder can be deleted and return related information.
 
     Args:
         folder_id (UUID):
@@ -66,7 +67,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[FolderCheckDeleteOut]
+        Response[GenericCheckDeleteOut]
     """
 
     kwargs = _get_kwargs(
@@ -84,11 +85,12 @@ def sync(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> FolderCheckDeleteOut | None:
-    """Check if a folder can be deleted
+) -> GenericCheckDeleteOut | None:
+    """Check Folder Delete
 
-     Validate whether a folder can be deleted and return information about affected resources and
-    subfolders.
+     Hn7bK9mL
+
+    Check if a folder can be deleted and return related information.
 
     Args:
         folder_id (UUID):
@@ -98,7 +100,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        FolderCheckDeleteOut
+        GenericCheckDeleteOut
     """
 
     return sync_detailed(
@@ -111,11 +113,12 @@ async def asyncio_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[FolderCheckDeleteOut]:
-    """Check if a folder can be deleted
+) -> Response[GenericCheckDeleteOut]:
+    """Check Folder Delete
 
-     Validate whether a folder can be deleted and return information about affected resources and
-    subfolders.
+     Hn7bK9mL
+
+    Check if a folder can be deleted and return related information.
 
     Args:
         folder_id (UUID):
@@ -125,7 +128,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[FolderCheckDeleteOut]
+        Response[GenericCheckDeleteOut]
     """
 
     kwargs = _get_kwargs(
@@ -141,11 +144,12 @@ async def asyncio(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> FolderCheckDeleteOut | None:
-    """Check if a folder can be deleted
+) -> GenericCheckDeleteOut | None:
+    """Check Folder Delete
 
-     Validate whether a folder can be deleted and return information about affected resources and
-    subfolders.
+     Hn7bK9mL
+
+    Check if a folder can be deleted and return related information.
 
     Args:
         folder_id (UUID):
@@ -155,7 +159,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        FolderCheckDeleteOut
+        GenericCheckDeleteOut
     """
 
     return (

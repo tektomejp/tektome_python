@@ -419,7 +419,6 @@ from .file_upload_candidate_payload import FileUploadCandidatePayload
 from .float_attribute_schema_in import FloatAttributeSchemaIn
 from .float_attribute_schema_out import FloatAttributeSchemaOut
 from .folder_bulk_move_post_in import FolderBulkMovePostIn
-from .folder_check_delete_out import FolderCheckDeleteOut
 from .folder_children_get_out import FolderChildrenGetOut
 from .folder_children_query import FolderChildrenQuery
 from .folder_delete_query import FolderDeleteQuery
@@ -442,6 +441,7 @@ from .gen_breadcrumbs_query_in import GenBreadcrumbsQueryIn
 from .gen_breadcrumbs_resource_group_get_out import GenBreadcrumbsResourceGroupGetOut
 from .generate_markdown_path import GenerateMarkdownPath
 from .generate_requirement_item_row_post_in import GenerateRequirementItemRowPostIn
+from .generic_check_delete_out import GenericCheckDeleteOut
 from .generic_http_error import GenericHttpError
 from .geometry import Geometry
 from .get_api_key_filter_in import GetAPIKeyFilterIn
@@ -801,7 +801,7 @@ from .resource_get_many_schema_post_out import ResourceGetManySchemaPostOut
 from .resource_get_many_schema_post_out_items import ResourceGetManySchemaPostOutItems
 from .resource_group import ResourceGroup
 from .resource_group_any_in import ResourceGroupAnyIn
-from .resource_group_check_delete_out import ResourceGroupCheckDeleteOut
+from .resource_group_check_delete_query import ResourceGroupCheckDeleteQuery
 from .resource_group_get_path import ResourceGroupGetPath
 from .resource_group_item_path import ResourceGroupItemPath
 from .resource_group_patch_in_patch import ResourceGroupPatchInPatch
@@ -1401,7 +1401,6 @@ __all__ = (
     "FloatAttributeSchemaIn",
     "FloatAttributeSchemaOut",
     "FolderBulkMovePostIn",
-    "FolderCheckDeleteOut",
     "FolderChildrenGetOut",
     "FolderChildrenQuery",
     "FolderDeleteQuery",
@@ -1424,6 +1423,7 @@ __all__ = (
     "GenBreadcrumbsResourceGroupGetOut",
     "GenerateMarkdownPath",
     "GenerateRequirementItemRowPostIn",
+    "GenericCheckDeleteOut",
     "GenericHttpError",
     "Geometry",
     "GetAPIKeyFilterIn",
@@ -1765,7 +1765,7 @@ __all__ = (
     "ResourceGetManySchemaPostOutItems",
     "ResourceGroup",
     "ResourceGroupAnyIn",
-    "ResourceGroupCheckDeleteOut",
+    "ResourceGroupCheckDeleteQuery",
     "ResourceGroupGetPath",
     "ResourceGroupItemPath",
     "ResourceGroupPatchInPatch",
