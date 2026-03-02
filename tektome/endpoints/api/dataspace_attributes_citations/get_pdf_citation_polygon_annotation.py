@@ -7,34 +7,55 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.get_attribute_pdf_citation_dataspace_entity_type import GetAttributePdfCitationDataspaceEntityType
-from ...models.pdf_citation_schema_out import PDFCitationSchemaOut
-from ...types import Response
+from ...models.get_pdf_citation_polygon_annotation_dataspace_entity_type import (
+    GetPdfCitationPolygonAnnotationDataspaceEntityType,
+)
+from ...models.paged_pdf_citation_polygon_annotation_get_out import PagedPDFCitationPolygonAnnotationGetOut
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     dataspace_id: UUID,
-    attribute_category: GetAttributePdfCitationDataspaceEntityType,
+    attribute_category: GetPdfCitationPolygonAnnotationDataspaceEntityType,
     attribute_id: UUID,
     pdf_citation_id: UUID,
+    *,
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
 ) -> dict[str, Any]:
+
+    params: dict[str, Any] = {}
+
+    params["page"] = page
+
+    json_page_size: int | None | Unset
+    if isinstance(page_size, Unset):
+        json_page_size = UNSET
+    else:
+        json_page_size = page_size
+    params["page_size"] = json_page_size
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/api/core/dataspaces/{dataspace_id}/attributes/{attribute_category}/{attribute_id}/pdf-citations/{pdf_citation_id}/".format(
+        "url": "/api/core/dataspaces/{dataspace_id}/attributes/{attribute_category}/{attribute_id}/pdf-citations/{pdf_citation_id}/polygon-annotations/".format(
             dataspace_id=quote(str(dataspace_id), safe=""),
             attribute_category=quote(str(attribute_category), safe=""),
             attribute_id=quote(str(attribute_id), safe=""),
             pdf_citation_id=quote(str(pdf_citation_id), safe=""),
         ),
+        "params": params,
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> PDFCitationSchemaOut | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> PagedPDFCitationPolygonAnnotationGetOut | None:
     if response.status_code == 200:
-        response_200 = PDFCitationSchemaOut.from_dict(response.json())
+        response_200 = PagedPDFCitationPolygonAnnotationGetOut.from_dict(response.json())
 
         return response_200
 
@@ -46,7 +67,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[PDFCitationSchemaOut]:
+) -> Response[PagedPDFCitationPolygonAnnotationGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,28 +78,32 @@ def _build_response(
 
 def sync_detailed(
     dataspace_id: UUID,
-    attribute_category: GetAttributePdfCitationDataspaceEntityType,
+    attribute_category: GetPdfCitationPolygonAnnotationDataspaceEntityType,
     attribute_id: UUID,
     pdf_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[PDFCitationSchemaOut]:
-    """Get a PDF citation by ID
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
+) -> Response[PagedPDFCitationPolygonAnnotationGetOut]:
+    """Get PDF citation polygons
 
-     Retrieve the details of a specific PDF citation associated with an attribute.
+     Retrieve all polygon annotations for a PDF citation based on the PDF citation ID.
 
     Args:
         dataspace_id (UUID):
-        attribute_category (GetAttributePdfCitationDataspaceEntityType):
+        attribute_category (GetPdfCitationPolygonAnnotationDataspaceEntityType):
         attribute_id (UUID):
         pdf_citation_id (UUID):
+        page (int | Unset):  Default: 1.
+        page_size (int | None | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PDFCitationSchemaOut]
+        Response[PagedPDFCitationPolygonAnnotationGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -86,6 +111,8 @@ def sync_detailed(
         attribute_category=attribute_category,
         attribute_id=attribute_id,
         pdf_citation_id=pdf_citation_id,
+        page=page,
+        page_size=page_size,
     )
 
     response = client.get_httpx_client().request(
@@ -97,28 +124,32 @@ def sync_detailed(
 
 def sync(
     dataspace_id: UUID,
-    attribute_category: GetAttributePdfCitationDataspaceEntityType,
+    attribute_category: GetPdfCitationPolygonAnnotationDataspaceEntityType,
     attribute_id: UUID,
     pdf_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> PDFCitationSchemaOut | None:
-    """Get a PDF citation by ID
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
+) -> PagedPDFCitationPolygonAnnotationGetOut | None:
+    """Get PDF citation polygons
 
-     Retrieve the details of a specific PDF citation associated with an attribute.
+     Retrieve all polygon annotations for a PDF citation based on the PDF citation ID.
 
     Args:
         dataspace_id (UUID):
-        attribute_category (GetAttributePdfCitationDataspaceEntityType):
+        attribute_category (GetPdfCitationPolygonAnnotationDataspaceEntityType):
         attribute_id (UUID):
         pdf_citation_id (UUID):
+        page (int | Unset):  Default: 1.
+        page_size (int | None | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        PDFCitationSchemaOut
+        PagedPDFCitationPolygonAnnotationGetOut
     """
 
     return sync_detailed(
@@ -127,33 +158,39 @@ def sync(
         attribute_id=attribute_id,
         pdf_citation_id=pdf_citation_id,
         client=client,
+        page=page,
+        page_size=page_size,
     ).parsed
 
 
 async def asyncio_detailed(
     dataspace_id: UUID,
-    attribute_category: GetAttributePdfCitationDataspaceEntityType,
+    attribute_category: GetPdfCitationPolygonAnnotationDataspaceEntityType,
     attribute_id: UUID,
     pdf_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[PDFCitationSchemaOut]:
-    """Get a PDF citation by ID
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
+) -> Response[PagedPDFCitationPolygonAnnotationGetOut]:
+    """Get PDF citation polygons
 
-     Retrieve the details of a specific PDF citation associated with an attribute.
+     Retrieve all polygon annotations for a PDF citation based on the PDF citation ID.
 
     Args:
         dataspace_id (UUID):
-        attribute_category (GetAttributePdfCitationDataspaceEntityType):
+        attribute_category (GetPdfCitationPolygonAnnotationDataspaceEntityType):
         attribute_id (UUID):
         pdf_citation_id (UUID):
+        page (int | Unset):  Default: 1.
+        page_size (int | None | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PDFCitationSchemaOut]
+        Response[PagedPDFCitationPolygonAnnotationGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -161,6 +198,8 @@ async def asyncio_detailed(
         attribute_category=attribute_category,
         attribute_id=attribute_id,
         pdf_citation_id=pdf_citation_id,
+        page=page,
+        page_size=page_size,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -170,28 +209,32 @@ async def asyncio_detailed(
 
 async def asyncio(
     dataspace_id: UUID,
-    attribute_category: GetAttributePdfCitationDataspaceEntityType,
+    attribute_category: GetPdfCitationPolygonAnnotationDataspaceEntityType,
     attribute_id: UUID,
     pdf_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> PDFCitationSchemaOut | None:
-    """Get a PDF citation by ID
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
+) -> PagedPDFCitationPolygonAnnotationGetOut | None:
+    """Get PDF citation polygons
 
-     Retrieve the details of a specific PDF citation associated with an attribute.
+     Retrieve all polygon annotations for a PDF citation based on the PDF citation ID.
 
     Args:
         dataspace_id (UUID):
-        attribute_category (GetAttributePdfCitationDataspaceEntityType):
+        attribute_category (GetPdfCitationPolygonAnnotationDataspaceEntityType):
         attribute_id (UUID):
         pdf_citation_id (UUID):
+        page (int | Unset):  Default: 1.
+        page_size (int | None | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        PDFCitationSchemaOut
+        PagedPDFCitationPolygonAnnotationGetOut
     """
 
     return (
@@ -201,5 +244,7 @@ async def asyncio(
             attribute_id=attribute_id,
             pdf_citation_id=pdf_citation_id,
             client=client,
+            page=page,
+            page_size=page_size,
         )
     ).parsed

@@ -7,6 +7,8 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.dataspace_entity_type import DataspaceEntityType
+
 T = TypeVar("T", bound="PDFCitationPath")
 
 
@@ -16,11 +18,13 @@ class PDFCitationPath:
     Attributes:
         attribute_id (UUID):
         dataspace_id (UUID):
+        attribute_category (DataspaceEntityType):
         pdf_citation_id (UUID):
     """
 
     attribute_id: UUID
     dataspace_id: UUID
+    attribute_category: DataspaceEntityType
     pdf_citation_id: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -28,6 +32,8 @@ class PDFCitationPath:
         attribute_id = str(self.attribute_id)
 
         dataspace_id = str(self.dataspace_id)
+
+        attribute_category = self.attribute_category.value
 
         pdf_citation_id = str(self.pdf_citation_id)
 
@@ -37,6 +43,7 @@ class PDFCitationPath:
             {
                 "attribute_id": attribute_id,
                 "dataspace_id": dataspace_id,
+                "attribute_category": attribute_category,
                 "pdf_citation_id": pdf_citation_id,
             }
         )
@@ -50,11 +57,14 @@ class PDFCitationPath:
 
         dataspace_id = UUID(d.pop("dataspace_id"))
 
+        attribute_category = DataspaceEntityType(d.pop("attribute_category"))
+
         pdf_citation_id = UUID(d.pop("pdf_citation_id"))
 
         pdf_citation_path = cls(
             attribute_id=attribute_id,
             dataspace_id=dataspace_id,
+            attribute_category=attribute_category,
             pdf_citation_id=pdf_citation_id,
         )
 

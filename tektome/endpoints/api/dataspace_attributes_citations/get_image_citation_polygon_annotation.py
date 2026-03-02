@@ -7,40 +7,24 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.citations_sort_keys import CitationsSortKeys
-from ...models.get_attribute_citations_dataspace_entity_type import GetAttributeCitationsDataspaceEntityType
-from ...models.get_attribute_citations_order_by import GetAttributeCitationsOrderBy
-from ...models.paged_citations import PagedCitations
+from ...models.get_image_citation_polygon_annotation_dataspace_entity_type import (
+    GetImageCitationPolygonAnnotationDataspaceEntityType,
+)
+from ...models.paged_image_citation_polygon_annotation_get_out import PagedImageCitationPolygonAnnotationGetOut
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     dataspace_id: UUID,
-    attribute_category: GetAttributeCitationsDataspaceEntityType,
+    attribute_category: GetImageCitationPolygonAnnotationDataspaceEntityType,
     attribute_id: UUID,
+    image_citation_id: UUID,
     *,
-    sort_by: CitationsSortKeys | None | Unset = UNSET,
-    order_by: GetAttributeCitationsOrderBy | Unset = GetAttributeCitationsOrderBy.DESC,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
-
-    json_sort_by: None | str | Unset
-    if isinstance(sort_by, Unset):
-        json_sort_by = UNSET
-    elif isinstance(sort_by, CitationsSortKeys):
-        json_sort_by = sort_by.value
-    else:
-        json_sort_by = sort_by
-    params["sort_by"] = json_sort_by
-
-    json_order_by: str | Unset = UNSET
-    if not isinstance(order_by, Unset):
-        json_order_by = order_by.value
-
-    params["order_by"] = json_order_by
 
     params["page"] = page
 
@@ -55,10 +39,11 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/api/core/dataspaces/{dataspace_id}/attributes/{attribute_category}/{attribute_id}/citations/".format(
+        "url": "/api/core/dataspaces/{dataspace_id}/attributes/{attribute_category}/{attribute_id}/image-citations/{image_citation_id}/polygon-annotations/".format(
             dataspace_id=quote(str(dataspace_id), safe=""),
             attribute_category=quote(str(attribute_category), safe=""),
             attribute_id=quote(str(attribute_id), safe=""),
+            image_citation_id=quote(str(image_citation_id), safe=""),
         ),
         "params": params,
     }
@@ -66,9 +51,11 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> PagedCitations | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> PagedImageCitationPolygonAnnotationGetOut | None:
     if response.status_code == 200:
-        response_200 = PagedCitations.from_dict(response.json())
+        response_200 = PagedImageCitationPolygonAnnotationGetOut.from_dict(response.json())
 
         return response_200
 
@@ -78,7 +65,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[PagedCitations]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[PagedImageCitationPolygonAnnotationGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -89,27 +78,23 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def sync_detailed(
     dataspace_id: UUID,
-    attribute_category: GetAttributeCitationsDataspaceEntityType,
+    attribute_category: GetImageCitationPolygonAnnotationDataspaceEntityType,
     attribute_id: UUID,
+    image_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    sort_by: CitationsSortKeys | None | Unset = UNSET,
-    order_by: GetAttributeCitationsOrderBy | Unset = GetAttributeCitationsOrderBy.DESC,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[PagedCitations]:
-    """List all citations for an attribute
+) -> Response[PagedImageCitationPolygonAnnotationGetOut]:
+    """Get image citation polygons
 
-     Retrieve all citations (PDF, raw text, BIM, image, and attribute) associated with the specified
-    attribute.
+     Retrieve all polygon annotations for an image citation based on the image citation ID.
 
     Args:
         dataspace_id (UUID):
-        attribute_category (GetAttributeCitationsDataspaceEntityType):
+        attribute_category (GetImageCitationPolygonAnnotationDataspaceEntityType):
         attribute_id (UUID):
-        sort_by (CitationsSortKeys | None | Unset):
-        order_by (GetAttributeCitationsOrderBy | Unset):  Default:
-            GetAttributeCitationsOrderBy.DESC.
+        image_citation_id (UUID):
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
 
@@ -118,15 +103,14 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PagedCitations]
+        Response[PagedImageCitationPolygonAnnotationGetOut]
     """
 
     kwargs = _get_kwargs(
         dataspace_id=dataspace_id,
         attribute_category=attribute_category,
         attribute_id=attribute_id,
-        sort_by=sort_by,
-        order_by=order_by,
+        image_citation_id=image_citation_id,
         page=page,
         page_size=page_size,
     )
@@ -140,27 +124,23 @@ def sync_detailed(
 
 def sync(
     dataspace_id: UUID,
-    attribute_category: GetAttributeCitationsDataspaceEntityType,
+    attribute_category: GetImageCitationPolygonAnnotationDataspaceEntityType,
     attribute_id: UUID,
+    image_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    sort_by: CitationsSortKeys | None | Unset = UNSET,
-    order_by: GetAttributeCitationsOrderBy | Unset = GetAttributeCitationsOrderBy.DESC,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> PagedCitations | None:
-    """List all citations for an attribute
+) -> PagedImageCitationPolygonAnnotationGetOut | None:
+    """Get image citation polygons
 
-     Retrieve all citations (PDF, raw text, BIM, image, and attribute) associated with the specified
-    attribute.
+     Retrieve all polygon annotations for an image citation based on the image citation ID.
 
     Args:
         dataspace_id (UUID):
-        attribute_category (GetAttributeCitationsDataspaceEntityType):
+        attribute_category (GetImageCitationPolygonAnnotationDataspaceEntityType):
         attribute_id (UUID):
-        sort_by (CitationsSortKeys | None | Unset):
-        order_by (GetAttributeCitationsOrderBy | Unset):  Default:
-            GetAttributeCitationsOrderBy.DESC.
+        image_citation_id (UUID):
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
 
@@ -169,16 +149,15 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        PagedCitations
+        PagedImageCitationPolygonAnnotationGetOut
     """
 
     return sync_detailed(
         dataspace_id=dataspace_id,
         attribute_category=attribute_category,
         attribute_id=attribute_id,
+        image_citation_id=image_citation_id,
         client=client,
-        sort_by=sort_by,
-        order_by=order_by,
         page=page,
         page_size=page_size,
     ).parsed
@@ -186,27 +165,23 @@ def sync(
 
 async def asyncio_detailed(
     dataspace_id: UUID,
-    attribute_category: GetAttributeCitationsDataspaceEntityType,
+    attribute_category: GetImageCitationPolygonAnnotationDataspaceEntityType,
     attribute_id: UUID,
+    image_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    sort_by: CitationsSortKeys | None | Unset = UNSET,
-    order_by: GetAttributeCitationsOrderBy | Unset = GetAttributeCitationsOrderBy.DESC,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[PagedCitations]:
-    """List all citations for an attribute
+) -> Response[PagedImageCitationPolygonAnnotationGetOut]:
+    """Get image citation polygons
 
-     Retrieve all citations (PDF, raw text, BIM, image, and attribute) associated with the specified
-    attribute.
+     Retrieve all polygon annotations for an image citation based on the image citation ID.
 
     Args:
         dataspace_id (UUID):
-        attribute_category (GetAttributeCitationsDataspaceEntityType):
+        attribute_category (GetImageCitationPolygonAnnotationDataspaceEntityType):
         attribute_id (UUID):
-        sort_by (CitationsSortKeys | None | Unset):
-        order_by (GetAttributeCitationsOrderBy | Unset):  Default:
-            GetAttributeCitationsOrderBy.DESC.
+        image_citation_id (UUID):
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
 
@@ -215,15 +190,14 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PagedCitations]
+        Response[PagedImageCitationPolygonAnnotationGetOut]
     """
 
     kwargs = _get_kwargs(
         dataspace_id=dataspace_id,
         attribute_category=attribute_category,
         attribute_id=attribute_id,
-        sort_by=sort_by,
-        order_by=order_by,
+        image_citation_id=image_citation_id,
         page=page,
         page_size=page_size,
     )
@@ -235,27 +209,23 @@ async def asyncio_detailed(
 
 async def asyncio(
     dataspace_id: UUID,
-    attribute_category: GetAttributeCitationsDataspaceEntityType,
+    attribute_category: GetImageCitationPolygonAnnotationDataspaceEntityType,
     attribute_id: UUID,
+    image_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    sort_by: CitationsSortKeys | None | Unset = UNSET,
-    order_by: GetAttributeCitationsOrderBy | Unset = GetAttributeCitationsOrderBy.DESC,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> PagedCitations | None:
-    """List all citations for an attribute
+) -> PagedImageCitationPolygonAnnotationGetOut | None:
+    """Get image citation polygons
 
-     Retrieve all citations (PDF, raw text, BIM, image, and attribute) associated with the specified
-    attribute.
+     Retrieve all polygon annotations for an image citation based on the image citation ID.
 
     Args:
         dataspace_id (UUID):
-        attribute_category (GetAttributeCitationsDataspaceEntityType):
+        attribute_category (GetImageCitationPolygonAnnotationDataspaceEntityType):
         attribute_id (UUID):
-        sort_by (CitationsSortKeys | None | Unset):
-        order_by (GetAttributeCitationsOrderBy | Unset):  Default:
-            GetAttributeCitationsOrderBy.DESC.
+        image_citation_id (UUID):
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
 
@@ -264,7 +234,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        PagedCitations
+        PagedImageCitationPolygonAnnotationGetOut
     """
 
     return (
@@ -272,9 +242,8 @@ async def asyncio(
             dataspace_id=dataspace_id,
             attribute_category=attribute_category,
             attribute_id=attribute_id,
+            image_citation_id=image_citation_id,
             client=client,
-            sort_by=sort_by,
-            order_by=order_by,
             page=page,
             page_size=page_size,
         )

@@ -7,22 +7,25 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="GetRawTextCitationPath")
+from ..models.dataspace_entity_type import DataspaceEntityType
+
+T = TypeVar("T", bound="ImageCitationAnnotatedPolygonPath")
 
 
 @_attrs_define
-class GetRawTextCitationPath:
-    """Path schema for retrieving a raw text citation.
-
+class ImageCitationAnnotatedPolygonPath:
+    """
     Attributes:
         attribute_id (UUID):
         dataspace_id (UUID):
-        rawtext_citation_id (UUID):
+        attribute_category (DataspaceEntityType):
+        image_citation_id (UUID):
     """
 
     attribute_id: UUID
     dataspace_id: UUID
-    rawtext_citation_id: UUID
+    attribute_category: DataspaceEntityType
+    image_citation_id: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -30,7 +33,9 @@ class GetRawTextCitationPath:
 
         dataspace_id = str(self.dataspace_id)
 
-        rawtext_citation_id = str(self.rawtext_citation_id)
+        attribute_category = self.attribute_category.value
+
+        image_citation_id = str(self.image_citation_id)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -38,7 +43,8 @@ class GetRawTextCitationPath:
             {
                 "attribute_id": attribute_id,
                 "dataspace_id": dataspace_id,
-                "rawtext_citation_id": rawtext_citation_id,
+                "attribute_category": attribute_category,
+                "image_citation_id": image_citation_id,
             }
         )
 
@@ -51,16 +57,19 @@ class GetRawTextCitationPath:
 
         dataspace_id = UUID(d.pop("dataspace_id"))
 
-        rawtext_citation_id = UUID(d.pop("rawtext_citation_id"))
+        attribute_category = DataspaceEntityType(d.pop("attribute_category"))
 
-        get_raw_text_citation_path = cls(
+        image_citation_id = UUID(d.pop("image_citation_id"))
+
+        image_citation_annotated_polygon_path = cls(
             attribute_id=attribute_id,
             dataspace_id=dataspace_id,
-            rawtext_citation_id=rawtext_citation_id,
+            attribute_category=attribute_category,
+            image_citation_id=image_citation_id,
         )
 
-        get_raw_text_citation_path.additional_properties = d
-        return get_raw_text_citation_path
+        image_citation_annotated_polygon_path.additional_properties = d
+        return image_citation_annotated_polygon_path
 
     @property
     def additional_keys(self) -> list[str]:
