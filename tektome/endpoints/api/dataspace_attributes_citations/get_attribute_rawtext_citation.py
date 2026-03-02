@@ -7,20 +7,25 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.get_attribute_rawtext_citation_dataspace_entity_type import (
+    GetAttributeRawtextCitationDataspaceEntityType,
+)
 from ...models.raw_text_citation_schema_out import RawTextCitationSchemaOut
 from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
+    attribute_category: GetAttributeRawtextCitationDataspaceEntityType,
     attribute_id: UUID,
     rawtext_citation_id: UUID,
 ) -> dict[str, Any]:
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/api/core/dataspaces/{dataspace_id}/attributes/{attribute_id}/rawtext-citations/{rawtext_citation_id}/".format(
+        "url": "/api/core/dataspaces/{dataspace_id}/attributes/{attribute_category}/{attribute_id}/rawtext-citations/{rawtext_citation_id}/".format(
             dataspace_id=quote(str(dataspace_id), safe=""),
+            attribute_category=quote(str(attribute_category), safe=""),
             attribute_id=quote(str(attribute_id), safe=""),
             rawtext_citation_id=quote(str(rawtext_citation_id), safe=""),
         ),
@@ -56,6 +61,7 @@ def _build_response(
 
 def sync_detailed(
     dataspace_id: UUID,
+    attribute_category: GetAttributeRawtextCitationDataspaceEntityType,
     attribute_id: UUID,
     rawtext_citation_id: UUID,
     *,
@@ -67,6 +73,7 @@ def sync_detailed(
 
     Args:
         dataspace_id (UUID):
+        attribute_category (GetAttributeRawtextCitationDataspaceEntityType):
         attribute_id (UUID):
         rawtext_citation_id (UUID):
 
@@ -80,6 +87,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         dataspace_id=dataspace_id,
+        attribute_category=attribute_category,
         attribute_id=attribute_id,
         rawtext_citation_id=rawtext_citation_id,
     )
@@ -93,6 +101,7 @@ def sync_detailed(
 
 def sync(
     dataspace_id: UUID,
+    attribute_category: GetAttributeRawtextCitationDataspaceEntityType,
     attribute_id: UUID,
     rawtext_citation_id: UUID,
     *,
@@ -104,6 +113,7 @@ def sync(
 
     Args:
         dataspace_id (UUID):
+        attribute_category (GetAttributeRawtextCitationDataspaceEntityType):
         attribute_id (UUID):
         rawtext_citation_id (UUID):
 
@@ -117,6 +127,7 @@ def sync(
 
     return sync_detailed(
         dataspace_id=dataspace_id,
+        attribute_category=attribute_category,
         attribute_id=attribute_id,
         rawtext_citation_id=rawtext_citation_id,
         client=client,
@@ -125,6 +136,7 @@ def sync(
 
 async def asyncio_detailed(
     dataspace_id: UUID,
+    attribute_category: GetAttributeRawtextCitationDataspaceEntityType,
     attribute_id: UUID,
     rawtext_citation_id: UUID,
     *,
@@ -136,6 +148,7 @@ async def asyncio_detailed(
 
     Args:
         dataspace_id (UUID):
+        attribute_category (GetAttributeRawtextCitationDataspaceEntityType):
         attribute_id (UUID):
         rawtext_citation_id (UUID):
 
@@ -149,6 +162,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         dataspace_id=dataspace_id,
+        attribute_category=attribute_category,
         attribute_id=attribute_id,
         rawtext_citation_id=rawtext_citation_id,
     )
@@ -160,6 +174,7 @@ async def asyncio_detailed(
 
 async def asyncio(
     dataspace_id: UUID,
+    attribute_category: GetAttributeRawtextCitationDataspaceEntityType,
     attribute_id: UUID,
     rawtext_citation_id: UUID,
     *,
@@ -171,6 +186,7 @@ async def asyncio(
 
     Args:
         dataspace_id (UUID):
+        attribute_category (GetAttributeRawtextCitationDataspaceEntityType):
         attribute_id (UUID):
         rawtext_citation_id (UUID):
 
@@ -185,6 +201,7 @@ async def asyncio(
     return (
         await asyncio_detailed(
             dataspace_id=dataspace_id,
+            attribute_category=attribute_category,
             attribute_id=attribute_id,
             rawtext_citation_id=rawtext_citation_id,
             client=client,

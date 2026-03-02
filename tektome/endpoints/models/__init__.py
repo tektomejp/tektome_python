@@ -150,6 +150,7 @@ from .citation_category_path import CitationCategoryPath
 from .citations_query_in import CitationsQueryIn
 from .citations_query_in_order_by import CitationsQueryInOrderBy
 from .citations_sort_keys import CitationsSortKeys
+from .cited_annotated_polygon_path import CitedAnnotatedPolygonPath
 from .cited_bim_element_schema_out import CitedBIMElementSchemaOut
 from .component_schema_path_in import ComponentSchemaPathIn
 from .convert_ifc_to_bim_elements_file_params import ConvertIfcToBimElementsFileParams
@@ -309,6 +310,7 @@ from .delete_attribute_pdf_citation_dataspace_entity_type import DeleteAttribute
 from .delete_attribute_rawtext_citation_dataspace_entity_type import DeleteAttributeRawtextCitationDataspaceEntityType
 from .delete_bim_element_bim_element_type_path import DeleteBimElementBimElementTypePath
 from .delete_capture_section_component_path import DeleteCaptureSectionComponentPath
+from .delete_citation_polygon_annotation_dataspace_entity_type import DeleteCitationPolygonAnnotationDataspaceEntityType
 from .delete_folder_resources_schema import DeleteFolderResourcesSchema
 from .delete_general_attribute_attribute_object_types import DeleteGeneralAttributeAttributeObjectTypes
 from .delete_general_lawtalk_attribute_attribute_object_types import DeleteGeneralLawtalkAttributeAttributeObjectTypes
@@ -446,13 +448,16 @@ from .generic_http_error import GenericHttpError
 from .geometry import Geometry
 from .get_api_key_filter_in import GetAPIKeyFilterIn
 from .get_api_key_get_out import GetAPIKeyGetOut
+from .get_attribute_bim_citation_dataspace_entity_type import GetAttributeBimCitationDataspaceEntityType
+from .get_attribute_citations_dataspace_entity_type import GetAttributeCitationsDataspaceEntityType
 from .get_attribute_citations_order_by import GetAttributeCitationsOrderBy
+from .get_attribute_image_citation_dataspace_entity_type import GetAttributeImageCitationDataspaceEntityType
+from .get_attribute_pdf_citation_dataspace_entity_type import GetAttributePdfCitationDataspaceEntityType
+from .get_attribute_rawtext_citation_dataspace_entity_type import GetAttributeRawtextCitationDataspaceEntityType
 from .get_batch_bim_elements_bim_element_type_path import GetBatchBimElementsBimElementTypePath
-from .get_bim_citation_path import GetBIMCitationPath
 from .get_bim_element_bim_element_type_path import GetBimElementBimElementTypePath
 from .get_capture_section_component_path import GetCaptureSectionComponentPath
 from .get_capture_section_component_query import GetCaptureSectionComponentQuery
-from .get_citation_path import GetCitationPath
 from .get_dataspace_execution_groups_execution_group_status import GetDataspaceExecutionGroupsExecutionGroupStatus
 from .get_dataspace_execution_groups_execution_review_status import GetDataspaceExecutionGroupsExecutionReviewStatus
 from .get_dataspace_execution_groups_process_type_choices import GetDataspaceExecutionGroupsProcessTypeChoices
@@ -468,15 +473,22 @@ from .get_execution_approvals_process_type_choices import GetExecutionApprovalsP
 from .get_extracted_page_get_out import GetExtractedPageGetOut
 from .get_extracted_page_get_out_tables_type_0 import GetExtractedPageGetOutTablesType0
 from .get_extracted_result_get_out import GetExtractedResultGetOut
-from .get_image_citation_path import GetImageCitationPath
+from .get_image_citation_polygon_annotation_dataspace_entity_type import (
+    GetImageCitationPolygonAnnotationDataspaceEntityType,
+)
 from .get_initialized_page_path import GetInitializedPagePath
-from .get_raw_text_citation_path import GetRawTextCitationPath
+from .get_pdf_citation_polygon_annotation_dataspace_entity_type import (
+    GetPdfCitationPolygonAnnotationDataspaceEntityType,
+)
 from .get_requirement_items_response_200_type_1 import GetRequirementItemsResponse200Type1
 from .get_supported_dr_models_get_out import GetSupportedDRModelsGetOut
 from .get_ttos_job_response import GetTtosJobResponse
 from .get_users_info_response import GetUsersInfoResponse
+from .image_citation_annotated_polygon_path import ImageCitationAnnotatedPolygonPath
 from .image_citation_patch_in_patch import ImageCitationPatchInPatch
 from .image_citation_path import ImageCitationPath
+from .image_citation_polygon_annotation_get_out import ImageCitationPolygonAnnotationGetOut
+from .image_citation_polygon_annotation_post_in import ImageCitationPolygonAnnotationPostIn
 from .image_citation_post_in import ImageCitationPostIn
 from .image_citation_schema_out import ImageCitationSchemaOut
 from .image_citations_get_out import ImageCitationsGetOut
@@ -614,6 +626,7 @@ from .paged_execution_group_get_out import PagedExecutionGroupGetOut
 from .paged_executions_get_out import PagedExecutionsGetOut
 from .paged_folder_metadata_out import PagedFolderMetadataOut
 from .paged_get_api_key_get_out import PagedGetAPIKeyGetOut
+from .paged_image_citation_polygon_annotation_get_out import PagedImageCitationPolygonAnnotationGetOut
 from .paged_lawtalk_project_resource_get_out import PagedLawtalkProjectResourceGetOut
 from .paged_lawtalk_project_schema_get_out import PagedLawtalkProjectSchemaGetOut
 from .paged_lawtalk_requirement_item_table_row_schema import PagedLawtalkRequirementItemTableRowSchema
@@ -621,6 +634,7 @@ from .paged_llm_usage_report_get_out import PagedLLMUsageReportGetOut
 from .paged_notification_get_out import PagedNotificationGetOut
 from .paged_organizations_get_out import PagedOrganizationsGetOut
 from .paged_payment_record_out import PagedPaymentRecordOut
+from .paged_pdf_citation_polygon_annotation_get_out import PagedPDFCitationPolygonAnnotationGetOut
 from .paged_process_out import PagedProcessOut
 from .paged_project_members_get_out import PagedProjectMembersGetOut
 from .paged_project_requirement_item_column_config_out import PagedProjectRequirementItemColumnConfigOut
@@ -649,9 +663,12 @@ from .payment_record_out_base import PaymentRecordOutBase
 from .payment_record_patch_in_patch import PaymentRecordPatchInPatch
 from .payment_record_patch_path import PaymentRecordPatchPath
 from .payment_record_post_in import PaymentRecordPostIn
+from .pdf_citation_annotated_polygon_path import PDFCitationAnnotatedPolygonPath
 from .pdf_citation_annotated_polygon_schema_out import PDFCitationAnnotatedPolygonSchemaOut
 from .pdf_citation_patch_in_patch import PDFCitationPatchInPatch
 from .pdf_citation_path import PDFCitationPath
+from .pdf_citation_polygon_annotation_get_out import PDFCitationPolygonAnnotationGetOut
+from .pdf_citation_polygon_annotation_post_in import PDFCitationPolygonAnnotationPostIn
 from .pdf_citation_post_in import PDFCitationPostIn
 from .pdf_citation_schema_out import PDFCitationSchemaOut
 from .pdf_citations_get_out import PDFCitationsGetOut
@@ -661,7 +678,13 @@ from .polygon_attribute_schema_in import PolygonAttributeSchemaIn
 from .polygon_attribute_schema_out import PolygonAttributeSchemaOut
 from .polygon_attribute_schema_out_value_type_0 import PolygonAttributeSchemaOutValueType0
 from .positional_text import PositionalText
+from .post_image_citation_polygon_annotation_dataspace_entity_type import (
+    PostImageCitationPolygonAnnotationDataspaceEntityType,
+)
 from .post_pdf_citation_path import PostPDFCitationPath
+from .post_pdf_citation_polygon_annotation_dataspace_entity_type import (
+    PostPdfCitationPolygonAnnotationDataspaceEntityType,
+)
 from .process_filter_in import ProcessFilterIn
 from .process_filter_options import ProcessFilterOptions
 from .process_out import ProcessOut
@@ -1164,6 +1187,7 @@ __all__ = (
     "CitationsQueryIn",
     "CitationsQueryInOrderBy",
     "CitationsSortKeys",
+    "CitedAnnotatedPolygonPath",
     "CitedBIMElementSchemaOut",
     "ComponentSchemaPathIn",
     "ConvertIfcToBimElementsFileParams",
@@ -1293,6 +1317,7 @@ __all__ = (
     "DeleteAttributeRawtextCitationDataspaceEntityType",
     "DeleteBimElementBimElementTypePath",
     "DeleteCaptureSectionComponentPath",
+    "DeleteCitationPolygonAnnotationDataspaceEntityType",
     "DeleteFolderResourcesSchema",
     "DeleteGeneralAttributeAttributeObjectTypes",
     "DeleteGeneralLawtalkAttributeAttributeObjectTypes",
@@ -1428,13 +1453,16 @@ __all__ = (
     "Geometry",
     "GetAPIKeyFilterIn",
     "GetAPIKeyGetOut",
+    "GetAttributeBimCitationDataspaceEntityType",
+    "GetAttributeCitationsDataspaceEntityType",
     "GetAttributeCitationsOrderBy",
+    "GetAttributeImageCitationDataspaceEntityType",
+    "GetAttributePdfCitationDataspaceEntityType",
+    "GetAttributeRawtextCitationDataspaceEntityType",
     "GetBatchBimElementsBimElementTypePath",
-    "GetBIMCitationPath",
     "GetBimElementBimElementTypePath",
     "GetCaptureSectionComponentPath",
     "GetCaptureSectionComponentQuery",
-    "GetCitationPath",
     "GetDataspaceExecutionGroupsExecutionGroupStatus",
     "GetDataspaceExecutionGroupsExecutionReviewStatus",
     "GetDataspaceExecutionGroupsProcessTypeChoices",
@@ -1450,15 +1478,18 @@ __all__ = (
     "GetExtractedPageGetOut",
     "GetExtractedPageGetOutTablesType0",
     "GetExtractedResultGetOut",
-    "GetImageCitationPath",
+    "GetImageCitationPolygonAnnotationDataspaceEntityType",
     "GetInitializedPagePath",
-    "GetRawTextCitationPath",
+    "GetPdfCitationPolygonAnnotationDataspaceEntityType",
     "GetRequirementItemsResponse200Type1",
     "GetSupportedDRModelsGetOut",
     "GetTtosJobResponse",
     "GetUsersInfoResponse",
+    "ImageCitationAnnotatedPolygonPath",
     "ImageCitationPatchInPatch",
     "ImageCitationPath",
+    "ImageCitationPolygonAnnotationGetOut",
+    "ImageCitationPolygonAnnotationPostIn",
     "ImageCitationPostIn",
     "ImageCitationSchemaOut",
     "ImageCitationsGetOut",
@@ -1592,6 +1623,7 @@ __all__ = (
     "PagedExecutionsGetOut",
     "PagedFolderMetadataOut",
     "PagedGetAPIKeyGetOut",
+    "PagedImageCitationPolygonAnnotationGetOut",
     "PagedLawtalkProjectResourceGetOut",
     "PagedLawtalkProjectSchemaGetOut",
     "PagedLawtalkRequirementItemTableRowSchema",
@@ -1599,6 +1631,7 @@ __all__ = (
     "PagedNotificationGetOut",
     "PagedOrganizationsGetOut",
     "PagedPaymentRecordOut",
+    "PagedPDFCitationPolygonAnnotationGetOut",
     "PagedProcessOut",
     "PagedProjectMembersGetOut",
     "PagedProjectRequirementItemColumnConfigOut",
@@ -1625,9 +1658,12 @@ __all__ = (
     "PaymentRecordPatchInPatch",
     "PaymentRecordPatchPath",
     "PaymentRecordPostIn",
+    "PDFCitationAnnotatedPolygonPath",
     "PDFCitationAnnotatedPolygonSchemaOut",
     "PDFCitationPatchInPatch",
     "PDFCitationPath",
+    "PDFCitationPolygonAnnotationGetOut",
+    "PDFCitationPolygonAnnotationPostIn",
     "PDFCitationPostIn",
     "PDFCitationSchemaOut",
     "PDFCitationsGetOut",
@@ -1637,7 +1673,9 @@ __all__ = (
     "PolygonAttributeSchemaOut",
     "PolygonAttributeSchemaOutValueType0",
     "PositionalText",
+    "PostImageCitationPolygonAnnotationDataspaceEntityType",
     "PostPDFCitationPath",
+    "PostPdfCitationPolygonAnnotationDataspaceEntityType",
     "ProcessFilterIn",
     "ProcessFilterOptions",
     "ProcessOut",

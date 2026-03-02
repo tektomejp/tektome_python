@@ -7,22 +7,25 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="GetBIMCitationPath")
+from ..models.dataspace_entity_type import DataspaceEntityType
+
+T = TypeVar("T", bound="PDFCitationAnnotatedPolygonPath")
 
 
 @_attrs_define
-class GetBIMCitationPath:
-    """Path schema for retrieving a BIM citation.
-
+class PDFCitationAnnotatedPolygonPath:
+    """
     Attributes:
         attribute_id (UUID):
         dataspace_id (UUID):
-        bim_citation_id (UUID):
+        attribute_category (DataspaceEntityType):
+        pdf_citation_id (UUID):
     """
 
     attribute_id: UUID
     dataspace_id: UUID
-    bim_citation_id: UUID
+    attribute_category: DataspaceEntityType
+    pdf_citation_id: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -30,7 +33,9 @@ class GetBIMCitationPath:
 
         dataspace_id = str(self.dataspace_id)
 
-        bim_citation_id = str(self.bim_citation_id)
+        attribute_category = self.attribute_category.value
+
+        pdf_citation_id = str(self.pdf_citation_id)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -38,7 +43,8 @@ class GetBIMCitationPath:
             {
                 "attribute_id": attribute_id,
                 "dataspace_id": dataspace_id,
-                "bim_citation_id": bim_citation_id,
+                "attribute_category": attribute_category,
+                "pdf_citation_id": pdf_citation_id,
             }
         )
 
@@ -51,16 +57,19 @@ class GetBIMCitationPath:
 
         dataspace_id = UUID(d.pop("dataspace_id"))
 
-        bim_citation_id = UUID(d.pop("bim_citation_id"))
+        attribute_category = DataspaceEntityType(d.pop("attribute_category"))
 
-        get_bim_citation_path = cls(
+        pdf_citation_id = UUID(d.pop("pdf_citation_id"))
+
+        pdf_citation_annotated_polygon_path = cls(
             attribute_id=attribute_id,
             dataspace_id=dataspace_id,
-            bim_citation_id=bim_citation_id,
+            attribute_category=attribute_category,
+            pdf_citation_id=pdf_citation_id,
         )
 
-        get_bim_citation_path.additional_properties = d
-        return get_bim_citation_path
+        pdf_citation_annotated_polygon_path.additional_properties = d
+        return pdf_citation_annotated_polygon_path
 
     @property
     def additional_keys(self) -> list[str]:

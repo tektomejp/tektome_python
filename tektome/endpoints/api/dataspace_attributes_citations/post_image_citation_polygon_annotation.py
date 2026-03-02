@@ -7,36 +7,49 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bim_citation_schema_out import BIMCitationSchemaOut
-from ...models.get_attribute_bim_citation_dataspace_entity_type import GetAttributeBimCitationDataspaceEntityType
+from ...models.image_citation_polygon_annotation_get_out import ImageCitationPolygonAnnotationGetOut
+from ...models.image_citation_polygon_annotation_post_in import ImageCitationPolygonAnnotationPostIn
+from ...models.post_image_citation_polygon_annotation_dataspace_entity_type import (
+    PostImageCitationPolygonAnnotationDataspaceEntityType,
+)
 from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
-    attribute_category: GetAttributeBimCitationDataspaceEntityType,
+    attribute_category: PostImageCitationPolygonAnnotationDataspaceEntityType,
     attribute_id: UUID,
-    bim_citation_id: UUID,
+    image_citation_id: UUID,
+    *,
+    body: ImageCitationPolygonAnnotationPostIn,
 ) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": "/api/core/dataspaces/{dataspace_id}/attributes/{attribute_category}/{attribute_id}/bim-citations/{bim_citation_id}/".format(
+        "method": "post",
+        "url": "/api/core/dataspaces/{dataspace_id}/attributes/{attribute_category}/{attribute_id}/image-citations/{image_citation_id}/polygon-annotations/".format(
             dataspace_id=quote(str(dataspace_id), safe=""),
             attribute_category=quote(str(attribute_category), safe=""),
             attribute_id=quote(str(attribute_id), safe=""),
-            bim_citation_id=quote(str(bim_citation_id), safe=""),
+            image_citation_id=quote(str(image_citation_id), safe=""),
         ),
     }
 
+    _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> BIMCitationSchemaOut | None:
-    if response.status_code == 200:
-        response_200 = BIMCitationSchemaOut.from_dict(response.json())
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ImageCitationPolygonAnnotationGetOut | None:
+    if response.status_code == 201:
+        response_201 = ImageCitationPolygonAnnotationGetOut.from_dict(response.json())
 
-        return response_200
+        return response_201
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -46,7 +59,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BIMCitationSchemaOut]:
+) -> Response[ImageCitationPolygonAnnotationGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,35 +70,38 @@ def _build_response(
 
 def sync_detailed(
     dataspace_id: UUID,
-    attribute_category: GetAttributeBimCitationDataspaceEntityType,
+    attribute_category: PostImageCitationPolygonAnnotationDataspaceEntityType,
     attribute_id: UUID,
-    bim_citation_id: UUID,
+    image_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[BIMCitationSchemaOut]:
-    """Get a BIM citation by ID
+    body: ImageCitationPolygonAnnotationPostIn,
+) -> Response[ImageCitationPolygonAnnotationGetOut]:
+    """Add a polygon annotation to the image citation.
 
-     Retrieve the details of a specific BIM citation associated with an attribute.
+     Creates a new image citation polygon
 
     Args:
         dataspace_id (UUID):
-        attribute_category (GetAttributeBimCitationDataspaceEntityType):
+        attribute_category (PostImageCitationPolygonAnnotationDataspaceEntityType):
         attribute_id (UUID):
-        bim_citation_id (UUID):
+        image_citation_id (UUID):
+        body (ImageCitationPolygonAnnotationPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BIMCitationSchemaOut]
+        Response[ImageCitationPolygonAnnotationGetOut]
     """
 
     kwargs = _get_kwargs(
         dataspace_id=dataspace_id,
         attribute_category=attribute_category,
         attribute_id=attribute_id,
-        bim_citation_id=bim_citation_id,
+        image_citation_id=image_citation_id,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -97,70 +113,76 @@ def sync_detailed(
 
 def sync(
     dataspace_id: UUID,
-    attribute_category: GetAttributeBimCitationDataspaceEntityType,
+    attribute_category: PostImageCitationPolygonAnnotationDataspaceEntityType,
     attribute_id: UUID,
-    bim_citation_id: UUID,
+    image_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> BIMCitationSchemaOut | None:
-    """Get a BIM citation by ID
+    body: ImageCitationPolygonAnnotationPostIn,
+) -> ImageCitationPolygonAnnotationGetOut | None:
+    """Add a polygon annotation to the image citation.
 
-     Retrieve the details of a specific BIM citation associated with an attribute.
+     Creates a new image citation polygon
 
     Args:
         dataspace_id (UUID):
-        attribute_category (GetAttributeBimCitationDataspaceEntityType):
+        attribute_category (PostImageCitationPolygonAnnotationDataspaceEntityType):
         attribute_id (UUID):
-        bim_citation_id (UUID):
+        image_citation_id (UUID):
+        body (ImageCitationPolygonAnnotationPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BIMCitationSchemaOut
+        ImageCitationPolygonAnnotationGetOut
     """
 
     return sync_detailed(
         dataspace_id=dataspace_id,
         attribute_category=attribute_category,
         attribute_id=attribute_id,
-        bim_citation_id=bim_citation_id,
+        image_citation_id=image_citation_id,
         client=client,
+        body=body,
     ).parsed
 
 
 async def asyncio_detailed(
     dataspace_id: UUID,
-    attribute_category: GetAttributeBimCitationDataspaceEntityType,
+    attribute_category: PostImageCitationPolygonAnnotationDataspaceEntityType,
     attribute_id: UUID,
-    bim_citation_id: UUID,
+    image_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[BIMCitationSchemaOut]:
-    """Get a BIM citation by ID
+    body: ImageCitationPolygonAnnotationPostIn,
+) -> Response[ImageCitationPolygonAnnotationGetOut]:
+    """Add a polygon annotation to the image citation.
 
-     Retrieve the details of a specific BIM citation associated with an attribute.
+     Creates a new image citation polygon
 
     Args:
         dataspace_id (UUID):
-        attribute_category (GetAttributeBimCitationDataspaceEntityType):
+        attribute_category (PostImageCitationPolygonAnnotationDataspaceEntityType):
         attribute_id (UUID):
-        bim_citation_id (UUID):
+        image_citation_id (UUID):
+        body (ImageCitationPolygonAnnotationPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BIMCitationSchemaOut]
+        Response[ImageCitationPolygonAnnotationGetOut]
     """
 
     kwargs = _get_kwargs(
         dataspace_id=dataspace_id,
         attribute_category=attribute_category,
         attribute_id=attribute_id,
-        bim_citation_id=bim_citation_id,
+        image_citation_id=image_citation_id,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -170,28 +192,30 @@ async def asyncio_detailed(
 
 async def asyncio(
     dataspace_id: UUID,
-    attribute_category: GetAttributeBimCitationDataspaceEntityType,
+    attribute_category: PostImageCitationPolygonAnnotationDataspaceEntityType,
     attribute_id: UUID,
-    bim_citation_id: UUID,
+    image_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> BIMCitationSchemaOut | None:
-    """Get a BIM citation by ID
+    body: ImageCitationPolygonAnnotationPostIn,
+) -> ImageCitationPolygonAnnotationGetOut | None:
+    """Add a polygon annotation to the image citation.
 
-     Retrieve the details of a specific BIM citation associated with an attribute.
+     Creates a new image citation polygon
 
     Args:
         dataspace_id (UUID):
-        attribute_category (GetAttributeBimCitationDataspaceEntityType):
+        attribute_category (PostImageCitationPolygonAnnotationDataspaceEntityType):
         attribute_id (UUID):
-        bim_citation_id (UUID):
+        image_citation_id (UUID):
+        body (ImageCitationPolygonAnnotationPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BIMCitationSchemaOut
+        ImageCitationPolygonAnnotationGetOut
     """
 
     return (
@@ -199,7 +223,8 @@ async def asyncio(
             dataspace_id=dataspace_id,
             attribute_category=attribute_category,
             attribute_id=attribute_id,
-            bim_citation_id=bim_citation_id,
+            image_citation_id=image_citation_id,
             client=client,
+            body=body,
         )
     ).parsed
