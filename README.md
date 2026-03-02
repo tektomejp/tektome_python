@@ -52,7 +52,7 @@ The `@parseio` decorator from `tektome.decorators` handles input validation and 
 **Example:**
 ```python
 # requirements:
-# git+https://github.com/tektomejp/tektome_python.git@main
+# git+https://github.com/tektomejp/tektome_python.git@<version>
 
 from tektome import Resource, Context
 from tektome.decorators import parseio
