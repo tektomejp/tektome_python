@@ -20,7 +20,7 @@ Openflow is Tektome's automation platform. It calls your `main()` function with 
 
 ```python
 # requirements:
-# git+https://github.com/tektomejp/tektome_python.git@main
+# git+https://github.com/tektomejp/tektome_python.git@<version>
 
 from pydantic import BaseModel
 from tektome import Context, Resource
