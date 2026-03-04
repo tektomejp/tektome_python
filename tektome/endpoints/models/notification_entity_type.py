@@ -3,6 +3,7 @@ from enum import Enum
 
 class NotificationEntityType(str, Enum):
     APPROVAL_TICKET = "approval_ticket"
+    CHATROOM = "chatroom"
     EXECUTION = "execution"
     EXECUTION_GROUP = "execution_group"
 

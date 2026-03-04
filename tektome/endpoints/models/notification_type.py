@@ -14,6 +14,8 @@ class NotificationType(str, Enum):
     EXECUTION_GROUP_STARTED = "execution_group_started"
     FILE_UPLOAD_STARTED = "file_upload_started"
     FILE_UPLOAD_WILL_START = "file_upload_will_start"
+    IMPORT_COMPLETED = "import_completed"
+    IMPORT_FAILED = "import_failed"
 
     def __str__(self) -> str:
         return str(self.value)
