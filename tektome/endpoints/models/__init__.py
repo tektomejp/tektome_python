@@ -39,6 +39,9 @@ from .artifact_patch_path import ArtifactPatchPath
 from .artifact_post_in import ArtifactPostIn
 from .artifact_post_out import ArtifactPostOut
 from .artifact_post_path import ArtifactPostPath
+from .artifact_template_group_get_out import ArtifactTemplateGroupGetOut
+from .artifact_template_group_kind import ArtifactTemplateGroupKind
+from .artifact_template_group_query import ArtifactTemplateGroupQuery
 from .assigned_role_schema_out import AssignedRoleSchemaOut
 from .assistants import Assistants
 from .assistants_callback_payload import AssistantsCallbackPayload
@@ -338,6 +341,7 @@ from .document_search_type import DocumentSearchType
 from .document_source_enum import DocumentSourceEnum
 from .documents import Documents
 from .documents_positional_text_item import DocumentsPositionalTextItem
+from .duplicate_strategy import DuplicateStrategy
 from .embedding_model_enum import EmbeddingModelEnum
 from .entity_attributes_extracted_filter_options import EntityAttributesExtractedFilterOptions
 from .entity_search_result_hit_attribute import EntitySearchResultHitAttribute
@@ -497,11 +501,17 @@ from .import_resource_group_post_in import ImportResourceGroupPostIn
 from .import_result import ImportResult
 from .import_result_failed import ImportResultFailed
 from .import_storage_folders_response import ImportStorageFoldersResponse
+from .import_zip_artifacts_post_in import ImportZipArtifactsPostIn
+from .import_zip_artifacts_post_path import ImportZipArtifactsPostPath
+from .import_zip_ttos_artifacts_response import ImportZipTtosArtifactsResponse
 from .improve_user_prompt_query_in import ImproveUserPromptQueryIn
 from .input_ import Input
 from .insert_table_attribute_row_dataspace_attribute_object_types import (
     InsertTableAttributeRowDataspaceAttributeObjectTypes,
 )
+from .install_artifact_templates_post_in import InstallArtifactTemplatesPostIn
+from .install_artifact_templates_post_path import InstallArtifactTemplatesPostPath
+from .install_ttos_artifact_templates_response import InstallTtosArtifactTemplatesResponse
 from .integer_attribute_schema_in import IntegerAttributeSchemaIn
 from .integer_attribute_schema_out import IntegerAttributeSchemaOut
 from .invite_user_by_email_schema_in import InviteUserByEmailSchemaIn
@@ -615,6 +625,7 @@ from .page_component_schema_get_out import PageComponentSchemaGetOut
 from .page_component_schema_get_out_tables_type_0 import PageComponentSchemaGetOutTablesType0
 from .page_component_schema_path_in import PageComponentSchemaPathIn
 from .paged_approval_ticket_candidate_out import PagedApprovalTicketCandidateOut
+from .paged_artifact_template_group_get_out import PagedArtifactTemplateGroupGetOut
 from .paged_citations import PagedCitations
 from .paged_core_project_schema import PagedCoreProjectSchema
 from .paged_dataspace_list_get_out import PagedDataspaceListGetOut
@@ -1075,6 +1086,9 @@ __all__ = (
     "ArtifactPostIn",
     "ArtifactPostOut",
     "ArtifactPostPath",
+    "ArtifactTemplateGroupGetOut",
+    "ArtifactTemplateGroupKind",
+    "ArtifactTemplateGroupQuery",
     "ASimulateLongCallPostOut",
     "AssignedRoleSchemaOut",
     "Assistants",
@@ -1343,6 +1357,7 @@ __all__ = (
     "DocumentSearchType",
     "DocumentSourceEnum",
     "DocumentsPositionalTextItem",
+    "DuplicateStrategy",
     "EmbeddingModelEnum",
     "EntityAttributesExtractedFilterOptions",
     "EntitySearchResultHitAttribute",
@@ -1498,9 +1513,15 @@ __all__ = (
     "ImportResult",
     "ImportResultFailed",
     "ImportStorageFoldersResponse",
+    "ImportZipArtifactsPostIn",
+    "ImportZipArtifactsPostPath",
+    "ImportZipTtosArtifactsResponse",
     "ImproveUserPromptQueryIn",
     "Input",
     "InsertTableAttributeRowDataspaceAttributeObjectTypes",
+    "InstallArtifactTemplatesPostIn",
+    "InstallArtifactTemplatesPostPath",
+    "InstallTtosArtifactTemplatesResponse",
     "IntegerAttributeSchemaIn",
     "IntegerAttributeSchemaOut",
     "InviteUserByEmailSchemaIn",
@@ -1612,6 +1633,7 @@ __all__ = (
     "PageComponentSchemaGetOutTablesType0",
     "PageComponentSchemaPathIn",
     "PagedApprovalTicketCandidateOut",
+    "PagedArtifactTemplateGroupGetOut",
     "PagedCitations",
     "PagedCoreProjectSchema",
     "PagedDataspaceListGetOut",
