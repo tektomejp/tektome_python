@@ -30,6 +30,12 @@ from .artifact_copy_in import ArtifactCopyIn
 from .artifact_copy_out import ArtifactCopyOut
 from .artifact_copy_path import ArtifactCopyPath
 from .artifact_delete_path import ArtifactDeletePath
+from .artifact_from_attribute_post_in import ArtifactFromAttributePostIn
+from .artifact_from_attribute_post_out import ArtifactFromAttributePostOut
+from .artifact_from_attribute_post_path import ArtifactFromAttributePostPath
+from .artifact_from_resource_post_in import ArtifactFromResourcePostIn
+from .artifact_from_resource_post_out import ArtifactFromResourcePostOut
+from .artifact_from_resource_post_path import ArtifactFromResourcePostPath
 from .artifact_move_in import ArtifactMoveIn
 from .artifact_move_out import ArtifactMoveOut
 from .artifact_move_path import ArtifactMovePath
@@ -1077,6 +1083,12 @@ __all__ = (
     "ArtifactCopyOut",
     "ArtifactCopyPath",
     "ArtifactDeletePath",
+    "ArtifactFromAttributePostIn",
+    "ArtifactFromAttributePostOut",
+    "ArtifactFromAttributePostPath",
+    "ArtifactFromResourcePostIn",
+    "ArtifactFromResourcePostOut",
+    "ArtifactFromResourcePostPath",
     "ArtifactMoveIn",
     "ArtifactMoveOut",
     "ArtifactMovePath",

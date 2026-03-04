@@ -11,11 +11,11 @@ from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ArtifactPatchOut")
+T = TypeVar("T", bound="ArtifactFromAttributePostOut")
 
 
 @_attrs_define
-class ArtifactPatchOut:
+class ArtifactFromAttributePostOut:
     """
     Attributes:
         created (datetime.datetime):
@@ -312,7 +312,7 @@ class ArtifactPatchOut:
 
         imported_attribute_object_id = _parse_imported_attribute_object_id(d.pop("imported_attribute_object_id", UNSET))
 
-        artifact_patch_out = cls(
+        artifact_from_attribute_post_out = cls(
             created=created,
             updated=updated,
             chatroom=chatroom,
@@ -330,8 +330,8 @@ class ArtifactPatchOut:
             imported_attribute_object_id=imported_attribute_object_id,
         )
 
-        artifact_patch_out.additional_properties = d
-        return artifact_patch_out
+        artifact_from_attribute_post_out.additional_properties = d
+        return artifact_from_attribute_post_out
 
     @property
     def additional_keys(self) -> list[str]:
