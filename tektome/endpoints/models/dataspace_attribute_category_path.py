@@ -7,32 +7,35 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ProjectAttributePathIn")
+from ..models.dataspace_entity_type import DataspaceEntityType
+
+T = TypeVar("T", bound="DataspaceAttributeCategoryPath")
 
 
 @_attrs_define
-class ProjectAttributePathIn:
-    """
+class DataspaceAttributeCategoryPath:
+    """Path schema for endpoints that use attribute_category without attribute_id.
+
     Attributes:
         dataspace_id (UUID):
-        attribute_id (UUID):
+        attribute_category (DataspaceEntityType):
     """
 
     dataspace_id: UUID
-    attribute_id: UUID
+    attribute_category: DataspaceEntityType
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         dataspace_id = str(self.dataspace_id)
 
-        attribute_id = str(self.attribute_id)
+        attribute_category = self.attribute_category.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "dataspace_id": dataspace_id,
-                "attribute_id": attribute_id,
+                "attribute_category": attribute_category,
             }
         )
 
@@ -43,15 +46,15 @@ class ProjectAttributePathIn:
         d = dict(src_dict)
         dataspace_id = UUID(d.pop("dataspace_id"))
 
-        attribute_id = UUID(d.pop("attribute_id"))
+        attribute_category = DataspaceEntityType(d.pop("attribute_category"))
 
-        project_attribute_path_in = cls(
+        dataspace_attribute_category_path = cls(
             dataspace_id=dataspace_id,
-            attribute_id=attribute_id,
+            attribute_category=attribute_category,
         )
 
-        project_attribute_path_in.additional_properties = d
-        return project_attribute_path_in
+        dataspace_attribute_category_path.additional_properties = d
+        return dataspace_attribute_category_path
 
     @property
     def additional_keys(self) -> list[str]:

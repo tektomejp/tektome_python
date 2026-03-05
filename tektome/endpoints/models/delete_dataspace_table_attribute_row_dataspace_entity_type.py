@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class DataspaceAttributeObjectTypes(str, Enum):
+class DeleteDataspaceTableAttributeRowDataspaceEntityType(str, Enum):
     PROJECT = "project"
     RESOURCE = "resource"
 

@@ -14,19 +14,19 @@ from ..models.attribute_type import AttributeType
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.project_attribute_post_in_value_type_7 import ProjectAttributePostInValueType7
+    from ..models.attribute_post_in_value_type_7 import AttributePostInValueType7
 
 
-T = TypeVar("T", bound="ProjectAttributePostIn")
+T = TypeVar("T", bound="AttributePostIn")
 
 
 @_attrs_define
-class ProjectAttributePostIn:
-    """
+class AttributePostIn:
+    """Schema for patching an attribute.
+
     Attributes:
         name (str):
-        value (bool | datetime.date | datetime.datetime | float | int | list[Any] | ProjectAttributePostInValueType7 |
-            str):
+        value (AttributePostInValueType7 | bool | datetime.date | datetime.datetime | float | int | list[Any] | str):
         type_ (AttributeType): StrEnum for all available attribute types
 
             .. warning::
@@ -39,7 +39,7 @@ class ProjectAttributePostIn:
     """
 
     name: str
-    value: bool | datetime.date | datetime.datetime | float | int | list[Any] | ProjectAttributePostInValueType7 | str
+    value: AttributePostInValueType7 | bool | datetime.date | datetime.datetime | float | int | list[Any] | str
     type_: AttributeType
     is_locked: bool | Unset = False
     entity_id: None | Unset | UUID = UNSET
@@ -47,7 +47,7 @@ class ProjectAttributePostIn:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.project_attribute_post_in_value_type_7 import ProjectAttributePostInValueType7
+        from ..models.attribute_post_in_value_type_7 import AttributePostInValueType7
 
         name = self.name
 
@@ -56,7 +56,7 @@ class ProjectAttributePostIn:
             value = self.value.isoformat()
         elif isinstance(self.value, datetime.datetime):
             value = self.value.isoformat()
-        elif isinstance(self.value, ProjectAttributePostInValueType7):
+        elif isinstance(self.value, AttributePostInValueType7):
             value = self.value.to_dict()
         elif isinstance(self.value, list):
             value = self.value
@@ -100,16 +100,14 @@ class ProjectAttributePostIn:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.project_attribute_post_in_value_type_7 import ProjectAttributePostInValueType7
+        from ..models.attribute_post_in_value_type_7 import AttributePostInValueType7
 
         d = dict(src_dict)
         name = d.pop("name")
 
         def _parse_value(
             data: object,
-        ) -> (
-            bool | datetime.date | datetime.datetime | float | int | list[Any] | ProjectAttributePostInValueType7 | str
-        ):
+        ) -> AttributePostInValueType7 | bool | datetime.date | datetime.datetime | float | int | list[Any] | str:
             try:
                 if not isinstance(data, str):
                     raise TypeError()
@@ -129,7 +127,7 @@ class ProjectAttributePostIn:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                value_type_7 = ProjectAttributePostInValueType7.from_dict(data)
+                value_type_7 = AttributePostInValueType7.from_dict(data)
 
                 return value_type_7
             except (TypeError, ValueError, AttributeError, KeyError):
@@ -143,14 +141,7 @@ class ProjectAttributePostIn:
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             return cast(
-                bool
-                | datetime.date
-                | datetime.datetime
-                | float
-                | int
-                | list[Any]
-                | ProjectAttributePostInValueType7
-                | str,
+                AttributePostInValueType7 | bool | datetime.date | datetime.datetime | float | int | list[Any] | str,
                 data,
             )
 
@@ -184,7 +175,7 @@ class ProjectAttributePostIn:
         else:
             extraction_status = AttributeExtractionStatusChoices(_extraction_status)
 
-        project_attribute_post_in = cls(
+        attribute_post_in = cls(
             name=name,
             value=value,
             type_=type_,
@@ -193,8 +184,8 @@ class ProjectAttributePostIn:
             extraction_status=extraction_status,
         )
 
-        project_attribute_post_in.additional_properties = d
-        return project_attribute_post_in
+        attribute_post_in.additional_properties = d
+        return attribute_post_in
 
     @property
     def additional_keys(self) -> list[str]:

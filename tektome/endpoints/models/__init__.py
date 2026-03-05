@@ -69,7 +69,8 @@ from .attribute_object_types import AttributeObjectTypes
 from .attribute_patch_in_patch import AttributePatchInPatch
 from .attribute_patch_in_patch_value_type_7 import AttributePatchInPatchValueType7
 from .attribute_path import AttributePath
-from .attribute_path_in import AttributePathIn
+from .attribute_post_in import AttributePostIn
+from .attribute_post_in_value_type_7 import AttributePostInValueType7
 from .attribute_query_delete_in import AttributeQueryDeleteIn
 from .attribute_reviewed_data import AttributeReviewedData
 from .attribute_schema import AttributeSchema
@@ -202,8 +203,8 @@ from .create_resource_section_path import CreateResourceSectionPath
 from .create_resource_with_version_control_file_params import CreateResourceWithVersionControlFileParams
 from .current_organization_schema import CurrentOrganizationSchema
 from .data_type_enum import DataTypeEnum
-from .dataspace_attribute_object_types import DataspaceAttributeObjectTypes
-from .dataspace_attribute_path import DataspaceAttributePath
+from .dataspace_attribute_category_attribute_path import DataspaceAttributeCategoryAttributePath
+from .dataspace_attribute_category_path import DataspaceAttributeCategoryPath
 from .dataspace_delete_path import DataspaceDeletePath
 from .dataspace_entity_list_query import DataspaceEntityListQuery
 from .dataspace_entity_type import DataspaceEntityType
@@ -298,6 +299,9 @@ from .dataspace_search_tag_config_patch_in_patch_default_grouping_option_type_0 
     DataspaceSearchTagConfigPatchInPatchDefaultGroupingOptionType0,
 )
 from .dataspace_search_tag_config_post_in import DataspaceSearchTagConfigPostIn
+from .dataspace_table_attribute_patch_in import DataspaceTableAttributePatchIn
+from .dataspace_table_attribute_path import DataspaceTableAttributePath
+from .dataspace_table_row_operation_in import DataspaceTableRowOperationIn
 from .dataspace_tag_config_path import DataspaceTagConfigPath
 from .dataspace_template_import_in import DataspaceTemplateImportIn
 from .dataspace_template_path import DataspaceTemplatePath
@@ -320,16 +324,17 @@ from .delete_attribute_rawtext_citation_dataspace_entity_type import DeleteAttri
 from .delete_bim_element_bim_element_type_path import DeleteBimElementBimElementTypePath
 from .delete_capture_section_component_path import DeleteCaptureSectionComponentPath
 from .delete_citation_polygon_annotation_dataspace_entity_type import DeleteCitationPolygonAnnotationDataspaceEntityType
+from .delete_dataspace_table_attribute_row_dataspace_entity_type import (
+    DeleteDataspaceTableAttributeRowDataspaceEntityType,
+)
 from .delete_folder_resources_schema import DeleteFolderResourcesSchema
 from .delete_general_attribute_attribute_object_types import DeleteGeneralAttributeAttributeObjectTypes
+from .delete_general_dataspace_attribute_dataspace_entity_type import DeleteGeneralDataspaceAttributeDataspaceEntityType
 from .delete_general_lawtalk_attribute_attribute_object_types import DeleteGeneralLawtalkAttributeAttributeObjectTypes
 from .delete_lawtalk_attribute_attribute_object_types import DeleteLawtalkAttributeAttributeObjectTypes
 from .delete_resource_group_query import DeleteResourceGroupQuery
 from .delete_resource_section_path import DeleteResourceSectionPath
 from .delete_system_attribute_attribute_object_types import DeleteSystemAttributeAttributeObjectTypes
-from .delete_table_attribute_row_dataspace_attribute_object_types import (
-    DeleteTableAttributeRowDataspaceAttributeObjectTypes,
-)
 from .document import Document
 from .document_async_extraction_task_result import DocumentAsyncExtractionTaskResult
 from .document_async_extraction_task_submission import DocumentAsyncExtractionTaskSubmission
@@ -483,6 +488,7 @@ from .get_execution_approvals_process_type_choices import GetExecutionApprovalsP
 from .get_extracted_page_get_out import GetExtractedPageGetOut
 from .get_extracted_page_get_out_tables_type_0 import GetExtractedPageGetOutTablesType0
 from .get_extracted_result_get_out import GetExtractedResultGetOut
+from .get_general_dataspace_attribute_dataspace_entity_type import GetGeneralDataspaceAttributeDataspaceEntityType
 from .get_image_citation_polygon_annotation_dataspace_entity_type import (
     GetImageCitationPolygonAnnotationDataspaceEntityType,
 )
@@ -512,8 +518,8 @@ from .import_zip_artifacts_post_path import ImportZipArtifactsPostPath
 from .import_zip_ttos_artifacts_response import ImportZipTtosArtifactsResponse
 from .improve_user_prompt_query_in import ImproveUserPromptQueryIn
 from .input_ import Input
-from .insert_table_attribute_row_dataspace_attribute_object_types import (
-    InsertTableAttributeRowDataspaceAttributeObjectTypes,
+from .insert_dataspace_table_attribute_row_dataspace_entity_type import (
+    InsertDataspaceTableAttributeRowDataspaceEntityType,
 )
 from .install_artifact_templates_post_in import InstallArtifactTemplatesPostIn
 from .install_artifact_templates_post_path import InstallArtifactTemplatesPostPath
@@ -675,6 +681,7 @@ from .paginated_response_requirement_template_container_get_out import (
 from .paginated_response_requirement_template_get_out import PaginatedResponseRequirementTemplateGetOut
 from .parsed_tektome_response_entry import ParsedTektomeResponseEntry
 from .parsed_tektome_response_entry_resource_text_highlights import ParsedTektomeResponseEntryResourceTextHighlights
+from .patch_general_dataspace_attribute_dataspace_entity_type import PatchGeneralDataspaceAttributeDataspaceEntityType
 from .payment_record_out import PaymentRecordOut
 from .payment_record_out_base import PaymentRecordOutBase
 from .payment_record_patch_in_patch import PaymentRecordPatchInPatch
@@ -695,6 +702,7 @@ from .polygon_attribute_schema_in import PolygonAttributeSchemaIn
 from .polygon_attribute_schema_out import PolygonAttributeSchemaOut
 from .polygon_attribute_schema_out_value_type_0 import PolygonAttributeSchemaOutValueType0
 from .positional_text import PositionalText
+from .post_general_dataspace_attribute_dataspace_entity_type import PostGeneralDataspaceAttributeDataspaceEntityType
 from .post_image_citation_polygon_annotation_dataspace_entity_type import (
     PostImageCitationPolygonAnnotationDataspaceEntityType,
 )
@@ -712,9 +720,6 @@ from .process_post_in import ProcessPostIn
 from .process_post_in_patch import ProcessPostInPatch
 from .process_type_choices import ProcessTypeChoices
 from .project_accept_invite_post_in import ProjectAcceptInvitePostIn
-from .project_attribute_path_in import ProjectAttributePathIn
-from .project_attribute_post_in import ProjectAttributePostIn
-from .project_attribute_post_in_value_type_7 import ProjectAttributePostInValueType7
 from .project_check_delete_out import ProjectCheckDeleteOut
 from .project_choices_get_out import ProjectChoicesGetOut
 from .project_default_path import ProjectDefaultPath
@@ -826,9 +831,6 @@ from .research_mode_enum import ResearchModeEnum
 from .research_template_path_in import ResearchTemplatePathIn
 from .research_template_resources_out import ResearchTemplateResourcesOut
 from .resource_allow_edit_schema_patch_in_patch import ResourceAllowEditSchemaPatchInPatch
-from .resource_attribute_path_in import ResourceAttributePathIn
-from .resource_attribute_post_in import ResourceAttributePostIn
-from .resource_attribute_post_in_value_type_7 import ResourceAttributePostInValueType7
 from .resource_capture_section_component_schema import ResourceCaptureSectionComponentSchema
 from .resource_capture_section_component_schema_positional_text_type_0 import (
     ResourceCaptureSectionComponentSchemaPositionalTextType0,
@@ -983,7 +985,6 @@ from .sync_storage_file_multi_part_body_params import SyncStorageFileMultiPartBo
 from .sync_storage_file_response import SyncStorageFileResponse
 from .system_attribute_body_put_in import SystemAttributeBodyPutIn
 from .system_attribute_query_delete_in import SystemAttributeQueryDeleteIn
-from .table_attribute_body_patch_in import TableAttributeBodyPatchIn
 from .table_attribute_schema_out import TableAttributeSchemaOut
 from .table_attribute_schema_out_value_type_0 import TableAttributeSchemaOutValueType0
 from .table_cell_update import TableCellUpdate
@@ -991,7 +992,6 @@ from .table_column import TableColumn
 from .table_column_type import TableColumnType
 from .table_metadata_update_request import TableMetadataUpdateRequest
 from .table_metadata_update_request_rename_columns_type_0 import TableMetadataUpdateRequestRenameColumnsType0
-from .table_row_operation_in import TableRowOperationIn
 from .target_model_entity_filter_options import TargetModelEntityFilterOptions
 from .target_user_in_schema import TargetUserInSchema
 from .task_post_out import TaskPostOut
@@ -1044,9 +1044,9 @@ from .upload_dataspace_project_file_multi_part_body_params import UploadDataspac
 from .upload_lawtalk_resource_multi_part_body_params import UploadLawtalkResourceMultiPartBodyParams
 from .upload_new_resource_version_file_params import UploadNewResourceVersionFileParams
 from .upload_payment_record_file_file_params import UploadPaymentRecordFileFileParams
+from .upsert_dataspace_table_attributes_dataspace_entity_type import UpsertDataspaceTableAttributesDataspaceEntityType
 from .upsert_general_attributes_attribute_object_types import UpsertGeneralAttributesAttributeObjectTypes
 from .upsert_system_attributes_attribute_object_types import UpsertSystemAttributesAttributeObjectTypes
-from .upsert_table_attributes_dataspace_attribute_object_types import UpsertTableAttributesDataspaceAttributeObjectTypes
 from .user_invitation_skipped_schema import UserInvitationSkippedSchema
 from .user_invitation_success_schema import UserInvitationSuccessSchema
 from .user_metadata import UserMetadata
@@ -1123,7 +1123,8 @@ __all__ = (
     "AttributePatchInPatch",
     "AttributePatchInPatchValueType7",
     "AttributePath",
-    "AttributePathIn",
+    "AttributePostIn",
+    "AttributePostInValueType7",
     "AttributeQueryDeleteIn",
     "AttributeReviewedData",
     "AttributeSchema",
@@ -1249,8 +1250,8 @@ __all__ = (
     "CreateResourceSectionPath",
     "CreateResourceWithVersionControlFileParams",
     "CurrentOrganizationSchema",
-    "DataspaceAttributeObjectTypes",
-    "DataspaceAttributePath",
+    "DataspaceAttributeCategoryAttributePath",
+    "DataspaceAttributeCategoryPath",
     "DataspaceDeletePath",
     "DataspaceEntityListQuery",
     "DataspaceEntityType",
@@ -1324,6 +1325,9 @@ __all__ = (
     "DataspaceSearchTagConfigPatchInPatchDefaultGroupingOptionType0",
     "DataspaceSearchTagConfigPostIn",
     "DataspacesOrganizationSchema",
+    "DataspaceTableAttributePatchIn",
+    "DataspaceTableAttributePath",
+    "DataspaceTableRowOperationIn",
     "DataspaceTagConfigPath",
     "DataspaceTemplateImportIn",
     "DataspaceTemplatePath",
@@ -1344,14 +1348,15 @@ __all__ = (
     "DeleteBimElementBimElementTypePath",
     "DeleteCaptureSectionComponentPath",
     "DeleteCitationPolygonAnnotationDataspaceEntityType",
+    "DeleteDataspaceTableAttributeRowDataspaceEntityType",
     "DeleteFolderResourcesSchema",
     "DeleteGeneralAttributeAttributeObjectTypes",
+    "DeleteGeneralDataspaceAttributeDataspaceEntityType",
     "DeleteGeneralLawtalkAttributeAttributeObjectTypes",
     "DeleteLawtalkAttributeAttributeObjectTypes",
     "DeleteResourceGroupQuery",
     "DeleteResourceSectionPath",
     "DeleteSystemAttributeAttributeObjectTypes",
-    "DeleteTableAttributeRowDataspaceAttributeObjectTypes",
     "Document",
     "DocumentAsyncExtractionTaskResult",
     "DocumentAsyncExtractionTaskSubmission",
@@ -1505,6 +1510,7 @@ __all__ = (
     "GetExtractedPageGetOut",
     "GetExtractedPageGetOutTablesType0",
     "GetExtractedResultGetOut",
+    "GetGeneralDataspaceAttributeDataspaceEntityType",
     "GetImageCitationPolygonAnnotationDataspaceEntityType",
     "GetInitializedPagePath",
     "GetPdfCitationPolygonAnnotationDataspaceEntityType",
@@ -1530,7 +1536,7 @@ __all__ = (
     "ImportZipTtosArtifactsResponse",
     "ImproveUserPromptQueryIn",
     "Input",
-    "InsertTableAttributeRowDataspaceAttributeObjectTypes",
+    "InsertDataspaceTableAttributeRowDataspaceEntityType",
     "InstallArtifactTemplatesPostIn",
     "InstallArtifactTemplatesPostPath",
     "InstallTtosArtifactTemplatesResponse",
@@ -1687,6 +1693,7 @@ __all__ = (
     "PaginatedResponseRequirementTemplateGetOut",
     "ParsedTektomeResponseEntry",
     "ParsedTektomeResponseEntryResourceTextHighlights",
+    "PatchGeneralDataspaceAttributeDataspaceEntityType",
     "PaymentRecordOut",
     "PaymentRecordOutBase",
     "PaymentRecordPatchInPatch",
@@ -1707,6 +1714,7 @@ __all__ = (
     "PolygonAttributeSchemaOut",
     "PolygonAttributeSchemaOutValueType0",
     "PositionalText",
+    "PostGeneralDataspaceAttributeDataspaceEntityType",
     "PostImageCitationPolygonAnnotationDataspaceEntityType",
     "PostPDFCitationPath",
     "PostPdfCitationPolygonAnnotationDataspaceEntityType",
@@ -1720,9 +1728,6 @@ __all__ = (
     "ProcessPostInPatch",
     "ProcessTypeChoices",
     "ProjectAcceptInvitePostIn",
-    "ProjectAttributePathIn",
-    "ProjectAttributePostIn",
-    "ProjectAttributePostInValueType7",
     "ProjectCheckDeleteOut",
     "ProjectChoicesGetOut",
     "ProjectDefaultPath",
@@ -1824,9 +1829,6 @@ __all__ = (
     "ResearchTemplatePathIn",
     "ResearchTemplateResourcesOut",
     "ResourceAllowEditSchemaPatchInPatch",
-    "ResourceAttributePathIn",
-    "ResourceAttributePostIn",
-    "ResourceAttributePostInValueType7",
     "ResourceCaptureSectionComponentSchema",
     "ResourceCaptureSectionComponentSchemaPositionalTextType0",
     "ResourceChildren",
@@ -1967,7 +1969,6 @@ __all__ = (
     "SyncStorageFileResponse",
     "SystemAttributeBodyPutIn",
     "SystemAttributeQueryDeleteIn",
-    "TableAttributeBodyPatchIn",
     "TableAttributeSchemaOut",
     "TableAttributeSchemaOutValueType0",
     "TableCellUpdate",
@@ -1975,7 +1976,6 @@ __all__ = (
     "TableColumnType",
     "TableMetadataUpdateRequest",
     "TableMetadataUpdateRequestRenameColumnsType0",
-    "TableRowOperationIn",
     "TargetModelEntityFilterOptions",
     "TargetUserInSchema",
     "TaskPostOut",
@@ -2026,9 +2026,9 @@ __all__ = (
     "UploadLawtalkResourceMultiPartBodyParams",
     "UploadNewResourceVersionFileParams",
     "UploadPaymentRecordFileFileParams",
+    "UpsertDataspaceTableAttributesDataspaceEntityType",
     "UpsertGeneralAttributesAttributeObjectTypes",
     "UpsertSystemAttributesAttributeObjectTypes",
-    "UpsertTableAttributesDataspaceAttributeObjectTypes",
     "UserInvitationSkippedSchema",
     "UserInvitationSuccessSchema",
     "UserMetadata",

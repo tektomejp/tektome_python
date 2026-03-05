@@ -8,27 +8,23 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="TableRowOperationIn")
+T = TypeVar("T", bound="DataspaceTableRowOperationIn")
 
 
 @_attrs_define
-class TableRowOperationIn:
-    """Schema for table row operations (insert or delete).
+class DataspaceTableRowOperationIn:
+    """Schema for table row operations (insert or delete) via attribute_id.
 
     Attributes:
-        name (str):
         row_index (int):
         version (int | None | Unset):
     """
 
-    name: str
     row_index: int
     version: int | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        name = self.name
-
         row_index = self.row_index
 
         version: int | None | Unset
@@ -41,7 +37,6 @@ class TableRowOperationIn:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "name": name,
                 "row_index": row_index,
             }
         )
@@ -53,8 +48,6 @@ class TableRowOperationIn:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        name = d.pop("name")
-
         row_index = d.pop("row_index")
 
         def _parse_version(data: object) -> int | None | Unset:
@@ -66,14 +59,13 @@ class TableRowOperationIn:
 
         version = _parse_version(d.pop("version", UNSET))
 
-        table_row_operation_in = cls(
-            name=name,
+        dataspace_table_row_operation_in = cls(
             row_index=row_index,
             version=version,
         )
 
-        table_row_operation_in.additional_properties = d
-        return table_row_operation_in
+        dataspace_table_row_operation_in.additional_properties = d
+        return dataspace_table_row_operation_in
 
     @property
     def additional_keys(self) -> list[str]:
