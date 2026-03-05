@@ -8,30 +8,42 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.attribute_get_out import AttributeGetOut
+from ...models.attribute_post_in import AttributePostIn
+from ...models.post_general_dataspace_attribute_dataspace_entity_type import (
+    PostGeneralDataspaceAttributeDataspaceEntityType,
+)
 from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
-    attribute_id: UUID,
+    attribute_category: PostGeneralDataspaceAttributeDataspaceEntityType,
+    *,
+    body: AttributePostIn,
 ) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": "/api/core/dataspaces/{dataspace_id}/attributes/{attribute_id}/".format(
+        "method": "post",
+        "url": "/api/core/dataspaces/{dataspace_id}/attributes/{attribute_category}/".format(
             dataspace_id=quote(str(dataspace_id), safe=""),
-            attribute_id=quote(str(attribute_id), safe=""),
+            attribute_category=quote(str(attribute_category), safe=""),
         ),
     }
 
+    _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AttributeGetOut | None:
-    if response.status_code == 200:
-        response_200 = AttributeGetOut.from_dict(response.json())
+    if response.status_code == 201:
+        response_201 = AttributeGetOut.from_dict(response.json())
 
-        return response_200
+        return response_201
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -50,18 +62,21 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def sync_detailed(
     dataspace_id: UUID,
-    attribute_id: UUID,
+    attribute_category: PostGeneralDataspaceAttributeDataspaceEntityType,
     *,
     client: AuthenticatedClient,
+    body: AttributePostIn,
 ) -> Response[AttributeGetOut]:
-    """Get a dataspace attribute by ID
+    """Create an attribute in a dataspace
 
-     Retrieve a specific dataspace attribute by its ID. The attribute can belong to either a resource or
-    a project.
+     Create a new attribute for a project or resource, validated against the dataspace's configured
+    attribute settings. Use `attribute_category` to specify whether the attribute is for a `project` or
+    `resource`.
 
     Args:
         dataspace_id (UUID):
-        attribute_id (UUID):
+        attribute_category (PostGeneralDataspaceAttributeDataspaceEntityType):
+        body (AttributePostIn): Schema for patching an attribute.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -73,7 +88,8 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         dataspace_id=dataspace_id,
-        attribute_id=attribute_id,
+        attribute_category=attribute_category,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -85,18 +101,21 @@ def sync_detailed(
 
 def sync(
     dataspace_id: UUID,
-    attribute_id: UUID,
+    attribute_category: PostGeneralDataspaceAttributeDataspaceEntityType,
     *,
     client: AuthenticatedClient,
+    body: AttributePostIn,
 ) -> AttributeGetOut | None:
-    """Get a dataspace attribute by ID
+    """Create an attribute in a dataspace
 
-     Retrieve a specific dataspace attribute by its ID. The attribute can belong to either a resource or
-    a project.
+     Create a new attribute for a project or resource, validated against the dataspace's configured
+    attribute settings. Use `attribute_category` to specify whether the attribute is for a `project` or
+    `resource`.
 
     Args:
         dataspace_id (UUID):
-        attribute_id (UUID):
+        attribute_category (PostGeneralDataspaceAttributeDataspaceEntityType):
+        body (AttributePostIn): Schema for patching an attribute.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -108,25 +127,29 @@ def sync(
 
     return sync_detailed(
         dataspace_id=dataspace_id,
-        attribute_id=attribute_id,
+        attribute_category=attribute_category,
         client=client,
+        body=body,
     ).parsed
 
 
 async def asyncio_detailed(
     dataspace_id: UUID,
-    attribute_id: UUID,
+    attribute_category: PostGeneralDataspaceAttributeDataspaceEntityType,
     *,
     client: AuthenticatedClient,
+    body: AttributePostIn,
 ) -> Response[AttributeGetOut]:
-    """Get a dataspace attribute by ID
+    """Create an attribute in a dataspace
 
-     Retrieve a specific dataspace attribute by its ID. The attribute can belong to either a resource or
-    a project.
+     Create a new attribute for a project or resource, validated against the dataspace's configured
+    attribute settings. Use `attribute_category` to specify whether the attribute is for a `project` or
+    `resource`.
 
     Args:
         dataspace_id (UUID):
-        attribute_id (UUID):
+        attribute_category (PostGeneralDataspaceAttributeDataspaceEntityType):
+        body (AttributePostIn): Schema for patching an attribute.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -138,7 +161,8 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         dataspace_id=dataspace_id,
-        attribute_id=attribute_id,
+        attribute_category=attribute_category,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -148,18 +172,21 @@ async def asyncio_detailed(
 
 async def asyncio(
     dataspace_id: UUID,
-    attribute_id: UUID,
+    attribute_category: PostGeneralDataspaceAttributeDataspaceEntityType,
     *,
     client: AuthenticatedClient,
+    body: AttributePostIn,
 ) -> AttributeGetOut | None:
-    """Get a dataspace attribute by ID
+    """Create an attribute in a dataspace
 
-     Retrieve a specific dataspace attribute by its ID. The attribute can belong to either a resource or
-    a project.
+     Create a new attribute for a project or resource, validated against the dataspace's configured
+    attribute settings. Use `attribute_category` to specify whether the attribute is for a `project` or
+    `resource`.
 
     Args:
         dataspace_id (UUID):
-        attribute_id (UUID):
+        attribute_category (PostGeneralDataspaceAttributeDataspaceEntityType):
+        body (AttributePostIn): Schema for patching an attribute.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -172,7 +199,8 @@ async def asyncio(
     return (
         await asyncio_detailed(
             dataspace_id=dataspace_id,
-            attribute_id=attribute_id,
+            attribute_category=attribute_category,
             client=client,
+            body=body,
         )
     ).parsed

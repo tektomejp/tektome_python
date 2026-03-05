@@ -12,26 +12,23 @@ if TYPE_CHECKING:
     from ..models.table_cell_update import TableCellUpdate
 
 
-T = TypeVar("T", bound="TableAttributeBodyPatchIn")
+T = TypeVar("T", bound="DataspaceTableAttributePatchIn")
 
 
 @_attrs_define
-class TableAttributeBodyPatchIn:
-    """
+class DataspaceTableAttributePatchIn:
+    """Schema for updating table attribute cells via attribute_id.
+
     Attributes:
-        name (str):
         cells (list[TableCellUpdate]):
         version (int | None | Unset):
     """
 
-    name: str
     cells: list[TableCellUpdate]
     version: int | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        name = self.name
-
         cells = []
         for cells_item_data in self.cells:
             cells_item = cells_item_data.to_dict()
@@ -47,7 +44,6 @@ class TableAttributeBodyPatchIn:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "name": name,
                 "cells": cells,
             }
         )
@@ -61,8 +57,6 @@ class TableAttributeBodyPatchIn:
         from ..models.table_cell_update import TableCellUpdate
 
         d = dict(src_dict)
-        name = d.pop("name")
-
         cells = []
         _cells = d.pop("cells")
         for cells_item_data in _cells:
@@ -79,14 +73,13 @@ class TableAttributeBodyPatchIn:
 
         version = _parse_version(d.pop("version", UNSET))
 
-        table_attribute_body_patch_in = cls(
-            name=name,
+        dataspace_table_attribute_patch_in = cls(
             cells=cells,
             version=version,
         )
 
-        table_attribute_body_patch_in.additional_properties = d
-        return table_attribute_body_patch_in
+        dataspace_table_attribute_patch_in.additional_properties = d
+        return dataspace_table_attribute_patch_in
 
     @property
     def additional_keys(self) -> list[str]:

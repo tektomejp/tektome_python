@@ -7,24 +7,22 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.delete_table_attribute_row_dataspace_attribute_object_types import (
-    DeleteTableAttributeRowDataspaceAttributeObjectTypes,
+from ...models.insert_dataspace_table_attribute_row_dataspace_entity_type import (
+    InsertDataspaceTableAttributeRowDataspaceEntityType,
 )
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    object_type: DeleteTableAttributeRowDataspaceAttributeObjectTypes,
-    object_id: UUID,
+    dataspace_id: UUID,
+    attribute_category: InsertDataspaceTableAttributeRowDataspaceEntityType,
+    attribute_id: UUID,
     *,
-    name: str,
     row_index: int,
     version: int | None | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
-
-    params["name"] = name
 
     params["row_index"] = row_index
 
@@ -38,10 +36,11 @@ def _get_kwargs(
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
-        "method": "delete",
-        "url": "/api/core/attributes/general/{object_type}/{object_id}/table/row/".format(
-            object_type=quote(str(object_type), safe=""),
-            object_id=quote(str(object_id), safe=""),
+        "method": "post",
+        "url": "/api/core/dataspaces/{dataspace_id}/attributes/{attribute_category}/{attribute_id}/table/row/".format(
+            dataspace_id=quote(str(dataspace_id), safe=""),
+            attribute_category=quote(str(attribute_category), safe=""),
+            attribute_id=quote(str(attribute_id), safe=""),
         ),
         "params": params,
     }
@@ -69,23 +68,23 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 
 def sync_detailed(
-    object_type: DeleteTableAttributeRowDataspaceAttributeObjectTypes,
-    object_id: UUID,
+    dataspace_id: UUID,
+    attribute_category: InsertDataspaceTableAttributeRowDataspaceEntityType,
+    attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-    name: str,
     row_index: int,
     version: int | None | Unset = UNSET,
 ) -> Response[Any]:
-    """Delete a table attribute row
+    """Insert a table attribute row
 
-     Delete a row from a table attribute by row index. Includes optimistic concurrency control via
-    version to prevent conflicting edits.
+     Insert a new row into a table attribute at the specified row index. Includes optimistic concurrency
+    control via version to prevent conflicting edits.
 
     Args:
-        object_type (DeleteTableAttributeRowDataspaceAttributeObjectTypes):
-        object_id (UUID):
-        name (str):
+        dataspace_id (UUID):
+        attribute_category (InsertDataspaceTableAttributeRowDataspaceEntityType):
+        attribute_id (UUID):
         row_index (int):
         version (int | None | Unset):
 
@@ -98,9 +97,9 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        object_type=object_type,
-        object_id=object_id,
-        name=name,
+        dataspace_id=dataspace_id,
+        attribute_category=attribute_category,
+        attribute_id=attribute_id,
         row_index=row_index,
         version=version,
     )
@@ -113,23 +112,23 @@ def sync_detailed(
 
 
 async def asyncio_detailed(
-    object_type: DeleteTableAttributeRowDataspaceAttributeObjectTypes,
-    object_id: UUID,
+    dataspace_id: UUID,
+    attribute_category: InsertDataspaceTableAttributeRowDataspaceEntityType,
+    attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-    name: str,
     row_index: int,
     version: int | None | Unset = UNSET,
 ) -> Response[Any]:
-    """Delete a table attribute row
+    """Insert a table attribute row
 
-     Delete a row from a table attribute by row index. Includes optimistic concurrency control via
-    version to prevent conflicting edits.
+     Insert a new row into a table attribute at the specified row index. Includes optimistic concurrency
+    control via version to prevent conflicting edits.
 
     Args:
-        object_type (DeleteTableAttributeRowDataspaceAttributeObjectTypes):
-        object_id (UUID):
-        name (str):
+        dataspace_id (UUID):
+        attribute_category (InsertDataspaceTableAttributeRowDataspaceEntityType):
+        attribute_id (UUID):
         row_index (int):
         version (int | None | Unset):
 
@@ -142,9 +141,9 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        object_type=object_type,
-        object_id=object_id,
-        name=name,
+        dataspace_id=dataspace_id,
+        attribute_category=attribute_category,
+        attribute_id=attribute_id,
         row_index=row_index,
         version=version,
     )

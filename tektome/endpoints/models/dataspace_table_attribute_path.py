@@ -7,23 +7,30 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="AttributePathIn")
+from ..models.dataspace_entity_type import DataspaceEntityType
+
+T = TypeVar("T", bound="DataspaceTableAttributePath")
 
 
 @_attrs_define
-class AttributePathIn:
-    """
+class DataspaceTableAttributePath:
+    """Path schema for table attribute endpoints. Validates the attribute is a TableAttribute.
+
     Attributes:
         dataspace_id (UUID):
+        attribute_category (DataspaceEntityType):
         attribute_id (UUID):
     """
 
     dataspace_id: UUID
+    attribute_category: DataspaceEntityType
     attribute_id: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         dataspace_id = str(self.dataspace_id)
+
+        attribute_category = self.attribute_category.value
 
         attribute_id = str(self.attribute_id)
 
@@ -32,6 +39,7 @@ class AttributePathIn:
         field_dict.update(
             {
                 "dataspace_id": dataspace_id,
+                "attribute_category": attribute_category,
                 "attribute_id": attribute_id,
             }
         )
@@ -43,15 +51,18 @@ class AttributePathIn:
         d = dict(src_dict)
         dataspace_id = UUID(d.pop("dataspace_id"))
 
+        attribute_category = DataspaceEntityType(d.pop("attribute_category"))
+
         attribute_id = UUID(d.pop("attribute_id"))
 
-        attribute_path_in = cls(
+        dataspace_table_attribute_path = cls(
             dataspace_id=dataspace_id,
+            attribute_category=attribute_category,
             attribute_id=attribute_id,
         )
 
-        attribute_path_in.additional_properties = d
-        return attribute_path_in
+        dataspace_table_attribute_path.additional_properties = d
+        return dataspace_table_attribute_path
 
     @property
     def additional_keys(self) -> list[str]:

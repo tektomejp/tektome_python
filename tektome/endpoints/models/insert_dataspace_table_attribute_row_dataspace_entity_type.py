@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class UpsertTableAttributesDataspaceAttributeObjectTypes(str, Enum):
+class InsertDataspaceTableAttributeRowDataspaceEntityType(str, Enum):
     PROJECT = "project"
     RESOURCE = "resource"
 

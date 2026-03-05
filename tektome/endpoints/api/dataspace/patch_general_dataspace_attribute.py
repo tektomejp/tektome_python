@@ -8,21 +8,28 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.attribute_get_out import AttributeGetOut
-from ...models.project_attribute_post_in import ProjectAttributePostIn
+from ...models.attribute_patch_in_patch import AttributePatchInPatch
+from ...models.patch_general_dataspace_attribute_dataspace_entity_type import (
+    PatchGeneralDataspaceAttributeDataspaceEntityType,
+)
 from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
+    attribute_category: PatchGeneralDataspaceAttributeDataspaceEntityType,
+    attribute_id: UUID,
     *,
-    body: ProjectAttributePostIn,
+    body: AttributePatchInPatch,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
-        "method": "post",
-        "url": "/api/core/dataspaces/{dataspace_id}/project-attributes/".format(
+        "method": "patch",
+        "url": "/api/core/dataspaces/{dataspace_id}/attributes/{attribute_category}/{attribute_id}/".format(
             dataspace_id=quote(str(dataspace_id), safe=""),
+            attribute_category=quote(str(attribute_category), safe=""),
+            attribute_id=quote(str(attribute_id), safe=""),
         ),
     }
 
@@ -35,10 +42,10 @@ def _get_kwargs(
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AttributeGetOut | None:
-    if response.status_code == 201:
-        response_201 = AttributeGetOut.from_dict(response.json())
+    if response.status_code == 200:
+        response_200 = AttributeGetOut.from_dict(response.json())
 
-        return response_201
+        return response_200
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -57,18 +64,22 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def sync_detailed(
     dataspace_id: UUID,
+    attribute_category: PatchGeneralDataspaceAttributeDataspaceEntityType,
+    attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProjectAttributePostIn,
+    body: AttributePatchInPatch,
 ) -> Response[AttributeGetOut]:
-    """Create a project attribute in a dataspace
+    """Update an attribute in a dataspace
 
-     Create a new attribute for a project, validated against the dataspace's configured attribute
-    settings.
+     Partially update a project or resource attribute. The update is validated against the dataspace's
+    configured attribute settings. Disabled attributes cannot be modified.
 
     Args:
         dataspace_id (UUID):
-        body (ProjectAttributePostIn):
+        attribute_category (PatchGeneralDataspaceAttributeDataspaceEntityType):
+        attribute_id (UUID):
+        body (AttributePatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -80,6 +91,8 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         dataspace_id=dataspace_id,
+        attribute_category=attribute_category,
+        attribute_id=attribute_id,
         body=body,
     )
 
@@ -92,18 +105,22 @@ def sync_detailed(
 
 def sync(
     dataspace_id: UUID,
+    attribute_category: PatchGeneralDataspaceAttributeDataspaceEntityType,
+    attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProjectAttributePostIn,
+    body: AttributePatchInPatch,
 ) -> AttributeGetOut | None:
-    """Create a project attribute in a dataspace
+    """Update an attribute in a dataspace
 
-     Create a new attribute for a project, validated against the dataspace's configured attribute
-    settings.
+     Partially update a project or resource attribute. The update is validated against the dataspace's
+    configured attribute settings. Disabled attributes cannot be modified.
 
     Args:
         dataspace_id (UUID):
-        body (ProjectAttributePostIn):
+        attribute_category (PatchGeneralDataspaceAttributeDataspaceEntityType):
+        attribute_id (UUID):
+        body (AttributePatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -115,6 +132,8 @@ def sync(
 
     return sync_detailed(
         dataspace_id=dataspace_id,
+        attribute_category=attribute_category,
+        attribute_id=attribute_id,
         client=client,
         body=body,
     ).parsed
@@ -122,18 +141,22 @@ def sync(
 
 async def asyncio_detailed(
     dataspace_id: UUID,
+    attribute_category: PatchGeneralDataspaceAttributeDataspaceEntityType,
+    attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProjectAttributePostIn,
+    body: AttributePatchInPatch,
 ) -> Response[AttributeGetOut]:
-    """Create a project attribute in a dataspace
+    """Update an attribute in a dataspace
 
-     Create a new attribute for a project, validated against the dataspace's configured attribute
-    settings.
+     Partially update a project or resource attribute. The update is validated against the dataspace's
+    configured attribute settings. Disabled attributes cannot be modified.
 
     Args:
         dataspace_id (UUID):
-        body (ProjectAttributePostIn):
+        attribute_category (PatchGeneralDataspaceAttributeDataspaceEntityType):
+        attribute_id (UUID):
+        body (AttributePatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -145,6 +168,8 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         dataspace_id=dataspace_id,
+        attribute_category=attribute_category,
+        attribute_id=attribute_id,
         body=body,
     )
 
@@ -155,18 +180,22 @@ async def asyncio_detailed(
 
 async def asyncio(
     dataspace_id: UUID,
+    attribute_category: PatchGeneralDataspaceAttributeDataspaceEntityType,
+    attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProjectAttributePostIn,
+    body: AttributePatchInPatch,
 ) -> AttributeGetOut | None:
-    """Create a project attribute in a dataspace
+    """Update an attribute in a dataspace
 
-     Create a new attribute for a project, validated against the dataspace's configured attribute
-    settings.
+     Partially update a project or resource attribute. The update is validated against the dataspace's
+    configured attribute settings. Disabled attributes cannot be modified.
 
     Args:
         dataspace_id (UUID):
-        body (ProjectAttributePostIn):
+        attribute_category (PatchGeneralDataspaceAttributeDataspaceEntityType):
+        attribute_id (UUID):
+        body (AttributePatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -179,6 +208,8 @@ async def asyncio(
     return (
         await asyncio_detailed(
             dataspace_id=dataspace_id,
+            attribute_category=attribute_category,
+            attribute_id=attribute_id,
             client=client,
             body=body,
         )
