@@ -864,7 +864,6 @@ from .resource_schema_2 import ResourceSchema2
 from .resource_schema_any_in import ResourceSchemaAnyIn
 from .resource_schema_post_out import ResourceSchemaPostOut
 from .resource_section_schema import ResourceSectionSchema
-from .resource_upload_schema import ResourceUploadSchema
 from .resource_vc_schema_path_in import ResourceVCSchemaPathIn
 from .resource_vc_schema_post_in import ResourceVCSchemaPostIn
 from .resource_vc_with_version_schema_path_in import ResourceVCWithVersionSchemaPathIn
@@ -1861,7 +1860,6 @@ __all__ = (
     "ResourceSchemaAnyIn",
     "ResourceSchemaPostOut",
     "ResourceSectionSchema",
-    "ResourceUploadSchema",
     "ResourceVCSchemaPathIn",
     "ResourceVCSchemaPostIn",
     "ResourceVCWithVersionSchemaPathIn",
