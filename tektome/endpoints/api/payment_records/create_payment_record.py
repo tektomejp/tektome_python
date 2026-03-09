@@ -63,8 +63,8 @@ def sync_detailed(
 ) -> Response[PaymentRecordOutBase]:
     """Create a payment record
 
-     Create a new payment record for an organization. A supporting file (proof of payment) must be
-    uploaded. Debit transactions are validated against the organization's current balance.
+     Create a new payment record for an organization. A supporting ZIP file (proof of payment) can
+    optionally be uploaded. Debit transactions are validated against the organization's current balance.
 
     Args:
         organization_id (UUID):
@@ -98,8 +98,8 @@ def sync(
 ) -> PaymentRecordOutBase | None:
     """Create a payment record
 
-     Create a new payment record for an organization. A supporting file (proof of payment) must be
-    uploaded. Debit transactions are validated against the organization's current balance.
+     Create a new payment record for an organization. A supporting ZIP file (proof of payment) can
+    optionally be uploaded. Debit transactions are validated against the organization's current balance.
 
     Args:
         organization_id (UUID):
@@ -128,8 +128,8 @@ async def asyncio_detailed(
 ) -> Response[PaymentRecordOutBase]:
     """Create a payment record
 
-     Create a new payment record for an organization. A supporting file (proof of payment) must be
-    uploaded. Debit transactions are validated against the organization's current balance.
+     Create a new payment record for an organization. A supporting ZIP file (proof of payment) can
+    optionally be uploaded. Debit transactions are validated against the organization's current balance.
 
     Args:
         organization_id (UUID):
@@ -161,8 +161,8 @@ async def asyncio(
 ) -> PaymentRecordOutBase | None:
     """Create a payment record
 
-     Create a new payment record for an organization. A supporting file (proof of payment) must be
-    uploaded. Debit transactions are validated against the organization's current balance.
+     Create a new payment record for an organization. A supporting ZIP file (proof of payment) can
+    optionally be uploaded. Debit transactions are validated against the organization's current balance.
 
     Args:
         organization_id (UUID):
