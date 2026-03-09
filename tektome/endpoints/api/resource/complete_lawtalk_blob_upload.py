@@ -8,7 +8,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.blob_upload_complete_post_in import BlobUploadCompletePostIn
-from ...models.resource_upload_schema import ResourceUploadSchema
+from ...models.resource_schema_2 import ResourceSchema2
 from ...types import Response
 
 
@@ -34,9 +34,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ResourceUploadSchema | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ResourceSchema2 | None:
     if response.status_code == 201:
-        response_201 = ResourceUploadSchema.from_dict(response.json())
+        response_201 = ResourceSchema2.from_dict(response.json())
 
         return response_201
 
@@ -46,9 +46,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ResourceUploadSchema]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ResourceSchema2]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -62,7 +60,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: BlobUploadCompletePostIn,
-) -> Response[ResourceUploadSchema]:
+) -> Response[ResourceSchema2]:
     """Complete a blob upload
 
      Finalize a blob upload after the file has been uploaded directly to storage. Validates the upload,
@@ -77,7 +75,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceUploadSchema]
+        Response[ResourceSchema2]
     """
 
     kwargs = _get_kwargs(
@@ -97,7 +95,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: BlobUploadCompletePostIn,
-) -> ResourceUploadSchema | None:
+) -> ResourceSchema2 | None:
     """Complete a blob upload
 
      Finalize a blob upload after the file has been uploaded directly to storage. Validates the upload,
@@ -112,7 +110,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceUploadSchema
+        ResourceSchema2
     """
 
     return sync_detailed(
@@ -127,7 +125,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: BlobUploadCompletePostIn,
-) -> Response[ResourceUploadSchema]:
+) -> Response[ResourceSchema2]:
     """Complete a blob upload
 
      Finalize a blob upload after the file has been uploaded directly to storage. Validates the upload,
@@ -142,7 +140,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceUploadSchema]
+        Response[ResourceSchema2]
     """
 
     kwargs = _get_kwargs(
@@ -160,7 +158,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: BlobUploadCompletePostIn,
-) -> ResourceUploadSchema | None:
+) -> ResourceSchema2 | None:
     """Complete a blob upload
 
      Finalize a blob upload after the file has been uploaded directly to storage. Validates the upload,
@@ -175,7 +173,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceUploadSchema
+        ResourceSchema2
     """
 
     return (

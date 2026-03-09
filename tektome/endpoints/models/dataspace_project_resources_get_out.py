@@ -33,6 +33,7 @@ class DataspaceProjectResourcesGetOut:
         created (datetime.datetime):
         updated (datetime.datetime):
         folder_id (None | Unset | UUID):
+        core_project_id (None | Unset | UUID):
         id (None | Unset | UUID):
     """
 
@@ -44,6 +45,7 @@ class DataspaceProjectResourcesGetOut:
     created: datetime.datetime
     updated: datetime.datetime
     folder_id: None | Unset | UUID = UNSET
+    core_project_id: None | Unset | UUID = UNSET
     id: None | Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -70,6 +72,14 @@ class DataspaceProjectResourcesGetOut:
         else:
             folder_id = self.folder_id
 
+        core_project_id: None | str | Unset
+        if isinstance(self.core_project_id, Unset):
+            core_project_id = UNSET
+        elif isinstance(self.core_project_id, UUID):
+            core_project_id = str(self.core_project_id)
+        else:
+            core_project_id = self.core_project_id
+
         id: None | str | Unset
         if isinstance(self.id, Unset):
             id = UNSET
@@ -93,6 +103,8 @@ class DataspaceProjectResourcesGetOut:
         )
         if folder_id is not UNSET:
             field_dict["folder_id"] = folder_id
+        if core_project_id is not UNSET:
+            field_dict["core_project_id"] = core_project_id
         if id is not UNSET:
             field_dict["id"] = id
 
@@ -136,6 +148,23 @@ class DataspaceProjectResourcesGetOut:
 
         folder_id = _parse_folder_id(d.pop("folder_id", UNSET))
 
+        def _parse_core_project_id(data: object) -> None | Unset | UUID:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                core_project_id_type_0 = UUID(data)
+
+                return core_project_id_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | Unset | UUID, data)
+
+        core_project_id = _parse_core_project_id(d.pop("core_project_id", UNSET))
+
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:
                 return data
@@ -162,6 +191,7 @@ class DataspaceProjectResourcesGetOut:
             created=created,
             updated=updated,
             folder_id=folder_id,
+            core_project_id=core_project_id,
             id=id,
         )
 
