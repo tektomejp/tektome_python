@@ -58,9 +58,17 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ExecutionGroupDetailGetOut]:
-    """Get execution group details
+    """Get Execution Group
 
-     Retrieve detailed information about a specific execution group by its ID.
+     VNpQ2rat
+
+    Retrieve details of a specific execution group by its ID.
+
+    Args:
+        request: HttpRequest - The incoming HTTP request.
+        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
+
+    Returns: ExecutionGroup - The execution group instance.
 
     Args:
         dataspace_id (UUID):
@@ -92,9 +100,17 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ExecutionGroupDetailGetOut | None:
-    """Get execution group details
+    """Get Execution Group
 
-     Retrieve detailed information about a specific execution group by its ID.
+     VNpQ2rat
+
+    Retrieve details of a specific execution group by its ID.
+
+    Args:
+        request: HttpRequest - The incoming HTTP request.
+        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
+
+    Returns: ExecutionGroup - The execution group instance.
 
     Args:
         dataspace_id (UUID):
@@ -121,9 +137,17 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ExecutionGroupDetailGetOut]:
-    """Get execution group details
+    """Get Execution Group
 
-     Retrieve detailed information about a specific execution group by its ID.
+     VNpQ2rat
+
+    Retrieve details of a specific execution group by its ID.
+
+    Args:
+        request: HttpRequest - The incoming HTTP request.
+        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
+
+    Returns: ExecutionGroup - The execution group instance.
 
     Args:
         dataspace_id (UUID):
@@ -153,9 +177,17 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ExecutionGroupDetailGetOut | None:
-    """Get execution group details
+    """Get Execution Group
 
-     Retrieve detailed information about a specific execution group by its ID.
+     VNpQ2rat
+
+    Retrieve details of a specific execution group by its ID.
+
+    Args:
+        request: HttpRequest - The incoming HTTP request.
+        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
+
+    Returns: ExecutionGroup - The execution group instance.
 
     Args:
         dataspace_id (UUID):

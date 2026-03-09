@@ -80,10 +80,17 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedLLMUsageReportGetOut]:
-    """List LLM usage reports
+    """Get Llm Usage Reports
 
-     Retrieve paginated LLM usage reports for a specific organization and period type, ordered by period
-    descending.
+     7wGb8Zfz
+
+    Retrieve LLM usage reports for a specific organization and period type.
+
+    Args:
+        request: The HTTP request object.
+        query_params: Query parameters including organization_id and period_type.
+
+    Returns: A list of LLMUsageReport objects ordered by period in descending order.
 
     Args:
         organization_id (UUID):
@@ -121,10 +128,17 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedLLMUsageReportGetOut | None:
-    """List LLM usage reports
+    """Get Llm Usage Reports
 
-     Retrieve paginated LLM usage reports for a specific organization and period type, ordered by period
-    descending.
+     7wGb8Zfz
+
+    Retrieve LLM usage reports for a specific organization and period type.
+
+    Args:
+        request: The HTTP request object.
+        query_params: Query parameters including organization_id and period_type.
+
+    Returns: A list of LLMUsageReport objects ordered by period in descending order.
 
     Args:
         organization_id (UUID):
@@ -157,10 +171,17 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedLLMUsageReportGetOut]:
-    """List LLM usage reports
+    """Get Llm Usage Reports
 
-     Retrieve paginated LLM usage reports for a specific organization and period type, ordered by period
-    descending.
+     7wGb8Zfz
+
+    Retrieve LLM usage reports for a specific organization and period type.
+
+    Args:
+        request: The HTTP request object.
+        query_params: Query parameters including organization_id and period_type.
+
+    Returns: A list of LLMUsageReport objects ordered by period in descending order.
 
     Args:
         organization_id (UUID):
@@ -196,10 +217,17 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedLLMUsageReportGetOut | None:
-    """List LLM usage reports
+    """Get Llm Usage Reports
 
-     Retrieve paginated LLM usage reports for a specific organization and period type, ordered by period
-    descending.
+     7wGb8Zfz
+
+    Retrieve LLM usage reports for a specific organization and period type.
+
+    Args:
+        request: The HTTP request object.
+        query_params: Query parameters including organization_id and period_type.
+
+    Returns: A list of LLMUsageReport objects ordered by period in descending order.
 
     Args:
         organization_id (UUID):

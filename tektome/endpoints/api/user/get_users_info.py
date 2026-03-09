@@ -76,10 +76,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     ids: list[UUID],
 ) -> Response[GetUsersInfoResponse | list[MeGetOutWithoutOrganization]]:
-    """Get users by IDs
+    """Get Users Info
 
-     Retrieve profile information for a list of users by their IDs. Only returns users that belong to at
-    least one of the authenticated user's organizations.
+     1wcEjKTo
+
+    Get info for a list of users by their IDs.
 
     Args:
         ids (list[UUID]):
@@ -108,10 +109,11 @@ def sync(
     client: AuthenticatedClient,
     ids: list[UUID],
 ) -> GetUsersInfoResponse | list[MeGetOutWithoutOrganization] | None:
-    """Get users by IDs
+    """Get Users Info
 
-     Retrieve profile information for a list of users by their IDs. Only returns users that belong to at
-    least one of the authenticated user's organizations.
+     1wcEjKTo
+
+    Get info for a list of users by their IDs.
 
     Args:
         ids (list[UUID]):
@@ -135,10 +137,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     ids: list[UUID],
 ) -> Response[GetUsersInfoResponse | list[MeGetOutWithoutOrganization]]:
-    """Get users by IDs
+    """Get Users Info
 
-     Retrieve profile information for a list of users by their IDs. Only returns users that belong to at
-    least one of the authenticated user's organizations.
+     1wcEjKTo
+
+    Get info for a list of users by their IDs.
 
     Args:
         ids (list[UUID]):
@@ -165,10 +168,11 @@ async def asyncio(
     client: AuthenticatedClient,
     ids: list[UUID],
 ) -> GetUsersInfoResponse | list[MeGetOutWithoutOrganization] | None:
-    """Get users by IDs
+    """Get Users Info
 
-     Retrieve profile information for a list of users by their IDs. Only returns users that belong to at
-    least one of the authenticated user's organizations.
+     1wcEjKTo
+
+    Get info for a list of users by their IDs.
 
     Args:
         ids (list[UUID]):

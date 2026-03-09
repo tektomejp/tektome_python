@@ -9,7 +9,6 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.any_attribute_schema_in import AnyAttributeSchemaIn
     from ..models.boolean_attribute_schema_in import BooleanAttributeSchemaIn
     from ..models.coordinate_attribute_schema_in import CoordinateAttributeSchemaIn
     from ..models.date_attribute_schema_in import DateAttributeSchemaIn
@@ -17,10 +16,12 @@ if TYPE_CHECKING:
     from ..models.float_attribute_schema_in import FloatAttributeSchemaIn
     from ..models.integer_attribute_schema_in import IntegerAttributeSchemaIn
     from ..models.json_attribute_schema_in import JSONAttributeSchemaIn
-    from ..models.multi_select_attribute_schema_in import MultiSelectAttributeSchemaIn
     from ..models.polygon_attribute_schema_in import PolygonAttributeSchemaIn
-    from ..models.single_select_attribute_schema_in import SingleSelectAttributeSchemaIn
     from ..models.string_attribute_schema_in import StringAttributeSchemaIn
+    from ..models.system_attribute_body_put_in_list_object_attributes_item import (
+        SystemAttributeBodyPutInListObjectAttributesItem,
+    )
+    from ..models.table_attribute_schema_in import TableAttributeSchemaIn
     from ..models.time_attribute_schema_in import TimeAttributeSchemaIn
 
 
@@ -40,11 +41,9 @@ class SystemAttributeBodyPutIn:
         time_attributes (list[TimeAttributeSchemaIn] | Unset):
         coordinate_attributes (list[CoordinateAttributeSchemaIn] | Unset):
         polygon_attributes (list[PolygonAttributeSchemaIn] | Unset):
-        list_object_attributes (list[AnyAttributeSchemaIn] | Unset):
+        table_attributes (list[TableAttributeSchemaIn] | Unset):
+        list_object_attributes (list[SystemAttributeBodyPutInListObjectAttributesItem] | Unset):
         json_attributes (list[JSONAttributeSchemaIn] | Unset):
-        single_select_attributes (list[SingleSelectAttributeSchemaIn] | Unset):
-        multi_select_attributes (list[MultiSelectAttributeSchemaIn] | Unset):
-        table_attributes (list[AnyAttributeSchemaIn] | Unset):
     """
 
     string_attributes: list[StringAttributeSchemaIn] | Unset = UNSET
@@ -56,11 +55,9 @@ class SystemAttributeBodyPutIn:
     time_attributes: list[TimeAttributeSchemaIn] | Unset = UNSET
     coordinate_attributes: list[CoordinateAttributeSchemaIn] | Unset = UNSET
     polygon_attributes: list[PolygonAttributeSchemaIn] | Unset = UNSET
-    list_object_attributes: list[AnyAttributeSchemaIn] | Unset = UNSET
+    table_attributes: list[TableAttributeSchemaIn] | Unset = UNSET
+    list_object_attributes: list[SystemAttributeBodyPutInListObjectAttributesItem] | Unset = UNSET
     json_attributes: list[JSONAttributeSchemaIn] | Unset = UNSET
-    single_select_attributes: list[SingleSelectAttributeSchemaIn] | Unset = UNSET
-    multi_select_attributes: list[MultiSelectAttributeSchemaIn] | Unset = UNSET
-    table_attributes: list[AnyAttributeSchemaIn] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -127,6 +124,13 @@ class SystemAttributeBodyPutIn:
                 polygon_attributes_item = polygon_attributes_item_data.to_dict()
                 polygon_attributes.append(polygon_attributes_item)
 
+        table_attributes: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.table_attributes, Unset):
+            table_attributes = []
+            for table_attributes_item_data in self.table_attributes:
+                table_attributes_item = table_attributes_item_data.to_dict()
+                table_attributes.append(table_attributes_item)
+
         list_object_attributes: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.list_object_attributes, Unset):
             list_object_attributes = []
@@ -140,27 +144,6 @@ class SystemAttributeBodyPutIn:
             for json_attributes_item_data in self.json_attributes:
                 json_attributes_item = json_attributes_item_data.to_dict()
                 json_attributes.append(json_attributes_item)
-
-        single_select_attributes: list[dict[str, Any]] | Unset = UNSET
-        if not isinstance(self.single_select_attributes, Unset):
-            single_select_attributes = []
-            for single_select_attributes_item_data in self.single_select_attributes:
-                single_select_attributes_item = single_select_attributes_item_data.to_dict()
-                single_select_attributes.append(single_select_attributes_item)
-
-        multi_select_attributes: list[dict[str, Any]] | Unset = UNSET
-        if not isinstance(self.multi_select_attributes, Unset):
-            multi_select_attributes = []
-            for multi_select_attributes_item_data in self.multi_select_attributes:
-                multi_select_attributes_item = multi_select_attributes_item_data.to_dict()
-                multi_select_attributes.append(multi_select_attributes_item)
-
-        table_attributes: list[dict[str, Any]] | Unset = UNSET
-        if not isinstance(self.table_attributes, Unset):
-            table_attributes = []
-            for table_attributes_item_data in self.table_attributes:
-                table_attributes_item = table_attributes_item_data.to_dict()
-                table_attributes.append(table_attributes_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -183,22 +166,17 @@ class SystemAttributeBodyPutIn:
             field_dict["coordinate_attributes"] = coordinate_attributes
         if polygon_attributes is not UNSET:
             field_dict["polygon_attributes"] = polygon_attributes
+        if table_attributes is not UNSET:
+            field_dict["table_attributes"] = table_attributes
         if list_object_attributes is not UNSET:
             field_dict["list_object_attributes"] = list_object_attributes
         if json_attributes is not UNSET:
             field_dict["json_attributes"] = json_attributes
-        if single_select_attributes is not UNSET:
-            field_dict["single_select_attributes"] = single_select_attributes
-        if multi_select_attributes is not UNSET:
-            field_dict["multi_select_attributes"] = multi_select_attributes
-        if table_attributes is not UNSET:
-            field_dict["table_attributes"] = table_attributes
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.any_attribute_schema_in import AnyAttributeSchemaIn
         from ..models.boolean_attribute_schema_in import BooleanAttributeSchemaIn
         from ..models.coordinate_attribute_schema_in import CoordinateAttributeSchemaIn
         from ..models.date_attribute_schema_in import DateAttributeSchemaIn
@@ -206,10 +184,12 @@ class SystemAttributeBodyPutIn:
         from ..models.float_attribute_schema_in import FloatAttributeSchemaIn
         from ..models.integer_attribute_schema_in import IntegerAttributeSchemaIn
         from ..models.json_attribute_schema_in import JSONAttributeSchemaIn
-        from ..models.multi_select_attribute_schema_in import MultiSelectAttributeSchemaIn
         from ..models.polygon_attribute_schema_in import PolygonAttributeSchemaIn
-        from ..models.single_select_attribute_schema_in import SingleSelectAttributeSchemaIn
         from ..models.string_attribute_schema_in import StringAttributeSchemaIn
+        from ..models.system_attribute_body_put_in_list_object_attributes_item import (
+            SystemAttributeBodyPutInListObjectAttributesItem,
+        )
+        from ..models.table_attribute_schema_in import TableAttributeSchemaIn
         from ..models.time_attribute_schema_in import TimeAttributeSchemaIn
 
         d = dict(src_dict)
@@ -294,12 +274,23 @@ class SystemAttributeBodyPutIn:
 
                 polygon_attributes.append(polygon_attributes_item)
 
+        _table_attributes = d.pop("table_attributes", UNSET)
+        table_attributes: list[TableAttributeSchemaIn] | Unset = UNSET
+        if _table_attributes is not UNSET:
+            table_attributes = []
+            for table_attributes_item_data in _table_attributes:
+                table_attributes_item = TableAttributeSchemaIn.from_dict(table_attributes_item_data)
+
+                table_attributes.append(table_attributes_item)
+
         _list_object_attributes = d.pop("list_object_attributes", UNSET)
-        list_object_attributes: list[AnyAttributeSchemaIn] | Unset = UNSET
+        list_object_attributes: list[SystemAttributeBodyPutInListObjectAttributesItem] | Unset = UNSET
         if _list_object_attributes is not UNSET:
             list_object_attributes = []
             for list_object_attributes_item_data in _list_object_attributes:
-                list_object_attributes_item = AnyAttributeSchemaIn.from_dict(list_object_attributes_item_data)
+                list_object_attributes_item = SystemAttributeBodyPutInListObjectAttributesItem.from_dict(
+                    list_object_attributes_item_data
+                )
 
                 list_object_attributes.append(list_object_attributes_item)
 
@@ -312,35 +303,6 @@ class SystemAttributeBodyPutIn:
 
                 json_attributes.append(json_attributes_item)
 
-        _single_select_attributes = d.pop("single_select_attributes", UNSET)
-        single_select_attributes: list[SingleSelectAttributeSchemaIn] | Unset = UNSET
-        if _single_select_attributes is not UNSET:
-            single_select_attributes = []
-            for single_select_attributes_item_data in _single_select_attributes:
-                single_select_attributes_item = SingleSelectAttributeSchemaIn.from_dict(
-                    single_select_attributes_item_data
-                )
-
-                single_select_attributes.append(single_select_attributes_item)
-
-        _multi_select_attributes = d.pop("multi_select_attributes", UNSET)
-        multi_select_attributes: list[MultiSelectAttributeSchemaIn] | Unset = UNSET
-        if _multi_select_attributes is not UNSET:
-            multi_select_attributes = []
-            for multi_select_attributes_item_data in _multi_select_attributes:
-                multi_select_attributes_item = MultiSelectAttributeSchemaIn.from_dict(multi_select_attributes_item_data)
-
-                multi_select_attributes.append(multi_select_attributes_item)
-
-        _table_attributes = d.pop("table_attributes", UNSET)
-        table_attributes: list[AnyAttributeSchemaIn] | Unset = UNSET
-        if _table_attributes is not UNSET:
-            table_attributes = []
-            for table_attributes_item_data in _table_attributes:
-                table_attributes_item = AnyAttributeSchemaIn.from_dict(table_attributes_item_data)
-
-                table_attributes.append(table_attributes_item)
-
         system_attribute_body_put_in = cls(
             string_attributes=string_attributes,
             integer_attributes=integer_attributes,
@@ -351,11 +313,9 @@ class SystemAttributeBodyPutIn:
             time_attributes=time_attributes,
             coordinate_attributes=coordinate_attributes,
             polygon_attributes=polygon_attributes,
+            table_attributes=table_attributes,
             list_object_attributes=list_object_attributes,
             json_attributes=json_attributes,
-            single_select_attributes=single_select_attributes,
-            multi_select_attributes=multi_select_attributes,
-            table_attributes=table_attributes,
         )
 
         system_attribute_body_put_in.additional_properties = d

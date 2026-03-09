@@ -156,10 +156,17 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ProjectPatchInPatch,
 ) -> Response[ErrorOut | LawtalkProjectSchema]:
-    """Update project attributes
+    """Patch Project
 
-     Update project attributes such as name, expected completion date, region, street address,
-    coordinates, and other details.
+     icMcY9nj
+
+    Patch a project core attribute details.
+    - name
+    - expected_completion_date
+    - state or region - whichever is applicable to country
+    - street address
+    - coordinates
+    - other_details
 
     Args:
         project_id (UUID):
@@ -191,10 +198,17 @@ def sync(
     client: AuthenticatedClient,
     body: ProjectPatchInPatch,
 ) -> ErrorOut | LawtalkProjectSchema | None:
-    """Update project attributes
+    """Patch Project
 
-     Update project attributes such as name, expected completion date, region, street address,
-    coordinates, and other details.
+     icMcY9nj
+
+    Patch a project core attribute details.
+    - name
+    - expected_completion_date
+    - state or region - whichever is applicable to country
+    - street address
+    - coordinates
+    - other_details
 
     Args:
         project_id (UUID):
@@ -221,10 +235,17 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ProjectPatchInPatch,
 ) -> Response[ErrorOut | LawtalkProjectSchema]:
-    """Update project attributes
+    """Patch Project
 
-     Update project attributes such as name, expected completion date, region, street address,
-    coordinates, and other details.
+     icMcY9nj
+
+    Patch a project core attribute details.
+    - name
+    - expected_completion_date
+    - state or region - whichever is applicable to country
+    - street address
+    - coordinates
+    - other_details
 
     Args:
         project_id (UUID):
@@ -254,10 +275,17 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ProjectPatchInPatch,
 ) -> ErrorOut | LawtalkProjectSchema | None:
-    """Update project attributes
+    """Patch Project
 
-     Update project attributes such as name, expected completion date, region, street address,
-    coordinates, and other details.
+     icMcY9nj
+
+    Patch a project core attribute details.
+    - name
+    - expected_completion_date
+    - state or region - whichever is applicable to country
+    - street address
+    - coordinates
+    - other_details
 
     Args:
         project_id (UUID):

@@ -71,10 +71,21 @@ def sync_detailed(
     body: BimKeyValueSearchPostV2In,
     bim_project_id: UUID,
 ) -> Response[Any]:
-    """Stream BIM key-value search results
+    r"""Bim Element Key Value Search V2
 
-     Search BIM elements by key-value pairs and stream matching element IDs as NDJSON. Supports BIM
-    objects, views, and sheets with a maximum of 150,000 results.
+     zYFYOkp6
+
+    Scroll-based search endpoint that streams IDs only as NDJSON using V2 indices.
+
+    - Uses V2 typed-bucket document structure for efficient key-value search
+    - Uses Elasticsearch scroll API via .scan() method for automatic handling
+    - Returns only parent document IDs (excludes child chunks) streamed as NDJSON
+    - Caps results at 150_000 to avoid runaway exports
+    - Streams results as they are retrieved, no waiting for full result set
+    - Supports BIM element types: bim-object, bim-view, bim-sheet
+
+    Response format: NDJSON (one JSON object per line)
+    Each line: {\"id\": \"document_id\"}
 
     Args:
         bim_element (StreamBimElementKeyValueSearchBimElementTypeV2Path): An enumeration
@@ -126,10 +137,21 @@ async def asyncio_detailed(
     body: BimKeyValueSearchPostV2In,
     bim_project_id: UUID,
 ) -> Response[Any]:
-    """Stream BIM key-value search results
+    r"""Bim Element Key Value Search V2
 
-     Search BIM elements by key-value pairs and stream matching element IDs as NDJSON. Supports BIM
-    objects, views, and sheets with a maximum of 150,000 results.
+     zYFYOkp6
+
+    Scroll-based search endpoint that streams IDs only as NDJSON using V2 indices.
+
+    - Uses V2 typed-bucket document structure for efficient key-value search
+    - Uses Elasticsearch scroll API via .scan() method for automatic handling
+    - Returns only parent document IDs (excludes child chunks) streamed as NDJSON
+    - Caps results at 150_000 to avoid runaway exports
+    - Streams results as they are retrieved, no waiting for full result set
+    - Supports BIM element types: bim-object, bim-view, bim-sheet
+
+    Response format: NDJSON (one JSON object per line)
+    Each line: {\"id\": \"document_id\"}
 
     Args:
         bim_element (StreamBimElementKeyValueSearchBimElementTypeV2Path): An enumeration

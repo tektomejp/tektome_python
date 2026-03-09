@@ -51,9 +51,16 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[MarkdownSchema]:
-    """Get section captures markdown
+    """Get Section Components Markdown
 
-     Retrieve the generated markdown content for a section's captured components.
+     gsaGzJVz
+    Retrieve markdown for a ResourceSection captures components.
+
+    Args:
+        request: Request object
+        path_params: path params of type GenerateMarkdownPath
+
+    Returns:
 
     Args:
         section_id (UUID):
@@ -82,9 +89,16 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> MarkdownSchema | None:
-    """Get section captures markdown
+    """Get Section Components Markdown
 
-     Retrieve the generated markdown content for a section's captured components.
+     gsaGzJVz
+    Retrieve markdown for a ResourceSection captures components.
+
+    Args:
+        request: Request object
+        path_params: path params of type GenerateMarkdownPath
+
+    Returns:
 
     Args:
         section_id (UUID):
@@ -108,9 +122,16 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[MarkdownSchema]:
-    """Get section captures markdown
+    """Get Section Components Markdown
 
-     Retrieve the generated markdown content for a section's captured components.
+     gsaGzJVz
+    Retrieve markdown for a ResourceSection captures components.
+
+    Args:
+        request: Request object
+        path_params: path params of type GenerateMarkdownPath
+
+    Returns:
 
     Args:
         section_id (UUID):
@@ -137,9 +158,16 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> MarkdownSchema | None:
-    """Get section captures markdown
+    """Get Section Components Markdown
 
-     Retrieve the generated markdown content for a section's captured components.
+     gsaGzJVz
+    Retrieve markdown for a ResourceSection captures components.
+
+    Args:
+        request: Request object
+        path_params: path params of type GenerateMarkdownPath
+
+    Returns:
 
     Args:
         section_id (UUID):

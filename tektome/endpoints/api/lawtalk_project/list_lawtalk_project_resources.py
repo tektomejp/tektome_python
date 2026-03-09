@@ -104,10 +104,20 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedLawtalkProjectResourceGetOut]:
-    """List project resources
+    """Get Project Resources
 
-     Retrieve a paginated list of all resources under a project. Supports filtering by search query,
-    keywords, and public visibility.
+     VqXKX7j1
+
+    Retrieve all lawtalk resources under a project.
+
+    Args:
+        query_params: Query parameters for filtering resources.
+            search_query: full text search in resource names.
+            keywords: list of keywords to filter resource names.
+        request: HttpRequest
+        path_params: Path parameters containing the project ID.
+
+    Returns: Paginated list of LawtalkResource objects associated with the specified project.
 
     Args:
         project_id (UUID):
@@ -151,10 +161,20 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedLawtalkProjectResourceGetOut | None:
-    """List project resources
+    """Get Project Resources
 
-     Retrieve a paginated list of all resources under a project. Supports filtering by search query,
-    keywords, and public visibility.
+     VqXKX7j1
+
+    Retrieve all lawtalk resources under a project.
+
+    Args:
+        query_params: Query parameters for filtering resources.
+            search_query: full text search in resource names.
+            keywords: list of keywords to filter resource names.
+        request: HttpRequest
+        path_params: Path parameters containing the project ID.
+
+    Returns: Paginated list of LawtalkResource objects associated with the specified project.
 
     Args:
         project_id (UUID):
@@ -193,10 +213,20 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedLawtalkProjectResourceGetOut]:
-    """List project resources
+    """Get Project Resources
 
-     Retrieve a paginated list of all resources under a project. Supports filtering by search query,
-    keywords, and public visibility.
+     VqXKX7j1
+
+    Retrieve all lawtalk resources under a project.
+
+    Args:
+        query_params: Query parameters for filtering resources.
+            search_query: full text search in resource names.
+            keywords: list of keywords to filter resource names.
+        request: HttpRequest
+        path_params: Path parameters containing the project ID.
+
+    Returns: Paginated list of LawtalkResource objects associated with the specified project.
 
     Args:
         project_id (UUID):
@@ -238,10 +268,20 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedLawtalkProjectResourceGetOut | None:
-    """List project resources
+    """Get Project Resources
 
-     Retrieve a paginated list of all resources under a project. Supports filtering by search query,
-    keywords, and public visibility.
+     VqXKX7j1
+
+    Retrieve all lawtalk resources under a project.
+
+    Args:
+        query_params: Query parameters for filtering resources.
+            search_query: full text search in resource names.
+            keywords: list of keywords to filter resource names.
+        request: HttpRequest
+        path_params: Path parameters containing the project ID.
+
+    Returns: Paginated list of LawtalkResource objects associated with the specified project.
 
     Args:
         project_id (UUID):

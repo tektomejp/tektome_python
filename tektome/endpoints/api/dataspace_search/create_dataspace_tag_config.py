@@ -65,10 +65,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPostIn,
 ) -> Response[DataspaceSearchTagConfigOut]:
-    """Create a search tag configuration
+    """Create Dataspace Tag Config
 
-     Create a new search tag configuration for a dataspace. The tag configuration is created in an
-    inactive state by default.
+     nmlKz3da
+
+    Create a tag configuration for the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -100,10 +101,11 @@ def sync(
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPostIn,
 ) -> DataspaceSearchTagConfigOut | None:
-    """Create a search tag configuration
+    """Create Dataspace Tag Config
 
-     Create a new search tag configuration for a dataspace. The tag configuration is created in an
-    inactive state by default.
+     nmlKz3da
+
+    Create a tag configuration for the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -130,10 +132,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPostIn,
 ) -> Response[DataspaceSearchTagConfigOut]:
-    """Create a search tag configuration
+    """Create Dataspace Tag Config
 
-     Create a new search tag configuration for a dataspace. The tag configuration is created in an
-    inactive state by default.
+     nmlKz3da
+
+    Create a tag configuration for the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -163,10 +166,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPostIn,
 ) -> DataspaceSearchTagConfigOut | None:
-    """Create a search tag configuration
+    """Create Dataspace Tag Config
 
-     Create a new search tag configuration for a dataspace. The tag configuration is created in an
-    inactive state by default.
+     nmlKz3da
+
+    Create a tag configuration for the current dataspace.
 
     Args:
         dataspace_id (UUID):

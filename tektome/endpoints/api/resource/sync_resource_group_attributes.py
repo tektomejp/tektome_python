@@ -48,10 +48,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Sync resource group attributes to resources
+    """Post Sync Attribute Resources
 
-     Copy all attributes from a resource group to every resource within the group. Existing resource
-    attributes are replaced with the group's attributes.
+     2i_Bm_mQ
+
+    This route is used to sync the attributes of a resource group to all the
+    resources in the group.
+
+    - all attributes are deleted from the resources
+    - then, attributes from the resource group are copied to the resources
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -80,10 +85,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Sync resource group attributes to resources
+    """Post Sync Attribute Resources
 
-     Copy all attributes from a resource group to every resource within the group. Existing resource
-    attributes are replaced with the group's attributes.
+     2i_Bm_mQ
+
+    This route is used to sync the attributes of a resource group to all the
+    resources in the group.
+
+    - all attributes are deleted from the resources
+    - then, attributes from the resource group are copied to the resources
 
     Args:
         resource_group_id (UUID): Resource group ID

@@ -64,9 +64,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: list[DataspaceMemberSchemaIn],
 ) -> Response[Any]:
-    """Update a member's role in a dataspace
+    """Update Dataspace Member
 
-     Update the role assignments of one or more members within a dataspace.
+     83LmAnb8
+
+    Update a member's role in a dataspace
 
     Args:
         dataspace_id (UUID):
@@ -98,9 +100,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: list[DataspaceMemberSchemaIn],
 ) -> Response[Any]:
-    """Update a member's role in a dataspace
+    """Update Dataspace Member
 
-     Update the role assignments of one or more members within a dataspace.
+     83LmAnb8
+
+    Update a member's role in a dataspace
 
     Args:
         dataspace_id (UUID):

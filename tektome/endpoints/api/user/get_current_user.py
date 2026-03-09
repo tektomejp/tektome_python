@@ -44,9 +44,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[MeGetOut]:
-    """Get current user profile
+    """Get Me
 
-     Retrieve the authenticated user's profile information, including their active organization.
+     9anEyGTN
+    Get current user profile & current active organization
+    TODO: post poc, rename current_organization to active_workspace
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -69,9 +71,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> MeGetOut | None:
-    """Get current user profile
+    """Get Me
 
-     Retrieve the authenticated user's profile information, including their active organization.
+     9anEyGTN
+    Get current user profile & current active organization
+    TODO: post poc, rename current_organization to active_workspace
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -90,9 +94,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[MeGetOut]:
-    """Get current user profile
+    """Get Me
 
-     Retrieve the authenticated user's profile information, including their active organization.
+     9anEyGTN
+    Get current user profile & current active organization
+    TODO: post poc, rename current_organization to active_workspace
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -113,9 +119,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> MeGetOut | None:
-    """Get current user profile
+    """Get Me
 
-     Retrieve the authenticated user's profile information, including their active organization.
+     9anEyGTN
+    Get current user profile & current active organization
+    TODO: post poc, rename current_organization to active_workspace
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

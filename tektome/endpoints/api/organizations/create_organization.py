@@ -63,10 +63,13 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: CreateOrganizationMultiPartBodyParams,
 ) -> Response[CreateOrganizationResponse | OrganizationsGetOut]:
-    """Create an organization
+    """Post Organization
 
-     Create a new organization with the specified name, description, timezone, and language. An optional
-    logo file can be uploaded.
+     YSCUc2Fk
+
+    Create a new organization.
+
+    Allows optional custom UUID for tektome users.
 
     Args:
         body (CreateOrganizationMultiPartBodyParams):
@@ -95,10 +98,13 @@ def sync(
     client: AuthenticatedClient,
     body: CreateOrganizationMultiPartBodyParams,
 ) -> CreateOrganizationResponse | OrganizationsGetOut | None:
-    """Create an organization
+    """Post Organization
 
-     Create a new organization with the specified name, description, timezone, and language. An optional
-    logo file can be uploaded.
+     YSCUc2Fk
+
+    Create a new organization.
+
+    Allows optional custom UUID for tektome users.
 
     Args:
         body (CreateOrganizationMultiPartBodyParams):
@@ -122,10 +128,13 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: CreateOrganizationMultiPartBodyParams,
 ) -> Response[CreateOrganizationResponse | OrganizationsGetOut]:
-    """Create an organization
+    """Post Organization
 
-     Create a new organization with the specified name, description, timezone, and language. An optional
-    logo file can be uploaded.
+     YSCUc2Fk
+
+    Create a new organization.
+
+    Allows optional custom UUID for tektome users.
 
     Args:
         body (CreateOrganizationMultiPartBodyParams):
@@ -152,10 +161,13 @@ async def asyncio(
     client: AuthenticatedClient,
     body: CreateOrganizationMultiPartBodyParams,
 ) -> CreateOrganizationResponse | OrganizationsGetOut | None:
-    """Create an organization
+    """Post Organization
 
-     Create a new organization with the specified name, description, timezone, and language. An optional
-    logo file can be uploaded.
+     YSCUc2Fk
+
+    Create a new organization.
+
+    Allows optional custom UUID for tektome users.
 
     Args:
         body (CreateOrganizationMultiPartBodyParams):

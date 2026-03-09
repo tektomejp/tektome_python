@@ -65,10 +65,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RequirementTemplateReferenceNotePostIn,
 ) -> Response[RequirementTemplateReferenceNoteGetOut]:
-    """Create a reference note template
+    """Post Requirement Template Reference Note
 
-     Create a new reference note template associated with a requirement template. Reference note
-    templates define reusable note structures for requirements.
+     OWvaVaLU
+
+    Create a reference note template for a requirement template.
 
     Args:
         requirement_template_id (UUID):
@@ -101,10 +102,11 @@ def sync(
     client: AuthenticatedClient,
     body: RequirementTemplateReferenceNotePostIn,
 ) -> RequirementTemplateReferenceNoteGetOut | None:
-    """Create a reference note template
+    """Post Requirement Template Reference Note
 
-     Create a new reference note template associated with a requirement template. Reference note
-    templates define reusable note structures for requirements.
+     OWvaVaLU
+
+    Create a reference note template for a requirement template.
 
     Args:
         requirement_template_id (UUID):
@@ -132,10 +134,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RequirementTemplateReferenceNotePostIn,
 ) -> Response[RequirementTemplateReferenceNoteGetOut]:
-    """Create a reference note template
+    """Post Requirement Template Reference Note
 
-     Create a new reference note template associated with a requirement template. Reference note
-    templates define reusable note structures for requirements.
+     OWvaVaLU
+
+    Create a reference note template for a requirement template.
 
     Args:
         requirement_template_id (UUID):
@@ -166,10 +169,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RequirementTemplateReferenceNotePostIn,
 ) -> RequirementTemplateReferenceNoteGetOut | None:
-    """Create a reference note template
+    """Post Requirement Template Reference Note
 
-     Create a new reference note template associated with a requirement template. Reference note
-    templates define reusable note structures for requirements.
+     OWvaVaLU
+
+    Create a reference note template for a requirement template.
 
     Args:
         requirement_template_id (UUID):

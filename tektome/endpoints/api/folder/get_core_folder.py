@@ -51,9 +51,19 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[FolderGetOut]:
-    """Get a folder with its contents
+    """Get Folder
 
-     Retrieve a folder along with its resources and child folders.
+     isvFT8ZQ
+
+    Get a folder and list all
+    - resources
+    - children of the folder
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing folder_id
+
+    Returns: Folder containing resources and children
 
     Args:
         folder_id (UUID):
@@ -82,9 +92,19 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> FolderGetOut | None:
-    """Get a folder with its contents
+    """Get Folder
 
-     Retrieve a folder along with its resources and child folders.
+     isvFT8ZQ
+
+    Get a folder and list all
+    - resources
+    - children of the folder
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing folder_id
+
+    Returns: Folder containing resources and children
 
     Args:
         folder_id (UUID):
@@ -108,9 +128,19 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[FolderGetOut]:
-    """Get a folder with its contents
+    """Get Folder
 
-     Retrieve a folder along with its resources and child folders.
+     isvFT8ZQ
+
+    Get a folder and list all
+    - resources
+    - children of the folder
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing folder_id
+
+    Returns: Folder containing resources and children
 
     Args:
         folder_id (UUID):
@@ -137,9 +167,19 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> FolderGetOut | None:
-    """Get a folder with its contents
+    """Get Folder
 
-     Retrieve a folder along with its resources and child folders.
+     isvFT8ZQ
+
+    Get a folder and list all
+    - resources
+    - children of the folder
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing folder_id
+
+    Returns: Folder containing resources and children
 
     Args:
         folder_id (UUID):

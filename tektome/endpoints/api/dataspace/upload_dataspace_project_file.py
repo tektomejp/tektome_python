@@ -154,10 +154,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: UploadDataspaceProjectFileMultiPartBodyParams,
 ) -> Response[ErrorOut | ResourceSchema]:
-    """Upload a file to a dataspace project
+    """Post Upload Dataspace Project
 
-     Upload a file to a project in the dataspace. Optionally initializes processing such as OCR or BIM
-    conversion based on file type.
+     mGVALbhA
+
+    Upload a file to a project in the current dataspace.
 
     Args:
         project_id (UUID):
@@ -189,10 +190,11 @@ def sync(
     client: AuthenticatedClient,
     body: UploadDataspaceProjectFileMultiPartBodyParams,
 ) -> ErrorOut | ResourceSchema | None:
-    """Upload a file to a dataspace project
+    """Post Upload Dataspace Project
 
-     Upload a file to a project in the dataspace. Optionally initializes processing such as OCR or BIM
-    conversion based on file type.
+     mGVALbhA
+
+    Upload a file to a project in the current dataspace.
 
     Args:
         project_id (UUID):
@@ -219,10 +221,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: UploadDataspaceProjectFileMultiPartBodyParams,
 ) -> Response[ErrorOut | ResourceSchema]:
-    """Upload a file to a dataspace project
+    """Post Upload Dataspace Project
 
-     Upload a file to a project in the dataspace. Optionally initializes processing such as OCR or BIM
-    conversion based on file type.
+     mGVALbhA
+
+    Upload a file to a project in the current dataspace.
 
     Args:
         project_id (UUID):
@@ -252,10 +255,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: UploadDataspaceProjectFileMultiPartBodyParams,
 ) -> ErrorOut | ResourceSchema | None:
-    """Upload a file to a dataspace project
+    """Post Upload Dataspace Project
 
-     Upload a file to a project in the dataspace. Optionally initializes processing such as OCR or BIM
-    conversion based on file type.
+     mGVALbhA
+
+    Upload a file to a project in the current dataspace.
 
     Args:
         project_id (UUID):

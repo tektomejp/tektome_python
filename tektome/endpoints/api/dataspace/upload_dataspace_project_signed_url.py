@@ -156,11 +156,24 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ResourceCreateFromSignedUrlIn,
 ) -> Response[ErrorOut | ResourceMakingTaskSchema]:
-    """Upload a resource via signed URL
+    """Post Upload Dataspace Project Through Signed Url
 
-     Upload a resource to a dataspace project using a pre-signed URL. This is an asynchronous operation.
-    To retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the
-    task/process ID returned in this response.
+     R3uLiRra
+
+    Handles uploading a dataspace project resource using a signed URL.
+
+    This endpoint receives a signed URL and related metadata, then triggers an asynchronous
+    task to process the resource upload. The client receives a task ID to poll for completion.
+
+    Args:
+        request: The incoming HTTP request object, containing authentication information.
+        path_params (Path[DataspaceProjectPath]): Path parameters including the target project.
+        payload (ResourceCreateFromSignedUrlIn): Payload containing the signed URL, resource ID,
+            and BIM project name.
+
+    Returns:
+        Tuple[int, dict]: On success, returns HTTP 201 with a JSON containing the task ID.
+            On failure, returns HTTP 400 with error details.
 
     Args:
         project_id (UUID):
@@ -192,11 +205,24 @@ def sync(
     client: AuthenticatedClient,
     body: ResourceCreateFromSignedUrlIn,
 ) -> ErrorOut | ResourceMakingTaskSchema | None:
-    """Upload a resource via signed URL
+    """Post Upload Dataspace Project Through Signed Url
 
-     Upload a resource to a dataspace project using a pre-signed URL. This is an asynchronous operation.
-    To retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the
-    task/process ID returned in this response.
+     R3uLiRra
+
+    Handles uploading a dataspace project resource using a signed URL.
+
+    This endpoint receives a signed URL and related metadata, then triggers an asynchronous
+    task to process the resource upload. The client receives a task ID to poll for completion.
+
+    Args:
+        request: The incoming HTTP request object, containing authentication information.
+        path_params (Path[DataspaceProjectPath]): Path parameters including the target project.
+        payload (ResourceCreateFromSignedUrlIn): Payload containing the signed URL, resource ID,
+            and BIM project name.
+
+    Returns:
+        Tuple[int, dict]: On success, returns HTTP 201 with a JSON containing the task ID.
+            On failure, returns HTTP 400 with error details.
 
     Args:
         project_id (UUID):
@@ -223,11 +249,24 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ResourceCreateFromSignedUrlIn,
 ) -> Response[ErrorOut | ResourceMakingTaskSchema]:
-    """Upload a resource via signed URL
+    """Post Upload Dataspace Project Through Signed Url
 
-     Upload a resource to a dataspace project using a pre-signed URL. This is an asynchronous operation.
-    To retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the
-    task/process ID returned in this response.
+     R3uLiRra
+
+    Handles uploading a dataspace project resource using a signed URL.
+
+    This endpoint receives a signed URL and related metadata, then triggers an asynchronous
+    task to process the resource upload. The client receives a task ID to poll for completion.
+
+    Args:
+        request: The incoming HTTP request object, containing authentication information.
+        path_params (Path[DataspaceProjectPath]): Path parameters including the target project.
+        payload (ResourceCreateFromSignedUrlIn): Payload containing the signed URL, resource ID,
+            and BIM project name.
+
+    Returns:
+        Tuple[int, dict]: On success, returns HTTP 201 with a JSON containing the task ID.
+            On failure, returns HTTP 400 with error details.
 
     Args:
         project_id (UUID):
@@ -257,11 +296,24 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ResourceCreateFromSignedUrlIn,
 ) -> ErrorOut | ResourceMakingTaskSchema | None:
-    """Upload a resource via signed URL
+    """Post Upload Dataspace Project Through Signed Url
 
-     Upload a resource to a dataspace project using a pre-signed URL. This is an asynchronous operation.
-    To retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the
-    task/process ID returned in this response.
+     R3uLiRra
+
+    Handles uploading a dataspace project resource using a signed URL.
+
+    This endpoint receives a signed URL and related metadata, then triggers an asynchronous
+    task to process the resource upload. The client receives a task ID to poll for completion.
+
+    Args:
+        request: The incoming HTTP request object, containing authentication information.
+        path_params (Path[DataspaceProjectPath]): Path parameters including the target project.
+        payload (ResourceCreateFromSignedUrlIn): Payload containing the signed URL, resource ID,
+            and BIM project name.
+
+    Returns:
+        Tuple[int, dict]: On success, returns HTTP 201 with a JSON containing the task ID.
+            On failure, returns HTTP 400 with error details.
 
     Args:
         project_id (UUID):

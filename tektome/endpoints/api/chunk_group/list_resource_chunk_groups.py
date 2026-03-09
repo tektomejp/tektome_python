@@ -60,9 +60,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list[ChunkGroupComponentSchemaGetOut]]:
-    """List all chunk groups of a resource
+    """Get All Resource Chunk Groups
 
-     Retrieve all chunk group components associated with a resource.
+     hcWBxv70
+
+    Retrieve all chunk groups of a resource.
 
     Args:
         resource_id (UUID):
@@ -91,9 +93,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> list[ChunkGroupComponentSchemaGetOut] | None:
-    """List all chunk groups of a resource
+    """Get All Resource Chunk Groups
 
-     Retrieve all chunk group components associated with a resource.
+     hcWBxv70
+
+    Retrieve all chunk groups of a resource.
 
     Args:
         resource_id (UUID):
@@ -117,9 +121,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list[ChunkGroupComponentSchemaGetOut]]:
-    """List all chunk groups of a resource
+    """Get All Resource Chunk Groups
 
-     Retrieve all chunk group components associated with a resource.
+     hcWBxv70
+
+    Retrieve all chunk groups of a resource.
 
     Args:
         resource_id (UUID):
@@ -146,9 +152,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> list[ChunkGroupComponentSchemaGetOut] | None:
-    """List all chunk groups of a resource
+    """Get All Resource Chunk Groups
 
-     Retrieve all chunk group components associated with a resource.
+     hcWBxv70
+
+    Retrieve all chunk groups of a resource.
 
     Args:
         resource_id (UUID):

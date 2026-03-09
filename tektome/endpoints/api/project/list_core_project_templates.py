@@ -121,10 +121,11 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedTemplateOut]:
-    """List process templates for a project
+    """Get Project Templates
 
-     Retrieve all process templates associated with the specified project. Supports filtering via query
-    parameters.
+     d4RtYh2K
+
+    Get all templates that belong to the given project_id
 
     Args:
         project_id (UUID):
@@ -177,10 +178,11 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedTemplateOut | None:
-    """List process templates for a project
+    """Get Project Templates
 
-     Retrieve all process templates associated with the specified project. Supports filtering via query
-    parameters.
+     d4RtYh2K
+
+    Get all templates that belong to the given project_id
 
     Args:
         project_id (UUID):
@@ -228,10 +230,11 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedTemplateOut]:
-    """List process templates for a project
+    """Get Project Templates
 
-     Retrieve all process templates associated with the specified project. Supports filtering via query
-    parameters.
+     d4RtYh2K
+
+    Get all templates that belong to the given project_id
 
     Args:
         project_id (UUID):
@@ -282,10 +285,11 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedTemplateOut | None:
-    """List process templates for a project
+    """Get Project Templates
 
-     Retrieve all process templates associated with the specified project. Supports filtering via query
-    parameters.
+     d4RtYh2K
+
+    Get all templates that belong to the given project_id
 
     Args:
         project_id (UUID):

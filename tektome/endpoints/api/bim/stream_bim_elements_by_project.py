@@ -64,10 +64,26 @@ def sync_detailed(
     client: AuthenticatedClient,
     id_only: bool | Unset = False,
 ) -> Response[Any]:
-    """Stream BIM elements by project
+    """Stream Bim Elements By Project
 
-     Stream BIM elements for a specific project and element type. Use the id_only parameter to return
-    only element IDs.
+     uZvgf1HG
+
+    Stream BIM elements for a specific project and model.
+
+    This function retrieves BIM elements from a project, either as full element data
+    or just element IDs, depending on the id_only parameter.
+
+    Args:
+        request: The incoming request object (unused in current implementation).
+        path (Path[ABimProjectElementTypePath]): Path object containing the BIM project ID
+            and BIM model information.
+        id_only (bool, optional): If True, returns only element IDs. If False, returns
+            full element data. Defaults to False.
+
+    Returns:
+        Generator or Iterator: A stream of BIM elements or element IDs depending on
+            the id_only parameter. Returns element IDs if id_only is True, otherwise
+            returns full element objects.
 
     Args:
         bim_project_id (UUID):
@@ -113,10 +129,26 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     id_only: bool | Unset = False,
 ) -> Response[Any]:
-    """Stream BIM elements by project
+    """Stream Bim Elements By Project
 
-     Stream BIM elements for a specific project and element type. Use the id_only parameter to return
-    only element IDs.
+     uZvgf1HG
+
+    Stream BIM elements for a specific project and model.
+
+    This function retrieves BIM elements from a project, either as full element data
+    or just element IDs, depending on the id_only parameter.
+
+    Args:
+        request: The incoming request object (unused in current implementation).
+        path (Path[ABimProjectElementTypePath]): Path object containing the BIM project ID
+            and BIM model information.
+        id_only (bool, optional): If True, returns only element IDs. If False, returns
+            full element data. Defaults to False.
+
+    Returns:
+        Generator or Iterator: A stream of BIM elements or element IDs depending on
+            the id_only parameter. Returns element IDs if id_only is True, otherwise
+            returns full element objects.
 
     Args:
         bim_project_id (UUID):

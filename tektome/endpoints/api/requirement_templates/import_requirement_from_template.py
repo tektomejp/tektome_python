@@ -61,9 +61,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RequirementPostIn,
 ) -> Response[RequirementGetOut]:
-    """Import a requirement from a template
+    """Post Import Requirement From Template
 
-     Create a new requirement in a project by importing it from an existing requirement template.
+     B7GNMWv0
+
+    Create a requirement from the requirement template
 
     Args:
         requirement_template_id (UUID):
@@ -95,9 +97,11 @@ def sync(
     client: AuthenticatedClient,
     body: RequirementPostIn,
 ) -> RequirementGetOut | None:
-    """Import a requirement from a template
+    """Post Import Requirement From Template
 
-     Create a new requirement in a project by importing it from an existing requirement template.
+     B7GNMWv0
+
+    Create a requirement from the requirement template
 
     Args:
         requirement_template_id (UUID):
@@ -124,9 +128,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RequirementPostIn,
 ) -> Response[RequirementGetOut]:
-    """Import a requirement from a template
+    """Post Import Requirement From Template
 
-     Create a new requirement in a project by importing it from an existing requirement template.
+     B7GNMWv0
+
+    Create a requirement from the requirement template
 
     Args:
         requirement_template_id (UUID):
@@ -156,9 +162,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RequirementPostIn,
 ) -> RequirementGetOut | None:
-    """Import a requirement from a template
+    """Post Import Requirement From Template
 
-     Create a new requirement in a project by importing it from an existing requirement template.
+     B7GNMWv0
+
+    Create a requirement from the requirement template
 
     Args:
         requirement_template_id (UUID):

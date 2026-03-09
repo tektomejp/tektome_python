@@ -51,9 +51,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[OrganizationsGetOut]:
-    """Get organization details
+    """Retrieve Organization
 
-     Retrieve details for a specific organization.
+     tqTPYdGA
+
+    Retrieve organization details.
 
     Args:
         organization_id (UUID):
@@ -82,9 +84,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> OrganizationsGetOut | None:
-    """Get organization details
+    """Retrieve Organization
 
-     Retrieve details for a specific organization.
+     tqTPYdGA
+
+    Retrieve organization details.
 
     Args:
         organization_id (UUID):
@@ -108,9 +112,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[OrganizationsGetOut]:
-    """Get organization details
+    """Retrieve Organization
 
-     Retrieve details for a specific organization.
+     tqTPYdGA
+
+    Retrieve organization details.
 
     Args:
         organization_id (UUID):
@@ -137,9 +143,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> OrganizationsGetOut | None:
-    """Get organization details
+    """Retrieve Organization
 
-     Retrieve details for a specific organization.
+     tqTPYdGA
+
+    Retrieve organization details.
 
     Args:
         organization_id (UUID):

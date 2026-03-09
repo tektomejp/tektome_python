@@ -47,9 +47,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Get simulated task result
+    """Get Simulate Task Result
 
-     Retrieve the status and result of a previously submitted sample asynchronous task by its task ID.
+     0CDkFQDl
+    Get the result of a simulated async task.
 
     Args:
         task_id (str):
@@ -78,9 +79,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Get simulated task result
+    """Get Simulate Task Result
 
-     Retrieve the status and result of a previously submitted sample asynchronous task by its task ID.
+     0CDkFQDl
+    Get the result of a simulated async task.
 
     Args:
         task_id (str):

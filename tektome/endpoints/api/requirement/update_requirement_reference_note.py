@@ -58,9 +58,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ReferenceNotePatchInPatch,
 ) -> Response[Any]:
-    """Update a reference note
+    """Patch Reference Note
 
-     Update the title of a reference note associated with a requirement.
+     Flzky3bC
+
+    Patch a reference note associated to a requirement
 
     Args:
         reference_note_id (UUID):
@@ -92,9 +94,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ReferenceNotePatchInPatch,
 ) -> Response[Any]:
-    """Update a reference note
+    """Patch Reference Note
 
-     Update the title of a reference note associated with a requirement.
+     Flzky3bC
+
+    Patch a reference note associated to a requirement
 
     Args:
         reference_note_id (UUID):

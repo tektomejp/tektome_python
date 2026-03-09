@@ -64,10 +64,16 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: LawtalkGeneralAttributeBodyPutIn,
 ) -> Response[Any]:
-    """Set general attributes on an entity
+    """Put General Lawtalk Attributes
 
-     Set or update general and system-level attributes on an entity. Supports all general and system
-    attribute types. To mark an entity as public, set the 'system:is_public' boolean attribute to true.
+     gL48dbrw
+
+    Set or update Lawtalk-specific attributes given lawtalk object ID as entrypoint.
+    Allows all general and system attributes.
+
+    To set an entity to be public, set the `system:is_public` boolean attribute to `true`.
+    All system attributes will be returned without system prefix. e.g `is_public` instead of
+    `system:is_public`.
 
     Args:
         object_type (UpdateGeneralLawtalkAttributesAttributeObjectTypes):
@@ -102,10 +108,16 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: LawtalkGeneralAttributeBodyPutIn,
 ) -> Response[Any]:
-    """Set general attributes on an entity
+    """Put General Lawtalk Attributes
 
-     Set or update general and system-level attributes on an entity. Supports all general and system
-    attribute types. To mark an entity as public, set the 'system:is_public' boolean attribute to true.
+     gL48dbrw
+
+    Set or update Lawtalk-specific attributes given lawtalk object ID as entrypoint.
+    Allows all general and system attributes.
+
+    To set an entity to be public, set the `system:is_public` boolean attribute to `true`.
+    All system attributes will be returned without system prefix. e.g `is_public` instead of
+    `system:is_public`.
 
     Args:
         object_type (UpdateGeneralLawtalkAttributesAttributeObjectTypes):

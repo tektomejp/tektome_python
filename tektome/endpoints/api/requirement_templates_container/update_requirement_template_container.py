@@ -65,9 +65,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RequirementTemplateContainerPatchInPatch,
 ) -> Response[RequirementTemplateContainerGetOut]:
-    """Update a requirement template container
+    """Patch Requirement Template Container
 
-     Partially update a requirement template container by its ID.
+     B7GNMWv7
+
+    Update a requirement template container by its ID.
 
     Args:
         requirement_template_container_id (UUID):
@@ -99,9 +101,11 @@ def sync(
     client: AuthenticatedClient,
     body: RequirementTemplateContainerPatchInPatch,
 ) -> RequirementTemplateContainerGetOut | None:
-    """Update a requirement template container
+    """Patch Requirement Template Container
 
-     Partially update a requirement template container by its ID.
+     B7GNMWv7
+
+    Update a requirement template container by its ID.
 
     Args:
         requirement_template_container_id (UUID):
@@ -128,9 +132,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RequirementTemplateContainerPatchInPatch,
 ) -> Response[RequirementTemplateContainerGetOut]:
-    """Update a requirement template container
+    """Patch Requirement Template Container
 
-     Partially update a requirement template container by its ID.
+     B7GNMWv7
+
+    Update a requirement template container by its ID.
 
     Args:
         requirement_template_container_id (UUID):
@@ -160,9 +166,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RequirementTemplateContainerPatchInPatch,
 ) -> RequirementTemplateContainerGetOut | None:
-    """Update a requirement template container
+    """Patch Requirement Template Container
 
-     Partially update a requirement template container by its ID.
+     B7GNMWv7
+
+    Update a requirement template container by its ID.
 
     Args:
         requirement_template_container_id (UUID):

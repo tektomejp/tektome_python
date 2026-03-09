@@ -65,9 +65,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RequirementTemplateReferenceNotePostInPatch,
 ) -> Response[RequirementTemplateReferenceNoteGetOut]:
-    """Update a reference note template
+    """Patch Reference Note Template
 
-     Partially update a reference note template by its ID.
+     OWvaVaLB
+
+    Update a requirement template container by its ID.
 
     Args:
         reference_note_template_id (UUID):
@@ -99,9 +101,11 @@ def sync(
     client: AuthenticatedClient,
     body: RequirementTemplateReferenceNotePostInPatch,
 ) -> RequirementTemplateReferenceNoteGetOut | None:
-    """Update a reference note template
+    """Patch Reference Note Template
 
-     Partially update a reference note template by its ID.
+     OWvaVaLB
+
+    Update a requirement template container by its ID.
 
     Args:
         reference_note_template_id (UUID):
@@ -128,9 +132,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RequirementTemplateReferenceNotePostInPatch,
 ) -> Response[RequirementTemplateReferenceNoteGetOut]:
-    """Update a reference note template
+    """Patch Reference Note Template
 
-     Partially update a reference note template by its ID.
+     OWvaVaLB
+
+    Update a requirement template container by its ID.
 
     Args:
         reference_note_template_id (UUID):
@@ -160,9 +166,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RequirementTemplateReferenceNotePostInPatch,
 ) -> RequirementTemplateReferenceNoteGetOut | None:
-    """Update a reference note template
+    """Patch Reference Note Template
 
-     Partially update a reference note template by its ID.
+     OWvaVaLB
+
+    Update a requirement template container by its ID.
 
     Args:
         reference_note_template_id (UUID):

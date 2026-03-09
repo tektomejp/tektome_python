@@ -55,10 +55,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[LawtalkProjectResolversSchema]:
-    """Get project details
+    """Retrieve Project
 
-     Retrieve a project with all its attributes. Also records the project as recently accessed for the
-    authenticated user.
+     V_Eqk6ET
+
+    Retrieve a project with all core and lawtalk attributes
 
     Args:
         project_id (UUID):
@@ -87,10 +88,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> LawtalkProjectResolversSchema | None:
-    """Get project details
+    """Retrieve Project
 
-     Retrieve a project with all its attributes. Also records the project as recently accessed for the
-    authenticated user.
+     V_Eqk6ET
+
+    Retrieve a project with all core and lawtalk attributes
 
     Args:
         project_id (UUID):
@@ -114,10 +116,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[LawtalkProjectResolversSchema]:
-    """Get project details
+    """Retrieve Project
 
-     Retrieve a project with all its attributes. Also records the project as recently accessed for the
-    authenticated user.
+     V_Eqk6ET
+
+    Retrieve a project with all core and lawtalk attributes
 
     Args:
         project_id (UUID):
@@ -144,10 +147,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> LawtalkProjectResolversSchema | None:
-    """Get project details
+    """Retrieve Project
 
-     Retrieve a project with all its attributes. Also records the project as recently accessed for the
-    authenticated user.
+     V_Eqk6ET
+
+    Retrieve a project with all core and lawtalk attributes
 
     Args:
         project_id (UUID):

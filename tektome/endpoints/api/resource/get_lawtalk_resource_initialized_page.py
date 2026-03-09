@@ -55,9 +55,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[GetExtractedPageGetOut]:
-    """Get extracted page data
+    """Get Initialized Page
 
-     Retrieve the OCR-extracted data for a specific page of an initialized resource.
+     gcN-KWes
+
+    Get the initialized data from a page
 
     Args:
         resource_id (str):
@@ -89,9 +91,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> GetExtractedPageGetOut | None:
-    """Get extracted page data
+    """Get Initialized Page
 
-     Retrieve the OCR-extracted data for a specific page of an initialized resource.
+     gcN-KWes
+
+    Get the initialized data from a page
 
     Args:
         resource_id (str):
@@ -118,9 +122,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[GetExtractedPageGetOut]:
-    """Get extracted page data
+    """Get Initialized Page
 
-     Retrieve the OCR-extracted data for a specific page of an initialized resource.
+     gcN-KWes
+
+    Get the initialized data from a page
 
     Args:
         resource_id (str):
@@ -150,9 +156,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> GetExtractedPageGetOut | None:
-    """Get extracted page data
+    """Get Initialized Page
 
-     Retrieve the OCR-extracted data for a specific page of an initialized resource.
+     gcN-KWes
+
+    Get the initialized data from a page
 
     Args:
         resource_id (str):

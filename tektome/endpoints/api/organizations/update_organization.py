@@ -69,10 +69,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: UpdateOrganizationMultiPartBodyParams,
 ) -> Response[ErrorOutputSchemaOut | OrganizationsGetOut]:
-    """Update an organization
+    """Patch Organization
 
-     Update an organization's name, description, timezone, language, or logo. Organization names must be
-    unique.
+     k3_uR6LY
+
+    Update an organization.
 
     Args:
         organization_id (UUID):
@@ -104,10 +105,11 @@ def sync(
     client: AuthenticatedClient,
     body: UpdateOrganizationMultiPartBodyParams,
 ) -> ErrorOutputSchemaOut | OrganizationsGetOut | None:
-    """Update an organization
+    """Patch Organization
 
-     Update an organization's name, description, timezone, language, or logo. Organization names must be
-    unique.
+     k3_uR6LY
+
+    Update an organization.
 
     Args:
         organization_id (UUID):
@@ -134,10 +136,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: UpdateOrganizationMultiPartBodyParams,
 ) -> Response[ErrorOutputSchemaOut | OrganizationsGetOut]:
-    """Update an organization
+    """Patch Organization
 
-     Update an organization's name, description, timezone, language, or logo. Organization names must be
-    unique.
+     k3_uR6LY
+
+    Update an organization.
 
     Args:
         organization_id (UUID):
@@ -167,10 +170,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: UpdateOrganizationMultiPartBodyParams,
 ) -> ErrorOutputSchemaOut | OrganizationsGetOut | None:
-    """Update an organization
+    """Patch Organization
 
-     Update an organization's name, description, timezone, language, or logo. Organization names must be
-    unique.
+     k3_uR6LY
+
+    Update an organization.
 
     Args:
         organization_id (UUID):

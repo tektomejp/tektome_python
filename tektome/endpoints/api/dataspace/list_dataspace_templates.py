@@ -121,10 +121,11 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedTemplateOut]:
-    """List all templates in a dataspace
+    """Get Dataspace Templates
 
-     Retrieve all process templates available in a dataspace, including both active and inactive
-    templates.
+     H2jheauc
+
+    Retrieve all templates for the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -177,10 +178,11 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedTemplateOut | None:
-    """List all templates in a dataspace
+    """Get Dataspace Templates
 
-     Retrieve all process templates available in a dataspace, including both active and inactive
-    templates.
+     H2jheauc
+
+    Retrieve all templates for the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -228,10 +230,11 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedTemplateOut]:
-    """List all templates in a dataspace
+    """Get Dataspace Templates
 
-     Retrieve all process templates available in a dataspace, including both active and inactive
-    templates.
+     H2jheauc
+
+    Retrieve all templates for the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -282,10 +285,11 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedTemplateOut | None:
-    """List all templates in a dataspace
+    """Get Dataspace Templates
 
-     Retrieve all process templates available in a dataspace, including both active and inactive
-    templates.
+     H2jheauc
+
+    Retrieve all templates for the current dataspace.
 
     Args:
         dataspace_id (UUID):

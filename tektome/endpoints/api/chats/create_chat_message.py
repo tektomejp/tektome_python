@@ -52,10 +52,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ChatPostIn,
 ) -> Response[Any]:
-    """Send a chat message
+    """Post Chat
 
-     Send a chat message to a chatroom. If no chatroom ID is provided, a new chatroom is created. Returns
-    the chatroom ID.
+     Post a chat message to a chatroom.<br>
+    If the chatroom_id is not provided, a new chatroom will be created with the user's ID.<br>
+    If the chatroom_id is provided, the chat continues from the existing chatroom.<br>
 
     Args:
         body (ChatPostIn):
@@ -84,10 +85,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ChatPostIn,
 ) -> Response[Any]:
-    """Send a chat message
+    """Post Chat
 
-     Send a chat message to a chatroom. If no chatroom ID is provided, a new chatroom is created. Returns
-    the chatroom ID.
+     Post a chat message to a chatroom.<br>
+    If the chatroom_id is not provided, a new chatroom will be created with the user's ID.<br>
+    If the chatroom_id is provided, the chat continues from the existing chatroom.<br>
 
     Args:
         body (ChatPostIn):

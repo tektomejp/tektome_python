@@ -68,10 +68,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: list[InviteUserByEmailSchemaIn],
 ) -> Response[BulkUserInvitationSchemaOut]:
-    """Invite members to organization
+    """Add Organization Member
 
-     Invite one or more users to an organization by email. Returns lists of successfully added and
-    skipped users. Invited users receive an email notification.
+     MlQ2PP3Z
+
+    Add a member to an organization
 
     Args:
         organization_id (UUID):
@@ -103,10 +104,11 @@ def sync(
     client: AuthenticatedClient,
     body: list[InviteUserByEmailSchemaIn],
 ) -> BulkUserInvitationSchemaOut | None:
-    """Invite members to organization
+    """Add Organization Member
 
-     Invite one or more users to an organization by email. Returns lists of successfully added and
-    skipped users. Invited users receive an email notification.
+     MlQ2PP3Z
+
+    Add a member to an organization
 
     Args:
         organization_id (UUID):
@@ -133,10 +135,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: list[InviteUserByEmailSchemaIn],
 ) -> Response[BulkUserInvitationSchemaOut]:
-    """Invite members to organization
+    """Add Organization Member
 
-     Invite one or more users to an organization by email. Returns lists of successfully added and
-    skipped users. Invited users receive an email notification.
+     MlQ2PP3Z
+
+    Add a member to an organization
 
     Args:
         organization_id (UUID):
@@ -166,10 +169,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: list[InviteUserByEmailSchemaIn],
 ) -> BulkUserInvitationSchemaOut | None:
-    """Invite members to organization
+    """Add Organization Member
 
-     Invite one or more users to an organization by email. Returns lists of successfully added and
-    skipped users. Invited users receive an email notification.
+     MlQ2PP3Z
+
+    Add a member to an organization
 
     Args:
         organization_id (UUID):

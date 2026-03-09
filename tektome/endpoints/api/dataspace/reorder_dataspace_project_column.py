@@ -58,10 +58,18 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceProjectReorderColumnPostIn,
 ) -> Response[Any]:
-    """Reorder a project attribute column
+    """Patch Dataspace Project Reorder Column
 
-     Change the display order of an attribute column for projects within a dataspace by specifying a new
-    index position.
+     x16N0f5K
+
+    Reorder a column in a dataspace project.
+
+    Args:
+        request: The request object containing authentication and user information.
+        path_params: The path parameters containing the dataspace ID.
+        payload: The payload containing the column ID and the new index.
+
+    Returns: 204, None
 
     Args:
         dataspace_id (UUID):
@@ -94,10 +102,18 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceProjectReorderColumnPostIn,
 ) -> Response[Any]:
-    """Reorder a project attribute column
+    """Patch Dataspace Project Reorder Column
 
-     Change the display order of an attribute column for projects within a dataspace by specifying a new
-    index position.
+     x16N0f5K
+
+    Reorder a column in a dataspace project.
+
+    Args:
+        request: The request object containing authentication and user information.
+        path_params: The path parameters containing the dataspace ID.
+        payload: The payload containing the column ID and the new index.
+
+    Returns: 204, None
 
     Args:
         dataspace_id (UUID):

@@ -13,18 +13,22 @@ T = TypeVar("T", bound="ArtifactPostIn")
 class ArtifactPostIn:
     """
     Attributes:
-        path (str):
+        name (str):
+        extension (str):
         description (str):
         content (str):
     """
 
-    path: str
+    name: str
+    extension: str
     description: str
     content: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        path = self.path
+        name = self.name
+
+        extension = self.extension
 
         description = self.description
 
@@ -34,7 +38,8 @@ class ArtifactPostIn:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "path": path,
+                "name": name,
+                "extension": extension,
                 "description": description,
                 "content": content,
             }
@@ -45,14 +50,17 @@ class ArtifactPostIn:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        path = d.pop("path")
+        name = d.pop("name")
+
+        extension = d.pop("extension")
 
         description = d.pop("description")
 
         content = d.pop("content")
 
         artifact_post_in = cls(
-            path=path,
+            name=name,
+            extension=extension,
             description=description,
             content=content,
         )

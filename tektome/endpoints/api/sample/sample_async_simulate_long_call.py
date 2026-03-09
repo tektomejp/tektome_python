@@ -63,10 +63,12 @@ def sync_detailed(
     sync_delay: float | Unset = 0.5,
     async_delay: float | Unset = 0.5,
 ) -> Response[ASimulateLongCallPostOut]:
-    """Simulate a long asynchronous call
+    """Asimulate Long Call
 
-     Sample endpoint that simulates both synchronous and asynchronous delays for testing async route
-    behavior.
+     L2y-7-xi
+    Simulate a long call in async routes
+    sync_delay: `sleep(sync_delay)`
+    async_delay: `await asyncio.sleep(async_delay)`
 
     Args:
         sync_delay (float | Unset):  Default: 0.5.
@@ -98,10 +100,12 @@ def sync(
     sync_delay: float | Unset = 0.5,
     async_delay: float | Unset = 0.5,
 ) -> ASimulateLongCallPostOut | None:
-    """Simulate a long asynchronous call
+    """Asimulate Long Call
 
-     Sample endpoint that simulates both synchronous and asynchronous delays for testing async route
-    behavior.
+     L2y-7-xi
+    Simulate a long call in async routes
+    sync_delay: `sleep(sync_delay)`
+    async_delay: `await asyncio.sleep(async_delay)`
 
     Args:
         sync_delay (float | Unset):  Default: 0.5.
@@ -128,10 +132,12 @@ async def asyncio_detailed(
     sync_delay: float | Unset = 0.5,
     async_delay: float | Unset = 0.5,
 ) -> Response[ASimulateLongCallPostOut]:
-    """Simulate a long asynchronous call
+    """Asimulate Long Call
 
-     Sample endpoint that simulates both synchronous and asynchronous delays for testing async route
-    behavior.
+     L2y-7-xi
+    Simulate a long call in async routes
+    sync_delay: `sleep(sync_delay)`
+    async_delay: `await asyncio.sleep(async_delay)`
 
     Args:
         sync_delay (float | Unset):  Default: 0.5.
@@ -161,10 +167,12 @@ async def asyncio(
     sync_delay: float | Unset = 0.5,
     async_delay: float | Unset = 0.5,
 ) -> ASimulateLongCallPostOut | None:
-    """Simulate a long asynchronous call
+    """Asimulate Long Call
 
-     Sample endpoint that simulates both synchronous and asynchronous delays for testing async route
-    behavior.
+     L2y-7-xi
+    Simulate a long call in async routes
+    sync_delay: `sleep(sync_delay)`
+    async_delay: `await asyncio.sleep(async_delay)`
 
     Args:
         sync_delay (float | Unset):  Default: 0.5.

@@ -65,9 +65,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: BimProjectPostIn,
 ) -> Response[BimProjectPostOut | ErrorResponsePostOut]:
-    """Create a BIM project
+    """Post Bim Project
 
-     Create a new BIM project associated with an existing resource.
+     a50433ae
+
+    Post a BIM project.
 
     Args:
         body (BimProjectPostIn):
@@ -96,9 +98,11 @@ def sync(
     client: AuthenticatedClient,
     body: BimProjectPostIn,
 ) -> BimProjectPostOut | ErrorResponsePostOut | None:
-    """Create a BIM project
+    """Post Bim Project
 
-     Create a new BIM project associated with an existing resource.
+     a50433ae
+
+    Post a BIM project.
 
     Args:
         body (BimProjectPostIn):
@@ -122,9 +126,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: BimProjectPostIn,
 ) -> Response[BimProjectPostOut | ErrorResponsePostOut]:
-    """Create a BIM project
+    """Post Bim Project
 
-     Create a new BIM project associated with an existing resource.
+     a50433ae
+
+    Post a BIM project.
 
     Args:
         body (BimProjectPostIn):
@@ -151,9 +157,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: BimProjectPostIn,
 ) -> BimProjectPostOut | ErrorResponsePostOut | None:
-    """Create a BIM project
+    """Post Bim Project
 
-     Create a new BIM project associated with an existing resource.
+     a50433ae
+
+    Post a BIM project.
 
     Args:
         body (BimProjectPostIn):

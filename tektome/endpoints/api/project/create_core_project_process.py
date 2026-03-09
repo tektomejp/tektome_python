@@ -61,9 +61,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ProcessPostIn,
 ) -> Response[ProcessOut]:
-    """Create a process in a project
+    """Post Project Processes
 
-     Register a new process from a template within the specified project.
+     vmDfHeys
+
+    Register a process from a template.
 
     Args:
         project_id (UUID):
@@ -95,9 +97,11 @@ def sync(
     client: AuthenticatedClient,
     body: ProcessPostIn,
 ) -> ProcessOut | None:
-    """Create a process in a project
+    """Post Project Processes
 
-     Register a new process from a template within the specified project.
+     vmDfHeys
+
+    Register a process from a template.
 
     Args:
         project_id (UUID):
@@ -124,9 +128,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ProcessPostIn,
 ) -> Response[ProcessOut]:
-    """Create a process in a project
+    """Post Project Processes
 
-     Register a new process from a template within the specified project.
+     vmDfHeys
+
+    Register a process from a template.
 
     Args:
         project_id (UUID):
@@ -156,9 +162,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ProcessPostIn,
 ) -> ProcessOut | None:
-    """Create a process in a project
+    """Post Project Processes
 
-     Register a new process from a template within the specified project.
+     vmDfHeys
+
+    Register a process from a template.
 
     Args:
         project_id (UUID):

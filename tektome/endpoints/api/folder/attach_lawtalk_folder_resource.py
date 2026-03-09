@@ -58,10 +58,20 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: FolderResourcePostIn,
 ) -> Response[Any]:
-    """Attach resources to a folder
+    """Post Add Resource
 
-     Attach one or more resources to a folder. A resource cannot be attached if it already exists in the
-    folder.
+     fn1DZAvx
+
+    Attach one or more Lawtalk resources to a folder.
+
+    Args:
+        request: The HTTP request object.
+        path_params (FolderPathIn): Path parameters including the target folder.
+        payload (FolderResourcePostIn): Input schema containing resource IDs to attach.
+
+    Returns:
+        204: No Content if successful.
+        400: Bad Request if any resource is already attached to the folder.
 
     Args:
         folder_id (UUID):
@@ -93,10 +103,20 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: FolderResourcePostIn,
 ) -> Response[Any]:
-    """Attach resources to a folder
+    """Post Add Resource
 
-     Attach one or more resources to a folder. A resource cannot be attached if it already exists in the
-    folder.
+     fn1DZAvx
+
+    Attach one or more Lawtalk resources to a folder.
+
+    Args:
+        request: The HTTP request object.
+        path_params (FolderPathIn): Path parameters including the target folder.
+        payload (FolderResourcePostIn): Input schema containing resource IDs to attach.
+
+    Returns:
+        204: No Content if successful.
+        400: Bad Request if any resource is already attached to the folder.
 
     Args:
         folder_id (UUID):

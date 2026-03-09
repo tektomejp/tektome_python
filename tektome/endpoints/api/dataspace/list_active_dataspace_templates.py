@@ -114,10 +114,12 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedTemplateOut]:
-    """List active templates in a dataspace
+    """Get Active Dataspace Templates
 
-     Retrieve only active process templates in a dataspace that can be used to create new processes.
-    Requires process creation permissions.
+     xBGWN5ye
+
+    Retrieve active templates for the current dataspace, which can be used to create processes.
+    This endpoint has the same permissions as process creation.
 
     Args:
         dataspace_id (UUID):
@@ -166,10 +168,12 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedTemplateOut | None:
-    """List active templates in a dataspace
+    """Get Active Dataspace Templates
 
-     Retrieve only active process templates in a dataspace that can be used to create new processes.
-    Requires process creation permissions.
+     xBGWN5ye
+
+    Retrieve active templates for the current dataspace, which can be used to create processes.
+    This endpoint has the same permissions as process creation.
 
     Args:
         dataspace_id (UUID):
@@ -213,10 +217,12 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedTemplateOut]:
-    """List active templates in a dataspace
+    """Get Active Dataspace Templates
 
-     Retrieve only active process templates in a dataspace that can be used to create new processes.
-    Requires process creation permissions.
+     xBGWN5ye
+
+    Retrieve active templates for the current dataspace, which can be used to create processes.
+    This endpoint has the same permissions as process creation.
 
     Args:
         dataspace_id (UUID):
@@ -263,10 +269,12 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedTemplateOut | None:
-    """List active templates in a dataspace
+    """Get Active Dataspace Templates
 
-     Retrieve only active process templates in a dataspace that can be used to create new processes.
-    Requires process creation permissions.
+     xBGWN5ye
+
+    Retrieve active templates for the current dataspace, which can be used to create processes.
+    This endpoint has the same permissions as process creation.
 
     Args:
         dataspace_id (UUID):

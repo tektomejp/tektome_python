@@ -59,9 +59,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RequirementTemplateContainerPostIn,
 ) -> Response[RequirementTemplateContainerGetOut]:
-    """Create a requirement template container
+    """Post Requirement Template Container
 
-     Create a new requirement template container for organizing requirement templates within a project.
+     B7GNMW11
+
+    Create a requirement given a project id in the payload.
 
     Args:
         body (RequirementTemplateContainerPostIn): Serializer for Requirement Template.
@@ -90,9 +92,11 @@ def sync(
     client: AuthenticatedClient,
     body: RequirementTemplateContainerPostIn,
 ) -> RequirementTemplateContainerGetOut | None:
-    """Create a requirement template container
+    """Post Requirement Template Container
 
-     Create a new requirement template container for organizing requirement templates within a project.
+     B7GNMW11
+
+    Create a requirement given a project id in the payload.
 
     Args:
         body (RequirementTemplateContainerPostIn): Serializer for Requirement Template.
@@ -116,9 +120,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RequirementTemplateContainerPostIn,
 ) -> Response[RequirementTemplateContainerGetOut]:
-    """Create a requirement template container
+    """Post Requirement Template Container
 
-     Create a new requirement template container for organizing requirement templates within a project.
+     B7GNMW11
+
+    Create a requirement given a project id in the payload.
 
     Args:
         body (RequirementTemplateContainerPostIn): Serializer for Requirement Template.
@@ -145,9 +151,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RequirementTemplateContainerPostIn,
 ) -> RequirementTemplateContainerGetOut | None:
-    """Create a requirement template container
+    """Post Requirement Template Container
 
-     Create a new requirement template container for organizing requirement templates within a project.
+     B7GNMW11
+
+    Create a requirement given a project id in the payload.
 
     Args:
         body (RequirementTemplateContainerPostIn): Serializer for Requirement Template.

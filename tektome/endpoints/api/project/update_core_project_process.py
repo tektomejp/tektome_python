@@ -64,9 +64,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ProcessPostInPatch,
 ) -> Response[ProcessOut]:
-    """Update a project process
+    """Patch Project Process
 
-     Update the configuration of a specific process within the specified project.
+     yx8aUP5u
+
+    Update a specific process in the current project.
 
     Args:
         project_id (UUID):
@@ -101,9 +103,11 @@ def sync(
     client: AuthenticatedClient,
     body: ProcessPostInPatch,
 ) -> ProcessOut | None:
-    """Update a project process
+    """Patch Project Process
 
-     Update the configuration of a specific process within the specified project.
+     yx8aUP5u
+
+    Update a specific process in the current project.
 
     Args:
         project_id (UUID):
@@ -133,9 +137,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ProcessPostInPatch,
 ) -> Response[ProcessOut]:
-    """Update a project process
+    """Patch Project Process
 
-     Update the configuration of a specific process within the specified project.
+     yx8aUP5u
+
+    Update a specific process in the current project.
 
     Args:
         project_id (UUID):
@@ -168,9 +174,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ProcessPostInPatch,
 ) -> ProcessOut | None:
-    """Update a project process
+    """Patch Project Process
 
-     Update the configuration of a specific process within the specified project.
+     yx8aUP5u
+
+    Update a specific process in the current project.
 
     Args:
         project_id (UUID):

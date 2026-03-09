@@ -48,10 +48,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a reference note template
+    """Delete Reference Note Template
 
-     Permanently delete a reference note template by its ID. Updates the parent requirement template and
-    container timestamps.
+     OWvaVaLC
+
+    Delete a requirement template container by its ID.
 
     Args:
         reference_note_template_id (UUID):
@@ -80,10 +81,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a reference note template
+    """Delete Reference Note Template
 
-     Permanently delete a reference note template by its ID. Updates the parent requirement template and
-    container timestamps.
+     OWvaVaLC
+
+    Delete a requirement template container by its ID.
 
     Args:
         reference_note_template_id (UUID):

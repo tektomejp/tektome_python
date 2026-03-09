@@ -58,9 +58,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ChunkGroupComponentSchemaGetOut]:
-    """Get a specific chunk group
+    """Get Resource Chunk Group
 
-     Retrieve a specific chunk group component of a resource by its ID.
+     NMm0DmZE
+
+    Retrieve a specific chunk group of a resource.
 
     Args:
         resource_id (UUID):
@@ -92,9 +94,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ChunkGroupComponentSchemaGetOut | None:
-    """Get a specific chunk group
+    """Get Resource Chunk Group
 
-     Retrieve a specific chunk group component of a resource by its ID.
+     NMm0DmZE
+
+    Retrieve a specific chunk group of a resource.
 
     Args:
         resource_id (UUID):
@@ -121,9 +125,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ChunkGroupComponentSchemaGetOut]:
-    """Get a specific chunk group
+    """Get Resource Chunk Group
 
-     Retrieve a specific chunk group component of a resource by its ID.
+     NMm0DmZE
+
+    Retrieve a specific chunk group of a resource.
 
     Args:
         resource_id (UUID):
@@ -153,9 +159,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ChunkGroupComponentSchemaGetOut | None:
-    """Get a specific chunk group
+    """Get Resource Chunk Group
 
-     Retrieve a specific chunk group component of a resource by its ID.
+     NMm0DmZE
+
+    Retrieve a specific chunk group of a resource.
 
     Args:
         resource_id (UUID):
