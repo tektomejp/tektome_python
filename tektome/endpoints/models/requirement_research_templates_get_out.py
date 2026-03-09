@@ -40,9 +40,6 @@ class RequirementResearchTemplatesGetOut:
         project_specific_resource_groups_keywords
             (RequirementResearchTemplatesGetOutProjectSpecificResourceGroupsKeywords | Unset):
         output_format_prompt (None | str | Unset):
-        is_interactive_prompt_required (bool | Unset): If True, the interactive clarifying questions step is mandatory
-            before running Deep Research. If False, users can optionally access the interactive prompt via 'Improve my
-            questions' link. Default: False.
     """
 
     public_resource_groups: list[ResearchTemplateResourcesOut]
@@ -59,7 +56,6 @@ class RequirementResearchTemplatesGetOut:
         RequirementResearchTemplatesGetOutProjectSpecificResourceGroupsKeywords | Unset
     ) = UNSET
     output_format_prompt: None | str | Unset = UNSET
-    is_interactive_prompt_required: bool | Unset = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -106,8 +102,6 @@ class RequirementResearchTemplatesGetOut:
         else:
             output_format_prompt = self.output_format_prompt
 
-        is_interactive_prompt_required = self.is_interactive_prompt_required
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -130,8 +124,6 @@ class RequirementResearchTemplatesGetOut:
             field_dict["project_specific_resource_groups_keywords"] = project_specific_resource_groups_keywords
         if output_format_prompt is not UNSET:
             field_dict["output_format_prompt"] = output_format_prompt
-        if is_interactive_prompt_required is not UNSET:
-            field_dict["is_interactive_prompt_required"] = is_interactive_prompt_required
 
         return field_dict
 
@@ -214,8 +206,6 @@ class RequirementResearchTemplatesGetOut:
 
         output_format_prompt = _parse_output_format_prompt(d.pop("output_format_prompt", UNSET))
 
-        is_interactive_prompt_required = d.pop("is_interactive_prompt_required", UNSET)
-
         requirement_research_templates_get_out = cls(
             public_resource_groups=public_resource_groups,
             created_by=created_by,
@@ -229,7 +219,6 @@ class RequirementResearchTemplatesGetOut:
             prompt=prompt,
             project_specific_resource_groups_keywords=project_specific_resource_groups_keywords,
             output_format_prompt=output_format_prompt,
-            is_interactive_prompt_required=is_interactive_prompt_required,
         )
 
         requirement_research_templates_get_out.additional_properties = d

@@ -156,10 +156,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceFuzzySearchConfigurationBodyIn,
 ) -> Response[DataspaceFuzzySearchConfigurationGetOut | ErrorOut]:
-    """Update fuzzy search configuration
+    """Update Dataspace Fuzzy Search Config
 
-     Update the fuzzy search configuration for a dataspace. Allows setting which project and resource
-    attributes are excluded from fuzzy search.
+     rfnw4WfY
+
+    Update fuzzy search configuration for the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -192,10 +193,11 @@ def sync(
     client: AuthenticatedClient,
     body: DataspaceFuzzySearchConfigurationBodyIn,
 ) -> DataspaceFuzzySearchConfigurationGetOut | ErrorOut | None:
-    """Update fuzzy search configuration
+    """Update Dataspace Fuzzy Search Config
 
-     Update the fuzzy search configuration for a dataspace. Allows setting which project and resource
-    attributes are excluded from fuzzy search.
+     rfnw4WfY
+
+    Update fuzzy search configuration for the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -223,10 +225,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceFuzzySearchConfigurationBodyIn,
 ) -> Response[DataspaceFuzzySearchConfigurationGetOut | ErrorOut]:
-    """Update fuzzy search configuration
+    """Update Dataspace Fuzzy Search Config
 
-     Update the fuzzy search configuration for a dataspace. Allows setting which project and resource
-    attributes are excluded from fuzzy search.
+     rfnw4WfY
+
+    Update fuzzy search configuration for the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -257,10 +260,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DataspaceFuzzySearchConfigurationBodyIn,
 ) -> DataspaceFuzzySearchConfigurationGetOut | ErrorOut | None:
-    """Update fuzzy search configuration
+    """Update Dataspace Fuzzy Search Config
 
-     Update the fuzzy search configuration for a dataspace. Allows setting which project and resource
-    attributes are excluded from fuzzy search.
+     rfnw4WfY
+
+    Update fuzzy search configuration for the current dataspace.
 
     Args:
         dataspace_id (UUID):

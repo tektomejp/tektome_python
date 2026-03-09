@@ -74,9 +74,11 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedDataspaceListGetOut]:
-    """Admin: List organization dataspaces
+    """Get Organization Dataspaces
 
-     Retrieve all dataspaces within a specific organization. Requires super admin privileges.
+     BeChVpJo
+
+    Retrieve all dataspaces within a specific organization.
 
     Args:
         organization_id (UUID):
@@ -111,9 +113,11 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedDataspaceListGetOut | None:
-    """Admin: List organization dataspaces
+    """Get Organization Dataspaces
 
-     Retrieve all dataspaces within a specific organization. Requires super admin privileges.
+     BeChVpJo
+
+    Retrieve all dataspaces within a specific organization.
 
     Args:
         organization_id (UUID):
@@ -143,9 +147,11 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedDataspaceListGetOut]:
-    """Admin: List organization dataspaces
+    """Get Organization Dataspaces
 
-     Retrieve all dataspaces within a specific organization. Requires super admin privileges.
+     BeChVpJo
+
+    Retrieve all dataspaces within a specific organization.
 
     Args:
         organization_id (UUID):
@@ -178,9 +184,11 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedDataspaceListGetOut | None:
-    """Admin: List organization dataspaces
+    """Get Organization Dataspaces
 
-     Retrieve all dataspaces within a specific organization. Requires super admin privileges.
+     BeChVpJo
+
+    Retrieve all dataspaces within a specific organization.
 
     Args:
         organization_id (UUID):

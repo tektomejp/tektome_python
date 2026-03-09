@@ -2,7 +2,6 @@ from enum import Enum
 
 
 class UpdateGeneralLawtalkAttributesAttributeObjectTypes(str, Enum):
-    FOLDER = "folder"
     PROJECT = "project"
     REQUIREMENT = "requirement"
     RESOURCE = "resource"

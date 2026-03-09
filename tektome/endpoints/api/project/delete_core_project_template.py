@@ -51,9 +51,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a project process template
+    """Delete Project Template
 
-     Delete a specific process template from the specified project.
+     bU22rfiB
+
+    Delete a specific template in the current project.
 
     Args:
         project_id (UUID):
@@ -85,9 +87,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a project process template
+    """Delete Project Template
 
-     Delete a specific process template from the specified project.
+     bU22rfiB
+
+    Delete a specific template in the current project.
 
     Args:
         project_id (UUID):

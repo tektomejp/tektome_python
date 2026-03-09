@@ -159,10 +159,13 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchFilterConfigurationInPatch,
 ) -> Response[DataspaceSearchFilterConfigurationOut | ErrorOut]:
-    """Update a search filter
+    """Update Dataspace Search Filter
 
-     Partially update a search filter configuration. If is_active is set to true, at least one field must
-    be associated with the filter. If all fields are removed, the filter automatically becomes inactive.
+     4JWgNOod
+
+    Update a filter for the current dataspace. If is_active is set to true,
+    at least one field must be associated with the filter. Also, if fields become
+    empty, the whole filter configuration automatically becomes inactive.
 
     Args:
         dataspace_id (UUID):
@@ -197,10 +200,13 @@ def sync(
     client: AuthenticatedClient,
     body: DataspaceSearchFilterConfigurationInPatch,
 ) -> DataspaceSearchFilterConfigurationOut | ErrorOut | None:
-    """Update a search filter
+    """Update Dataspace Search Filter
 
-     Partially update a search filter configuration. If is_active is set to true, at least one field must
-    be associated with the filter. If all fields are removed, the filter automatically becomes inactive.
+     4JWgNOod
+
+    Update a filter for the current dataspace. If is_active is set to true,
+    at least one field must be associated with the filter. Also, if fields become
+    empty, the whole filter configuration automatically becomes inactive.
 
     Args:
         dataspace_id (UUID):
@@ -230,10 +236,13 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchFilterConfigurationInPatch,
 ) -> Response[DataspaceSearchFilterConfigurationOut | ErrorOut]:
-    """Update a search filter
+    """Update Dataspace Search Filter
 
-     Partially update a search filter configuration. If is_active is set to true, at least one field must
-    be associated with the filter. If all fields are removed, the filter automatically becomes inactive.
+     4JWgNOod
+
+    Update a filter for the current dataspace. If is_active is set to true,
+    at least one field must be associated with the filter. Also, if fields become
+    empty, the whole filter configuration automatically becomes inactive.
 
     Args:
         dataspace_id (UUID):
@@ -266,10 +275,13 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DataspaceSearchFilterConfigurationInPatch,
 ) -> DataspaceSearchFilterConfigurationOut | ErrorOut | None:
-    """Update a search filter
+    """Update Dataspace Search Filter
 
-     Partially update a search filter configuration. If is_active is set to true, at least one field must
-    be associated with the filter. If all fields are removed, the filter automatically becomes inactive.
+     4JWgNOod
+
+    Update a filter for the current dataspace. If is_active is set to true,
+    at least one field must be associated with the filter. Also, if fields become
+    empty, the whole filter configuration automatically becomes inactive.
 
     Args:
         dataspace_id (UUID):

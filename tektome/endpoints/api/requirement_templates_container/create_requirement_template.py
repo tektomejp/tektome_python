@@ -65,10 +65,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RequirementTemplatePostIn,
 ) -> Response[RequirementTemplateGetOut]:
-    """Create a requirement template
+    """Post Requirement Template
 
-     Create a new requirement template inside a requirement template container. The template title must
-    be unique within the organization.
+     B7GNMWv9
+
+    Create a requirement template inside a requirement template container.
 
     Args:
         requirement_template_container_id (UUID):
@@ -100,10 +101,11 @@ def sync(
     client: AuthenticatedClient,
     body: RequirementTemplatePostIn,
 ) -> RequirementTemplateGetOut | None:
-    """Create a requirement template
+    """Post Requirement Template
 
-     Create a new requirement template inside a requirement template container. The template title must
-    be unique within the organization.
+     B7GNMWv9
+
+    Create a requirement template inside a requirement template container.
 
     Args:
         requirement_template_container_id (UUID):
@@ -130,10 +132,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RequirementTemplatePostIn,
 ) -> Response[RequirementTemplateGetOut]:
-    """Create a requirement template
+    """Post Requirement Template
 
-     Create a new requirement template inside a requirement template container. The template title must
-    be unique within the organization.
+     B7GNMWv9
+
+    Create a requirement template inside a requirement template container.
 
     Args:
         requirement_template_container_id (UUID):
@@ -163,10 +166,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RequirementTemplatePostIn,
 ) -> RequirementTemplateGetOut | None:
-    """Create a requirement template
+    """Post Requirement Template
 
-     Create a new requirement template inside a requirement template container. The template title must
-    be unique within the organization.
+     B7GNMWv9
+
+    Create a requirement template inside a requirement template container.
 
     Args:
         requirement_template_container_id (UUID):

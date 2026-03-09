@@ -74,10 +74,17 @@ def sync_detailed(
     client: AuthenticatedClient,
     page_number: list[int] | Unset = UNSET,
 ) -> Response[list[ResourceCaptureSectionComponentSchema]]:
-    """List requirement section captures
+    """Get Capture Section Components
 
-     Retrieve all capture (screenshot) components across all sections of a requirement. Supports
-    filtering by page number.
+     Ud57zekz
+    Retrieve all CaptureSectionComponent objects for a ResourceSection
+
+    Args:
+        filters: filter query params of type GetCaptureSectionComponentQuery
+        request: Request object
+        path_params: path params of type CreateCaptureSectionComponentPath
+
+    Returns: 200, list[CaptureSectionComponentSchema]
 
     Args:
         requirement_id (UUID):
@@ -109,10 +116,17 @@ def sync(
     client: AuthenticatedClient,
     page_number: list[int] | Unset = UNSET,
 ) -> list[ResourceCaptureSectionComponentSchema] | None:
-    """List requirement section captures
+    """Get Capture Section Components
 
-     Retrieve all capture (screenshot) components across all sections of a requirement. Supports
-    filtering by page number.
+     Ud57zekz
+    Retrieve all CaptureSectionComponent objects for a ResourceSection
+
+    Args:
+        filters: filter query params of type GetCaptureSectionComponentQuery
+        request: Request object
+        path_params: path params of type CreateCaptureSectionComponentPath
+
+    Returns: 200, list[CaptureSectionComponentSchema]
 
     Args:
         requirement_id (UUID):
@@ -139,10 +153,17 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     page_number: list[int] | Unset = UNSET,
 ) -> Response[list[ResourceCaptureSectionComponentSchema]]:
-    """List requirement section captures
+    """Get Capture Section Components
 
-     Retrieve all capture (screenshot) components across all sections of a requirement. Supports
-    filtering by page number.
+     Ud57zekz
+    Retrieve all CaptureSectionComponent objects for a ResourceSection
+
+    Args:
+        filters: filter query params of type GetCaptureSectionComponentQuery
+        request: Request object
+        path_params: path params of type CreateCaptureSectionComponentPath
+
+    Returns: 200, list[CaptureSectionComponentSchema]
 
     Args:
         requirement_id (UUID):
@@ -172,10 +193,17 @@ async def asyncio(
     client: AuthenticatedClient,
     page_number: list[int] | Unset = UNSET,
 ) -> list[ResourceCaptureSectionComponentSchema] | None:
-    """List requirement section captures
+    """Get Capture Section Components
 
-     Retrieve all capture (screenshot) components across all sections of a requirement. Supports
-    filtering by page number.
+     Ud57zekz
+    Retrieve all CaptureSectionComponent objects for a ResourceSection
+
+    Args:
+        filters: filter query params of type GetCaptureSectionComponentQuery
+        request: Request object
+        path_params: path params of type CreateCaptureSectionComponentPath
+
+    Returns: 200, list[CaptureSectionComponentSchema]
 
     Args:
         requirement_id (UUID):

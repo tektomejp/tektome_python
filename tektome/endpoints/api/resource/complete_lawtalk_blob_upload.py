@@ -61,10 +61,26 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: BlobUploadCompletePostIn,
 ) -> Response[ResourceSchema2]:
-    """Complete a blob upload
+    """Post Blob Upload Complete
 
-     Finalize a blob upload after the file has been uploaded directly to storage. Validates the upload,
-    creates the resource record, and optionally starts OCR extraction.
+     8swvdVq1
+
+    Complete a blob upload and create the Resource record.
+
+    After uploading a file directly to Azure Blob Storage using the SAS URL
+    from the upload request endpoint, call this endpoint to create the
+    Resource and LawtalkResource records.
+
+    **Flow:**
+    1. Validates the upload_id exists in Redis
+    2. Verifies the resource_group_id matches the original request
+    3. Confirms the blob exists in Azure Blob Storage
+    4. Creates Resource and LawtalkResource records
+    5. Optionally starts OCR extraction if `initialize` is true
+
+    **Error Codes:**
+    - 400: Invalid upload_id or resource_group_id mismatch
+    - 404: Blob not found in Azure (upload not completed)
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -96,10 +112,26 @@ def sync(
     client: AuthenticatedClient,
     body: BlobUploadCompletePostIn,
 ) -> ResourceSchema2 | None:
-    """Complete a blob upload
+    """Post Blob Upload Complete
 
-     Finalize a blob upload after the file has been uploaded directly to storage. Validates the upload,
-    creates the resource record, and optionally starts OCR extraction.
+     8swvdVq1
+
+    Complete a blob upload and create the Resource record.
+
+    After uploading a file directly to Azure Blob Storage using the SAS URL
+    from the upload request endpoint, call this endpoint to create the
+    Resource and LawtalkResource records.
+
+    **Flow:**
+    1. Validates the upload_id exists in Redis
+    2. Verifies the resource_group_id matches the original request
+    3. Confirms the blob exists in Azure Blob Storage
+    4. Creates Resource and LawtalkResource records
+    5. Optionally starts OCR extraction if `initialize` is true
+
+    **Error Codes:**
+    - 400: Invalid upload_id or resource_group_id mismatch
+    - 404: Blob not found in Azure (upload not completed)
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -126,10 +158,26 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: BlobUploadCompletePostIn,
 ) -> Response[ResourceSchema2]:
-    """Complete a blob upload
+    """Post Blob Upload Complete
 
-     Finalize a blob upload after the file has been uploaded directly to storage. Validates the upload,
-    creates the resource record, and optionally starts OCR extraction.
+     8swvdVq1
+
+    Complete a blob upload and create the Resource record.
+
+    After uploading a file directly to Azure Blob Storage using the SAS URL
+    from the upload request endpoint, call this endpoint to create the
+    Resource and LawtalkResource records.
+
+    **Flow:**
+    1. Validates the upload_id exists in Redis
+    2. Verifies the resource_group_id matches the original request
+    3. Confirms the blob exists in Azure Blob Storage
+    4. Creates Resource and LawtalkResource records
+    5. Optionally starts OCR extraction if `initialize` is true
+
+    **Error Codes:**
+    - 400: Invalid upload_id or resource_group_id mismatch
+    - 404: Blob not found in Azure (upload not completed)
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -159,10 +207,26 @@ async def asyncio(
     client: AuthenticatedClient,
     body: BlobUploadCompletePostIn,
 ) -> ResourceSchema2 | None:
-    """Complete a blob upload
+    """Post Blob Upload Complete
 
-     Finalize a blob upload after the file has been uploaded directly to storage. Validates the upload,
-    creates the resource record, and optionally starts OCR extraction.
+     8swvdVq1
+
+    Complete a blob upload and create the Resource record.
+
+    After uploading a file directly to Azure Blob Storage using the SAS URL
+    from the upload request endpoint, call this endpoint to create the
+    Resource and LawtalkResource records.
+
+    **Flow:**
+    1. Validates the upload_id exists in Redis
+    2. Verifies the resource_group_id matches the original request
+    3. Confirms the blob exists in Azure Blob Storage
+    4. Creates Resource and LawtalkResource records
+    5. Optionally starts OCR extraction if `initialize` is true
+
+    **Error Codes:**
+    - 400: Invalid upload_id or resource_group_id mismatch
+    - 404: Blob not found in Azure (upload not completed)
 
     Args:
         resource_group_id (UUID): Resource group ID

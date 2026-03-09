@@ -159,9 +159,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ResourceAllowEditSchemaPatchInPatch,
 ) -> Response[ErrorOut | ResourceSchemaPostOut]:
-    """Update the latest resource version
+    """Update Latest Version Resource
 
-     Partially update the latest version of a resource by its version control ID.
+     Sz57Wl61
+
+    Update latest version of resource given resource_vc_id
 
     Args:
         resource_group_id (UUID):
@@ -196,9 +198,11 @@ def sync(
     client: AuthenticatedClient,
     body: ResourceAllowEditSchemaPatchInPatch,
 ) -> ErrorOut | ResourceSchemaPostOut | None:
-    """Update the latest resource version
+    """Update Latest Version Resource
 
-     Partially update the latest version of a resource by its version control ID.
+     Sz57Wl61
+
+    Update latest version of resource given resource_vc_id
 
     Args:
         resource_group_id (UUID):
@@ -228,9 +232,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ResourceAllowEditSchemaPatchInPatch,
 ) -> Response[ErrorOut | ResourceSchemaPostOut]:
-    """Update the latest resource version
+    """Update Latest Version Resource
 
-     Partially update the latest version of a resource by its version control ID.
+     Sz57Wl61
+
+    Update latest version of resource given resource_vc_id
 
     Args:
         resource_group_id (UUID):
@@ -263,9 +269,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ResourceAllowEditSchemaPatchInPatch,
 ) -> ErrorOut | ResourceSchemaPostOut | None:
-    """Update the latest resource version
+    """Update Latest Version Resource
 
-     Partially update the latest version of a resource by its version control ID.
+     Sz57Wl61
+
+    Update latest version of resource given resource_vc_id
 
     Args:
         resource_group_id (UUID):

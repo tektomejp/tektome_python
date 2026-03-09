@@ -64,9 +64,12 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ObservabilityIdsIn,
 ) -> Response[list[ObservabilitySchemaOut]]:
-    """Retrieve observation records
+    """Post Retrieve Observations
 
-     Retrieve observation records for a list of entity IDs.
+     gtU7xd9c
+
+    Get observation information for an entity from given list of observed entity IDs
+    in the request payload.
 
     Args:
         body (ObservabilityIdsIn):
@@ -95,9 +98,12 @@ def sync(
     client: AuthenticatedClient,
     body: ObservabilityIdsIn,
 ) -> list[ObservabilitySchemaOut] | None:
-    """Retrieve observation records
+    """Post Retrieve Observations
 
-     Retrieve observation records for a list of entity IDs.
+     gtU7xd9c
+
+    Get observation information for an entity from given list of observed entity IDs
+    in the request payload.
 
     Args:
         body (ObservabilityIdsIn):
@@ -121,9 +127,12 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ObservabilityIdsIn,
 ) -> Response[list[ObservabilitySchemaOut]]:
-    """Retrieve observation records
+    """Post Retrieve Observations
 
-     Retrieve observation records for a list of entity IDs.
+     gtU7xd9c
+
+    Get observation information for an entity from given list of observed entity IDs
+    in the request payload.
 
     Args:
         body (ObservabilityIdsIn):
@@ -150,9 +159,12 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ObservabilityIdsIn,
 ) -> list[ObservabilitySchemaOut] | None:
-    """Retrieve observation records
+    """Post Retrieve Observations
 
-     Retrieve observation records for a list of entity IDs.
+     gtU7xd9c
+
+    Get observation information for an entity from given list of observed entity IDs
+    in the request payload.
 
     Args:
         body (ObservabilityIdsIn):

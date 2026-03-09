@@ -7,11 +7,14 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.attribute_type import AttributeType
+from ..models.literal_attribute_type import LiteralAttributeType
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.bim_element_in import BIMElementIn
+    from ..models.bim_helpers import BIMHelpers
+    from ..models.bim_text_highlights import BIMTextHighlights
+    from ..models.image_polygons import ImagePolygons
+    from ..models.text_highlights import TextHighlights
 
 
 T = TypeVar("T", bound="BIMCitationPostIn")
@@ -22,80 +25,160 @@ class BIMCitationPostIn:
     """
     Attributes:
         title (str):
-        attribute_type (AttributeType): StrEnum for all available attribute types
-
-            .. warning::
-                Do not change the values of this enum, as they are used in the database.
-                If you need to add a new attribute type, add a new enum value with a unique name.
-        bim_resource_id (UUID): ID of the cited BIM resource.
-        bim_elements (list[BIMElementIn]): List of BIM project/object pairs cited as sources.
-        keywords (list[str] | Unset):
+        extracted_attribute_id (UUID):
+        extracted_attribute_type (LiteralAttributeType):
+        section_id (UUID):
+        attribute_sources (list[UUID]):
+        text_highlights (list[TextHighlights]):
+        image_polygons (list[ImagePolygons]):
+        bim_text_highlights (list[BIMTextHighlights]):
+        bim_helpers (list[BIMHelpers]):
+        description (None | str | Unset):
     """
 
     title: str
-    attribute_type: AttributeType
-    bim_resource_id: UUID
-    bim_elements: list[BIMElementIn]
-    keywords: list[str] | Unset = UNSET
+    extracted_attribute_id: UUID
+    extracted_attribute_type: LiteralAttributeType
+    section_id: UUID
+    attribute_sources: list[UUID]
+    text_highlights: list[TextHighlights]
+    image_polygons: list[ImagePolygons]
+    bim_text_highlights: list[BIMTextHighlights]
+    bim_helpers: list[BIMHelpers]
+    description: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         title = self.title
 
-        attribute_type = self.attribute_type.value
+        extracted_attribute_id = str(self.extracted_attribute_id)
 
-        bim_resource_id = str(self.bim_resource_id)
+        extracted_attribute_type = self.extracted_attribute_type.value
 
-        bim_elements = []
-        for bim_elements_item_data in self.bim_elements:
-            bim_elements_item = bim_elements_item_data.to_dict()
-            bim_elements.append(bim_elements_item)
+        section_id = str(self.section_id)
 
-        keywords: list[str] | Unset = UNSET
-        if not isinstance(self.keywords, Unset):
-            keywords = self.keywords
+        attribute_sources = []
+        for attribute_sources_item_data in self.attribute_sources:
+            attribute_sources_item = str(attribute_sources_item_data)
+            attribute_sources.append(attribute_sources_item)
+
+        text_highlights = []
+        for text_highlights_item_data in self.text_highlights:
+            text_highlights_item = text_highlights_item_data.to_dict()
+            text_highlights.append(text_highlights_item)
+
+        image_polygons = []
+        for image_polygons_item_data in self.image_polygons:
+            image_polygons_item = image_polygons_item_data.to_dict()
+            image_polygons.append(image_polygons_item)
+
+        bim_text_highlights = []
+        for bim_text_highlights_item_data in self.bim_text_highlights:
+            bim_text_highlights_item = bim_text_highlights_item_data.to_dict()
+            bim_text_highlights.append(bim_text_highlights_item)
+
+        bim_helpers = []
+        for bim_helpers_item_data in self.bim_helpers:
+            bim_helpers_item = bim_helpers_item_data.to_dict()
+            bim_helpers.append(bim_helpers_item)
+
+        description: None | str | Unset
+        if isinstance(self.description, Unset):
+            description = UNSET
+        else:
+            description = self.description
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "title": title,
-                "attribute_type": attribute_type,
-                "bim_resource_id": bim_resource_id,
-                "bim_elements": bim_elements,
+                "extracted_attribute_id": extracted_attribute_id,
+                "extracted_attribute_type": extracted_attribute_type,
+                "section_id": section_id,
+                "attribute_sources": attribute_sources,
+                "text_highlights": text_highlights,
+                "image_polygons": image_polygons,
+                "bim_text_highlights": bim_text_highlights,
+                "bim_helpers": bim_helpers,
             }
         )
-        if keywords is not UNSET:
-            field_dict["keywords"] = keywords
+        if description is not UNSET:
+            field_dict["description"] = description
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.bim_element_in import BIMElementIn
+        from ..models.bim_helpers import BIMHelpers
+        from ..models.bim_text_highlights import BIMTextHighlights
+        from ..models.image_polygons import ImagePolygons
+        from ..models.text_highlights import TextHighlights
 
         d = dict(src_dict)
         title = d.pop("title")
 
-        attribute_type = AttributeType(d.pop("attribute_type"))
+        extracted_attribute_id = UUID(d.pop("extracted_attribute_id"))
 
-        bim_resource_id = UUID(d.pop("bim_resource_id"))
+        extracted_attribute_type = LiteralAttributeType(d.pop("extracted_attribute_type"))
 
-        bim_elements = []
-        _bim_elements = d.pop("bim_elements")
-        for bim_elements_item_data in _bim_elements:
-            bim_elements_item = BIMElementIn.from_dict(bim_elements_item_data)
+        section_id = UUID(d.pop("section_id"))
 
-            bim_elements.append(bim_elements_item)
+        attribute_sources = []
+        _attribute_sources = d.pop("attribute_sources")
+        for attribute_sources_item_data in _attribute_sources:
+            attribute_sources_item = UUID(attribute_sources_item_data)
 
-        keywords = cast(list[str], d.pop("keywords", UNSET))
+            attribute_sources.append(attribute_sources_item)
+
+        text_highlights = []
+        _text_highlights = d.pop("text_highlights")
+        for text_highlights_item_data in _text_highlights:
+            text_highlights_item = TextHighlights.from_dict(text_highlights_item_data)
+
+            text_highlights.append(text_highlights_item)
+
+        image_polygons = []
+        _image_polygons = d.pop("image_polygons")
+        for image_polygons_item_data in _image_polygons:
+            image_polygons_item = ImagePolygons.from_dict(image_polygons_item_data)
+
+            image_polygons.append(image_polygons_item)
+
+        bim_text_highlights = []
+        _bim_text_highlights = d.pop("bim_text_highlights")
+        for bim_text_highlights_item_data in _bim_text_highlights:
+            bim_text_highlights_item = BIMTextHighlights.from_dict(bim_text_highlights_item_data)
+
+            bim_text_highlights.append(bim_text_highlights_item)
+
+        bim_helpers = []
+        _bim_helpers = d.pop("bim_helpers")
+        for bim_helpers_item_data in _bim_helpers:
+            bim_helpers_item = BIMHelpers.from_dict(bim_helpers_item_data)
+
+            bim_helpers.append(bim_helpers_item)
+
+        def _parse_description(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        description = _parse_description(d.pop("description", UNSET))
 
         bim_citation_post_in = cls(
             title=title,
-            attribute_type=attribute_type,
-            bim_resource_id=bim_resource_id,
-            bim_elements=bim_elements,
-            keywords=keywords,
+            extracted_attribute_id=extracted_attribute_id,
+            extracted_attribute_type=extracted_attribute_type,
+            section_id=section_id,
+            attribute_sources=attribute_sources,
+            text_highlights=text_highlights,
+            image_polygons=image_polygons,
+            bim_text_highlights=bim_text_highlights,
+            bim_helpers=bim_helpers,
+            description=description,
         )
 
         bim_citation_post_in.additional_properties = d

@@ -48,10 +48,13 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete requirement item column config
+    """Delete Project Requirement Item Column Config
 
-     Delete a requirement item column configuration. This cascades to remove all requirement item data
-    associated with this column across all requirements in the project.
+     3m4n5o6P
+
+    Delete a requirement item column configuration for a project.
+
+    Cascades delete all requirement items associated with this column config.
 
     Args:
         requirement_item_column_config_id (UUID):
@@ -80,10 +83,13 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete requirement item column config
+    """Delete Project Requirement Item Column Config
 
-     Delete a requirement item column configuration. This cascades to remove all requirement item data
-    associated with this column across all requirements in the project.
+     3m4n5o6P
+
+    Delete a requirement item column configuration for a project.
+
+    Cascades delete all requirement items associated with this column config.
 
     Args:
         requirement_item_column_config_id (UUID):

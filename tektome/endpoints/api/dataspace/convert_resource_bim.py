@@ -66,10 +66,12 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[BackgroundTaskIdOut | ErrorOut]:
-    """Convert a resource to BIM format
+    """Convert Bim Resource
 
-     Initiate BIM conversion for an existing resource that contains a BIM-compatible file. Returns a
-    background task ID to track processing progress.
+     s5dR7EsY
+
+    Convert BIM resource from a file attached to a resource.
+    Returns: resource BimTask id as task id
 
     Args:
         resource_id (UUID):
@@ -98,10 +100,12 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> BackgroundTaskIdOut | ErrorOut | None:
-    """Convert a resource to BIM format
+    """Convert Bim Resource
 
-     Initiate BIM conversion for an existing resource that contains a BIM-compatible file. Returns a
-    background task ID to track processing progress.
+     s5dR7EsY
+
+    Convert BIM resource from a file attached to a resource.
+    Returns: resource BimTask id as task id
 
     Args:
         resource_id (UUID):
@@ -125,10 +129,12 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[BackgroundTaskIdOut | ErrorOut]:
-    """Convert a resource to BIM format
+    """Convert Bim Resource
 
-     Initiate BIM conversion for an existing resource that contains a BIM-compatible file. Returns a
-    background task ID to track processing progress.
+     s5dR7EsY
+
+    Convert BIM resource from a file attached to a resource.
+    Returns: resource BimTask id as task id
 
     Args:
         resource_id (UUID):
@@ -155,10 +161,12 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> BackgroundTaskIdOut | ErrorOut | None:
-    """Convert a resource to BIM format
+    """Convert Bim Resource
 
-     Initiate BIM conversion for an existing resource that contains a BIM-compatible file. Returns a
-    background task ID to track processing progress.
+     s5dR7EsY
+
+    Convert BIM resource from a file attached to a resource.
+    Returns: resource BimTask id as task id
 
     Args:
         resource_id (UUID):

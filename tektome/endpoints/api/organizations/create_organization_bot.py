@@ -66,10 +66,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ErrorOutputSchemaOut | OrganizationBotUserOut]:
-    """Create organization bot user
+    """Create Organization Bot
 
-     Create a bot user for the organization with administrator privileges. Only one bot user is allowed
-    per organization. Bot users are system accounts for automated tasks.
+     zStwPoBb
+
+    Create a bot user for the organization with Organization Admin role.
+
+    Bot users are system accounts that can perform automated tasks
+    within the organization. Only one bot user is allowed per organization.
+    The bot user will have Organization Admin privileges.
 
     Args:
         organization_id (UUID):
@@ -98,10 +103,15 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ErrorOutputSchemaOut | OrganizationBotUserOut | None:
-    """Create organization bot user
+    """Create Organization Bot
 
-     Create a bot user for the organization with administrator privileges. Only one bot user is allowed
-    per organization. Bot users are system accounts for automated tasks.
+     zStwPoBb
+
+    Create a bot user for the organization with Organization Admin role.
+
+    Bot users are system accounts that can perform automated tasks
+    within the organization. Only one bot user is allowed per organization.
+    The bot user will have Organization Admin privileges.
 
     Args:
         organization_id (UUID):
@@ -125,10 +135,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ErrorOutputSchemaOut | OrganizationBotUserOut]:
-    """Create organization bot user
+    """Create Organization Bot
 
-     Create a bot user for the organization with administrator privileges. Only one bot user is allowed
-    per organization. Bot users are system accounts for automated tasks.
+     zStwPoBb
+
+    Create a bot user for the organization with Organization Admin role.
+
+    Bot users are system accounts that can perform automated tasks
+    within the organization. Only one bot user is allowed per organization.
+    The bot user will have Organization Admin privileges.
 
     Args:
         organization_id (UUID):
@@ -155,10 +170,15 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ErrorOutputSchemaOut | OrganizationBotUserOut | None:
-    """Create organization bot user
+    """Create Organization Bot
 
-     Create a bot user for the organization with administrator privileges. Only one bot user is allowed
-    per organization. Bot users are system accounts for automated tasks.
+     zStwPoBb
+
+    Create a bot user for the organization with Organization Admin role.
+
+    Bot users are system accounts that can perform automated tasks
+    within the organization. Only one bot user is allowed per organization.
+    The bot user will have Organization Admin privileges.
 
     Args:
         organization_id (UUID):

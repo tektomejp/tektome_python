@@ -7,27 +7,18 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
     resource_group_id: UUID,
-    *,
-    force: bool | Unset = False,
 ) -> dict[str, Any]:
-
-    params: dict[str, Any] = {}
-
-    params["force"] = force
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/api/app/lawtalk/resources/groups/{resource_group_id}/".format(
             resource_group_id=quote(str(resource_group_id), safe=""),
         ),
-        "params": params,
     }
 
     return _kwargs
@@ -56,16 +47,15 @@ def sync_detailed(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-    force: bool | Unset = False,
 ) -> Response[Any]:
-    """Delete a resource group
+    """Delete Resource Group
 
-     Delete a resource group, including its root folder and all attributes. Use the force parameter to
-    delete non-empty groups.
+     RYb3o4Os
+
+    Delete an empty resource group, including root folder and all attributes
 
     Args:
         resource_group_id (UUID): Resource group ID
-        force (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -77,7 +67,6 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         resource_group_id=resource_group_id,
-        force=force,
     )
 
     response = client.get_httpx_client().request(
@@ -91,16 +80,15 @@ async def asyncio_detailed(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-    force: bool | Unset = False,
 ) -> Response[Any]:
-    """Delete a resource group
+    """Delete Resource Group
 
-     Delete a resource group, including its root folder and all attributes. Use the force parameter to
-    delete non-empty groups.
+     RYb3o4Os
+
+    Delete an empty resource group, including root folder and all attributes
 
     Args:
         resource_group_id (UUID): Resource group ID
-        force (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -112,7 +100,6 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         resource_group_id=resource_group_id,
-        force=force,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)

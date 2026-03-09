@@ -149,9 +149,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DataspaceSearchRequestGetOut | ErrorOut]:
-    """Get a search request by ID
+    """Get Search Request
 
-     Retrieve a single search request by its ID within a dataspace.
+     vR2Zs5Ot
+
+    Get a single search request by ID.
 
     Args:
         dataspace_id (UUID):
@@ -183,9 +185,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> DataspaceSearchRequestGetOut | ErrorOut | None:
-    """Get a search request by ID
+    """Get Search Request
 
-     Retrieve a single search request by its ID within a dataspace.
+     vR2Zs5Ot
+
+    Get a single search request by ID.
 
     Args:
         dataspace_id (UUID):
@@ -212,9 +216,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DataspaceSearchRequestGetOut | ErrorOut]:
-    """Get a search request by ID
+    """Get Search Request
 
-     Retrieve a single search request by its ID within a dataspace.
+     vR2Zs5Ot
+
+    Get a single search request by ID.
 
     Args:
         dataspace_id (UUID):
@@ -244,9 +250,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> DataspaceSearchRequestGetOut | ErrorOut | None:
-    """Get a search request by ID
+    """Get Search Request
 
-     Retrieve a single search request by its ID within a dataspace.
+     vR2Zs5Ot
+
+    Get a single search request by ID.
 
     Args:
         dataspace_id (UUID):

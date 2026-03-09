@@ -59,10 +59,30 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RetrieveBimViewsInProjectPostIn,
 ) -> Response[RetrieveBimViewsInProjectPostOut]:
-    """List BIM views in a project
+    r"""Retrieve Bim Views In Project
 
-     Retrieve BIM views within a project, supporting both bulk and paginated queries. Optionally return
-    only view IDs.
+     ir8DUfSC
+
+    Retrieves BIM views within a specified project, supporting both bulk and paginated queries.
+
+    If `payload.all_at_once` is True, returns all BIM view elements in the project, optionally only
+    their IDs.
+    Otherwise, returns a paginated list of BIM views, with optional filtering for only IDs.
+
+    For non-ID-only queries, the function parallelizes the construction of detailed view payloads for
+    each BIM view.
+
+    Args:
+        request: The HTTP request object (unused in this function).
+        payload (RetrieveBimViewsInProjectPostIn): Input data containing project ID, pagination options,
+            selection fields, and flags for bulk retrieval and ID-only mode.
+
+    Returns:
+        dict: A dictionary with a \"data\" key containing either a list of BIM view IDs or detailed BIM
+    view payloads.
+
+    Raises:
+        HttpError: If no BIM views are found in the specified project.
 
     Args:
         body (RetrieveBimViewsInProjectPostIn):
@@ -91,10 +111,30 @@ def sync(
     client: AuthenticatedClient,
     body: RetrieveBimViewsInProjectPostIn,
 ) -> RetrieveBimViewsInProjectPostOut | None:
-    """List BIM views in a project
+    r"""Retrieve Bim Views In Project
 
-     Retrieve BIM views within a project, supporting both bulk and paginated queries. Optionally return
-    only view IDs.
+     ir8DUfSC
+
+    Retrieves BIM views within a specified project, supporting both bulk and paginated queries.
+
+    If `payload.all_at_once` is True, returns all BIM view elements in the project, optionally only
+    their IDs.
+    Otherwise, returns a paginated list of BIM views, with optional filtering for only IDs.
+
+    For non-ID-only queries, the function parallelizes the construction of detailed view payloads for
+    each BIM view.
+
+    Args:
+        request: The HTTP request object (unused in this function).
+        payload (RetrieveBimViewsInProjectPostIn): Input data containing project ID, pagination options,
+            selection fields, and flags for bulk retrieval and ID-only mode.
+
+    Returns:
+        dict: A dictionary with a \"data\" key containing either a list of BIM view IDs or detailed BIM
+    view payloads.
+
+    Raises:
+        HttpError: If no BIM views are found in the specified project.
 
     Args:
         body (RetrieveBimViewsInProjectPostIn):
@@ -118,10 +158,30 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RetrieveBimViewsInProjectPostIn,
 ) -> Response[RetrieveBimViewsInProjectPostOut]:
-    """List BIM views in a project
+    r"""Retrieve Bim Views In Project
 
-     Retrieve BIM views within a project, supporting both bulk and paginated queries. Optionally return
-    only view IDs.
+     ir8DUfSC
+
+    Retrieves BIM views within a specified project, supporting both bulk and paginated queries.
+
+    If `payload.all_at_once` is True, returns all BIM view elements in the project, optionally only
+    their IDs.
+    Otherwise, returns a paginated list of BIM views, with optional filtering for only IDs.
+
+    For non-ID-only queries, the function parallelizes the construction of detailed view payloads for
+    each BIM view.
+
+    Args:
+        request: The HTTP request object (unused in this function).
+        payload (RetrieveBimViewsInProjectPostIn): Input data containing project ID, pagination options,
+            selection fields, and flags for bulk retrieval and ID-only mode.
+
+    Returns:
+        dict: A dictionary with a \"data\" key containing either a list of BIM view IDs or detailed BIM
+    view payloads.
+
+    Raises:
+        HttpError: If no BIM views are found in the specified project.
 
     Args:
         body (RetrieveBimViewsInProjectPostIn):
@@ -148,10 +208,30 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RetrieveBimViewsInProjectPostIn,
 ) -> RetrieveBimViewsInProjectPostOut | None:
-    """List BIM views in a project
+    r"""Retrieve Bim Views In Project
 
-     Retrieve BIM views within a project, supporting both bulk and paginated queries. Optionally return
-    only view IDs.
+     ir8DUfSC
+
+    Retrieves BIM views within a specified project, supporting both bulk and paginated queries.
+
+    If `payload.all_at_once` is True, returns all BIM view elements in the project, optionally only
+    their IDs.
+    Otherwise, returns a paginated list of BIM views, with optional filtering for only IDs.
+
+    For non-ID-only queries, the function parallelizes the construction of detailed view payloads for
+    each BIM view.
+
+    Args:
+        request: The HTTP request object (unused in this function).
+        payload (RetrieveBimViewsInProjectPostIn): Input data containing project ID, pagination options,
+            selection fields, and flags for bulk retrieval and ID-only mode.
+
+    Returns:
+        dict: A dictionary with a \"data\" key containing either a list of BIM view IDs or detailed BIM
+    view payloads.
+
+    Raises:
+        HttpError: If no BIM views are found in the specified project.
 
     Args:
         body (RetrieveBimViewsInProjectPostIn):

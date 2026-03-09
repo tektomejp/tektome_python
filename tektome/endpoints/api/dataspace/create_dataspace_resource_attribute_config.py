@@ -65,9 +65,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceProjectAttributePostIn,
 ) -> Response[DataspaceProjectAttributePostOut]:
-    """Create a resource attribute column configuration
+    """Post Dataspace Resource Attribute Config
 
-     Add a new attribute column configuration for resources in a dataspace.
+     x16N0f5H
+
+    Creates the column attributes of a dataspace resource
 
     Args:
         dataspace_id (UUID):
@@ -100,9 +102,11 @@ def sync(
     client: AuthenticatedClient,
     body: DataspaceProjectAttributePostIn,
 ) -> DataspaceProjectAttributePostOut | None:
-    """Create a resource attribute column configuration
+    """Post Dataspace Resource Attribute Config
 
-     Add a new attribute column configuration for resources in a dataspace.
+     x16N0f5H
+
+    Creates the column attributes of a dataspace resource
 
     Args:
         dataspace_id (UUID):
@@ -130,9 +134,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceProjectAttributePostIn,
 ) -> Response[DataspaceProjectAttributePostOut]:
-    """Create a resource attribute column configuration
+    """Post Dataspace Resource Attribute Config
 
-     Add a new attribute column configuration for resources in a dataspace.
+     x16N0f5H
+
+    Creates the column attributes of a dataspace resource
 
     Args:
         dataspace_id (UUID):
@@ -163,9 +169,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DataspaceProjectAttributePostIn,
 ) -> DataspaceProjectAttributePostOut | None:
-    """Create a resource attribute column configuration
+    """Post Dataspace Resource Attribute Config
 
-     Add a new attribute column configuration for resources in a dataspace.
+     x16N0f5H
+
+    Creates the column attributes of a dataspace resource
 
     Args:
         dataspace_id (UUID):

@@ -59,10 +59,35 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RecommendResourceGroupPostIn,
 ) -> Response[RecommendResourceGroupGetOut]:
-    """Recommend resource groups
+    r"""Post Recommend Resource Group
 
-     Get AI-powered resource group recommendations based on project attributes such as location,
-    structure, building type, and dimensions. Results are ranked by relevance score.
+     9kxmqqUu
+
+    Recommend Lawtalk's Resource Groups based on project attributes.
+    Uses LLM to parse natural language locations. The result is cached for 3600 seconds.
+    parsed_location is different for each locale:
+    gb
+    ```
+    ...
+    parsed_location:
+        {
+            \"city\": \"chicago\",
+            \"state\": \"illinois\",
+            \"country\": \"united-states\"
+        }
+    }
+    ```
+    jp
+    ```
+    ...
+    parsed_location:
+        {
+            \"prefecture\": \"tokyo\",
+            \"city\": \"shinjuku\",
+            \"ward\": \"shinjuku\"
+        }
+    }
+    ```
 
     Args:
         body (RecommendResourceGroupPostIn):
@@ -91,10 +116,35 @@ def sync(
     client: AuthenticatedClient,
     body: RecommendResourceGroupPostIn,
 ) -> RecommendResourceGroupGetOut | None:
-    """Recommend resource groups
+    r"""Post Recommend Resource Group
 
-     Get AI-powered resource group recommendations based on project attributes such as location,
-    structure, building type, and dimensions. Results are ranked by relevance score.
+     9kxmqqUu
+
+    Recommend Lawtalk's Resource Groups based on project attributes.
+    Uses LLM to parse natural language locations. The result is cached for 3600 seconds.
+    parsed_location is different for each locale:
+    gb
+    ```
+    ...
+    parsed_location:
+        {
+            \"city\": \"chicago\",
+            \"state\": \"illinois\",
+            \"country\": \"united-states\"
+        }
+    }
+    ```
+    jp
+    ```
+    ...
+    parsed_location:
+        {
+            \"prefecture\": \"tokyo\",
+            \"city\": \"shinjuku\",
+            \"ward\": \"shinjuku\"
+        }
+    }
+    ```
 
     Args:
         body (RecommendResourceGroupPostIn):
@@ -118,10 +168,35 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RecommendResourceGroupPostIn,
 ) -> Response[RecommendResourceGroupGetOut]:
-    """Recommend resource groups
+    r"""Post Recommend Resource Group
 
-     Get AI-powered resource group recommendations based on project attributes such as location,
-    structure, building type, and dimensions. Results are ranked by relevance score.
+     9kxmqqUu
+
+    Recommend Lawtalk's Resource Groups based on project attributes.
+    Uses LLM to parse natural language locations. The result is cached for 3600 seconds.
+    parsed_location is different for each locale:
+    gb
+    ```
+    ...
+    parsed_location:
+        {
+            \"city\": \"chicago\",
+            \"state\": \"illinois\",
+            \"country\": \"united-states\"
+        }
+    }
+    ```
+    jp
+    ```
+    ...
+    parsed_location:
+        {
+            \"prefecture\": \"tokyo\",
+            \"city\": \"shinjuku\",
+            \"ward\": \"shinjuku\"
+        }
+    }
+    ```
 
     Args:
         body (RecommendResourceGroupPostIn):
@@ -148,10 +223,35 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RecommendResourceGroupPostIn,
 ) -> RecommendResourceGroupGetOut | None:
-    """Recommend resource groups
+    r"""Post Recommend Resource Group
 
-     Get AI-powered resource group recommendations based on project attributes such as location,
-    structure, building type, and dimensions. Results are ranked by relevance score.
+     9kxmqqUu
+
+    Recommend Lawtalk's Resource Groups based on project attributes.
+    Uses LLM to parse natural language locations. The result is cached for 3600 seconds.
+    parsed_location is different for each locale:
+    gb
+    ```
+    ...
+    parsed_location:
+        {
+            \"city\": \"chicago\",
+            \"state\": \"illinois\",
+            \"country\": \"united-states\"
+        }
+    }
+    ```
+    jp
+    ```
+    ...
+    parsed_location:
+        {
+            \"prefecture\": \"tokyo\",
+            \"city\": \"shinjuku\",
+            \"ward\": \"shinjuku\"
+        }
+    }
+    ```
 
     Args:
         body (RecommendResourceGroupPostIn):

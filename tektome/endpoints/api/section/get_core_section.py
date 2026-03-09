@@ -51,9 +51,16 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[SectionGetOut]:
-    """Get a section by ID
+    """Retrieve Section
 
-     Retrieve the details of a specific section by its ID.
+     cNJ_lq8y
+
+    Retrieve a section by its ID.
+    Args:
+        request: Request object.
+        path_params: path parameters containing section ID.
+
+    Returns: section details.
 
     Args:
         section_id (UUID):
@@ -82,9 +89,16 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> SectionGetOut | None:
-    """Get a section by ID
+    """Retrieve Section
 
-     Retrieve the details of a specific section by its ID.
+     cNJ_lq8y
+
+    Retrieve a section by its ID.
+    Args:
+        request: Request object.
+        path_params: path parameters containing section ID.
+
+    Returns: section details.
 
     Args:
         section_id (UUID):
@@ -108,9 +122,16 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[SectionGetOut]:
-    """Get a section by ID
+    """Retrieve Section
 
-     Retrieve the details of a specific section by its ID.
+     cNJ_lq8y
+
+    Retrieve a section by its ID.
+    Args:
+        request: Request object.
+        path_params: path parameters containing section ID.
+
+    Returns: section details.
 
     Args:
         section_id (UUID):
@@ -137,9 +158,16 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> SectionGetOut | None:
-    """Get a section by ID
+    """Retrieve Section
 
-     Retrieve the details of a specific section by its ID.
+     cNJ_lq8y
+
+    Retrieve a section by its ID.
+    Args:
+        request: Request object.
+        path_params: path parameters containing section ID.
+
+    Returns: section details.
 
     Args:
         section_id (UUID):

@@ -58,9 +58,21 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: FolderPatchIn,
 ) -> Response[Any]:
-    """Update folder details
+    """Patch Folder
 
-     Update folder properties such as the folder name. Root folders cannot be updated.
+     Q4CN91Ek
+
+    Patch folder details.
+    - name
+
+    # Note: DjangoNinja PatchDict doesn't work correctly with Pydantic schemas
+             that has Field validations(min,max)
+    Args:
+        payload: FolderPatchIn object containing updated folder details (only name for now)
+        request: Request object
+        path_params: FolderPathIn object containing folder_id
+
+    Returns: 204, None
 
     Args:
         folder_id (UUID):
@@ -92,9 +104,21 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: FolderPatchIn,
 ) -> Response[Any]:
-    """Update folder details
+    """Patch Folder
 
-     Update folder properties such as the folder name. Root folders cannot be updated.
+     Q4CN91Ek
+
+    Patch folder details.
+    - name
+
+    # Note: DjangoNinja PatchDict doesn't work correctly with Pydantic schemas
+             that has Field validations(min,max)
+    Args:
+        payload: FolderPatchIn object containing updated folder details (only name for now)
+        request: Request object
+        path_params: FolderPathIn object containing folder_id
+
+    Returns: 204, None
 
     Args:
         folder_id (UUID):

@@ -63,10 +63,21 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ResourceGroupPostIn,
 ) -> Response[ResourceGroupPostOut]:
-    """Create a project resource group
+    """Post Project Resource Group
 
-     Create a new resource group within a project. The resource group is initialized with default
-    attributes for location, structure, building type, and dimensional properties.
+     aidMfY1a
+
+    Create resource group on project.
+
+    Default lawtalk attributes are set
+    - location == everything
+    - structure == everything
+    - building_type == everything
+    - floors_above_ground >= 0
+    - floors_below_ground >= 0
+    - height >= 0.0
+    - land_area >= 0.0
+    - building_area >= 0.0
 
     Args:
         project_id (UUID):
@@ -98,10 +109,21 @@ def sync(
     client: AuthenticatedClient,
     body: ResourceGroupPostIn,
 ) -> ResourceGroupPostOut | None:
-    """Create a project resource group
+    """Post Project Resource Group
 
-     Create a new resource group within a project. The resource group is initialized with default
-    attributes for location, structure, building type, and dimensional properties.
+     aidMfY1a
+
+    Create resource group on project.
+
+    Default lawtalk attributes are set
+    - location == everything
+    - structure == everything
+    - building_type == everything
+    - floors_above_ground >= 0
+    - floors_below_ground >= 0
+    - height >= 0.0
+    - land_area >= 0.0
+    - building_area >= 0.0
 
     Args:
         project_id (UUID):
@@ -128,10 +150,21 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ResourceGroupPostIn,
 ) -> Response[ResourceGroupPostOut]:
-    """Create a project resource group
+    """Post Project Resource Group
 
-     Create a new resource group within a project. The resource group is initialized with default
-    attributes for location, structure, building type, and dimensional properties.
+     aidMfY1a
+
+    Create resource group on project.
+
+    Default lawtalk attributes are set
+    - location == everything
+    - structure == everything
+    - building_type == everything
+    - floors_above_ground >= 0
+    - floors_below_ground >= 0
+    - height >= 0.0
+    - land_area >= 0.0
+    - building_area >= 0.0
 
     Args:
         project_id (UUID):
@@ -161,10 +194,21 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ResourceGroupPostIn,
 ) -> ResourceGroupPostOut | None:
-    """Create a project resource group
+    """Post Project Resource Group
 
-     Create a new resource group within a project. The resource group is initialized with default
-    attributes for location, structure, building type, and dimensional properties.
+     aidMfY1a
+
+    Create resource group on project.
+
+    Default lawtalk attributes are set
+    - location == everything
+    - structure == everything
+    - building_type == everything
+    - floors_above_ground >= 0
+    - floors_below_ground >= 0
+    - height >= 0.0
+    - land_area >= 0.0
+    - building_area >= 0.0
 
     Args:
         project_id (UUID):

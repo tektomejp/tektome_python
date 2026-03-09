@@ -74,9 +74,17 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedProjectMembersGetOut]:
-    """List project members
+    """Get Project Members
 
-     Retrieve a paginated list of all members assigned to a project, including their roles.
+     iKD10Ljt
+
+    Get all members of a project.
+
+    Args:
+        request: Request object.
+        path_params: path params of type ProjectDefaultPath
+
+    Returns: 200, list[ProjectMembersGetOut]
 
     Args:
         project_id (UUID):
@@ -111,9 +119,17 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedProjectMembersGetOut | None:
-    """List project members
+    """Get Project Members
 
-     Retrieve a paginated list of all members assigned to a project, including their roles.
+     iKD10Ljt
+
+    Get all members of a project.
+
+    Args:
+        request: Request object.
+        path_params: path params of type ProjectDefaultPath
+
+    Returns: 200, list[ProjectMembersGetOut]
 
     Args:
         project_id (UUID):
@@ -143,9 +159,17 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedProjectMembersGetOut]:
-    """List project members
+    """Get Project Members
 
-     Retrieve a paginated list of all members assigned to a project, including their roles.
+     iKD10Ljt
+
+    Get all members of a project.
+
+    Args:
+        request: Request object.
+        path_params: path params of type ProjectDefaultPath
+
+    Returns: 200, list[ProjectMembersGetOut]
 
     Args:
         project_id (UUID):
@@ -178,9 +202,17 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedProjectMembersGetOut | None:
-    """List project members
+    """Get Project Members
 
-     Retrieve a paginated list of all members assigned to a project, including their roles.
+     iKD10Ljt
+
+    Get all members of a project.
+
+    Args:
+        request: Request object.
+        path_params: path params of type ProjectDefaultPath
+
+    Returns: 200, list[ProjectMembersGetOut]
 
     Args:
         project_id (UUID):

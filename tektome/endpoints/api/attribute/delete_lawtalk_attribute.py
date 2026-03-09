@@ -62,10 +62,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     name: str,
 ) -> Response[Any]:
-    """Delete a domain-specific attribute from an entity
+    """Delete Lawtalk Attribute
 
-     Remove a domain-specific system attribute by name from an entity. The attribute is deleted across
-    all domain attribute types.
+     iRKICjKa
+
+    Delete a specific Lawtalk system attribute from an entity.
 
     Args:
         object_type (DeleteLawtalkAttributeAttributeObjectTypes):
@@ -100,10 +101,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     name: str,
 ) -> Response[Any]:
-    """Delete a domain-specific attribute from an entity
+    """Delete Lawtalk Attribute
 
-     Remove a domain-specific system attribute by name from an entity. The attribute is deleted across
-    all domain attribute types.
+     iRKICjKa
+
+    Delete a specific Lawtalk system attribute from an entity.
 
     Args:
         object_type (DeleteLawtalkAttributeAttributeObjectTypes):

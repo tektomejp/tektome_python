@@ -72,10 +72,17 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedResourceSchema2]:
-    """List folder descendant resources
+    """Get Folder Descendant Resources
 
-     Retrieve all resources under a folder and its subfolders recursively, up to the maximum folder
-    depth.
+     kC6KLRP6
+
+    Get all descendant resources under a folder.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing folder_id
+
+    Returns: All lawtalk resources under the given folder.
 
     Args:
         folder_id (UUID):
@@ -110,10 +117,17 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedResourceSchema2 | None:
-    """List folder descendant resources
+    """Get Folder Descendant Resources
 
-     Retrieve all resources under a folder and its subfolders recursively, up to the maximum folder
-    depth.
+     kC6KLRP6
+
+    Get all descendant resources under a folder.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing folder_id
+
+    Returns: All lawtalk resources under the given folder.
 
     Args:
         folder_id (UUID):
@@ -143,10 +157,17 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedResourceSchema2]:
-    """List folder descendant resources
+    """Get Folder Descendant Resources
 
-     Retrieve all resources under a folder and its subfolders recursively, up to the maximum folder
-    depth.
+     kC6KLRP6
+
+    Get all descendant resources under a folder.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing folder_id
+
+    Returns: All lawtalk resources under the given folder.
 
     Args:
         folder_id (UUID):
@@ -179,10 +200,17 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedResourceSchema2 | None:
-    """List folder descendant resources
+    """Get Folder Descendant Resources
 
-     Retrieve all resources under a folder and its subfolders recursively, up to the maximum folder
-    depth.
+     kC6KLRP6
+
+    Get all descendant resources under a folder.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing folder_id
+
+    Returns: All lawtalk resources under the given folder.
 
     Args:
         folder_id (UUID):

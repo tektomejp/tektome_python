@@ -161,10 +161,12 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPatchDefaultSearchConditionsIn,
 ) -> Response[DataspaceSearchTagConfigOut | ErrorOut]:
-    """Update default search conditions for a tag
+    """Patch Dataspace Tag Config Default Search Conditions
 
-     Update the default search conditions for filters assigned to a tag configuration. Only conditions
-    for filters already assigned to the tag are updated.
+     Z3W1Ypdo
+
+    Update default search conditions for filters in a tag configuration.
+    Only updates conditions for filters already assigned to the tag config.
 
     Args:
         dataspace_id (UUID):
@@ -200,10 +202,12 @@ def sync(
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPatchDefaultSearchConditionsIn,
 ) -> DataspaceSearchTagConfigOut | ErrorOut | None:
-    """Update default search conditions for a tag
+    """Patch Dataspace Tag Config Default Search Conditions
 
-     Update the default search conditions for filters assigned to a tag configuration. Only conditions
-    for filters already assigned to the tag are updated.
+     Z3W1Ypdo
+
+    Update default search conditions for filters in a tag configuration.
+    Only updates conditions for filters already assigned to the tag config.
 
     Args:
         dataspace_id (UUID):
@@ -234,10 +238,12 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPatchDefaultSearchConditionsIn,
 ) -> Response[DataspaceSearchTagConfigOut | ErrorOut]:
-    """Update default search conditions for a tag
+    """Patch Dataspace Tag Config Default Search Conditions
 
-     Update the default search conditions for filters assigned to a tag configuration. Only conditions
-    for filters already assigned to the tag are updated.
+     Z3W1Ypdo
+
+    Update default search conditions for filters in a tag configuration.
+    Only updates conditions for filters already assigned to the tag config.
 
     Args:
         dataspace_id (UUID):
@@ -271,10 +277,12 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPatchDefaultSearchConditionsIn,
 ) -> DataspaceSearchTagConfigOut | ErrorOut | None:
-    """Update default search conditions for a tag
+    """Patch Dataspace Tag Config Default Search Conditions
 
-     Update the default search conditions for filters assigned to a tag configuration. Only conditions
-    for filters already assigned to the tag are updated.
+     Z3W1Ypdo
+
+    Update default search conditions for filters in a tag configuration.
+    Only updates conditions for filters already assigned to the tag config.
 
     Args:
         dataspace_id (UUID):

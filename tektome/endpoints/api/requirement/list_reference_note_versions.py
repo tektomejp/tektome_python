@@ -74,9 +74,15 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedReferenceNoteVersionGetOut]:
-    """List reference note versions
+    """Get Reference Note Versions
 
-     Retrieve all versions of a reference note.
+     JnQkM31G
+
+    Get all versions of a reference note associated to a requirement
+
+    Args:
+        request: Request object
+        path_params: path params of type ReferenceNotesVersionPath
 
     Args:
         reference_note_id (UUID):
@@ -111,9 +117,15 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedReferenceNoteVersionGetOut | None:
-    """List reference note versions
+    """Get Reference Note Versions
 
-     Retrieve all versions of a reference note.
+     JnQkM31G
+
+    Get all versions of a reference note associated to a requirement
+
+    Args:
+        request: Request object
+        path_params: path params of type ReferenceNotesVersionPath
 
     Args:
         reference_note_id (UUID):
@@ -143,9 +155,15 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedReferenceNoteVersionGetOut]:
-    """List reference note versions
+    """Get Reference Note Versions
 
-     Retrieve all versions of a reference note.
+     JnQkM31G
+
+    Get all versions of a reference note associated to a requirement
+
+    Args:
+        request: Request object
+        path_params: path params of type ReferenceNotesVersionPath
 
     Args:
         reference_note_id (UUID):
@@ -178,9 +196,15 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedReferenceNoteVersionGetOut | None:
-    """List reference note versions
+    """Get Reference Note Versions
 
-     Retrieve all versions of a reference note.
+     JnQkM31G
+
+    Get all versions of a reference note associated to a requirement
+
+    Args:
+        request: Request object
+        path_params: path params of type ReferenceNotesVersionPath
 
     Args:
         reference_note_id (UUID):

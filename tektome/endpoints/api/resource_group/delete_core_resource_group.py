@@ -48,9 +48,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a resource group
+    """Delete Resource Group
 
-     Delete a resource group and its associated data by resource group ID.
+     PCHJRMqA
+
+    Delete a resource group.
 
     Args:
         resource_group_id (UUID):
@@ -79,9 +81,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a resource group
+    """Delete Resource Group
 
-     Delete a resource group and its associated data by resource group ID.
+     PCHJRMqA
+
+    Delete a resource group.
 
     Args:
         resource_group_id (UUID):

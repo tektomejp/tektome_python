@@ -21,7 +21,6 @@ class RequirementResearchTemplatePatchInPatch:
         public_resource_groups (list[UUID] | None | Unset):
         project_specific_resource_groups_keywords (list[str] | None | Unset):
         output_format_prompt (None | str | Unset):
-        is_interactive_prompt_required (bool | None | Unset):
     """
 
     name: None | str | Unset = UNSET
@@ -29,7 +28,6 @@ class RequirementResearchTemplatePatchInPatch:
     public_resource_groups: list[UUID] | None | Unset = UNSET
     project_specific_resource_groups_keywords: list[str] | None | Unset = UNSET
     output_format_prompt: None | str | Unset = UNSET
-    is_interactive_prompt_required: bool | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -72,12 +70,6 @@ class RequirementResearchTemplatePatchInPatch:
         else:
             output_format_prompt = self.output_format_prompt
 
-        is_interactive_prompt_required: bool | None | Unset
-        if isinstance(self.is_interactive_prompt_required, Unset):
-            is_interactive_prompt_required = UNSET
-        else:
-            is_interactive_prompt_required = self.is_interactive_prompt_required
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -91,8 +83,6 @@ class RequirementResearchTemplatePatchInPatch:
             field_dict["project_specific_resource_groups_keywords"] = project_specific_resource_groups_keywords
         if output_format_prompt is not UNSET:
             field_dict["output_format_prompt"] = output_format_prompt
-        if is_interactive_prompt_required is not UNSET:
-            field_dict["is_interactive_prompt_required"] = is_interactive_prompt_required
 
         return field_dict
 
@@ -168,24 +158,12 @@ class RequirementResearchTemplatePatchInPatch:
 
         output_format_prompt = _parse_output_format_prompt(d.pop("output_format_prompt", UNSET))
 
-        def _parse_is_interactive_prompt_required(data: object) -> bool | None | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(bool | None | Unset, data)
-
-        is_interactive_prompt_required = _parse_is_interactive_prompt_required(
-            d.pop("is_interactive_prompt_required", UNSET)
-        )
-
         requirement_research_template_patch_in_patch = cls(
             name=name,
             prompt=prompt,
             public_resource_groups=public_resource_groups,
             project_specific_resource_groups_keywords=project_specific_resource_groups_keywords,
             output_format_prompt=output_format_prompt,
-            is_interactive_prompt_required=is_interactive_prompt_required,
         )
 
         requirement_research_template_patch_in_patch.additional_properties = d

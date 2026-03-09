@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, Literal, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -25,7 +25,6 @@ class PolygonAttributeSchemaOut:
         created (datetime.datetime):
         updated (datetime.datetime):
         name (str):
-        attribute_type (Literal['polygon_attributes'] | Unset):  Default: 'polygon_attributes'.
         id (None | Unset | UUID):
         extraction_status (None | str | Unset):  Default: 'pending'.
         creation_method (None | str | Unset):  Default: 'automatic'.
@@ -38,7 +37,6 @@ class PolygonAttributeSchemaOut:
     created: datetime.datetime
     updated: datetime.datetime
     name: str
-    attribute_type: Literal["polygon_attributes"] | Unset = "polygon_attributes"
     id: None | Unset | UUID = UNSET
     extraction_status: None | str | Unset = "pending"
     creation_method: None | str | Unset = "automatic"
@@ -56,8 +54,6 @@ class PolygonAttributeSchemaOut:
         updated = self.updated.isoformat()
 
         name = self.name
-
-        attribute_type = self.attribute_type
 
         id: None | str | Unset
         if isinstance(self.id, Unset):
@@ -110,8 +106,6 @@ class PolygonAttributeSchemaOut:
                 "name": name,
             }
         )
-        if attribute_type is not UNSET:
-            field_dict["attribute_type"] = attribute_type
         if id is not UNSET:
             field_dict["id"] = id
         if extraction_status is not UNSET:
@@ -139,10 +133,6 @@ class PolygonAttributeSchemaOut:
         updated = isoparse(d.pop("updated"))
 
         name = d.pop("name")
-
-        attribute_type = cast(Literal["polygon_attributes"] | Unset, d.pop("attribute_type", UNSET))
-        if attribute_type != "polygon_attributes" and not isinstance(attribute_type, Unset):
-            raise ValueError(f"attribute_type must match const 'polygon_attributes', got '{attribute_type}'")
 
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -220,7 +210,6 @@ class PolygonAttributeSchemaOut:
             created=created,
             updated=updated,
             name=name,
-            attribute_type=attribute_type,
             id=id,
             extraction_status=extraction_status,
             creation_method=creation_method,

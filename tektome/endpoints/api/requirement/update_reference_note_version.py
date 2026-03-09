@@ -68,9 +68,16 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ReferenceNoteVersionPatchInPatch,
 ) -> Response[ReferenceNoteVersionGetOut]:
-    """Update a reference note version
+    """Patch Reference Note Version
 
-     Update the content of a specific version of a reference note.
+     JnQkM31J
+
+    Update a specific version of a reference note associated to a requirement
+
+    Args:
+        payload: request payload of type ReferenceNoteVersionPatchIn
+        request: Request object
+        path_params: path params of type ReferenceNoteVersionPath
 
     Args:
         reference_note_id (UUID):
@@ -105,9 +112,16 @@ def sync(
     client: AuthenticatedClient,
     body: ReferenceNoteVersionPatchInPatch,
 ) -> ReferenceNoteVersionGetOut | None:
-    """Update a reference note version
+    """Patch Reference Note Version
 
-     Update the content of a specific version of a reference note.
+     JnQkM31J
+
+    Update a specific version of a reference note associated to a requirement
+
+    Args:
+        payload: request payload of type ReferenceNoteVersionPatchIn
+        request: Request object
+        path_params: path params of type ReferenceNoteVersionPath
 
     Args:
         reference_note_id (UUID):
@@ -137,9 +151,16 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ReferenceNoteVersionPatchInPatch,
 ) -> Response[ReferenceNoteVersionGetOut]:
-    """Update a reference note version
+    """Patch Reference Note Version
 
-     Update the content of a specific version of a reference note.
+     JnQkM31J
+
+    Update a specific version of a reference note associated to a requirement
+
+    Args:
+        payload: request payload of type ReferenceNoteVersionPatchIn
+        request: Request object
+        path_params: path params of type ReferenceNoteVersionPath
 
     Args:
         reference_note_id (UUID):
@@ -172,9 +193,16 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ReferenceNoteVersionPatchInPatch,
 ) -> ReferenceNoteVersionGetOut | None:
-    """Update a reference note version
+    """Patch Reference Note Version
 
-     Update the content of a specific version of a reference note.
+     JnQkM31J
+
+    Update a specific version of a reference note associated to a requirement
+
+    Args:
+        payload: request payload of type ReferenceNoteVersionPatchIn
+        request: Request object
+        path_params: path params of type ReferenceNoteVersionPath
 
     Args:
         reference_note_id (UUID):

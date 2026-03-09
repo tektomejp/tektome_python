@@ -65,10 +65,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RequirementResearchTemplatePatchInPatch,
 ) -> Response[RequirementResearchTemplateGetOut]:
-    """Update an AI research template
+    """Patch Research Template
 
-     Partially update an AI research template by its ID. If public resource groups are updated, they must
-    exist in the parent requirement template container.
+     R1C1E1A2
+
+    Update a research template by its ID.
 
     Args:
         research_template_id (UUID):
@@ -100,10 +101,11 @@ def sync(
     client: AuthenticatedClient,
     body: RequirementResearchTemplatePatchInPatch,
 ) -> RequirementResearchTemplateGetOut | None:
-    """Update an AI research template
+    """Patch Research Template
 
-     Partially update an AI research template by its ID. If public resource groups are updated, they must
-    exist in the parent requirement template container.
+     R1C1E1A2
+
+    Update a research template by its ID.
 
     Args:
         research_template_id (UUID):
@@ -130,10 +132,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RequirementResearchTemplatePatchInPatch,
 ) -> Response[RequirementResearchTemplateGetOut]:
-    """Update an AI research template
+    """Patch Research Template
 
-     Partially update an AI research template by its ID. If public resource groups are updated, they must
-    exist in the parent requirement template container.
+     R1C1E1A2
+
+    Update a research template by its ID.
 
     Args:
         research_template_id (UUID):
@@ -163,10 +166,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RequirementResearchTemplatePatchInPatch,
 ) -> RequirementResearchTemplateGetOut | None:
-    """Update an AI research template
+    """Patch Research Template
 
-     Partially update an AI research template by its ID. If public resource groups are updated, they must
-    exist in the parent requirement template container.
+     R1C1E1A2
+
+    Update a research template by its ID.
 
     Args:
         research_template_id (UUID):

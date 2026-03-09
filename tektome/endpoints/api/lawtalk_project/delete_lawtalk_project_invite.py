@@ -140,10 +140,18 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | ErrorOut]:
-    """Delete a project invitation
+    """Delete Project Invite
 
-     Retract a pending project invitation. Only the original sender can retract the invitation, and only
-    pending invitations can be deleted.
+     kVsfTT3P
+
+    Delete a project invite.
+
+    Args:
+        request: Request object.
+        path_params: Path params of type ProjectInviteDeletePath
+
+    Returns: None
+    Raises: HttpError 400, 403
 
     Args:
         invite_id (UUID):
@@ -172,10 +180,18 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Any | ErrorOut | None:
-    """Delete a project invitation
+    """Delete Project Invite
 
-     Retract a pending project invitation. Only the original sender can retract the invitation, and only
-    pending invitations can be deleted.
+     kVsfTT3P
+
+    Delete a project invite.
+
+    Args:
+        request: Request object.
+        path_params: Path params of type ProjectInviteDeletePath
+
+    Returns: None
+    Raises: HttpError 400, 403
 
     Args:
         invite_id (UUID):
@@ -199,10 +215,18 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | ErrorOut]:
-    """Delete a project invitation
+    """Delete Project Invite
 
-     Retract a pending project invitation. Only the original sender can retract the invitation, and only
-    pending invitations can be deleted.
+     kVsfTT3P
+
+    Delete a project invite.
+
+    Args:
+        request: Request object.
+        path_params: Path params of type ProjectInviteDeletePath
+
+    Returns: None
+    Raises: HttpError 400, 403
 
     Args:
         invite_id (UUID):
@@ -229,10 +253,18 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Any | ErrorOut | None:
-    """Delete a project invitation
+    """Delete Project Invite
 
-     Retract a pending project invitation. Only the original sender can retract the invitation, and only
-    pending invitations can be deleted.
+     kVsfTT3P
+
+    Delete a project invite.
+
+    Args:
+        request: Request object.
+        path_params: Path params of type ProjectInviteDeletePath
+
+    Returns: None
+    Raises: HttpError 400, 403
 
     Args:
         invite_id (UUID):

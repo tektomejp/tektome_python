@@ -12,8 +12,6 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.execution_status_details import ExecutionStatusDetails
-    from ..models.executions_review_status_details import ExecutionsReviewStatusDetails
     from ..models.user_metadata import UserMetadata
 
 
@@ -30,11 +28,8 @@ class ExecutionGroupDetailGetOut:
         launched_by (UserMetadata):
         approvals_count (int):
         executions_count (int):
-        status_details (ExecutionStatusDetails): Details about execution statuses within an execution group
-        review_status (ExecutionsReviewStatusDetails): Details about execution review statuses within an execution group
         created (datetime.datetime):
         updated (datetime.datetime):
-        reviewed_by_names (list[str] | Unset):
         id (None | Unset | UUID):
         memo (None | str | Unset): A description of the purpose of this execution group
         status (str | Unset): The status of the execution group (e.g., Initializing, Running, Completed, Failed)
@@ -48,11 +43,8 @@ class ExecutionGroupDetailGetOut:
     launched_by: UserMetadata
     approvals_count: int
     executions_count: int
-    status_details: ExecutionStatusDetails
-    review_status: ExecutionsReviewStatusDetails
     created: datetime.datetime
     updated: datetime.datetime
-    reviewed_by_names: list[str] | Unset = UNSET
     id: None | Unset | UUID = UNSET
     memo: None | str | Unset = UNSET
     status: str | Unset = "initializing"
@@ -71,17 +63,9 @@ class ExecutionGroupDetailGetOut:
 
         executions_count = self.executions_count
 
-        status_details = self.status_details.to_dict()
-
-        review_status = self.review_status.to_dict()
-
         created = self.created.isoformat()
 
         updated = self.updated.isoformat()
-
-        reviewed_by_names: list[str] | Unset = UNSET
-        if not isinstance(self.reviewed_by_names, Unset):
-            reviewed_by_names = self.reviewed_by_names
 
         id: None | str | Unset
         if isinstance(self.id, Unset):
@@ -124,14 +108,10 @@ class ExecutionGroupDetailGetOut:
                 "launched_by": launched_by,
                 "approvals_count": approvals_count,
                 "executions_count": executions_count,
-                "status_details": status_details,
-                "review_status": review_status,
                 "created": created,
                 "updated": updated,
             }
         )
-        if reviewed_by_names is not UNSET:
-            field_dict["reviewed_by_names"] = reviewed_by_names
         if id is not UNSET:
             field_dict["id"] = id
         if memo is not UNSET:
@@ -147,8 +127,6 @@ class ExecutionGroupDetailGetOut:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.execution_status_details import ExecutionStatusDetails
-        from ..models.executions_review_status_details import ExecutionsReviewStatusDetails
         from ..models.user_metadata import UserMetadata
 
         d = dict(src_dict)
@@ -162,15 +140,9 @@ class ExecutionGroupDetailGetOut:
 
         executions_count = d.pop("executions_count")
 
-        status_details = ExecutionStatusDetails.from_dict(d.pop("status_details"))
-
-        review_status = ExecutionsReviewStatusDetails.from_dict(d.pop("review_status"))
-
         created = isoparse(d.pop("created"))
 
         updated = isoparse(d.pop("updated"))
-
-        reviewed_by_names = cast(list[str], d.pop("reviewed_by_names", UNSET))
 
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -240,11 +212,8 @@ class ExecutionGroupDetailGetOut:
             launched_by=launched_by,
             approvals_count=approvals_count,
             executions_count=executions_count,
-            status_details=status_details,
-            review_status=review_status,
             created=created,
             updated=updated,
-            reviewed_by_names=reviewed_by_names,
             id=id,
             memo=memo,
             status=status,

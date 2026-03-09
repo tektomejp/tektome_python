@@ -63,10 +63,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RemoveResourceGroupPostIn,
 ) -> Response[LawtalkProjectSchema]:
-    """Remove resource groups from project
+    """Delete Remove Resource Group
 
-     Remove imported resource groups from a project. Resource groups that are currently referenced by
-    requirements cannot be removed.
+     bwdCjIDK
+
+    Remove Lawtalk's Resource Groups from a project.
 
     Args:
         project_id (UUID):
@@ -98,10 +99,11 @@ def sync(
     client: AuthenticatedClient,
     body: RemoveResourceGroupPostIn,
 ) -> LawtalkProjectSchema | None:
-    """Remove resource groups from project
+    """Delete Remove Resource Group
 
-     Remove imported resource groups from a project. Resource groups that are currently referenced by
-    requirements cannot be removed.
+     bwdCjIDK
+
+    Remove Lawtalk's Resource Groups from a project.
 
     Args:
         project_id (UUID):
@@ -128,10 +130,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RemoveResourceGroupPostIn,
 ) -> Response[LawtalkProjectSchema]:
-    """Remove resource groups from project
+    """Delete Remove Resource Group
 
-     Remove imported resource groups from a project. Resource groups that are currently referenced by
-    requirements cannot be removed.
+     bwdCjIDK
+
+    Remove Lawtalk's Resource Groups from a project.
 
     Args:
         project_id (UUID):
@@ -161,10 +164,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RemoveResourceGroupPostIn,
 ) -> LawtalkProjectSchema | None:
-    """Remove resource groups from project
+    """Delete Remove Resource Group
 
-     Remove imported resource groups from a project. Resource groups that are currently referenced by
-    requirements cannot be removed.
+     bwdCjIDK
+
+    Remove Lawtalk's Resource Groups from a project.
 
     Args:
         project_id (UUID):

@@ -55,10 +55,17 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: MePatchIn,
 ) -> Response[MePatchOut]:
-    """Update current user profile
+    r"""Patch Me
 
-     Update the authenticated user's profile fields such as username, language, gender, and timezone
-    preferences.
+     Mq2DXyAx
+    Patch current user profile
+    gender can be one of:
+    ```
+    \"m\": \"Male\",
+    \"f\": \"Female\",
+    \"n\": \"Non-binary\",
+    \"o\": \"Other\",
+    ```
 
     Args:
         body (MePatchIn):
@@ -87,10 +94,17 @@ def sync(
     client: AuthenticatedClient,
     body: MePatchIn,
 ) -> MePatchOut | None:
-    """Update current user profile
+    r"""Patch Me
 
-     Update the authenticated user's profile fields such as username, language, gender, and timezone
-    preferences.
+     Mq2DXyAx
+    Patch current user profile
+    gender can be one of:
+    ```
+    \"m\": \"Male\",
+    \"f\": \"Female\",
+    \"n\": \"Non-binary\",
+    \"o\": \"Other\",
+    ```
 
     Args:
         body (MePatchIn):
@@ -114,10 +128,17 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: MePatchIn,
 ) -> Response[MePatchOut]:
-    """Update current user profile
+    r"""Patch Me
 
-     Update the authenticated user's profile fields such as username, language, gender, and timezone
-    preferences.
+     Mq2DXyAx
+    Patch current user profile
+    gender can be one of:
+    ```
+    \"m\": \"Male\",
+    \"f\": \"Female\",
+    \"n\": \"Non-binary\",
+    \"o\": \"Other\",
+    ```
 
     Args:
         body (MePatchIn):
@@ -144,10 +165,17 @@ async def asyncio(
     client: AuthenticatedClient,
     body: MePatchIn,
 ) -> MePatchOut | None:
-    """Update current user profile
+    r"""Patch Me
 
-     Update the authenticated user's profile fields such as username, language, gender, and timezone
-    preferences.
+     Mq2DXyAx
+    Patch current user profile
+    gender can be one of:
+    ```
+    \"m\": \"Male\",
+    \"f\": \"Female\",
+    \"n\": \"Non-binary\",
+    \"o\": \"Other\",
+    ```
 
     Args:
         body (MePatchIn):

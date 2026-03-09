@@ -159,10 +159,15 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchRequestIsSavedPatchIn,
 ) -> Response[DataspaceSearchRequestGetOut | ErrorOut]:
-    """Toggle saved status of a search request
+    """Patch Search Request Is Saved
 
-     Set whether a search request is saved. Saved requests are preserved indefinitely; unsaved requests
-    may be automatically cleaned up when the maximum limit is exceeded.
+     xT4Bu7Qv
+
+    Set the is_saved field of a search request.
+
+    When setting to True, the search request will be preserved.
+    When setting to False, it may be cleaned up if there are more than
+    the maximum allowed unsaved requests.
 
     Args:
         dataspace_id (UUID):
@@ -198,10 +203,15 @@ def sync(
     client: AuthenticatedClient,
     body: DataspaceSearchRequestIsSavedPatchIn,
 ) -> DataspaceSearchRequestGetOut | ErrorOut | None:
-    """Toggle saved status of a search request
+    """Patch Search Request Is Saved
 
-     Set whether a search request is saved. Saved requests are preserved indefinitely; unsaved requests
-    may be automatically cleaned up when the maximum limit is exceeded.
+     xT4Bu7Qv
+
+    Set the is_saved field of a search request.
+
+    When setting to True, the search request will be preserved.
+    When setting to False, it may be cleaned up if there are more than
+    the maximum allowed unsaved requests.
 
     Args:
         dataspace_id (UUID):
@@ -232,10 +242,15 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchRequestIsSavedPatchIn,
 ) -> Response[DataspaceSearchRequestGetOut | ErrorOut]:
-    """Toggle saved status of a search request
+    """Patch Search Request Is Saved
 
-     Set whether a search request is saved. Saved requests are preserved indefinitely; unsaved requests
-    may be automatically cleaned up when the maximum limit is exceeded.
+     xT4Bu7Qv
+
+    Set the is_saved field of a search request.
+
+    When setting to True, the search request will be preserved.
+    When setting to False, it may be cleaned up if there are more than
+    the maximum allowed unsaved requests.
 
     Args:
         dataspace_id (UUID):
@@ -269,10 +284,15 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DataspaceSearchRequestIsSavedPatchIn,
 ) -> DataspaceSearchRequestGetOut | ErrorOut | None:
-    """Toggle saved status of a search request
+    """Patch Search Request Is Saved
 
-     Set whether a search request is saved. Saved requests are preserved indefinitely; unsaved requests
-    may be automatically cleaned up when the maximum limit is exceeded.
+     xT4Bu7Qv
+
+    Set the is_saved field of a search request.
+
+    When setting to True, the search request will be preserved.
+    When setting to False, it may be cleaned up if there are more than
+    the maximum allowed unsaved requests.
 
     Args:
         dataspace_id (UUID):

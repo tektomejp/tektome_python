@@ -59,10 +59,19 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: AggregateLLMUsagePostIn,
 ) -> Response[AggregatedLLMUsagePostOut]:
-    """Aggregate LLM usage statistics
+    """Post Aggregate Llm Usage
 
-     Aggregate LLM usage statistics by kind or model within a specified date range. Supports optional
-    filtering by organization, dataspace, project, or user.
+     jQ10-kjE
+    Aggregate LLM usage statistics by kind or model within a date range.<br>
+    This route is for internal use only. Do not allow user to directly set parameters except for date
+    ranges.<br>
+    The following parameters are optional:<br>
+    - organization_id
+    - dataspace_id
+    - project_id
+    - user_id
+    <br>
+    Set them explicitly to null to filter entries unset when LLM was called.<br>
 
     Args:
         body (AggregateLLMUsagePostIn):
@@ -91,10 +100,19 @@ def sync(
     client: AuthenticatedClient,
     body: AggregateLLMUsagePostIn,
 ) -> AggregatedLLMUsagePostOut | None:
-    """Aggregate LLM usage statistics
+    """Post Aggregate Llm Usage
 
-     Aggregate LLM usage statistics by kind or model within a specified date range. Supports optional
-    filtering by organization, dataspace, project, or user.
+     jQ10-kjE
+    Aggregate LLM usage statistics by kind or model within a date range.<br>
+    This route is for internal use only. Do not allow user to directly set parameters except for date
+    ranges.<br>
+    The following parameters are optional:<br>
+    - organization_id
+    - dataspace_id
+    - project_id
+    - user_id
+    <br>
+    Set them explicitly to null to filter entries unset when LLM was called.<br>
 
     Args:
         body (AggregateLLMUsagePostIn):
@@ -118,10 +136,19 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: AggregateLLMUsagePostIn,
 ) -> Response[AggregatedLLMUsagePostOut]:
-    """Aggregate LLM usage statistics
+    """Post Aggregate Llm Usage
 
-     Aggregate LLM usage statistics by kind or model within a specified date range. Supports optional
-    filtering by organization, dataspace, project, or user.
+     jQ10-kjE
+    Aggregate LLM usage statistics by kind or model within a date range.<br>
+    This route is for internal use only. Do not allow user to directly set parameters except for date
+    ranges.<br>
+    The following parameters are optional:<br>
+    - organization_id
+    - dataspace_id
+    - project_id
+    - user_id
+    <br>
+    Set them explicitly to null to filter entries unset when LLM was called.<br>
 
     Args:
         body (AggregateLLMUsagePostIn):
@@ -148,10 +175,19 @@ async def asyncio(
     client: AuthenticatedClient,
     body: AggregateLLMUsagePostIn,
 ) -> AggregatedLLMUsagePostOut | None:
-    """Aggregate LLM usage statistics
+    """Post Aggregate Llm Usage
 
-     Aggregate LLM usage statistics by kind or model within a specified date range. Supports optional
-    filtering by organization, dataspace, project, or user.
+     jQ10-kjE
+    Aggregate LLM usage statistics by kind or model within a date range.<br>
+    This route is for internal use only. Do not allow user to directly set parameters except for date
+    ranges.<br>
+    The following parameters are optional:<br>
+    - organization_id
+    - dataspace_id
+    - project_id
+    - user_id
+    <br>
+    Set them explicitly to null to filter entries unset when LLM was called.<br>
 
     Args:
         body (AggregateLLMUsagePostIn):

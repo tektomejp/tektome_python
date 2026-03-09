@@ -65,10 +65,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceResourceAttributePatchInPatch,
 ) -> Response[DataspaceResourceFileAttributeSchemaOut]:
-    """Update a resource attribute column configuration
+    """Patch Dataspace Resource Attribute Config
 
-     Update an existing resource attribute column configuration, including its label, metadata, and table
-    or select options. Renaming propagates to all resources across projects in the dataspace.
+     x16N0f5A
+
+    Updates the column attributes of a dataspace
 
     Args:
         attribute_config_id (UUID):
@@ -100,10 +101,11 @@ def sync(
     client: AuthenticatedClient,
     body: DataspaceResourceAttributePatchInPatch,
 ) -> DataspaceResourceFileAttributeSchemaOut | None:
-    """Update a resource attribute column configuration
+    """Patch Dataspace Resource Attribute Config
 
-     Update an existing resource attribute column configuration, including its label, metadata, and table
-    or select options. Renaming propagates to all resources across projects in the dataspace.
+     x16N0f5A
+
+    Updates the column attributes of a dataspace
 
     Args:
         attribute_config_id (UUID):
@@ -130,10 +132,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceResourceAttributePatchInPatch,
 ) -> Response[DataspaceResourceFileAttributeSchemaOut]:
-    """Update a resource attribute column configuration
+    """Patch Dataspace Resource Attribute Config
 
-     Update an existing resource attribute column configuration, including its label, metadata, and table
-    or select options. Renaming propagates to all resources across projects in the dataspace.
+     x16N0f5A
+
+    Updates the column attributes of a dataspace
 
     Args:
         attribute_config_id (UUID):
@@ -163,10 +166,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DataspaceResourceAttributePatchInPatch,
 ) -> DataspaceResourceFileAttributeSchemaOut | None:
-    """Update a resource attribute column configuration
+    """Patch Dataspace Resource Attribute Config
 
-     Update an existing resource attribute column configuration, including its label, metadata, and table
-    or select options. Renaming propagates to all resources across projects in the dataspace.
+     x16N0f5A
+
+    Updates the column attributes of a dataspace
 
     Args:
         attribute_config_id (UUID):

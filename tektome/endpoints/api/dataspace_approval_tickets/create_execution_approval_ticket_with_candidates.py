@@ -66,10 +66,28 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams,
 ) -> Response[ApprovalTicketGetOut]:
-    """Create an approval ticket for an execution
+    """Post Approval Ticket
 
-     Create an approval ticket with candidates for the specified execution. If a file is provided, it is
-    uploaded for history tracking. Auto-approve settings are applied when configured.
+     Dx_aYOR8
+
+    Create an approval ticket for the given execution.
+
+    1. Validate the execution ID from path parameters.
+    2. Retrieve the associated execution and process.
+    3. Create an ApprovalTicket instance.
+    4. For each candidate in the payload, create an ApprovalTicketCandidate instance.
+    5. Auto-select the first candidate (temporary behavior).
+    6. If a file is provided and the category is FILE_EXTRACTION, upload the file to sandbox for history
+    tracking.
+    7. If the execution group is set to auto-approve - set status and handle approved ticket.
+
+    Args:
+        file: Optional file upload, when new resource got generated for approval
+        request: Request object
+        payload: Approval ticket payload
+        path_params: Path parameters containing execution_id
+
+    Returns: 201 Created with the created ApprovalTicket containing updated candidates
 
     Args:
         dataspace_id (UUID):
@@ -104,10 +122,28 @@ def sync(
     client: AuthenticatedClient,
     body: CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams,
 ) -> ApprovalTicketGetOut | None:
-    """Create an approval ticket for an execution
+    """Post Approval Ticket
 
-     Create an approval ticket with candidates for the specified execution. If a file is provided, it is
-    uploaded for history tracking. Auto-approve settings are applied when configured.
+     Dx_aYOR8
+
+    Create an approval ticket for the given execution.
+
+    1. Validate the execution ID from path parameters.
+    2. Retrieve the associated execution and process.
+    3. Create an ApprovalTicket instance.
+    4. For each candidate in the payload, create an ApprovalTicketCandidate instance.
+    5. Auto-select the first candidate (temporary behavior).
+    6. If a file is provided and the category is FILE_EXTRACTION, upload the file to sandbox for history
+    tracking.
+    7. If the execution group is set to auto-approve - set status and handle approved ticket.
+
+    Args:
+        file: Optional file upload, when new resource got generated for approval
+        request: Request object
+        payload: Approval ticket payload
+        path_params: Path parameters containing execution_id
+
+    Returns: 201 Created with the created ApprovalTicket containing updated candidates
 
     Args:
         dataspace_id (UUID):
@@ -137,10 +173,28 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams,
 ) -> Response[ApprovalTicketGetOut]:
-    """Create an approval ticket for an execution
+    """Post Approval Ticket
 
-     Create an approval ticket with candidates for the specified execution. If a file is provided, it is
-    uploaded for history tracking. Auto-approve settings are applied when configured.
+     Dx_aYOR8
+
+    Create an approval ticket for the given execution.
+
+    1. Validate the execution ID from path parameters.
+    2. Retrieve the associated execution and process.
+    3. Create an ApprovalTicket instance.
+    4. For each candidate in the payload, create an ApprovalTicketCandidate instance.
+    5. Auto-select the first candidate (temporary behavior).
+    6. If a file is provided and the category is FILE_EXTRACTION, upload the file to sandbox for history
+    tracking.
+    7. If the execution group is set to auto-approve - set status and handle approved ticket.
+
+    Args:
+        file: Optional file upload, when new resource got generated for approval
+        request: Request object
+        payload: Approval ticket payload
+        path_params: Path parameters containing execution_id
+
+    Returns: 201 Created with the created ApprovalTicket containing updated candidates
 
     Args:
         dataspace_id (UUID):
@@ -173,10 +227,28 @@ async def asyncio(
     client: AuthenticatedClient,
     body: CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams,
 ) -> ApprovalTicketGetOut | None:
-    """Create an approval ticket for an execution
+    """Post Approval Ticket
 
-     Create an approval ticket with candidates for the specified execution. If a file is provided, it is
-    uploaded for history tracking. Auto-approve settings are applied when configured.
+     Dx_aYOR8
+
+    Create an approval ticket for the given execution.
+
+    1. Validate the execution ID from path parameters.
+    2. Retrieve the associated execution and process.
+    3. Create an ApprovalTicket instance.
+    4. For each candidate in the payload, create an ApprovalTicketCandidate instance.
+    5. Auto-select the first candidate (temporary behavior).
+    6. If a file is provided and the category is FILE_EXTRACTION, upload the file to sandbox for history
+    tracking.
+    7. If the execution group is set to auto-approve - set status and handle approved ticket.
+
+    Args:
+        file: Optional file upload, when new resource got generated for approval
+        request: Request object
+        payload: Approval ticket payload
+        path_params: Path parameters containing execution_id
+
+    Returns: 201 Created with the created ApprovalTicket containing updated candidates
 
     Args:
         dataspace_id (UUID):

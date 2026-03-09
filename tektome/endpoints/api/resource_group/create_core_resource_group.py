@@ -55,9 +55,13 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ResourceGroupPostIn,
 ) -> Response[ResourceGroupSchema]:
-    """Create a resource group
+    """Post Resource Group
 
-     Create a new resource group for a project. Each project may have at most one resource group.
+     awdsstsb
+
+    Create a new core project  in user's current organization
+
+    Create a core project.
 
     Args:
         body (ResourceGroupPostIn):
@@ -86,9 +90,13 @@ def sync(
     client: AuthenticatedClient,
     body: ResourceGroupPostIn,
 ) -> ResourceGroupSchema | None:
-    """Create a resource group
+    """Post Resource Group
 
-     Create a new resource group for a project. Each project may have at most one resource group.
+     awdsstsb
+
+    Create a new core project  in user's current organization
+
+    Create a core project.
 
     Args:
         body (ResourceGroupPostIn):
@@ -112,9 +120,13 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ResourceGroupPostIn,
 ) -> Response[ResourceGroupSchema]:
-    """Create a resource group
+    """Post Resource Group
 
-     Create a new resource group for a project. Each project may have at most one resource group.
+     awdsstsb
+
+    Create a new core project  in user's current organization
+
+    Create a core project.
 
     Args:
         body (ResourceGroupPostIn):
@@ -141,9 +153,13 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ResourceGroupPostIn,
 ) -> ResourceGroupSchema | None:
-    """Create a resource group
+    """Post Resource Group
 
-     Create a new resource group for a project. Each project may have at most one resource group.
+     awdsstsb
+
+    Create a new core project  in user's current organization
+
+    Create a core project.
 
     Args:
         body (ResourceGroupPostIn):
