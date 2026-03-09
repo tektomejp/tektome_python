@@ -22,32 +22,32 @@ T = TypeVar("T", bound="PaymentRecordOut")
 class PaymentRecordOut:
     """
     Attributes:
-        supporting_file (str):
+        supporting_file (None | str):
         created_by (UserMetadata):
         updated_by (UserMetadata):
         transaction_type (str):
         credits_amount (float | str):
-        original_file_name (str):
         reference_id (str):
         created (datetime.datetime):
         updated (datetime.datetime):
         id (None | Unset | UUID):
+        original_file_name (None | str | Unset):  Default: ''.
         notes (None | str | Unset):
         deleted (datetime.datetime | None | Unset):
         balance_after (float | str | Unset):  Default: 0.0.
         balance_before (float | str | Unset):  Default: 0.0.
     """
 
-    supporting_file: str
+    supporting_file: None | str
     created_by: UserMetadata
     updated_by: UserMetadata
     transaction_type: str
     credits_amount: float | str
-    original_file_name: str
     reference_id: str
     created: datetime.datetime
     updated: datetime.datetime
     id: None | Unset | UUID = UNSET
+    original_file_name: None | str | Unset = ""
     notes: None | str | Unset = UNSET
     deleted: datetime.datetime | None | Unset = UNSET
     balance_after: float | str | Unset = 0.0
@@ -55,6 +55,7 @@ class PaymentRecordOut:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        supporting_file: None | str
         supporting_file = self.supporting_file
 
         created_by = self.created_by.to_dict()
@@ -65,8 +66,6 @@ class PaymentRecordOut:
 
         credits_amount: float | str
         credits_amount = self.credits_amount
-
-        original_file_name = self.original_file_name
 
         reference_id = self.reference_id
 
@@ -81,6 +80,12 @@ class PaymentRecordOut:
             id = str(self.id)
         else:
             id = self.id
+
+        original_file_name: None | str | Unset
+        if isinstance(self.original_file_name, Unset):
+            original_file_name = UNSET
+        else:
+            original_file_name = self.original_file_name
 
         notes: None | str | Unset
         if isinstance(self.notes, Unset):
@@ -117,7 +122,6 @@ class PaymentRecordOut:
                 "updated_by": updated_by,
                 "transaction_type": transaction_type,
                 "credits_amount": credits_amount,
-                "original_file_name": original_file_name,
                 "reference_id": reference_id,
                 "created": created,
                 "updated": updated,
@@ -125,6 +129,8 @@ class PaymentRecordOut:
         )
         if id is not UNSET:
             field_dict["id"] = id
+        if original_file_name is not UNSET:
+            field_dict["original_file_name"] = original_file_name
         if notes is not UNSET:
             field_dict["notes"] = notes
         if deleted is not UNSET:
@@ -141,7 +147,13 @@ class PaymentRecordOut:
         from ..models.user_metadata import UserMetadata
 
         d = dict(src_dict)
-        supporting_file = d.pop("supporting_file")
+
+        def _parse_supporting_file(data: object) -> None | str:
+            if data is None:
+                return data
+            return cast(None | str, data)
+
+        supporting_file = _parse_supporting_file(d.pop("supporting_file"))
 
         created_by = UserMetadata.from_dict(d.pop("created_by"))
 
@@ -153,8 +165,6 @@ class PaymentRecordOut:
             return cast(float | str, data)
 
         credits_amount = _parse_credits_amount(d.pop("credits_amount"))
-
-        original_file_name = d.pop("original_file_name")
 
         reference_id = d.pop("reference_id")
 
@@ -178,6 +188,15 @@ class PaymentRecordOut:
             return cast(None | Unset | UUID, data)
 
         id = _parse_id(d.pop("id", UNSET))
+
+        def _parse_original_file_name(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        original_file_name = _parse_original_file_name(d.pop("original_file_name", UNSET))
 
         def _parse_notes(data: object) -> None | str | Unset:
             if data is None:
@@ -225,11 +244,11 @@ class PaymentRecordOut:
             updated_by=updated_by,
             transaction_type=transaction_type,
             credits_amount=credits_amount,
-            original_file_name=original_file_name,
             reference_id=reference_id,
             created=created,
             updated=updated,
             id=id,
+            original_file_name=original_file_name,
             notes=notes,
             deleted=deleted,
             balance_after=balance_after,
