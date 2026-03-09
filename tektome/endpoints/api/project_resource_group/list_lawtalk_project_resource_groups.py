@@ -74,11 +74,10 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedResourceGroupsGetOut]:
-    """Get Project Resource Groups
+    """List project resource groups
 
-     aidMfY1z
-
-    Get all resource groups belonging to a project.
+     Retrieve all resource groups belonging to a project, including their resources, attributes, and
+    folder structures.
 
     Args:
         project_id (UUID):
@@ -113,11 +112,10 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedResourceGroupsGetOut | None:
-    """Get Project Resource Groups
+    """List project resource groups
 
-     aidMfY1z
-
-    Get all resource groups belonging to a project.
+     Retrieve all resource groups belonging to a project, including their resources, attributes, and
+    folder structures.
 
     Args:
         project_id (UUID):
@@ -147,11 +145,10 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedResourceGroupsGetOut]:
-    """Get Project Resource Groups
+    """List project resource groups
 
-     aidMfY1z
-
-    Get all resource groups belonging to a project.
+     Retrieve all resource groups belonging to a project, including their resources, attributes, and
+    folder structures.
 
     Args:
         project_id (UUID):
@@ -184,11 +181,10 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedResourceGroupsGetOut | None:
-    """Get Project Resource Groups
+    """List project resource groups
 
-     aidMfY1z
-
-    Get all resource groups belonging to a project.
+     Retrieve all resource groups belonging to a project, including their resources, attributes, and
+    folder structures.
 
     Args:
         project_id (UUID):

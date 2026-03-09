@@ -61,14 +61,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ReferenceNotePostIn,
 ) -> Response[ReferenceNoteSchema]:
-    """Post Reference Note
+    """Create a reference note
 
-     JnQkM31a
-
-    Create a reference note associated to a requirement
-
-    Args:
-        request: Request object
+     Create a new reference note associated with a requirement.
 
     Args:
         requirement_id (UUID):
@@ -100,14 +95,9 @@ def sync(
     client: AuthenticatedClient,
     body: ReferenceNotePostIn,
 ) -> ReferenceNoteSchema | None:
-    """Post Reference Note
+    """Create a reference note
 
-     JnQkM31a
-
-    Create a reference note associated to a requirement
-
-    Args:
-        request: Request object
+     Create a new reference note associated with a requirement.
 
     Args:
         requirement_id (UUID):
@@ -134,14 +124,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ReferenceNotePostIn,
 ) -> Response[ReferenceNoteSchema]:
-    """Post Reference Note
+    """Create a reference note
 
-     JnQkM31a
-
-    Create a reference note associated to a requirement
-
-    Args:
-        request: Request object
+     Create a new reference note associated with a requirement.
 
     Args:
         requirement_id (UUID):
@@ -171,14 +156,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ReferenceNotePostIn,
 ) -> ReferenceNoteSchema | None:
-    """Post Reference Note
+    """Create a reference note
 
-     JnQkM31a
-
-    Create a reference note associated to a requirement
-
-    Args:
-        request: Request object
+     Create a new reference note associated with a requirement.
 
     Args:
         requirement_id (UUID):

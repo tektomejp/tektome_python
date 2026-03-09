@@ -156,11 +156,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchFilterConfigurationIn,
 ) -> Response[DataspaceSearchFilterConfigurationOut | ErrorOut]:
-    """Create Dataspace Search Filter
+    """Create a search filter
 
-     l3qo4dUQ
-
-    Create a filter for the current dataspace.
+     Create a new search filter configuration for a dataspace. Filters define criteria used to narrow
+    down search results.
 
     Args:
         dataspace_id (UUID):
@@ -193,11 +192,10 @@ def sync(
     client: AuthenticatedClient,
     body: DataspaceSearchFilterConfigurationIn,
 ) -> DataspaceSearchFilterConfigurationOut | ErrorOut | None:
-    """Create Dataspace Search Filter
+    """Create a search filter
 
-     l3qo4dUQ
-
-    Create a filter for the current dataspace.
+     Create a new search filter configuration for a dataspace. Filters define criteria used to narrow
+    down search results.
 
     Args:
         dataspace_id (UUID):
@@ -225,11 +223,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchFilterConfigurationIn,
 ) -> Response[DataspaceSearchFilterConfigurationOut | ErrorOut]:
-    """Create Dataspace Search Filter
+    """Create a search filter
 
-     l3qo4dUQ
-
-    Create a filter for the current dataspace.
+     Create a new search filter configuration for a dataspace. Filters define criteria used to narrow
+    down search results.
 
     Args:
         dataspace_id (UUID):
@@ -260,11 +257,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DataspaceSearchFilterConfigurationIn,
 ) -> DataspaceSearchFilterConfigurationOut | ErrorOut | None:
-    """Create Dataspace Search Filter
+    """Create a search filter
 
-     l3qo4dUQ
-
-    Create a filter for the current dataspace.
+     Create a new search filter configuration for a dataspace. Filters define criteria used to narrow
+    down search results.
 
     Args:
         dataspace_id (UUID):

@@ -58,18 +58,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: FolderResourcePostIn,
 ) -> Response[Any]:
-    """Delete Remove Resource
+    """Detach resources from a folder
 
-     0vX2r1gq
-
-    Remove resource(s) from the folder using resource id(s)
-
-    Args:
-        request: Request object
-        path_params: FolderPathIn object containing folder_id
-        payload: Payload containing resource_id(s) to be removed
-
-    Returns: None
+     Remove the association between one or more resources and the specified folder.
 
     Args:
         folder_id (UUID):
@@ -101,18 +92,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: FolderResourcePostIn,
 ) -> Response[Any]:
-    """Delete Remove Resource
+    """Detach resources from a folder
 
-     0vX2r1gq
-
-    Remove resource(s) from the folder using resource id(s)
-
-    Args:
-        request: Request object
-        path_params: FolderPathIn object containing folder_id
-        payload: Payload containing resource_id(s) to be removed
-
-    Returns: None
+     Remove the association between one or more resources and the specified folder.
 
     Args:
         folder_id (UUID):

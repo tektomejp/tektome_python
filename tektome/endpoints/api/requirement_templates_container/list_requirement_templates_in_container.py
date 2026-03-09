@@ -88,17 +88,10 @@ def sync_detailed(
     page: int | None | Unset = 1,
     page_size: int | None | Unset = 30,
 ) -> Response[PaginatedResponseRequirementTemplateGetOut]:
-    """Get Requirement Templates
+    """List requirement templates in a container
 
-     B7GNMWva
-
-    Get all requirement templates inside a requirement template container.
-
-    Manually paginated to allow for updating EntityTracker records after viewed.
-
-    Annotated
-        is_updated_since_last_seen: bool - Whether the template has been updated since the user last saw
-    it.
+     Retrieve a paginated list of all requirement templates inside a container. Each template is
+    annotated with whether it has been updated since the user last viewed it.
 
     Args:
         requirement_template_container_id (UUID):
@@ -136,17 +129,10 @@ def sync(
     page: int | None | Unset = 1,
     page_size: int | None | Unset = 30,
 ) -> PaginatedResponseRequirementTemplateGetOut | None:
-    """Get Requirement Templates
+    """List requirement templates in a container
 
-     B7GNMWva
-
-    Get all requirement templates inside a requirement template container.
-
-    Manually paginated to allow for updating EntityTracker records after viewed.
-
-    Annotated
-        is_updated_since_last_seen: bool - Whether the template has been updated since the user last saw
-    it.
+     Retrieve a paginated list of all requirement templates inside a container. Each template is
+    annotated with whether it has been updated since the user last viewed it.
 
     Args:
         requirement_template_container_id (UUID):
@@ -179,17 +165,10 @@ async def asyncio_detailed(
     page: int | None | Unset = 1,
     page_size: int | None | Unset = 30,
 ) -> Response[PaginatedResponseRequirementTemplateGetOut]:
-    """Get Requirement Templates
+    """List requirement templates in a container
 
-     B7GNMWva
-
-    Get all requirement templates inside a requirement template container.
-
-    Manually paginated to allow for updating EntityTracker records after viewed.
-
-    Annotated
-        is_updated_since_last_seen: bool - Whether the template has been updated since the user last saw
-    it.
+     Retrieve a paginated list of all requirement templates inside a container. Each template is
+    annotated with whether it has been updated since the user last viewed it.
 
     Args:
         requirement_template_container_id (UUID):
@@ -225,17 +204,10 @@ async def asyncio(
     page: int | None | Unset = 1,
     page_size: int | None | Unset = 30,
 ) -> PaginatedResponseRequirementTemplateGetOut | None:
-    """Get Requirement Templates
+    """List requirement templates in a container
 
-     B7GNMWva
-
-    Get all requirement templates inside a requirement template container.
-
-    Manually paginated to allow for updating EntityTracker records after viewed.
-
-    Annotated
-        is_updated_since_last_seen: bool - Whether the template has been updated since the user last saw
-    it.
+     Retrieve a paginated list of all requirement templates inside a container. Each template is
+    annotated with whether it has been updated since the user last viewed it.
 
     Args:
         requirement_template_container_id (UUID):

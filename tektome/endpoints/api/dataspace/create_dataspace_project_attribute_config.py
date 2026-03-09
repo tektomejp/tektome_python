@@ -65,23 +65,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceProjectAttributePostIn,
 ) -> Response[DataspaceProjectAttributePostOut]:
-    """Post Dataspace Project Attribute Config
+    """Create a project attribute column configuration
 
-     x16N0f5D
-
-    Creates the column attributes of a dataspace project
-
-    Valid attribute types are:
-    - string_attributes
-    - integer_attributes
-    - float_attributes
-    - boolean_attributes
-    - date_attributes
-    - datetime_attributes
-    - time_attributes
-    - table_attributes
-    - single_select_attributes
-    - multi_select_attributes
+     Add a new attribute column configuration for projects in a dataspace. Supported types include
+    string, integer, float, boolean, date, datetime, time, table, single select, and multi select.
 
     Args:
         dataspace_id (UUID):
@@ -114,23 +101,10 @@ def sync(
     client: AuthenticatedClient,
     body: DataspaceProjectAttributePostIn,
 ) -> DataspaceProjectAttributePostOut | None:
-    """Post Dataspace Project Attribute Config
+    """Create a project attribute column configuration
 
-     x16N0f5D
-
-    Creates the column attributes of a dataspace project
-
-    Valid attribute types are:
-    - string_attributes
-    - integer_attributes
-    - float_attributes
-    - boolean_attributes
-    - date_attributes
-    - datetime_attributes
-    - time_attributes
-    - table_attributes
-    - single_select_attributes
-    - multi_select_attributes
+     Add a new attribute column configuration for projects in a dataspace. Supported types include
+    string, integer, float, boolean, date, datetime, time, table, single select, and multi select.
 
     Args:
         dataspace_id (UUID):
@@ -158,23 +132,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceProjectAttributePostIn,
 ) -> Response[DataspaceProjectAttributePostOut]:
-    """Post Dataspace Project Attribute Config
+    """Create a project attribute column configuration
 
-     x16N0f5D
-
-    Creates the column attributes of a dataspace project
-
-    Valid attribute types are:
-    - string_attributes
-    - integer_attributes
-    - float_attributes
-    - boolean_attributes
-    - date_attributes
-    - datetime_attributes
-    - time_attributes
-    - table_attributes
-    - single_select_attributes
-    - multi_select_attributes
+     Add a new attribute column configuration for projects in a dataspace. Supported types include
+    string, integer, float, boolean, date, datetime, time, table, single select, and multi select.
 
     Args:
         dataspace_id (UUID):
@@ -205,23 +166,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DataspaceProjectAttributePostIn,
 ) -> DataspaceProjectAttributePostOut | None:
-    """Post Dataspace Project Attribute Config
+    """Create a project attribute column configuration
 
-     x16N0f5D
-
-    Creates the column attributes of a dataspace project
-
-    Valid attribute types are:
-    - string_attributes
-    - integer_attributes
-    - float_attributes
-    - boolean_attributes
-    - date_attributes
-    - datetime_attributes
-    - time_attributes
-    - table_attributes
-    - single_select_attributes
-    - multi_select_attributes
+     Add a new attribute column configuration for projects in a dataspace. Supported types include
+    string, integer, float, boolean, date, datetime, time, table, single select, and multi select.
 
     Args:
         dataspace_id (UUID):

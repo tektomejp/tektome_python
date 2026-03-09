@@ -51,13 +51,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[RequirementGetOut]:
-    """Get Requirement
+    """Get requirement details
 
-     iy_IJGrL
-
-    Get requirement by id
-    chatrooms:
-        return latest 10 chatrooms for the requirement
+     Retrieve a requirement by ID, including its sections, captures, and recent chat rooms.
 
     Args:
         requirement_id (UUID):
@@ -86,13 +82,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> RequirementGetOut | None:
-    """Get Requirement
+    """Get requirement details
 
-     iy_IJGrL
-
-    Get requirement by id
-    chatrooms:
-        return latest 10 chatrooms for the requirement
+     Retrieve a requirement by ID, including its sections, captures, and recent chat rooms.
 
     Args:
         requirement_id (UUID):
@@ -116,13 +108,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[RequirementGetOut]:
-    """Get Requirement
+    """Get requirement details
 
-     iy_IJGrL
-
-    Get requirement by id
-    chatrooms:
-        return latest 10 chatrooms for the requirement
+     Retrieve a requirement by ID, including its sections, captures, and recent chat rooms.
 
     Args:
         requirement_id (UUID):
@@ -149,13 +137,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> RequirementGetOut | None:
-    """Get Requirement
+    """Get requirement details
 
-     iy_IJGrL
-
-    Get requirement by id
-    chatrooms:
-        return latest 10 chatrooms for the requirement
+     Retrieve a requirement by ID, including its sections, captures, and recent chat rooms.
 
     Args:
         requirement_id (UUID):

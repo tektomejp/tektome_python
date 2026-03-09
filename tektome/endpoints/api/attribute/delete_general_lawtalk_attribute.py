@@ -64,11 +64,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     name: str,
 ) -> Response[Any]:
-    """Delete General Lawtalk Attribute
+    """Delete a general attribute from an entity
 
-     KEGfDoW8
-
-    Delete a core attribute on lawtalk side entrypoint.
+     Remove a general attribute by name from an entity. The attribute is deleted across all attribute
+    types.
 
     Args:
         object_type (DeleteGeneralLawtalkAttributeAttributeObjectTypes):
@@ -103,11 +102,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     name: str,
 ) -> Response[Any]:
-    """Delete General Lawtalk Attribute
+    """Delete a general attribute from an entity
 
-     KEGfDoW8
-
-    Delete a core attribute on lawtalk side entrypoint.
+     Remove a general attribute by name from an entity. The attribute is deleted across all attribute
+    types.
 
     Args:
         object_type (DeleteGeneralLawtalkAttributeAttributeObjectTypes):

@@ -64,15 +64,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | ErrorOutputSchemaOut]:
-    """Delete Organization
+    """Delete an organization
 
-     ijkHrhIg
-
-    Delete an organization.
-
-    Only allowed if the requested user
-    - has the super admin role
-    - be an Organization Admin
+     Permanently delete an organization. Requires administrator privileges. Reserved organizations cannot
+    be deleted.
 
     Args:
         organization_id (UUID):
@@ -101,15 +96,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Any | ErrorOutputSchemaOut | None:
-    """Delete Organization
+    """Delete an organization
 
-     ijkHrhIg
-
-    Delete an organization.
-
-    Only allowed if the requested user
-    - has the super admin role
-    - be an Organization Admin
+     Permanently delete an organization. Requires administrator privileges. Reserved organizations cannot
+    be deleted.
 
     Args:
         organization_id (UUID):
@@ -133,15 +123,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | ErrorOutputSchemaOut]:
-    """Delete Organization
+    """Delete an organization
 
-     ijkHrhIg
-
-    Delete an organization.
-
-    Only allowed if the requested user
-    - has the super admin role
-    - be an Organization Admin
+     Permanently delete an organization. Requires administrator privileges. Reserved organizations cannot
+    be deleted.
 
     Args:
         organization_id (UUID):
@@ -168,15 +153,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Any | ErrorOutputSchemaOut | None:
-    """Delete Organization
+    """Delete an organization
 
-     ijkHrhIg
-
-    Delete an organization.
-
-    Only allowed if the requested user
-    - has the super admin role
-    - be an Organization Admin
+     Permanently delete an organization. Requires administrator privileges. Reserved organizations cannot
+    be deleted.
 
     Args:
         organization_id (UUID):

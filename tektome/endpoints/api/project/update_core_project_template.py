@@ -64,11 +64,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: TemplateOverrideIn,
 ) -> Response[TemplateOut]:
-    """Patch Project Template
+    """Update a project process template
 
-     F5W1IWYz
-
-    Update a template in the current project.
+     Update the configuration of a specific process template within the specified project.
 
     Args:
         project_id (UUID):
@@ -104,11 +102,9 @@ def sync(
     client: AuthenticatedClient,
     body: TemplateOverrideIn,
 ) -> TemplateOut | None:
-    """Patch Project Template
+    """Update a project process template
 
-     F5W1IWYz
-
-    Update a template in the current project.
+     Update the configuration of a specific process template within the specified project.
 
     Args:
         project_id (UUID):
@@ -139,11 +135,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: TemplateOverrideIn,
 ) -> Response[TemplateOut]:
-    """Patch Project Template
+    """Update a project process template
 
-     F5W1IWYz
-
-    Update a template in the current project.
+     Update the configuration of a specific process template within the specified project.
 
     Args:
         project_id (UUID):
@@ -177,11 +171,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: TemplateOverrideIn,
 ) -> TemplateOut | None:
-    """Patch Project Template
+    """Update a project process template
 
-     F5W1IWYz
-
-    Update a template in the current project.
+     Update the configuration of a specific process template within the specified project.
 
     Args:
         project_id (UUID):

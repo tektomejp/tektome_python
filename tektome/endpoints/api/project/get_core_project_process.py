@@ -54,11 +54,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ProcessOut]:
-    """Retrieve Project Process
+    """Get a project process
 
-     usXS2ccT
-
-    Retrieve a specific process in the current project.
+     Retrieve a specific process by ID within the specified project.
 
     Args:
         project_id (UUID):
@@ -90,11 +88,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ProcessOut | None:
-    """Retrieve Project Process
+    """Get a project process
 
-     usXS2ccT
-
-    Retrieve a specific process in the current project.
+     Retrieve a specific process by ID within the specified project.
 
     Args:
         project_id (UUID):
@@ -121,11 +117,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ProcessOut]:
-    """Retrieve Project Process
+    """Get a project process
 
-     usXS2ccT
-
-    Retrieve a specific process in the current project.
+     Retrieve a specific process by ID within the specified project.
 
     Args:
         project_id (UUID):
@@ -155,11 +149,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ProcessOut | None:
-    """Retrieve Project Process
+    """Get a project process
 
-     usXS2ccT
-
-    Retrieve a specific process in the current project.
+     Retrieve a specific process by ID within the specified project.
 
     Args:
         project_id (UUID):

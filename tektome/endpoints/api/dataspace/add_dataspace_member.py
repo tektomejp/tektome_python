@@ -68,11 +68,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: list[InviteUserByEmailSchemaIn],
 ) -> Response[BulkUserInvitationSchemaOut]:
-    """Add Dataspace Member
+    """Add members to a dataspace
 
-     MnAo2Kmx
-
-    Add a member to a dataspace
+     Invite one or more users to join a dataspace with specified roles. Email notifications are sent to
+    invited users.
 
     Args:
         dataspace_id (UUID):
@@ -104,11 +103,10 @@ def sync(
     client: AuthenticatedClient,
     body: list[InviteUserByEmailSchemaIn],
 ) -> BulkUserInvitationSchemaOut | None:
-    """Add Dataspace Member
+    """Add members to a dataspace
 
-     MnAo2Kmx
-
-    Add a member to a dataspace
+     Invite one or more users to join a dataspace with specified roles. Email notifications are sent to
+    invited users.
 
     Args:
         dataspace_id (UUID):
@@ -135,11 +133,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: list[InviteUserByEmailSchemaIn],
 ) -> Response[BulkUserInvitationSchemaOut]:
-    """Add Dataspace Member
+    """Add members to a dataspace
 
-     MnAo2Kmx
-
-    Add a member to a dataspace
+     Invite one or more users to join a dataspace with specified roles. Email notifications are sent to
+    invited users.
 
     Args:
         dataspace_id (UUID):
@@ -169,11 +166,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: list[InviteUserByEmailSchemaIn],
 ) -> BulkUserInvitationSchemaOut | None:
-    """Add Dataspace Member
+    """Add members to a dataspace
 
-     MnAo2Kmx
-
-    Add a member to a dataspace
+     Invite one or more users to join a dataspace with specified roles. Email notifications are sent to
+    invited users.
 
     Args:
         dataspace_id (UUID):

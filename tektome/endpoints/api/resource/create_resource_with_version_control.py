@@ -154,11 +154,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: CreateResourceWithVersionControlFileParams,
 ) -> Response[ErrorOut | ResourceSchemaPostOut]:
-    """Create Resource
+    """Create a new versioned resource
 
-     I6K5wmn4
-
-    Create a new resource with the given file and create a new resource version
+     Upload a file to create a new resource with version control enabled.
 
     Args:
         resource_group_id (UUID):
@@ -190,11 +188,9 @@ def sync(
     client: AuthenticatedClient,
     body: CreateResourceWithVersionControlFileParams,
 ) -> ErrorOut | ResourceSchemaPostOut | None:
-    """Create Resource
+    """Create a new versioned resource
 
-     I6K5wmn4
-
-    Create a new resource with the given file and create a new resource version
+     Upload a file to create a new resource with version control enabled.
 
     Args:
         resource_group_id (UUID):
@@ -221,11 +217,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: CreateResourceWithVersionControlFileParams,
 ) -> Response[ErrorOut | ResourceSchemaPostOut]:
-    """Create Resource
+    """Create a new versioned resource
 
-     I6K5wmn4
-
-    Create a new resource with the given file and create a new resource version
+     Upload a file to create a new resource with version control enabled.
 
     Args:
         resource_group_id (UUID):
@@ -255,11 +249,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: CreateResourceWithVersionControlFileParams,
 ) -> ErrorOut | ResourceSchemaPostOut | None:
-    """Create Resource
+    """Create a new versioned resource
 
-     I6K5wmn4
-
-    Create a new resource with the given file and create a new resource version
+     Upload a file to create a new resource with version control enabled.
 
     Args:
         resource_group_id (UUID):

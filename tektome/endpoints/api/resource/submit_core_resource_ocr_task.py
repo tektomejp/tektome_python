@@ -149,13 +149,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ErrorOut | ResourceOCRSchemaPostOut]:
-    """Submit Ocr Task
+    """Submit an OCR task for a resource
 
-     5TLaNZZs
-
-    Submit OCR task for the given resource_id
-
-    Raise 404 if resource_id not found
+     Submit an optical character recognition (OCR) task for the specified resource. This is an
+    asynchronous operation. To retrieve the results, use the get_celery_task
+    (/api/core/tasks/{task_id}/) endpoint with the task/process ID returned in this response.
 
     Args:
         resource_group_id (UUID):
@@ -187,13 +185,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ErrorOut | ResourceOCRSchemaPostOut | None:
-    """Submit Ocr Task
+    """Submit an OCR task for a resource
 
-     5TLaNZZs
-
-    Submit OCR task for the given resource_id
-
-    Raise 404 if resource_id not found
+     Submit an optical character recognition (OCR) task for the specified resource. This is an
+    asynchronous operation. To retrieve the results, use the get_celery_task
+    (/api/core/tasks/{task_id}/) endpoint with the task/process ID returned in this response.
 
     Args:
         resource_group_id (UUID):
@@ -220,13 +216,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ErrorOut | ResourceOCRSchemaPostOut]:
-    """Submit Ocr Task
+    """Submit an OCR task for a resource
 
-     5TLaNZZs
-
-    Submit OCR task for the given resource_id
-
-    Raise 404 if resource_id not found
+     Submit an optical character recognition (OCR) task for the specified resource. This is an
+    asynchronous operation. To retrieve the results, use the get_celery_task
+    (/api/core/tasks/{task_id}/) endpoint with the task/process ID returned in this response.
 
     Args:
         resource_group_id (UUID):
@@ -256,13 +250,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ErrorOut | ResourceOCRSchemaPostOut | None:
-    """Submit Ocr Task
+    """Submit an OCR task for a resource
 
-     5TLaNZZs
-
-    Submit OCR task for the given resource_id
-
-    Raise 404 if resource_id not found
+     Submit an optical character recognition (OCR) task for the specified resource. This is an
+    asynchronous operation. To retrieve the results, use the get_celery_task
+    (/api/core/tasks/{task_id}/) endpoint with the task/process ID returned in this response.
 
     Args:
         resource_group_id (UUID):

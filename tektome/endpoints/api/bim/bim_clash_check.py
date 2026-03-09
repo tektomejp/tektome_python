@@ -76,18 +76,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: BimClashCheckPostIn,
 ) -> Response[BimClashCheckPostOut | ErrorResponsePostOut]:
-    """Bim Clash Check
+    """Run BIM clash detection
 
-     FL-neCi-
-
-    Perform clash detection on the provided BIM object IDs.
-
-    Args:
-        request: The HTTP request object.
-        payload: The BIM clash check request payload containing BIM object IDs.
-
-    Returns:
-        dict: Response dictionary containing clash detection results.
+     Perform clash detection on the provided BIM object IDs within a BIM project. This is an asynchronous
+    operation. To retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint
+    with the task/process ID returned in this response.
 
     Args:
         bim_project_id (UUID):
@@ -119,18 +112,11 @@ def sync(
     client: AuthenticatedClient,
     body: BimClashCheckPostIn,
 ) -> BimClashCheckPostOut | ErrorResponsePostOut | None:
-    """Bim Clash Check
+    """Run BIM clash detection
 
-     FL-neCi-
-
-    Perform clash detection on the provided BIM object IDs.
-
-    Args:
-        request: The HTTP request object.
-        payload: The BIM clash check request payload containing BIM object IDs.
-
-    Returns:
-        dict: Response dictionary containing clash detection results.
+     Perform clash detection on the provided BIM object IDs within a BIM project. This is an asynchronous
+    operation. To retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint
+    with the task/process ID returned in this response.
 
     Args:
         bim_project_id (UUID):
@@ -157,18 +143,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: BimClashCheckPostIn,
 ) -> Response[BimClashCheckPostOut | ErrorResponsePostOut]:
-    """Bim Clash Check
+    """Run BIM clash detection
 
-     FL-neCi-
-
-    Perform clash detection on the provided BIM object IDs.
-
-    Args:
-        request: The HTTP request object.
-        payload: The BIM clash check request payload containing BIM object IDs.
-
-    Returns:
-        dict: Response dictionary containing clash detection results.
+     Perform clash detection on the provided BIM object IDs within a BIM project. This is an asynchronous
+    operation. To retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint
+    with the task/process ID returned in this response.
 
     Args:
         bim_project_id (UUID):
@@ -198,18 +177,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: BimClashCheckPostIn,
 ) -> BimClashCheckPostOut | ErrorResponsePostOut | None:
-    """Bim Clash Check
+    """Run BIM clash detection
 
-     FL-neCi-
-
-    Perform clash detection on the provided BIM object IDs.
-
-    Args:
-        request: The HTTP request object.
-        payload: The BIM clash check request payload containing BIM object IDs.
-
-    Returns:
-        dict: Response dictionary containing clash detection results.
+     Perform clash detection on the provided BIM object IDs within a BIM project. This is an asynchronous
+    operation. To retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint
+    with the task/process ID returned in this response.
 
     Args:
         bim_project_id (UUID):

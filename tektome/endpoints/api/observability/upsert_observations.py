@@ -64,11 +64,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ObservabilityPutIn,
 ) -> Response[list[ObservabilitySchemaOut]]:
-    """Put Observations
+    """Upsert observation records
 
-     gtU7xd9a
-
-    Update or create observation information for an entity.
+     Create or update observation records for entities. Tracks whether entities have been viewed by the
+    authenticated user.
 
     Args:
         body (ObservabilityPutIn):
@@ -97,11 +96,10 @@ def sync(
     client: AuthenticatedClient,
     body: ObservabilityPutIn,
 ) -> list[ObservabilitySchemaOut] | None:
-    """Put Observations
+    """Upsert observation records
 
-     gtU7xd9a
-
-    Update or create observation information for an entity.
+     Create or update observation records for entities. Tracks whether entities have been viewed by the
+    authenticated user.
 
     Args:
         body (ObservabilityPutIn):
@@ -125,11 +123,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ObservabilityPutIn,
 ) -> Response[list[ObservabilitySchemaOut]]:
-    """Put Observations
+    """Upsert observation records
 
-     gtU7xd9a
-
-    Update or create observation information for an entity.
+     Create or update observation records for entities. Tracks whether entities have been viewed by the
+    authenticated user.
 
     Args:
         body (ObservabilityPutIn):
@@ -156,11 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ObservabilityPutIn,
 ) -> list[ObservabilitySchemaOut] | None:
-    """Put Observations
+    """Upsert observation records
 
-     gtU7xd9a
-
-    Update or create observation information for an entity.
+     Create or update observation records for entities. Tracks whether entities have been viewed by the
+    authenticated user.
 
     Args:
         body (ObservabilityPutIn):

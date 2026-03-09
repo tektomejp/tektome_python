@@ -65,15 +65,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspacePostIn,
 ) -> Response[CreateDataspaceResponse | DataspacePostOut]:
-    """Post Dataspace
+    """Create a new dataspace
 
-     x16N0f5v
-
-    Create a new dataspace, if organization_id is not provided, will use the user's current
-    organization.
-    WARN:
-        id in the payload is ONLY intended to be used for syncing DS from storage. DO NOT USE IT
-    OTHERWISE.
+     Create a new dataspace within an organization. If no organization ID is provided, the user's current
+    organization is used.
 
     Args:
         body (DataspacePostIn):
@@ -102,15 +97,10 @@ def sync(
     client: AuthenticatedClient,
     body: DataspacePostIn,
 ) -> CreateDataspaceResponse | DataspacePostOut | None:
-    """Post Dataspace
+    """Create a new dataspace
 
-     x16N0f5v
-
-    Create a new dataspace, if organization_id is not provided, will use the user's current
-    organization.
-    WARN:
-        id in the payload is ONLY intended to be used for syncing DS from storage. DO NOT USE IT
-    OTHERWISE.
+     Create a new dataspace within an organization. If no organization ID is provided, the user's current
+    organization is used.
 
     Args:
         body (DataspacePostIn):
@@ -134,15 +124,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspacePostIn,
 ) -> Response[CreateDataspaceResponse | DataspacePostOut]:
-    """Post Dataspace
+    """Create a new dataspace
 
-     x16N0f5v
-
-    Create a new dataspace, if organization_id is not provided, will use the user's current
-    organization.
-    WARN:
-        id in the payload is ONLY intended to be used for syncing DS from storage. DO NOT USE IT
-    OTHERWISE.
+     Create a new dataspace within an organization. If no organization ID is provided, the user's current
+    organization is used.
 
     Args:
         body (DataspacePostIn):
@@ -169,15 +154,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DataspacePostIn,
 ) -> CreateDataspaceResponse | DataspacePostOut | None:
-    """Post Dataspace
+    """Create a new dataspace
 
-     x16N0f5v
-
-    Create a new dataspace, if organization_id is not provided, will use the user's current
-    organization.
-    WARN:
-        id in the payload is ONLY intended to be used for syncing DS from storage. DO NOT USE IT
-    OTHERWISE.
+     Create a new dataspace within an organization. If no organization ID is provided, the user's current
+    organization is used.
 
     Args:
         body (DataspacePostIn):

@@ -61,11 +61,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ProcessPostIn,
 ) -> Response[ProcessOut]:
-    """Post Dataspace Processes
+    """Create a process in a dataspace
 
-     gBzesU5a
-
-    Register a process from a template.
+     Register a new process from an existing template within a dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -97,11 +95,9 @@ def sync(
     client: AuthenticatedClient,
     body: ProcessPostIn,
 ) -> ProcessOut | None:
-    """Post Dataspace Processes
+    """Create a process in a dataspace
 
-     gBzesU5a
-
-    Register a process from a template.
+     Register a new process from an existing template within a dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -128,11 +124,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ProcessPostIn,
 ) -> Response[ProcessOut]:
-    """Post Dataspace Processes
+    """Create a process in a dataspace
 
-     gBzesU5a
-
-    Register a process from a template.
+     Register a new process from an existing template within a dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -162,11 +156,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ProcessPostIn,
 ) -> ProcessOut | None:
-    """Post Dataspace Processes
+    """Create a process in a dataspace
 
-     gBzesU5a
-
-    Register a process from a template.
+     Register a new process from an existing template within a dataspace.
 
     Args:
         dataspace_id (UUID):

@@ -59,18 +59,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DeepResearchChatPostIn,
 ) -> Response[CreateChatDeepResearchResponse]:
-    """Post Chat Deep Research
+    """Start deep research chat
 
-     iwVaQyqG
-
-    Post a chat message to a lawtalk requirement chatroom for deep research.
-
-    Args:
-        request: The request object containing authentication and user information.
-        payload: The payload containing chatroom ID, prompt, recipe, requirement, and output format
-    details.
-
-    Returns: Chatroom ID of the created or existing chatroom.
+     Initiate a deep research session for a requirement. Supports model selection, web search, and custom
+    output formats. Returns the chatroom ID.
 
     Args:
         body (DeepResearchChatPostIn): Serializer for posting a deep research chat message.
@@ -99,18 +91,10 @@ def sync(
     client: AuthenticatedClient,
     body: DeepResearchChatPostIn,
 ) -> CreateChatDeepResearchResponse | None:
-    """Post Chat Deep Research
+    """Start deep research chat
 
-     iwVaQyqG
-
-    Post a chat message to a lawtalk requirement chatroom for deep research.
-
-    Args:
-        request: The request object containing authentication and user information.
-        payload: The payload containing chatroom ID, prompt, recipe, requirement, and output format
-    details.
-
-    Returns: Chatroom ID of the created or existing chatroom.
+     Initiate a deep research session for a requirement. Supports model selection, web search, and custom
+    output formats. Returns the chatroom ID.
 
     Args:
         body (DeepResearchChatPostIn): Serializer for posting a deep research chat message.
@@ -134,18 +118,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DeepResearchChatPostIn,
 ) -> Response[CreateChatDeepResearchResponse]:
-    """Post Chat Deep Research
+    """Start deep research chat
 
-     iwVaQyqG
-
-    Post a chat message to a lawtalk requirement chatroom for deep research.
-
-    Args:
-        request: The request object containing authentication and user information.
-        payload: The payload containing chatroom ID, prompt, recipe, requirement, and output format
-    details.
-
-    Returns: Chatroom ID of the created or existing chatroom.
+     Initiate a deep research session for a requirement. Supports model selection, web search, and custom
+    output formats. Returns the chatroom ID.
 
     Args:
         body (DeepResearchChatPostIn): Serializer for posting a deep research chat message.
@@ -172,18 +148,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DeepResearchChatPostIn,
 ) -> CreateChatDeepResearchResponse | None:
-    """Post Chat Deep Research
+    """Start deep research chat
 
-     iwVaQyqG
-
-    Post a chat message to a lawtalk requirement chatroom for deep research.
-
-    Args:
-        request: The request object containing authentication and user information.
-        payload: The payload containing chatroom ID, prompt, recipe, requirement, and output format
-    details.
-
-    Returns: Chatroom ID of the created or existing chatroom.
+     Initiate a deep research session for a requirement. Supports model selection, web search, and custom
+    output formats. Returns the chatroom ID.
 
     Args:
         body (DeepResearchChatPostIn): Serializer for posting a deep research chat message.

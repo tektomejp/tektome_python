@@ -74,17 +74,9 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedProjectMembersGetOut]:
-    """Get Project Members
+    """List project members
 
-     iKD10Ljt
-
-    Get all members of a project.
-
-    Args:
-        request: Request object.
-        path_params: path params of type ProjectDefaultPath
-
-    Returns: 200, list[ProjectMembersGetOut]
+     Retrieve a paginated list of all members assigned to a project, including their roles.
 
     Args:
         project_id (UUID):
@@ -119,17 +111,9 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedProjectMembersGetOut | None:
-    """Get Project Members
+    """List project members
 
-     iKD10Ljt
-
-    Get all members of a project.
-
-    Args:
-        request: Request object.
-        path_params: path params of type ProjectDefaultPath
-
-    Returns: 200, list[ProjectMembersGetOut]
+     Retrieve a paginated list of all members assigned to a project, including their roles.
 
     Args:
         project_id (UUID):
@@ -159,17 +143,9 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedProjectMembersGetOut]:
-    """Get Project Members
+    """List project members
 
-     iKD10Ljt
-
-    Get all members of a project.
-
-    Args:
-        request: Request object.
-        path_params: path params of type ProjectDefaultPath
-
-    Returns: 200, list[ProjectMembersGetOut]
+     Retrieve a paginated list of all members assigned to a project, including their roles.
 
     Args:
         project_id (UUID):
@@ -202,17 +178,9 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedProjectMembersGetOut | None:
-    """Get Project Members
+    """List project members
 
-     iKD10Ljt
-
-    Get all members of a project.
-
-    Args:
-        request: Request object.
-        path_params: path params of type ProjectDefaultPath
-
-    Returns: 200, list[ProjectMembersGetOut]
+     Retrieve a paginated list of all members assigned to a project, including their roles.
 
     Args:
         project_id (UUID):

@@ -52,11 +52,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ObservabilityIdsIn,
 ) -> Response[Any]:
-    """Delete Observations
+    """Delete observation records
 
-     gtU7xd9d
-
-    Deletes observation information for an entity by id.
+     Delete observation records by their IDs.
 
     Args:
         body (ObservabilityIdsIn):
@@ -85,11 +83,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ObservabilityIdsIn,
 ) -> Response[Any]:
-    """Delete Observations
+    """Delete observation records
 
-     gtU7xd9d
-
-    Deletes observation information for an entity by id.
+     Delete observation records by their IDs.
 
     Args:
         body (ObservabilityIdsIn):

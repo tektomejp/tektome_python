@@ -74,11 +74,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableGetOut]:
-    """Get Requirement Items
+    """Get requirement items
 
-     JnQkM31F
-
-    Get all requirement items associated to a requirement
+     Retrieve the requirement items table associated with a requirement.
 
     Args:
         requirement_id (UUID):
@@ -107,11 +105,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableGetOut | None:
-    """Get Requirement Items
+    """Get requirement items
 
-     JnQkM31F
-
-    Get all requirement items associated to a requirement
+     Retrieve the requirement items table associated with a requirement.
 
     Args:
         requirement_id (UUID):
@@ -135,11 +131,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableGetOut]:
-    """Get Requirement Items
+    """Get requirement items
 
-     JnQkM31F
-
-    Get all requirement items associated to a requirement
+     Retrieve the requirement items table associated with a requirement.
 
     Args:
         requirement_id (UUID):
@@ -166,11 +160,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableGetOut | None:
-    """Get Requirement Items
+    """Get requirement items
 
-     JnQkM31F
-
-    Get all requirement items associated to a requirement
+     Retrieve the requirement items table associated with a requirement.
 
     Args:
         requirement_id (UUID):

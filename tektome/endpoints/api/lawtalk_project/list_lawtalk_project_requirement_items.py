@@ -74,11 +74,10 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedLawtalkRequirementItemTableRowSchema]:
-    """Get Project Requirement Items
+    """List project requirement items
 
-     9yNtf4iA
-
-    Retrieves all requirement items for a project.
+     Retrieve all requirement items across all requirements in a project, formatted as table rows with
+    column labels.
 
     Args:
         project_id (UUID):
@@ -113,11 +112,10 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedLawtalkRequirementItemTableRowSchema | None:
-    """Get Project Requirement Items
+    """List project requirement items
 
-     9yNtf4iA
-
-    Retrieves all requirement items for a project.
+     Retrieve all requirement items across all requirements in a project, formatted as table rows with
+    column labels.
 
     Args:
         project_id (UUID):
@@ -147,11 +145,10 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedLawtalkRequirementItemTableRowSchema]:
-    """Get Project Requirement Items
+    """List project requirement items
 
-     9yNtf4iA
-
-    Retrieves all requirement items for a project.
+     Retrieve all requirement items across all requirements in a project, formatted as table rows with
+    column labels.
 
     Args:
         project_id (UUID):
@@ -184,11 +181,10 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedLawtalkRequirementItemTableRowSchema | None:
-    """Get Project Requirement Items
+    """List project requirement items
 
-     9yNtf4iA
-
-    Retrieves all requirement items for a project.
+     Retrieve all requirement items across all requirements in a project, formatted as table rows with
+    column labels.
 
     Args:
         project_id (UUID):

@@ -56,16 +56,11 @@ def sync_detailed(
     batch_size: int | Unset = 1000,
     max_workers: int | Unset = 8,
 ) -> Response[Any]:
-    """Delete Orphaned Bim Objects
+    """Delete orphaned BIM objects
 
-     3Vs8AsO4
-
-    Delete all orphaned BIM objects (not linked to any project) in parallel.
-    Args:
-        batch_size: Number of objects to process in each batch for Elasticsearch deletion
-        max_workers: Maximum number of threads for parallel file deletion
-    Returns:
-        The task ID for tracking the deletion process.
+     Delete all BIM objects that are not linked to any project. This is an asynchronous operation. To
+    retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the
+    task/process ID returned in this response.
 
     Args:
         batch_size (int | Unset):  Default: 1000.
@@ -97,16 +92,11 @@ async def asyncio_detailed(
     batch_size: int | Unset = 1000,
     max_workers: int | Unset = 8,
 ) -> Response[Any]:
-    """Delete Orphaned Bim Objects
+    """Delete orphaned BIM objects
 
-     3Vs8AsO4
-
-    Delete all orphaned BIM objects (not linked to any project) in parallel.
-    Args:
-        batch_size: Number of objects to process in each batch for Elasticsearch deletion
-        max_workers: Maximum number of threads for parallel file deletion
-    Returns:
-        The task ID for tracking the deletion process.
+     Delete all BIM objects that are not linked to any project. This is an asynchronous operation. To
+    retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the
+    task/process ID returned in this response.
 
     Args:
         batch_size (int | Unset):  Default: 1000.
