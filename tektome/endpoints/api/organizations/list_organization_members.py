@@ -60,11 +60,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list[OrganizationMembersSchemaOut]]:
-    """Get Organization Members
+    """List organization members
 
-     MnZlOOpQ
-
-    Retrieve all members of an organization.
+     Retrieve all members of an organization along with their roles.
 
     Args:
         organization_id (UUID):
@@ -93,11 +91,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> list[OrganizationMembersSchemaOut] | None:
-    """Get Organization Members
+    """List organization members
 
-     MnZlOOpQ
-
-    Retrieve all members of an organization.
+     Retrieve all members of an organization along with their roles.
 
     Args:
         organization_id (UUID):
@@ -121,11 +117,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list[OrganizationMembersSchemaOut]]:
-    """Get Organization Members
+    """List organization members
 
-     MnZlOOpQ
-
-    Retrieve all members of an organization.
+     Retrieve all members of an organization along with their roles.
 
     Args:
         organization_id (UUID):
@@ -152,11 +146,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> list[OrganizationMembersSchemaOut] | None:
-    """Get Organization Members
+    """List organization members
 
-     MnZlOOpQ
-
-    Retrieve all members of an organization.
+     Retrieve all members of an organization along with their roles.
 
     Args:
         organization_id (UUID):

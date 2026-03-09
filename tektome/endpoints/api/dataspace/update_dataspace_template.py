@@ -64,11 +64,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: TemplateOverrideIn,
 ) -> Response[TemplateOut]:
-    """Patch Dataspace Template
+    """Update a dataspace template
 
-     gQK6dWXU
-
-    Update a template in the current dataspace.
+     Apply an override to a process template within a dataspace, updating its configuration.
 
     Args:
         dataspace_id (UUID):
@@ -104,11 +102,9 @@ def sync(
     client: AuthenticatedClient,
     body: TemplateOverrideIn,
 ) -> TemplateOut | None:
-    """Patch Dataspace Template
+    """Update a dataspace template
 
-     gQK6dWXU
-
-    Update a template in the current dataspace.
+     Apply an override to a process template within a dataspace, updating its configuration.
 
     Args:
         dataspace_id (UUID):
@@ -139,11 +135,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: TemplateOverrideIn,
 ) -> Response[TemplateOut]:
-    """Patch Dataspace Template
+    """Update a dataspace template
 
-     gQK6dWXU
-
-    Update a template in the current dataspace.
+     Apply an override to a process template within a dataspace, updating its configuration.
 
     Args:
         dataspace_id (UUID):
@@ -177,11 +171,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: TemplateOverrideIn,
 ) -> TemplateOut | None:
-    """Patch Dataspace Template
+    """Update a dataspace template
 
-     gQK6dWXU
-
-    Update a template in the current dataspace.
+     Apply an override to a process template within a dataspace, updating its configuration.
 
     Args:
         dataspace_id (UUID):

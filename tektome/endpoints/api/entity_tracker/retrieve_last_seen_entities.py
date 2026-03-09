@@ -64,11 +64,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ObservabilityIdsIn,
 ) -> Response[list[EntityTrackerGetOut]]:
-    """Post Retrieve Last Seen Entities
+    """Retrieve last seen entities
 
-     1AbIfjMr
-
-    Retrieve last seen observation information for an entity.
+     Retrieve the last-seen timestamps and view modes for a list of tracked entities.
 
     Args:
         body (ObservabilityIdsIn):
@@ -97,11 +95,9 @@ def sync(
     client: AuthenticatedClient,
     body: ObservabilityIdsIn,
 ) -> list[EntityTrackerGetOut] | None:
-    """Post Retrieve Last Seen Entities
+    """Retrieve last seen entities
 
-     1AbIfjMr
-
-    Retrieve last seen observation information for an entity.
+     Retrieve the last-seen timestamps and view modes for a list of tracked entities.
 
     Args:
         body (ObservabilityIdsIn):
@@ -125,11 +121,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ObservabilityIdsIn,
 ) -> Response[list[EntityTrackerGetOut]]:
-    """Post Retrieve Last Seen Entities
+    """Retrieve last seen entities
 
-     1AbIfjMr
-
-    Retrieve last seen observation information for an entity.
+     Retrieve the last-seen timestamps and view modes for a list of tracked entities.
 
     Args:
         body (ObservabilityIdsIn):
@@ -156,11 +150,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ObservabilityIdsIn,
 ) -> list[EntityTrackerGetOut] | None:
-    """Post Retrieve Last Seen Entities
+    """Retrieve last seen entities
 
-     1AbIfjMr
-
-    Retrieve last seen observation information for an entity.
+     Retrieve the last-seen timestamps and view modes for a list of tracked entities.
 
     Args:
         body (ObservabilityIdsIn):

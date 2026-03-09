@@ -150,11 +150,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: TargetUserInSchema,
 ) -> Response[Any | ErrorOut]:
-    """Transfer Project Ownership
+    """Transfer project ownership
 
-     LpkZ01MG
-
-    Transfer project ownership to another user.
+     Transfer ownership of a project to another user. The current owner must have the transfer ownership
+    permission.
 
     Args:
         project_id (UUID):
@@ -186,11 +185,10 @@ def sync(
     client: AuthenticatedClient,
     body: TargetUserInSchema,
 ) -> Any | ErrorOut | None:
-    """Transfer Project Ownership
+    """Transfer project ownership
 
-     LpkZ01MG
-
-    Transfer project ownership to another user.
+     Transfer ownership of a project to another user. The current owner must have the transfer ownership
+    permission.
 
     Args:
         project_id (UUID):
@@ -217,11 +215,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: TargetUserInSchema,
 ) -> Response[Any | ErrorOut]:
-    """Transfer Project Ownership
+    """Transfer project ownership
 
-     LpkZ01MG
-
-    Transfer project ownership to another user.
+     Transfer ownership of a project to another user. The current owner must have the transfer ownership
+    permission.
 
     Args:
         project_id (UUID):
@@ -251,11 +248,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: TargetUserInSchema,
 ) -> Any | ErrorOut | None:
-    """Transfer Project Ownership
+    """Transfer project ownership
 
-     LpkZ01MG
-
-    Transfer project ownership to another user.
+     Transfer ownership of a project to another user. The current owner must have the transfer ownership
+    permission.
 
     Args:
         project_id (UUID):

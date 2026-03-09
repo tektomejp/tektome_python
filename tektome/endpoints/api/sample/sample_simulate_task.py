@@ -64,10 +64,11 @@ def sync_detailed(
     body: SimulateTaskPostIn,
     delay: int,
 ) -> Response[SimulateTaskPostOut]:
-    """Post Simulate Task
+    """Simulate an asynchronous task
 
-     3F0LPj5x
-    Simulate an async task to test the celery worker.
+     Submit a sample asynchronous task for testing purposes. This is an asynchronous operation. To
+    retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the
+    task/process ID returned in this response.
 
     Args:
         delay (int):
@@ -100,10 +101,11 @@ def sync(
     body: SimulateTaskPostIn,
     delay: int,
 ) -> SimulateTaskPostOut | None:
-    """Post Simulate Task
+    """Simulate an asynchronous task
 
-     3F0LPj5x
-    Simulate an async task to test the celery worker.
+     Submit a sample asynchronous task for testing purposes. This is an asynchronous operation. To
+    retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the
+    task/process ID returned in this response.
 
     Args:
         delay (int):
@@ -131,10 +133,11 @@ async def asyncio_detailed(
     body: SimulateTaskPostIn,
     delay: int,
 ) -> Response[SimulateTaskPostOut]:
-    """Post Simulate Task
+    """Simulate an asynchronous task
 
-     3F0LPj5x
-    Simulate an async task to test the celery worker.
+     Submit a sample asynchronous task for testing purposes. This is an asynchronous operation. To
+    retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the
+    task/process ID returned in this response.
 
     Args:
         delay (int):
@@ -165,10 +168,11 @@ async def asyncio(
     body: SimulateTaskPostIn,
     delay: int,
 ) -> SimulateTaskPostOut | None:
-    """Post Simulate Task
+    """Simulate an asynchronous task
 
-     3F0LPj5x
-    Simulate an async task to test the celery worker.
+     Submit a sample asynchronous task for testing purposes. This is an asynchronous operation. To
+    retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the
+    task/process ID returned in this response.
 
     Args:
         delay (int):

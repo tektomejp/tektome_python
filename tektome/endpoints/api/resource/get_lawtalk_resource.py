@@ -50,11 +50,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ResourceSchema2]:
-    """Get Resource
+    """Get resource details
 
-     _bm5SAOc
-
-    Get a resource by id
+     Retrieve detailed information about a specific resource by its ID.
 
     Args:
         resource_id (str):
@@ -83,11 +81,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ResourceSchema2 | None:
-    """Get Resource
+    """Get resource details
 
-     _bm5SAOc
-
-    Get a resource by id
+     Retrieve detailed information about a specific resource by its ID.
 
     Args:
         resource_id (str):
@@ -111,11 +107,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ResourceSchema2]:
-    """Get Resource
+    """Get resource details
 
-     _bm5SAOc
-
-    Get a resource by id
+     Retrieve detailed information about a specific resource by its ID.
 
     Args:
         resource_id (str):
@@ -142,11 +136,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ResourceSchema2 | None:
-    """Get Resource
+    """Get resource details
 
-     _bm5SAOc
-
-    Get a resource by id
+     Retrieve detailed information about a specific resource by its ID.
 
     Args:
         resource_id (str):

@@ -58,19 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: BulkReviewPostIn,
 ) -> Response[Any]:
-    """Post Bulk Review
+    """Bulk review approval tickets
 
-     lXJK83hc
-
-    Perform bulk review (approve or reject) of approval tickets.
-    Approved tickets will trigger further processing.
-
-    Args:
-        path_params: DataspaceSchema containing dataspace ID.
-        request: The incoming HTTP request.
-        payload: BulkReviewPostIn containing approval IDs and action.
-
-    Returns: 204, None
+     Approve or reject multiple approval tickets in a single operation. Approved tickets trigger further
+    processing.
 
     Args:
         dataspace_id (UUID):
@@ -102,19 +93,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: BulkReviewPostIn,
 ) -> Response[Any]:
-    """Post Bulk Review
+    """Bulk review approval tickets
 
-     lXJK83hc
-
-    Perform bulk review (approve or reject) of approval tickets.
-    Approved tickets will trigger further processing.
-
-    Args:
-        path_params: DataspaceSchema containing dataspace ID.
-        request: The incoming HTTP request.
-        payload: BulkReviewPostIn containing approval IDs and action.
-
-    Returns: 204, None
+     Approve or reject multiple approval tickets in a single operation. Approved tickets trigger further
+    processing.
 
     Args:
         dataspace_id (UUID):

@@ -14,11 +14,11 @@ class SimpleAttributeTypeActionSchemaTimeOnOrAfter:
     """
     Attributes:
         action (Literal['on_or_after']):
-        value_type (Literal['time']):
+        value_type (Literal['time, tuple[time, time] if action is between']):
     """
 
     action: Literal["on_or_after"]
-    value_type: Literal["time"]
+    value_type: Literal["time, tuple[time, time] if action is between"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,9 +44,11 @@ class SimpleAttributeTypeActionSchemaTimeOnOrAfter:
         if action != "on_or_after":
             raise ValueError(f"action must match const 'on_or_after', got '{action}'")
 
-        value_type = cast(Literal["time"], d.pop("value_type"))
-        if value_type != "time":
-            raise ValueError(f"value_type must match const 'time', got '{value_type}'")
+        value_type = cast(Literal["time, tuple[time, time] if action is between"], d.pop("value_type"))
+        if value_type != "time, tuple[time, time] if action is between":
+            raise ValueError(
+                f"value_type must match const 'time, tuple[time, time] if action is between', got '{value_type}'"
+            )
 
         simple_attribute_type_action_schema_time_on_or_after = cls(
             action=action,

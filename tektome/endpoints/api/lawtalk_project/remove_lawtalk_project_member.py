@@ -143,20 +143,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | ErrorOut]:
-    """Delete Remove Project Member
+    """Remove a single project member
 
-     GV2uvKt2
-
-    DEPRECATED: Use DELETE /{project_id}/members/ instead.
-
-    Remove a member from a project. If member has no account login yet and member has no other
-    invitations, then delete the user member.
-
-    Args:
-        request: Request object.
-        path_params: Path params of type ProjectDefaultPath
-
-    Returns: 204, None
+     Deprecated. Use DELETE /{project_id}/members/ instead. Remove a single member from a project by user
+    ID.
 
     Args:
         project_id (UUID):
@@ -188,20 +178,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Any | ErrorOut | None:
-    """Delete Remove Project Member
+    """Remove a single project member
 
-     GV2uvKt2
-
-    DEPRECATED: Use DELETE /{project_id}/members/ instead.
-
-    Remove a member from a project. If member has no account login yet and member has no other
-    invitations, then delete the user member.
-
-    Args:
-        request: Request object.
-        path_params: Path params of type ProjectDefaultPath
-
-    Returns: 204, None
+     Deprecated. Use DELETE /{project_id}/members/ instead. Remove a single member from a project by user
+    ID.
 
     Args:
         project_id (UUID):
@@ -228,20 +208,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | ErrorOut]:
-    """Delete Remove Project Member
+    """Remove a single project member
 
-     GV2uvKt2
-
-    DEPRECATED: Use DELETE /{project_id}/members/ instead.
-
-    Remove a member from a project. If member has no account login yet and member has no other
-    invitations, then delete the user member.
-
-    Args:
-        request: Request object.
-        path_params: Path params of type ProjectDefaultPath
-
-    Returns: 204, None
+     Deprecated. Use DELETE /{project_id}/members/ instead. Remove a single member from a project by user
+    ID.
 
     Args:
         project_id (UUID):
@@ -271,20 +241,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Any | ErrorOut | None:
-    """Delete Remove Project Member
+    """Remove a single project member
 
-     GV2uvKt2
-
-    DEPRECATED: Use DELETE /{project_id}/members/ instead.
-
-    Remove a member from a project. If member has no account login yet and member has no other
-    invitations, then delete the user member.
-
-    Args:
-        request: Request object.
-        path_params: Path params of type ProjectDefaultPath
-
-    Returns: 204, None
+     Deprecated. Use DELETE /{project_id}/members/ instead. Remove a single member from a project by user
+    ID.
 
     Args:
         project_id (UUID):

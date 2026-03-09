@@ -35,6 +35,8 @@ class ResourceSchemaPostOut:
         table_attributes (list[str]):
         list_object_attributes (list[str]):
         json_attributes (list[str]):
+        single_select_attributes (list[str]):
+        multi_select_attributes (list[str]):
         created_by (None | Unset | UUID):
         updated_by (None | Unset | UUID):
         resource_version_control (None | Unset | UUID):
@@ -58,6 +60,8 @@ class ResourceSchemaPostOut:
     table_attributes: list[str]
     list_object_attributes: list[str]
     json_attributes: list[str]
+    single_select_attributes: list[str]
+    multi_select_attributes: list[str]
     created_by: None | Unset | UUID = UNSET
     updated_by: None | Unset | UUID = UNSET
     resource_version_control: None | Unset | UUID = UNSET
@@ -98,6 +102,10 @@ class ResourceSchemaPostOut:
         list_object_attributes = self.list_object_attributes
 
         json_attributes = self.json_attributes
+
+        single_select_attributes = self.single_select_attributes
+
+        multi_select_attributes = self.multi_select_attributes
 
         created_by: None | str | Unset
         if isinstance(self.created_by, Unset):
@@ -146,6 +154,8 @@ class ResourceSchemaPostOut:
                 "table_attributes": table_attributes,
                 "list_object_attributes": list_object_attributes,
                 "json_attributes": json_attributes,
+                "single_select_attributes": single_select_attributes,
+                "multi_select_attributes": multi_select_attributes,
             }
         )
         if created_by is not UNSET:
@@ -195,6 +205,10 @@ class ResourceSchemaPostOut:
         list_object_attributes = cast(list[str], d.pop("list_object_attributes"))
 
         json_attributes = cast(list[str], d.pop("json_attributes"))
+
+        single_select_attributes = cast(list[str], d.pop("single_select_attributes"))
+
+        multi_select_attributes = cast(list[str], d.pop("multi_select_attributes"))
 
         def _parse_created_by(data: object) -> None | Unset | UUID:
             if data is None:
@@ -267,6 +281,8 @@ class ResourceSchemaPostOut:
             table_attributes=table_attributes,
             list_object_attributes=list_object_attributes,
             json_attributes=json_attributes,
+            single_select_attributes=single_select_attributes,
+            multi_select_attributes=multi_select_attributes,
             created_by=created_by,
             updated_by=updated_by,
             resource_version_control=resource_version_control,

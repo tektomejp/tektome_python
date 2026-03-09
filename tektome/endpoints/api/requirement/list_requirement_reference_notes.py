@@ -83,15 +83,9 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedReferenceNoteSchema]:
-    """Get Reference Notes
+    """List requirement reference notes
 
-     JnQkM31B
-
-    Get reference notes associated to a requirement
-
-    Args:
-        request: Request object
-        path_params: path params of type RequirementPath
+     Retrieve a paginated list of reference notes associated with a requirement.
 
     Args:
         requirement_id (UUID):
@@ -130,15 +124,9 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedReferenceNoteSchema | None:
-    """Get Reference Notes
+    """List requirement reference notes
 
-     JnQkM31B
-
-    Get reference notes associated to a requirement
-
-    Args:
-        request: Request object
-        path_params: path params of type RequirementPath
+     Retrieve a paginated list of reference notes associated with a requirement.
 
     Args:
         requirement_id (UUID):
@@ -172,15 +160,9 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedReferenceNoteSchema]:
-    """Get Reference Notes
+    """List requirement reference notes
 
-     JnQkM31B
-
-    Get reference notes associated to a requirement
-
-    Args:
-        request: Request object
-        path_params: path params of type RequirementPath
+     Retrieve a paginated list of reference notes associated with a requirement.
 
     Args:
         requirement_id (UUID):
@@ -217,15 +199,9 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedReferenceNoteSchema | None:
-    """Get Reference Notes
+    """List requirement reference notes
 
-     JnQkM31B
-
-    Get reference notes associated to a requirement
-
-    Args:
-        request: Request object
-        path_params: path params of type RequirementPath
+     Retrieve a paginated list of reference notes associated with a requirement.
 
     Args:
         requirement_id (UUID):

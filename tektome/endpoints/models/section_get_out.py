@@ -37,6 +37,8 @@ class SectionGetOut:
         table_attributes (list[str]):
         list_object_attributes (list[str]):
         json_attributes (list[str]):
+        single_select_attributes (list[str]):
+        multi_select_attributes (list[str]):
         resources (list[str]):
         pages (list[str]):
         chunk_groups (list[str]):
@@ -74,6 +76,8 @@ class SectionGetOut:
     table_attributes: list[str]
     list_object_attributes: list[str]
     json_attributes: list[str]
+    single_select_attributes: list[str]
+    multi_select_attributes: list[str]
     resources: list[str]
     pages: list[str]
     chunk_groups: list[str]
@@ -128,6 +132,10 @@ class SectionGetOut:
         list_object_attributes = self.list_object_attributes
 
         json_attributes = self.json_attributes
+
+        single_select_attributes = self.single_select_attributes
+
+        multi_select_attributes = self.multi_select_attributes
 
         resources = self.resources
 
@@ -225,6 +233,8 @@ class SectionGetOut:
                 "table_attributes": table_attributes,
                 "list_object_attributes": list_object_attributes,
                 "json_attributes": json_attributes,
+                "single_select_attributes": single_select_attributes,
+                "multi_select_attributes": multi_select_attributes,
                 "resources": resources,
                 "pages": pages,
                 "chunk_groups": chunk_groups,
@@ -290,6 +300,10 @@ class SectionGetOut:
         list_object_attributes = cast(list[str], d.pop("list_object_attributes"))
 
         json_attributes = cast(list[str], d.pop("json_attributes"))
+
+        single_select_attributes = cast(list[str], d.pop("single_select_attributes"))
+
+        multi_select_attributes = cast(list[str], d.pop("multi_select_attributes"))
 
         resources = cast(list[str], d.pop("resources"))
 
@@ -438,6 +452,8 @@ class SectionGetOut:
             table_attributes=table_attributes,
             list_object_attributes=list_object_attributes,
             json_attributes=json_attributes,
+            single_select_attributes=single_select_attributes,
+            multi_select_attributes=multi_select_attributes,
             resources=resources,
             pages=pages,
             chunk_groups=chunk_groups,

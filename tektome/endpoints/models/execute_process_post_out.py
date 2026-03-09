@@ -16,42 +16,53 @@ T = TypeVar("T", bound="ExecuteProcessPostOut")
 class ExecuteProcessPostOut:
     """
     Attributes:
-        job_ids (list[UUID] | Unset):
+        execution_group_id (UUID):
+        execution_ids (list[UUID] | Unset):
     """
 
-    job_ids: list[UUID] | Unset = UNSET
+    execution_group_id: UUID
+    execution_ids: list[UUID] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        job_ids: list[str] | Unset = UNSET
-        if not isinstance(self.job_ids, Unset):
-            job_ids = []
-            for job_ids_item_data in self.job_ids:
-                job_ids_item = str(job_ids_item_data)
-                job_ids.append(job_ids_item)
+        execution_group_id = str(self.execution_group_id)
+
+        execution_ids: list[str] | Unset = UNSET
+        if not isinstance(self.execution_ids, Unset):
+            execution_ids = []
+            for execution_ids_item_data in self.execution_ids:
+                execution_ids_item = str(execution_ids_item_data)
+                execution_ids.append(execution_ids_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if job_ids is not UNSET:
-            field_dict["job_ids"] = job_ids
+        field_dict.update(
+            {
+                "execution_group_id": execution_group_id,
+            }
+        )
+        if execution_ids is not UNSET:
+            field_dict["execution_ids"] = execution_ids
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        _job_ids = d.pop("job_ids", UNSET)
-        job_ids: list[UUID] | Unset = UNSET
-        if _job_ids is not UNSET:
-            job_ids = []
-            for job_ids_item_data in _job_ids:
-                job_ids_item = UUID(job_ids_item_data)
+        execution_group_id = UUID(d.pop("execution_group_id"))
 
-                job_ids.append(job_ids_item)
+        _execution_ids = d.pop("execution_ids", UNSET)
+        execution_ids: list[UUID] | Unset = UNSET
+        if _execution_ids is not UNSET:
+            execution_ids = []
+            for execution_ids_item_data in _execution_ids:
+                execution_ids_item = UUID(execution_ids_item_data)
+
+                execution_ids.append(execution_ids_item)
 
         execute_process_post_out = cls(
-            job_ids=job_ids,
+            execution_group_id=execution_group_id,
+            execution_ids=execution_ids,
         )
 
         execute_process_post_out.additional_properties = d

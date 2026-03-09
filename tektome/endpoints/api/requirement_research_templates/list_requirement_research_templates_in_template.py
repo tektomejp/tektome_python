@@ -74,11 +74,9 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedRequirementResearchTemplateGetOut]:
-    """Get Research Templates
+    """List AI research templates
 
-     R1C1E1A1
-
-    Get all AI Research templates for a requirement template
+     Retrieve all AI research templates associated with a requirement template.
 
     Args:
         requirement_template_id (UUID):
@@ -113,11 +111,9 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedRequirementResearchTemplateGetOut | None:
-    """Get Research Templates
+    """List AI research templates
 
-     R1C1E1A1
-
-    Get all AI Research templates for a requirement template
+     Retrieve all AI research templates associated with a requirement template.
 
     Args:
         requirement_template_id (UUID):
@@ -147,11 +143,9 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedRequirementResearchTemplateGetOut]:
-    """Get Research Templates
+    """List AI research templates
 
-     R1C1E1A1
-
-    Get all AI Research templates for a requirement template
+     Retrieve all AI research templates associated with a requirement template.
 
     Args:
         requirement_template_id (UUID):
@@ -184,11 +178,9 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedRequirementResearchTemplateGetOut | None:
-    """Get Research Templates
+    """List AI research templates
 
-     R1C1E1A1
-
-    Get all AI Research templates for a requirement template
+     Retrieve all AI research templates associated with a requirement template.
 
     Args:
         requirement_template_id (UUID):

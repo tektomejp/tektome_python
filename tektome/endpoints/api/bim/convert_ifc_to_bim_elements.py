@@ -69,20 +69,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ConvertIfcToBimElementsFileParams,
 ) -> Response[BimObjectPostOut | ErrorResponsePostOut]:
-    r"""Convert Ifc To Bim Elements
+    """Convert an IFC file to BIM elements
 
-     Accepts an IFC file and passes it to a Celery worker for conversion
-    into BIM elements.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path parameters containing the validated BIM project ID.
-        file: The uploaded IFC file to be processed.
-
-    Returns:
-        dict: Response dictionary containing:
-            - Success: {\"process_id\": str} - Celery task ID for tracking the background process
-            - Error: 404 response if BIM project not found (handled by BimProjectPath validator)
+     Upload an IFC file and convert it into BIM elements for a specified BIM project. This is an
+    asynchronous operation. To retrieve the results, use the get_celery_task
+    (/api/core/tasks/{task_id}/) endpoint with the task/process ID returned in this response.
 
     Args:
         bim_project_id (UUID):
@@ -114,20 +105,11 @@ def sync(
     client: AuthenticatedClient,
     body: ConvertIfcToBimElementsFileParams,
 ) -> BimObjectPostOut | ErrorResponsePostOut | None:
-    r"""Convert Ifc To Bim Elements
+    """Convert an IFC file to BIM elements
 
-     Accepts an IFC file and passes it to a Celery worker for conversion
-    into BIM elements.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path parameters containing the validated BIM project ID.
-        file: The uploaded IFC file to be processed.
-
-    Returns:
-        dict: Response dictionary containing:
-            - Success: {\"process_id\": str} - Celery task ID for tracking the background process
-            - Error: 404 response if BIM project not found (handled by BimProjectPath validator)
+     Upload an IFC file and convert it into BIM elements for a specified BIM project. This is an
+    asynchronous operation. To retrieve the results, use the get_celery_task
+    (/api/core/tasks/{task_id}/) endpoint with the task/process ID returned in this response.
 
     Args:
         bim_project_id (UUID):
@@ -154,20 +136,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ConvertIfcToBimElementsFileParams,
 ) -> Response[BimObjectPostOut | ErrorResponsePostOut]:
-    r"""Convert Ifc To Bim Elements
+    """Convert an IFC file to BIM elements
 
-     Accepts an IFC file and passes it to a Celery worker for conversion
-    into BIM elements.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path parameters containing the validated BIM project ID.
-        file: The uploaded IFC file to be processed.
-
-    Returns:
-        dict: Response dictionary containing:
-            - Success: {\"process_id\": str} - Celery task ID for tracking the background process
-            - Error: 404 response if BIM project not found (handled by BimProjectPath validator)
+     Upload an IFC file and convert it into BIM elements for a specified BIM project. This is an
+    asynchronous operation. To retrieve the results, use the get_celery_task
+    (/api/core/tasks/{task_id}/) endpoint with the task/process ID returned in this response.
 
     Args:
         bim_project_id (UUID):
@@ -197,20 +170,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ConvertIfcToBimElementsFileParams,
 ) -> BimObjectPostOut | ErrorResponsePostOut | None:
-    r"""Convert Ifc To Bim Elements
+    """Convert an IFC file to BIM elements
 
-     Accepts an IFC file and passes it to a Celery worker for conversion
-    into BIM elements.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path parameters containing the validated BIM project ID.
-        file: The uploaded IFC file to be processed.
-
-    Returns:
-        dict: Response dictionary containing:
-            - Success: {\"process_id\": str} - Celery task ID for tracking the background process
-            - Error: 404 response if BIM project not found (handled by BimProjectPath validator)
+     Upload an IFC file and convert it into BIM elements for a specified BIM project. This is an
+    asynchronous operation. To retrieve the results, use the get_celery_task
+    (/api/core/tasks/{task_id}/) endpoint with the task/process ID returned in this response.
 
     Args:
         bim_project_id (UUID):

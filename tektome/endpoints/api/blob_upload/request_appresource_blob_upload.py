@@ -156,30 +156,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: BlobUploadRequestIn,
 ) -> Response[BlobUploadResponseOut | ErrorOut]:
-    """Post Blob Upload Request
+    """Request a blob upload URL
 
-     _PnQcXBd
-
-    Request a blob upload URL for large files.
-
-    This endpoint is designed for uploading large files (500MB-1GB+) that would
-    otherwise timeout or consume excessive server memory. Instead of uploading
-    through the server, the client receives a write-only SAS URL to upload
-    directly to Azure Blob Storage.
-
-    **Flow:**
-    1. Call this endpoint with the file name to get an upload URL
-    2. Upload the file directly to Azure Blob Storage using the returned `upload_url`
-    3. Call POST /groups/{resource_group_id}/upload/complete/ with the `upload_id`
-
-    **Security:**
-    - The SAS URL is write-only (cannot read other blobs)
-    - The SAS URL is path-specific (can only write to the designated blob)
-    - The SAS URL expires after a short time
-
-    **Notes:**
-    - The `upload_id` must be used within the expiration time
-    - The blob path is auto-generated with a UUID to prevent conflicts
+     Request a pre-signed upload URL for uploading large files directly to storage. After uploading the
+    file to the returned URL, call the upload complete endpoint to finalize the resource creation.
 
     Args:
         project_id (UUID):
@@ -211,30 +191,10 @@ def sync(
     client: AuthenticatedClient,
     body: BlobUploadRequestIn,
 ) -> BlobUploadResponseOut | ErrorOut | None:
-    """Post Blob Upload Request
+    """Request a blob upload URL
 
-     _PnQcXBd
-
-    Request a blob upload URL for large files.
-
-    This endpoint is designed for uploading large files (500MB-1GB+) that would
-    otherwise timeout or consume excessive server memory. Instead of uploading
-    through the server, the client receives a write-only SAS URL to upload
-    directly to Azure Blob Storage.
-
-    **Flow:**
-    1. Call this endpoint with the file name to get an upload URL
-    2. Upload the file directly to Azure Blob Storage using the returned `upload_url`
-    3. Call POST /groups/{resource_group_id}/upload/complete/ with the `upload_id`
-
-    **Security:**
-    - The SAS URL is write-only (cannot read other blobs)
-    - The SAS URL is path-specific (can only write to the designated blob)
-    - The SAS URL expires after a short time
-
-    **Notes:**
-    - The `upload_id` must be used within the expiration time
-    - The blob path is auto-generated with a UUID to prevent conflicts
+     Request a pre-signed upload URL for uploading large files directly to storage. After uploading the
+    file to the returned URL, call the upload complete endpoint to finalize the resource creation.
 
     Args:
         project_id (UUID):
@@ -261,30 +221,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: BlobUploadRequestIn,
 ) -> Response[BlobUploadResponseOut | ErrorOut]:
-    """Post Blob Upload Request
+    """Request a blob upload URL
 
-     _PnQcXBd
-
-    Request a blob upload URL for large files.
-
-    This endpoint is designed for uploading large files (500MB-1GB+) that would
-    otherwise timeout or consume excessive server memory. Instead of uploading
-    through the server, the client receives a write-only SAS URL to upload
-    directly to Azure Blob Storage.
-
-    **Flow:**
-    1. Call this endpoint with the file name to get an upload URL
-    2. Upload the file directly to Azure Blob Storage using the returned `upload_url`
-    3. Call POST /groups/{resource_group_id}/upload/complete/ with the `upload_id`
-
-    **Security:**
-    - The SAS URL is write-only (cannot read other blobs)
-    - The SAS URL is path-specific (can only write to the designated blob)
-    - The SAS URL expires after a short time
-
-    **Notes:**
-    - The `upload_id` must be used within the expiration time
-    - The blob path is auto-generated with a UUID to prevent conflicts
+     Request a pre-signed upload URL for uploading large files directly to storage. After uploading the
+    file to the returned URL, call the upload complete endpoint to finalize the resource creation.
 
     Args:
         project_id (UUID):
@@ -314,30 +254,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: BlobUploadRequestIn,
 ) -> BlobUploadResponseOut | ErrorOut | None:
-    """Post Blob Upload Request
+    """Request a blob upload URL
 
-     _PnQcXBd
-
-    Request a blob upload URL for large files.
-
-    This endpoint is designed for uploading large files (500MB-1GB+) that would
-    otherwise timeout or consume excessive server memory. Instead of uploading
-    through the server, the client receives a write-only SAS URL to upload
-    directly to Azure Blob Storage.
-
-    **Flow:**
-    1. Call this endpoint with the file name to get an upload URL
-    2. Upload the file directly to Azure Blob Storage using the returned `upload_url`
-    3. Call POST /groups/{resource_group_id}/upload/complete/ with the `upload_id`
-
-    **Security:**
-    - The SAS URL is write-only (cannot read other blobs)
-    - The SAS URL is path-specific (can only write to the designated blob)
-    - The SAS URL expires after a short time
-
-    **Notes:**
-    - The `upload_id` must be used within the expiration time
-    - The blob path is auto-generated with a UUID to prevent conflicts
+     Request a pre-signed upload URL for uploading large files directly to storage. After uploading the
+    file to the returned URL, call the upload complete endpoint to finalize the resource creation.
 
     Args:
         project_id (UUID):

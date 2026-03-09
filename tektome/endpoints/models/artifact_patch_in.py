@@ -15,30 +15,22 @@ T = TypeVar("T", bound="ArtifactPatchIn")
 class ArtifactPatchIn:
     """
     Attributes:
-        name (None | str | Unset): New name of the artifact
-        extension (None | str | Unset): New file extension of the artifact
+        path (None | str | Unset): New path of the artifact
         description (None | str | Unset): New description of the artifact
         content (None | str | Unset): New content of the artifact
     """
 
-    name: None | str | Unset = UNSET
-    extension: None | str | Unset = UNSET
+    path: None | str | Unset = UNSET
     description: None | str | Unset = UNSET
     content: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        name: None | str | Unset
-        if isinstance(self.name, Unset):
-            name = UNSET
+        path: None | str | Unset
+        if isinstance(self.path, Unset):
+            path = UNSET
         else:
-            name = self.name
-
-        extension: None | str | Unset
-        if isinstance(self.extension, Unset):
-            extension = UNSET
-        else:
-            extension = self.extension
+            path = self.path
 
         description: None | str | Unset
         if isinstance(self.description, Unset):
@@ -55,10 +47,8 @@ class ArtifactPatchIn:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if name is not UNSET:
-            field_dict["name"] = name
-        if extension is not UNSET:
-            field_dict["extension"] = extension
+        if path is not UNSET:
+            field_dict["path"] = path
         if description is not UNSET:
             field_dict["description"] = description
         if content is not UNSET:
@@ -70,23 +60,14 @@ class ArtifactPatchIn:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_name(data: object) -> None | str | Unset:
+        def _parse_path(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
             return cast(None | str | Unset, data)
 
-        name = _parse_name(d.pop("name", UNSET))
-
-        def _parse_extension(data: object) -> None | str | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | str | Unset, data)
-
-        extension = _parse_extension(d.pop("extension", UNSET))
+        path = _parse_path(d.pop("path", UNSET))
 
         def _parse_description(data: object) -> None | str | Unset:
             if data is None:
@@ -107,8 +88,7 @@ class ArtifactPatchIn:
         content = _parse_content(d.pop("content", UNSET))
 
         artifact_patch_in = cls(
-            name=name,
-            extension=extension,
+            path=path,
             description=description,
             content=content,
         )

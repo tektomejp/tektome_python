@@ -59,12 +59,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     resource_id: UUID,
 ) -> Response[BimProjectStatsGetOut]:
-    """Get Bim Project
+    """Get BIM project by resource ID
 
-     5PPx6mXb
-
-    Get the latest BIM project data using a resource ID
-    Returns: BIM project ID and BIM statistics (number of BIM objects, views, sheets)
+     Retrieve the latest BIM project data and statistics (object, view, and sheet counts) for a given
+    resource ID.
 
     Args:
         resource_id (UUID):
@@ -93,12 +91,10 @@ def sync(
     client: AuthenticatedClient,
     resource_id: UUID,
 ) -> BimProjectStatsGetOut | None:
-    """Get Bim Project
+    """Get BIM project by resource ID
 
-     5PPx6mXb
-
-    Get the latest BIM project data using a resource ID
-    Returns: BIM project ID and BIM statistics (number of BIM objects, views, sheets)
+     Retrieve the latest BIM project data and statistics (object, view, and sheet counts) for a given
+    resource ID.
 
     Args:
         resource_id (UUID):
@@ -122,12 +118,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     resource_id: UUID,
 ) -> Response[BimProjectStatsGetOut]:
-    """Get Bim Project
+    """Get BIM project by resource ID
 
-     5PPx6mXb
-
-    Get the latest BIM project data using a resource ID
-    Returns: BIM project ID and BIM statistics (number of BIM objects, views, sheets)
+     Retrieve the latest BIM project data and statistics (object, view, and sheet counts) for a given
+    resource ID.
 
     Args:
         resource_id (UUID):
@@ -154,12 +148,10 @@ async def asyncio(
     client: AuthenticatedClient,
     resource_id: UUID,
 ) -> BimProjectStatsGetOut | None:
-    """Get Bim Project
+    """Get BIM project by resource ID
 
-     5PPx6mXb
-
-    Get the latest BIM project data using a resource ID
-    Returns: BIM project ID and BIM statistics (number of BIM objects, views, sheets)
+     Retrieve the latest BIM project data and statistics (object, view, and sheet counts) for a given
+    resource ID.
 
     Args:
         resource_id (UUID):

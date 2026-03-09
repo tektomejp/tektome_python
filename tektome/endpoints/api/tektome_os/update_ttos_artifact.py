@@ -156,10 +156,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ArtifactPatchIn,
 ) -> Response[ArtifactPatchOut | GenericHttpError]:
-    """Update an existing artifact
+    """Update an artifact
 
-     sG1kwWPs
-    Update an existing artifact with new details.
+     Partially update an existing artifact's path, description, or content. Read-only artifacts cannot be
+    modified.
 
     Args:
         artifact_id (UUID):
@@ -191,10 +191,10 @@ def sync(
     client: AuthenticatedClient,
     body: ArtifactPatchIn,
 ) -> ArtifactPatchOut | GenericHttpError | None:
-    """Update an existing artifact
+    """Update an artifact
 
-     sG1kwWPs
-    Update an existing artifact with new details.
+     Partially update an existing artifact's path, description, or content. Read-only artifacts cannot be
+    modified.
 
     Args:
         artifact_id (UUID):
@@ -221,10 +221,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ArtifactPatchIn,
 ) -> Response[ArtifactPatchOut | GenericHttpError]:
-    """Update an existing artifact
+    """Update an artifact
 
-     sG1kwWPs
-    Update an existing artifact with new details.
+     Partially update an existing artifact's path, description, or content. Read-only artifacts cannot be
+    modified.
 
     Args:
         artifact_id (UUID):
@@ -254,10 +254,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ArtifactPatchIn,
 ) -> ArtifactPatchOut | GenericHttpError | None:
-    """Update an existing artifact
+    """Update an artifact
 
-     sG1kwWPs
-    Update an existing artifact with new details.
+     Partially update an existing artifact's path, description, or content. Read-only artifacts cannot be
+    modified.
 
     Args:
         artifact_id (UUID):

@@ -54,11 +54,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[TemplateOut]:
-    """Retrieve Project Template
+    """Get a project process template
 
-     ctpqnwfX
-
-    Retrieve a specific template in the current project.
+     Retrieve a specific process template by ID within the specified project.
 
     Args:
         project_id (UUID):
@@ -90,11 +88,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> TemplateOut | None:
-    """Retrieve Project Template
+    """Get a project process template
 
-     ctpqnwfX
-
-    Retrieve a specific template in the current project.
+     Retrieve a specific process template by ID within the specified project.
 
     Args:
         project_id (UUID):
@@ -121,11 +117,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[TemplateOut]:
-    """Retrieve Project Template
+    """Get a project process template
 
-     ctpqnwfX
-
-    Retrieve a specific template in the current project.
+     Retrieve a specific process template by ID within the specified project.
 
     Args:
         project_id (UUID):
@@ -155,11 +149,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> TemplateOut | None:
-    """Retrieve Project Template
+    """Get a project process template
 
-     ctpqnwfX
-
-    Retrieve a specific template in the current project.
+     Retrieve a specific process template by ID within the specified project.
 
     Args:
         project_id (UUID):

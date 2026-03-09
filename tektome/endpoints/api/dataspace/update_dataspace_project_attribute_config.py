@@ -65,12 +65,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceProjectAttributePatchInPatch,
 ) -> Response[DataspaceProjectAttributeSchemaOut]:
-    """Patch Dataspace Project Attribute Config
+    """Update a project attribute column configuration
 
-     x16N0f5B
-
-    Updates the column attributes of a dataspace project.
-    attribute name is a computed field based on the attribute label.
+     Update an existing project attribute column configuration, including its label, metadata, and table
+    or select options. Renaming propagates to all projects in the dataspace.
 
     Args:
         attribute_config_id (UUID):
@@ -102,12 +100,10 @@ def sync(
     client: AuthenticatedClient,
     body: DataspaceProjectAttributePatchInPatch,
 ) -> DataspaceProjectAttributeSchemaOut | None:
-    """Patch Dataspace Project Attribute Config
+    """Update a project attribute column configuration
 
-     x16N0f5B
-
-    Updates the column attributes of a dataspace project.
-    attribute name is a computed field based on the attribute label.
+     Update an existing project attribute column configuration, including its label, metadata, and table
+    or select options. Renaming propagates to all projects in the dataspace.
 
     Args:
         attribute_config_id (UUID):
@@ -134,12 +130,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceProjectAttributePatchInPatch,
 ) -> Response[DataspaceProjectAttributeSchemaOut]:
-    """Patch Dataspace Project Attribute Config
+    """Update a project attribute column configuration
 
-     x16N0f5B
-
-    Updates the column attributes of a dataspace project.
-    attribute name is a computed field based on the attribute label.
+     Update an existing project attribute column configuration, including its label, metadata, and table
+    or select options. Renaming propagates to all projects in the dataspace.
 
     Args:
         attribute_config_id (UUID):
@@ -169,12 +163,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DataspaceProjectAttributePatchInPatch,
 ) -> DataspaceProjectAttributeSchemaOut | None:
-    """Patch Dataspace Project Attribute Config
+    """Update a project attribute column configuration
 
-     x16N0f5B
-
-    Updates the column attributes of a dataspace project.
-    attribute name is a computed field based on the attribute label.
+     Update an existing project attribute column configuration, including its label, metadata, and table
+    or select options. Renaming propagates to all projects in the dataspace.
 
     Args:
         attribute_config_id (UUID):

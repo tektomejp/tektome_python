@@ -58,17 +58,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ExecutionGroupProcessesMetadataGetOut]:
-    """Get Execution Group Metadata
+    """Get execution group process metadata
 
-     bbRd7fnc
-
-    Retrieve details of a specific execution group by its ID.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
-
-    Returns: ExecutionGroup - The execution group instance.
+     Retrieve metadata about the processes within a specific execution group.
 
     Args:
         dataspace_id (UUID):
@@ -100,17 +92,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ExecutionGroupProcessesMetadataGetOut | None:
-    """Get Execution Group Metadata
+    """Get execution group process metadata
 
-     bbRd7fnc
-
-    Retrieve details of a specific execution group by its ID.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
-
-    Returns: ExecutionGroup - The execution group instance.
+     Retrieve metadata about the processes within a specific execution group.
 
     Args:
         dataspace_id (UUID):
@@ -137,17 +121,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ExecutionGroupProcessesMetadataGetOut]:
-    """Get Execution Group Metadata
+    """Get execution group process metadata
 
-     bbRd7fnc
-
-    Retrieve details of a specific execution group by its ID.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
-
-    Returns: ExecutionGroup - The execution group instance.
+     Retrieve metadata about the processes within a specific execution group.
 
     Args:
         dataspace_id (UUID):
@@ -177,17 +153,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ExecutionGroupProcessesMetadataGetOut | None:
-    """Get Execution Group Metadata
+    """Get execution group process metadata
 
-     bbRd7fnc
-
-    Retrieve details of a specific execution group by its ID.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
-
-    Returns: ExecutionGroup - The execution group instance.
+     Retrieve metadata about the processes within a specific execution group.
 
     Args:
         dataspace_id (UUID):

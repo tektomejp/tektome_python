@@ -69,12 +69,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: GenerateRequirementItemRowPostIn,
 ) -> Response[Any | ProjectRequirementItemGetOut]:
-    """Post Generate Row Requirement Item
+    """Generate a requirement item row
 
-     JnQkM31D
-
-    Generate a row for requirement items based on the project data and requirement's sections and
-    captures.
+     Use AI to generate or update a single row in the requirement items table based on the requirement's
+    sections, captures, and reference notes. Returns 304 if no changes are needed.
 
     Args:
         requirement_id (UUID):
@@ -106,12 +104,10 @@ def sync(
     client: AuthenticatedClient,
     body: GenerateRequirementItemRowPostIn,
 ) -> Any | ProjectRequirementItemGetOut | None:
-    """Post Generate Row Requirement Item
+    """Generate a requirement item row
 
-     JnQkM31D
-
-    Generate a row for requirement items based on the project data and requirement's sections and
-    captures.
+     Use AI to generate or update a single row in the requirement items table based on the requirement's
+    sections, captures, and reference notes. Returns 304 if no changes are needed.
 
     Args:
         requirement_id (UUID):
@@ -138,12 +134,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: GenerateRequirementItemRowPostIn,
 ) -> Response[Any | ProjectRequirementItemGetOut]:
-    """Post Generate Row Requirement Item
+    """Generate a requirement item row
 
-     JnQkM31D
-
-    Generate a row for requirement items based on the project data and requirement's sections and
-    captures.
+     Use AI to generate or update a single row in the requirement items table based on the requirement's
+    sections, captures, and reference notes. Returns 304 if no changes are needed.
 
     Args:
         requirement_id (UUID):
@@ -173,12 +167,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: GenerateRequirementItemRowPostIn,
 ) -> Any | ProjectRequirementItemGetOut | None:
-    """Post Generate Row Requirement Item
+    """Generate a requirement item row
 
-     JnQkM31D
-
-    Generate a row for requirement items based on the project data and requirement's sections and
-    captures.
+     Use AI to generate or update a single row in the requirement items table based on the requirement's
+    sections, captures, and reference notes. Returns 304 if no changes are needed.
 
     Args:
         requirement_id (UUID):

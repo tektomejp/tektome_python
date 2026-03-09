@@ -74,9 +74,10 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedGetAPIKeyGetOut]:
-    """Get Api Keys
+    """List API keys
 
-     Retrieve all API keys for the current user. API Keys are expired at creation time + expires_in.
+     Retrieve all API keys for the authenticated user. Each API key has an expiration time set at
+    creation. Supports filtering by system keys and expired keys.
 
     Args:
         include_system (bool | Unset):  Default: False.
@@ -114,9 +115,10 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedGetAPIKeyGetOut | None:
-    """Get Api Keys
+    """List API keys
 
-     Retrieve all API keys for the current user. API Keys are expired at creation time + expires_in.
+     Retrieve all API keys for the authenticated user. Each API key has an expiration time set at
+    creation. Supports filtering by system keys and expired keys.
 
     Args:
         include_system (bool | Unset):  Default: False.
@@ -149,9 +151,10 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedGetAPIKeyGetOut]:
-    """Get Api Keys
+    """List API keys
 
-     Retrieve all API keys for the current user. API Keys are expired at creation time + expires_in.
+     Retrieve all API keys for the authenticated user. Each API key has an expiration time set at
+    creation. Supports filtering by system keys and expired keys.
 
     Args:
         include_system (bool | Unset):  Default: False.
@@ -187,9 +190,10 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedGetAPIKeyGetOut | None:
-    """Get Api Keys
+    """List API keys
 
-     Retrieve all API keys for the current user. API Keys are expired at creation time + expires_in.
+     Retrieve all API keys for the authenticated user. Each API key has an expiration time set at
+    creation. Supports filtering by system keys and expired keys.
 
     Args:
         include_system (bool | Unset):  Default: False.

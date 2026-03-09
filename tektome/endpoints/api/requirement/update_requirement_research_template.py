@@ -61,16 +61,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RequirementViewResearchTemplatePatchIn,
 ) -> Response[Any]:
-    """Patch Requirement Research Templates
+    """Update research template visibility
 
-     JnQkM31N
-
-    Update the view status of a research template associated to a requirement's requirement template
-
-    Args:
-        request: Request object
-        path_params: path params of type RequirementResearchTemplatePath
-        payload: request payload of type RequirementViewResearchTemplatePatchIn
+     Update the visibility status of a research template associated with a requirement.
 
     Args:
         requirement_id (UUID):
@@ -106,16 +99,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RequirementViewResearchTemplatePatchIn,
 ) -> Response[Any]:
-    """Patch Requirement Research Templates
+    """Update research template visibility
 
-     JnQkM31N
-
-    Update the view status of a research template associated to a requirement's requirement template
-
-    Args:
-        request: Request object
-        path_params: path params of type RequirementResearchTemplatePath
-        payload: request payload of type RequirementViewResearchTemplatePatchIn
+     Update the visibility status of a research template associated with a requirement.
 
     Args:
         requirement_id (UUID):

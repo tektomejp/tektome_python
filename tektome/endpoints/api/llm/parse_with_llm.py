@@ -55,13 +55,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: LlmParserPostIn,
 ) -> Response[LlmParserPostOut]:
-    """Post Llm Parser
+    """Parse text using an LLM
 
-     VshaaQ36
-    Generic llm parser. Config is loaded from database: OaiConfig, if it does not exist in the database
-    it is loaded from: <br>
-    `/workspaces/law-ai-gateway/app/appcore/constants/oai_configs.py`<br>
-    If the config is not found in the database and the default config file: 422<br>
+     Send a query to a configured LLM model for parsing and return the result. The LLM configuration is
+    loaded from the database or falls back to defaults.
 
     Args:
         body (LlmParserPostIn):
@@ -90,13 +87,10 @@ def sync(
     client: AuthenticatedClient,
     body: LlmParserPostIn,
 ) -> LlmParserPostOut | None:
-    """Post Llm Parser
+    """Parse text using an LLM
 
-     VshaaQ36
-    Generic llm parser. Config is loaded from database: OaiConfig, if it does not exist in the database
-    it is loaded from: <br>
-    `/workspaces/law-ai-gateway/app/appcore/constants/oai_configs.py`<br>
-    If the config is not found in the database and the default config file: 422<br>
+     Send a query to a configured LLM model for parsing and return the result. The LLM configuration is
+    loaded from the database or falls back to defaults.
 
     Args:
         body (LlmParserPostIn):
@@ -120,13 +114,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: LlmParserPostIn,
 ) -> Response[LlmParserPostOut]:
-    """Post Llm Parser
+    """Parse text using an LLM
 
-     VshaaQ36
-    Generic llm parser. Config is loaded from database: OaiConfig, if it does not exist in the database
-    it is loaded from: <br>
-    `/workspaces/law-ai-gateway/app/appcore/constants/oai_configs.py`<br>
-    If the config is not found in the database and the default config file: 422<br>
+     Send a query to a configured LLM model for parsing and return the result. The LLM configuration is
+    loaded from the database or falls back to defaults.
 
     Args:
         body (LlmParserPostIn):
@@ -153,13 +144,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: LlmParserPostIn,
 ) -> LlmParserPostOut | None:
-    """Post Llm Parser
+    """Parse text using an LLM
 
-     VshaaQ36
-    Generic llm parser. Config is loaded from database: OaiConfig, if it does not exist in the database
-    it is loaded from: <br>
-    `/workspaces/law-ai-gateway/app/appcore/constants/oai_configs.py`<br>
-    If the config is not found in the database and the default config file: 422<br>
+     Send a query to a configured LLM model for parsing and return the result. The LLM configuration is
+    loaded from the database or falls back to defaults.
 
     Args:
         body (LlmParserPostIn):

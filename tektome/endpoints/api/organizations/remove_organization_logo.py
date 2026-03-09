@@ -61,11 +61,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ErrorOutputSchemaOut | OrganizationsGetOut]:
-    """Remove Organization Logo
+    """Remove organization logo
 
-     x31up6nn
-
-    Remove organization logo.
+     Remove the logo image from an organization.
 
     Args:
         organization_id (UUID):
@@ -94,11 +92,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ErrorOutputSchemaOut | OrganizationsGetOut | None:
-    """Remove Organization Logo
+    """Remove organization logo
 
-     x31up6nn
-
-    Remove organization logo.
+     Remove the logo image from an organization.
 
     Args:
         organization_id (UUID):
@@ -122,11 +118,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ErrorOutputSchemaOut | OrganizationsGetOut]:
-    """Remove Organization Logo
+    """Remove organization logo
 
-     x31up6nn
-
-    Remove organization logo.
+     Remove the logo image from an organization.
 
     Args:
         organization_id (UUID):
@@ -153,11 +147,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ErrorOutputSchemaOut | OrganizationsGetOut | None:
-    """Remove Organization Logo
+    """Remove organization logo
 
-     x31up6nn
-
-    Remove organization logo.
+     Remove the logo image from an organization.
 
     Args:
         organization_id (UUID):
