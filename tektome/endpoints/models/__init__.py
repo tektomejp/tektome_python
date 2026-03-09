@@ -301,7 +301,10 @@ from .dataspace_search_tag_config_patch_in_patch_default_grouping_option_type_0 
 from .dataspace_search_tag_config_post_in import DataspaceSearchTagConfigPostIn
 from .dataspace_table_attribute_patch_in import DataspaceTableAttributePatchIn
 from .dataspace_table_attribute_path import DataspaceTableAttributePath
+from .dataspace_table_result_hit import DataspaceTableResultHit
 from .dataspace_table_row_operation_in import DataspaceTableRowOperationIn
+from .dataspace_table_search_result import DataspaceTableSearchResult
+from .dataspace_table_search_result_debug_type_0 import DataspaceTableSearchResultDebugType0
 from .dataspace_tag_config_path import DataspaceTagConfigPath
 from .dataspace_template_import_in import DataspaceTemplateImportIn
 from .dataspace_template_path import DataspaceTemplatePath
@@ -911,6 +914,7 @@ from .section_path_in import SectionPathIn
 from .section_table_path import SectionTablePath
 from .section_table_path_mode import SectionTablePathMode
 from .send_msg_post_in import SendMsgPostIn
+from .simple_attribute_type import SimpleAttributeType
 from .simple_attribute_type_action_schema import SimpleAttributeTypeActionSchema
 from .simple_attribute_type_action_schema_boolean_equals import SimpleAttributeTypeActionSchemaBooleanEquals
 from .simple_attribute_type_action_schema_boolean_not_equals import SimpleAttributeTypeActionSchemaBooleanNotEquals
@@ -990,10 +994,16 @@ from .table_attribute_schema_out import TableAttributeSchemaOut
 from .table_attribute_schema_out_value_type_0 import TableAttributeSchemaOutValueType0
 from .table_cell_update import TableCellUpdate
 from .table_column import TableColumn
+from .table_column_info import TableColumnInfo
+from .table_column_mapping import TableColumnMapping
+from .table_column_mapping_entity_type import TableColumnMappingEntityType
 from .table_column_type import TableColumnType
 from .table_metadata_update_request import TableMetadataUpdateRequest
 from .table_metadata_update_request_rename_columns_type_0 import TableMetadataUpdateRequestRenameColumnsType0
+from .table_result_info import TableResultInfo
+from .table_row_cell_info import TableRowCellInfo
 from .target_model_entity_filter_options import TargetModelEntityFilterOptions
+from .target_table import TargetTable
 from .target_user_in_schema import TargetUserInSchema
 from .task_post_out import TaskPostOut
 from .tektome_response_entry import TektomeResponseEntry
@@ -1328,7 +1338,10 @@ __all__ = (
     "DataspacesOrganizationSchema",
     "DataspaceTableAttributePatchIn",
     "DataspaceTableAttributePath",
+    "DataspaceTableResultHit",
     "DataspaceTableRowOperationIn",
+    "DataspaceTableSearchResult",
+    "DataspaceTableSearchResultDebugType0",
     "DataspaceTagConfigPath",
     "DataspaceTemplateImportIn",
     "DataspaceTemplatePath",
@@ -1908,6 +1921,7 @@ __all__ = (
     "SectionTablePath",
     "SectionTablePathMode",
     "SendMsgPostIn",
+    "SimpleAttributeType",
     "SimpleAttributeTypeActionSchema",
     "SimpleAttributeTypeActionSchemaBooleanEquals",
     "SimpleAttributeTypeActionSchemaBooleanNotEquals",
@@ -1975,10 +1989,16 @@ __all__ = (
     "TableAttributeSchemaOutValueType0",
     "TableCellUpdate",
     "TableColumn",
+    "TableColumnInfo",
+    "TableColumnMapping",
+    "TableColumnMappingEntityType",
     "TableColumnType",
     "TableMetadataUpdateRequest",
     "TableMetadataUpdateRequestRenameColumnsType0",
+    "TableResultInfo",
+    "TableRowCellInfo",
     "TargetModelEntityFilterOptions",
+    "TargetTable",
     "TargetUserInSchema",
     "TaskPostOut",
     "TektomeResponseEntry",

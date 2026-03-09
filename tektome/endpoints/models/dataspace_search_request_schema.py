@@ -12,6 +12,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.field_condition_input import FieldConditionInput
+    from ..models.target_table import TargetTable
 
 
 T = TypeVar("T", bound="DataspaceSearchRequestSchema")
@@ -33,7 +34,10 @@ class DataspaceSearchRequestSchema:
             with high values as it may impact performance. Range between 1 and 100. Defaults to 5. Default: 5.
         max_resource_per_project (int | Unset): Maximum number of resource inner_hits to return per project be careful
             with high values as it may impact performance. Range between 1 and 100. Defaults to 25. Default: 25.
-        target_entity (DataspaceEntityType | Unset):  Default: DataspaceEntityType.PROJECT.
+        target_entity (DataspaceEntityType | TargetTable | Unset): 'project' returns projects as top-level hits with
+            nested resource_hits. 'resource' returns resources as top-level hits with projects extracted from inner_hits. Or
+            a TargetTable object {table_name, table_entity_type} for row-level table search. Default:
+            DataspaceEntityType.PROJECT.
         is_debug (bool | Unset): Enable debug mode to log raw query and results Default: False.
     """
 
@@ -46,7 +50,7 @@ class DataspaceSearchRequestSchema:
     page_size: int | Unset = 30
     max_chunks_per_resource: int | Unset = 5
     max_resource_per_project: int | Unset = 25
-    target_entity: DataspaceEntityType | Unset = DataspaceEntityType.PROJECT
+    target_entity: DataspaceEntityType | TargetTable | Unset = DataspaceEntityType.PROJECT
     is_debug: bool | Unset = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -91,9 +95,13 @@ class DataspaceSearchRequestSchema:
 
         max_resource_per_project = self.max_resource_per_project
 
-        target_entity: str | Unset = UNSET
-        if not isinstance(self.target_entity, Unset):
+        target_entity: dict[str, Any] | str | Unset
+        if isinstance(self.target_entity, Unset):
+            target_entity = UNSET
+        elif isinstance(self.target_entity, DataspaceEntityType):
             target_entity = self.target_entity.value
+        else:
+            target_entity = self.target_entity.to_dict()
 
         is_debug = self.is_debug
 
@@ -128,6 +136,7 @@ class DataspaceSearchRequestSchema:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.field_condition_input import FieldConditionInput
+        from ..models.target_table import TargetTable
 
         d = dict(src_dict)
 
@@ -185,12 +194,24 @@ class DataspaceSearchRequestSchema:
 
         max_resource_per_project = d.pop("max_resource_per_project", UNSET)
 
-        _target_entity = d.pop("target_entity", UNSET)
-        target_entity: DataspaceEntityType | Unset
-        if isinstance(_target_entity, Unset):
-            target_entity = UNSET
-        else:
-            target_entity = DataspaceEntityType(_target_entity)
+        def _parse_target_entity(data: object) -> DataspaceEntityType | TargetTable | Unset:
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                target_entity_type_0 = DataspaceEntityType(data)
+
+                return target_entity_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            if not isinstance(data, dict):
+                raise TypeError()
+            target_entity_type_1 = TargetTable.from_dict(data)
+
+            return target_entity_type_1
+
+        target_entity = _parse_target_entity(d.pop("target_entity", UNSET))
 
         is_debug = d.pop("is_debug", UNSET)
 

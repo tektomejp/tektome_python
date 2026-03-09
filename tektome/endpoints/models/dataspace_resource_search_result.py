@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.dataspace_resource_result_hit import DataspaceResourceResultHit
     from ..models.dataspace_resource_search_result_debug_type_0 import DataspaceResourceSearchResultDebugType0
+    from ..models.table_result_info import TableResultInfo
 
 
 T = TypeVar("T", bound="DataspaceResourceSearchResult")
@@ -28,6 +29,7 @@ class DataspaceResourceSearchResult:
         resource_count (int):
         hits (list[DataspaceResourceResultHit]):
         type_ (Literal['resource'] | Unset):  Default: 'resource'.
+        tables (list[TableResultInfo] | Unset):
         debug (DataspaceResourceSearchResultDebugType0 | None | Unset):
     """
 
@@ -38,6 +40,7 @@ class DataspaceResourceSearchResult:
     resource_count: int
     hits: list[DataspaceResourceResultHit]
     type_: Literal["resource"] | Unset = "resource"
+    tables: list[TableResultInfo] | Unset = UNSET
     debug: DataspaceResourceSearchResultDebugType0 | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -61,6 +64,13 @@ class DataspaceResourceSearchResult:
 
         type_ = self.type_
 
+        tables: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.tables, Unset):
+            tables = []
+            for tables_item_data in self.tables:
+                tables_item = tables_item_data.to_dict()
+                tables.append(tables_item)
+
         debug: dict[str, Any] | None | Unset
         if isinstance(self.debug, Unset):
             debug = UNSET
@@ -83,6 +93,8 @@ class DataspaceResourceSearchResult:
         )
         if type_ is not UNSET:
             field_dict["type"] = type_
+        if tables is not UNSET:
+            field_dict["tables"] = tables
         if debug is not UNSET:
             field_dict["debug"] = debug
 
@@ -92,6 +104,7 @@ class DataspaceResourceSearchResult:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.dataspace_resource_result_hit import DataspaceResourceResultHit
         from ..models.dataspace_resource_search_result_debug_type_0 import DataspaceResourceSearchResultDebugType0
+        from ..models.table_result_info import TableResultInfo
 
         d = dict(src_dict)
         page = d.pop("page")
@@ -114,6 +127,15 @@ class DataspaceResourceSearchResult:
         type_ = cast(Literal["resource"] | Unset, d.pop("type", UNSET))
         if type_ != "resource" and not isinstance(type_, Unset):
             raise ValueError(f"type must match const 'resource', got '{type_}'")
+
+        _tables = d.pop("tables", UNSET)
+        tables: list[TableResultInfo] | Unset = UNSET
+        if _tables is not UNSET:
+            tables = []
+            for tables_item_data in _tables:
+                tables_item = TableResultInfo.from_dict(tables_item_data)
+
+                tables.append(tables_item)
 
         def _parse_debug(data: object) -> DataspaceResourceSearchResultDebugType0 | None | Unset:
             if data is None:
@@ -140,6 +162,7 @@ class DataspaceResourceSearchResult:
             resource_count=resource_count,
             hits=hits,
             type_=type_,
+            tables=tables,
             debug=debug,
         )
 
