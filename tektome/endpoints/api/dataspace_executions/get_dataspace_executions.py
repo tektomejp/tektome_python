@@ -229,10 +229,14 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedExecutionsGetOut]:
-    """List dataspace executions
+    """Get Dataspace Executions
 
-     Retrieve all process executions in the current dataspace. Supports filtering by date range and other
-    parameters.
+     LWV7x0oA
+
+    Retrieve all executions in the current dataspace.
+
+    Filters:
+        datetime format - 2025-12-18 00:00:00+00:00
 
     Args:
         dataspace_id (UUID):
@@ -315,10 +319,14 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedExecutionsGetOut | None:
-    """List dataspace executions
+    """Get Dataspace Executions
 
-     Retrieve all process executions in the current dataspace. Supports filtering by date range and other
-    parameters.
+     LWV7x0oA
+
+    Retrieve all executions in the current dataspace.
+
+    Filters:
+        datetime format - 2025-12-18 00:00:00+00:00
 
     Args:
         dataspace_id (UUID):
@@ -396,10 +404,14 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedExecutionsGetOut]:
-    """List dataspace executions
+    """Get Dataspace Executions
 
-     Retrieve all process executions in the current dataspace. Supports filtering by date range and other
-    parameters.
+     LWV7x0oA
+
+    Retrieve all executions in the current dataspace.
+
+    Filters:
+        datetime format - 2025-12-18 00:00:00+00:00
 
     Args:
         dataspace_id (UUID):
@@ -480,10 +492,14 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedExecutionsGetOut | None:
-    """List dataspace executions
+    """Get Dataspace Executions
 
-     Retrieve all process executions in the current dataspace. Supports filtering by date range and other
-    parameters.
+     LWV7x0oA
+
+    Retrieve all executions in the current dataspace.
+
+    Filters:
+        datetime format - 2025-12-18 00:00:00+00:00
 
     Args:
         dataspace_id (UUID):

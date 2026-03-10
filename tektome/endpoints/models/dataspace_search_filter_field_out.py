@@ -17,7 +17,6 @@ if TYPE_CHECKING:
     from ..models.dataspace_search_filter_field_out_recommended_values_type_0 import (
         DataspaceSearchFilterFieldOutRecommendedValuesType0,
     )
-    from ..models.table_column_mapping import TableColumnMapping
     from ..models.user_metadata import UserMetadata
 
 
@@ -36,7 +35,6 @@ class DataspaceSearchFilterFieldOut:
         name (str):
         created (datetime.datetime):
         updated (datetime.datetime):
-        table_column_mappings (list[TableColumnMapping] | Unset):
         id (None | Unset | UUID):
         description (None | str | Unset):
         operator (None | str | Unset):
@@ -50,7 +48,6 @@ class DataspaceSearchFilterFieldOut:
     name: str
     created: datetime.datetime
     updated: datetime.datetime
-    table_column_mappings: list[TableColumnMapping] | Unset = UNSET
     id: None | Unset | UUID = UNSET
     description: None | str | Unset = UNSET
     operator: None | str | Unset = UNSET
@@ -81,13 +78,6 @@ class DataspaceSearchFilterFieldOut:
         created = self.created.isoformat()
 
         updated = self.updated.isoformat()
-
-        table_column_mappings: list[dict[str, Any]] | Unset = UNSET
-        if not isinstance(self.table_column_mappings, Unset):
-            table_column_mappings = []
-            for table_column_mappings_item_data in self.table_column_mappings:
-                table_column_mappings_item = table_column_mappings_item_data.to_dict()
-                table_column_mappings.append(table_column_mappings_item)
 
         id: None | str | Unset
         if isinstance(self.id, Unset):
@@ -130,8 +120,6 @@ class DataspaceSearchFilterFieldOut:
                 "updated": updated,
             }
         )
-        if table_column_mappings is not UNSET:
-            field_dict["table_column_mappings"] = table_column_mappings
         if id is not UNSET:
             field_dict["id"] = id
         if description is not UNSET:
@@ -150,7 +138,6 @@ class DataspaceSearchFilterFieldOut:
         from ..models.dataspace_search_filter_field_out_recommended_values_type_0 import (
             DataspaceSearchFilterFieldOutRecommendedValuesType0,
         )
-        from ..models.table_column_mapping import TableColumnMapping
         from ..models.user_metadata import UserMetadata
 
         d = dict(src_dict)
@@ -177,15 +164,6 @@ class DataspaceSearchFilterFieldOut:
         created = isoparse(d.pop("created"))
 
         updated = isoparse(d.pop("updated"))
-
-        _table_column_mappings = d.pop("table_column_mappings", UNSET)
-        table_column_mappings: list[TableColumnMapping] | Unset = UNSET
-        if _table_column_mappings is not UNSET:
-            table_column_mappings = []
-            for table_column_mappings_item_data in _table_column_mappings:
-                table_column_mappings_item = TableColumnMapping.from_dict(table_column_mappings_item_data)
-
-                table_column_mappings.append(table_column_mappings_item)
 
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -249,7 +227,6 @@ class DataspaceSearchFilterFieldOut:
             name=name,
             created=created,
             updated=updated,
-            table_column_mappings=table_column_mappings,
             id=id,
             description=description,
             operator=operator,

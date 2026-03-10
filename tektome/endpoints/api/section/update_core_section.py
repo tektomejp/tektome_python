@@ -61,9 +61,19 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: SectionCreationPutIn,
 ) -> Response[SectionGetOut]:
-    """Update a section
+    """Update Section
 
-     Replace the data of an existing section with the provided payload.
+     wpRZ_ydW
+
+    Update a section by its ID.
+    It will replace the existing section data's fields with the new data provided in the payload.
+
+    Args:
+        request: Request object.
+        path_params: path parameters containing section ID.
+        payload: SectionCreationPostIn with updated data.
+
+    Returns: updated section details.
 
     Args:
         section_id (UUID):
@@ -95,9 +105,19 @@ def sync(
     client: AuthenticatedClient,
     body: SectionCreationPutIn,
 ) -> SectionGetOut | None:
-    """Update a section
+    """Update Section
 
-     Replace the data of an existing section with the provided payload.
+     wpRZ_ydW
+
+    Update a section by its ID.
+    It will replace the existing section data's fields with the new data provided in the payload.
+
+    Args:
+        request: Request object.
+        path_params: path parameters containing section ID.
+        payload: SectionCreationPostIn with updated data.
+
+    Returns: updated section details.
 
     Args:
         section_id (UUID):
@@ -124,9 +144,19 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: SectionCreationPutIn,
 ) -> Response[SectionGetOut]:
-    """Update a section
+    """Update Section
 
-     Replace the data of an existing section with the provided payload.
+     wpRZ_ydW
+
+    Update a section by its ID.
+    It will replace the existing section data's fields with the new data provided in the payload.
+
+    Args:
+        request: Request object.
+        path_params: path parameters containing section ID.
+        payload: SectionCreationPostIn with updated data.
+
+    Returns: updated section details.
 
     Args:
         section_id (UUID):
@@ -156,9 +186,19 @@ async def asyncio(
     client: AuthenticatedClient,
     body: SectionCreationPutIn,
 ) -> SectionGetOut | None:
-    """Update a section
+    """Update Section
 
-     Replace the data of an existing section with the provided payload.
+     wpRZ_ydW
+
+    Update a section by its ID.
+    It will replace the existing section data's fields with the new data provided in the payload.
+
+    Args:
+        request: Request object.
+        path_params: path parameters containing section ID.
+        payload: SectionCreationPostIn with updated data.
+
+    Returns: updated section details.
 
     Args:
         section_id (UUID):

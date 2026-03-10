@@ -156,9 +156,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: CreateEnvironmentVariableRequest,
 ) -> Response[EnvironmentVariableResponse | GenericHttpError]:
-    """Create an environment variable
+    """Create Environment Variable
 
-     Create a new environment variable within the organization. Returns 409 if the key already exists.
+     8e7wWUEv
+
+    Create a new environment variable.
 
     Args:
         organization_id (UUID):
@@ -190,9 +192,11 @@ def sync(
     client: AuthenticatedClient,
     body: CreateEnvironmentVariableRequest,
 ) -> EnvironmentVariableResponse | GenericHttpError | None:
-    """Create an environment variable
+    """Create Environment Variable
 
-     Create a new environment variable within the organization. Returns 409 if the key already exists.
+     8e7wWUEv
+
+    Create a new environment variable.
 
     Args:
         organization_id (UUID):
@@ -219,9 +223,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: CreateEnvironmentVariableRequest,
 ) -> Response[EnvironmentVariableResponse | GenericHttpError]:
-    """Create an environment variable
+    """Create Environment Variable
 
-     Create a new environment variable within the organization. Returns 409 if the key already exists.
+     8e7wWUEv
+
+    Create a new environment variable.
 
     Args:
         organization_id (UUID):
@@ -251,9 +257,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: CreateEnvironmentVariableRequest,
 ) -> EnvironmentVariableResponse | GenericHttpError | None:
-    """Create an environment variable
+    """Create Environment Variable
 
-     Create a new environment variable within the organization. Returns 409 if the key already exists.
+     8e7wWUEv
+
+    Create a new environment variable.
 
     Args:
         organization_id (UUID):

@@ -58,10 +58,15 @@ def sync_detailed(
     client: AuthenticatedClient,
     id_only: bool | Unset = False,
 ) -> Response[Any]:
-    """Stream BIM objects by project
+    """Get Bim Objects By Project
 
-     Stream all BIM objects for a project as NDJSON. Use the id_only parameter to return only element
-    IDs.
+     JQCKkusu
+
+    Get all BIM objects linked to a specific project.
+    Args:
+        bim_project_id: The ID of the BIM project to retrieve objects for.
+    Returns:
+        A list of BIM objects linked to the specified project.
 
     Args:
         bim_project_id (UUID):
@@ -93,10 +98,15 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     id_only: bool | Unset = False,
 ) -> Response[Any]:
-    """Stream BIM objects by project
+    """Get Bim Objects By Project
 
-     Stream all BIM objects for a project as NDJSON. Use the id_only parameter to return only element
-    IDs.
+     JQCKkusu
+
+    Get all BIM objects linked to a specific project.
+    Args:
+        bim_project_id: The ID of the BIM project to retrieve objects for.
+    Returns:
+        A list of BIM objects linked to the specified project.
 
     Args:
         bim_project_id (UUID):

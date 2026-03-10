@@ -145,9 +145,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | GenericHttpError]:
-    """Delete an environment variable
+    """Delete Environment Variable
 
-     Permanently delete an environment variable by its ID.
+     0jqBxaqb
+
+    Delete an existing environment variable.
 
     Args:
         organization_id (UUID):
@@ -179,9 +181,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Any | GenericHttpError | None:
-    """Delete an environment variable
+    """Delete Environment Variable
 
-     Permanently delete an environment variable by its ID.
+     0jqBxaqb
+
+    Delete an existing environment variable.
 
     Args:
         organization_id (UUID):
@@ -208,9 +212,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | GenericHttpError]:
-    """Delete an environment variable
+    """Delete Environment Variable
 
-     Permanently delete an environment variable by its ID.
+     0jqBxaqb
+
+    Delete an existing environment variable.
 
     Args:
         organization_id (UUID):
@@ -240,9 +246,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Any | GenericHttpError | None:
-    """Delete an environment variable
+    """Delete Environment Variable
 
-     Permanently delete an environment variable by its ID.
+     0jqBxaqb
+
+    Delete an existing environment variable.
 
     Args:
         organization_id (UUID):

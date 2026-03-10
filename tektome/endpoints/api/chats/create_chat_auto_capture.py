@@ -59,10 +59,18 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: LawtalkRequirementChatPostIn,
 ) -> Response[CreateChatAutoCaptureResponse]:
-    """Send auto-capture chat message
+    """Post Chat Auto Capture
 
-     Send a chat message for automatic specification capture against a requirement. Optionally scope by
-    resource groups. Returns the chatroom ID.
+     LYaOS3Op
+
+
+    Post a chat message to a lawtalk requirement chatroom.
+
+    Args:
+        request: The request object containing authentication and user information.
+        payload:  The payload containing chatroom ID, prompt, recipe, and requirement details.
+
+    Returns: Chatroom ID of the created or existing chatroom.
 
     Args:
         body (LawtalkRequirementChatPostIn): Serializer for posting a chat message to a lawtalk
@@ -92,10 +100,18 @@ def sync(
     client: AuthenticatedClient,
     body: LawtalkRequirementChatPostIn,
 ) -> CreateChatAutoCaptureResponse | None:
-    """Send auto-capture chat message
+    """Post Chat Auto Capture
 
-     Send a chat message for automatic specification capture against a requirement. Optionally scope by
-    resource groups. Returns the chatroom ID.
+     LYaOS3Op
+
+
+    Post a chat message to a lawtalk requirement chatroom.
+
+    Args:
+        request: The request object containing authentication and user information.
+        payload:  The payload containing chatroom ID, prompt, recipe, and requirement details.
+
+    Returns: Chatroom ID of the created or existing chatroom.
 
     Args:
         body (LawtalkRequirementChatPostIn): Serializer for posting a chat message to a lawtalk
@@ -120,10 +136,18 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: LawtalkRequirementChatPostIn,
 ) -> Response[CreateChatAutoCaptureResponse]:
-    """Send auto-capture chat message
+    """Post Chat Auto Capture
 
-     Send a chat message for automatic specification capture against a requirement. Optionally scope by
-    resource groups. Returns the chatroom ID.
+     LYaOS3Op
+
+
+    Post a chat message to a lawtalk requirement chatroom.
+
+    Args:
+        request: The request object containing authentication and user information.
+        payload:  The payload containing chatroom ID, prompt, recipe, and requirement details.
+
+    Returns: Chatroom ID of the created or existing chatroom.
 
     Args:
         body (LawtalkRequirementChatPostIn): Serializer for posting a chat message to a lawtalk
@@ -151,10 +175,18 @@ async def asyncio(
     client: AuthenticatedClient,
     body: LawtalkRequirementChatPostIn,
 ) -> CreateChatAutoCaptureResponse | None:
-    """Send auto-capture chat message
+    """Post Chat Auto Capture
 
-     Send a chat message for automatic specification capture against a requirement. Optionally scope by
-    resource groups. Returns the chatroom ID.
+     LYaOS3Op
+
+
+    Post a chat message to a lawtalk requirement chatroom.
+
+    Args:
+        request: The request object containing authentication and user information.
+        payload:  The payload containing chatroom ID, prompt, recipe, and requirement details.
+
+    Returns: Chatroom ID of the created or existing chatroom.
 
     Args:
         body (LawtalkRequirementChatPostIn): Serializer for posting a chat message to a lawtalk

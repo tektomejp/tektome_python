@@ -48,10 +48,17 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Generate section captures markdown
+    """Post Generate Section Components Markdown
 
-     Generate a markdown summary of a section's captured components. The markdown is generated
-    asynchronously.
+     dD5s3J_d
+    Generate markdown for a ResourceSection captures components.
+    A section in this context will always have 1 requirement.
+
+    Args:
+        request: Request object
+        section_id: Section's id from path
+
+    Returns: 204, None
 
     Args:
         section_id (UUID):
@@ -80,10 +87,17 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Generate section captures markdown
+    """Post Generate Section Components Markdown
 
-     Generate a markdown summary of a section's captured components. The markdown is generated
-    asynchronously.
+     dD5s3J_d
+    Generate markdown for a ResourceSection captures components.
+    A section in this context will always have 1 requirement.
+
+    Args:
+        request: Request object
+        section_id: Section's id from path
+
+    Returns: 204, None
 
     Args:
         section_id (UUID):

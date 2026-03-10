@@ -41,10 +41,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Post a test message to a queue
-
-     Sample endpoint that publishes a test message to the sample task queue for testing message
-    processing.
+    """Post Message To Queue
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -67,10 +64,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Post a test message to a queue
-
-     Sample endpoint that publishes a test message to the sample task queue for testing message
-    processing.
+    """Post Message To Queue
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

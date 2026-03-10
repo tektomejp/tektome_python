@@ -60,9 +60,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list[DataspaceMembersSchemaOut]]:
-    """List all members of a dataspace
+    """Get Dataspace Members
 
-     Retrieve all users who are members of the specified dataspace, including their roles.
+     QoK123Lm
+
+    Retrieve all members of a dataspace
 
     Args:
         dataspace_id (UUID):
@@ -91,9 +93,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> list[DataspaceMembersSchemaOut] | None:
-    """List all members of a dataspace
+    """Get Dataspace Members
 
-     Retrieve all users who are members of the specified dataspace, including their roles.
+     QoK123Lm
+
+    Retrieve all members of a dataspace
 
     Args:
         dataspace_id (UUID):
@@ -117,9 +121,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list[DataspaceMembersSchemaOut]]:
-    """List all members of a dataspace
+    """Get Dataspace Members
 
-     Retrieve all users who are members of the specified dataspace, including their roles.
+     QoK123Lm
+
+    Retrieve all members of a dataspace
 
     Args:
         dataspace_id (UUID):
@@ -146,9 +152,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> list[DataspaceMembersSchemaOut] | None:
-    """List all members of a dataspace
+    """Get Dataspace Members
 
-     Retrieve all users who are members of the specified dataspace, including their roles.
+     QoK123Lm
+
+    Retrieve all members of a dataspace
 
     Args:
         dataspace_id (UUID):

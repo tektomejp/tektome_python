@@ -55,10 +55,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DataspaceFuzzySearchConfigurationGetOut]:
-    """Get fuzzy search configuration
+    """Get Dataspace Fuzzy Search Config
 
-     Retrieve the fuzzy search configuration for a dataspace, including excluded attribute names and
-    types. Creates a default configuration if one does not yet exist.
+     DGdHN7zW
+
+    Retrieve fuzzy search configuration (excluded attributes name and types) for the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -87,10 +88,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> DataspaceFuzzySearchConfigurationGetOut | None:
-    """Get fuzzy search configuration
+    """Get Dataspace Fuzzy Search Config
 
-     Retrieve the fuzzy search configuration for a dataspace, including excluded attribute names and
-    types. Creates a default configuration if one does not yet exist.
+     DGdHN7zW
+
+    Retrieve fuzzy search configuration (excluded attributes name and types) for the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -114,10 +116,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DataspaceFuzzySearchConfigurationGetOut]:
-    """Get fuzzy search configuration
+    """Get Dataspace Fuzzy Search Config
 
-     Retrieve the fuzzy search configuration for a dataspace, including excluded attribute names and
-    types. Creates a default configuration if one does not yet exist.
+     DGdHN7zW
+
+    Retrieve fuzzy search configuration (excluded attributes name and types) for the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -144,10 +147,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> DataspaceFuzzySearchConfigurationGetOut | None:
-    """Get fuzzy search configuration
+    """Get Dataspace Fuzzy Search Config
 
-     Retrieve the fuzzy search configuration for a dataspace, including excluded attribute names and
-    types. Creates a default configuration if one does not yet exist.
+     DGdHN7zW
+
+    Retrieve fuzzy search configuration (excluded attributes name and types) for the current dataspace.
 
     Args:
         dataspace_id (UUID):

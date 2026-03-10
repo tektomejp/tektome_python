@@ -65,9 +65,13 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: CoreProjectPostIn,
 ) -> Response[DataspaceProjectsSchemaOut]:
-    """Create a project in a dataspace
+    """Post Dataspace Project
 
-     Create a new project within a dataspace. A root folder is automatically created for the project.
+     ttCTKUG5
+
+    Create a new project in the current dataspace.
+    - Creates a project root folder by default.
+    - Creates project admin and invited user groups.
 
     Args:
         dataspace_id (UUID):
@@ -99,9 +103,13 @@ def sync(
     client: AuthenticatedClient,
     body: CoreProjectPostIn,
 ) -> DataspaceProjectsSchemaOut | None:
-    """Create a project in a dataspace
+    """Post Dataspace Project
 
-     Create a new project within a dataspace. A root folder is automatically created for the project.
+     ttCTKUG5
+
+    Create a new project in the current dataspace.
+    - Creates a project root folder by default.
+    - Creates project admin and invited user groups.
 
     Args:
         dataspace_id (UUID):
@@ -128,9 +136,13 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: CoreProjectPostIn,
 ) -> Response[DataspaceProjectsSchemaOut]:
-    """Create a project in a dataspace
+    """Post Dataspace Project
 
-     Create a new project within a dataspace. A root folder is automatically created for the project.
+     ttCTKUG5
+
+    Create a new project in the current dataspace.
+    - Creates a project root folder by default.
+    - Creates project admin and invited user groups.
 
     Args:
         dataspace_id (UUID):
@@ -160,9 +172,13 @@ async def asyncio(
     client: AuthenticatedClient,
     body: CoreProjectPostIn,
 ) -> DataspaceProjectsSchemaOut | None:
-    """Create a project in a dataspace
+    """Post Dataspace Project
 
-     Create a new project within a dataspace. A root folder is automatically created for the project.
+     ttCTKUG5
+
+    Create a new project in the current dataspace.
+    - Creates a project root folder by default.
+    - Creates project admin and invited user groups.
 
     Args:
         dataspace_id (UUID):

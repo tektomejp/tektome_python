@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
-from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,22 +22,12 @@ class DataspaceSearchTagConfigPatchInPatch:
         description (None | str | Unset):
         is_active (bool | None | Unset):
         default_grouping_option (DataspaceSearchTagConfigPatchInPatchDefaultGroupingOptionType0 | None | Unset):
-        table_grouping_project_option_ids (list[UUID] | None | Unset):
-        table_grouping_resource_option_ids (list[UUID] | None | Unset):
-        default_grouping_project_attribute_id (None | Unset | UUID): FK to a project attribute config for the default
-            grouping attribute.
-        default_grouping_resource_attribute_id (None | Unset | UUID): FK to a resource attribute config for the default
-            grouping attribute.
     """
 
     name: None | str | Unset = UNSET
     description: None | str | Unset = UNSET
     is_active: bool | None | Unset = UNSET
     default_grouping_option: DataspaceSearchTagConfigPatchInPatchDefaultGroupingOptionType0 | None | Unset = UNSET
-    table_grouping_project_option_ids: list[UUID] | None | Unset = UNSET
-    table_grouping_resource_option_ids: list[UUID] | None | Unset = UNSET
-    default_grouping_project_attribute_id: None | Unset | UUID = UNSET
-    default_grouping_resource_attribute_id: None | Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -68,48 +57,6 @@ class DataspaceSearchTagConfigPatchInPatch:
         else:
             default_grouping_option = self.default_grouping_option
 
-        table_grouping_project_option_ids: list[str] | None | Unset
-        if isinstance(self.table_grouping_project_option_ids, Unset):
-            table_grouping_project_option_ids = UNSET
-        elif isinstance(self.table_grouping_project_option_ids, list):
-            table_grouping_project_option_ids = []
-            for table_grouping_project_option_ids_type_0_item_data in self.table_grouping_project_option_ids:
-                table_grouping_project_option_ids_type_0_item = str(table_grouping_project_option_ids_type_0_item_data)
-                table_grouping_project_option_ids.append(table_grouping_project_option_ids_type_0_item)
-
-        else:
-            table_grouping_project_option_ids = self.table_grouping_project_option_ids
-
-        table_grouping_resource_option_ids: list[str] | None | Unset
-        if isinstance(self.table_grouping_resource_option_ids, Unset):
-            table_grouping_resource_option_ids = UNSET
-        elif isinstance(self.table_grouping_resource_option_ids, list):
-            table_grouping_resource_option_ids = []
-            for table_grouping_resource_option_ids_type_0_item_data in self.table_grouping_resource_option_ids:
-                table_grouping_resource_option_ids_type_0_item = str(
-                    table_grouping_resource_option_ids_type_0_item_data
-                )
-                table_grouping_resource_option_ids.append(table_grouping_resource_option_ids_type_0_item)
-
-        else:
-            table_grouping_resource_option_ids = self.table_grouping_resource_option_ids
-
-        default_grouping_project_attribute_id: None | str | Unset
-        if isinstance(self.default_grouping_project_attribute_id, Unset):
-            default_grouping_project_attribute_id = UNSET
-        elif isinstance(self.default_grouping_project_attribute_id, UUID):
-            default_grouping_project_attribute_id = str(self.default_grouping_project_attribute_id)
-        else:
-            default_grouping_project_attribute_id = self.default_grouping_project_attribute_id
-
-        default_grouping_resource_attribute_id: None | str | Unset
-        if isinstance(self.default_grouping_resource_attribute_id, Unset):
-            default_grouping_resource_attribute_id = UNSET
-        elif isinstance(self.default_grouping_resource_attribute_id, UUID):
-            default_grouping_resource_attribute_id = str(self.default_grouping_resource_attribute_id)
-        else:
-            default_grouping_resource_attribute_id = self.default_grouping_resource_attribute_id
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -121,14 +68,6 @@ class DataspaceSearchTagConfigPatchInPatch:
             field_dict["is_active"] = is_active
         if default_grouping_option is not UNSET:
             field_dict["default_grouping_option"] = default_grouping_option
-        if table_grouping_project_option_ids is not UNSET:
-            field_dict["table_grouping_project_option_ids"] = table_grouping_project_option_ids
-        if table_grouping_resource_option_ids is not UNSET:
-            field_dict["table_grouping_resource_option_ids"] = table_grouping_resource_option_ids
-        if default_grouping_project_attribute_id is not UNSET:
-            field_dict["default_grouping_project_attribute_id"] = default_grouping_project_attribute_id
-        if default_grouping_resource_attribute_id is not UNSET:
-            field_dict["default_grouping_resource_attribute_id"] = default_grouping_resource_attribute_id
 
         return field_dict
 
@@ -182,105 +121,11 @@ class DataspaceSearchTagConfigPatchInPatch:
 
         default_grouping_option = _parse_default_grouping_option(d.pop("default_grouping_option", UNSET))
 
-        def _parse_table_grouping_project_option_ids(data: object) -> list[UUID] | None | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, list):
-                    raise TypeError()
-                table_grouping_project_option_ids_type_0 = []
-                _table_grouping_project_option_ids_type_0 = data
-                for table_grouping_project_option_ids_type_0_item_data in _table_grouping_project_option_ids_type_0:
-                    table_grouping_project_option_ids_type_0_item = UUID(
-                        table_grouping_project_option_ids_type_0_item_data
-                    )
-
-                    table_grouping_project_option_ids_type_0.append(table_grouping_project_option_ids_type_0_item)
-
-                return table_grouping_project_option_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(list[UUID] | None | Unset, data)
-
-        table_grouping_project_option_ids = _parse_table_grouping_project_option_ids(
-            d.pop("table_grouping_project_option_ids", UNSET)
-        )
-
-        def _parse_table_grouping_resource_option_ids(data: object) -> list[UUID] | None | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, list):
-                    raise TypeError()
-                table_grouping_resource_option_ids_type_0 = []
-                _table_grouping_resource_option_ids_type_0 = data
-                for table_grouping_resource_option_ids_type_0_item_data in _table_grouping_resource_option_ids_type_0:
-                    table_grouping_resource_option_ids_type_0_item = UUID(
-                        table_grouping_resource_option_ids_type_0_item_data
-                    )
-
-                    table_grouping_resource_option_ids_type_0.append(table_grouping_resource_option_ids_type_0_item)
-
-                return table_grouping_resource_option_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(list[UUID] | None | Unset, data)
-
-        table_grouping_resource_option_ids = _parse_table_grouping_resource_option_ids(
-            d.pop("table_grouping_resource_option_ids", UNSET)
-        )
-
-        def _parse_default_grouping_project_attribute_id(data: object) -> None | Unset | UUID:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                default_grouping_project_attribute_id_type_0 = UUID(data)
-
-                return default_grouping_project_attribute_id_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | Unset | UUID, data)
-
-        default_grouping_project_attribute_id = _parse_default_grouping_project_attribute_id(
-            d.pop("default_grouping_project_attribute_id", UNSET)
-        )
-
-        def _parse_default_grouping_resource_attribute_id(data: object) -> None | Unset | UUID:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                default_grouping_resource_attribute_id_type_0 = UUID(data)
-
-                return default_grouping_resource_attribute_id_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | Unset | UUID, data)
-
-        default_grouping_resource_attribute_id = _parse_default_grouping_resource_attribute_id(
-            d.pop("default_grouping_resource_attribute_id", UNSET)
-        )
-
         dataspace_search_tag_config_patch_in_patch = cls(
             name=name,
             description=description,
             is_active=is_active,
             default_grouping_option=default_grouping_option,
-            table_grouping_project_option_ids=table_grouping_project_option_ids,
-            table_grouping_resource_option_ids=table_grouping_resource_option_ids,
-            default_grouping_project_attribute_id=default_grouping_project_attribute_id,
-            default_grouping_resource_attribute_id=default_grouping_resource_attribute_id,
         )
 
         dataspace_search_tag_config_patch_in_patch.additional_properties = d

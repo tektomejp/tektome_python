@@ -48,10 +48,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Approve a reference note
+    """Approve Reference Note
 
-     Deprecated. Use the versioned approval endpoint instead. Record the authenticated user's approval on
-    a reference note.
+     a0cWzBgw
+
+    Approve a reference note
 
     Args:
         reference_note_id (UUID):
@@ -80,10 +81,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Approve a reference note
+    """Approve Reference Note
 
-     Deprecated. Use the versioned approval endpoint instead. Record the authenticated user's approval on
-    a reference note.
+     a0cWzBgw
+
+    Approve a reference note
 
     Args:
         reference_note_id (UUID):

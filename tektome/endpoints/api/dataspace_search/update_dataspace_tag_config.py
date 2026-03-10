@@ -159,9 +159,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPatchInPatch,
 ) -> Response[DataspaceSearchTagConfigOut | ErrorOut]:
-    """Update a search tag configuration
+    """Patch Dataspace Tag Config
 
-     Partially update a search tag configuration, such as its name, description, or active status.
+     ZpfdRaG1
+
+    Update a tag configuration for the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -196,9 +198,11 @@ def sync(
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPatchInPatch,
 ) -> DataspaceSearchTagConfigOut | ErrorOut | None:
-    """Update a search tag configuration
+    """Patch Dataspace Tag Config
 
-     Partially update a search tag configuration, such as its name, description, or active status.
+     ZpfdRaG1
+
+    Update a tag configuration for the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -228,9 +232,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPatchInPatch,
 ) -> Response[DataspaceSearchTagConfigOut | ErrorOut]:
-    """Update a search tag configuration
+    """Patch Dataspace Tag Config
 
-     Partially update a search tag configuration, such as its name, description, or active status.
+     ZpfdRaG1
+
+    Update a tag configuration for the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -263,9 +269,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPatchInPatch,
 ) -> DataspaceSearchTagConfigOut | ErrorOut | None:
-    """Update a search tag configuration
+    """Patch Dataspace Tag Config
 
-     Partially update a search tag configuration, such as its name, description, or active status.
+     ZpfdRaG1
+
+    Update a tag configuration for the current dataspace.
 
     Args:
         dataspace_id (UUID):

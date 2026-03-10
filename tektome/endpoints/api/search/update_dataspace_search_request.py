@@ -159,10 +159,14 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchRequestSchema,
 ) -> Response[DataspaceSearchRequestGetOut | ErrorOut]:
-    """Update a search request
+    """Patch Search Request
 
-     Partially update a search request. Only non-null values in the payload (keywords, tag, filters) will
-    be applied.
+     wS3At6Pu
+
+    Update a search request.
+
+    Updates keywords, tag, filters, and/or filters_json.
+    Only non-null values in the payload will be updated.
 
     Args:
         dataspace_id (UUID):
@@ -197,10 +201,14 @@ def sync(
     client: AuthenticatedClient,
     body: DataspaceSearchRequestSchema,
 ) -> DataspaceSearchRequestGetOut | ErrorOut | None:
-    """Update a search request
+    """Patch Search Request
 
-     Partially update a search request. Only non-null values in the payload (keywords, tag, filters) will
-    be applied.
+     wS3At6Pu
+
+    Update a search request.
+
+    Updates keywords, tag, filters, and/or filters_json.
+    Only non-null values in the payload will be updated.
 
     Args:
         dataspace_id (UUID):
@@ -230,10 +238,14 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchRequestSchema,
 ) -> Response[DataspaceSearchRequestGetOut | ErrorOut]:
-    """Update a search request
+    """Patch Search Request
 
-     Partially update a search request. Only non-null values in the payload (keywords, tag, filters) will
-    be applied.
+     wS3At6Pu
+
+    Update a search request.
+
+    Updates keywords, tag, filters, and/or filters_json.
+    Only non-null values in the payload will be updated.
 
     Args:
         dataspace_id (UUID):
@@ -266,10 +278,14 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DataspaceSearchRequestSchema,
 ) -> DataspaceSearchRequestGetOut | ErrorOut | None:
-    """Update a search request
+    """Patch Search Request
 
-     Partially update a search request. Only non-null values in the payload (keywords, tag, filters) will
-    be applied.
+     wS3At6Pu
+
+    Update a search request.
+
+    Updates keywords, tag, filters, and/or filters_json.
+    Only non-null values in the payload will be updated.
 
     Args:
         dataspace_id (UUID):

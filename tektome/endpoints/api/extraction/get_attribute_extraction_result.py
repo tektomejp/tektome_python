@@ -55,10 +55,16 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[GetExtractedResultGetOut]:
-    """Get extraction result for an attribute
+    """Get the extracted result for the given Attribute
 
-     Retrieve the extracted value, status, reasoning, and cited sources for a specific attribute. Returns
-    the extraction status, any error messages, and references to source documents.
+     N9FhGpn7
+
+    Get the extracted result for the given Attribute.
+    This includes the value, error message (if any), reasoning (if any), and cited source.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing attribute_id
 
     Args:
         attribute_id (UUID):
@@ -87,10 +93,16 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> GetExtractedResultGetOut | None:
-    """Get extraction result for an attribute
+    """Get the extracted result for the given Attribute
 
-     Retrieve the extracted value, status, reasoning, and cited sources for a specific attribute. Returns
-    the extraction status, any error messages, and references to source documents.
+     N9FhGpn7
+
+    Get the extracted result for the given Attribute.
+    This includes the value, error message (if any), reasoning (if any), and cited source.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing attribute_id
 
     Args:
         attribute_id (UUID):
@@ -114,10 +126,16 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[GetExtractedResultGetOut]:
-    """Get extraction result for an attribute
+    """Get the extracted result for the given Attribute
 
-     Retrieve the extracted value, status, reasoning, and cited sources for a specific attribute. Returns
-    the extraction status, any error messages, and references to source documents.
+     N9FhGpn7
+
+    Get the extracted result for the given Attribute.
+    This includes the value, error message (if any), reasoning (if any), and cited source.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing attribute_id
 
     Args:
         attribute_id (UUID):
@@ -144,10 +162,16 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> GetExtractedResultGetOut | None:
-    """Get extraction result for an attribute
+    """Get the extracted result for the given Attribute
 
-     Retrieve the extracted value, status, reasoning, and cited sources for a specific attribute. Returns
-    the extraction status, any error messages, and references to source documents.
+     N9FhGpn7
+
+    Get the extracted result for the given Attribute.
+    This includes the value, error message (if any), reasoning (if any), and cited source.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing attribute_id
 
     Args:
         attribute_id (UUID):

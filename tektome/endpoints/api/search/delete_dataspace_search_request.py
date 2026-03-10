@@ -143,9 +143,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | ErrorOut]:
-    """Delete a search request
+    """Delete Search Request
 
-     Permanently delete a search request by its ID.
+     yU5Cv8Rw
+
+    Delete a search request.
 
     Args:
         dataspace_id (UUID):
@@ -177,9 +179,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Any | ErrorOut | None:
-    """Delete a search request
+    """Delete Search Request
 
-     Permanently delete a search request by its ID.
+     yU5Cv8Rw
+
+    Delete a search request.
 
     Args:
         dataspace_id (UUID):
@@ -206,9 +210,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | ErrorOut]:
-    """Delete a search request
+    """Delete Search Request
 
-     Permanently delete a search request by its ID.
+     yU5Cv8Rw
+
+    Delete a search request.
 
     Args:
         dataspace_id (UUID):
@@ -238,9 +244,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Any | ErrorOut | None:
-    """Delete a search request
+    """Delete Search Request
 
-     Permanently delete a search request by its ID.
+     yU5Cv8Rw
+
+    Delete a search request.
 
     Args:
         dataspace_id (UUID):

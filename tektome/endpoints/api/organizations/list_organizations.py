@@ -68,10 +68,14 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedOrganizationsGetOut]:
-    """List organizations
+    """Get Organizations
 
-     Retrieve all organizations the authenticated user belongs to. Includes counts of users, dataspaces,
-    projects, and files for each organization.
+     tqTPYdGu
+
+    Retrieve organizations of which the current user administrates or is authorized to list.
+
+    Returns organizations with counts of users, dataspaces, projects, and files
+    using efficient queries to prevent N+1 problems.
 
     Args:
         page (int | Unset):  Default: 1.
@@ -103,10 +107,14 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedOrganizationsGetOut | None:
-    """List organizations
+    """Get Organizations
 
-     Retrieve all organizations the authenticated user belongs to. Includes counts of users, dataspaces,
-    projects, and files for each organization.
+     tqTPYdGu
+
+    Retrieve organizations of which the current user administrates or is authorized to list.
+
+    Returns organizations with counts of users, dataspaces, projects, and files
+    using efficient queries to prevent N+1 problems.
 
     Args:
         page (int | Unset):  Default: 1.
@@ -133,10 +141,14 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedOrganizationsGetOut]:
-    """List organizations
+    """Get Organizations
 
-     Retrieve all organizations the authenticated user belongs to. Includes counts of users, dataspaces,
-    projects, and files for each organization.
+     tqTPYdGu
+
+    Retrieve organizations of which the current user administrates or is authorized to list.
+
+    Returns organizations with counts of users, dataspaces, projects, and files
+    using efficient queries to prevent N+1 problems.
 
     Args:
         page (int | Unset):  Default: 1.
@@ -166,10 +178,14 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedOrganizationsGetOut | None:
-    """List organizations
+    """Get Organizations
 
-     Retrieve all organizations the authenticated user belongs to. Includes counts of users, dataspaces,
-    projects, and files for each organization.
+     tqTPYdGu
+
+    Retrieve organizations of which the current user administrates or is authorized to list.
+
+    Returns organizations with counts of users, dataspaces, projects, and files
+    using efficient queries to prevent N+1 problems.
 
     Args:
         page (int | Unset):  Default: 1.

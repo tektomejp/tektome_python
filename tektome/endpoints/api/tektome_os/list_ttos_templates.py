@@ -121,10 +121,11 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedTemplateOut]:
-    """List process templates
+    """Retrieve templates in the current organization
 
-     Retrieve all process templates available in the specified organization. Supports filtering and
-    pagination.
+     FRcVJngK
+
+    Retrieve templates in the current organization.
 
     Args:
         organization_id (UUID):
@@ -177,10 +178,11 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedTemplateOut | None:
-    """List process templates
+    """Retrieve templates in the current organization
 
-     Retrieve all process templates available in the specified organization. Supports filtering and
-    pagination.
+     FRcVJngK
+
+    Retrieve templates in the current organization.
 
     Args:
         organization_id (UUID):
@@ -228,10 +230,11 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedTemplateOut]:
-    """List process templates
+    """Retrieve templates in the current organization
 
-     Retrieve all process templates available in the specified organization. Supports filtering and
-    pagination.
+     FRcVJngK
+
+    Retrieve templates in the current organization.
 
     Args:
         organization_id (UUID):
@@ -282,10 +285,11 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedTemplateOut | None:
-    """List process templates
+    """Retrieve templates in the current organization
 
-     Retrieve all process templates available in the specified organization. Supports filtering and
-    pagination.
+     FRcVJngK
+
+    Retrieve templates in the current organization.
 
     Args:
         organization_id (UUID):

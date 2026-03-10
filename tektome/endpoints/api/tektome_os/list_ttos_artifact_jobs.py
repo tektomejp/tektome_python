@@ -54,10 +54,12 @@ def sync_detailed(
     client: AuthenticatedClient,
     artifact_id: str,
 ) -> Response[list[Any]]:
-    """List jobs for an artifact
+    """Get List All Artifact Jobs
 
-     Retrieve all jobs associated with a specific artifact. Use the get job or get job logs endpoints for
-    details on individual jobs.
+     jTvDe0n5
+    For getting a list of jobs by artifact_id.
+    Use this endpoint to list all jobs, then use `get_job` endpoint to get details of each job, or
+    get_job_logs to get logs of each job.
 
     Args:
         artifact_id (str):
@@ -86,10 +88,12 @@ def sync(
     client: AuthenticatedClient,
     artifact_id: str,
 ) -> list[Any] | None:
-    """List jobs for an artifact
+    """Get List All Artifact Jobs
 
-     Retrieve all jobs associated with a specific artifact. Use the get job or get job logs endpoints for
-    details on individual jobs.
+     jTvDe0n5
+    For getting a list of jobs by artifact_id.
+    Use this endpoint to list all jobs, then use `get_job` endpoint to get details of each job, or
+    get_job_logs to get logs of each job.
 
     Args:
         artifact_id (str):
@@ -113,10 +117,12 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     artifact_id: str,
 ) -> Response[list[Any]]:
-    """List jobs for an artifact
+    """Get List All Artifact Jobs
 
-     Retrieve all jobs associated with a specific artifact. Use the get job or get job logs endpoints for
-    details on individual jobs.
+     jTvDe0n5
+    For getting a list of jobs by artifact_id.
+    Use this endpoint to list all jobs, then use `get_job` endpoint to get details of each job, or
+    get_job_logs to get logs of each job.
 
     Args:
         artifact_id (str):
@@ -143,10 +149,12 @@ async def asyncio(
     client: AuthenticatedClient,
     artifact_id: str,
 ) -> list[Any] | None:
-    """List jobs for an artifact
+    """Get List All Artifact Jobs
 
-     Retrieve all jobs associated with a specific artifact. Use the get job or get job logs endpoints for
-    details on individual jobs.
+     jTvDe0n5
+    For getting a list of jobs by artifact_id.
+    Use this endpoint to list all jobs, then use `get_job` endpoint to get details of each job, or
+    get_job_logs to get logs of each job.
 
     Args:
         artifact_id (str):

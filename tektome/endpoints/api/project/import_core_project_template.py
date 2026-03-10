@@ -61,9 +61,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ProjectTemplateImportIn,
 ) -> Response[TemplateOut]:
-    """Import a template into a project
+    """Import Template To Project
 
-     Import a base process template into the specified project, creating a project-level copy.
+     NhP4WKrP
+
+    Import a base template into the current project.
 
     Args:
         project_id (UUID):
@@ -95,9 +97,11 @@ def sync(
     client: AuthenticatedClient,
     body: ProjectTemplateImportIn,
 ) -> TemplateOut | None:
-    """Import a template into a project
+    """Import Template To Project
 
-     Import a base process template into the specified project, creating a project-level copy.
+     NhP4WKrP
+
+    Import a base template into the current project.
 
     Args:
         project_id (UUID):
@@ -124,9 +128,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ProjectTemplateImportIn,
 ) -> Response[TemplateOut]:
-    """Import a template into a project
+    """Import Template To Project
 
-     Import a base process template into the specified project, creating a project-level copy.
+     NhP4WKrP
+
+    Import a base template into the current project.
 
     Args:
         project_id (UUID):
@@ -156,9 +162,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ProjectTemplateImportIn,
 ) -> TemplateOut | None:
-    """Import a template into a project
+    """Import Template To Project
 
-     Import a base process template into the specified project, creating a project-level copy.
+     NhP4WKrP
+
+    Import a base template into the current project.
 
     Args:
         project_id (UUID):

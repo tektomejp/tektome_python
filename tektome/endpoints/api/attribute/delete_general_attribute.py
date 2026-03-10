@@ -62,10 +62,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     name: str,
 ) -> Response[Any]:
-    """Delete a general attribute
+    """Delete General Attribute
 
-     Delete a general (user-facing) attribute from an entity by name. The attribute name must not start
-    with `system:`.
+     oQuQR0C_
+
+    Delete a general attribute. Name must not start with `system:`
 
     Args:
         object_type (DeleteGeneralAttributeAttributeObjectTypes):
@@ -100,10 +101,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     name: str,
 ) -> Response[Any]:
-    """Delete a general attribute
+    """Delete General Attribute
 
-     Delete a general (user-facing) attribute from an entity by name. The attribute name must not start
-    with `system:`.
+     oQuQR0C_
+
+    Delete a general attribute. Name must not start with `system:`
 
     Args:
         object_type (DeleteGeneralAttributeAttributeObjectTypes):

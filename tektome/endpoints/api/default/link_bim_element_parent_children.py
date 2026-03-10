@@ -60,11 +60,11 @@ def sync_detailed(
     client: AuthenticatedClient | Client,
     body: list[BimElementLinkParentChildren],
 ) -> Response[Any]:
-    """Link BIM element parent-child relationships
+    """Link Bim Objects
 
-     Establish parent-child relationships between BIM elements. This is an asynchronous operation. To
-    retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the
-    task/process ID returned in this response.
+     22dcad58
+
+    Link BIM objects.
 
     Args:
         bim_element_type (str):
@@ -96,11 +96,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient | Client,
     body: list[BimElementLinkParentChildren],
 ) -> Response[Any]:
-    """Link BIM element parent-child relationships
+    """Link Bim Objects
 
-     Establish parent-child relationships between BIM elements. This is an asynchronous operation. To
-    retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the
-    task/process ID returned in this response.
+     22dcad58
+
+    Link BIM objects.
 
     Args:
         bim_element_type (str):

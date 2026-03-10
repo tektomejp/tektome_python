@@ -76,9 +76,11 @@ def sync_detailed(
     body: BimKeyValueSearchPostIn,
     bim_project_id: UUID,
 ) -> Response[BimKeyValueSearchResultPostOut]:
-    """Search BIM elements by key-value
+    """Bim Element Key Value Search
 
-     Deprecated. Use the V2 streaming key-value search endpoint instead.
+     Nh2cP7IZ
+
+    Deprecated Key-Value search endpoint using V1 indices.
 
     Args:
         bim_element (BimElementKeyValueSearchBimElementTypeV2Path): An enumeration representing
@@ -130,9 +132,11 @@ def sync(
     body: BimKeyValueSearchPostIn,
     bim_project_id: UUID,
 ) -> BimKeyValueSearchResultPostOut | None:
-    """Search BIM elements by key-value
+    """Bim Element Key Value Search
 
-     Deprecated. Use the V2 streaming key-value search endpoint instead.
+     Nh2cP7IZ
+
+    Deprecated Key-Value search endpoint using V1 indices.
 
     Args:
         bim_element (BimElementKeyValueSearchBimElementTypeV2Path): An enumeration representing
@@ -179,9 +183,11 @@ async def asyncio_detailed(
     body: BimKeyValueSearchPostIn,
     bim_project_id: UUID,
 ) -> Response[BimKeyValueSearchResultPostOut]:
-    """Search BIM elements by key-value
+    """Bim Element Key Value Search
 
-     Deprecated. Use the V2 streaming key-value search endpoint instead.
+     Nh2cP7IZ
+
+    Deprecated Key-Value search endpoint using V1 indices.
 
     Args:
         bim_element (BimElementKeyValueSearchBimElementTypeV2Path): An enumeration representing
@@ -231,9 +237,11 @@ async def asyncio(
     body: BimKeyValueSearchPostIn,
     bim_project_id: UUID,
 ) -> BimKeyValueSearchResultPostOut | None:
-    """Search BIM elements by key-value
+    """Bim Element Key Value Search
 
-     Deprecated. Use the V2 streaming key-value search endpoint instead.
+     Nh2cP7IZ
+
+    Deprecated Key-Value search endpoint using V1 indices.
 
     Args:
         bim_element (BimElementKeyValueSearchBimElementTypeV2Path): An enumeration representing

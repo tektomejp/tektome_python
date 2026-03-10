@@ -55,9 +55,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DataspaceProjectsSchemaOut]:
-    """Get a dataspace project by ID
+    """Retrieve Dataspace Project
 
-     Retrieve detailed information about a specific project within a dataspace.
+     mGVALbhG
+
+    Retrieve project details for a specific project in the current dataspace.
 
     Args:
         project_id (UUID):
@@ -86,9 +88,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> DataspaceProjectsSchemaOut | None:
-    """Get a dataspace project by ID
+    """Retrieve Dataspace Project
 
-     Retrieve detailed information about a specific project within a dataspace.
+     mGVALbhG
+
+    Retrieve project details for a specific project in the current dataspace.
 
     Args:
         project_id (UUID):
@@ -112,9 +116,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DataspaceProjectsSchemaOut]:
-    """Get a dataspace project by ID
+    """Retrieve Dataspace Project
 
-     Retrieve detailed information about a specific project within a dataspace.
+     mGVALbhG
+
+    Retrieve project details for a specific project in the current dataspace.
 
     Args:
         project_id (UUID):
@@ -141,9 +147,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> DataspaceProjectsSchemaOut | None:
-    """Get a dataspace project by ID
+    """Retrieve Dataspace Project
 
-     Retrieve detailed information about a specific project within a dataspace.
+     mGVALbhG
+
+    Retrieve project details for a specific project in the current dataspace.
 
     Args:
         project_id (UUID):

@@ -72,9 +72,17 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedFolderMetadataOut]:
-    """List all descendant folders
+    """Get Folder Descendants
 
-     Retrieve a paginated list of all descendant folders nested under the specified folder.
+     fPL6Udoi
+
+    Get all descendant folders under a folder.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing folder_id
+
+    Returns: All folders under the given folder.
 
     Args:
         folder_id (UUID):
@@ -109,9 +117,17 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedFolderMetadataOut | None:
-    """List all descendant folders
+    """Get Folder Descendants
 
-     Retrieve a paginated list of all descendant folders nested under the specified folder.
+     fPL6Udoi
+
+    Get all descendant folders under a folder.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing folder_id
+
+    Returns: All folders under the given folder.
 
     Args:
         folder_id (UUID):
@@ -141,9 +157,17 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedFolderMetadataOut]:
-    """List all descendant folders
+    """Get Folder Descendants
 
-     Retrieve a paginated list of all descendant folders nested under the specified folder.
+     fPL6Udoi
+
+    Get all descendant folders under a folder.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing folder_id
+
+    Returns: All folders under the given folder.
 
     Args:
         folder_id (UUID):
@@ -176,9 +200,17 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedFolderMetadataOut | None:
-    """List all descendant folders
+    """Get Folder Descendants
 
-     Retrieve a paginated list of all descendant folders nested under the specified folder.
+     fPL6Udoi
+
+    Get all descendant folders under a folder.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing folder_id
+
+    Returns: All folders under the given folder.
 
     Args:
         folder_id (UUID):

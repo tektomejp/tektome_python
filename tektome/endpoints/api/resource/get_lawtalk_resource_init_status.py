@@ -60,9 +60,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[BackgroundTaskStatusOut | ErrorOut]:
-    """Get resource initialization status
+    """Get Initialize Resource Task Result
 
-     Retrieve the current OCR extraction status of a resource.
+     _eP1GbGx
+
+    Get the initialization status(ExtractionStatus) of a resource
 
     Args:
         resource_id (str):
@@ -91,9 +93,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> BackgroundTaskStatusOut | ErrorOut | None:
-    """Get resource initialization status
+    """Get Initialize Resource Task Result
 
-     Retrieve the current OCR extraction status of a resource.
+     _eP1GbGx
+
+    Get the initialization status(ExtractionStatus) of a resource
 
     Args:
         resource_id (str):
@@ -117,9 +121,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[BackgroundTaskStatusOut | ErrorOut]:
-    """Get resource initialization status
+    """Get Initialize Resource Task Result
 
-     Retrieve the current OCR extraction status of a resource.
+     _eP1GbGx
+
+    Get the initialization status(ExtractionStatus) of a resource
 
     Args:
         resource_id (str):
@@ -146,9 +152,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> BackgroundTaskStatusOut | ErrorOut | None:
-    """Get resource initialization status
+    """Get Initialize Resource Task Result
 
-     Retrieve the current OCR extraction status of a resource.
+     _eP1GbGx
+
+    Get the initialization status(ExtractionStatus) of a resource
 
     Args:
         resource_id (str):

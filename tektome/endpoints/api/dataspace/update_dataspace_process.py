@@ -64,9 +64,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ProcessPostInPatch,
 ) -> Response[ProcessOut]:
-    """Update a dataspace process
+    """Patch Dataspace Process
 
-     Partially update a specific process configuration within a dataspace.
+     S2fhPLAG
+
+    Update a specific process in the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -101,9 +103,11 @@ def sync(
     client: AuthenticatedClient,
     body: ProcessPostInPatch,
 ) -> ProcessOut | None:
-    """Update a dataspace process
+    """Patch Dataspace Process
 
-     Partially update a specific process configuration within a dataspace.
+     S2fhPLAG
+
+    Update a specific process in the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -133,9 +137,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ProcessPostInPatch,
 ) -> Response[ProcessOut]:
-    """Update a dataspace process
+    """Patch Dataspace Process
 
-     Partially update a specific process configuration within a dataspace.
+     S2fhPLAG
+
+    Update a specific process in the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -168,9 +174,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ProcessPostInPatch,
 ) -> ProcessOut | None:
-    """Update a dataspace process
+    """Patch Dataspace Process
 
-     Partially update a specific process configuration within a dataspace.
+     S2fhPLAG
+
+    Update a specific process in the current dataspace.
 
     Args:
         dataspace_id (UUID):

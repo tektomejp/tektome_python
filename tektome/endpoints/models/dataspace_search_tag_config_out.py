@@ -12,8 +12,6 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.dataspace_project_attribute_schema_out import DataspaceProjectAttributeSchemaOut
-    from ..models.dataspace_resource_file_attribute_schema_out import DataspaceResourceFileAttributeSchemaOut
     from ..models.dataspace_search_filter_configuration_out import DataspaceSearchFilterConfigurationOut
     from ..models.default_search_condition_schema import DefaultSearchConditionSchema
     from ..models.user_metadata import UserMetadata
@@ -34,10 +32,6 @@ class DataspaceSearchTagConfigOut:
         updated (datetime.datetime):
         filters (list[DataspaceSearchFilterConfigurationOut] | Unset):
         default_grouping_option (None | str | Unset):
-        default_grouping_attribute (DataspaceProjectAttributeSchemaOut | DataspaceResourceFileAttributeSchemaOut | None
-            | Unset):
-        table_grouping_project_option (list[DataspaceProjectAttributeSchemaOut] | Unset):
-        table_grouping_resource_option (list[DataspaceResourceFileAttributeSchemaOut] | Unset):
         default_search_conditions (list[DefaultSearchConditionSchema] | Unset):
         id (None | Unset | UUID):
         description (None | str | Unset):
@@ -52,11 +46,6 @@ class DataspaceSearchTagConfigOut:
     updated: datetime.datetime
     filters: list[DataspaceSearchFilterConfigurationOut] | Unset = UNSET
     default_grouping_option: None | str | Unset = UNSET
-    default_grouping_attribute: (
-        DataspaceProjectAttributeSchemaOut | DataspaceResourceFileAttributeSchemaOut | None | Unset
-    ) = UNSET
-    table_grouping_project_option: list[DataspaceProjectAttributeSchemaOut] | Unset = UNSET
-    table_grouping_resource_option: list[DataspaceResourceFileAttributeSchemaOut] | Unset = UNSET
     default_search_conditions: list[DefaultSearchConditionSchema] | Unset = UNSET
     id: None | Unset | UUID = UNSET
     description: None | str | Unset = UNSET
@@ -65,9 +54,6 @@ class DataspaceSearchTagConfigOut:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.dataspace_project_attribute_schema_out import DataspaceProjectAttributeSchemaOut
-        from ..models.dataspace_resource_file_attribute_schema_out import DataspaceResourceFileAttributeSchemaOut
-
         created_by = self.created_by.to_dict()
 
         updated_by = self.updated_by.to_dict()
@@ -90,30 +76,6 @@ class DataspaceSearchTagConfigOut:
             default_grouping_option = UNSET
         else:
             default_grouping_option = self.default_grouping_option
-
-        default_grouping_attribute: dict[str, Any] | None | Unset
-        if isinstance(self.default_grouping_attribute, Unset):
-            default_grouping_attribute = UNSET
-        elif isinstance(self.default_grouping_attribute, DataspaceProjectAttributeSchemaOut):
-            default_grouping_attribute = self.default_grouping_attribute.to_dict()
-        elif isinstance(self.default_grouping_attribute, DataspaceResourceFileAttributeSchemaOut):
-            default_grouping_attribute = self.default_grouping_attribute.to_dict()
-        else:
-            default_grouping_attribute = self.default_grouping_attribute
-
-        table_grouping_project_option: list[dict[str, Any]] | Unset = UNSET
-        if not isinstance(self.table_grouping_project_option, Unset):
-            table_grouping_project_option = []
-            for table_grouping_project_option_item_data in self.table_grouping_project_option:
-                table_grouping_project_option_item = table_grouping_project_option_item_data.to_dict()
-                table_grouping_project_option.append(table_grouping_project_option_item)
-
-        table_grouping_resource_option: list[dict[str, Any]] | Unset = UNSET
-        if not isinstance(self.table_grouping_resource_option, Unset):
-            table_grouping_resource_option = []
-            for table_grouping_resource_option_item_data in self.table_grouping_resource_option:
-                table_grouping_resource_option_item = table_grouping_resource_option_item_data.to_dict()
-                table_grouping_resource_option.append(table_grouping_resource_option_item)
 
         default_search_conditions: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.default_search_conditions, Unset):
@@ -161,12 +123,6 @@ class DataspaceSearchTagConfigOut:
             field_dict["filters"] = filters
         if default_grouping_option is not UNSET:
             field_dict["default_grouping_option"] = default_grouping_option
-        if default_grouping_attribute is not UNSET:
-            field_dict["default_grouping_attribute"] = default_grouping_attribute
-        if table_grouping_project_option is not UNSET:
-            field_dict["table_grouping_project_option"] = table_grouping_project_option
-        if table_grouping_resource_option is not UNSET:
-            field_dict["table_grouping_resource_option"] = table_grouping_resource_option
         if default_search_conditions is not UNSET:
             field_dict["default_search_conditions"] = default_search_conditions
         if id is not UNSET:
@@ -182,8 +138,6 @@ class DataspaceSearchTagConfigOut:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.dataspace_project_attribute_schema_out import DataspaceProjectAttributeSchemaOut
-        from ..models.dataspace_resource_file_attribute_schema_out import DataspaceResourceFileAttributeSchemaOut
         from ..models.dataspace_search_filter_configuration_out import DataspaceSearchFilterConfigurationOut
         from ..models.default_search_condition_schema import DefaultSearchConditionSchema
         from ..models.user_metadata import UserMetadata
@@ -216,57 +170,6 @@ class DataspaceSearchTagConfigOut:
             return cast(None | str | Unset, data)
 
         default_grouping_option = _parse_default_grouping_option(d.pop("default_grouping_option", UNSET))
-
-        def _parse_default_grouping_attribute(
-            data: object,
-        ) -> DataspaceProjectAttributeSchemaOut | DataspaceResourceFileAttributeSchemaOut | None | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                default_grouping_attribute_type_0 = DataspaceProjectAttributeSchemaOut.from_dict(data)
-
-                return default_grouping_attribute_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                default_grouping_attribute_type_1 = DataspaceResourceFileAttributeSchemaOut.from_dict(data)
-
-                return default_grouping_attribute_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(
-                DataspaceProjectAttributeSchemaOut | DataspaceResourceFileAttributeSchemaOut | None | Unset, data
-            )
-
-        default_grouping_attribute = _parse_default_grouping_attribute(d.pop("default_grouping_attribute", UNSET))
-
-        _table_grouping_project_option = d.pop("table_grouping_project_option", UNSET)
-        table_grouping_project_option: list[DataspaceProjectAttributeSchemaOut] | Unset = UNSET
-        if _table_grouping_project_option is not UNSET:
-            table_grouping_project_option = []
-            for table_grouping_project_option_item_data in _table_grouping_project_option:
-                table_grouping_project_option_item = DataspaceProjectAttributeSchemaOut.from_dict(
-                    table_grouping_project_option_item_data
-                )
-
-                table_grouping_project_option.append(table_grouping_project_option_item)
-
-        _table_grouping_resource_option = d.pop("table_grouping_resource_option", UNSET)
-        table_grouping_resource_option: list[DataspaceResourceFileAttributeSchemaOut] | Unset = UNSET
-        if _table_grouping_resource_option is not UNSET:
-            table_grouping_resource_option = []
-            for table_grouping_resource_option_item_data in _table_grouping_resource_option:
-                table_grouping_resource_option_item = DataspaceResourceFileAttributeSchemaOut.from_dict(
-                    table_grouping_resource_option_item_data
-                )
-
-                table_grouping_resource_option.append(table_grouping_resource_option_item)
 
         _default_search_conditions = d.pop("default_search_conditions", UNSET)
         default_search_conditions: list[DefaultSearchConditionSchema] | Unset = UNSET
@@ -332,9 +235,6 @@ class DataspaceSearchTagConfigOut:
             updated=updated,
             filters=filters,
             default_grouping_option=default_grouping_option,
-            default_grouping_attribute=default_grouping_attribute,
-            table_grouping_project_option=table_grouping_project_option,
-            table_grouping_resource_option=table_grouping_resource_option,
             default_search_conditions=default_search_conditions,
             id=id,
             description=description,

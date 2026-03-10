@@ -68,10 +68,18 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: list[InviteUserByEmailSchemaIn],
 ) -> Response[BulkUserInvitationSchemaOut]:
-    """Add members to a project
+    """Add Project Members
 
-     Add one or more members to a project with specific roles. Creates new user accounts for members who
-    do not yet exist and sends email notifications.
+     3nYqfKX0
+
+    Add members to a project with specific roles. Creates a new user if the user does not exist.
+
+    Args:
+        request: Request object.
+        path_params: Path params of type ProjectDefaultPath
+        user_role_assignments: List of user role assignments.
+
+    Returns: 204, None
 
     Args:
         project_id (UUID):
@@ -103,10 +111,18 @@ def sync(
     client: AuthenticatedClient,
     body: list[InviteUserByEmailSchemaIn],
 ) -> BulkUserInvitationSchemaOut | None:
-    """Add members to a project
+    """Add Project Members
 
-     Add one or more members to a project with specific roles. Creates new user accounts for members who
-    do not yet exist and sends email notifications.
+     3nYqfKX0
+
+    Add members to a project with specific roles. Creates a new user if the user does not exist.
+
+    Args:
+        request: Request object.
+        path_params: Path params of type ProjectDefaultPath
+        user_role_assignments: List of user role assignments.
+
+    Returns: 204, None
 
     Args:
         project_id (UUID):
@@ -133,10 +149,18 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: list[InviteUserByEmailSchemaIn],
 ) -> Response[BulkUserInvitationSchemaOut]:
-    """Add members to a project
+    """Add Project Members
 
-     Add one or more members to a project with specific roles. Creates new user accounts for members who
-    do not yet exist and sends email notifications.
+     3nYqfKX0
+
+    Add members to a project with specific roles. Creates a new user if the user does not exist.
+
+    Args:
+        request: Request object.
+        path_params: Path params of type ProjectDefaultPath
+        user_role_assignments: List of user role assignments.
+
+    Returns: 204, None
 
     Args:
         project_id (UUID):
@@ -166,10 +190,18 @@ async def asyncio(
     client: AuthenticatedClient,
     body: list[InviteUserByEmailSchemaIn],
 ) -> BulkUserInvitationSchemaOut | None:
-    """Add members to a project
+    """Add Project Members
 
-     Add one or more members to a project with specific roles. Creates new user accounts for members who
-    do not yet exist and sends email notifications.
+     3nYqfKX0
+
+    Add members to a project with specific roles. Creates a new user if the user does not exist.
+
+    Args:
+        request: Request object.
+        path_params: Path params of type ProjectDefaultPath
+        user_role_assignments: List of user role assignments.
+
+    Returns: 204, None
 
     Args:
         project_id (UUID):

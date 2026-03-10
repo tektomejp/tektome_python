@@ -74,9 +74,11 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedRequirementTemplateReferenceNoteGetOut]:
-    """List reference note templates
+    """Get Requirement Template Reference Notes
 
-     Retrieve all reference note templates associated with a requirement template.
+     OWvaVaLA
+
+    Get all requirement templates reference notes
 
     Args:
         requirement_template_id (UUID):
@@ -111,9 +113,11 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedRequirementTemplateReferenceNoteGetOut | None:
-    """List reference note templates
+    """Get Requirement Template Reference Notes
 
-     Retrieve all reference note templates associated with a requirement template.
+     OWvaVaLA
+
+    Get all requirement templates reference notes
 
     Args:
         requirement_template_id (UUID):
@@ -143,9 +147,11 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedRequirementTemplateReferenceNoteGetOut]:
-    """List reference note templates
+    """Get Requirement Template Reference Notes
 
-     Retrieve all reference note templates associated with a requirement template.
+     OWvaVaLA
+
+    Get all requirement templates reference notes
 
     Args:
         requirement_template_id (UUID):
@@ -178,9 +184,11 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedRequirementTemplateReferenceNoteGetOut | None:
-    """List reference note templates
+    """Get Requirement Template Reference Notes
 
-     Retrieve all reference note templates associated with a requirement template.
+     OWvaVaLA
+
+    Get all requirement templates reference notes
 
     Args:
         requirement_template_id (UUID):

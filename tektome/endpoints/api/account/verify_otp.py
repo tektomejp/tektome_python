@@ -55,10 +55,13 @@ def sync_detailed(
     client: AuthenticatedClient | Client,
     body: VerifyOTPPostIn,
 ) -> Response[LoginPostOut]:
-    """Verify OTP code
+    """Post Verify Otp
 
-     Verify a one-time password and create a session if successful. Returns access and refresh tokens.
-    The OTP has a limited number of attempts and expiration time.
+     RBRm9tFb
+    Verify OTP sent to user email. Creates a session if successful.
+
+    Note: Returns the same error for non-existent users and missing OTP
+    to prevent user enumeration attacks.
 
     Args:
         body (VerifyOTPPostIn):
@@ -87,10 +90,13 @@ def sync(
     client: AuthenticatedClient | Client,
     body: VerifyOTPPostIn,
 ) -> LoginPostOut | None:
-    """Verify OTP code
+    """Post Verify Otp
 
-     Verify a one-time password and create a session if successful. Returns access and refresh tokens.
-    The OTP has a limited number of attempts and expiration time.
+     RBRm9tFb
+    Verify OTP sent to user email. Creates a session if successful.
+
+    Note: Returns the same error for non-existent users and missing OTP
+    to prevent user enumeration attacks.
 
     Args:
         body (VerifyOTPPostIn):
@@ -114,10 +120,13 @@ async def asyncio_detailed(
     client: AuthenticatedClient | Client,
     body: VerifyOTPPostIn,
 ) -> Response[LoginPostOut]:
-    """Verify OTP code
+    """Post Verify Otp
 
-     Verify a one-time password and create a session if successful. Returns access and refresh tokens.
-    The OTP has a limited number of attempts and expiration time.
+     RBRm9tFb
+    Verify OTP sent to user email. Creates a session if successful.
+
+    Note: Returns the same error for non-existent users and missing OTP
+    to prevent user enumeration attacks.
 
     Args:
         body (VerifyOTPPostIn):
@@ -144,10 +153,13 @@ async def asyncio(
     client: AuthenticatedClient | Client,
     body: VerifyOTPPostIn,
 ) -> LoginPostOut | None:
-    """Verify OTP code
+    """Post Verify Otp
 
-     Verify a one-time password and create a session if successful. Returns access and refresh tokens.
-    The OTP has a limited number of attempts and expiration time.
+     RBRm9tFb
+    Verify OTP sent to user email. Creates a session if successful.
+
+    Note: Returns the same error for non-existent users and missing OTP
+    to prevent user enumeration attacks.
 
     Args:
         body (VerifyOTPPostIn):

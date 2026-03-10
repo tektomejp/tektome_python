@@ -157,9 +157,13 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: UploadNewResourceVersionFileParams,
 ) -> Response[ErrorOut | ResourceSchemaPostOut]:
-    """Upload a new resource version
+    """Upload New Version Resource
 
-     Upload a new file as a new version of an existing versioned resource.
+     3wnuzkXm
+
+    Upload file as a new version of resource
+
+    Note: can add ResourceAllowEdit in body later
 
     Args:
         resource_group_id (UUID):
@@ -194,9 +198,13 @@ def sync(
     client: AuthenticatedClient,
     body: UploadNewResourceVersionFileParams,
 ) -> ErrorOut | ResourceSchemaPostOut | None:
-    """Upload a new resource version
+    """Upload New Version Resource
 
-     Upload a new file as a new version of an existing versioned resource.
+     3wnuzkXm
+
+    Upload file as a new version of resource
+
+    Note: can add ResourceAllowEdit in body later
 
     Args:
         resource_group_id (UUID):
@@ -226,9 +234,13 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: UploadNewResourceVersionFileParams,
 ) -> Response[ErrorOut | ResourceSchemaPostOut]:
-    """Upload a new resource version
+    """Upload New Version Resource
 
-     Upload a new file as a new version of an existing versioned resource.
+     3wnuzkXm
+
+    Upload file as a new version of resource
+
+    Note: can add ResourceAllowEdit in body later
 
     Args:
         resource_group_id (UUID):
@@ -261,9 +273,13 @@ async def asyncio(
     client: AuthenticatedClient,
     body: UploadNewResourceVersionFileParams,
 ) -> ErrorOut | ResourceSchemaPostOut | None:
-    """Upload a new resource version
+    """Upload New Version Resource
 
-     Upload a new file as a new version of an existing versioned resource.
+     3wnuzkXm
+
+    Upload file as a new version of resource
+
+    Note: can add ResourceAllowEdit in body later
 
     Args:
         resource_group_id (UUID):

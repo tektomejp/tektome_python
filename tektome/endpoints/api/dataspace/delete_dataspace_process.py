@@ -51,9 +51,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a dataspace process
+    """Delete Dataspace Process
 
-     Permanently delete a specific process from a dataspace.
+     32mhSKd9
+
+    Delete a specific process in the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -85,9 +87,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a dataspace process
+    """Delete Dataspace Process
 
-     Permanently delete a specific process from a dataspace.
+     32mhSKd9
+
+    Delete a specific process in the current dataspace.
 
     Args:
         dataspace_id (UUID):

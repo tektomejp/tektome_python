@@ -146,10 +146,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | ErrorOut]:
-    """Delete a specific resource version
+    """Delete Specific Version Resource
 
-     Delete a specific version of a resource by version number. Cannot delete if it is the only remaining
-    version.
+     cL8Pw2wa
+
+    Delete specific version of resource given resource_vc_id and version number
 
     Args:
         resource_group_id (UUID):
@@ -184,10 +185,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Any | ErrorOut | None:
-    """Delete a specific resource version
+    """Delete Specific Version Resource
 
-     Delete a specific version of a resource by version number. Cannot delete if it is the only remaining
-    version.
+     cL8Pw2wa
+
+    Delete specific version of resource given resource_vc_id and version number
 
     Args:
         resource_group_id (UUID):
@@ -217,10 +219,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | ErrorOut]:
-    """Delete a specific resource version
+    """Delete Specific Version Resource
 
-     Delete a specific version of a resource by version number. Cannot delete if it is the only remaining
-    version.
+     cL8Pw2wa
+
+    Delete specific version of resource given resource_vc_id and version number
 
     Args:
         resource_group_id (UUID):
@@ -253,10 +256,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Any | ErrorOut | None:
-    """Delete a specific resource version
+    """Delete Specific Version Resource
 
-     Delete a specific version of a resource by version number. Cannot delete if it is the only remaining
-    version.
+     cL8Pw2wa
+
+    Delete specific version of resource given resource_vc_id and version number
 
     Args:
         resource_group_id (UUID):

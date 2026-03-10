@@ -48,10 +48,19 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Generate requirement summary
+    """Get Requirement Summary
 
-     Stream an AI-generated summary of a requirement's sections and reference notes using Server-Sent
-    Events (SSE). The summary is saved after streaming completes.
+     gvl_NLA2
+
+    Streams a summary of requirement's sections using Server-Sent Events (SSE).
+    The summary is saved to the requirement after streaming is complete.
+
+    Sample usage:
+    ```
+    curl -N -X 'GET'
+    'http://localhost:8000/api/app/lawtalk/requirements/89138b7a-3753-467d-a3b1-49c2d26d9cf1/summarize/'
+    -H 'accept: text/event-stream'       -H 'Authorization: Bearer <bearer_token>'
+    ```
 
     Args:
         requirement_id (UUID):
@@ -80,10 +89,19 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Generate requirement summary
+    """Get Requirement Summary
 
-     Stream an AI-generated summary of a requirement's sections and reference notes using Server-Sent
-    Events (SSE). The summary is saved after streaming completes.
+     gvl_NLA2
+
+    Streams a summary of requirement's sections using Server-Sent Events (SSE).
+    The summary is saved to the requirement after streaming is complete.
+
+    Sample usage:
+    ```
+    curl -N -X 'GET'
+    'http://localhost:8000/api/app/lawtalk/requirements/89138b7a-3753-467d-a3b1-49c2d26d9cf1/summarize/'
+    -H 'accept: text/event-stream'       -H 'Authorization: Bearer <bearer_token>'
+    ```
 
     Args:
         requirement_id (UUID):

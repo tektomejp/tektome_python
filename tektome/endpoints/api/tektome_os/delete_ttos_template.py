@@ -51,9 +51,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a process template
+    """Delete an existing template
 
-     Permanently delete an organization-level process template. System-level templates cannot be deleted.
+     JeCsL5UR
+
+    Delete an existing template.
 
     Args:
         organization_id (UUID):
@@ -85,9 +87,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a process template
+    """Delete an existing template
 
-     Permanently delete an organization-level process template. System-level templates cannot be deleted.
+     JeCsL5UR
+
+    Delete an existing template.
 
     Args:
         organization_id (UUID):

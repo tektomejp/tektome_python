@@ -25,7 +25,6 @@ class LawtalkFolderGetOut:
     """
     Attributes:
         core_attributes (FolderRequiredSchema): Folder required schema
-        is_root (bool):
         resources (list[ResourceSchema2]):
         children (list[FolderLevelMetadata]):
         created (datetime.datetime):
@@ -34,7 +33,6 @@ class LawtalkFolderGetOut:
     """
 
     core_attributes: FolderRequiredSchema
-    is_root: bool
     resources: list[ResourceSchema2]
     children: list[FolderLevelMetadata]
     created: datetime.datetime
@@ -44,8 +42,6 @@ class LawtalkFolderGetOut:
 
     def to_dict(self) -> dict[str, Any]:
         core_attributes = self.core_attributes.to_dict()
-
-        is_root = self.is_root
 
         resources = []
         for resources_item_data in self.resources:
@@ -74,7 +70,6 @@ class LawtalkFolderGetOut:
         field_dict.update(
             {
                 "core_attributes": core_attributes,
-                "is_root": is_root,
                 "resources": resources,
                 "children": children,
                 "created": created,
@@ -94,8 +89,6 @@ class LawtalkFolderGetOut:
 
         d = dict(src_dict)
         core_attributes = FolderRequiredSchema.from_dict(d.pop("core_attributes"))
-
-        is_root = d.pop("is_root")
 
         resources = []
         _resources = d.pop("resources")
@@ -134,7 +127,6 @@ class LawtalkFolderGetOut:
 
         lawtalk_folder_get_out = cls(
             core_attributes=core_attributes,
-            is_root=is_root,
             resources=resources,
             children=children,
             created=created,

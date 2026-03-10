@@ -51,9 +51,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ResourceGroupSchema]:
-    """Get a resource group
+    """Retrieve Resource Group
 
-     Retrieve the details of a specific resource group by its ID.
+     lAGPNHj-
+
+    Get a resource group.
 
     Args:
         resource_group_id (UUID):
@@ -82,9 +84,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ResourceGroupSchema | None:
-    """Get a resource group
+    """Retrieve Resource Group
 
-     Retrieve the details of a specific resource group by its ID.
+     lAGPNHj-
+
+    Get a resource group.
 
     Args:
         resource_group_id (UUID):
@@ -108,9 +112,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ResourceGroupSchema]:
-    """Get a resource group
+    """Retrieve Resource Group
 
-     Retrieve the details of a specific resource group by its ID.
+     lAGPNHj-
+
+    Get a resource group.
 
     Args:
         resource_group_id (UUID):
@@ -137,9 +143,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ResourceGroupSchema | None:
-    """Get a resource group
+    """Retrieve Resource Group
 
-     Retrieve the details of a specific resource group by its ID.
+     lAGPNHj-
+
+    Get a resource group.
 
     Args:
         resource_group_id (UUID):

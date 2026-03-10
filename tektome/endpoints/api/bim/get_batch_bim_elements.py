@@ -58,10 +58,15 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: BimBatchElementRequestPostIn,
 ) -> Response[Any]:
-    """Get multiple BIM elements by IDs
+    """Get Batch Bim Elements
 
-     Retrieve multiple BIM elements (objects or views) by their IDs in a single request. Maximum 50 IDs
-    per request.
+     6SswzuVE
+
+    Get multiple BIM elements by their IDs. Could be BIM objects or views.
+
+    Arguments:
+        - bim_type: Type of BIM element (object or view)
+        - payload: Request body containing list of IDs to retrieve (max 50)
 
     Args:
         bim_type (GetBatchBimElementsBimElementTypePath): Enum for BIM object types.
@@ -93,10 +98,15 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: BimBatchElementRequestPostIn,
 ) -> Response[Any]:
-    """Get multiple BIM elements by IDs
+    """Get Batch Bim Elements
 
-     Retrieve multiple BIM elements (objects or views) by their IDs in a single request. Maximum 50 IDs
-    per request.
+     6SswzuVE
+
+    Get multiple BIM elements by their IDs. Could be BIM objects or views.
+
+    Arguments:
+        - bim_type: Type of BIM element (object or view)
+        - payload: Request body containing list of IDs to retrieve (max 50)
 
     Args:
         bim_type (GetBatchBimElementsBimElementTypePath): Enum for BIM object types.

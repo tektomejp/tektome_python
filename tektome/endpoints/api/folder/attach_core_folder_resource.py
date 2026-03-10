@@ -58,9 +58,18 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: FolderResourcePostIn,
 ) -> Response[Any]:
-    """Attach resources to a folder
+    """Post Add Resource
 
-     Attach one or more existing resources to the specified folder by their resource IDs.
+     ktNficZs
+
+    Attach resource(s) to the folder using resource id(s)
+
+    Args:
+        request: Request object
+        path_params: FolderPathIn object containing folder_id
+        payload: Payload containing resource_id(s) to be attached
+
+    Returns: None
 
     Args:
         folder_id (UUID):
@@ -92,9 +101,18 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: FolderResourcePostIn,
 ) -> Response[Any]:
-    """Attach resources to a folder
+    """Post Add Resource
 
-     Attach one or more existing resources to the specified folder by their resource IDs.
+     ktNficZs
+
+    Attach resource(s) to the folder using resource id(s)
+
+    Args:
+        request: Request object
+        path_params: FolderPathIn object containing folder_id
+        payload: Payload containing resource_id(s) to be attached
+
+    Returns: None
 
     Args:
         folder_id (UUID):

@@ -70,9 +70,11 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedSectionGetOut]:
-    """List sections in a project
+    """Get Sections In Project
 
-     Retrieve all sections that belong to the specified project.
+     48plIwnA
+
+    Get all sections that belong to the given project_id
 
     Args:
         project_id (UUID):
@@ -107,9 +109,11 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedSectionGetOut | None:
-    """List sections in a project
+    """Get Sections In Project
 
-     Retrieve all sections that belong to the specified project.
+     48plIwnA
+
+    Get all sections that belong to the given project_id
 
     Args:
         project_id (UUID):
@@ -139,9 +143,11 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedSectionGetOut]:
-    """List sections in a project
+    """Get Sections In Project
 
-     Retrieve all sections that belong to the specified project.
+     48plIwnA
+
+    Get all sections that belong to the given project_id
 
     Args:
         project_id (UUID):
@@ -174,9 +180,11 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedSectionGetOut | None:
-    """List sections in a project
+    """Get Sections In Project
 
-     Retrieve all sections that belong to the specified project.
+     48plIwnA
+
+    Get all sections that belong to the given project_id
 
     Args:
         project_id (UUID):

@@ -60,9 +60,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list[PageComponentSchemaGetOut]]:
-    """List all pages of a resource
+    """Get All Resource Pages
 
-     Retrieve all page components associated with a resource.
+     CeXFk4RT
+
+    Retrieve all pages of a resource.
 
     Args:
         resource_id (UUID):
@@ -91,9 +93,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> list[PageComponentSchemaGetOut] | None:
-    """List all pages of a resource
+    """Get All Resource Pages
 
-     Retrieve all page components associated with a resource.
+     CeXFk4RT
+
+    Retrieve all pages of a resource.
 
     Args:
         resource_id (UUID):
@@ -117,9 +121,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list[PageComponentSchemaGetOut]]:
-    """List all pages of a resource
+    """Get All Resource Pages
 
-     Retrieve all page components associated with a resource.
+     CeXFk4RT
+
+    Retrieve all pages of a resource.
 
     Args:
         resource_id (UUID):
@@ -146,9 +152,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> list[PageComponentSchemaGetOut] | None:
-    """List all pages of a resource
+    """Get All Resource Pages
 
-     Retrieve all page components associated with a resource.
+     CeXFk4RT
+
+    Retrieve all pages of a resource.
 
     Args:
         resource_id (UUID):

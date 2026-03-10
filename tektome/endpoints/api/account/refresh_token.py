@@ -61,10 +61,10 @@ def sync_detailed(
     client: AuthenticatedClient | Client,
     body: RefreshPostIn,
 ) -> Response[Any | RefreshPostOut]:
-    """Refresh access token
+    """Post Refresh
 
-     Obtain a new access token using a valid refresh token. Returns 401 if the refresh token is invalid
-    or expired.
+     O3m6XHfr
+    Refresh access_token using refresh_token.
 
     Args:
         body (RefreshPostIn):
@@ -93,10 +93,10 @@ def sync(
     client: AuthenticatedClient | Client,
     body: RefreshPostIn,
 ) -> Any | RefreshPostOut | None:
-    """Refresh access token
+    """Post Refresh
 
-     Obtain a new access token using a valid refresh token. Returns 401 if the refresh token is invalid
-    or expired.
+     O3m6XHfr
+    Refresh access_token using refresh_token.
 
     Args:
         body (RefreshPostIn):
@@ -120,10 +120,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient | Client,
     body: RefreshPostIn,
 ) -> Response[Any | RefreshPostOut]:
-    """Refresh access token
+    """Post Refresh
 
-     Obtain a new access token using a valid refresh token. Returns 401 if the refresh token is invalid
-    or expired.
+     O3m6XHfr
+    Refresh access_token using refresh_token.
 
     Args:
         body (RefreshPostIn):
@@ -150,10 +150,10 @@ async def asyncio(
     client: AuthenticatedClient | Client,
     body: RefreshPostIn,
 ) -> Any | RefreshPostOut | None:
-    """Refresh access token
+    """Post Refresh
 
-     Obtain a new access token using a valid refresh token. Returns 401 if the refresh token is invalid
-    or expired.
+     O3m6XHfr
+    Refresh access_token using refresh_token.
 
     Args:
         body (RefreshPostIn):

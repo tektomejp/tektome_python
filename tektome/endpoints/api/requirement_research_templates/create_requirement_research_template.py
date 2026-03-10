@@ -65,10 +65,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RequirementResearchTemplatePostIn,
 ) -> Response[RequirementResearchTemplateGetOut]:
-    """Create an AI research template
+    """Post Research Template
 
-     Create a new AI research template for a requirement template. The specified public resource groups
-    must already exist in the parent requirement template container.
+     R1C1E1A0
+
+    Create a AI Research template
 
     Args:
         requirement_template_id (UUID):
@@ -101,10 +102,11 @@ def sync(
     client: AuthenticatedClient,
     body: RequirementResearchTemplatePostIn,
 ) -> RequirementResearchTemplateGetOut | None:
-    """Create an AI research template
+    """Post Research Template
 
-     Create a new AI research template for a requirement template. The specified public resource groups
-    must already exist in the parent requirement template container.
+     R1C1E1A0
+
+    Create a AI Research template
 
     Args:
         requirement_template_id (UUID):
@@ -132,10 +134,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RequirementResearchTemplatePostIn,
 ) -> Response[RequirementResearchTemplateGetOut]:
-    """Create an AI research template
+    """Post Research Template
 
-     Create a new AI research template for a requirement template. The specified public resource groups
-    must already exist in the parent requirement template container.
+     R1C1E1A0
+
+    Create a AI Research template
 
     Args:
         requirement_template_id (UUID):
@@ -166,10 +169,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RequirementResearchTemplatePostIn,
 ) -> RequirementResearchTemplateGetOut | None:
-    """Create an AI research template
+    """Post Research Template
 
-     Create a new AI research template for a requirement template. The specified public resource groups
-    must already exist in the parent requirement template container.
+     R1C1E1A0
+
+    Create a AI Research template
 
     Args:
         requirement_template_id (UUID):

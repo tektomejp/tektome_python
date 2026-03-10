@@ -48,10 +48,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete an AI research template
+    """Delete Research Template
 
-     Permanently delete an AI research template by its ID. Updates the parent requirement template and
-    container timestamps.
+     R1C1E1A3
+
+    Delete a research template by its ID.
 
     Args:
         research_template_id (UUID):
@@ -80,10 +81,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete an AI research template
+    """Delete Research Template
 
-     Permanently delete an AI research template by its ID. Updates the parent requirement template and
-    container timestamps.
+     R1C1E1A3
+
+    Delete a research template by its ID.
 
     Args:
         research_template_id (UUID):

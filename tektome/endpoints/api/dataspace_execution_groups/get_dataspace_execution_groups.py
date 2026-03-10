@@ -168,9 +168,17 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedExecutionGroupGetOut]:
-    """List execution groups in a dataspace
+    """Get Dataspace Execution Groups
 
-     Retrieve all execution groups in the current dataspace. Supports filtering by query parameters.
+     LWV7x0oY
+
+    Retrieve all execution groups in the current dataspace.
+    Args:
+        request: HttpRequest - The incoming HTTP request.
+        path_params: ExecutionGroupsPathParams - The path parameters containing the dataspace ID.
+        query_params: ExecutionGroupQueryParams - The query parameters for filtering execution groups.
+
+    Returns: ExecutionGroupGetOut - process details.
 
     Args:
         dataspace_id (UUID):
@@ -233,9 +241,17 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedExecutionGroupGetOut | None:
-    """List execution groups in a dataspace
+    """Get Dataspace Execution Groups
 
-     Retrieve all execution groups in the current dataspace. Supports filtering by query parameters.
+     LWV7x0oY
+
+    Retrieve all execution groups in the current dataspace.
+    Args:
+        request: HttpRequest - The incoming HTTP request.
+        path_params: ExecutionGroupsPathParams - The path parameters containing the dataspace ID.
+        query_params: ExecutionGroupQueryParams - The query parameters for filtering execution groups.
+
+    Returns: ExecutionGroupGetOut - process details.
 
     Args:
         dataspace_id (UUID):
@@ -293,9 +309,17 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedExecutionGroupGetOut]:
-    """List execution groups in a dataspace
+    """Get Dataspace Execution Groups
 
-     Retrieve all execution groups in the current dataspace. Supports filtering by query parameters.
+     LWV7x0oY
+
+    Retrieve all execution groups in the current dataspace.
+    Args:
+        request: HttpRequest - The incoming HTTP request.
+        path_params: ExecutionGroupsPathParams - The path parameters containing the dataspace ID.
+        query_params: ExecutionGroupQueryParams - The query parameters for filtering execution groups.
+
+    Returns: ExecutionGroupGetOut - process details.
 
     Args:
         dataspace_id (UUID):
@@ -356,9 +380,17 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedExecutionGroupGetOut | None:
-    """List execution groups in a dataspace
+    """Get Dataspace Execution Groups
 
-     Retrieve all execution groups in the current dataspace. Supports filtering by query parameters.
+     LWV7x0oY
+
+    Retrieve all execution groups in the current dataspace.
+    Args:
+        request: HttpRequest - The incoming HTTP request.
+        path_params: ExecutionGroupsPathParams - The path parameters containing the dataspace ID.
+        query_params: ExecutionGroupQueryParams - The query parameters for filtering execution groups.
+
+    Returns: ExecutionGroupGetOut - process details.
 
     Args:
         dataspace_id (UUID):

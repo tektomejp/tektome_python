@@ -143,10 +143,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | ErrorOut]:
-    """Delete a resource and all versions
+    """Delete Resource Vc And All Resources
 
-     Delete a versioned resource and all of its versions. Resources linked to a section cannot be
-    deleted.
+     W4ToEN0S
+
+    Delete resource and all its versions given resource_vc_id
 
     Args:
         resource_group_id (UUID):
@@ -178,10 +179,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Any | ErrorOut | None:
-    """Delete a resource and all versions
+    """Delete Resource Vc And All Resources
 
-     Delete a versioned resource and all of its versions. Resources linked to a section cannot be
-    deleted.
+     W4ToEN0S
+
+    Delete resource and all its versions given resource_vc_id
 
     Args:
         resource_group_id (UUID):
@@ -208,10 +210,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | ErrorOut]:
-    """Delete a resource and all versions
+    """Delete Resource Vc And All Resources
 
-     Delete a versioned resource and all of its versions. Resources linked to a section cannot be
-    deleted.
+     W4ToEN0S
+
+    Delete resource and all its versions given resource_vc_id
 
     Args:
         resource_group_id (UUID):
@@ -241,10 +244,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Any | ErrorOut | None:
-    """Delete a resource and all versions
+    """Delete Resource Vc And All Resources
 
-     Delete a versioned resource and all of its versions. Resources linked to a section cannot be
-    deleted.
+     W4ToEN0S
+
+    Delete resource and all its versions given resource_vc_id
 
     Args:
         resource_group_id (UUID):

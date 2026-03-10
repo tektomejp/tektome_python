@@ -64,9 +64,21 @@ def sync_detailed(
     client: AuthenticatedClient,
     only_ids: bool | Unset = False,
 ) -> Response[RetrieveBimViewsInSheetGetOut]:
-    """List BIM views in a sheet
+    r"""Retrieve Bim Views In Sheets
 
-     Retrieve all BIM views associated with a specific BIM sheet. Optionally return only view IDs.
+     8V6ckG7x
+
+    Retrieve BIM views associated with a specific BIM sheet.
+
+    Args:
+        request: The request object (unused in this function).
+        bim_sheet_id (str): The unique identifier of the BIM sheet.
+        only_ids (bool, optional): If True, return only the IDs of the views. Defaults to False.
+
+    Returns:
+        dict: A dictionary containing either the list of views (under \"data\") and None for \"error\",
+              or an error message (under \"error\") and an empty list for \"data\" if the sheet or views
+    are not found.
 
     Args:
         bim_sheet_id (str):
@@ -98,9 +110,21 @@ def sync(
     client: AuthenticatedClient,
     only_ids: bool | Unset = False,
 ) -> RetrieveBimViewsInSheetGetOut | None:
-    """List BIM views in a sheet
+    r"""Retrieve Bim Views In Sheets
 
-     Retrieve all BIM views associated with a specific BIM sheet. Optionally return only view IDs.
+     8V6ckG7x
+
+    Retrieve BIM views associated with a specific BIM sheet.
+
+    Args:
+        request: The request object (unused in this function).
+        bim_sheet_id (str): The unique identifier of the BIM sheet.
+        only_ids (bool, optional): If True, return only the IDs of the views. Defaults to False.
+
+    Returns:
+        dict: A dictionary containing either the list of views (under \"data\") and None for \"error\",
+              or an error message (under \"error\") and an empty list for \"data\" if the sheet or views
+    are not found.
 
     Args:
         bim_sheet_id (str):
@@ -127,9 +151,21 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     only_ids: bool | Unset = False,
 ) -> Response[RetrieveBimViewsInSheetGetOut]:
-    """List BIM views in a sheet
+    r"""Retrieve Bim Views In Sheets
 
-     Retrieve all BIM views associated with a specific BIM sheet. Optionally return only view IDs.
+     8V6ckG7x
+
+    Retrieve BIM views associated with a specific BIM sheet.
+
+    Args:
+        request: The request object (unused in this function).
+        bim_sheet_id (str): The unique identifier of the BIM sheet.
+        only_ids (bool, optional): If True, return only the IDs of the views. Defaults to False.
+
+    Returns:
+        dict: A dictionary containing either the list of views (under \"data\") and None for \"error\",
+              or an error message (under \"error\") and an empty list for \"data\" if the sheet or views
+    are not found.
 
     Args:
         bim_sheet_id (str):
@@ -159,9 +195,21 @@ async def asyncio(
     client: AuthenticatedClient,
     only_ids: bool | Unset = False,
 ) -> RetrieveBimViewsInSheetGetOut | None:
-    """List BIM views in a sheet
+    r"""Retrieve Bim Views In Sheets
 
-     Retrieve all BIM views associated with a specific BIM sheet. Optionally return only view IDs.
+     8V6ckG7x
+
+    Retrieve BIM views associated with a specific BIM sheet.
+
+    Args:
+        request: The request object (unused in this function).
+        bim_sheet_id (str): The unique identifier of the BIM sheet.
+        only_ids (bool, optional): If True, return only the IDs of the views. Defaults to False.
+
+    Returns:
+        dict: A dictionary containing either the list of views (under \"data\") and None for \"error\",
+              or an error message (under \"error\") and an empty list for \"data\" if the sheet or views
+    are not found.
 
     Args:
         bim_sheet_id (str):

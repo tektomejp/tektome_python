@@ -61,10 +61,18 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ApprovalTicketPatchInPatch,
 ) -> Response[Any]:
-    """Update an approval ticket
+    """Patch Approval Ticket
 
-     Update an existing approval ticket to approve or reject it. Approved tickets trigger further
-    processing.
+     ZCaSu3jK
+
+    Patch an existing approval ticket. User can approve or reject the ticket.
+
+    Args:
+        request: Request object
+        payload: Payload containing fields to update
+        path_params: Path parameters containing approval_ticket_id
+
+    Returns: 204 No Content
 
     Args:
         dataspace_id (UUID):
@@ -99,10 +107,18 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ApprovalTicketPatchInPatch,
 ) -> Response[Any]:
-    """Update an approval ticket
+    """Patch Approval Ticket
 
-     Update an existing approval ticket to approve or reject it. Approved tickets trigger further
-    processing.
+     ZCaSu3jK
+
+    Patch an existing approval ticket. User can approve or reject the ticket.
+
+    Args:
+        request: Request object
+        payload: Payload containing fields to update
+        path_params: Path parameters containing approval_ticket_id
+
+    Returns: 204 No Content
 
     Args:
         dataspace_id (UUID):

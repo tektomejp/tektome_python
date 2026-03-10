@@ -54,9 +54,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[TemplateOut]:
-    """Get a process template
+    """Retrieve a template by ID
 
-     Retrieve a specific process template by its ID.
+     ONcQnmuk
+
+    Get a template by its ID.
 
     Args:
         organization_id (UUID):
@@ -88,9 +90,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> TemplateOut | None:
-    """Get a process template
+    """Retrieve a template by ID
 
-     Retrieve a specific process template by its ID.
+     ONcQnmuk
+
+    Get a template by its ID.
 
     Args:
         organization_id (UUID):
@@ -117,9 +121,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[TemplateOut]:
-    """Get a process template
+    """Retrieve a template by ID
 
-     Retrieve a specific process template by its ID.
+     ONcQnmuk
+
+    Get a template by its ID.
 
     Args:
         organization_id (UUID):
@@ -149,9 +155,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> TemplateOut | None:
-    """Get a process template
+    """Retrieve a template by ID
 
-     Retrieve a specific process template by its ID.
+     ONcQnmuk
+
+    Get a template by its ID.
 
     Args:
         organization_id (UUID):

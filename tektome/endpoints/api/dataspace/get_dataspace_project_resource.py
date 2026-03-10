@@ -55,10 +55,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DataspaceProjectResourcesGetOut]:
-    """Get a dataspace project resource by ID
+    """Retrieve Dataspace Projects Resource
 
-     Retrieve detailed information about a specific resource within a dataspace project, including its
-    attributes.
+     5TZZsLaB
+
+    Get resource by ID for a specific project in the current dataspace.
 
     Args:
         resource_id (UUID):
@@ -87,10 +88,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> DataspaceProjectResourcesGetOut | None:
-    """Get a dataspace project resource by ID
+    """Retrieve Dataspace Projects Resource
 
-     Retrieve detailed information about a specific resource within a dataspace project, including its
-    attributes.
+     5TZZsLaB
+
+    Get resource by ID for a specific project in the current dataspace.
 
     Args:
         resource_id (UUID):
@@ -114,10 +116,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DataspaceProjectResourcesGetOut]:
-    """Get a dataspace project resource by ID
+    """Retrieve Dataspace Projects Resource
 
-     Retrieve detailed information about a specific resource within a dataspace project, including its
-    attributes.
+     5TZZsLaB
+
+    Get resource by ID for a specific project in the current dataspace.
 
     Args:
         resource_id (UUID):
@@ -144,10 +147,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> DataspaceProjectResourcesGetOut | None:
-    """Get a dataspace project resource by ID
+    """Retrieve Dataspace Projects Resource
 
-     Retrieve detailed information about a specific resource within a dataspace project, including its
-    attributes.
+     5TZZsLaB
+
+    Get resource by ID for a specific project in the current dataspace.
 
     Args:
         resource_id (UUID):

@@ -72,9 +72,11 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedPaymentRecordOut]:
-    """List payment records
+    """Get Payment Records
 
-     Retrieve all payment records for an organization with calculated balances. Results are paginated.
+     YSCUc2FB
+
+    Get all payment records for an organization.
 
     Args:
         organization_id (UUID):
@@ -109,9 +111,11 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedPaymentRecordOut | None:
-    """List payment records
+    """Get Payment Records
 
-     Retrieve all payment records for an organization with calculated balances. Results are paginated.
+     YSCUc2FB
+
+    Get all payment records for an organization.
 
     Args:
         organization_id (UUID):
@@ -141,9 +145,11 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedPaymentRecordOut]:
-    """List payment records
+    """Get Payment Records
 
-     Retrieve all payment records for an organization with calculated balances. Results are paginated.
+     YSCUc2FB
+
+    Get all payment records for an organization.
 
     Args:
         organization_id (UUID):
@@ -176,9 +182,11 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedPaymentRecordOut | None:
-    """List payment records
+    """Get Payment Records
 
-     Retrieve all payment records for an organization with calculated balances. Results are paginated.
+     YSCUc2FB
+
+    Get all payment records for an organization.
 
     Args:
         organization_id (UUID):

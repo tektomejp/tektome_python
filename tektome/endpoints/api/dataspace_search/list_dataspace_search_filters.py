@@ -60,9 +60,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list[DataspaceSearchFilterConfigurationOut]]:
-    """List all search filters
+    """Get All Dataspace Search Filters
 
-     Retrieve all search filter configurations for a dataspace.
+     dO7X5OVP
+
+    Get all filters for the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -91,9 +93,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> list[DataspaceSearchFilterConfigurationOut] | None:
-    """List all search filters
+    """Get All Dataspace Search Filters
 
-     Retrieve all search filter configurations for a dataspace.
+     dO7X5OVP
+
+    Get all filters for the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -117,9 +121,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list[DataspaceSearchFilterConfigurationOut]]:
-    """List all search filters
+    """Get All Dataspace Search Filters
 
-     Retrieve all search filter configurations for a dataspace.
+     dO7X5OVP
+
+    Get all filters for the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -146,9 +152,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> list[DataspaceSearchFilterConfigurationOut] | None:
-    """List all search filters
+    """Get All Dataspace Search Filters
 
-     Retrieve all search filter configurations for a dataspace.
+     dO7X5OVP
+
+    Get all filters for the current dataspace.
 
     Args:
         dataspace_id (UUID):

@@ -65,10 +65,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ProjectRequirementItemPostIn,
 ) -> Response[ProjectRequirementItemGetOut]:
-    """Update requirement items
+    """Put Requirement Item
 
-     Create or update the requirement items table for a requirement. Uses optimistic concurrency control
-    via a nonce to prevent conflicting updates.
+     JnQkM31E
+
+    create or update a requirement item associated to a requirement
 
     Args:
         requirement_id (UUID):
@@ -100,10 +101,11 @@ def sync(
     client: AuthenticatedClient,
     body: ProjectRequirementItemPostIn,
 ) -> ProjectRequirementItemGetOut | None:
-    """Update requirement items
+    """Put Requirement Item
 
-     Create or update the requirement items table for a requirement. Uses optimistic concurrency control
-    via a nonce to prevent conflicting updates.
+     JnQkM31E
+
+    create or update a requirement item associated to a requirement
 
     Args:
         requirement_id (UUID):
@@ -130,10 +132,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ProjectRequirementItemPostIn,
 ) -> Response[ProjectRequirementItemGetOut]:
-    """Update requirement items
+    """Put Requirement Item
 
-     Create or update the requirement items table for a requirement. Uses optimistic concurrency control
-    via a nonce to prevent conflicting updates.
+     JnQkM31E
+
+    create or update a requirement item associated to a requirement
 
     Args:
         requirement_id (UUID):
@@ -163,10 +166,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ProjectRequirementItemPostIn,
 ) -> ProjectRequirementItemGetOut | None:
-    """Update requirement items
+    """Put Requirement Item
 
-     Create or update the requirement items table for a requirement. Uses optimistic concurrency control
-    via a nonce to prevent conflicting updates.
+     JnQkM31E
+
+    create or update a requirement item associated to a requirement
 
     Args:
         requirement_id (UUID):
