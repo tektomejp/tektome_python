@@ -7,6 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.generic_http_error import GenericHttpError
 from ...models.requirement_template_container_get_out import RequirementTemplateContainerGetOut
 from ...models.requirement_template_container_patch_in_patch import RequirementTemplateContainerPatchInPatch
 from ...types import Response
@@ -36,11 +37,101 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RequirementTemplateContainerGetOut | None:
+) -> GenericHttpError | RequirementTemplateContainerGetOut | None:
     if response.status_code == 200:
         response_200 = RequirementTemplateContainerGetOut.from_dict(response.json())
 
         return response_200
+
+    if response.status_code == 400:
+        response_400 = GenericHttpError.from_dict(response.json())
+
+        return response_400
+
+    if response.status_code == 401:
+        response_401 = GenericHttpError.from_dict(response.json())
+
+        return response_401
+
+    if response.status_code == 402:
+        response_402 = GenericHttpError.from_dict(response.json())
+
+        return response_402
+
+    if response.status_code == 403:
+        response_403 = GenericHttpError.from_dict(response.json())
+
+        return response_403
+
+    if response.status_code == 404:
+        response_404 = GenericHttpError.from_dict(response.json())
+
+        return response_404
+
+    if response.status_code == 405:
+        response_405 = GenericHttpError.from_dict(response.json())
+
+        return response_405
+
+    if response.status_code == 406:
+        response_406 = GenericHttpError.from_dict(response.json())
+
+        return response_406
+
+    if response.status_code == 407:
+        response_407 = GenericHttpError.from_dict(response.json())
+
+        return response_407
+
+    if response.status_code == 408:
+        response_408 = GenericHttpError.from_dict(response.json())
+
+        return response_408
+
+    if response.status_code == 409:
+        response_409 = GenericHttpError.from_dict(response.json())
+
+        return response_409
+
+    if response.status_code == 410:
+        response_410 = GenericHttpError.from_dict(response.json())
+
+        return response_410
+
+    if response.status_code == 411:
+        response_411 = GenericHttpError.from_dict(response.json())
+
+        return response_411
+
+    if response.status_code == 412:
+        response_412 = GenericHttpError.from_dict(response.json())
+
+        return response_412
+
+    if response.status_code == 416:
+        response_416 = GenericHttpError.from_dict(response.json())
+
+        return response_416
+
+    if response.status_code == 418:
+        response_418 = GenericHttpError.from_dict(response.json())
+
+        return response_418
+
+    if response.status_code == 425:
+        response_425 = GenericHttpError.from_dict(response.json())
+
+        return response_425
+
+    if response.status_code == 429:
+        response_429 = GenericHttpError.from_dict(response.json())
+
+        return response_429
+
+    if response.status_code == 451:
+        response_451 = GenericHttpError.from_dict(response.json())
+
+        return response_451
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -50,7 +141,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[RequirementTemplateContainerGetOut]:
+) -> Response[GenericHttpError | RequirementTemplateContainerGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -64,10 +155,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: RequirementTemplateContainerPatchInPatch,
-) -> Response[RequirementTemplateContainerGetOut]:
+) -> Response[GenericHttpError | RequirementTemplateContainerGetOut]:
     """Update a requirement template container
 
-     Partially update a requirement template container by its ID.
+     Partially update a requirement template container by its ID. Returns 409 if a container with the
+    same name already exists in the organization.
 
     Args:
         requirement_template_container_id (UUID):
@@ -78,7 +170,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementTemplateContainerGetOut]
+        Response[GenericHttpError | RequirementTemplateContainerGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -98,10 +190,11 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: RequirementTemplateContainerPatchInPatch,
-) -> RequirementTemplateContainerGetOut | None:
+) -> GenericHttpError | RequirementTemplateContainerGetOut | None:
     """Update a requirement template container
 
-     Partially update a requirement template container by its ID.
+     Partially update a requirement template container by its ID. Returns 409 if a container with the
+    same name already exists in the organization.
 
     Args:
         requirement_template_container_id (UUID):
@@ -112,7 +205,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementTemplateContainerGetOut
+        GenericHttpError | RequirementTemplateContainerGetOut
     """
 
     return sync_detailed(
@@ -127,10 +220,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: RequirementTemplateContainerPatchInPatch,
-) -> Response[RequirementTemplateContainerGetOut]:
+) -> Response[GenericHttpError | RequirementTemplateContainerGetOut]:
     """Update a requirement template container
 
-     Partially update a requirement template container by its ID.
+     Partially update a requirement template container by its ID. Returns 409 if a container with the
+    same name already exists in the organization.
 
     Args:
         requirement_template_container_id (UUID):
@@ -141,7 +235,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementTemplateContainerGetOut]
+        Response[GenericHttpError | RequirementTemplateContainerGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -159,10 +253,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: RequirementTemplateContainerPatchInPatch,
-) -> RequirementTemplateContainerGetOut | None:
+) -> GenericHttpError | RequirementTemplateContainerGetOut | None:
     """Update a requirement template container
 
-     Partially update a requirement template container by its ID.
+     Partially update a requirement template container by its ID. Returns 409 if a container with the
+    same name already exists in the organization.
 
     Args:
         requirement_template_container_id (UUID):
@@ -173,7 +268,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementTemplateContainerGetOut
+        GenericHttpError | RequirementTemplateContainerGetOut
     """
 
     return (
