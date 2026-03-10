@@ -11,6 +11,7 @@ from .aggregated_llm_usage_post_out import AggregatedLLMUsagePostOut
 from .aggregated_usage_by_model import AggregatedUsageByModel
 from .all_attributes_schema_out import AllAttributesSchemaOut
 from .any_attribute_schema_in import AnyAttributeSchemaIn
+from .any_resource_pagination_schema_in import AnyResourcePaginationSchemaIn
 from .any_resource_schema_in import AnyResourceSchemaIn
 from .any_valued_attribute_schema_in import AnyValuedAttributeSchemaIn
 from .approval_candidates_path_params import ApprovalCandidatesPathParams
@@ -113,6 +114,7 @@ from .bim_object_3d_response_get_out import BimObject3DResponseGetOut
 from .bim_object_post_out import BimObjectPostOut
 from .bim_project_element_id_type_path import BimProjectElementIdTypePath
 from .bim_project_element_type_path import BimProjectElementTypePath
+from .bim_project_pagination_query_in import BimProjectPaginationQueryIn
 from .bim_project_path import BimProjectPath
 from .bim_project_path_no_validation import BimProjectPathNoValidation
 from .bim_project_post_in import BimProjectPostIn
@@ -369,6 +371,7 @@ from .environment_variable_path import EnvironmentVariablePath
 from .environment_variable_response import EnvironmentVariableResponse
 from .error_out import ErrorOut
 from .error_output_schema_out import ErrorOutputSchemaOut
+from .error_response_out import ErrorResponseOut
 from .error_response_post_out import ErrorResponsePostOut
 from .execute_metadata_kind import ExecuteMetadataKind
 from .execute_process_details import ExecuteProcessDetails
@@ -1073,6 +1076,7 @@ __all__ = (
     "AggregateLLMUsagePostIn",
     "AllAttributesSchemaOut",
     "AnyAttributeSchemaIn",
+    "AnyResourcePaginationSchemaIn",
     "AnyResourceSchemaIn",
     "AnyValuedAttributeSchemaIn",
     "ApprovalCandidatesPathParams",
@@ -1178,6 +1182,7 @@ __all__ = (
     "BimObjectPostOut",
     "BimProjectElementIdTypePath",
     "BimProjectElementTypePath",
+    "BimProjectPaginationQueryIn",
     "BimProjectPath",
     "BimProjectPathNoValidation",
     "BimProjectPostIn",
@@ -1402,6 +1407,7 @@ __all__ = (
     "EnvironmentVariableResponse",
     "ErrorOut",
     "ErrorOutputSchemaOut",
+    "ErrorResponseOut",
     "ErrorResponsePostOut",
     "ExecuteMetadataKind",
     "ExecuteProcessDetails",
