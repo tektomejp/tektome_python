@@ -51,18 +51,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[LawtalkFolderGetOut]:
-    """Get Folder
+    """Get folder details
 
-     CvyZo7o6
-
-    Retrieve folder details and its child resources.
-
-    Args:
-        request: The HTTP request object.
-        path_params (FolderPathIn): Path parameters including the folder.
-
-    Returns:
-        200: LawtalkFolderGetOut schema with folder details and children.
+     Retrieve folder details including its child resources.
 
     Args:
         folder_id (UUID):
@@ -91,18 +82,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> LawtalkFolderGetOut | None:
-    """Get Folder
+    """Get folder details
 
-     CvyZo7o6
-
-    Retrieve folder details and its child resources.
-
-    Args:
-        request: The HTTP request object.
-        path_params (FolderPathIn): Path parameters including the folder.
-
-    Returns:
-        200: LawtalkFolderGetOut schema with folder details and children.
+     Retrieve folder details including its child resources.
 
     Args:
         folder_id (UUID):
@@ -126,18 +108,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[LawtalkFolderGetOut]:
-    """Get Folder
+    """Get folder details
 
-     CvyZo7o6
-
-    Retrieve folder details and its child resources.
-
-    Args:
-        request: The HTTP request object.
-        path_params (FolderPathIn): Path parameters including the folder.
-
-    Returns:
-        200: LawtalkFolderGetOut schema with folder details and children.
+     Retrieve folder details including its child resources.
 
     Args:
         folder_id (UUID):
@@ -164,18 +137,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> LawtalkFolderGetOut | None:
-    """Get Folder
+    """Get folder details
 
-     CvyZo7o6
-
-    Retrieve folder details and its child resources.
-
-    Args:
-        request: The HTTP request object.
-        path_params (FolderPathIn): Path parameters including the folder.
-
-    Returns:
-        200: LawtalkFolderGetOut schema with folder details and children.
+     Retrieve folder details including its child resources.
 
     Args:
         folder_id (UUID):

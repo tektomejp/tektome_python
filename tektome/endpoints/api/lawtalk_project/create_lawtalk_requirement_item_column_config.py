@@ -65,11 +65,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ProjectRequirementItemColumnConfigPostIn,
 ) -> Response[ProjectRequirementItemColumnConfigOut]:
-    """Post Project Requirement Item Column Config
+    """Create requirement item column config
 
-     1b2c3d4A
-
-    Create a new requirement item column configuration for a project.
+     Create a new requirement item column configuration for a project. Column names must be unique within
+    the project.
 
     Args:
         project_id (UUID):
@@ -101,11 +100,10 @@ def sync(
     client: AuthenticatedClient,
     body: ProjectRequirementItemColumnConfigPostIn,
 ) -> ProjectRequirementItemColumnConfigOut | None:
-    """Post Project Requirement Item Column Config
+    """Create requirement item column config
 
-     1b2c3d4A
-
-    Create a new requirement item column configuration for a project.
+     Create a new requirement item column configuration for a project. Column names must be unique within
+    the project.
 
     Args:
         project_id (UUID):
@@ -132,11 +130,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ProjectRequirementItemColumnConfigPostIn,
 ) -> Response[ProjectRequirementItemColumnConfigOut]:
-    """Post Project Requirement Item Column Config
+    """Create requirement item column config
 
-     1b2c3d4A
-
-    Create a new requirement item column configuration for a project.
+     Create a new requirement item column configuration for a project. Column names must be unique within
+    the project.
 
     Args:
         project_id (UUID):
@@ -166,11 +163,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ProjectRequirementItemColumnConfigPostIn,
 ) -> ProjectRequirementItemColumnConfigOut | None:
-    """Post Project Requirement Item Column Config
+    """Create requirement item column config
 
-     1b2c3d4A
-
-    Create a new requirement item column configuration for a project.
+     Create a new requirement item column configuration for a project. Column names must be unique within
+    the project.
 
     Args:
         project_id (UUID):

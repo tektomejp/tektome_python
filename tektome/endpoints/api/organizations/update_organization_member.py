@@ -64,11 +64,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: list[OrganizationMemberRolesSchemaIn],
 ) -> Response[Any]:
-    """Update Organization Member
+    """Update member roles
 
-     LmJZvWQx
-
-    Update a member's role in an organization.
+     Update the role assignments for one or more members within an organization.
 
     Args:
         organization_id (UUID):
@@ -100,11 +98,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: list[OrganizationMemberRolesSchemaIn],
 ) -> Response[Any]:
-    """Update Organization Member
+    """Update member roles
 
-     LmJZvWQx
-
-    Update a member's role in an organization.
+     Update the role assignments for one or more members within an organization.
 
     Args:
         organization_id (UUID):

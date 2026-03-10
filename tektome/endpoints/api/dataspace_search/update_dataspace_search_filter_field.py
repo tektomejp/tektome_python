@@ -162,11 +162,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchFilterFieldInPatch,
 ) -> Response[DataspaceSearchFilterFieldOut | ErrorOut]:
-    """Patch Search Filter Configuration Field
+    """Update a search filter field
 
-     orLnM3zY
-
-    Update a dataspace search filter configuration field
+     Partially update a field associated with a search filter configuration.
 
     Args:
         dataspace_id (UUID):
@@ -204,11 +202,9 @@ def sync(
     client: AuthenticatedClient,
     body: DataspaceSearchFilterFieldInPatch,
 ) -> DataspaceSearchFilterFieldOut | ErrorOut | None:
-    """Patch Search Filter Configuration Field
+    """Update a search filter field
 
-     orLnM3zY
-
-    Update a dataspace search filter configuration field
+     Partially update a field associated with a search filter configuration.
 
     Args:
         dataspace_id (UUID):
@@ -241,11 +237,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchFilterFieldInPatch,
 ) -> Response[DataspaceSearchFilterFieldOut | ErrorOut]:
-    """Patch Search Filter Configuration Field
+    """Update a search filter field
 
-     orLnM3zY
-
-    Update a dataspace search filter configuration field
+     Partially update a field associated with a search filter configuration.
 
     Args:
         dataspace_id (UUID):
@@ -281,11 +275,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DataspaceSearchFilterFieldInPatch,
 ) -> DataspaceSearchFilterFieldOut | ErrorOut | None:
-    """Patch Search Filter Configuration Field
+    """Update a search filter field
 
-     orLnM3zY
-
-    Update a dataspace search filter configuration field
+     Partially update a field associated with a search filter configuration.
 
     Args:
         dataspace_id (UUID):

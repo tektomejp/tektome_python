@@ -75,25 +75,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: LawtalkProjectPostIn,
 ) -> Response[ErrorOut | LawtalkProjectSchema]:
-    """Post Project
+    """Create a project with attributes
 
-     eWe6HdkR
-
-    Create a new project  in user's current organization.
-
-    Attributes for all countries
-    - structures
-    - site_area
-    - site_area_operator
-    - floors_above_ground
-    - floors_above_ground_operator
-    - floors_below_ground
-    - floors_below_ground_operator
-    - height
-    - height_operator
-    - other_details (max 2000 characters)
-
-    Refer to schema for country specific required fields.
+     Create a new project with country-specific attributes such as structures, site area, floors, height,
+    and building area. The creator is assigned as project owner.
 
     Args:
         body (LawtalkProjectPostIn):
@@ -122,25 +107,10 @@ def sync(
     client: AuthenticatedClient,
     body: LawtalkProjectPostIn,
 ) -> ErrorOut | LawtalkProjectSchema | None:
-    """Post Project
+    """Create a project with attributes
 
-     eWe6HdkR
-
-    Create a new project  in user's current organization.
-
-    Attributes for all countries
-    - structures
-    - site_area
-    - site_area_operator
-    - floors_above_ground
-    - floors_above_ground_operator
-    - floors_below_ground
-    - floors_below_ground_operator
-    - height
-    - height_operator
-    - other_details (max 2000 characters)
-
-    Refer to schema for country specific required fields.
+     Create a new project with country-specific attributes such as structures, site area, floors, height,
+    and building area. The creator is assigned as project owner.
 
     Args:
         body (LawtalkProjectPostIn):
@@ -164,25 +134,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: LawtalkProjectPostIn,
 ) -> Response[ErrorOut | LawtalkProjectSchema]:
-    """Post Project
+    """Create a project with attributes
 
-     eWe6HdkR
-
-    Create a new project  in user's current organization.
-
-    Attributes for all countries
-    - structures
-    - site_area
-    - site_area_operator
-    - floors_above_ground
-    - floors_above_ground_operator
-    - floors_below_ground
-    - floors_below_ground_operator
-    - height
-    - height_operator
-    - other_details (max 2000 characters)
-
-    Refer to schema for country specific required fields.
+     Create a new project with country-specific attributes such as structures, site area, floors, height,
+    and building area. The creator is assigned as project owner.
 
     Args:
         body (LawtalkProjectPostIn):
@@ -209,25 +164,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: LawtalkProjectPostIn,
 ) -> ErrorOut | LawtalkProjectSchema | None:
-    """Post Project
+    """Create a project with attributes
 
-     eWe6HdkR
-
-    Create a new project  in user's current organization.
-
-    Attributes for all countries
-    - structures
-    - site_area
-    - site_area_operator
-    - floors_above_ground
-    - floors_above_ground_operator
-    - floors_below_ground
-    - floors_below_ground_operator
-    - height
-    - height_operator
-    - other_details (max 2000 characters)
-
-    Refer to schema for country specific required fields.
+     Create a new project with country-specific attributes such as structures, site area, floors, height,
+    and building area. The creator is assigned as project owner.
 
     Args:
         body (LawtalkProjectPostIn):

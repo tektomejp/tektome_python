@@ -10,40 +10,21 @@ from ...client import AuthenticatedClient, Client
 from ...models.dataspace_search_request_schema import DataspaceSearchRequestSchema
 from ...models.dataspace_search_result_out import DataspaceSearchResultOut
 from ...models.error_out import ErrorOut
-from ...models.fire_dataspace_search_target_entity import FireDataspaceSearchTargetEntity
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
     *,
     body: DataspaceSearchRequestSchema,
-    target_entity: FireDataspaceSearchTargetEntity | Unset = UNSET,
-    page: int | Unset = 1,
-    page_size: int | Unset = 30,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
-
-    params: dict[str, Any] = {}
-
-    json_target_entity: dict[str, Any] | Unset = UNSET
-    if not isinstance(target_entity, Unset):
-        json_target_entity = target_entity.to_dict()
-    if not isinstance(json_target_entity, Unset):
-        params.update(json_target_entity)
-
-    params["page"] = page
-
-    params["page_size"] = page_size
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/api/core/dataspaces/{dataspace_id}/search/".format(
             dataspace_id=quote(str(dataspace_id), safe=""),
         ),
-        "params": params,
     }
 
     _kwargs["json"] = body.to_dict()
@@ -89,27 +70,14 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: DataspaceSearchRequestSchema,
-    target_entity: FireDataspaceSearchTargetEntity | Unset = UNSET,
-    page: int | Unset = 1,
-    page_size: int | Unset = 30,
 ) -> Response[DataspaceSearchResultOut | ErrorOut]:
-    """Post Fire Search
+    """Execute a new search
 
-     sR8Kj2Lm
-
-    Fire a new search request.
-
-    Creates a new search request, executes the search with caching,
-    and returns paginated results along with the search request info.
-
-    Only keeps the latest 8 (configurable) unsaved requests per user.
+     Execute a new search request within a dataspace and return paginated results. Only the most recent
+    unsaved requests per user are retained.
 
     Args:
         dataspace_id (UUID):
-        target_entity (FireDataspaceSearchTargetEntity | Unset): Target entity type to search
-            (project or resource)
-        page (int | Unset): Page number for pagination Default: 1.
-        page_size (int | Unset): Page size for pagination Default: 30.
         body (DataspaceSearchRequestSchema): Base schema for search request fields
 
     Raises:
@@ -123,9 +91,6 @@ def sync_detailed(
     kwargs = _get_kwargs(
         dataspace_id=dataspace_id,
         body=body,
-        target_entity=target_entity,
-        page=page,
-        page_size=page_size,
     )
 
     response = client.get_httpx_client().request(
@@ -140,27 +105,14 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: DataspaceSearchRequestSchema,
-    target_entity: FireDataspaceSearchTargetEntity | Unset = UNSET,
-    page: int | Unset = 1,
-    page_size: int | Unset = 30,
 ) -> DataspaceSearchResultOut | ErrorOut | None:
-    """Post Fire Search
+    """Execute a new search
 
-     sR8Kj2Lm
-
-    Fire a new search request.
-
-    Creates a new search request, executes the search with caching,
-    and returns paginated results along with the search request info.
-
-    Only keeps the latest 8 (configurable) unsaved requests per user.
+     Execute a new search request within a dataspace and return paginated results. Only the most recent
+    unsaved requests per user are retained.
 
     Args:
         dataspace_id (UUID):
-        target_entity (FireDataspaceSearchTargetEntity | Unset): Target entity type to search
-            (project or resource)
-        page (int | Unset): Page number for pagination Default: 1.
-        page_size (int | Unset): Page size for pagination Default: 30.
         body (DataspaceSearchRequestSchema): Base schema for search request fields
 
     Raises:
@@ -175,9 +127,6 @@ def sync(
         dataspace_id=dataspace_id,
         client=client,
         body=body,
-        target_entity=target_entity,
-        page=page,
-        page_size=page_size,
     ).parsed
 
 
@@ -186,27 +135,14 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: DataspaceSearchRequestSchema,
-    target_entity: FireDataspaceSearchTargetEntity | Unset = UNSET,
-    page: int | Unset = 1,
-    page_size: int | Unset = 30,
 ) -> Response[DataspaceSearchResultOut | ErrorOut]:
-    """Post Fire Search
+    """Execute a new search
 
-     sR8Kj2Lm
-
-    Fire a new search request.
-
-    Creates a new search request, executes the search with caching,
-    and returns paginated results along with the search request info.
-
-    Only keeps the latest 8 (configurable) unsaved requests per user.
+     Execute a new search request within a dataspace and return paginated results. Only the most recent
+    unsaved requests per user are retained.
 
     Args:
         dataspace_id (UUID):
-        target_entity (FireDataspaceSearchTargetEntity | Unset): Target entity type to search
-            (project or resource)
-        page (int | Unset): Page number for pagination Default: 1.
-        page_size (int | Unset): Page size for pagination Default: 30.
         body (DataspaceSearchRequestSchema): Base schema for search request fields
 
     Raises:
@@ -220,9 +156,6 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         dataspace_id=dataspace_id,
         body=body,
-        target_entity=target_entity,
-        page=page,
-        page_size=page_size,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -235,27 +168,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: DataspaceSearchRequestSchema,
-    target_entity: FireDataspaceSearchTargetEntity | Unset = UNSET,
-    page: int | Unset = 1,
-    page_size: int | Unset = 30,
 ) -> DataspaceSearchResultOut | ErrorOut | None:
-    """Post Fire Search
+    """Execute a new search
 
-     sR8Kj2Lm
-
-    Fire a new search request.
-
-    Creates a new search request, executes the search with caching,
-    and returns paginated results along with the search request info.
-
-    Only keeps the latest 8 (configurable) unsaved requests per user.
+     Execute a new search request within a dataspace and return paginated results. Only the most recent
+    unsaved requests per user are retained.
 
     Args:
         dataspace_id (UUID):
-        target_entity (FireDataspaceSearchTargetEntity | Unset): Target entity type to search
-            (project or resource)
-        page (int | Unset): Page number for pagination Default: 1.
-        page_size (int | Unset): Page size for pagination Default: 30.
         body (DataspaceSearchRequestSchema): Base schema for search request fields
 
     Raises:
@@ -271,8 +191,5 @@ async def asyncio(
             dataspace_id=dataspace_id,
             client=client,
             body=body,
-            target_entity=target_entity,
-            page=page,
-            page_size=page_size,
         )
     ).parsed

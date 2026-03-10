@@ -69,40 +69,12 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: UploadDataspaceProjectBimFileParams,
 ) -> Response[ErrorOut | ResourceIfcBimProjectCreationPostOut]:
-    """Post Upload Dataspace Project Resource Bim
+    """Upload an IFC file for BIM processing
 
-     AuBjLcqo
-
-    Upload and process an IFC (Building Information Model) file for BIM analysis.
-
-    This endpoint handles the upload of IFC files and initiates an asynchronous processing
-    pipeline to extract and classify BIM elements. The workflow creates a Resource entity
-    for the uploaded file and a BimProject entity to manage the BIM processing state.
-
-    Args:
-        request: The HTTP request object containing authentication information.
-        path_params: Path parameters containing the project_id.
-        file: The uploaded IFC file (UploadedFile).
-
-    Returns:
-        Tuple[int, dict]: HTTP 201 with response containing:
-            - task_id (UUID): Celery task ID for async BIM processing
-            - resource_id (UUID): ID of created Resource entity
-            - bim_project_id (UUID): ID of created BimProject entity
-            - file_name (str): Original filename (cleaned of path separators)
-            - created (datetime): Resource creation timestamp
-            - updated (datetime): Resource update timestamp
-
-    Raises:
-        HttpError(400): If file is not .ifc format or BIM project creation fails.
-
-    Processing Flow:
-        1. Validates file extension (case-insensitive .ifc check)
-        2. Creates Resource entity with version control
-        3. Creates BimProject associated with Resource
-        4. Triggers async Celery task: process_resource_ifc_to_bim_elements
-        5. Returns task ID for client to poll progress
-        6. On error: Cleans up Resource and returns error response
+     Upload an IFC (Building Information Model) file to a project and initiate BIM element extraction and
+    classification. Only .ifc files are accepted. This is an asynchronous operation. To retrieve the
+    results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the task/process ID
+    returned in this response.
 
     Args:
         project_id (UUID):
@@ -134,40 +106,12 @@ def sync(
     client: AuthenticatedClient,
     body: UploadDataspaceProjectBimFileParams,
 ) -> ErrorOut | ResourceIfcBimProjectCreationPostOut | None:
-    """Post Upload Dataspace Project Resource Bim
+    """Upload an IFC file for BIM processing
 
-     AuBjLcqo
-
-    Upload and process an IFC (Building Information Model) file for BIM analysis.
-
-    This endpoint handles the upload of IFC files and initiates an asynchronous processing
-    pipeline to extract and classify BIM elements. The workflow creates a Resource entity
-    for the uploaded file and a BimProject entity to manage the BIM processing state.
-
-    Args:
-        request: The HTTP request object containing authentication information.
-        path_params: Path parameters containing the project_id.
-        file: The uploaded IFC file (UploadedFile).
-
-    Returns:
-        Tuple[int, dict]: HTTP 201 with response containing:
-            - task_id (UUID): Celery task ID for async BIM processing
-            - resource_id (UUID): ID of created Resource entity
-            - bim_project_id (UUID): ID of created BimProject entity
-            - file_name (str): Original filename (cleaned of path separators)
-            - created (datetime): Resource creation timestamp
-            - updated (datetime): Resource update timestamp
-
-    Raises:
-        HttpError(400): If file is not .ifc format or BIM project creation fails.
-
-    Processing Flow:
-        1. Validates file extension (case-insensitive .ifc check)
-        2. Creates Resource entity with version control
-        3. Creates BimProject associated with Resource
-        4. Triggers async Celery task: process_resource_ifc_to_bim_elements
-        5. Returns task ID for client to poll progress
-        6. On error: Cleans up Resource and returns error response
+     Upload an IFC (Building Information Model) file to a project and initiate BIM element extraction and
+    classification. Only .ifc files are accepted. This is an asynchronous operation. To retrieve the
+    results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the task/process ID
+    returned in this response.
 
     Args:
         project_id (UUID):
@@ -194,40 +138,12 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: UploadDataspaceProjectBimFileParams,
 ) -> Response[ErrorOut | ResourceIfcBimProjectCreationPostOut]:
-    """Post Upload Dataspace Project Resource Bim
+    """Upload an IFC file for BIM processing
 
-     AuBjLcqo
-
-    Upload and process an IFC (Building Information Model) file for BIM analysis.
-
-    This endpoint handles the upload of IFC files and initiates an asynchronous processing
-    pipeline to extract and classify BIM elements. The workflow creates a Resource entity
-    for the uploaded file and a BimProject entity to manage the BIM processing state.
-
-    Args:
-        request: The HTTP request object containing authentication information.
-        path_params: Path parameters containing the project_id.
-        file: The uploaded IFC file (UploadedFile).
-
-    Returns:
-        Tuple[int, dict]: HTTP 201 with response containing:
-            - task_id (UUID): Celery task ID for async BIM processing
-            - resource_id (UUID): ID of created Resource entity
-            - bim_project_id (UUID): ID of created BimProject entity
-            - file_name (str): Original filename (cleaned of path separators)
-            - created (datetime): Resource creation timestamp
-            - updated (datetime): Resource update timestamp
-
-    Raises:
-        HttpError(400): If file is not .ifc format or BIM project creation fails.
-
-    Processing Flow:
-        1. Validates file extension (case-insensitive .ifc check)
-        2. Creates Resource entity with version control
-        3. Creates BimProject associated with Resource
-        4. Triggers async Celery task: process_resource_ifc_to_bim_elements
-        5. Returns task ID for client to poll progress
-        6. On error: Cleans up Resource and returns error response
+     Upload an IFC (Building Information Model) file to a project and initiate BIM element extraction and
+    classification. Only .ifc files are accepted. This is an asynchronous operation. To retrieve the
+    results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the task/process ID
+    returned in this response.
 
     Args:
         project_id (UUID):
@@ -257,40 +173,12 @@ async def asyncio(
     client: AuthenticatedClient,
     body: UploadDataspaceProjectBimFileParams,
 ) -> ErrorOut | ResourceIfcBimProjectCreationPostOut | None:
-    """Post Upload Dataspace Project Resource Bim
+    """Upload an IFC file for BIM processing
 
-     AuBjLcqo
-
-    Upload and process an IFC (Building Information Model) file for BIM analysis.
-
-    This endpoint handles the upload of IFC files and initiates an asynchronous processing
-    pipeline to extract and classify BIM elements. The workflow creates a Resource entity
-    for the uploaded file and a BimProject entity to manage the BIM processing state.
-
-    Args:
-        request: The HTTP request object containing authentication information.
-        path_params: Path parameters containing the project_id.
-        file: The uploaded IFC file (UploadedFile).
-
-    Returns:
-        Tuple[int, dict]: HTTP 201 with response containing:
-            - task_id (UUID): Celery task ID for async BIM processing
-            - resource_id (UUID): ID of created Resource entity
-            - bim_project_id (UUID): ID of created BimProject entity
-            - file_name (str): Original filename (cleaned of path separators)
-            - created (datetime): Resource creation timestamp
-            - updated (datetime): Resource update timestamp
-
-    Raises:
-        HttpError(400): If file is not .ifc format or BIM project creation fails.
-
-    Processing Flow:
-        1. Validates file extension (case-insensitive .ifc check)
-        2. Creates Resource entity with version control
-        3. Creates BimProject associated with Resource
-        4. Triggers async Celery task: process_resource_ifc_to_bim_elements
-        5. Returns task ID for client to poll progress
-        6. On error: Cleans up Resource and returns error response
+     Upload an IFC (Building Information Model) file to a project and initiate BIM element extraction and
+    classification. Only .ifc files are accepted. This is an asynchronous operation. To retrieve the
+    results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the task/process ID
+    returned in this response.
 
     Args:
         project_id (UUID):

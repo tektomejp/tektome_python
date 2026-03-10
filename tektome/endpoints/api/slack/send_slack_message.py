@@ -52,11 +52,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: SendMsgPostIn,
 ) -> Response[Any]:
-    """Post Send Slack Msg
+    """Send a Slack notification message
 
-     3F0LPj5a
-
-    Send a message to Slack channel: #tektome_deep_research_user.
+     Send a text message to the configured Slack notification channel.
 
     Args:
         body (SendMsgPostIn):
@@ -85,11 +83,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: SendMsgPostIn,
 ) -> Response[Any]:
-    """Post Send Slack Msg
+    """Send a Slack notification message
 
-     3F0LPj5a
-
-    Send a message to Slack channel: #tektome_deep_research_user.
+     Send a text message to the configured Slack notification channel.
 
     Args:
         body (SendMsgPostIn):

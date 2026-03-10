@@ -58,11 +58,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[PageComponentSchemaGetOut]:
-    """Get Resource Page
+    """Get a specific page of a resource
 
-     ICLG7SjX
-
-    Retrieve a specific page of a resource.
+     Retrieve a specific page component of a resource by its page number.
 
     Args:
         resource_id (UUID):
@@ -94,11 +92,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> PageComponentSchemaGetOut | None:
-    """Get Resource Page
+    """Get a specific page of a resource
 
-     ICLG7SjX
-
-    Retrieve a specific page of a resource.
+     Retrieve a specific page component of a resource by its page number.
 
     Args:
         resource_id (UUID):
@@ -125,11 +121,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[PageComponentSchemaGetOut]:
-    """Get Resource Page
+    """Get a specific page of a resource
 
-     ICLG7SjX
-
-    Retrieve a specific page of a resource.
+     Retrieve a specific page component of a resource by its page number.
 
     Args:
         resource_id (UUID):
@@ -159,11 +153,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> PageComponentSchemaGetOut | None:
-    """Get Resource Page
+    """Get a specific page of a resource
 
-     ICLG7SjX
-
-    Retrieve a specific page of a resource.
+     Retrieve a specific page component of a resource by its page number.
 
     Args:
         resource_id (UUID):

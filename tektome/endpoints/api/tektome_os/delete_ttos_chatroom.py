@@ -144,8 +144,7 @@ def sync_detailed(
 ) -> Response[Any | GenericHttpError]:
     """Delete a chatroom
 
-     xK7mNp2Q
-    Delete a chatroom by its ID.
+     Permanently delete a chatroom and all its associated messages and artifacts.
 
     Args:
         chatroom_id (UUID):
@@ -176,8 +175,7 @@ def sync(
 ) -> Any | GenericHttpError | None:
     """Delete a chatroom
 
-     xK7mNp2Q
-    Delete a chatroom by its ID.
+     Permanently delete a chatroom and all its associated messages and artifacts.
 
     Args:
         chatroom_id (UUID):
@@ -203,8 +201,7 @@ async def asyncio_detailed(
 ) -> Response[Any | GenericHttpError]:
     """Delete a chatroom
 
-     xK7mNp2Q
-    Delete a chatroom by its ID.
+     Permanently delete a chatroom and all its associated messages and artifacts.
 
     Args:
         chatroom_id (UUID):
@@ -233,8 +230,7 @@ async def asyncio(
 ) -> Any | GenericHttpError | None:
     """Delete a chatroom
 
-     xK7mNp2Q
-    Delete a chatroom by its ID.
+     Permanently delete a chatroom and all its associated messages and artifacts.
 
     Args:
         chatroom_id (UUID):

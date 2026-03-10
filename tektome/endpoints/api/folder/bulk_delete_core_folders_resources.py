@@ -58,16 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DeleteFolderResourcesSchema,
 ) -> Response[Any]:
-    """Delete Bulk Folders Resources
+    """Bulk delete subfolders and resources
 
-     Delete parent's subfolders and it's subfolders/resources together with same level resources.
-
-    Args:
-        path_params: Path[FolderPathIn] object containing folder_id
-        request: Request object
-        payload: DeleteFolderResourcesSchema object containing ids of folders to be deleted
-
-    Returns: 204, None
+     Delete multiple subfolders and resources within a parent folder in a single operation. Resources
+    linked to sections cannot be deleted.
 
     Args:
         folder_id (UUID):
@@ -100,16 +94,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DeleteFolderResourcesSchema,
 ) -> Response[Any]:
-    """Delete Bulk Folders Resources
+    """Bulk delete subfolders and resources
 
-     Delete parent's subfolders and it's subfolders/resources together with same level resources.
-
-    Args:
-        path_params: Path[FolderPathIn] object containing folder_id
-        request: Request object
-        payload: DeleteFolderResourcesSchema object containing ids of folders to be deleted
-
-    Returns: 204, None
+     Delete multiple subfolders and resources within a parent folder in a single operation. Resources
+    linked to sections cannot be deleted.
 
     Args:
         folder_id (UUID):

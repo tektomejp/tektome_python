@@ -52,11 +52,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RequirementTemplateBulkImportPostIn,
 ) -> Response[Any]:
-    """Post Bulk Import Requirements From Templates
+    """Bulk import requirements from templates
 
-     B7GNMWA0
-
-    bulk create requirements from the requirement templates
+     Create multiple requirements in a project by importing them from a list of requirement templates in
+    a single operation.
 
     Args:
         body (RequirementTemplateBulkImportPostIn): Serializer for Requirement Template Bulk
@@ -86,11 +85,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RequirementTemplateBulkImportPostIn,
 ) -> Response[Any]:
-    """Post Bulk Import Requirements From Templates
+    """Bulk import requirements from templates
 
-     B7GNMWA0
-
-    bulk create requirements from the requirement templates
+     Create multiple requirements in a project by importing them from a list of requirement templates in
+    a single operation.
 
     Args:
         body (RequirementTemplateBulkImportPostIn): Serializer for Requirement Template Bulk

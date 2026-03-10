@@ -80,12 +80,9 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedDataspaceListGetOut]:
-    """Get Dataspaces
+    """List all dataspaces for current user
 
-     rvCLTwry
-
-    Retrieve all dataspaces that the user is a member of.
-    if organization_id is provided, filter dataspaces by organization ID.
+     Retrieve all dataspaces the authenticated user is a member of. Optionally filter by organization ID.
 
     Args:
         organization_id (None | Unset | UUID): Filter dataspaces by organization ID.
@@ -120,12 +117,9 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedDataspaceListGetOut | None:
-    """Get Dataspaces
+    """List all dataspaces for current user
 
-     rvCLTwry
-
-    Retrieve all dataspaces that the user is a member of.
-    if organization_id is provided, filter dataspaces by organization ID.
+     Retrieve all dataspaces the authenticated user is a member of. Optionally filter by organization ID.
 
     Args:
         organization_id (None | Unset | UUID): Filter dataspaces by organization ID.
@@ -155,12 +149,9 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedDataspaceListGetOut]:
-    """Get Dataspaces
+    """List all dataspaces for current user
 
-     rvCLTwry
-
-    Retrieve all dataspaces that the user is a member of.
-    if organization_id is provided, filter dataspaces by organization ID.
+     Retrieve all dataspaces the authenticated user is a member of. Optionally filter by organization ID.
 
     Args:
         organization_id (None | Unset | UUID): Filter dataspaces by organization ID.
@@ -193,12 +184,9 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedDataspaceListGetOut | None:
-    """Get Dataspaces
+    """List all dataspaces for current user
 
-     rvCLTwry
-
-    Retrieve all dataspaces that the user is a member of.
-    if organization_id is provided, filter dataspaces by organization ID.
+     Retrieve all dataspaces the authenticated user is a member of. Optionally filter by organization ID.
 
     Args:
         organization_id (None | Unset | UUID): Filter dataspaces by organization ID.

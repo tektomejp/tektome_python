@@ -58,16 +58,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: FileMovePatchSchemaIn,
 ) -> Response[Any]:
-    """Move Resource
+    """Move a resource to another folder
 
-     Lm210ZmC
-
-    Move a resource to a new folder.
-
-    Args:
-        request: Request object
-        path_params: Path parameters containing resource_id
-        payload: Payload containing destination
+     Move a resource to a different destination folder within the same project.
 
     Args:
         resource_id (UUID):
@@ -99,16 +92,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: FileMovePatchSchemaIn,
 ) -> Response[Any]:
-    """Move Resource
+    """Move a resource to another folder
 
-     Lm210ZmC
-
-    Move a resource to a new folder.
-
-    Args:
-        request: Request object
-        path_params: Path parameters containing resource_id
-        payload: Payload containing destination
+     Move a resource to a different destination folder within the same project.
 
     Args:
         resource_id (UUID):

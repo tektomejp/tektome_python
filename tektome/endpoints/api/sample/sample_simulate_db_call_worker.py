@@ -52,9 +52,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     iterations: int | Unset = 1000,
 ) -> Response[Any]:
-    """Simulate Db Call Worker
+    """Simulate long database calls via workers
 
-     Simulate long database call
+     Sample endpoint that dispatches multiple database call tasks to background workers for testing
+    worker concurrency.
 
     Args:
         iterations (int | Unset):  Default: 1000.
@@ -83,9 +84,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     iterations: int | Unset = 1000,
 ) -> Response[Any]:
-    """Simulate Db Call Worker
+    """Simulate long database calls via workers
 
-     Simulate long database call
+     Sample endpoint that dispatches multiple database call tasks to background workers for testing
+    worker concurrency.
 
     Args:
         iterations (int | Unset):  Default: 1000.

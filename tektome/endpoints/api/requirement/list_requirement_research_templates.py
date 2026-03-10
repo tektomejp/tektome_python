@@ -74,15 +74,9 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedRequirementResearchTemplatesGetOut]:
-    """Get Requirement Research Templates
+    """List requirement research templates
 
-     JnQkM31K
-
-    Get research templates associated to a requirement's requirement template
-
-    Args:
-        request: Request object
-        path_params: path params of type RequirementPath
+     Retrieve research templates associated with a requirement's parent requirement template.
 
     Args:
         requirement_id (UUID):
@@ -117,15 +111,9 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedRequirementResearchTemplatesGetOut | None:
-    """Get Requirement Research Templates
+    """List requirement research templates
 
-     JnQkM31K
-
-    Get research templates associated to a requirement's requirement template
-
-    Args:
-        request: Request object
-        path_params: path params of type RequirementPath
+     Retrieve research templates associated with a requirement's parent requirement template.
 
     Args:
         requirement_id (UUID):
@@ -155,15 +143,9 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedRequirementResearchTemplatesGetOut]:
-    """Get Requirement Research Templates
+    """List requirement research templates
 
-     JnQkM31K
-
-    Get research templates associated to a requirement's requirement template
-
-    Args:
-        request: Request object
-        path_params: path params of type RequirementPath
+     Retrieve research templates associated with a requirement's parent requirement template.
 
     Args:
         requirement_id (UUID):
@@ -196,15 +178,9 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedRequirementResearchTemplatesGetOut | None:
-    """Get Requirement Research Templates
+    """List requirement research templates
 
-     JnQkM31K
-
-    Get research templates associated to a requirement's requirement template
-
-    Args:
-        request: Request object
-        path_params: path params of type RequirementPath
+     Retrieve research templates associated with a requirement's parent requirement template.
 
     Args:
         requirement_id (UUID):

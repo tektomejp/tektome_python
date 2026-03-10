@@ -74,11 +74,10 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedDataspaceProjectResourcesGetOut]:
-    """Get Dataspace Projects Resources
+    """List all resources in a dataspace project
 
-     5TZZsLaA
-
-    Get all resources for a specific project in the current dataspace.
+     Retrieve all resources (files) associated with a specific project in the dataspace, including their
+    attributes.
 
     Args:
         project_id (UUID):
@@ -113,11 +112,10 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedDataspaceProjectResourcesGetOut | None:
-    """Get Dataspace Projects Resources
+    """List all resources in a dataspace project
 
-     5TZZsLaA
-
-    Get all resources for a specific project in the current dataspace.
+     Retrieve all resources (files) associated with a specific project in the dataspace, including their
+    attributes.
 
     Args:
         project_id (UUID):
@@ -147,11 +145,10 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedDataspaceProjectResourcesGetOut]:
-    """Get Dataspace Projects Resources
+    """List all resources in a dataspace project
 
-     5TZZsLaA
-
-    Get all resources for a specific project in the current dataspace.
+     Retrieve all resources (files) associated with a specific project in the dataspace, including their
+    attributes.
 
     Args:
         project_id (UUID):
@@ -184,11 +181,10 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedDataspaceProjectResourcesGetOut | None:
-    """Get Dataspace Projects Resources
+    """List all resources in a dataspace project
 
-     5TZZsLaA
-
-    Get all resources for a specific project in the current dataspace.
+     Retrieve all resources (files) associated with a specific project in the dataspace, including their
+    attributes.
 
     Args:
         project_id (UUID):

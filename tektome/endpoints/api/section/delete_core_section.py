@@ -48,17 +48,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Section
+    """Delete a section
 
-     ggHYejD4
-
-    Delete a section by its ID. This will also delete all associated capture files.
-
-    Args:
-        request: Request object.
-        path_params: path parameters containing section ID.
-
-    Returns: 204 No Content.
+     Delete a section by its ID. This also removes all associated capture files.
 
     Args:
         section_id (UUID):
@@ -87,17 +79,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Section
+    """Delete a section
 
-     ggHYejD4
-
-    Delete a section by its ID. This will also delete all associated capture files.
-
-    Args:
-        request: Request object.
-        path_params: path parameters containing section ID.
-
-    Returns: 204 No Content.
+     Delete a section by its ID. This also removes all associated capture files.
 
     Args:
         section_id (UUID):

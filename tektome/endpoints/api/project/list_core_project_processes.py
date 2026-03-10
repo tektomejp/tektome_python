@@ -100,11 +100,10 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedProcessOut]:
-    """Get Project Processes
+    """List processes for a project
 
-     H8lklE7k
-
-    Retrieve all processes for the current project.
+     Retrieve all processes associated with the specified project. Supports filtering via query
+    parameters.
 
     Args:
         project_id (UUID):
@@ -149,11 +148,10 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedProcessOut | None:
-    """Get Project Processes
+    """List processes for a project
 
-     H8lklE7k
-
-    Retrieve all processes for the current project.
+     Retrieve all processes associated with the specified project. Supports filtering via query
+    parameters.
 
     Args:
         project_id (UUID):
@@ -193,11 +191,10 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedProcessOut]:
-    """Get Project Processes
+    """List processes for a project
 
-     H8lklE7k
-
-    Retrieve all processes for the current project.
+     Retrieve all processes associated with the specified project. Supports filtering via query
+    parameters.
 
     Args:
         project_id (UUID):
@@ -240,11 +237,10 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedProcessOut | None:
-    """Get Project Processes
+    """List processes for a project
 
-     H8lklE7k
-
-    Retrieve all processes for the current project.
+     Retrieve all processes associated with the specified project. Supports filtering via query
+    parameters.
 
     Args:
         project_id (UUID):

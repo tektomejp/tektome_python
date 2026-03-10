@@ -7,10 +7,12 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.dataspace_entity_type import DataspaceEntityType
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.field_condition_input import FieldConditionInput
+    from ..models.target_table import TargetTable
 
 
 T = TypeVar("T", bound="DataspaceSearchRequestSchema")
@@ -26,6 +28,17 @@ class DataspaceSearchRequestSchema:
         tag_id (None | Unset | UUID): Tag configuration ID for the search request
         filter_ids (list[UUID] | Unset): List of filter configuration IDs to apply (stored for reference)
         conditions (list[FieldConditionInput] | Unset): List of field-based search conditions (field_id, action, value)
+        page (int | Unset): Page number for pagination, starting from 1, default to 1 Default: 1.
+        page_size (int | Unset): Page size for pagination, range between 1 and 100 default to 30 Default: 30.
+        max_chunks_per_resource (int | Unset): Maximum number of OCR chunk inner_hits to return per resource, be careful
+            with high values as it may impact performance. Range between 1 and 100. Defaults to 5. Default: 5.
+        max_resource_per_project (int | Unset): Maximum number of resource inner_hits to return per project be careful
+            with high values as it may impact performance. Range between 1 and 100. Defaults to 25. Default: 25.
+        target_entity (DataspaceEntityType | TargetTable | Unset): 'project' returns projects as top-level hits with
+            nested resource_hits. 'resource' returns resources as top-level hits with projects extracted from inner_hits. Or
+            a TargetTable object {table_name, table_entity_type} for row-level table search. Default:
+            DataspaceEntityType.PROJECT.
+        is_debug (bool | Unset): Enable debug mode to log raw query and results Default: False.
     """
 
     keywords: None | str | Unset = UNSET
@@ -33,6 +46,12 @@ class DataspaceSearchRequestSchema:
     tag_id: None | Unset | UUID = UNSET
     filter_ids: list[UUID] | Unset = UNSET
     conditions: list[FieldConditionInput] | Unset = UNSET
+    page: int | Unset = 1
+    page_size: int | Unset = 30
+    max_chunks_per_resource: int | Unset = 5
+    max_resource_per_project: int | Unset = 25
+    target_entity: DataspaceEntityType | TargetTable | Unset = DataspaceEntityType.PROJECT
+    is_debug: bool | Unset = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -68,6 +87,24 @@ class DataspaceSearchRequestSchema:
                 conditions_item = conditions_item_data.to_dict()
                 conditions.append(conditions_item)
 
+        page = self.page
+
+        page_size = self.page_size
+
+        max_chunks_per_resource = self.max_chunks_per_resource
+
+        max_resource_per_project = self.max_resource_per_project
+
+        target_entity: dict[str, Any] | str | Unset
+        if isinstance(self.target_entity, Unset):
+            target_entity = UNSET
+        elif isinstance(self.target_entity, DataspaceEntityType):
+            target_entity = self.target_entity.value
+        else:
+            target_entity = self.target_entity.to_dict()
+
+        is_debug = self.is_debug
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -81,12 +118,25 @@ class DataspaceSearchRequestSchema:
             field_dict["filter_ids"] = filter_ids
         if conditions is not UNSET:
             field_dict["conditions"] = conditions
+        if page is not UNSET:
+            field_dict["page"] = page
+        if page_size is not UNSET:
+            field_dict["page_size"] = page_size
+        if max_chunks_per_resource is not UNSET:
+            field_dict["max_chunks_per_resource"] = max_chunks_per_resource
+        if max_resource_per_project is not UNSET:
+            field_dict["max_resource_per_project"] = max_resource_per_project
+        if target_entity is not UNSET:
+            field_dict["target_entity"] = target_entity
+        if is_debug is not UNSET:
+            field_dict["is_debug"] = is_debug
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.field_condition_input import FieldConditionInput
+        from ..models.target_table import TargetTable
 
         d = dict(src_dict)
 
@@ -136,12 +186,47 @@ class DataspaceSearchRequestSchema:
 
                 conditions.append(conditions_item)
 
+        page = d.pop("page", UNSET)
+
+        page_size = d.pop("page_size", UNSET)
+
+        max_chunks_per_resource = d.pop("max_chunks_per_resource", UNSET)
+
+        max_resource_per_project = d.pop("max_resource_per_project", UNSET)
+
+        def _parse_target_entity(data: object) -> DataspaceEntityType | TargetTable | Unset:
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                target_entity_type_0 = DataspaceEntityType(data)
+
+                return target_entity_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            if not isinstance(data, dict):
+                raise TypeError()
+            target_entity_type_1 = TargetTable.from_dict(data)
+
+            return target_entity_type_1
+
+        target_entity = _parse_target_entity(d.pop("target_entity", UNSET))
+
+        is_debug = d.pop("is_debug", UNSET)
+
         dataspace_search_request_schema = cls(
             keywords=keywords,
             highlight_keywords=highlight_keywords,
             tag_id=tag_id,
             filter_ids=filter_ids,
             conditions=conditions,
+            page=page,
+            page_size=page_size,
+            max_chunks_per_resource=max_chunks_per_resource,
+            max_resource_per_project=max_resource_per_project,
+            target_entity=target_entity,
+            is_debug=is_debug,
         )
 
         dataspace_search_request_schema.additional_properties = d

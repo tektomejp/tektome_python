@@ -68,11 +68,10 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedOrganizationsGetOut]:
-    """Get All Organizations
+    """Admin: List all organizations
 
-     aqTPYdGu
-
-    Retrieve all organizations.
+     Retrieve all organizations in the system with aggregate counts of users, dataspaces, projects, and
+    files. Requires super admin privileges.
 
     Args:
         page (int | Unset):  Default: 1.
@@ -104,11 +103,10 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedOrganizationsGetOut | None:
-    """Get All Organizations
+    """Admin: List all organizations
 
-     aqTPYdGu
-
-    Retrieve all organizations.
+     Retrieve all organizations in the system with aggregate counts of users, dataspaces, projects, and
+    files. Requires super admin privileges.
 
     Args:
         page (int | Unset):  Default: 1.
@@ -135,11 +133,10 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedOrganizationsGetOut]:
-    """Get All Organizations
+    """Admin: List all organizations
 
-     aqTPYdGu
-
-    Retrieve all organizations.
+     Retrieve all organizations in the system with aggregate counts of users, dataspaces, projects, and
+    files. Requires super admin privileges.
 
     Args:
         page (int | Unset):  Default: 1.
@@ -169,11 +166,10 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedOrganizationsGetOut | None:
-    """Get All Organizations
+    """Admin: List all organizations
 
-     aqTPYdGu
-
-    Retrieve all organizations.
+     Retrieve all organizations in the system with aggregate counts of users, dataspaces, projects, and
+    files. Requires super admin privileges.
 
     Args:
         page (int | Unset):  Default: 1.

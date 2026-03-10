@@ -159,11 +159,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPatchFilterIn,
 ) -> Response[DataspaceSearchTagConfigOut | ErrorOut]:
-    """Patch Filters To Dataspace Tag Config
+    """Assign filters to a tag configuration
 
-     W31YpdoE
-
-    Assign filters to a tag configuration for the current dataspace.
+     Assign one or more search filter configurations to a tag configuration. This determines which
+    filters are available when the tag is selected.
 
     Args:
         dataspace_id (UUID):
@@ -199,11 +198,10 @@ def sync(
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPatchFilterIn,
 ) -> DataspaceSearchTagConfigOut | ErrorOut | None:
-    """Patch Filters To Dataspace Tag Config
+    """Assign filters to a tag configuration
 
-     W31YpdoE
-
-    Assign filters to a tag configuration for the current dataspace.
+     Assign one or more search filter configurations to a tag configuration. This determines which
+    filters are available when the tag is selected.
 
     Args:
         dataspace_id (UUID):
@@ -234,11 +232,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPatchFilterIn,
 ) -> Response[DataspaceSearchTagConfigOut | ErrorOut]:
-    """Patch Filters To Dataspace Tag Config
+    """Assign filters to a tag configuration
 
-     W31YpdoE
-
-    Assign filters to a tag configuration for the current dataspace.
+     Assign one or more search filter configurations to a tag configuration. This determines which
+    filters are available when the tag is selected.
 
     Args:
         dataspace_id (UUID):
@@ -272,11 +269,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPatchFilterIn,
 ) -> DataspaceSearchTagConfigOut | ErrorOut | None:
-    """Patch Filters To Dataspace Tag Config
+    """Assign filters to a tag configuration
 
-     W31YpdoE
-
-    Assign filters to a tag configuration for the current dataspace.
+     Assign one or more search filter configurations to a tag configuration. This determines which
+    filters are available when the tag is selected.
 
     Args:
         dataspace_id (UUID):

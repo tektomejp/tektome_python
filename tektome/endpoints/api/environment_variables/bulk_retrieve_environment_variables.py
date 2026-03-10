@@ -161,11 +161,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: EnvironmentVariableFilterIn,
 ) -> Response[GenericHttpError | list[EnvironmentVariableResponse]]:
-    """Bulk Retrieve Environment Variables
+    """Bulk retrieve environment variables
 
-     9Tpfh3bb
-
-    Bulk retrieve environment variables by keys and ownership filters.
+     Retrieve multiple environment variables in a single request by specifying keys and ownership
+    filters.
 
     Args:
         organization_id (UUID):
@@ -197,11 +196,10 @@ def sync(
     client: AuthenticatedClient,
     body: EnvironmentVariableFilterIn,
 ) -> GenericHttpError | list[EnvironmentVariableResponse] | None:
-    """Bulk Retrieve Environment Variables
+    """Bulk retrieve environment variables
 
-     9Tpfh3bb
-
-    Bulk retrieve environment variables by keys and ownership filters.
+     Retrieve multiple environment variables in a single request by specifying keys and ownership
+    filters.
 
     Args:
         organization_id (UUID):
@@ -228,11 +226,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: EnvironmentVariableFilterIn,
 ) -> Response[GenericHttpError | list[EnvironmentVariableResponse]]:
-    """Bulk Retrieve Environment Variables
+    """Bulk retrieve environment variables
 
-     9Tpfh3bb
-
-    Bulk retrieve environment variables by keys and ownership filters.
+     Retrieve multiple environment variables in a single request by specifying keys and ownership
+    filters.
 
     Args:
         organization_id (UUID):
@@ -262,11 +259,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: EnvironmentVariableFilterIn,
 ) -> GenericHttpError | list[EnvironmentVariableResponse] | None:
-    """Bulk Retrieve Environment Variables
+    """Bulk retrieve environment variables
 
-     9Tpfh3bb
-
-    Bulk retrieve environment variables by keys and ownership filters.
+     Retrieve multiple environment variables in a single request by specifying keys and ownership
+    filters.
 
     Args:
         organization_id (UUID):

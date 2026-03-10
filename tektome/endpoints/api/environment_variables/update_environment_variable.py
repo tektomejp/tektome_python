@@ -159,11 +159,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: EnvironmentVariablePatchIn,
 ) -> Response[EnvironmentVariableResponse | GenericHttpError]:
-    """Update Environment Variable
+    """Update an environment variable
 
-     1Yvt9Nh5
-
-    Update an existing environment variable.
+     Update the value and/or description of an existing environment variable.
 
     Args:
         organization_id (UUID):
@@ -198,11 +196,9 @@ def sync(
     client: AuthenticatedClient,
     body: EnvironmentVariablePatchIn,
 ) -> EnvironmentVariableResponse | GenericHttpError | None:
-    """Update Environment Variable
+    """Update an environment variable
 
-     1Yvt9Nh5
-
-    Update an existing environment variable.
+     Update the value and/or description of an existing environment variable.
 
     Args:
         organization_id (UUID):
@@ -232,11 +228,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: EnvironmentVariablePatchIn,
 ) -> Response[EnvironmentVariableResponse | GenericHttpError]:
-    """Update Environment Variable
+    """Update an environment variable
 
-     1Yvt9Nh5
-
-    Update an existing environment variable.
+     Update the value and/or description of an existing environment variable.
 
     Args:
         organization_id (UUID):
@@ -269,11 +263,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: EnvironmentVariablePatchIn,
 ) -> EnvironmentVariableResponse | GenericHttpError | None:
-    """Update Environment Variable
+    """Update an environment variable
 
-     1Yvt9Nh5
-
-    Update an existing environment variable.
+     Update the value and/or description of an existing environment variable.
 
     Args:
         organization_id (UUID):

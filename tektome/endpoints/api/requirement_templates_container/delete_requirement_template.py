@@ -48,12 +48,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Requirement Template
+    """Delete a requirement template
 
-     B7GNMWvc
-
-    Delete a requirement template inside a requirement template container.
-    Deletes all associated EntityTracker records first to maintain data integrity.
+     Permanently delete a requirement template by its ID. Removes all associated tracking records and
+    updates the parent container timestamp.
 
     Args:
         requirement_template_id (UUID):
@@ -82,12 +80,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Requirement Template
+    """Delete a requirement template
 
-     B7GNMWvc
-
-    Delete a requirement template inside a requirement template container.
-    Deletes all associated EntityTracker records first to maintain data integrity.
+     Permanently delete a requirement template by its ID. Removes all associated tracking records and
+    updates the parent container timestamp.
 
     Args:
         requirement_template_id (UUID):

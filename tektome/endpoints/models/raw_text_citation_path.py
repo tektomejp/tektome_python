@@ -7,6 +7,8 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.dataspace_entity_type import DataspaceEntityType
+
 T = TypeVar("T", bound="RawTextCitationPath")
 
 
@@ -16,11 +18,13 @@ class RawTextCitationPath:
     Attributes:
         attribute_id (UUID):
         dataspace_id (UUID):
+        attribute_category (DataspaceEntityType):
         rawtext_citation_id (UUID):
     """
 
     attribute_id: UUID
     dataspace_id: UUID
+    attribute_category: DataspaceEntityType
     rawtext_citation_id: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -28,6 +32,8 @@ class RawTextCitationPath:
         attribute_id = str(self.attribute_id)
 
         dataspace_id = str(self.dataspace_id)
+
+        attribute_category = self.attribute_category.value
 
         rawtext_citation_id = str(self.rawtext_citation_id)
 
@@ -37,6 +43,7 @@ class RawTextCitationPath:
             {
                 "attribute_id": attribute_id,
                 "dataspace_id": dataspace_id,
+                "attribute_category": attribute_category,
                 "rawtext_citation_id": rawtext_citation_id,
             }
         )
@@ -50,11 +57,14 @@ class RawTextCitationPath:
 
         dataspace_id = UUID(d.pop("dataspace_id"))
 
+        attribute_category = DataspaceEntityType(d.pop("attribute_category"))
+
         rawtext_citation_id = UUID(d.pop("rawtext_citation_id"))
 
         raw_text_citation_path = cls(
             attribute_id=attribute_id,
             dataspace_id=dataspace_id,
+            attribute_category=attribute_category,
             rawtext_citation_id=rawtext_citation_id,
         )
 

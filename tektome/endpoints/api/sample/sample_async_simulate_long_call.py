@@ -63,12 +63,10 @@ def sync_detailed(
     sync_delay: float | Unset = 0.5,
     async_delay: float | Unset = 0.5,
 ) -> Response[ASimulateLongCallPostOut]:
-    """Asimulate Long Call
+    """Simulate a long asynchronous call
 
-     L2y-7-xi
-    Simulate a long call in async routes
-    sync_delay: `sleep(sync_delay)`
-    async_delay: `await asyncio.sleep(async_delay)`
+     Sample endpoint that simulates both synchronous and asynchronous delays for testing async route
+    behavior.
 
     Args:
         sync_delay (float | Unset):  Default: 0.5.
@@ -100,12 +98,10 @@ def sync(
     sync_delay: float | Unset = 0.5,
     async_delay: float | Unset = 0.5,
 ) -> ASimulateLongCallPostOut | None:
-    """Asimulate Long Call
+    """Simulate a long asynchronous call
 
-     L2y-7-xi
-    Simulate a long call in async routes
-    sync_delay: `sleep(sync_delay)`
-    async_delay: `await asyncio.sleep(async_delay)`
+     Sample endpoint that simulates both synchronous and asynchronous delays for testing async route
+    behavior.
 
     Args:
         sync_delay (float | Unset):  Default: 0.5.
@@ -132,12 +128,10 @@ async def asyncio_detailed(
     sync_delay: float | Unset = 0.5,
     async_delay: float | Unset = 0.5,
 ) -> Response[ASimulateLongCallPostOut]:
-    """Asimulate Long Call
+    """Simulate a long asynchronous call
 
-     L2y-7-xi
-    Simulate a long call in async routes
-    sync_delay: `sleep(sync_delay)`
-    async_delay: `await asyncio.sleep(async_delay)`
+     Sample endpoint that simulates both synchronous and asynchronous delays for testing async route
+    behavior.
 
     Args:
         sync_delay (float | Unset):  Default: 0.5.
@@ -167,12 +161,10 @@ async def asyncio(
     sync_delay: float | Unset = 0.5,
     async_delay: float | Unset = 0.5,
 ) -> ASimulateLongCallPostOut | None:
-    """Asimulate Long Call
+    """Simulate a long asynchronous call
 
-     L2y-7-xi
-    Simulate a long call in async routes
-    sync_delay: `sleep(sync_delay)`
-    async_delay: `await asyncio.sleep(async_delay)`
+     Sample endpoint that simulates both synchronous and asynchronous delays for testing async route
+    behavior.
 
     Args:
         sync_delay (float | Unset):  Default: 0.5.

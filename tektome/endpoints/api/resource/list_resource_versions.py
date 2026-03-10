@@ -168,11 +168,9 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[ErrorOut | PagedResourceSchemaPostOut]:
-    """Get All Resource Versions
+    """List all versions of a resource
 
-     HQ-zZ1i9
-
-    Get all resource's versions refered by resource_vc_id, sorted by updated descending, paginated
+     Retrieve a paginated list of all versions for a resource, sorted by most recently updated.
 
     Args:
         resource_group_id (UUID):
@@ -210,11 +208,9 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> ErrorOut | PagedResourceSchemaPostOut | None:
-    """Get All Resource Versions
+    """List all versions of a resource
 
-     HQ-zZ1i9
-
-    Get all resource's versions refered by resource_vc_id, sorted by updated descending, paginated
+     Retrieve a paginated list of all versions for a resource, sorted by most recently updated.
 
     Args:
         resource_group_id (UUID):
@@ -247,11 +243,9 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[ErrorOut | PagedResourceSchemaPostOut]:
-    """Get All Resource Versions
+    """List all versions of a resource
 
-     HQ-zZ1i9
-
-    Get all resource's versions refered by resource_vc_id, sorted by updated descending, paginated
+     Retrieve a paginated list of all versions for a resource, sorted by most recently updated.
 
     Args:
         resource_group_id (UUID):
@@ -287,11 +281,9 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> ErrorOut | PagedResourceSchemaPostOut | None:
-    """Get All Resource Versions
+    """List all versions of a resource
 
-     HQ-zZ1i9
-
-    Get all resource's versions refered by resource_vc_id, sorted by updated descending, paginated
+     Retrieve a paginated list of all versions for a resource, sorted by most recently updated.
 
     Args:
         resource_group_id (UUID):

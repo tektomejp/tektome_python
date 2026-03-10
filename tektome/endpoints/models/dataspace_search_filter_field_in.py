@@ -1,13 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.table_column_mapping import TableColumnMapping
+
 
 T = TypeVar("T", bound="DataspaceSearchFilterFieldIn")
 
@@ -25,6 +29,8 @@ class DataspaceSearchFilterFieldIn:
             field.
         resource_attribute_ids (list[UUID] | Unset): List of resource attribute IDs associated with the search filter
             field.
+        table_column_mappings (list[TableColumnMapping] | Unset): List of table column mappings for table attribute
+            search.
     """
 
     name: str
@@ -33,6 +39,7 @@ class DataspaceSearchFilterFieldIn:
     recommended_values: list[str] | Unset = UNSET
     project_attribute_ids: list[UUID] | Unset = UNSET
     resource_attribute_ids: list[UUID] | Unset = UNSET
+    table_column_mappings: list[TableColumnMapping] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -64,6 +71,13 @@ class DataspaceSearchFilterFieldIn:
                 resource_attribute_ids_item = str(resource_attribute_ids_item_data)
                 resource_attribute_ids.append(resource_attribute_ids_item)
 
+        table_column_mappings: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.table_column_mappings, Unset):
+            table_column_mappings = []
+            for table_column_mappings_item_data in self.table_column_mappings:
+                table_column_mappings_item = table_column_mappings_item_data.to_dict()
+                table_column_mappings.append(table_column_mappings_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -80,11 +94,15 @@ class DataspaceSearchFilterFieldIn:
             field_dict["project_attribute_ids"] = project_attribute_ids
         if resource_attribute_ids is not UNSET:
             field_dict["resource_attribute_ids"] = resource_attribute_ids
+        if table_column_mappings is not UNSET:
+            field_dict["table_column_mappings"] = table_column_mappings
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.table_column_mapping import TableColumnMapping
+
         d = dict(src_dict)
         name = d.pop("name")
 
@@ -119,6 +137,15 @@ class DataspaceSearchFilterFieldIn:
 
                 resource_attribute_ids.append(resource_attribute_ids_item)
 
+        _table_column_mappings = d.pop("table_column_mappings", UNSET)
+        table_column_mappings: list[TableColumnMapping] | Unset = UNSET
+        if _table_column_mappings is not UNSET:
+            table_column_mappings = []
+            for table_column_mappings_item_data in _table_column_mappings:
+                table_column_mappings_item = TableColumnMapping.from_dict(table_column_mappings_item_data)
+
+                table_column_mappings.append(table_column_mappings_item)
+
         dataspace_search_filter_field_in = cls(
             name=name,
             operator=operator,
@@ -126,6 +153,7 @@ class DataspaceSearchFilterFieldIn:
             recommended_values=recommended_values,
             project_attribute_ids=project_attribute_ids,
             resource_attribute_ids=resource_attribute_ids,
+            table_column_mappings=table_column_mappings,
         )
 
         dataspace_search_filter_field_in.additional_properties = d
