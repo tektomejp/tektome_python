@@ -55,9 +55,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[RequirementTemplateContainerGetOut]:
-    """Get a requirement template container by ID
+    """Retrieve Requirement Template Container
 
-     Retrieve a specific requirement template container by its ID.
+     B7GNMWv6
+
+    Get all requirement templates containers
 
     Args:
         requirement_template_container_id (UUID):
@@ -86,9 +88,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> RequirementTemplateContainerGetOut | None:
-    """Get a requirement template container by ID
+    """Retrieve Requirement Template Container
 
-     Retrieve a specific requirement template container by its ID.
+     B7GNMWv6
+
+    Get all requirement templates containers
 
     Args:
         requirement_template_container_id (UUID):
@@ -112,9 +116,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[RequirementTemplateContainerGetOut]:
-    """Get a requirement template container by ID
+    """Retrieve Requirement Template Container
 
-     Retrieve a specific requirement template container by its ID.
+     B7GNMWv6
+
+    Get all requirement templates containers
 
     Args:
         requirement_template_container_id (UUID):
@@ -141,9 +147,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> RequirementTemplateContainerGetOut | None:
-    """Get a requirement template container by ID
+    """Retrieve Requirement Template Container
 
-     Retrieve a specific requirement template container by its ID.
+     B7GNMWv6
+
+    Get all requirement templates containers
 
     Args:
         requirement_template_container_id (UUID):

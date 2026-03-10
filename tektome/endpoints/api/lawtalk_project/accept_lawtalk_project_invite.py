@@ -150,9 +150,15 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ProjectAcceptInvitePostIn,
 ) -> Response[ErrorOut | ProjectInviteAcceptPostOut]:
-    """Accept a project invitation
+    """Post Accept Project Invite
 
-     Accept a pending project invitation using the invitation token. Returns the project ID on success.
+     fVBx7r4w
+
+    Accept a project invite.
+
+    Args:
+        payload: ProjectAcceptInvitePostIn
+        request: Request object.
 
     Args:
         body (ProjectAcceptInvitePostIn):
@@ -181,9 +187,15 @@ def sync(
     client: AuthenticatedClient,
     body: ProjectAcceptInvitePostIn,
 ) -> ErrorOut | ProjectInviteAcceptPostOut | None:
-    """Accept a project invitation
+    """Post Accept Project Invite
 
-     Accept a pending project invitation using the invitation token. Returns the project ID on success.
+     fVBx7r4w
+
+    Accept a project invite.
+
+    Args:
+        payload: ProjectAcceptInvitePostIn
+        request: Request object.
 
     Args:
         body (ProjectAcceptInvitePostIn):
@@ -207,9 +219,15 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ProjectAcceptInvitePostIn,
 ) -> Response[ErrorOut | ProjectInviteAcceptPostOut]:
-    """Accept a project invitation
+    """Post Accept Project Invite
 
-     Accept a pending project invitation using the invitation token. Returns the project ID on success.
+     fVBx7r4w
+
+    Accept a project invite.
+
+    Args:
+        payload: ProjectAcceptInvitePostIn
+        request: Request object.
 
     Args:
         body (ProjectAcceptInvitePostIn):
@@ -236,9 +254,15 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ProjectAcceptInvitePostIn,
 ) -> ErrorOut | ProjectInviteAcceptPostOut | None:
-    """Accept a project invitation
+    """Post Accept Project Invite
 
-     Accept a pending project invitation using the invitation token. Returns the project ID on success.
+     fVBx7r4w
+
+    Accept a project invite.
+
+    Args:
+        payload: ProjectAcceptInvitePostIn
+        request: Request object.
 
     Args:
         body (ProjectAcceptInvitePostIn):

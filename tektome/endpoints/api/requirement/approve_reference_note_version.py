@@ -58,10 +58,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ReferenceNoteVersionGetOut]:
-    """Approve a reference note version
+    """Patch Reference Note Approval
 
-     Record the authenticated user's approval on a specific version of a reference note. Each user can
-    only approve once per version.
+     JnQkM31L
+
+    Approve a specific version of a reference note associated to a requirement
+
+    Args:
+        request: Request object
+        path_params: path params of type ReferenceNoteVersionPath
 
     Args:
         reference_note_id (UUID):
@@ -93,10 +98,15 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ReferenceNoteVersionGetOut | None:
-    """Approve a reference note version
+    """Patch Reference Note Approval
 
-     Record the authenticated user's approval on a specific version of a reference note. Each user can
-    only approve once per version.
+     JnQkM31L
+
+    Approve a specific version of a reference note associated to a requirement
+
+    Args:
+        request: Request object
+        path_params: path params of type ReferenceNoteVersionPath
 
     Args:
         reference_note_id (UUID):
@@ -123,10 +133,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ReferenceNoteVersionGetOut]:
-    """Approve a reference note version
+    """Patch Reference Note Approval
 
-     Record the authenticated user's approval on a specific version of a reference note. Each user can
-    only approve once per version.
+     JnQkM31L
+
+    Approve a specific version of a reference note associated to a requirement
+
+    Args:
+        request: Request object
+        path_params: path params of type ReferenceNoteVersionPath
 
     Args:
         reference_note_id (UUID):
@@ -156,10 +171,15 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ReferenceNoteVersionGetOut | None:
-    """Approve a reference note version
+    """Patch Reference Note Approval
 
-     Record the authenticated user's approval on a specific version of a reference note. Each user can
-    only approve once per version.
+     JnQkM31L
+
+    Approve a specific version of a reference note associated to a requirement
+
+    Args:
+        request: Request object
+        path_params: path params of type ReferenceNoteVersionPath
 
     Args:
         reference_note_id (UUID):

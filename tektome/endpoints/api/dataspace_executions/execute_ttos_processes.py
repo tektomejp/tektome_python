@@ -63,10 +63,33 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ExecuteProcessesPostIn,
 ) -> Response[ExecuteProcessPostOut]:
-    """Execute processes in a dataspace
+    """Execute processes windmill flow
 
-     Launch one or more process executions against resources or projects in the dataspace. Supports
-    single-entity and batch execution modes. Rate-limited by organization concurrency limits.
+     AqZqtBsA
+
+    2 Entrypoints
+    1. [Process Page] Single Process in a single execution group run over one or more resource/project
+    m2m
+    2. [Resource/Project list] Multiple Processes in a single execution group runs over one or more
+    resources/projects
+
+    Default fallback
+    3. Run the process without any UI trigger values
+
+    Depending on the kind of process being executed, this endpoint will handle the execution
+    accordingly:
+    - For 'resource' or 'project' kinds: 1 execution group <-> N executions (fn takes in 1
+    resource/project)
+        - Iterates over each provided model ID (from `ui_trigger_values.ids` or `ui_trigger_values.id`).
+        - For each ID, it creates a unique job ID and prepares a payload for execution.
+        - Publishes the execution payload to the message broker for processing.
+    - For 'resource[]' or 'project[]' kinds: 1 execution group <-> 1 execution (fn that takes in N
+    resources/projects)
+        - Creates a single job ID for the entire batch of IDs.
+        - Prepares a payload that includes all provided model IDs.
+        - Publishes the batch execution payload to the message broker.
+
+    Rate limits the number of concurrent in-progress jobs across the organization
 
     Args:
         dataspace_id (UUID):
@@ -98,10 +121,33 @@ def sync(
     client: AuthenticatedClient,
     body: ExecuteProcessesPostIn,
 ) -> ExecuteProcessPostOut | None:
-    """Execute processes in a dataspace
+    """Execute processes windmill flow
 
-     Launch one or more process executions against resources or projects in the dataspace. Supports
-    single-entity and batch execution modes. Rate-limited by organization concurrency limits.
+     AqZqtBsA
+
+    2 Entrypoints
+    1. [Process Page] Single Process in a single execution group run over one or more resource/project
+    m2m
+    2. [Resource/Project list] Multiple Processes in a single execution group runs over one or more
+    resources/projects
+
+    Default fallback
+    3. Run the process without any UI trigger values
+
+    Depending on the kind of process being executed, this endpoint will handle the execution
+    accordingly:
+    - For 'resource' or 'project' kinds: 1 execution group <-> N executions (fn takes in 1
+    resource/project)
+        - Iterates over each provided model ID (from `ui_trigger_values.ids` or `ui_trigger_values.id`).
+        - For each ID, it creates a unique job ID and prepares a payload for execution.
+        - Publishes the execution payload to the message broker for processing.
+    - For 'resource[]' or 'project[]' kinds: 1 execution group <-> 1 execution (fn that takes in N
+    resources/projects)
+        - Creates a single job ID for the entire batch of IDs.
+        - Prepares a payload that includes all provided model IDs.
+        - Publishes the batch execution payload to the message broker.
+
+    Rate limits the number of concurrent in-progress jobs across the organization
 
     Args:
         dataspace_id (UUID):
@@ -128,10 +174,33 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ExecuteProcessesPostIn,
 ) -> Response[ExecuteProcessPostOut]:
-    """Execute processes in a dataspace
+    """Execute processes windmill flow
 
-     Launch one or more process executions against resources or projects in the dataspace. Supports
-    single-entity and batch execution modes. Rate-limited by organization concurrency limits.
+     AqZqtBsA
+
+    2 Entrypoints
+    1. [Process Page] Single Process in a single execution group run over one or more resource/project
+    m2m
+    2. [Resource/Project list] Multiple Processes in a single execution group runs over one or more
+    resources/projects
+
+    Default fallback
+    3. Run the process without any UI trigger values
+
+    Depending on the kind of process being executed, this endpoint will handle the execution
+    accordingly:
+    - For 'resource' or 'project' kinds: 1 execution group <-> N executions (fn takes in 1
+    resource/project)
+        - Iterates over each provided model ID (from `ui_trigger_values.ids` or `ui_trigger_values.id`).
+        - For each ID, it creates a unique job ID and prepares a payload for execution.
+        - Publishes the execution payload to the message broker for processing.
+    - For 'resource[]' or 'project[]' kinds: 1 execution group <-> 1 execution (fn that takes in N
+    resources/projects)
+        - Creates a single job ID for the entire batch of IDs.
+        - Prepares a payload that includes all provided model IDs.
+        - Publishes the batch execution payload to the message broker.
+
+    Rate limits the number of concurrent in-progress jobs across the organization
 
     Args:
         dataspace_id (UUID):
@@ -161,10 +230,33 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ExecuteProcessesPostIn,
 ) -> ExecuteProcessPostOut | None:
-    """Execute processes in a dataspace
+    """Execute processes windmill flow
 
-     Launch one or more process executions against resources or projects in the dataspace. Supports
-    single-entity and batch execution modes. Rate-limited by organization concurrency limits.
+     AqZqtBsA
+
+    2 Entrypoints
+    1. [Process Page] Single Process in a single execution group run over one or more resource/project
+    m2m
+    2. [Resource/Project list] Multiple Processes in a single execution group runs over one or more
+    resources/projects
+
+    Default fallback
+    3. Run the process without any UI trigger values
+
+    Depending on the kind of process being executed, this endpoint will handle the execution
+    accordingly:
+    - For 'resource' or 'project' kinds: 1 execution group <-> N executions (fn takes in 1
+    resource/project)
+        - Iterates over each provided model ID (from `ui_trigger_values.ids` or `ui_trigger_values.id`).
+        - For each ID, it creates a unique job ID and prepares a payload for execution.
+        - Publishes the execution payload to the message broker for processing.
+    - For 'resource[]' or 'project[]' kinds: 1 execution group <-> 1 execution (fn that takes in N
+    resources/projects)
+        - Creates a single job ID for the entire batch of IDs.
+        - Prepares a payload that includes all provided model IDs.
+        - Publishes the batch execution payload to the message broker.
+
+    Rate limits the number of concurrent in-progress jobs across the organization
 
     Args:
         dataspace_id (UUID):

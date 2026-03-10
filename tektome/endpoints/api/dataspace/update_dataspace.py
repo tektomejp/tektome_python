@@ -58,9 +58,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspacePatchInPatch,
 ) -> Response[Any]:
-    """Update dataspace details
+    """Patch Dataspace
 
-     Partially update a dataspace's metadata and attributes. Only the provided fields are modified.
+     tkE0kGxB
+
+    Patch dataspace details by ID
 
     Args:
         dataspace_id (UUID):
@@ -92,9 +94,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspacePatchInPatch,
 ) -> Response[Any]:
-    """Update dataspace details
+    """Patch Dataspace
 
-     Partially update a dataspace's metadata and attributes. Only the provided fields are modified.
+     tkE0kGxB
+
+    Patch dataspace details by ID
 
     Args:
         dataspace_id (UUID):

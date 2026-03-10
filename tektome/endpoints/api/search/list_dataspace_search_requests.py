@@ -60,10 +60,13 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list[DataspaceSearchRequestGetOut]]:
-    """List search requests
+    """Get Search Requests
 
-     Retrieve all search requests for the current user in this dataspace, ordered by creation date with
-    the newest first.
+     uQ1Yr4Ns
+
+    Get all search requests for the current user in this dataspace.
+
+    Returns a list of search requests ordered by creation date (newest first).
 
     Args:
         dataspace_id (UUID):
@@ -92,10 +95,13 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> list[DataspaceSearchRequestGetOut] | None:
-    """List search requests
+    """Get Search Requests
 
-     Retrieve all search requests for the current user in this dataspace, ordered by creation date with
-    the newest first.
+     uQ1Yr4Ns
+
+    Get all search requests for the current user in this dataspace.
+
+    Returns a list of search requests ordered by creation date (newest first).
 
     Args:
         dataspace_id (UUID):
@@ -119,10 +125,13 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list[DataspaceSearchRequestGetOut]]:
-    """List search requests
+    """Get Search Requests
 
-     Retrieve all search requests for the current user in this dataspace, ordered by creation date with
-    the newest first.
+     uQ1Yr4Ns
+
+    Get all search requests for the current user in this dataspace.
+
+    Returns a list of search requests ordered by creation date (newest first).
 
     Args:
         dataspace_id (UUID):
@@ -149,10 +158,13 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> list[DataspaceSearchRequestGetOut] | None:
-    """List search requests
+    """Get Search Requests
 
-     Retrieve all search requests for the current user in this dataspace, ordered by creation date with
-    the newest first.
+     uQ1Yr4Ns
+
+    Get all search requests for the current user in this dataspace.
+
+    Returns a list of search requests ordered by creation date (newest first).
 
     Args:
         dataspace_id (UUID):

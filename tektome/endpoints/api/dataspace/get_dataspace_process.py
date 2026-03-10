@@ -54,9 +54,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ProcessOut]:
-    """Get a dataspace process by ID
+    """Retrieve Dataspace Process
 
-     Retrieve detailed information about a specific process within a dataspace.
+     Z_KPugCg
+
+    Retrieve a specific process in the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -88,9 +90,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ProcessOut | None:
-    """Get a dataspace process by ID
+    """Retrieve Dataspace Process
 
-     Retrieve detailed information about a specific process within a dataspace.
+     Z_KPugCg
+
+    Retrieve a specific process in the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -117,9 +121,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ProcessOut]:
-    """Get a dataspace process by ID
+    """Retrieve Dataspace Process
 
-     Retrieve detailed information about a specific process within a dataspace.
+     Z_KPugCg
+
+    Retrieve a specific process in the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -149,9 +155,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ProcessOut | None:
-    """Get a dataspace process by ID
+    """Retrieve Dataspace Process
 
-     Retrieve detailed information about a specific process within a dataspace.
+     Z_KPugCg
+
+    Retrieve a specific process in the current dataspace.
 
     Args:
         dataspace_id (UUID):

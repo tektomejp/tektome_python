@@ -48,10 +48,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a resource attribute column configuration
+    """Delete Dataspace Resource Attribute Config
 
-     Remove an attribute column configuration for resources. This also deletes the corresponding
-    attribute values from all resources across projects in the dataspace.
+     x16N0f5J
+
+    Deletes the column attributes of a dataspace resource
 
     Args:
         attribute_config_id (UUID):
@@ -80,10 +81,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a resource attribute column configuration
+    """Delete Dataspace Resource Attribute Config
 
-     Remove an attribute column configuration for resources. This also deletes the corresponding
-    attribute values from all resources across projects in the dataspace.
+     x16N0f5J
+
+    Deletes the column attributes of a dataspace resource
 
     Args:
         attribute_config_id (UUID):

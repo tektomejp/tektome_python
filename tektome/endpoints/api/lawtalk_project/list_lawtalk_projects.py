@@ -72,10 +72,24 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedLawtalkProjectSchemaGetOut]:
-    """List projects
+    """Get Projects
 
-     Retrieve a paginated list of projects for the authenticated user. Supports filtering by recently
-    accessed projects.
+     iRKICjKO
+
+    Fetches a list of projects for the authenticated user based on query parameters.
+
+    This endpoint retrieves projects associated with the authenticated user. The list
+    of projects can be filtered using the provided query parameters, specifically
+    for recent projects based on the user's last used projects.
+
+    Args:
+        request: The HTTP request object containing user authentication and metadata.
+        query_params: Query parameters that define filtering options for retrieving
+            projects, including a flag for recent projects.
+
+    Returns:
+        list[LawtalkProjectSchemaGetOut]: A list of serialized project data conforming
+        to the schema provided in `LawtalkProjectSchemaGetOut`.
 
     Args:
         recent (bool | Unset):  Default: False.
@@ -110,10 +124,24 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedLawtalkProjectSchemaGetOut | None:
-    """List projects
+    """Get Projects
 
-     Retrieve a paginated list of projects for the authenticated user. Supports filtering by recently
-    accessed projects.
+     iRKICjKO
+
+    Fetches a list of projects for the authenticated user based on query parameters.
+
+    This endpoint retrieves projects associated with the authenticated user. The list
+    of projects can be filtered using the provided query parameters, specifically
+    for recent projects based on the user's last used projects.
+
+    Args:
+        request: The HTTP request object containing user authentication and metadata.
+        query_params: Query parameters that define filtering options for retrieving
+            projects, including a flag for recent projects.
+
+    Returns:
+        list[LawtalkProjectSchemaGetOut]: A list of serialized project data conforming
+        to the schema provided in `LawtalkProjectSchemaGetOut`.
 
     Args:
         recent (bool | Unset):  Default: False.
@@ -143,10 +171,24 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedLawtalkProjectSchemaGetOut]:
-    """List projects
+    """Get Projects
 
-     Retrieve a paginated list of projects for the authenticated user. Supports filtering by recently
-    accessed projects.
+     iRKICjKO
+
+    Fetches a list of projects for the authenticated user based on query parameters.
+
+    This endpoint retrieves projects associated with the authenticated user. The list
+    of projects can be filtered using the provided query parameters, specifically
+    for recent projects based on the user's last used projects.
+
+    Args:
+        request: The HTTP request object containing user authentication and metadata.
+        query_params: Query parameters that define filtering options for retrieving
+            projects, including a flag for recent projects.
+
+    Returns:
+        list[LawtalkProjectSchemaGetOut]: A list of serialized project data conforming
+        to the schema provided in `LawtalkProjectSchemaGetOut`.
 
     Args:
         recent (bool | Unset):  Default: False.
@@ -179,10 +221,24 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedLawtalkProjectSchemaGetOut | None:
-    """List projects
+    """Get Projects
 
-     Retrieve a paginated list of projects for the authenticated user. Supports filtering by recently
-    accessed projects.
+     iRKICjKO
+
+    Fetches a list of projects for the authenticated user based on query parameters.
+
+    This endpoint retrieves projects associated with the authenticated user. The list
+    of projects can be filtered using the provided query parameters, specifically
+    for recent projects based on the user's last used projects.
+
+    Args:
+        request: The HTTP request object containing user authentication and metadata.
+        query_params: Query parameters that define filtering options for retrieving
+            projects, including a flag for recent projects.
+
+    Returns:
+        list[LawtalkProjectSchemaGetOut]: A list of serialized project data conforming
+        to the schema provided in `LawtalkProjectSchemaGetOut`.
 
     Args:
         recent (bool | Unset):  Default: False.

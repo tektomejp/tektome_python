@@ -156,10 +156,13 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ResourceVCSchemaPostIn,
 ) -> Response[ErrorOut | ResourceGetManySchemaPostOut]:
-    """Get latest versions of multiple resources
+    """Get Latest Many Resources
 
-     Retrieve the latest version of multiple resources in a single request by providing their version
-    control IDs.
+     7NePbuON
+
+    Get MULTIPLE latest version of resources given query_params
+
+    Raise 404 if any of the resource_vc_id not found
 
     Args:
         resource_group_id (UUID):
@@ -192,10 +195,13 @@ def sync(
     client: AuthenticatedClient,
     body: ResourceVCSchemaPostIn,
 ) -> ErrorOut | ResourceGetManySchemaPostOut | None:
-    """Get latest versions of multiple resources
+    """Get Latest Many Resources
 
-     Retrieve the latest version of multiple resources in a single request by providing their version
-    control IDs.
+     7NePbuON
+
+    Get MULTIPLE latest version of resources given query_params
+
+    Raise 404 if any of the resource_vc_id not found
 
     Args:
         resource_group_id (UUID):
@@ -223,10 +229,13 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ResourceVCSchemaPostIn,
 ) -> Response[ErrorOut | ResourceGetManySchemaPostOut]:
-    """Get latest versions of multiple resources
+    """Get Latest Many Resources
 
-     Retrieve the latest version of multiple resources in a single request by providing their version
-    control IDs.
+     7NePbuON
+
+    Get MULTIPLE latest version of resources given query_params
+
+    Raise 404 if any of the resource_vc_id not found
 
     Args:
         resource_group_id (UUID):
@@ -257,10 +266,13 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ResourceVCSchemaPostIn,
 ) -> ErrorOut | ResourceGetManySchemaPostOut | None:
-    """Get latest versions of multiple resources
+    """Get Latest Many Resources
 
-     Retrieve the latest version of multiple resources in a single request by providing their version
-    control IDs.
+     7NePbuON
+
+    Get MULTIPLE latest version of resources given query_params
+
+    Raise 404 if any of the resource_vc_id not found
 
     Args:
         resource_group_id (UUID):

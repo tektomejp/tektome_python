@@ -53,10 +53,22 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ImproveUserPromptQueryIn,
 ) -> Response[str]:
-    """Generate follow-up questions
+    """Post Followup User Query
 
-     Generate clarifying follow-up questions based on a user's research query and project context.
-    Returns a streaming response with numbered follow-up questions.
+     iwVaQyqA
+
+    Post a chat message to a lawtalk requirement chatroom for improving user query.
+    Args:
+        request: The request object containing authentication and user information.
+        payload: The payload containing user prompt to improve.
+
+    Returns: Stream 3 followup string questions based on the user query in this format:
+    ```
+    1. <followup question 1>
+    2. <followup question 2>
+    3. <followup question 3>
+    ```
+    The client should listen to the stream and display the followup questions as they arrive.
 
     Args:
         body (ImproveUserPromptQueryIn): Serializer for improving user prompt query.
@@ -85,10 +97,22 @@ def sync(
     client: AuthenticatedClient,
     body: ImproveUserPromptQueryIn,
 ) -> str | None:
-    """Generate follow-up questions
+    """Post Followup User Query
 
-     Generate clarifying follow-up questions based on a user's research query and project context.
-    Returns a streaming response with numbered follow-up questions.
+     iwVaQyqA
+
+    Post a chat message to a lawtalk requirement chatroom for improving user query.
+    Args:
+        request: The request object containing authentication and user information.
+        payload: The payload containing user prompt to improve.
+
+    Returns: Stream 3 followup string questions based on the user query in this format:
+    ```
+    1. <followup question 1>
+    2. <followup question 2>
+    3. <followup question 3>
+    ```
+    The client should listen to the stream and display the followup questions as they arrive.
 
     Args:
         body (ImproveUserPromptQueryIn): Serializer for improving user prompt query.
@@ -112,10 +136,22 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ImproveUserPromptQueryIn,
 ) -> Response[str]:
-    """Generate follow-up questions
+    """Post Followup User Query
 
-     Generate clarifying follow-up questions based on a user's research query and project context.
-    Returns a streaming response with numbered follow-up questions.
+     iwVaQyqA
+
+    Post a chat message to a lawtalk requirement chatroom for improving user query.
+    Args:
+        request: The request object containing authentication and user information.
+        payload: The payload containing user prompt to improve.
+
+    Returns: Stream 3 followup string questions based on the user query in this format:
+    ```
+    1. <followup question 1>
+    2. <followup question 2>
+    3. <followup question 3>
+    ```
+    The client should listen to the stream and display the followup questions as they arrive.
 
     Args:
         body (ImproveUserPromptQueryIn): Serializer for improving user prompt query.
@@ -142,10 +178,22 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ImproveUserPromptQueryIn,
 ) -> str | None:
-    """Generate follow-up questions
+    """Post Followup User Query
 
-     Generate clarifying follow-up questions based on a user's research query and project context.
-    Returns a streaming response with numbered follow-up questions.
+     iwVaQyqA
+
+    Post a chat message to a lawtalk requirement chatroom for improving user query.
+    Args:
+        request: The request object containing authentication and user information.
+        payload: The payload containing user prompt to improve.
+
+    Returns: Stream 3 followup string questions based on the user query in this format:
+    ```
+    1. <followup question 1>
+    2. <followup question 2>
+    3. <followup question 3>
+    ```
+    The client should listen to the stream and display the followup questions as they arrive.
 
     Args:
         body (ImproveUserPromptQueryIn): Serializer for improving user prompt query.

@@ -150,10 +150,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: SearchDocumentPostIn,
 ) -> Response[ErrorOut | SearchDocumentResultPostOut]:
-    """Search documents
+    """Search Document
 
-     Search for documents matching the provided query. Returns ranked results based on relevance to the
-    search criteria.
+     pHMPsWQ8
+
+    search document from a given query
 
     Args:
         body (SearchDocumentPostIn):
@@ -182,10 +183,11 @@ def sync(
     client: AuthenticatedClient,
     body: SearchDocumentPostIn,
 ) -> ErrorOut | SearchDocumentResultPostOut | None:
-    """Search documents
+    """Search Document
 
-     Search for documents matching the provided query. Returns ranked results based on relevance to the
-    search criteria.
+     pHMPsWQ8
+
+    search document from a given query
 
     Args:
         body (SearchDocumentPostIn):
@@ -209,10 +211,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: SearchDocumentPostIn,
 ) -> Response[ErrorOut | SearchDocumentResultPostOut]:
-    """Search documents
+    """Search Document
 
-     Search for documents matching the provided query. Returns ranked results based on relevance to the
-    search criteria.
+     pHMPsWQ8
+
+    search document from a given query
 
     Args:
         body (SearchDocumentPostIn):
@@ -239,10 +242,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: SearchDocumentPostIn,
 ) -> ErrorOut | SearchDocumentResultPostOut | None:
-    """Search documents
+    """Search Document
 
-     Search for documents matching the provided query. Returns ranked results based on relevance to the
-    search criteria.
+     pHMPsWQ8
+
+    search document from a given query
 
     Args:
         body (SearchDocumentPostIn):

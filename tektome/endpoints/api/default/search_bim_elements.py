@@ -78,10 +78,19 @@ def sync_detailed(
     bim_project_id: UUID,
     full: bool | Unset = False,
 ) -> Response[BimSearchResultPostOut]:
-    """Search BIM elements
+    """Post Bim Search Query
 
-     Deprecated. Search for BIM elements by various criteria within a project. Use the V2 streaming
-    search endpoint instead.
+     94bba86f
+
+    Search for BIM elements (objects or views) based on various criteria.
+
+    Arguments:
+        - bim_project_id: The BIM project ID to search within (required query parameter)
+        - element_id: Search for elements with this specific ID
+        - content_query: Full-text search in the file_content field
+        - page: Page number (starts from 1)
+        - page_size: Number of results per page (default: 10)
+        - full: Whether to return full document details (default: False)
 
     Args:
         bim_type (SearchBimElementsBimElementTypePath): Enum for BIM object types.
@@ -119,10 +128,19 @@ def sync(
     bim_project_id: UUID,
     full: bool | Unset = False,
 ) -> BimSearchResultPostOut | None:
-    """Search BIM elements
+    """Post Bim Search Query
 
-     Deprecated. Search for BIM elements by various criteria within a project. Use the V2 streaming
-    search endpoint instead.
+     94bba86f
+
+    Search for BIM elements (objects or views) based on various criteria.
+
+    Arguments:
+        - bim_project_id: The BIM project ID to search within (required query parameter)
+        - element_id: Search for elements with this specific ID
+        - content_query: Full-text search in the file_content field
+        - page: Page number (starts from 1)
+        - page_size: Number of results per page (default: 10)
+        - full: Whether to return full document details (default: False)
 
     Args:
         bim_type (SearchBimElementsBimElementTypePath): Enum for BIM object types.
@@ -155,10 +173,19 @@ async def asyncio_detailed(
     bim_project_id: UUID,
     full: bool | Unset = False,
 ) -> Response[BimSearchResultPostOut]:
-    """Search BIM elements
+    """Post Bim Search Query
 
-     Deprecated. Search for BIM elements by various criteria within a project. Use the V2 streaming
-    search endpoint instead.
+     94bba86f
+
+    Search for BIM elements (objects or views) based on various criteria.
+
+    Arguments:
+        - bim_project_id: The BIM project ID to search within (required query parameter)
+        - element_id: Search for elements with this specific ID
+        - content_query: Full-text search in the file_content field
+        - page: Page number (starts from 1)
+        - page_size: Number of results per page (default: 10)
+        - full: Whether to return full document details (default: False)
 
     Args:
         bim_type (SearchBimElementsBimElementTypePath): Enum for BIM object types.
@@ -194,10 +221,19 @@ async def asyncio(
     bim_project_id: UUID,
     full: bool | Unset = False,
 ) -> BimSearchResultPostOut | None:
-    """Search BIM elements
+    """Post Bim Search Query
 
-     Deprecated. Search for BIM elements by various criteria within a project. Use the V2 streaming
-    search endpoint instead.
+     94bba86f
+
+    Search for BIM elements (objects or views) based on various criteria.
+
+    Arguments:
+        - bim_project_id: The BIM project ID to search within (required query parameter)
+        - element_id: Search for elements with this specific ID
+        - content_query: Full-text search in the file_content field
+        - page: Page number (starts from 1)
+        - page_size: Number of results per page (default: 10)
+        - full: Whether to return full document details (default: False)
 
     Args:
         bim_type (SearchBimElementsBimElementTypePath): Enum for BIM object types.

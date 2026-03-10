@@ -58,9 +58,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: TargetUserInSchema,
 ) -> Response[Any]:
-    """Transfer project ownership
+    """Transfer Project Ownership
 
-     Transfer ownership of a project to another user. Requires project ownership transfer permission.
+     n3PfccMG
+
+    Transfer project ownership to another user.
 
     Args:
         project_id (UUID):
@@ -92,9 +94,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: TargetUserInSchema,
 ) -> Response[Any]:
-    """Transfer project ownership
+    """Transfer Project Ownership
 
-     Transfer ownership of a project to another user. Requires project ownership transfer permission.
+     n3PfccMG
+
+    Transfer project ownership to another user.
 
     Args:
         project_id (UUID):

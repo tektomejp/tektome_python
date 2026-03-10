@@ -149,9 +149,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ErrorOut | ResourceSchemaPostOut]:
-    """Get the latest resource version
+    """Get Latest Resource
 
-     Retrieve the most recent version of a resource by its version control ID.
+     YCoY_A2K
+
+    Get latest version of resource given resource_vc_id
 
     Args:
         resource_group_id (UUID):
@@ -183,9 +185,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ErrorOut | ResourceSchemaPostOut | None:
-    """Get the latest resource version
+    """Get Latest Resource
 
-     Retrieve the most recent version of a resource by its version control ID.
+     YCoY_A2K
+
+    Get latest version of resource given resource_vc_id
 
     Args:
         resource_group_id (UUID):
@@ -212,9 +216,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ErrorOut | ResourceSchemaPostOut]:
-    """Get the latest resource version
+    """Get Latest Resource
 
-     Retrieve the most recent version of a resource by its version control ID.
+     YCoY_A2K
+
+    Get latest version of resource given resource_vc_id
 
     Args:
         resource_group_id (UUID):
@@ -244,9 +250,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ErrorOut | ResourceSchemaPostOut | None:
-    """Get the latest resource version
+    """Get Latest Resource
 
-     Retrieve the most recent version of a resource by its version control ID.
+     YCoY_A2K
+
+    Get latest version of resource given resource_vc_id
 
     Args:
         resource_group_id (UUID):

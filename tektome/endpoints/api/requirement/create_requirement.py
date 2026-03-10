@@ -55,9 +55,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RequirementPostIn,
 ) -> Response[RequirementGetOut]:
-    """Create a requirement
+    """Post Requirement
 
-     Create a new requirement within a project.
+     B7GNMWv5
+
+    Create a requirement given a project id in the payload.
 
     Args:
         body (RequirementPostIn):
@@ -86,9 +88,11 @@ def sync(
     client: AuthenticatedClient,
     body: RequirementPostIn,
 ) -> RequirementGetOut | None:
-    """Create a requirement
+    """Post Requirement
 
-     Create a new requirement within a project.
+     B7GNMWv5
+
+    Create a requirement given a project id in the payload.
 
     Args:
         body (RequirementPostIn):
@@ -112,9 +116,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RequirementPostIn,
 ) -> Response[RequirementGetOut]:
-    """Create a requirement
+    """Post Requirement
 
-     Create a new requirement within a project.
+     B7GNMWv5
+
+    Create a requirement given a project id in the payload.
 
     Args:
         body (RequirementPostIn):
@@ -141,9 +147,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RequirementPostIn,
 ) -> RequirementGetOut | None:
-    """Create a requirement
+    """Post Requirement
 
-     Create a new requirement within a project.
+     B7GNMWv5
+
+    Create a requirement given a project id in the payload.
 
     Args:
         body (RequirementPostIn):

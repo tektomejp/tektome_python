@@ -2,17 +2,16 @@ from __future__ import annotations
 
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, Literal, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..types import UNSET, Unset
-
 if TYPE_CHECKING:
-    from ..models.pdf_citation_annotated_polygon_schema_out import PDFCitationAnnotatedPolygonSchemaOut
+    from ..models.pdf_citation_schema_out_highlights import PDFCitationSchemaOutHighlights
+    from ..models.pdf_citation_schema_out_polygons import PDFCitationSchemaOutPolygons
     from ..models.user_metadata import UserMetadata
 
 
@@ -23,144 +22,116 @@ T = TypeVar("T", bound="PDFCitationSchemaOut")
 class PDFCitationSchemaOut:
     """
     Attributes:
-        polygons (list[PDFCitationAnnotatedPolygonSchemaOut]):
-        created_by (UserMetadata):
-        updated_by (UserMetadata):
+        id (UUID):
+        title (str):
+        attribute_content_type (str):
+        attribute_object_id (UUID):
         created (datetime.datetime):
         updated (datetime.datetime):
-        resource (UUID):
-        citation_type (Literal['pdf_citation'] | Unset):  Default: 'pdf_citation'.
-        id (None | Unset | UUID):
-        title (str | Unset):  Default: ''.
-        keywords (list[Any] | Unset): List of keywords that may or may not be present in the cited resource.
+        created_by (UserMetadata):
+        updated_by (UserMetadata):
+        polygons (PDFCitationSchemaOutPolygons):
+        highlights (PDFCitationSchemaOutHighlights):
+        resource_id (UUID):
     """
 
-    polygons: list[PDFCitationAnnotatedPolygonSchemaOut]
-    created_by: UserMetadata
-    updated_by: UserMetadata
+    id: UUID
+    title: str
+    attribute_content_type: str
+    attribute_object_id: UUID
     created: datetime.datetime
     updated: datetime.datetime
-    resource: UUID
-    citation_type: Literal["pdf_citation"] | Unset = "pdf_citation"
-    id: None | Unset | UUID = UNSET
-    title: str | Unset = ""
-    keywords: list[Any] | Unset = UNSET
+    created_by: UserMetadata
+    updated_by: UserMetadata
+    polygons: PDFCitationSchemaOutPolygons
+    highlights: PDFCitationSchemaOutHighlights
+    resource_id: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        polygons = []
-        for polygons_item_data in self.polygons:
-            polygons_item = polygons_item_data.to_dict()
-            polygons.append(polygons_item)
+        id = str(self.id)
 
-        created_by = self.created_by.to_dict()
+        title = self.title
 
-        updated_by = self.updated_by.to_dict()
+        attribute_content_type = self.attribute_content_type
+
+        attribute_object_id = str(self.attribute_object_id)
 
         created = self.created.isoformat()
 
         updated = self.updated.isoformat()
 
-        resource = str(self.resource)
+        created_by = self.created_by.to_dict()
 
-        citation_type = self.citation_type
+        updated_by = self.updated_by.to_dict()
 
-        id: None | str | Unset
-        if isinstance(self.id, Unset):
-            id = UNSET
-        elif isinstance(self.id, UUID):
-            id = str(self.id)
-        else:
-            id = self.id
+        polygons = self.polygons.to_dict()
 
-        title = self.title
+        highlights = self.highlights.to_dict()
 
-        keywords: list[Any] | Unset = UNSET
-        if not isinstance(self.keywords, Unset):
-            keywords = self.keywords
+        resource_id = str(self.resource_id)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "polygons": polygons,
-                "created_by": created_by,
-                "updated_by": updated_by,
+                "id": id,
+                "title": title,
+                "attribute_content_type": attribute_content_type,
+                "attribute_object_id": attribute_object_id,
                 "created": created,
                 "updated": updated,
-                "resource": resource,
+                "created_by": created_by,
+                "updated_by": updated_by,
+                "polygons": polygons,
+                "highlights": highlights,
+                "resource_id": resource_id,
             }
         )
-        if citation_type is not UNSET:
-            field_dict["citation_type"] = citation_type
-        if id is not UNSET:
-            field_dict["id"] = id
-        if title is not UNSET:
-            field_dict["title"] = title
-        if keywords is not UNSET:
-            field_dict["keywords"] = keywords
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.pdf_citation_annotated_polygon_schema_out import PDFCitationAnnotatedPolygonSchemaOut
+        from ..models.pdf_citation_schema_out_highlights import PDFCitationSchemaOutHighlights
+        from ..models.pdf_citation_schema_out_polygons import PDFCitationSchemaOutPolygons
         from ..models.user_metadata import UserMetadata
 
         d = dict(src_dict)
-        polygons = []
-        _polygons = d.pop("polygons")
-        for polygons_item_data in _polygons:
-            polygons_item = PDFCitationAnnotatedPolygonSchemaOut.from_dict(polygons_item_data)
+        id = UUID(d.pop("id"))
 
-            polygons.append(polygons_item)
+        title = d.pop("title")
 
-        created_by = UserMetadata.from_dict(d.pop("created_by"))
+        attribute_content_type = d.pop("attribute_content_type")
 
-        updated_by = UserMetadata.from_dict(d.pop("updated_by"))
+        attribute_object_id = UUID(d.pop("attribute_object_id"))
 
         created = isoparse(d.pop("created"))
 
         updated = isoparse(d.pop("updated"))
 
-        resource = UUID(d.pop("resource"))
+        created_by = UserMetadata.from_dict(d.pop("created_by"))
 
-        citation_type = cast(Literal["pdf_citation"] | Unset, d.pop("citation_type", UNSET))
-        if citation_type != "pdf_citation" and not isinstance(citation_type, Unset):
-            raise ValueError(f"citation_type must match const 'pdf_citation', got '{citation_type}'")
+        updated_by = UserMetadata.from_dict(d.pop("updated_by"))
 
-        def _parse_id(data: object) -> None | Unset | UUID:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                id_type_0 = UUID(data)
+        polygons = PDFCitationSchemaOutPolygons.from_dict(d.pop("polygons"))
 
-                return id_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | Unset | UUID, data)
+        highlights = PDFCitationSchemaOutHighlights.from_dict(d.pop("highlights"))
 
-        id = _parse_id(d.pop("id", UNSET))
-
-        title = d.pop("title", UNSET)
-
-        keywords = cast(list[Any], d.pop("keywords", UNSET))
+        resource_id = UUID(d.pop("resource_id"))
 
         pdf_citation_schema_out = cls(
-            polygons=polygons,
-            created_by=created_by,
-            updated_by=updated_by,
-            created=created,
-            updated=updated,
-            resource=resource,
-            citation_type=citation_type,
             id=id,
             title=title,
-            keywords=keywords,
+            attribute_content_type=attribute_content_type,
+            attribute_object_id=attribute_object_id,
+            created=created,
+            updated=updated,
+            created_by=created_by,
+            updated_by=updated_by,
+            polygons=polygons,
+            highlights=highlights,
+            resource_id=resource_id,
         )
 
         pdf_citation_schema_out.additional_properties = d

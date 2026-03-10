@@ -159,10 +159,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchFilterFieldIn,
 ) -> Response[DataspaceSearchFilterFieldOut | ErrorOut]:
-    """Add a field to a search filter
+    """Post Search Filter Configuration Field
 
-     Associate a new field with an existing search filter configuration. Fields define the specific
-    attributes that the filter operates on.
+     yyZlMn2B
+
+    Associate a field to a dataspace search filter configuration
 
     Args:
         dataspace_id (UUID):
@@ -197,10 +198,11 @@ def sync(
     client: AuthenticatedClient,
     body: DataspaceSearchFilterFieldIn,
 ) -> DataspaceSearchFilterFieldOut | ErrorOut | None:
-    """Add a field to a search filter
+    """Post Search Filter Configuration Field
 
-     Associate a new field with an existing search filter configuration. Fields define the specific
-    attributes that the filter operates on.
+     yyZlMn2B
+
+    Associate a field to a dataspace search filter configuration
 
     Args:
         dataspace_id (UUID):
@@ -230,10 +232,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchFilterFieldIn,
 ) -> Response[DataspaceSearchFilterFieldOut | ErrorOut]:
-    """Add a field to a search filter
+    """Post Search Filter Configuration Field
 
-     Associate a new field with an existing search filter configuration. Fields define the specific
-    attributes that the filter operates on.
+     yyZlMn2B
+
+    Associate a field to a dataspace search filter configuration
 
     Args:
         dataspace_id (UUID):
@@ -266,10 +269,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DataspaceSearchFilterFieldIn,
 ) -> DataspaceSearchFilterFieldOut | ErrorOut | None:
-    """Add a field to a search filter
+    """Post Search Filter Configuration Field
 
-     Associate a new field with an existing search filter configuration. Fields define the specific
-    attributes that the filter operates on.
+     yyZlMn2B
+
+    Associate a field to a dataspace search filter configuration
 
     Args:
         dataspace_id (UUID):

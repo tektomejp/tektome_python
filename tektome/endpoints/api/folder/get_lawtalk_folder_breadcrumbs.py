@@ -53,10 +53,27 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[GenBreadcrumbsGetOut]:
-    """Get folder breadcrumbs
+    """Get Breadcrumbs
 
-     Generate breadcrumb navigation data for a folder, including its parent folder hierarchy and
-    associated resource group.
+     QOn8Agsr
+
+    Generates breadcrumbs for a specific folder by retrieving its parent folders,
+    subfolders, and associated resources. This endpoint gathers structured data
+    to provide hierarchical navigation information relevant to the specified folder.
+
+    Args:
+        request: The HTTP request object, containing metadata about the
+            incoming API request.
+        payload: Contains path parameters and query parameters for the specified
+            folder. Includes details such as the folder's identifier and any
+            associated query information.
+
+    Returns:
+        tuple: A status code (200) and a structured response payload that includes:
+            - parents: A list of all parent folders for the specified folder.
+            - subfolders: A list of subfolders directly under the specified folder.
+            - resources: A list of corresponding Lawtalk resources tied to the
+              core resources found in the specified folder.
 
     Args:
         folder_id (UUID):
@@ -85,10 +102,27 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> GenBreadcrumbsGetOut | None:
-    """Get folder breadcrumbs
+    """Get Breadcrumbs
 
-     Generate breadcrumb navigation data for a folder, including its parent folder hierarchy and
-    associated resource group.
+     QOn8Agsr
+
+    Generates breadcrumbs for a specific folder by retrieving its parent folders,
+    subfolders, and associated resources. This endpoint gathers structured data
+    to provide hierarchical navigation information relevant to the specified folder.
+
+    Args:
+        request: The HTTP request object, containing metadata about the
+            incoming API request.
+        payload: Contains path parameters and query parameters for the specified
+            folder. Includes details such as the folder's identifier and any
+            associated query information.
+
+    Returns:
+        tuple: A status code (200) and a structured response payload that includes:
+            - parents: A list of all parent folders for the specified folder.
+            - subfolders: A list of subfolders directly under the specified folder.
+            - resources: A list of corresponding Lawtalk resources tied to the
+              core resources found in the specified folder.
 
     Args:
         folder_id (UUID):
@@ -112,10 +146,27 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[GenBreadcrumbsGetOut]:
-    """Get folder breadcrumbs
+    """Get Breadcrumbs
 
-     Generate breadcrumb navigation data for a folder, including its parent folder hierarchy and
-    associated resource group.
+     QOn8Agsr
+
+    Generates breadcrumbs for a specific folder by retrieving its parent folders,
+    subfolders, and associated resources. This endpoint gathers structured data
+    to provide hierarchical navigation information relevant to the specified folder.
+
+    Args:
+        request: The HTTP request object, containing metadata about the
+            incoming API request.
+        payload: Contains path parameters and query parameters for the specified
+            folder. Includes details such as the folder's identifier and any
+            associated query information.
+
+    Returns:
+        tuple: A status code (200) and a structured response payload that includes:
+            - parents: A list of all parent folders for the specified folder.
+            - subfolders: A list of subfolders directly under the specified folder.
+            - resources: A list of corresponding Lawtalk resources tied to the
+              core resources found in the specified folder.
 
     Args:
         folder_id (UUID):
@@ -142,10 +193,27 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> GenBreadcrumbsGetOut | None:
-    """Get folder breadcrumbs
+    """Get Breadcrumbs
 
-     Generate breadcrumb navigation data for a folder, including its parent folder hierarchy and
-    associated resource group.
+     QOn8Agsr
+
+    Generates breadcrumbs for a specific folder by retrieving its parent folders,
+    subfolders, and associated resources. This endpoint gathers structured data
+    to provide hierarchical navigation information relevant to the specified folder.
+
+    Args:
+        request: The HTTP request object, containing metadata about the
+            incoming API request.
+        payload: Contains path parameters and query parameters for the specified
+            folder. Includes details such as the folder's identifier and any
+            associated query information.
+
+    Returns:
+        tuple: A status code (200) and a structured response payload that includes:
+            - parents: A list of all parent folders for the specified folder.
+            - subfolders: A list of subfolders directly under the specified folder.
+            - resources: A list of corresponding Lawtalk resources tied to the
+              core resources found in the specified folder.
 
     Args:
         folder_id (UUID):

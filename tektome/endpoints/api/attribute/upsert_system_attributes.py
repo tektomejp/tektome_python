@@ -62,10 +62,15 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: SystemAttributeBodyPutIn,
 ) -> Response[Any]:
-    """Upsert system attributes
+    """Put System Attributes
 
-     Set or update system attributes (prefixed with `system:`) on an entity. System attributes are
-    internal and not returned in user-facing responses. Only provided keys are added or updated.
+     iRKICjKb
+
+    Set system attributes. System attribute's name begins with `system:`
+    System attributes are never returned to the user side.
+
+    **WARNING**: Only pass the keys to be added/updated,
+    It won't mutate the attributes that are not provided in the payload.
 
     Args:
         object_type (UpsertSystemAttributesAttributeObjectTypes):
@@ -100,10 +105,15 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: SystemAttributeBodyPutIn,
 ) -> Response[Any]:
-    """Upsert system attributes
+    """Put System Attributes
 
-     Set or update system attributes (prefixed with `system:`) on an entity. System attributes are
-    internal and not returned in user-facing responses. Only provided keys are added or updated.
+     iRKICjKb
+
+    Set system attributes. System attribute's name begins with `system:`
+    System attributes are never returned to the user side.
+
+    **WARNING**: Only pass the keys to be added/updated,
+    It won't mutate the attributes that are not provided in the payload.
 
     Args:
         object_type (UpsertSystemAttributesAttributeObjectTypes):

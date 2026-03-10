@@ -55,10 +55,13 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ChatroomPostIn,
 ) -> Response[ChatroomPostOut]:
-    """Create a chatroom
+    """Create a new chatroom for TektomeOS operations and instantiate artifacts
 
-     Create a new chatroom and initialize it with default artifacts including an instructions file and a
-    main process file.
+     AqZqtBsY
+    Create a new chatroom for TektomeOS operations and instantiate artifacts
+    - creates a chatroom
+    - creates INSTRUCTIONS.md, this artifact is appended to agent's instruction/system prompt
+    - creates main.openflow, this artifact is the main openflow file for the agent
 
     Args:
         body (ChatroomPostIn):
@@ -87,10 +90,13 @@ def sync(
     client: AuthenticatedClient,
     body: ChatroomPostIn,
 ) -> ChatroomPostOut | None:
-    """Create a chatroom
+    """Create a new chatroom for TektomeOS operations and instantiate artifacts
 
-     Create a new chatroom and initialize it with default artifacts including an instructions file and a
-    main process file.
+     AqZqtBsY
+    Create a new chatroom for TektomeOS operations and instantiate artifacts
+    - creates a chatroom
+    - creates INSTRUCTIONS.md, this artifact is appended to agent's instruction/system prompt
+    - creates main.openflow, this artifact is the main openflow file for the agent
 
     Args:
         body (ChatroomPostIn):
@@ -114,10 +120,13 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ChatroomPostIn,
 ) -> Response[ChatroomPostOut]:
-    """Create a chatroom
+    """Create a new chatroom for TektomeOS operations and instantiate artifacts
 
-     Create a new chatroom and initialize it with default artifacts including an instructions file and a
-    main process file.
+     AqZqtBsY
+    Create a new chatroom for TektomeOS operations and instantiate artifacts
+    - creates a chatroom
+    - creates INSTRUCTIONS.md, this artifact is appended to agent's instruction/system prompt
+    - creates main.openflow, this artifact is the main openflow file for the agent
 
     Args:
         body (ChatroomPostIn):
@@ -144,10 +153,13 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ChatroomPostIn,
 ) -> ChatroomPostOut | None:
-    """Create a chatroom
+    """Create a new chatroom for TektomeOS operations and instantiate artifacts
 
-     Create a new chatroom and initialize it with default artifacts including an instructions file and a
-    main process file.
+     AqZqtBsY
+    Create a new chatroom for TektomeOS operations and instantiate artifacts
+    - creates a chatroom
+    - creates INSTRUCTIONS.md, this artifact is appended to agent's instruction/system prompt
+    - creates main.openflow, this artifact is the main openflow file for the agent
 
     Args:
         body (ChatroomPostIn):

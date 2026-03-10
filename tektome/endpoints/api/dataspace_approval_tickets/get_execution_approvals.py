@@ -187,10 +187,18 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedExecutionApprovalsGetOut]:
-    """List approval tickets
+    """Get Execution Approvals
 
-     Retrieve a paginated list of approval tickets for the current dataspace. Supports filtering by query
-    parameters.
+     EfJhkBlZ
+
+    Retrieve a list of approval tickets based on query parameters.
+
+    Args:
+        path_params: DataspaceSchema containing dataspace ID.
+        request: The incoming HTTP request.
+        query_params: The query parameters for filtering approval tickets.
+
+    Returns: A list of ApprovalTicket instances matching the query parameters.
 
     Args:
         dataspace_id (UUID):
@@ -259,10 +267,18 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedExecutionApprovalsGetOut | None:
-    """List approval tickets
+    """Get Execution Approvals
 
-     Retrieve a paginated list of approval tickets for the current dataspace. Supports filtering by query
-    parameters.
+     EfJhkBlZ
+
+    Retrieve a list of approval tickets based on query parameters.
+
+    Args:
+        path_params: DataspaceSchema containing dataspace ID.
+        request: The incoming HTTP request.
+        query_params: The query parameters for filtering approval tickets.
+
+    Returns: A list of ApprovalTicket instances matching the query parameters.
 
     Args:
         dataspace_id (UUID):
@@ -326,10 +342,18 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedExecutionApprovalsGetOut]:
-    """List approval tickets
+    """Get Execution Approvals
 
-     Retrieve a paginated list of approval tickets for the current dataspace. Supports filtering by query
-    parameters.
+     EfJhkBlZ
+
+    Retrieve a list of approval tickets based on query parameters.
+
+    Args:
+        path_params: DataspaceSchema containing dataspace ID.
+        request: The incoming HTTP request.
+        query_params: The query parameters for filtering approval tickets.
+
+    Returns: A list of ApprovalTicket instances matching the query parameters.
 
     Args:
         dataspace_id (UUID):
@@ -396,10 +420,18 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedExecutionApprovalsGetOut | None:
-    """List approval tickets
+    """Get Execution Approvals
 
-     Retrieve a paginated list of approval tickets for the current dataspace. Supports filtering by query
-    parameters.
+     EfJhkBlZ
+
+    Retrieve a list of approval tickets based on query parameters.
+
+    Args:
+        path_params: DataspaceSchema containing dataspace ID.
+        request: The incoming HTTP request.
+        query_params: The query parameters for filtering approval tickets.
+
+    Returns: A list of ApprovalTicket instances matching the query parameters.
 
     Args:
         dataspace_id (UUID):

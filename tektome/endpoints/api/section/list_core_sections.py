@@ -64,9 +64,16 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedSectionGetOut]:
-    """List all sections
+    """Get Sections
 
-     Retrieve a paginated list of all sections created by the authenticated user.
+     iP3uYHo4
+
+    Get all sections.
+
+    Args:
+        request: Request object.
+
+    Returns: paginated list of sections.
 
     Args:
         page (int | Unset):  Default: 1.
@@ -98,9 +105,16 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedSectionGetOut | None:
-    """List all sections
+    """Get Sections
 
-     Retrieve a paginated list of all sections created by the authenticated user.
+     iP3uYHo4
+
+    Get all sections.
+
+    Args:
+        request: Request object.
+
+    Returns: paginated list of sections.
 
     Args:
         page (int | Unset):  Default: 1.
@@ -127,9 +141,16 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedSectionGetOut]:
-    """List all sections
+    """Get Sections
 
-     Retrieve a paginated list of all sections created by the authenticated user.
+     iP3uYHo4
+
+    Get all sections.
+
+    Args:
+        request: Request object.
+
+    Returns: paginated list of sections.
 
     Args:
         page (int | Unset):  Default: 1.
@@ -159,9 +180,16 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedSectionGetOut | None:
-    """List all sections
+    """Get Sections
 
-     Retrieve a paginated list of all sections created by the authenticated user.
+     iP3uYHo4
+
+    Get all sections.
+
+    Args:
+        request: Request object.
+
+    Returns: paginated list of sections.
 
     Args:
         page (int | Unset):  Default: 1.

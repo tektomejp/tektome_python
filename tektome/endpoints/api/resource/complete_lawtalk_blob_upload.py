@@ -8,7 +8,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.blob_upload_complete_post_in import BlobUploadCompletePostIn
-from ...models.resource_upload_schema import ResourceUploadSchema
+from ...models.resource_schema_2 import ResourceSchema2
 from ...types import Response
 
 
@@ -34,9 +34,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ResourceUploadSchema | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ResourceSchema2 | None:
     if response.status_code == 201:
-        response_201 = ResourceUploadSchema.from_dict(response.json())
+        response_201 = ResourceSchema2.from_dict(response.json())
 
         return response_201
 
@@ -46,9 +46,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ResourceUploadSchema]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ResourceSchema2]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -62,11 +60,27 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: BlobUploadCompletePostIn,
-) -> Response[ResourceUploadSchema]:
-    """Complete a blob upload
+) -> Response[ResourceSchema2]:
+    """Post Blob Upload Complete
 
-     Finalize a blob upload after the file has been uploaded directly to storage. Validates the upload,
-    creates the resource record, and optionally starts OCR extraction.
+     8swvdVq1
+
+    Complete a blob upload and create the Resource record.
+
+    After uploading a file directly to Azure Blob Storage using the SAS URL
+    from the upload request endpoint, call this endpoint to create the
+    Resource and LawtalkResource records.
+
+    **Flow:**
+    1. Validates the upload_id exists in Redis
+    2. Verifies the resource_group_id matches the original request
+    3. Confirms the blob exists in Azure Blob Storage
+    4. Creates Resource and LawtalkResource records
+    5. Optionally starts OCR extraction if `initialize` is true
+
+    **Error Codes:**
+    - 400: Invalid upload_id or resource_group_id mismatch
+    - 404: Blob not found in Azure (upload not completed)
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -77,7 +91,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceUploadSchema]
+        Response[ResourceSchema2]
     """
 
     kwargs = _get_kwargs(
@@ -97,11 +111,27 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: BlobUploadCompletePostIn,
-) -> ResourceUploadSchema | None:
-    """Complete a blob upload
+) -> ResourceSchema2 | None:
+    """Post Blob Upload Complete
 
-     Finalize a blob upload after the file has been uploaded directly to storage. Validates the upload,
-    creates the resource record, and optionally starts OCR extraction.
+     8swvdVq1
+
+    Complete a blob upload and create the Resource record.
+
+    After uploading a file directly to Azure Blob Storage using the SAS URL
+    from the upload request endpoint, call this endpoint to create the
+    Resource and LawtalkResource records.
+
+    **Flow:**
+    1. Validates the upload_id exists in Redis
+    2. Verifies the resource_group_id matches the original request
+    3. Confirms the blob exists in Azure Blob Storage
+    4. Creates Resource and LawtalkResource records
+    5. Optionally starts OCR extraction if `initialize` is true
+
+    **Error Codes:**
+    - 400: Invalid upload_id or resource_group_id mismatch
+    - 404: Blob not found in Azure (upload not completed)
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -112,7 +142,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceUploadSchema
+        ResourceSchema2
     """
 
     return sync_detailed(
@@ -127,11 +157,27 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: BlobUploadCompletePostIn,
-) -> Response[ResourceUploadSchema]:
-    """Complete a blob upload
+) -> Response[ResourceSchema2]:
+    """Post Blob Upload Complete
 
-     Finalize a blob upload after the file has been uploaded directly to storage. Validates the upload,
-    creates the resource record, and optionally starts OCR extraction.
+     8swvdVq1
+
+    Complete a blob upload and create the Resource record.
+
+    After uploading a file directly to Azure Blob Storage using the SAS URL
+    from the upload request endpoint, call this endpoint to create the
+    Resource and LawtalkResource records.
+
+    **Flow:**
+    1. Validates the upload_id exists in Redis
+    2. Verifies the resource_group_id matches the original request
+    3. Confirms the blob exists in Azure Blob Storage
+    4. Creates Resource and LawtalkResource records
+    5. Optionally starts OCR extraction if `initialize` is true
+
+    **Error Codes:**
+    - 400: Invalid upload_id or resource_group_id mismatch
+    - 404: Blob not found in Azure (upload not completed)
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -142,7 +188,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceUploadSchema]
+        Response[ResourceSchema2]
     """
 
     kwargs = _get_kwargs(
@@ -160,11 +206,27 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: BlobUploadCompletePostIn,
-) -> ResourceUploadSchema | None:
-    """Complete a blob upload
+) -> ResourceSchema2 | None:
+    """Post Blob Upload Complete
 
-     Finalize a blob upload after the file has been uploaded directly to storage. Validates the upload,
-    creates the resource record, and optionally starts OCR extraction.
+     8swvdVq1
+
+    Complete a blob upload and create the Resource record.
+
+    After uploading a file directly to Azure Blob Storage using the SAS URL
+    from the upload request endpoint, call this endpoint to create the
+    Resource and LawtalkResource records.
+
+    **Flow:**
+    1. Validates the upload_id exists in Redis
+    2. Verifies the resource_group_id matches the original request
+    3. Confirms the blob exists in Azure Blob Storage
+    4. Creates Resource and LawtalkResource records
+    5. Optionally starts OCR extraction if `initialize` is true
+
+    **Error Codes:**
+    - 400: Invalid upload_id or resource_group_id mismatch
+    - 404: Blob not found in Azure (upload not completed)
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -175,7 +237,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceUploadSchema
+        ResourceSchema2
     """
 
     return (

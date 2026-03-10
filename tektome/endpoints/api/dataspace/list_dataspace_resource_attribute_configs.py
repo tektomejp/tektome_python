@@ -74,9 +74,11 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedDataspaceProjectAttributePostOut]:
-    """List resource attribute column configurations
+    """Get Dataspace Resource Attribute Configs
 
-     Retrieve all configured attribute columns for resources within a dataspace.
+     x16N0f5I
+
+    Retrieves the column attributes of a dataspace resource
 
     Args:
         dataspace_id (UUID):
@@ -111,9 +113,11 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedDataspaceProjectAttributePostOut | None:
-    """List resource attribute column configurations
+    """Get Dataspace Resource Attribute Configs
 
-     Retrieve all configured attribute columns for resources within a dataspace.
+     x16N0f5I
+
+    Retrieves the column attributes of a dataspace resource
 
     Args:
         dataspace_id (UUID):
@@ -143,9 +147,11 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedDataspaceProjectAttributePostOut]:
-    """List resource attribute column configurations
+    """Get Dataspace Resource Attribute Configs
 
-     Retrieve all configured attribute columns for resources within a dataspace.
+     x16N0f5I
+
+    Retrieves the column attributes of a dataspace resource
 
     Args:
         dataspace_id (UUID):
@@ -178,9 +184,11 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedDataspaceProjectAttributePostOut | None:
-    """List resource attribute column configurations
+    """Get Dataspace Resource Attribute Configs
 
-     Retrieve all configured attribute columns for resources within a dataspace.
+     x16N0f5I
+
+    Retrieves the column attributes of a dataspace resource
 
     Args:
         dataspace_id (UUID):

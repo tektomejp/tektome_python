@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import datetime
 from collections.abc import Mapping
-from typing import Any, Literal, TypeVar, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -21,7 +21,6 @@ class BooleanAttributeSchemaOut:
         created (datetime.datetime):
         updated (datetime.datetime):
         name (str):
-        attribute_type (Literal['boolean_attributes'] | Unset):  Default: 'boolean_attributes'.
         id (None | Unset | UUID):
         extraction_status (None | str | Unset):  Default: 'pending'.
         creation_method (None | str | Unset):  Default: 'automatic'.
@@ -34,7 +33,6 @@ class BooleanAttributeSchemaOut:
     created: datetime.datetime
     updated: datetime.datetime
     name: str
-    attribute_type: Literal["boolean_attributes"] | Unset = "boolean_attributes"
     id: None | Unset | UUID = UNSET
     extraction_status: None | str | Unset = "pending"
     creation_method: None | str | Unset = "automatic"
@@ -50,8 +48,6 @@ class BooleanAttributeSchemaOut:
         updated = self.updated.isoformat()
 
         name = self.name
-
-        attribute_type = self.attribute_type
 
         id: None | str | Unset
         if isinstance(self.id, Unset):
@@ -102,8 +98,6 @@ class BooleanAttributeSchemaOut:
                 "name": name,
             }
         )
-        if attribute_type is not UNSET:
-            field_dict["attribute_type"] = attribute_type
         if id is not UNSET:
             field_dict["id"] = id
         if extraction_status is not UNSET:
@@ -129,10 +123,6 @@ class BooleanAttributeSchemaOut:
         updated = isoparse(d.pop("updated"))
 
         name = d.pop("name")
-
-        attribute_type = cast(Literal["boolean_attributes"] | Unset, d.pop("attribute_type", UNSET))
-        if attribute_type != "boolean_attributes" and not isinstance(attribute_type, Unset):
-            raise ValueError(f"attribute_type must match const 'boolean_attributes', got '{attribute_type}'")
 
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -202,7 +192,6 @@ class BooleanAttributeSchemaOut:
             created=created,
             updated=updated,
             name=name,
-            attribute_type=attribute_type,
             id=id,
             extraction_status=extraction_status,
             creation_method=creation_method,

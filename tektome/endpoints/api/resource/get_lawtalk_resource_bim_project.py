@@ -52,10 +52,12 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[BimProjectStatsGetOut]:
-    """Get resource BIM project data
+    """Get Resource Bim Project
 
-     Retrieve the latest BIM project data associated with a resource, including object, view, and sheet
-    counts.
+     HvB42ioW
+
+    Get the latest BIM project data associated with a Lawtalk Resource
+    Returns: BIM project ID and BIM statistics (number of BIM objects, views, sheets)
 
     Args:
         resource_id (str):
@@ -84,10 +86,12 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> BimProjectStatsGetOut | None:
-    """Get resource BIM project data
+    """Get Resource Bim Project
 
-     Retrieve the latest BIM project data associated with a resource, including object, view, and sheet
-    counts.
+     HvB42ioW
+
+    Get the latest BIM project data associated with a Lawtalk Resource
+    Returns: BIM project ID and BIM statistics (number of BIM objects, views, sheets)
 
     Args:
         resource_id (str):
@@ -111,10 +115,12 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[BimProjectStatsGetOut]:
-    """Get resource BIM project data
+    """Get Resource Bim Project
 
-     Retrieve the latest BIM project data associated with a resource, including object, view, and sheet
-    counts.
+     HvB42ioW
+
+    Get the latest BIM project data associated with a Lawtalk Resource
+    Returns: BIM project ID and BIM statistics (number of BIM objects, views, sheets)
 
     Args:
         resource_id (str):
@@ -141,10 +147,12 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> BimProjectStatsGetOut | None:
-    """Get resource BIM project data
+    """Get Resource Bim Project
 
-     Retrieve the latest BIM project data associated with a resource, including object, view, and sheet
-    counts.
+     HvB42ioW
+
+    Get the latest BIM project data associated with a Lawtalk Resource
+    Returns: BIM project ID and BIM statistics (number of BIM objects, views, sheets)
 
     Args:
         resource_id (str):

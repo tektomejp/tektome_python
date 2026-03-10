@@ -52,10 +52,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     amount: int,
 ) -> Response[Any]:
-    """Simulate heavy memory usage
+    """Simulate Heavy Mem Usage
 
-     Sample endpoint that dispatches a task to simulate heavy memory consumption for testing memory
-    limits and monitoring.
+     Simulate heavy memory usage task
 
     Args:
         amount (int):
@@ -84,10 +83,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     amount: int,
 ) -> Response[Any]:
-    """Simulate heavy memory usage
+    """Simulate Heavy Mem Usage
 
-     Sample endpoint that dispatches a task to simulate heavy memory consumption for testing memory
-    limits and monitoring.
+     Simulate heavy memory usage task
 
     Args:
         amount (int):

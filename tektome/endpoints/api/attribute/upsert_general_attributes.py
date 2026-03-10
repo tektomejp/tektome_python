@@ -62,11 +62,16 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DefaultAttributeBodyPutIn,
 ) -> Response[Any]:
-    """Upsert general attributes
+    """Put General Attributes
 
-     Set or update general (user-facing) attributes on an entity. Only provided keys are added or
-    updated; omitted keys remain unchanged. Table attributes must be updated through dedicated table
-    endpoints.
+     Grnw6Lxx
+
+    Set general attributes. General attributes cannot begin with `system:`
+    General attributes are returned to the user side.
+
+
+    **WARNING**: Only pass the keys to be added/updated,
+    It won't mutate the attributes that are not provided in the payload.
 
     Args:
         object_type (UpsertGeneralAttributesAttributeObjectTypes):
@@ -101,11 +106,16 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DefaultAttributeBodyPutIn,
 ) -> Response[Any]:
-    """Upsert general attributes
+    """Put General Attributes
 
-     Set or update general (user-facing) attributes on an entity. Only provided keys are added or
-    updated; omitted keys remain unchanged. Table attributes must be updated through dedicated table
-    endpoints.
+     Grnw6Lxx
+
+    Set general attributes. General attributes cannot begin with `system:`
+    General attributes are returned to the user side.
+
+
+    **WARNING**: Only pass the keys to be added/updated,
+    It won't mutate the attributes that are not provided in the payload.
 
     Args:
         object_type (UpsertGeneralAttributesAttributeObjectTypes):

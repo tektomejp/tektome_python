@@ -48,9 +48,17 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a requirement section
+    """Delete Resource Section
 
-     Delete a requirement section and all its associated capture files.
+     ou6Uyylf
+
+    Deletes a ResourceSection object.
+
+    Args:
+        request: Request object
+        path_params: path params of type DeleteResourceSectionPath
+
+    Returns: 204, None
 
     Args:
         section_id (UUID):
@@ -79,9 +87,17 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a requirement section
+    """Delete Resource Section
 
-     Delete a requirement section and all its associated capture files.
+     ou6Uyylf
+
+    Deletes a ResourceSection object.
+
+    Args:
+        request: Request object
+        path_params: path params of type DeleteResourceSectionPath
+
+    Returns: 204, None
 
     Args:
         section_id (UUID):

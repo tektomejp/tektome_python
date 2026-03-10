@@ -53,9 +53,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[GenBreadcrumbsGetOut]:
-    """Get folder breadcrumb path
-
-     Generate the breadcrumb navigation path for a folder, including all parent folders up to the root.
+    """Get Folder Breadcrumbs
 
     Args:
         folder_id (UUID):
@@ -84,9 +82,7 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> GenBreadcrumbsGetOut | None:
-    """Get folder breadcrumb path
-
-     Generate the breadcrumb navigation path for a folder, including all parent folders up to the root.
+    """Get Folder Breadcrumbs
 
     Args:
         folder_id (UUID):
@@ -110,9 +106,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[GenBreadcrumbsGetOut]:
-    """Get folder breadcrumb path
-
-     Generate the breadcrumb navigation path for a folder, including all parent folders up to the root.
+    """Get Folder Breadcrumbs
 
     Args:
         folder_id (UUID):
@@ -139,9 +133,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> GenBreadcrumbsGetOut | None:
-    """Get folder breadcrumb path
-
-     Generate the breadcrumb navigation path for a folder, including all parent folders up to the root.
+    """Get Folder Breadcrumbs
 
     Args:
         folder_id (UUID):

@@ -61,10 +61,18 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PaymentRecordPatchInPatch,
 ) -> Response[Any]:
-    """Update a payment record
+    """Patch Payment Record
 
-     Partially update a payment record. Changes to credit amounts are validated to ensure the
-    organization balance does not become negative.
+     YSCUc2FC
+
+    Patch a payment record.
+
+    for debit transactions, updating credits_amount must not result in negative organization balance.
+
+    1. we negate the current credits amount of the payment record to get the balance before applying the
+    new amount
+    2. we add the new credits amount to the organization balance
+    3. if the adjusted balance is negative, we raise an error
 
     Args:
         organization_id (UUID):
@@ -99,10 +107,18 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PaymentRecordPatchInPatch,
 ) -> Response[Any]:
-    """Update a payment record
+    """Patch Payment Record
 
-     Partially update a payment record. Changes to credit amounts are validated to ensure the
-    organization balance does not become negative.
+     YSCUc2FC
+
+    Patch a payment record.
+
+    for debit transactions, updating credits_amount must not result in negative organization balance.
+
+    1. we negate the current credits amount of the payment record to get the balance before applying the
+    new amount
+    2. we add the new credits amount to the organization balance
+    3. if the adjusted balance is negative, we raise an error
 
     Args:
         organization_id (UUID):

@@ -65,10 +65,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ProjectRequirementItemColumnConfigPostIn,
 ) -> Response[ProjectRequirementItemColumnConfigOut]:
-    """Create requirement item column config
+    """Post Project Requirement Item Column Config
 
-     Create a new requirement item column configuration for a project. Column names must be unique within
-    the project.
+     1b2c3d4A
+
+    Create a new requirement item column configuration for a project.
 
     Args:
         project_id (UUID):
@@ -100,10 +101,11 @@ def sync(
     client: AuthenticatedClient,
     body: ProjectRequirementItemColumnConfigPostIn,
 ) -> ProjectRequirementItemColumnConfigOut | None:
-    """Create requirement item column config
+    """Post Project Requirement Item Column Config
 
-     Create a new requirement item column configuration for a project. Column names must be unique within
-    the project.
+     1b2c3d4A
+
+    Create a new requirement item column configuration for a project.
 
     Args:
         project_id (UUID):
@@ -130,10 +132,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ProjectRequirementItemColumnConfigPostIn,
 ) -> Response[ProjectRequirementItemColumnConfigOut]:
-    """Create requirement item column config
+    """Post Project Requirement Item Column Config
 
-     Create a new requirement item column configuration for a project. Column names must be unique within
-    the project.
+     1b2c3d4A
+
+    Create a new requirement item column configuration for a project.
 
     Args:
         project_id (UUID):
@@ -163,10 +166,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ProjectRequirementItemColumnConfigPostIn,
 ) -> ProjectRequirementItemColumnConfigOut | None:
-    """Create requirement item column config
+    """Post Project Requirement Item Column Config
 
-     Create a new requirement item column configuration for a project. Column names must be unique within
-    the project.
+     1b2c3d4A
+
+    Create a new requirement item column configuration for a project.
 
     Args:
         project_id (UUID):

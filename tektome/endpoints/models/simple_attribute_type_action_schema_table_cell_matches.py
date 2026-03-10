@@ -14,11 +14,11 @@ class SimpleAttributeTypeActionSchemaTableCellMatches:
     """
     Attributes:
         action (Literal['cell_matches']):
-        value_type (Literal['dict with keys column, row, or cell and value type based on the table cell value type']):
+        value_type (Literal['any']):
     """
 
     action: Literal["cell_matches"]
-    value_type: Literal["dict with keys column, row, or cell and value type based on the table cell value type"]
+    value_type: Literal["any"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,14 +44,9 @@ class SimpleAttributeTypeActionSchemaTableCellMatches:
         if action != "cell_matches":
             raise ValueError(f"action must match const 'cell_matches', got '{action}'")
 
-        value_type = cast(
-            Literal["dict with keys column, row, or cell and value type based on the table cell value type"],
-            d.pop("value_type"),
-        )
-        if value_type != "dict with keys column, row, or cell and value type based on the table cell value type":
-            raise ValueError(
-                f"value_type must match const 'dict with keys column, row, or cell and value type based on the table cell value type', got '{value_type}'"
-            )
+        value_type = cast(Literal["any"], d.pop("value_type"))
+        if value_type != "any":
+            raise ValueError(f"value_type must match const 'any', got '{value_type}'")
 
         simple_attribute_type_action_schema_table_cell_matches = cls(
             action=action,

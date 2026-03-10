@@ -81,8 +81,16 @@ def sync_detailed(
 ) -> Response[ExecuteProcessMetadataGetOut]:
     """Get execution metadata for a configured process
 
-     Retrieve execution metadata for a process, including attribute information for the specified model
-    entities (projects or resources).
+     882BoCbx
+
+    Get execution metadata for a configured process and given model entities.
+
+    Args:
+        request: The HTTP request object.
+        path_params: ProcessPath
+        query_params: ExecuteProcessMetadataQueryIn
+
+    Returns: ExecuteProcessMetadataGetOut
 
     Args:
         dataspace_id (UUID):
@@ -122,8 +130,16 @@ def sync(
 ) -> ExecuteProcessMetadataGetOut | None:
     """Get execution metadata for a configured process
 
-     Retrieve execution metadata for a process, including attribute information for the specified model
-    entities (projects or resources).
+     882BoCbx
+
+    Get execution metadata for a configured process and given model entities.
+
+    Args:
+        request: The HTTP request object.
+        path_params: ProcessPath
+        query_params: ExecuteProcessMetadataQueryIn
+
+    Returns: ExecuteProcessMetadataGetOut
 
     Args:
         dataspace_id (UUID):
@@ -158,8 +174,16 @@ async def asyncio_detailed(
 ) -> Response[ExecuteProcessMetadataGetOut]:
     """Get execution metadata for a configured process
 
-     Retrieve execution metadata for a process, including attribute information for the specified model
-    entities (projects or resources).
+     882BoCbx
+
+    Get execution metadata for a configured process and given model entities.
+
+    Args:
+        request: The HTTP request object.
+        path_params: ProcessPath
+        query_params: ExecuteProcessMetadataQueryIn
+
+    Returns: ExecuteProcessMetadataGetOut
 
     Args:
         dataspace_id (UUID):
@@ -197,8 +221,16 @@ async def asyncio(
 ) -> ExecuteProcessMetadataGetOut | None:
     """Get execution metadata for a configured process
 
-     Retrieve execution metadata for a process, including attribute information for the specified model
-    entities (projects or resources).
+     882BoCbx
+
+    Get execution metadata for a configured process and given model entities.
+
+    Args:
+        request: The HTTP request object.
+        path_params: ProcessPath
+        query_params: ExecuteProcessMetadataQueryIn
+
+    Returns: ExecuteProcessMetadataGetOut
 
     Args:
         dataspace_id (UUID):

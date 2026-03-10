@@ -52,10 +52,10 @@ def sync_detailed(
     client: AuthenticatedClient | Client,
     body: LoginEmailPostIn,
 ) -> Response[Any]:
-    """Send OTP code
+    """Post Send Otp
 
-     Send a one-time password (OTP) to the specified email address for authentication. Rate-limited to
-    prevent abuse. Always returns 204 regardless of whether the email exists.
+     aTopcOpY
+    Send OTP to user email.
 
     Args:
         body (LoginEmailPostIn):
@@ -84,10 +84,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient | Client,
     body: LoginEmailPostIn,
 ) -> Response[Any]:
-    """Send OTP code
+    """Post Send Otp
 
-     Send a one-time password (OTP) to the specified email address for authentication. Rate-limited to
-    prevent abuse. Always returns 204 regardless of whether the email exists.
+     aTopcOpY
+    Send OTP to user email.
 
     Args:
         body (LoginEmailPostIn):

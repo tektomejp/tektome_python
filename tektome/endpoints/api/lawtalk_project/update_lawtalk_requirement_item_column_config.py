@@ -58,9 +58,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ProjectRequirementItemColumnConfigPostInPatch,
 ) -> Response[Any]:
-    """Update requirement item column config
+    """Put Project Requirement Item Column Config
 
-     Update an existing requirement item column configuration.
+     9i0j1k2L
+
+    Update a requirement item column configuration for a project.
 
     Args:
         requirement_item_column_config_id (UUID):
@@ -92,9 +94,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ProjectRequirementItemColumnConfigPostInPatch,
 ) -> Response[Any]:
-    """Update requirement item column config
+    """Put Project Requirement Item Column Config
 
-     Update an existing requirement item column configuration.
+     9i0j1k2L
+
+    Update a requirement item column configuration for a project.
 
     Args:
         requirement_item_column_config_id (UUID):

@@ -67,8 +67,7 @@ def sync_detailed(
 ) -> Response[ImportResult | ImportStorageFoldersResponse]:
     """Import folders from external storage
 
-     Import folder structures while preserving hierarchy and attributes. Creates new folders or updates
-    existing ones based on the provided data.
+     Import folder structures with hierarchy and attributes from external storage systems.
 
     Args:
         body (FolderImportRequest): Request schema for folder import operation.
@@ -99,8 +98,7 @@ def sync(
 ) -> ImportResult | ImportStorageFoldersResponse | None:
     """Import folders from external storage
 
-     Import folder structures while preserving hierarchy and attributes. Creates new folders or updates
-    existing ones based on the provided data.
+     Import folder structures with hierarchy and attributes from external storage systems.
 
     Args:
         body (FolderImportRequest): Request schema for folder import operation.
@@ -126,8 +124,7 @@ async def asyncio_detailed(
 ) -> Response[ImportResult | ImportStorageFoldersResponse]:
     """Import folders from external storage
 
-     Import folder structures while preserving hierarchy and attributes. Creates new folders or updates
-    existing ones based on the provided data.
+     Import folder structures with hierarchy and attributes from external storage systems.
 
     Args:
         body (FolderImportRequest): Request schema for folder import operation.
@@ -156,8 +153,7 @@ async def asyncio(
 ) -> ImportResult | ImportStorageFoldersResponse | None:
     """Import folders from external storage
 
-     Import folder structures while preserving hierarchy and attributes. Creates new folders or updates
-    existing ones based on the provided data.
+     Import folder structures with hierarchy and attributes from external storage systems.
 
     Args:
         body (FolderImportRequest): Request schema for folder import operation.
