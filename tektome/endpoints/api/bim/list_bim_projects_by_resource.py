@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from uuid import UUID
 
 import httpx
 
@@ -14,6 +15,7 @@ def _get_kwargs(
     *,
     page: int | Unset = 1,
     page_size: int | Unset = 100,
+    resource_id: UUID,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -22,11 +24,14 @@ def _get_kwargs(
 
     params["page_size"] = page_size
 
+    json_resource_id = str(resource_id)
+    params["resource_id"] = json_resource_id
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/api/core/resource-groups/bim/bim-project/stats/all/",
+        "url": "/api/core/resource-groups/bim/bim-project/by-resource/",
         "params": params,
     }
 
@@ -50,6 +55,16 @@ def _parse_response(
         response_400 = ErrorResponseOut.from_dict(response.json())
 
         return response_400
+
+    if response.status_code == 403:
+        response_403 = ErrorResponseOut.from_dict(response.json())
+
+        return response_403
+
+    if response.status_code == 404:
+        response_404 = ErrorResponseOut.from_dict(response.json())
+
+        return response_404
 
     if response.status_code == 500:
         response_500 = ErrorResponseOut.from_dict(response.json())
@@ -78,14 +93,17 @@ def sync_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | Unset = 100,
+    resource_id: UUID,
 ) -> Response[ErrorResponseOut | list[BimProjectStatsGetOut]]:
-    """List all BIM project statistics
+    """List BIM projects for a resource
 
-     Retrieve paginated statistics for all BIM projects, including object, view, and sheet counts.
+     Retrieve paginated BIM projects linked to a specific resource, ordered by most recently updated.Each
+    entry includes object, view, and sheet counts.
 
     Args:
         page (int | Unset):  Default: 1.
         page_size (int | Unset):  Default: 100.
+        resource_id (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -98,6 +116,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         page=page,
         page_size=page_size,
+        resource_id=resource_id,
     )
 
     response = client.get_httpx_client().request(
@@ -112,14 +131,17 @@ def sync(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | Unset = 100,
+    resource_id: UUID,
 ) -> ErrorResponseOut | list[BimProjectStatsGetOut] | None:
-    """List all BIM project statistics
+    """List BIM projects for a resource
 
-     Retrieve paginated statistics for all BIM projects, including object, view, and sheet counts.
+     Retrieve paginated BIM projects linked to a specific resource, ordered by most recently updated.Each
+    entry includes object, view, and sheet counts.
 
     Args:
         page (int | Unset):  Default: 1.
         page_size (int | Unset):  Default: 100.
+        resource_id (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -133,6 +155,7 @@ def sync(
         client=client,
         page=page,
         page_size=page_size,
+        resource_id=resource_id,
     ).parsed
 
 
@@ -141,14 +164,17 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | Unset = 100,
+    resource_id: UUID,
 ) -> Response[ErrorResponseOut | list[BimProjectStatsGetOut]]:
-    """List all BIM project statistics
+    """List BIM projects for a resource
 
-     Retrieve paginated statistics for all BIM projects, including object, view, and sheet counts.
+     Retrieve paginated BIM projects linked to a specific resource, ordered by most recently updated.Each
+    entry includes object, view, and sheet counts.
 
     Args:
         page (int | Unset):  Default: 1.
         page_size (int | Unset):  Default: 100.
+        resource_id (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -161,6 +187,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         page=page,
         page_size=page_size,
+        resource_id=resource_id,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -173,14 +200,17 @@ async def asyncio(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | Unset = 100,
+    resource_id: UUID,
 ) -> ErrorResponseOut | list[BimProjectStatsGetOut] | None:
-    """List all BIM project statistics
+    """List BIM projects for a resource
 
-     Retrieve paginated statistics for all BIM projects, including object, view, and sheet counts.
+     Retrieve paginated BIM projects linked to a specific resource, ordered by most recently updated.Each
+    entry includes object, view, and sheet counts.
 
     Args:
         page (int | Unset):  Default: 1.
         page_size (int | Unset):  Default: 100.
+        resource_id (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -195,5 +225,6 @@ async def asyncio(
             client=client,
             page=page,
             page_size=page_size,
+            resource_id=resource_id,
         )
     ).parsed
