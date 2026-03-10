@@ -77,21 +77,10 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedApprovalTicketCandidateOut]:
-    """Get Approval Candidates
+    """List candidates for an approval ticket
 
-     e8eqlFo9
-
-    Retrieve the list of candidates associated with a specific approval ticket.
-
-    Serializes data snapshots for each candidate based on their instructions.
-        - If a data snapshot already exists, it uses that.
-        - If the ticket is pending and no snapshot exists, it generates one based on instructions.
-
-    Args:
-        request: The incoming HTTP request.
-        path_params: The path parameters containing the approval ticket ID.
-
-    Returns: A list of ApprovalTicketCandidate instances associated with the approval ticket.
+     Retrieve the list of candidates associated with a specific approval ticket, including their data
+    snapshots and review state.
 
     Args:
         dataspace_id (UUID):
@@ -129,21 +118,10 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedApprovalTicketCandidateOut | None:
-    """Get Approval Candidates
+    """List candidates for an approval ticket
 
-     e8eqlFo9
-
-    Retrieve the list of candidates associated with a specific approval ticket.
-
-    Serializes data snapshots for each candidate based on their instructions.
-        - If a data snapshot already exists, it uses that.
-        - If the ticket is pending and no snapshot exists, it generates one based on instructions.
-
-    Args:
-        request: The incoming HTTP request.
-        path_params: The path parameters containing the approval ticket ID.
-
-    Returns: A list of ApprovalTicketCandidate instances associated with the approval ticket.
+     Retrieve the list of candidates associated with a specific approval ticket, including their data
+    snapshots and review state.
 
     Args:
         dataspace_id (UUID):
@@ -176,21 +154,10 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedApprovalTicketCandidateOut]:
-    """Get Approval Candidates
+    """List candidates for an approval ticket
 
-     e8eqlFo9
-
-    Retrieve the list of candidates associated with a specific approval ticket.
-
-    Serializes data snapshots for each candidate based on their instructions.
-        - If a data snapshot already exists, it uses that.
-        - If the ticket is pending and no snapshot exists, it generates one based on instructions.
-
-    Args:
-        request: The incoming HTTP request.
-        path_params: The path parameters containing the approval ticket ID.
-
-    Returns: A list of ApprovalTicketCandidate instances associated with the approval ticket.
+     Retrieve the list of candidates associated with a specific approval ticket, including their data
+    snapshots and review state.
 
     Args:
         dataspace_id (UUID):
@@ -226,21 +193,10 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedApprovalTicketCandidateOut | None:
-    """Get Approval Candidates
+    """List candidates for an approval ticket
 
-     e8eqlFo9
-
-    Retrieve the list of candidates associated with a specific approval ticket.
-
-    Serializes data snapshots for each candidate based on their instructions.
-        - If a data snapshot already exists, it uses that.
-        - If the ticket is pending and no snapshot exists, it generates one based on instructions.
-
-    Args:
-        request: The incoming HTTP request.
-        path_params: The path parameters containing the approval ticket ID.
-
-    Returns: A list of ApprovalTicketCandidate instances associated with the approval ticket.
+     Retrieve the list of candidates associated with a specific approval ticket, including their data
+    snapshots and review state.
 
     Args:
         dataspace_id (UUID):

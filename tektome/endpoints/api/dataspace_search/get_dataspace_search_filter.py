@@ -149,11 +149,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DataspaceSearchFilterConfigurationOut | ErrorOut]:
-    """Get Dataspace Search Filter By Id
+    """Get a search filter by ID
 
-     QsDyZOwi
-
-    Get a specific filter by ID for the current dataspace.
+     Retrieve a specific search filter configuration by its ID within a dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -185,11 +183,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> DataspaceSearchFilterConfigurationOut | ErrorOut | None:
-    """Get Dataspace Search Filter By Id
+    """Get a search filter by ID
 
-     QsDyZOwi
-
-    Get a specific filter by ID for the current dataspace.
+     Retrieve a specific search filter configuration by its ID within a dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -216,11 +212,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DataspaceSearchFilterConfigurationOut | ErrorOut]:
-    """Get Dataspace Search Filter By Id
+    """Get a search filter by ID
 
-     QsDyZOwi
-
-    Get a specific filter by ID for the current dataspace.
+     Retrieve a specific search filter configuration by its ID within a dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -250,11 +244,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> DataspaceSearchFilterConfigurationOut | ErrorOut | None:
-    """Get Dataspace Search Filter By Id
+    """Get a search filter by ID
 
-     QsDyZOwi
-
-    Get a specific filter by ID for the current dataspace.
+     Retrieve a specific search filter configuration by its ID within a dataspace.
 
     Args:
         dataspace_id (UUID):

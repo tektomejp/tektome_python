@@ -169,11 +169,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     keys: list[str] | None | Unset = UNSET,
 ) -> Response[GenericHttpError | list[EnvironmentVariableResponse]]:
-    """List Environment Variables
+    """List environment variables
 
-     -HF3FwQC
-
-    List environment variables based on ownership filters.
+     Retrieve environment variables for the organization, with optional filtering by ownership.
 
     Args:
         organization_id (UUID):
@@ -205,11 +203,9 @@ def sync(
     client: AuthenticatedClient,
     keys: list[str] | None | Unset = UNSET,
 ) -> GenericHttpError | list[EnvironmentVariableResponse] | None:
-    """List Environment Variables
+    """List environment variables
 
-     -HF3FwQC
-
-    List environment variables based on ownership filters.
+     Retrieve environment variables for the organization, with optional filtering by ownership.
 
     Args:
         organization_id (UUID):
@@ -236,11 +232,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     keys: list[str] | None | Unset = UNSET,
 ) -> Response[GenericHttpError | list[EnvironmentVariableResponse]]:
-    """List Environment Variables
+    """List environment variables
 
-     -HF3FwQC
-
-    List environment variables based on ownership filters.
+     Retrieve environment variables for the organization, with optional filtering by ownership.
 
     Args:
         organization_id (UUID):
@@ -270,11 +264,9 @@ async def asyncio(
     client: AuthenticatedClient,
     keys: list[str] | None | Unset = UNSET,
 ) -> GenericHttpError | list[EnvironmentVariableResponse] | None:
-    """List Environment Variables
+    """List environment variables
 
-     -HF3FwQC
-
-    List environment variables based on ownership filters.
+     Retrieve environment variables for the organization, with optional filtering by ownership.
 
     Args:
         organization_id (UUID):

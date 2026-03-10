@@ -62,11 +62,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: LawtalkAttributeBodyPutIn,
 ) -> Response[Any]:
-    """Put Lawtalk Attributes
+    """Set domain-specific attributes on an entity
 
-     Sczy4wEz
-
-    Set or update Lawtalk-specific attributes for an entity.
+     Set or update domain-specific attributes for an entity such as a folder, resource group, or
+    resource. When the 'name' attribute is provided, uniqueness validation is performed within the
+    entity's parent scope.
 
     Args:
         object_type (UpdateLawtalkAttributesAttributeObjectTypes):
@@ -101,11 +101,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: LawtalkAttributeBodyPutIn,
 ) -> Response[Any]:
-    """Put Lawtalk Attributes
+    """Set domain-specific attributes on an entity
 
-     Sczy4wEz
-
-    Set or update Lawtalk-specific attributes for an entity.
+     Set or update domain-specific attributes for an entity such as a folder, resource group, or
+    resource. When the 'name' attribute is provided, uniqueness validation is performed within the
+    entity's parent scope.
 
     Args:
         object_type (UpdateLawtalkAttributesAttributeObjectTypes):

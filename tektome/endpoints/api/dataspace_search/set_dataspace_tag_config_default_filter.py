@@ -159,11 +159,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPatchDefaultFilterIn,
 ) -> Response[DataspaceSearchTagConfigOut | ErrorOut]:
-    """Patch Dataspace Tag Config Default Filter
+    """Set default filter for a tag configuration
 
-     YpdxZW3r
-
-    Set the default filter for a tag configuration for the current dataspace.
+     Set which filter is used by default when this tag configuration is selected for searching.
 
     Args:
         dataspace_id (UUID):
@@ -199,11 +197,9 @@ def sync(
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPatchDefaultFilterIn,
 ) -> DataspaceSearchTagConfigOut | ErrorOut | None:
-    """Patch Dataspace Tag Config Default Filter
+    """Set default filter for a tag configuration
 
-     YpdxZW3r
-
-    Set the default filter for a tag configuration for the current dataspace.
+     Set which filter is used by default when this tag configuration is selected for searching.
 
     Args:
         dataspace_id (UUID):
@@ -234,11 +230,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPatchDefaultFilterIn,
 ) -> Response[DataspaceSearchTagConfigOut | ErrorOut]:
-    """Patch Dataspace Tag Config Default Filter
+    """Set default filter for a tag configuration
 
-     YpdxZW3r
-
-    Set the default filter for a tag configuration for the current dataspace.
+     Set which filter is used by default when this tag configuration is selected for searching.
 
     Args:
         dataspace_id (UUID):
@@ -272,11 +266,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DataspaceSearchTagConfigPatchDefaultFilterIn,
 ) -> DataspaceSearchTagConfigOut | ErrorOut | None:
-    """Patch Dataspace Tag Config Default Filter
+    """Set default filter for a tag configuration
 
-     YpdxZW3r
-
-    Set the default filter for a tag configuration for the current dataspace.
+     Set which filter is used by default when this tag configuration is selected for searching.
 
     Args:
         dataspace_id (UUID):

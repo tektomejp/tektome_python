@@ -54,11 +54,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[TemplateOut]:
-    """Retrieve Dataspace Template
+    """Get a dataspace template by ID
 
-     FWyphpzE
-
-    Retrieve a specific template in the current dataspace.
+     Retrieve detailed information about a specific process template within a dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -90,11 +88,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> TemplateOut | None:
-    """Retrieve Dataspace Template
+    """Get a dataspace template by ID
 
-     FWyphpzE
-
-    Retrieve a specific template in the current dataspace.
+     Retrieve detailed information about a specific process template within a dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -121,11 +117,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[TemplateOut]:
-    """Retrieve Dataspace Template
+    """Get a dataspace template by ID
 
-     FWyphpzE
-
-    Retrieve a specific template in the current dataspace.
+     Retrieve detailed information about a specific process template within a dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -155,11 +149,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> TemplateOut | None:
-    """Retrieve Dataspace Template
+    """Get a dataspace template by ID
 
-     FWyphpzE
-
-    Retrieve a specific template in the current dataspace.
+     Retrieve detailed information about a specific process template within a dataspace.
 
     Args:
         dataspace_id (UUID):

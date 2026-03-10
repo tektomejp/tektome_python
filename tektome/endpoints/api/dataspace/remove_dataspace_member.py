@@ -58,11 +58,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: UsersSchemaIn,
 ) -> Response[Any]:
-    """Remove Dataspace Member
+    """Remove members from a dataspace
 
-     mlVn290Q
-
-    Remove members from a dataspace
+     Remove one or more users from a dataspace, revoking their role assignments and access.
 
     Args:
         dataspace_id (UUID):
@@ -94,11 +92,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: UsersSchemaIn,
 ) -> Response[Any]:
-    """Remove Dataspace Member
+    """Remove members from a dataspace
 
-     mlVn290Q
-
-    Remove members from a dataspace
+     Remove one or more users from a dataspace, revoking their role assignments and access.
 
     Args:
         dataspace_id (UUID):

@@ -66,11 +66,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | ErrorResponsePostOut]:
-    """Delete Bim Element
+    """Delete a BIM element
 
-     bb01ed07
-
-    Delete a BIM element. Could be BIM object or view.
+     Delete a specific BIM element (object or view) from a project by its ID.
 
     Args:
         bim_project_id (UUID):
@@ -105,11 +103,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Any | ErrorResponsePostOut | None:
-    """Delete Bim Element
+    """Delete a BIM element
 
-     bb01ed07
-
-    Delete a BIM element. Could be BIM object or view.
+     Delete a specific BIM element (object or view) from a project by its ID.
 
     Args:
         bim_project_id (UUID):
@@ -139,11 +135,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | ErrorResponsePostOut]:
-    """Delete Bim Element
+    """Delete a BIM element
 
-     bb01ed07
-
-    Delete a BIM element. Could be BIM object or view.
+     Delete a specific BIM element (object or view) from a project by its ID.
 
     Args:
         bim_project_id (UUID):
@@ -176,11 +170,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Any | ErrorResponsePostOut | None:
-    """Delete Bim Element
+    """Delete a BIM element
 
-     bb01ed07
-
-    Delete a BIM element. Could be BIM object or view.
+     Delete a specific BIM element (object or view) from a project by its ID.
 
     Args:
         bim_project_id (UUID):

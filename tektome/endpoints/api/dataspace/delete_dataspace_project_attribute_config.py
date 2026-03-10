@@ -48,11 +48,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Dataspace Project Attribute Config
+    """Delete a project attribute column configuration
 
-     x16N0f5F
-
-    Deletes the column attributes of a dataspace project
+     Remove an attribute column configuration from a dataspace. This also deletes the corresponding
+    attribute values from all projects.
 
     Args:
         attribute_config_id (UUID):
@@ -81,11 +80,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Dataspace Project Attribute Config
+    """Delete a project attribute column configuration
 
-     x16N0f5F
-
-    Deletes the column attributes of a dataspace project
+     Remove an attribute column configuration from a dataspace. This also deletes the corresponding
+    attribute values from all projects.
 
     Args:
         attribute_config_id (UUID):

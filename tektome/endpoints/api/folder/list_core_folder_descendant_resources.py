@@ -74,17 +74,9 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedResourceMetadataOut]:
-    """Get Folder Descendant Resources
+    """List all descendant resources
 
-     YF2-5zF7
-
-    Get all descendant resources under a folder.
-
-    Args:
-        request: Request object
-        path_params: Path parameters containing folder_id
-
-    Returns: All resources under the given folder.
+     Retrieve a paginated list of all resources nested under the specified folder and its subfolders.
 
     Args:
         folder_id (UUID):
@@ -119,17 +111,9 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedResourceMetadataOut | None:
-    """Get Folder Descendant Resources
+    """List all descendant resources
 
-     YF2-5zF7
-
-    Get all descendant resources under a folder.
-
-    Args:
-        request: Request object
-        path_params: Path parameters containing folder_id
-
-    Returns: All resources under the given folder.
+     Retrieve a paginated list of all resources nested under the specified folder and its subfolders.
 
     Args:
         folder_id (UUID):
@@ -159,17 +143,9 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedResourceMetadataOut]:
-    """Get Folder Descendant Resources
+    """List all descendant resources
 
-     YF2-5zF7
-
-    Get all descendant resources under a folder.
-
-    Args:
-        request: Request object
-        path_params: Path parameters containing folder_id
-
-    Returns: All resources under the given folder.
+     Retrieve a paginated list of all resources nested under the specified folder and its subfolders.
 
     Args:
         folder_id (UUID):
@@ -202,17 +178,9 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedResourceMetadataOut | None:
-    """Get Folder Descendant Resources
+    """List all descendant resources
 
-     YF2-5zF7
-
-    Get all descendant resources under a folder.
-
-    Args:
-        request: Request object
-        path_params: Path parameters containing folder_id
-
-    Returns: All resources under the given folder.
+     Retrieve a paginated list of all resources nested under the specified folder and its subfolders.
 
     Args:
         folder_id (UUID):

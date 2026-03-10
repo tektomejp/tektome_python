@@ -149,10 +149,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ErrorOut | ResourceOCRSchemaGetOut]:
-    """Get Ocr Result
+    """Get OCR result for a resource
 
-     5TZZsLaN
-    Get OCR result for the given resource_id
+     Retrieve the OCR processing result for the specified resource, including extracted text content.
 
     Args:
         resource_group_id (UUID):
@@ -184,10 +183,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ErrorOut | ResourceOCRSchemaGetOut | None:
-    """Get Ocr Result
+    """Get OCR result for a resource
 
-     5TZZsLaN
-    Get OCR result for the given resource_id
+     Retrieve the OCR processing result for the specified resource, including extracted text content.
 
     Args:
         resource_group_id (UUID):
@@ -214,10 +212,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ErrorOut | ResourceOCRSchemaGetOut]:
-    """Get Ocr Result
+    """Get OCR result for a resource
 
-     5TZZsLaN
-    Get OCR result for the given resource_id
+     Retrieve the OCR processing result for the specified resource, including extracted text content.
 
     Args:
         resource_group_id (UUID):
@@ -247,10 +244,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ErrorOut | ResourceOCRSchemaGetOut | None:
-    """Get Ocr Result
+    """Get OCR result for a resource
 
-     5TZZsLaN
-    Get OCR result for the given resource_id
+     Retrieve the OCR processing result for the specified resource, including extracted text content.
 
     Args:
         resource_group_id (UUID):

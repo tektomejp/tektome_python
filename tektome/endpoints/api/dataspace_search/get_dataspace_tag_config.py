@@ -58,11 +58,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DataspaceSearchTagConfigOut]:
-    """Get Dataspace Tag Config
+    """Get a search tag configuration by ID
 
-     rSl3dZxK
-
-    Retrieve a tag configuration for the current dataspace.
+     Retrieve a specific search tag configuration by its ID within a dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -94,11 +92,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> DataspaceSearchTagConfigOut | None:
-    """Get Dataspace Tag Config
+    """Get a search tag configuration by ID
 
-     rSl3dZxK
-
-    Retrieve a tag configuration for the current dataspace.
+     Retrieve a specific search tag configuration by its ID within a dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -125,11 +121,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DataspaceSearchTagConfigOut]:
-    """Get Dataspace Tag Config
+    """Get a search tag configuration by ID
 
-     rSl3dZxK
-
-    Retrieve a tag configuration for the current dataspace.
+     Retrieve a specific search tag configuration by its ID within a dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -159,11 +153,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> DataspaceSearchTagConfigOut | None:
-    """Get Dataspace Tag Config
+    """Get a search tag configuration by ID
 
-     rSl3dZxK
-
-    Retrieve a tag configuration for the current dataspace.
+     Retrieve a specific search tag configuration by its ID within a dataspace.
 
     Args:
         dataspace_id (UUID):

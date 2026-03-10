@@ -61,10 +61,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: TemplateFromArtifactIn,
 ) -> Response[TemplateOut]:
-    """Create a new template from an existing artifact
+    """Create template from artifact
 
-     VxJkL9mN
-    Create a new template from an existing artifact. The artifact must exist and belong to the user.
+     Create a new process template from an existing artifact. The artifact must exist and belong to the
+    authenticated user's organization.
 
     Args:
         organization_id (UUID):
@@ -96,10 +96,10 @@ def sync(
     client: AuthenticatedClient,
     body: TemplateFromArtifactIn,
 ) -> TemplateOut | None:
-    """Create a new template from an existing artifact
+    """Create template from artifact
 
-     VxJkL9mN
-    Create a new template from an existing artifact. The artifact must exist and belong to the user.
+     Create a new process template from an existing artifact. The artifact must exist and belong to the
+    authenticated user's organization.
 
     Args:
         organization_id (UUID):
@@ -126,10 +126,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: TemplateFromArtifactIn,
 ) -> Response[TemplateOut]:
-    """Create a new template from an existing artifact
+    """Create template from artifact
 
-     VxJkL9mN
-    Create a new template from an existing artifact. The artifact must exist and belong to the user.
+     Create a new process template from an existing artifact. The artifact must exist and belong to the
+    authenticated user's organization.
 
     Args:
         organization_id (UUID):
@@ -159,10 +159,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: TemplateFromArtifactIn,
 ) -> TemplateOut | None:
-    """Create a new template from an existing artifact
+    """Create template from artifact
 
-     VxJkL9mN
-    Create a new template from an existing artifact. The artifact must exist and belong to the user.
+     Create a new process template from an existing artifact. The artifact must exist and belong to the
+    authenticated user's organization.
 
     Args:
         organization_id (UUID):

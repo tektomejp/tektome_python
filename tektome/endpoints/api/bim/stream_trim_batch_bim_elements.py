@@ -58,24 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: BimBatchTrimElementRequestPostIn,
 ) -> Response[Any]:
-    """Stream Trim Batch Bim Elements
+    """Stream trimmed BIM elements as NDJSON
 
-     7LgqlAg5
-
-    Stream multiple BIM elements by their IDs with trimming as NDJSON.
-
-    This endpoint streams BIM elements with specified fields included based on the
-    provided trim query. It uses NDJSON format for efficient streaming.
-
-    Arguments:
-        - bim_type: Type of BIM element (object or view)
-        - payload: Request body containing list of IDs to retrieve and trim query
-    Response Format (NDJSON):
-        Each line contains a JSON object with:
-        - id: The requested element ID
-        - data: The trimmed element's file data (if found and available)
-        - found: Boolean indicating if the element was found
-        - error: Optional error message if element found but data unavailable
+     Stream multiple BIM elements with only specified fields included, using NDJSON format. Useful for
+    retrieving a subset of element data efficiently.
 
     Args:
         bim_type (StreamTrimBatchBimElementsBimElementTypePath): Enum for BIM object types.
@@ -108,24 +94,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: BimBatchTrimElementRequestPostIn,
 ) -> Response[Any]:
-    """Stream Trim Batch Bim Elements
+    """Stream trimmed BIM elements as NDJSON
 
-     7LgqlAg5
-
-    Stream multiple BIM elements by their IDs with trimming as NDJSON.
-
-    This endpoint streams BIM elements with specified fields included based on the
-    provided trim query. It uses NDJSON format for efficient streaming.
-
-    Arguments:
-        - bim_type: Type of BIM element (object or view)
-        - payload: Request body containing list of IDs to retrieve and trim query
-    Response Format (NDJSON):
-        Each line contains a JSON object with:
-        - id: The requested element ID
-        - data: The trimmed element's file data (if found and available)
-        - found: Boolean indicating if the element was found
-        - error: Optional error message if element found but data unavailable
+     Stream multiple BIM elements with only specified fields included, using NDJSON format. Useful for
+    retrieving a subset of element data efficiently.
 
     Args:
         bim_type (StreamTrimBatchBimElementsBimElementTypePath): Enum for BIM object types.

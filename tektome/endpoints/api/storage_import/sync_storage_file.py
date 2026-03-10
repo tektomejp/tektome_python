@@ -68,9 +68,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: SyncStorageFileMultiPartBodyParams,
 ) -> Response[ImportResult | SyncStorageFileResponse]:
-    """Sync a single file from Rails app
+    """Sync a single file from storage
 
-     Sync a single file with metadata and binary content from Rails app.
+     Sync a single file along with its metadata and binary content. The file is imported or updated based
+    on the provided payload.
 
     Args:
         body (SyncStorageFileMultiPartBodyParams):
@@ -99,9 +100,10 @@ def sync(
     client: AuthenticatedClient,
     body: SyncStorageFileMultiPartBodyParams,
 ) -> ImportResult | SyncStorageFileResponse | None:
-    """Sync a single file from Rails app
+    """Sync a single file from storage
 
-     Sync a single file with metadata and binary content from Rails app.
+     Sync a single file along with its metadata and binary content. The file is imported or updated based
+    on the provided payload.
 
     Args:
         body (SyncStorageFileMultiPartBodyParams):
@@ -125,9 +127,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: SyncStorageFileMultiPartBodyParams,
 ) -> Response[ImportResult | SyncStorageFileResponse]:
-    """Sync a single file from Rails app
+    """Sync a single file from storage
 
-     Sync a single file with metadata and binary content from Rails app.
+     Sync a single file along with its metadata and binary content. The file is imported or updated based
+    on the provided payload.
 
     Args:
         body (SyncStorageFileMultiPartBodyParams):
@@ -154,9 +157,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: SyncStorageFileMultiPartBodyParams,
 ) -> ImportResult | SyncStorageFileResponse | None:
-    """Sync a single file from Rails app
+    """Sync a single file from storage
 
-     Sync a single file with metadata and binary content from Rails app.
+     Sync a single file along with its metadata and binary content. The file is imported or updated based
+    on the provided payload.
 
     Args:
         body (SyncStorageFileMultiPartBodyParams):

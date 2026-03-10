@@ -46,15 +46,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ProjectChoicesGetOut]:
-    """Get Project Choices
+    """Get available project attribute choices
 
-     8nyrsx31
-
-    Retrieve available building types and structures for project selection.
-
-    This endpoint returns distinct choices for `building_type` and `structure` attributes
-    found in LawtalkStringAttribute. The results are sorted alphabetically and formatted
-    for use in project creation or filtering UIs.
+     Retrieve the distinct building type and structure options available for project selection. Results
+    are sorted alphabetically.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -77,15 +72,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ProjectChoicesGetOut | None:
-    """Get Project Choices
+    """Get available project attribute choices
 
-     8nyrsx31
-
-    Retrieve available building types and structures for project selection.
-
-    This endpoint returns distinct choices for `building_type` and `structure` attributes
-    found in LawtalkStringAttribute. The results are sorted alphabetically and formatted
-    for use in project creation or filtering UIs.
+     Retrieve the distinct building type and structure options available for project selection. Results
+    are sorted alphabetically.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -104,15 +94,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ProjectChoicesGetOut]:
-    """Get Project Choices
+    """Get available project attribute choices
 
-     8nyrsx31
-
-    Retrieve available building types and structures for project selection.
-
-    This endpoint returns distinct choices for `building_type` and `structure` attributes
-    found in LawtalkStringAttribute. The results are sorted alphabetically and formatted
-    for use in project creation or filtering UIs.
+     Retrieve the distinct building type and structure options available for project selection. Results
+    are sorted alphabetically.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -133,15 +118,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ProjectChoicesGetOut | None:
-    """Get Project Choices
+    """Get available project attribute choices
 
-     8nyrsx31
-
-    Retrieve available building types and structures for project selection.
-
-    This endpoint returns distinct choices for `building_type` and `structure` attributes
-    found in LawtalkStringAttribute. The results are sorted alphabetically and formatted
-    for use in project creation or filtering UIs.
+     Retrieve the distinct building type and structure options available for project selection. Results
+    are sorted alphabetically.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

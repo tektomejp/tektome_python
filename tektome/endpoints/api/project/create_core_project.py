@@ -65,12 +65,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: CoreProjectPostIn,
 ) -> Response[CoreProjectSchema | CreateCoreProjectResponse]:
-    """Post Project
+    """Create a new project
 
-     awdssts1
-
-    Create a new core project in user's current organization
-    Create a core project.
+     Create a new project in the authenticated user's current organization.
 
     Args:
         body (CoreProjectPostIn):
@@ -99,12 +96,9 @@ def sync(
     client: AuthenticatedClient,
     body: CoreProjectPostIn,
 ) -> CoreProjectSchema | CreateCoreProjectResponse | None:
-    """Post Project
+    """Create a new project
 
-     awdssts1
-
-    Create a new core project in user's current organization
-    Create a core project.
+     Create a new project in the authenticated user's current organization.
 
     Args:
         body (CoreProjectPostIn):
@@ -128,12 +122,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: CoreProjectPostIn,
 ) -> Response[CoreProjectSchema | CreateCoreProjectResponse]:
-    """Post Project
+    """Create a new project
 
-     awdssts1
-
-    Create a new core project in user's current organization
-    Create a core project.
+     Create a new project in the authenticated user's current organization.
 
     Args:
         body (CoreProjectPostIn):
@@ -160,12 +151,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: CoreProjectPostIn,
 ) -> CoreProjectSchema | CreateCoreProjectResponse | None:
-    """Post Project
+    """Create a new project
 
-     awdssts1
-
-    Create a new core project in user's current organization
-    Create a core project.
+     Create a new project in the authenticated user's current organization.
 
     Args:
         body (CoreProjectPostIn):

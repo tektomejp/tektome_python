@@ -61,11 +61,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DataspaceTemplateImportIn,
 ) -> Response[TemplateOut]:
-    """Import Template To Dataspace
+    """Import a template into a dataspace
 
-     Ry9WHcEQ
-
-    Import a base template into the current dataspace.
+     Import a base process template into the current dataspace, making it available for use within this
+    dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -97,11 +96,10 @@ def sync(
     client: AuthenticatedClient,
     body: DataspaceTemplateImportIn,
 ) -> TemplateOut | None:
-    """Import Template To Dataspace
+    """Import a template into a dataspace
 
-     Ry9WHcEQ
-
-    Import a base template into the current dataspace.
+     Import a base process template into the current dataspace, making it available for use within this
+    dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -128,11 +126,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DataspaceTemplateImportIn,
 ) -> Response[TemplateOut]:
-    """Import Template To Dataspace
+    """Import a template into a dataspace
 
-     Ry9WHcEQ
-
-    Import a base template into the current dataspace.
+     Import a base process template into the current dataspace, making it available for use within this
+    dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -162,11 +159,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DataspaceTemplateImportIn,
 ) -> TemplateOut | None:
-    """Import Template To Dataspace
+    """Import a template into a dataspace
 
-     Ry9WHcEQ
-
-    Import a base template into the current dataspace.
+     Import a base process template into the current dataspace, making it available for use within this
+    dataspace.
 
     Args:
         dataspace_id (UUID):

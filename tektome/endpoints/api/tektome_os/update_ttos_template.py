@@ -64,12 +64,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: TemplateUpdateIn,
 ) -> Response[TemplateOut]:
-    """Update the metadata of an existing organization level template
+    """Update a process template
 
-     jcbbO9bB
-
-    Update the metadata of an existing organization level template.
-    Note that system-level templates cannot be modified.
+     Update the metadata of an existing organization-level process template. System-level templates
+    cannot be modified.
 
     Args:
         organization_id (UUID):
@@ -104,12 +102,10 @@ def sync(
     client: AuthenticatedClient,
     body: TemplateUpdateIn,
 ) -> TemplateOut | None:
-    """Update the metadata of an existing organization level template
+    """Update a process template
 
-     jcbbO9bB
-
-    Update the metadata of an existing organization level template.
-    Note that system-level templates cannot be modified.
+     Update the metadata of an existing organization-level process template. System-level templates
+    cannot be modified.
 
     Args:
         organization_id (UUID):
@@ -139,12 +135,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: TemplateUpdateIn,
 ) -> Response[TemplateOut]:
-    """Update the metadata of an existing organization level template
+    """Update a process template
 
-     jcbbO9bB
-
-    Update the metadata of an existing organization level template.
-    Note that system-level templates cannot be modified.
+     Update the metadata of an existing organization-level process template. System-level templates
+    cannot be modified.
 
     Args:
         organization_id (UUID):
@@ -177,12 +171,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: TemplateUpdateIn,
 ) -> TemplateOut | None:
-    """Update the metadata of an existing organization level template
+    """Update a process template
 
-     jcbbO9bB
-
-    Update the metadata of an existing organization level template.
-    Note that system-level templates cannot be modified.
+     Update the metadata of an existing organization-level process template. System-level templates
+    cannot be modified.
 
     Args:
         organization_id (UUID):

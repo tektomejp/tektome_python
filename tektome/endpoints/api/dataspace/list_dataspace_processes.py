@@ -100,11 +100,9 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedProcessOut]:
-    """Get Dataspace Processes
+    """List all processes in a dataspace
 
-     wecRkGrZ
-
-    Retrieve all processes for the current dataspace.
+     Retrieve all processes registered within a dataspace. Supports filtering via query parameters.
 
     Args:
         dataspace_id (UUID):
@@ -149,11 +147,9 @@ def sync(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedProcessOut | None:
-    """Get Dataspace Processes
+    """List all processes in a dataspace
 
-     wecRkGrZ
-
-    Retrieve all processes for the current dataspace.
+     Retrieve all processes registered within a dataspace. Supports filtering via query parameters.
 
     Args:
         dataspace_id (UUID):
@@ -193,11 +189,9 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedProcessOut]:
-    """Get Dataspace Processes
+    """List all processes in a dataspace
 
-     wecRkGrZ
-
-    Retrieve all processes for the current dataspace.
+     Retrieve all processes registered within a dataspace. Supports filtering via query parameters.
 
     Args:
         dataspace_id (UUID):
@@ -240,11 +234,9 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedProcessOut | None:
-    """Get Dataspace Processes
+    """List all processes in a dataspace
 
-     wecRkGrZ
-
-    Retrieve all processes for the current dataspace.
+     Retrieve all processes registered within a dataspace. Supports filtering via query parameters.
 
     Args:
         dataspace_id (UUID):

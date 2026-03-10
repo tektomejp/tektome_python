@@ -61,13 +61,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ErrorOutputSchemaOut | OrganizationBotUserOut]:
-    """Get Organization Bot
+    """Get organization bot user
 
-     rZ_OGeNW
-
-    Get the bot user for the organization.
-
-    Returns the bot user details if it exists for the organization.
+     Retrieve the bot user details for an organization, if one exists.
 
     Args:
         organization_id (UUID):
@@ -96,13 +92,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ErrorOutputSchemaOut | OrganizationBotUserOut | None:
-    """Get Organization Bot
+    """Get organization bot user
 
-     rZ_OGeNW
-
-    Get the bot user for the organization.
-
-    Returns the bot user details if it exists for the organization.
+     Retrieve the bot user details for an organization, if one exists.
 
     Args:
         organization_id (UUID):
@@ -126,13 +118,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ErrorOutputSchemaOut | OrganizationBotUserOut]:
-    """Get Organization Bot
+    """Get organization bot user
 
-     rZ_OGeNW
-
-    Get the bot user for the organization.
-
-    Returns the bot user details if it exists for the organization.
+     Retrieve the bot user details for an organization, if one exists.
 
     Args:
         organization_id (UUID):
@@ -159,13 +147,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ErrorOutputSchemaOut | OrganizationBotUserOut | None:
-    """Get Organization Bot
+    """Get organization bot user
 
-     rZ_OGeNW
-
-    Get the bot user for the organization.
-
-    Returns the bot user details if it exists for the organization.
+     Retrieve the bot user details for an organization, if one exists.
 
     Args:
         organization_id (UUID):

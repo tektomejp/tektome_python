@@ -51,11 +51,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Dataspace Template
+    """Delete a dataspace template
 
-     NMX8M2Cr
-
-    Delete a specific template in the current dataspace.
+     Remove a process template override from a dataspace. The base template is not affected.
 
     Args:
         dataspace_id (UUID):
@@ -87,11 +85,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Dataspace Template
+    """Delete a dataspace template
 
-     NMX8M2Cr
-
-    Delete a specific template in the current dataspace.
+     Remove a process template override from a dataspace. The base template is not affected.
 
     Args:
         dataspace_id (UUID):

@@ -32,7 +32,7 @@ class OrganizationMembersSchemaOut:
         date_added (datetime.datetime | None):
         assigned_dataspaces (OrganizationMembersSchemaOutAssignedDataspaces):
         assigned_projects (OrganizationMembersSchemaOutAssignedProjects):
-        updated_by (UserMetadata):
+        updated_by (None | UserMetadata):
     """
 
     id: UUID
@@ -43,10 +43,12 @@ class OrganizationMembersSchemaOut:
     date_added: datetime.datetime | None
     assigned_dataspaces: OrganizationMembersSchemaOutAssignedDataspaces
     assigned_projects: OrganizationMembersSchemaOutAssignedProjects
-    updated_by: UserMetadata
+    updated_by: None | UserMetadata
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.user_metadata import UserMetadata
+
         id = str(self.id)
 
         first_name = self.first_name
@@ -67,7 +69,11 @@ class OrganizationMembersSchemaOut:
 
         assigned_projects = self.assigned_projects.to_dict()
 
-        updated_by = self.updated_by.to_dict()
+        updated_by: dict[str, Any] | None
+        if isinstance(self.updated_by, UserMetadata):
+            updated_by = self.updated_by.to_dict()
+        else:
+            updated_by = self.updated_by
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -127,7 +133,20 @@ class OrganizationMembersSchemaOut:
 
         assigned_projects = OrganizationMembersSchemaOutAssignedProjects.from_dict(d.pop("assigned_projects"))
 
-        updated_by = UserMetadata.from_dict(d.pop("updated_by"))
+        def _parse_updated_by(data: object) -> None | UserMetadata:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                updated_by_type_0 = UserMetadata.from_dict(data)
+
+                return updated_by_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | UserMetadata, data)
+
+        updated_by = _parse_updated_by(d.pop("updated_by"))
 
         organization_members_schema_out = cls(
             id=id,

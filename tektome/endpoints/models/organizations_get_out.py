@@ -30,6 +30,8 @@ class OrganizationsGetOut:
         dataspaces_count (int | Unset): Number of dataspaces in the organization Default: 0.
         projects_count (int | Unset): Number of projects in the organization Default: 0.
         files_count (int | Unset): Number of files in the organization Default: 0.
+        is_external (bool | Unset): Is the organization external from the organization (indirect membership from
+            projects/dataspaces) Default: False.
         id (None | Unset | UUID):
         name (str | Unset):  Default: ''.
         logo_file (None | str | Unset):
@@ -47,6 +49,7 @@ class OrganizationsGetOut:
     dataspaces_count: int | Unset = 0
     projects_count: int | Unset = 0
     files_count: int | Unset = 0
+    is_external: bool | Unset = False
     id: None | Unset | UUID = UNSET
     name: str | Unset = ""
     logo_file: None | str | Unset = UNSET
@@ -72,6 +75,8 @@ class OrganizationsGetOut:
         projects_count = self.projects_count
 
         files_count = self.files_count
+
+        is_external = self.is_external
 
         id: None | str | Unset
         if isinstance(self.id, Unset):
@@ -119,6 +124,8 @@ class OrganizationsGetOut:
             field_dict["projects_count"] = projects_count
         if files_count is not UNSET:
             field_dict["files_count"] = files_count
+        if is_external is not UNSET:
+            field_dict["is_external"] = is_external
         if id is not UNSET:
             field_dict["id"] = id
         if name is not UNSET:
@@ -156,6 +163,8 @@ class OrganizationsGetOut:
         projects_count = d.pop("projects_count", UNSET)
 
         files_count = d.pop("files_count", UNSET)
+
+        is_external = d.pop("is_external", UNSET)
 
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -209,6 +218,7 @@ class OrganizationsGetOut:
             dataspaces_count=dataspaces_count,
             projects_count=projects_count,
             files_count=files_count,
+            is_external=is_external,
             id=id,
             name=name,
             logo_file=logo_file,
