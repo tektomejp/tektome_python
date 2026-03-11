@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.lawtalk_resource_group_schema import LawtalkResourceGroupSchema
 from ...models.resource_group_patch_in_patch import ResourceGroupPatchInPatch
-from ...models.resource_group_schema import ResourceGroupSchema
 from ...types import Response
 
 
@@ -34,9 +34,11 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ResourceGroupSchema | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> LawtalkResourceGroupSchema | None:
     if response.status_code == 200:
-        response_200 = ResourceGroupSchema.from_dict(response.json())
+        response_200 = LawtalkResourceGroupSchema.from_dict(response.json())
 
         return response_200
 
@@ -46,7 +48,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ResourceGroupSchema]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[LawtalkResourceGroupSchema]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -60,7 +64,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: ResourceGroupPatchInPatch,
-) -> Response[ResourceGroupSchema]:
+) -> Response[LawtalkResourceGroupSchema]:
     """Update a resource group
 
      Update resource group attributes such as name and description.
@@ -74,7 +78,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceGroupSchema]
+        Response[LawtalkResourceGroupSchema]
     """
 
     kwargs = _get_kwargs(
@@ -94,7 +98,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: ResourceGroupPatchInPatch,
-) -> ResourceGroupSchema | None:
+) -> LawtalkResourceGroupSchema | None:
     """Update a resource group
 
      Update resource group attributes such as name and description.
@@ -108,7 +112,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceGroupSchema
+        LawtalkResourceGroupSchema
     """
 
     return sync_detailed(
@@ -123,7 +127,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: ResourceGroupPatchInPatch,
-) -> Response[ResourceGroupSchema]:
+) -> Response[LawtalkResourceGroupSchema]:
     """Update a resource group
 
      Update resource group attributes such as name and description.
@@ -137,7 +141,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceGroupSchema]
+        Response[LawtalkResourceGroupSchema]
     """
 
     kwargs = _get_kwargs(
@@ -155,7 +159,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: ResourceGroupPatchInPatch,
-) -> ResourceGroupSchema | None:
+) -> LawtalkResourceGroupSchema | None:
     """Update a resource group
 
      Update resource group attributes such as name and description.
@@ -169,7 +173,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceGroupSchema
+        LawtalkResourceGroupSchema
     """
 
     return (

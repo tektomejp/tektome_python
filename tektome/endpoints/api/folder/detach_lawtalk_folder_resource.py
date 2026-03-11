@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.folder_resource_post_in import FolderResourcePostIn
+from ...models.lawtalk_folder_resource_post_in import LawtalkFolderResourcePostIn
 from ...types import Response
 
 
 def _get_kwargs(
     folder_id: UUID,
     *,
-    body: FolderResourcePostIn,
+    body: LawtalkFolderResourcePostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,7 +56,7 @@ def sync_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: FolderResourcePostIn,
+    body: LawtalkFolderResourcePostIn,
 ) -> Response[Any]:
     """Detach resources from a folder
 
@@ -64,7 +64,8 @@ def sync_detailed(
 
     Args:
         folder_id (UUID):
-        body (FolderResourcePostIn): Schema for attaching a lawtalk resource(s) to a folder.
+        body (LawtalkFolderResourcePostIn): Schema for attaching a lawtalk resource(s) to a
+            folder.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -90,7 +91,7 @@ async def asyncio_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: FolderResourcePostIn,
+    body: LawtalkFolderResourcePostIn,
 ) -> Response[Any]:
     """Detach resources from a folder
 
@@ -98,7 +99,8 @@ async def asyncio_detailed(
 
     Args:
         folder_id (UUID):
-        body (FolderResourcePostIn): Schema for attaching a lawtalk resource(s) to a folder.
+        body (LawtalkFolderResourcePostIn): Schema for attaching a lawtalk resource(s) to a
+            folder.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

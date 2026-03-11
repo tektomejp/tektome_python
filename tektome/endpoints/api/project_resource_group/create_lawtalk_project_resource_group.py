@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.resource_group_post_in import ResourceGroupPostIn
+from ...models.lawtalk_resource_group_post_in import LawtalkResourceGroupPostIn
 from ...models.resource_group_post_out import ResourceGroupPostOut
 from ...types import Response
 
@@ -15,7 +15,7 @@ from ...types import Response
 def _get_kwargs(
     project_id: UUID,
     *,
-    body: ResourceGroupPostIn,
+    body: LawtalkResourceGroupPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -61,7 +61,7 @@ def sync_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceGroupPostIn,
+    body: LawtalkResourceGroupPostIn,
 ) -> Response[ResourceGroupPostOut]:
     """Create a project resource group
 
@@ -70,7 +70,7 @@ def sync_detailed(
 
     Args:
         project_id (UUID):
-        body (ResourceGroupPostIn):
+        body (LawtalkResourceGroupPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -96,7 +96,7 @@ def sync(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceGroupPostIn,
+    body: LawtalkResourceGroupPostIn,
 ) -> ResourceGroupPostOut | None:
     """Create a project resource group
 
@@ -105,7 +105,7 @@ def sync(
 
     Args:
         project_id (UUID):
-        body (ResourceGroupPostIn):
+        body (LawtalkResourceGroupPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceGroupPostIn,
+    body: LawtalkResourceGroupPostIn,
 ) -> Response[ResourceGroupPostOut]:
     """Create a project resource group
 
@@ -135,7 +135,7 @@ async def asyncio_detailed(
 
     Args:
         project_id (UUID):
-        body (ResourceGroupPostIn):
+        body (LawtalkResourceGroupPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -159,7 +159,7 @@ async def asyncio(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceGroupPostIn,
+    body: LawtalkResourceGroupPostIn,
 ) -> ResourceGroupPostOut | None:
     """Create a project resource group
 
@@ -168,7 +168,7 @@ async def asyncio(
 
     Args:
         project_id (UUID):
-        body (ResourceGroupPostIn):
+        body (LawtalkResourceGroupPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

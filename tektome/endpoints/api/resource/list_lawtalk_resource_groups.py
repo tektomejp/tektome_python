@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.paged_resource_group_schema import PagedResourceGroupSchema
+from ...models.paged_lawtalk_resource_group_schema import PagedLawtalkResourceGroupSchema
 from ...types import UNSET, Response, Unset
 
 
@@ -39,9 +39,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> PagedResourceGroupSchema | None:
+) -> PagedLawtalkResourceGroupSchema | None:
     if response.status_code == 200:
-        response_200 = PagedResourceGroupSchema.from_dict(response.json())
+        response_200 = PagedLawtalkResourceGroupSchema.from_dict(response.json())
 
         return response_200
 
@@ -53,7 +53,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[PagedResourceGroupSchema]:
+) -> Response[PagedLawtalkResourceGroupSchema]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -67,7 +67,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[PagedResourceGroupSchema]:
+) -> Response[PagedLawtalkResourceGroupSchema]:
     """List all resource groups
 
      Retrieve a paginated list of all resource groups ordered by name.
@@ -81,7 +81,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PagedResourceGroupSchema]
+        Response[PagedLawtalkResourceGroupSchema]
     """
 
     kwargs = _get_kwargs(
@@ -101,7 +101,7 @@ def sync(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> PagedResourceGroupSchema | None:
+) -> PagedLawtalkResourceGroupSchema | None:
     """List all resource groups
 
      Retrieve a paginated list of all resource groups ordered by name.
@@ -115,7 +115,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        PagedResourceGroupSchema
+        PagedLawtalkResourceGroupSchema
     """
 
     return sync_detailed(
@@ -130,7 +130,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[PagedResourceGroupSchema]:
+) -> Response[PagedLawtalkResourceGroupSchema]:
     """List all resource groups
 
      Retrieve a paginated list of all resource groups ordered by name.
@@ -144,7 +144,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PagedResourceGroupSchema]
+        Response[PagedLawtalkResourceGroupSchema]
     """
 
     kwargs = _get_kwargs(
@@ -162,7 +162,7 @@ async def asyncio(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> PagedResourceGroupSchema | None:
+) -> PagedLawtalkResourceGroupSchema | None:
     """List all resource groups
 
      Retrieve a paginated list of all resource groups ordered by name.
@@ -176,7 +176,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        PagedResourceGroupSchema
+        PagedLawtalkResourceGroupSchema
     """
 
     return (

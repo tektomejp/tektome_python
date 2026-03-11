@@ -557,6 +557,8 @@ from .lawtalk_empty_project_post_out import LawtalkEmptyProjectPostOut
 from .lawtalk_float_attribute_schema import LawtalkFloatAttributeSchema
 from .lawtalk_folder_children_get_out import LawtalkFolderChildrenGetOut
 from .lawtalk_folder_get_out import LawtalkFolderGetOut
+from .lawtalk_folder_resource_post_in import LawtalkFolderResourcePostIn
+from .lawtalk_gen_breadcrumbs_get_out import LawtalkGenBreadcrumbsGetOut
 from .lawtalk_general_attribute_body_put_in import LawtalkGeneralAttributeBodyPutIn
 from .lawtalk_int_attribute_schema import LawtalkIntAttributeSchema
 from .lawtalk_list_string_attribute_schema import LawtalkListStringAttributeSchema
@@ -575,7 +577,9 @@ from .lawtalk_requirement_chat_post_in import LawtalkRequirementChatPostIn
 from .lawtalk_requirement_item_table_row_schema import LawtalkRequirementItemTableRowSchema
 from .lawtalk_requirement_required_schema import LawtalkRequirementRequiredSchema
 from .lawtalk_resource_children import LawtalkResourceChildren
+from .lawtalk_resource_group_post_in import LawtalkResourceGroupPostIn
 from .lawtalk_resource_group_required_schema import LawtalkResourceGroupRequiredSchema
+from .lawtalk_resource_group_schema import LawtalkResourceGroupSchema
 from .lawtalk_resource_required_schema import LawtalkResourceRequiredSchema
 from .lawtalk_resource_upload_in import LawtalkResourceUploadIn
 from .lawtalk_string_attribute_schema import LawtalkStringAttributeSchema
@@ -659,6 +663,7 @@ from .paged_image_citation_polygon_annotation_get_out import PagedImageCitationP
 from .paged_lawtalk_project_resource_get_out import PagedLawtalkProjectResourceGetOut
 from .paged_lawtalk_project_schema_get_out import PagedLawtalkProjectSchemaGetOut
 from .paged_lawtalk_requirement_item_table_row_schema import PagedLawtalkRequirementItemTableRowSchema
+from .paged_lawtalk_resource_group_schema import PagedLawtalkResourceGroupSchema
 from .paged_llm_usage_report_get_out import PagedLLMUsageReportGetOut
 from .paged_notification_get_out import PagedNotificationGetOut
 from .paged_organizations_get_out import PagedOrganizationsGetOut
@@ -1587,6 +1592,8 @@ __all__ = (
     "LawtalkFloatAttributeSchema",
     "LawtalkFolderChildrenGetOut",
     "LawtalkFolderGetOut",
+    "LawtalkFolderResourcePostIn",
+    "LawtalkGenBreadcrumbsGetOut",
     "LawtalkGeneralAttributeBodyPutIn",
     "LawtalkIntAttributeSchema",
     "LawtalkListStringAttributeSchema",
@@ -1605,7 +1612,9 @@ __all__ = (
     "LawtalkRequirementItemTableRowSchema",
     "LawtalkRequirementRequiredSchema",
     "LawtalkResourceChildren",
+    "LawtalkResourceGroupPostIn",
     "LawtalkResourceGroupRequiredSchema",
+    "LawtalkResourceGroupSchema",
     "LawtalkResourceRequiredSchema",
     "LawtalkResourceUploadIn",
     "LawtalkStringAttributeSchema",
@@ -1687,6 +1696,7 @@ __all__ = (
     "PagedLawtalkProjectResourceGetOut",
     "PagedLawtalkProjectSchemaGetOut",
     "PagedLawtalkRequirementItemTableRowSchema",
+    "PagedLawtalkResourceGroupSchema",
     "PagedLLMUsageReportGetOut",
     "PagedNotificationGetOut",
     "PagedOrganizationsGetOut",

@@ -10,26 +10,26 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.folder_schema import FolderSchema
-    from ..models.gen_breadcrumbs_project import GenBreadcrumbsProject
+    from ..models.gen_breadcrumbs_resource_group_get_out import GenBreadcrumbsResourceGroupGetOut
 
 
-T = TypeVar("T", bound="GenBreadcrumbsGetOut")
+T = TypeVar("T", bound="LawtalkGenBreadcrumbsGetOut")
 
 
 @_attrs_define
-class GenBreadcrumbsGetOut:
+class LawtalkGenBreadcrumbsGetOut:
     """
     Attributes:
-        project (GenBreadcrumbsProject):
+        resource_group (GenBreadcrumbsResourceGroupGetOut):
         parents (list[FolderSchema] | None | Unset):
     """
 
-    project: GenBreadcrumbsProject
+    resource_group: GenBreadcrumbsResourceGroupGetOut
     parents: list[FolderSchema] | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        project = self.project.to_dict()
+        resource_group = self.resource_group.to_dict()
 
         parents: list[dict[str, Any]] | None | Unset
         if isinstance(self.parents, Unset):
@@ -47,7 +47,7 @@ class GenBreadcrumbsGetOut:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "project": project,
+                "resource_group": resource_group,
             }
         )
         if parents is not UNSET:
@@ -58,10 +58,10 @@ class GenBreadcrumbsGetOut:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.folder_schema import FolderSchema
-        from ..models.gen_breadcrumbs_project import GenBreadcrumbsProject
+        from ..models.gen_breadcrumbs_resource_group_get_out import GenBreadcrumbsResourceGroupGetOut
 
         d = dict(src_dict)
-        project = GenBreadcrumbsProject.from_dict(d.pop("project"))
+        resource_group = GenBreadcrumbsResourceGroupGetOut.from_dict(d.pop("resource_group"))
 
         def _parse_parents(data: object) -> list[FolderSchema] | None | Unset:
             if data is None:
@@ -85,13 +85,13 @@ class GenBreadcrumbsGetOut:
 
         parents = _parse_parents(d.pop("parents", UNSET))
 
-        gen_breadcrumbs_get_out = cls(
-            project=project,
+        lawtalk_gen_breadcrumbs_get_out = cls(
+            resource_group=resource_group,
             parents=parents,
         )
 
-        gen_breadcrumbs_get_out.additional_properties = d
-        return gen_breadcrumbs_get_out
+        lawtalk_gen_breadcrumbs_get_out.additional_properties = d
+        return lawtalk_gen_breadcrumbs_get_out
 
     @property
     def additional_keys(self) -> list[str]:

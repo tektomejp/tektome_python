@@ -64,7 +64,7 @@ def sync_detailed(
 
     Args:
         folder_id (UUID):
-        body (FolderResourcePostIn): Schema for attaching a lawtalk resource(s) to a folder.
+        body (FolderResourcePostIn): Schema for attaching a resource(s) to a folder.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -98,7 +98,7 @@ async def asyncio_detailed(
 
     Args:
         folder_id (UUID):
-        body (FolderResourcePostIn): Schema for attaching a lawtalk resource(s) to a folder.
+        body (FolderResourcePostIn): Schema for attaching a resource(s) to a folder.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

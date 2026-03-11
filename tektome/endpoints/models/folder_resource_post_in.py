@@ -12,7 +12,7 @@ T = TypeVar("T", bound="FolderResourcePostIn")
 
 @_attrs_define
 class FolderResourcePostIn:
-    """Schema for attaching a lawtalk resource(s) to a folder.
+    """Schema for attaching a resource(s) to a folder.
 
     Attributes:
         resource_ids (list[UUID]):
