@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.approval_category_types import ApprovalCategoryTypes
+from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.candidate_item import CandidateItem
@@ -22,10 +23,13 @@ class ApprovalTicketPostIn:
     Attributes:
         category (ApprovalCategoryTypes):
         candidates (list[CandidateItem]):
+        should_wait (bool | Unset): Mark the ticket to indicate that the caller intends to wait for the approval result
+            before proceeding with execution Default: False.
     """
 
     category: ApprovalCategoryTypes
     candidates: list[CandidateItem]
+    should_wait: bool | Unset = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -36,6 +40,8 @@ class ApprovalTicketPostIn:
             candidates_item = candidates_item_data.to_dict()
             candidates.append(candidates_item)
 
+        should_wait = self.should_wait
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -44,6 +50,8 @@ class ApprovalTicketPostIn:
                 "candidates": candidates,
             }
         )
+        if should_wait is not UNSET:
+            field_dict["should_wait"] = should_wait
 
         return field_dict
 
@@ -61,9 +69,12 @@ class ApprovalTicketPostIn:
 
             candidates.append(candidates_item)
 
+        should_wait = d.pop("should_wait", UNSET)
+
         approval_ticket_post_in = cls(
             category=category,
             candidates=candidates,
+            should_wait=should_wait,
         )
 
         approval_ticket_post_in.additional_properties = d
