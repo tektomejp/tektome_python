@@ -7,27 +7,31 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ResourceGroupPostIn")
+T = TypeVar("T", bound="LawtalkFolderResourcePostIn")
 
 
 @_attrs_define
-class ResourceGroupPostIn:
-    """
+class LawtalkFolderResourcePostIn:
+    """Schema for attaching a lawtalk resource(s) to a folder.
+
     Attributes:
-        project_id (UUID):
+        resource_ids (list[UUID]):
     """
 
-    project_id: UUID
+    resource_ids: list[UUID]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        project_id = str(self.project_id)
+        resource_ids = []
+        for resource_ids_item_data in self.resource_ids:
+            resource_ids_item = str(resource_ids_item_data)
+            resource_ids.append(resource_ids_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "project_id": project_id,
+                "resource_ids": resource_ids,
             }
         )
 
@@ -36,14 +40,19 @@ class ResourceGroupPostIn:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        project_id = UUID(d.pop("project_id"))
+        resource_ids = []
+        _resource_ids = d.pop("resource_ids")
+        for resource_ids_item_data in _resource_ids:
+            resource_ids_item = UUID(resource_ids_item_data)
 
-        resource_group_post_in = cls(
-            project_id=project_id,
+            resource_ids.append(resource_ids_item)
+
+        lawtalk_folder_resource_post_in = cls(
+            resource_ids=resource_ids,
         )
 
-        resource_group_post_in.additional_properties = d
-        return resource_group_post_in
+        lawtalk_folder_resource_post_in.additional_properties = d
+        return lawtalk_folder_resource_post_in
 
     @property
     def additional_keys(self) -> list[str]:

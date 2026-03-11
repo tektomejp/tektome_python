@@ -2,48 +2,66 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import Any, TypeVar
-from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ResourceGroupPostIn")
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="LawtalkResourceGroupPostIn")
 
 
 @_attrs_define
-class ResourceGroupPostIn:
+class LawtalkResourceGroupPostIn:
     """
     Attributes:
-        project_id (UUID):
+        name (str):
+        description (str):
+        is_public (bool | Unset):  Default: False.
     """
 
-    project_id: UUID
+    name: str
+    description: str
+    is_public: bool | Unset = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        project_id = str(self.project_id)
+        name = self.name
+
+        description = self.description
+
+        is_public = self.is_public
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "project_id": project_id,
+                "name": name,
+                "description": description,
             }
         )
+        if is_public is not UNSET:
+            field_dict["is_public"] = is_public
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        project_id = UUID(d.pop("project_id"))
+        name = d.pop("name")
 
-        resource_group_post_in = cls(
-            project_id=project_id,
+        description = d.pop("description")
+
+        is_public = d.pop("is_public", UNSET)
+
+        lawtalk_resource_group_post_in = cls(
+            name=name,
+            description=description,
+            is_public=is_public,
         )
 
-        resource_group_post_in.additional_properties = d
-        return resource_group_post_in
+        lawtalk_resource_group_post_in.additional_properties = d
+        return lawtalk_resource_group_post_in
 
     @property
     def additional_keys(self) -> list[str]:

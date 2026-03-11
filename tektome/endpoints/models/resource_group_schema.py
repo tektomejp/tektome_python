@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -11,14 +11,6 @@ from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
 
-if TYPE_CHECKING:
-    from ..models.attribute_schema import AttributeSchema
-    from ..models.folder_schema import FolderSchema
-    from ..models.lawtalk_resource_group_required_schema import LawtalkResourceGroupRequiredSchema
-    from ..models.resource_schema_2 import ResourceSchema2
-    from ..models.user_metadata import UserMetadata
-
-
 T = TypeVar("T", bound="ResourceGroupSchema")
 
 
@@ -26,49 +18,84 @@ T = TypeVar("T", bound="ResourceGroupSchema")
 class ResourceGroupSchema:
     """
     Attributes:
-        lawtalk_attributes (list[AttributeSchema]):
-        core_attributes (LawtalkResourceGroupRequiredSchema):
-        file_count (int):
-        root_folder (FolderSchema):
-        created_by (UserMetadata):
-        updated_by (UserMetadata):
         created (datetime.datetime):
         updated (datetime.datetime):
+        project (UUID):
+        string_attributes (list[str]):
+        integer_attributes (list[str]):
+        float_attributes (list[str]):
+        boolean_attributes (list[str]):
+        date_attributes (list[str]):
+        datetime_attributes (list[str]):
+        time_attributes (list[str]):
+        coordinate_attributes (list[str]):
+        polygon_attributes (list[str]):
+        table_attributes (list[str]):
+        list_object_attributes (list[str]):
+        json_attributes (list[str]):
+        single_select_attributes (list[str]):
+        multi_select_attributes (list[str]):
         id (None | Unset | UUID):
-        resources (list[ResourceSchema2] | Unset):
+        created_by (None | Unset | UUID):
+        updated_by (None | Unset | UUID):
     """
 
-    lawtalk_attributes: list[AttributeSchema]
-    core_attributes: LawtalkResourceGroupRequiredSchema
-    file_count: int
-    root_folder: FolderSchema
-    created_by: UserMetadata
-    updated_by: UserMetadata
     created: datetime.datetime
     updated: datetime.datetime
+    project: UUID
+    string_attributes: list[str]
+    integer_attributes: list[str]
+    float_attributes: list[str]
+    boolean_attributes: list[str]
+    date_attributes: list[str]
+    datetime_attributes: list[str]
+    time_attributes: list[str]
+    coordinate_attributes: list[str]
+    polygon_attributes: list[str]
+    table_attributes: list[str]
+    list_object_attributes: list[str]
+    json_attributes: list[str]
+    single_select_attributes: list[str]
+    multi_select_attributes: list[str]
     id: None | Unset | UUID = UNSET
-    resources: list[ResourceSchema2] | Unset = UNSET
+    created_by: None | Unset | UUID = UNSET
+    updated_by: None | Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        lawtalk_attributes = []
-        for lawtalk_attributes_item_data in self.lawtalk_attributes:
-            lawtalk_attributes_item = lawtalk_attributes_item_data.to_dict()
-            lawtalk_attributes.append(lawtalk_attributes_item)
-
-        core_attributes = self.core_attributes.to_dict()
-
-        file_count = self.file_count
-
-        root_folder = self.root_folder.to_dict()
-
-        created_by = self.created_by.to_dict()
-
-        updated_by = self.updated_by.to_dict()
-
         created = self.created.isoformat()
 
         updated = self.updated.isoformat()
+
+        project = str(self.project)
+
+        string_attributes = self.string_attributes
+
+        integer_attributes = self.integer_attributes
+
+        float_attributes = self.float_attributes
+
+        boolean_attributes = self.boolean_attributes
+
+        date_attributes = self.date_attributes
+
+        datetime_attributes = self.datetime_attributes
+
+        time_attributes = self.time_attributes
+
+        coordinate_attributes = self.coordinate_attributes
+
+        polygon_attributes = self.polygon_attributes
+
+        table_attributes = self.table_attributes
+
+        list_object_attributes = self.list_object_attributes
+
+        json_attributes = self.json_attributes
+
+        single_select_attributes = self.single_select_attributes
+
+        multi_select_attributes = self.multi_select_attributes
 
         id: None | str | Unset
         if isinstance(self.id, Unset):
@@ -78,63 +105,90 @@ class ResourceGroupSchema:
         else:
             id = self.id
 
-        resources: list[dict[str, Any]] | Unset = UNSET
-        if not isinstance(self.resources, Unset):
-            resources = []
-            for resources_item_data in self.resources:
-                resources_item = resources_item_data.to_dict()
-                resources.append(resources_item)
+        created_by: None | str | Unset
+        if isinstance(self.created_by, Unset):
+            created_by = UNSET
+        elif isinstance(self.created_by, UUID):
+            created_by = str(self.created_by)
+        else:
+            created_by = self.created_by
+
+        updated_by: None | str | Unset
+        if isinstance(self.updated_by, Unset):
+            updated_by = UNSET
+        elif isinstance(self.updated_by, UUID):
+            updated_by = str(self.updated_by)
+        else:
+            updated_by = self.updated_by
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "lawtalk_attributes": lawtalk_attributes,
-                "core_attributes": core_attributes,
-                "file_count": file_count,
-                "root_folder": root_folder,
-                "created_by": created_by,
-                "updated_by": updated_by,
                 "created": created,
                 "updated": updated,
+                "project": project,
+                "string_attributes": string_attributes,
+                "integer_attributes": integer_attributes,
+                "float_attributes": float_attributes,
+                "boolean_attributes": boolean_attributes,
+                "date_attributes": date_attributes,
+                "datetime_attributes": datetime_attributes,
+                "time_attributes": time_attributes,
+                "coordinate_attributes": coordinate_attributes,
+                "polygon_attributes": polygon_attributes,
+                "table_attributes": table_attributes,
+                "list_object_attributes": list_object_attributes,
+                "json_attributes": json_attributes,
+                "single_select_attributes": single_select_attributes,
+                "multi_select_attributes": multi_select_attributes,
             }
         )
         if id is not UNSET:
             field_dict["id"] = id
-        if resources is not UNSET:
-            field_dict["resources"] = resources
+        if created_by is not UNSET:
+            field_dict["created_by"] = created_by
+        if updated_by is not UNSET:
+            field_dict["updated_by"] = updated_by
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.attribute_schema import AttributeSchema
-        from ..models.folder_schema import FolderSchema
-        from ..models.lawtalk_resource_group_required_schema import LawtalkResourceGroupRequiredSchema
-        from ..models.resource_schema_2 import ResourceSchema2
-        from ..models.user_metadata import UserMetadata
-
         d = dict(src_dict)
-        lawtalk_attributes = []
-        _lawtalk_attributes = d.pop("lawtalk_attributes")
-        for lawtalk_attributes_item_data in _lawtalk_attributes:
-            lawtalk_attributes_item = AttributeSchema.from_dict(lawtalk_attributes_item_data)
-
-            lawtalk_attributes.append(lawtalk_attributes_item)
-
-        core_attributes = LawtalkResourceGroupRequiredSchema.from_dict(d.pop("core_attributes"))
-
-        file_count = d.pop("file_count")
-
-        root_folder = FolderSchema.from_dict(d.pop("root_folder"))
-
-        created_by = UserMetadata.from_dict(d.pop("created_by"))
-
-        updated_by = UserMetadata.from_dict(d.pop("updated_by"))
-
         created = isoparse(d.pop("created"))
 
         updated = isoparse(d.pop("updated"))
+
+        project = UUID(d.pop("project"))
+
+        string_attributes = cast(list[str], d.pop("string_attributes"))
+
+        integer_attributes = cast(list[str], d.pop("integer_attributes"))
+
+        float_attributes = cast(list[str], d.pop("float_attributes"))
+
+        boolean_attributes = cast(list[str], d.pop("boolean_attributes"))
+
+        date_attributes = cast(list[str], d.pop("date_attributes"))
+
+        datetime_attributes = cast(list[str], d.pop("datetime_attributes"))
+
+        time_attributes = cast(list[str], d.pop("time_attributes"))
+
+        coordinate_attributes = cast(list[str], d.pop("coordinate_attributes"))
+
+        polygon_attributes = cast(list[str], d.pop("polygon_attributes"))
+
+        table_attributes = cast(list[str], d.pop("table_attributes"))
+
+        list_object_attributes = cast(list[str], d.pop("list_object_attributes"))
+
+        json_attributes = cast(list[str], d.pop("json_attributes"))
+
+        single_select_attributes = cast(list[str], d.pop("single_select_attributes"))
+
+        multi_select_attributes = cast(list[str], d.pop("multi_select_attributes"))
 
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -153,26 +207,61 @@ class ResourceGroupSchema:
 
         id = _parse_id(d.pop("id", UNSET))
 
-        _resources = d.pop("resources", UNSET)
-        resources: list[ResourceSchema2] | Unset = UNSET
-        if _resources is not UNSET:
-            resources = []
-            for resources_item_data in _resources:
-                resources_item = ResourceSchema2.from_dict(resources_item_data)
+        def _parse_created_by(data: object) -> None | Unset | UUID:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                created_by_type_0 = UUID(data)
 
-                resources.append(resources_item)
+                return created_by_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | Unset | UUID, data)
+
+        created_by = _parse_created_by(d.pop("created_by", UNSET))
+
+        def _parse_updated_by(data: object) -> None | Unset | UUID:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                updated_by_type_0 = UUID(data)
+
+                return updated_by_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | Unset | UUID, data)
+
+        updated_by = _parse_updated_by(d.pop("updated_by", UNSET))
 
         resource_group_schema = cls(
-            lawtalk_attributes=lawtalk_attributes,
-            core_attributes=core_attributes,
-            file_count=file_count,
-            root_folder=root_folder,
-            created_by=created_by,
-            updated_by=updated_by,
             created=created,
             updated=updated,
+            project=project,
+            string_attributes=string_attributes,
+            integer_attributes=integer_attributes,
+            float_attributes=float_attributes,
+            boolean_attributes=boolean_attributes,
+            date_attributes=date_attributes,
+            datetime_attributes=datetime_attributes,
+            time_attributes=time_attributes,
+            coordinate_attributes=coordinate_attributes,
+            polygon_attributes=polygon_attributes,
+            table_attributes=table_attributes,
+            list_object_attributes=list_object_attributes,
+            json_attributes=json_attributes,
+            single_select_attributes=single_select_attributes,
+            multi_select_attributes=multi_select_attributes,
             id=id,
-            resources=resources,
+            created_by=created_by,
+            updated_by=updated_by,
         )
 
         resource_group_schema.additional_properties = d
