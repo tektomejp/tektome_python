@@ -911,9 +911,7 @@ from .search_payload_v5_get_in import SearchPayloadV5GetIn
 from .search_snippets_post_in import SearchSnippetsPostIn
 from .section import Section
 from .section_creation_post_in import SectionCreationPostIn
-from .section_creation_post_in_bim_project_object_ids import SectionCreationPostInBimProjectObjectIds
 from .section_creation_put_in import SectionCreationPutIn
-from .section_creation_put_in_bim_project_object_ids import SectionCreationPutInBimProjectObjectIds
 from .section_get_out import SectionGetOut
 from .section_get_out_pages_paragraphs_paths_type_0 import SectionGetOutPagesParagraphsPathsType0
 from .section_get_out_pages_tables_paths_type_0 import SectionGetOutPagesTablesPathsType0
@@ -1926,9 +1924,7 @@ __all__ = (
     "SearchSnippetsPostIn",
     "Section",
     "SectionCreationPostIn",
-    "SectionCreationPostInBimProjectObjectIds",
     "SectionCreationPutIn",
-    "SectionCreationPutInBimProjectObjectIds",
     "SectionGetOut",
     "SectionGetOutPagesParagraphsPathsType0",
     "SectionGetOutPagesTablesPathsType0",
