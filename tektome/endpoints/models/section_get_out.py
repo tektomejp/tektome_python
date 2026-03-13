@@ -43,7 +43,6 @@ class SectionGetOut:
         pages (list[str]):
         chunk_groups (list[str]):
         raw_texts (list[str]):
-        bim_objects (list[str]):
         source_string_attributes (list[str]):
         source_integer_attributes (list[str]):
         source_float_attributes (list[str]):
@@ -82,7 +81,6 @@ class SectionGetOut:
     pages: list[str]
     chunk_groups: list[str]
     raw_texts: list[str]
-    bim_objects: list[str]
     source_string_attributes: list[str]
     source_integer_attributes: list[str]
     source_float_attributes: list[str]
@@ -144,8 +142,6 @@ class SectionGetOut:
         chunk_groups = self.chunk_groups
 
         raw_texts = self.raw_texts
-
-        bim_objects = self.bim_objects
 
         source_string_attributes = self.source_string_attributes
 
@@ -239,7 +235,6 @@ class SectionGetOut:
                 "pages": pages,
                 "chunk_groups": chunk_groups,
                 "raw_texts": raw_texts,
-                "bim_objects": bim_objects,
                 "source_string_attributes": source_string_attributes,
                 "source_integer_attributes": source_integer_attributes,
                 "source_float_attributes": source_float_attributes,
@@ -312,8 +307,6 @@ class SectionGetOut:
         chunk_groups = cast(list[str], d.pop("chunk_groups"))
 
         raw_texts = cast(list[str], d.pop("raw_texts"))
-
-        bim_objects = cast(list[str], d.pop("bim_objects"))
 
         source_string_attributes = cast(list[str], d.pop("source_string_attributes"))
 
@@ -458,7 +451,6 @@ class SectionGetOut:
             pages=pages,
             chunk_groups=chunk_groups,
             raw_texts=raw_texts,
-            bim_objects=bim_objects,
             source_string_attributes=source_string_attributes,
             source_integer_attributes=source_integer_attributes,
             source_float_attributes=source_float_attributes,

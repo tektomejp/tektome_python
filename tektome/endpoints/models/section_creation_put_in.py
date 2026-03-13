@@ -10,7 +10,6 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.section_creation_put_in_bim_project_object_ids import SectionCreationPutInBimProjectObjectIds
     from ..models.section_paragraph_path import SectionParagraphPath
     from ..models.section_table_path import SectionTablePath
 
@@ -29,8 +28,6 @@ class SectionCreationPutIn:
         pages_tables_paths (list[SectionTablePath] | Unset): Path to access tables in pages
         chunk_group_ids (list[UUID] | Unset): List of chunk group IDs to include in the section
         raw_text_ids (list[UUID] | Unset): List of raw text IDs to include in the section
-        bim_project_object_ids (SectionCreationPutInBimProjectObjectIds | Unset): Mapping of BIM Project IDs to the list
-            of BIM Object IDs from that project to be include in the section
         source_string_attribute_ids (list[UUID] | Unset): List of string attribute IDs to include in the section
         source_integer_attribute_ids (list[UUID] | Unset): List of integer attribute IDs to include in the section
         source_float_attribute_ids (list[UUID] | Unset): List of float attribute IDs to include in the section
@@ -50,7 +47,6 @@ class SectionCreationPutIn:
     pages_tables_paths: list[SectionTablePath] | Unset = UNSET
     chunk_group_ids: list[UUID] | Unset = UNSET
     raw_text_ids: list[UUID] | Unset = UNSET
-    bim_project_object_ids: SectionCreationPutInBimProjectObjectIds | Unset = UNSET
     source_string_attribute_ids: list[UUID] | Unset = UNSET
     source_integer_attribute_ids: list[UUID] | Unset = UNSET
     source_float_attribute_ids: list[UUID] | Unset = UNSET
@@ -107,10 +103,6 @@ class SectionCreationPutIn:
             for raw_text_ids_item_data in self.raw_text_ids:
                 raw_text_ids_item = str(raw_text_ids_item_data)
                 raw_text_ids.append(raw_text_ids_item)
-
-        bim_project_object_ids: dict[str, Any] | Unset = UNSET
-        if not isinstance(self.bim_project_object_ids, Unset):
-            bim_project_object_ids = self.bim_project_object_ids.to_dict()
 
         source_string_attribute_ids: list[str] | Unset = UNSET
         if not isinstance(self.source_string_attribute_ids, Unset):
@@ -201,8 +193,6 @@ class SectionCreationPutIn:
             field_dict["chunk_group_ids"] = chunk_group_ids
         if raw_text_ids is not UNSET:
             field_dict["raw_text_ids"] = raw_text_ids
-        if bim_project_object_ids is not UNSET:
-            field_dict["bim_project_object_ids"] = bim_project_object_ids
         if source_string_attribute_ids is not UNSET:
             field_dict["source_string_attribute_ids"] = source_string_attribute_ids
         if source_integer_attribute_ids is not UNSET:
@@ -228,7 +218,6 @@ class SectionCreationPutIn:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.section_creation_put_in_bim_project_object_ids import SectionCreationPutInBimProjectObjectIds
         from ..models.section_paragraph_path import SectionParagraphPath
         from ..models.section_table_path import SectionTablePath
 
@@ -288,13 +277,6 @@ class SectionCreationPutIn:
                 raw_text_ids_item = UUID(raw_text_ids_item_data)
 
                 raw_text_ids.append(raw_text_ids_item)
-
-        _bim_project_object_ids = d.pop("bim_project_object_ids", UNSET)
-        bim_project_object_ids: SectionCreationPutInBimProjectObjectIds | Unset
-        if isinstance(_bim_project_object_ids, Unset):
-            bim_project_object_ids = UNSET
-        else:
-            bim_project_object_ids = SectionCreationPutInBimProjectObjectIds.from_dict(_bim_project_object_ids)
 
         _source_string_attribute_ids = d.pop("source_string_attribute_ids", UNSET)
         source_string_attribute_ids: list[UUID] | Unset = UNSET
@@ -394,7 +376,6 @@ class SectionCreationPutIn:
             pages_tables_paths=pages_tables_paths,
             chunk_group_ids=chunk_group_ids,
             raw_text_ids=raw_text_ids,
-            bim_project_object_ids=bim_project_object_ids,
             source_string_attribute_ids=source_string_attribute_ids,
             source_integer_attribute_ids=source_integer_attribute_ids,
             source_float_attribute_ids=source_float_attribute_ids,
