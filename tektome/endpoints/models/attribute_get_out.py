@@ -24,20 +24,32 @@ class AttributeGetOut:
 
     Attributes:
         name (str):
-        value (AttributeGetOutValueType7 | bool | datetime.date | datetime.datetime | float | int | list[Any] | str):
         is_locked (bool): Whether the attribute is locked - can't be modified
         id (UUID):
         type_ (str):
+        value (AttributeGetOutValueType7 | bool | datetime.date | datetime.datetime | float | int | list[Any] | None |
+            str | Unset): Value of the attribute, can be of various types, can be None for pending attribute extraction
         extraction_status (None | str | Unset):
         creation_method (None | str | Unset):
         error_message (None | str | Unset):
     """
 
     name: str
-    value: AttributeGetOutValueType7 | bool | datetime.date | datetime.datetime | float | int | list[Any] | str
     is_locked: bool
     id: UUID
     type_: str
+    value: (
+        AttributeGetOutValueType7
+        | bool
+        | datetime.date
+        | datetime.datetime
+        | float
+        | int
+        | list[Any]
+        | None
+        | str
+        | Unset
+    ) = UNSET
     extraction_status: None | str | Unset = UNSET
     creation_method: None | str | Unset = UNSET
     error_message: None | str | Unset = UNSET
@@ -48,8 +60,16 @@ class AttributeGetOut:
 
         name = self.name
 
-        value: bool | dict[str, Any] | float | int | list[Any] | str
-        if isinstance(self.value, datetime.date):
+        is_locked = self.is_locked
+
+        id = str(self.id)
+
+        type_ = self.type_
+
+        value: bool | dict[str, Any] | float | int | list[Any] | None | str | Unset
+        if isinstance(self.value, Unset):
+            value = UNSET
+        elif isinstance(self.value, datetime.date):
             value = self.value.isoformat()
         elif isinstance(self.value, datetime.datetime):
             value = self.value.isoformat()
@@ -60,12 +80,6 @@ class AttributeGetOut:
 
         else:
             value = self.value
-
-        is_locked = self.is_locked
-
-        id = str(self.id)
-
-        type_ = self.type_
 
         extraction_status: None | str | Unset
         if isinstance(self.extraction_status, Unset):
@@ -90,12 +104,13 @@ class AttributeGetOut:
         field_dict.update(
             {
                 "name": name,
-                "value": value,
                 "is_locked": is_locked,
                 "id": id,
                 "type": type_,
             }
         )
+        if value is not UNSET:
+            field_dict["value"] = value
         if extraction_status is not UNSET:
             field_dict["extraction_status"] = extraction_status
         if creation_method is not UNSET:
@@ -112,9 +127,30 @@ class AttributeGetOut:
         d = dict(src_dict)
         name = d.pop("name")
 
+        is_locked = d.pop("is_locked")
+
+        id = UUID(d.pop("id"))
+
+        type_ = d.pop("type")
+
         def _parse_value(
             data: object,
-        ) -> AttributeGetOutValueType7 | bool | datetime.date | datetime.datetime | float | int | list[Any] | str:
+        ) -> (
+            AttributeGetOutValueType7
+            | bool
+            | datetime.date
+            | datetime.datetime
+            | float
+            | int
+            | list[Any]
+            | None
+            | str
+            | Unset
+        ):
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
             try:
                 if not isinstance(data, str):
                     raise TypeError()
@@ -148,17 +184,20 @@ class AttributeGetOut:
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             return cast(
-                AttributeGetOutValueType7 | bool | datetime.date | datetime.datetime | float | int | list[Any] | str,
+                AttributeGetOutValueType7
+                | bool
+                | datetime.date
+                | datetime.datetime
+                | float
+                | int
+                | list[Any]
+                | None
+                | str
+                | Unset,
                 data,
             )
 
-        value = _parse_value(d.pop("value"))
-
-        is_locked = d.pop("is_locked")
-
-        id = UUID(d.pop("id"))
-
-        type_ = d.pop("type")
+        value = _parse_value(d.pop("value", UNSET))
 
         def _parse_extraction_status(data: object) -> None | str | Unset:
             if data is None:
@@ -189,10 +228,10 @@ class AttributeGetOut:
 
         attribute_get_out = cls(
             name=name,
-            value=value,
             is_locked=is_locked,
             id=id,
             type_=type_,
+            value=value,
             extraction_status=extraction_status,
             creation_method=creation_method,
             error_message=error_message,
