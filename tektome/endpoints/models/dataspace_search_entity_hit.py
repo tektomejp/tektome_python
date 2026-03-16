@@ -16,12 +16,12 @@ if TYPE_CHECKING:
     from ..models.user_metadata import UserMetadata
 
 
-T = TypeVar("T", bound="DataspaceSearchResultHit")
+T = TypeVar("T", bound="DataspaceSearchEntityHit")
 
 
 @_attrs_define
-class DataspaceSearchResultHit:
-    """Base fields for a single search hit (project or resource).
+class DataspaceSearchEntityHit:
+    """Base fields for a single entity search hit (project or resource).
 
     Attributes:
         id (UUID):
@@ -425,7 +425,7 @@ class DataspaceSearchResultHit:
 
         updated = _parse_updated(d.pop("updated", UNSET))
 
-        dataspace_search_result_hit = cls(
+        dataspace_search_entity_hit = cls(
             id=id,
             score=score,
             dataspace_ids=dataspace_ids,
@@ -446,8 +446,8 @@ class DataspaceSearchResultHit:
             updated=updated,
         )
 
-        dataspace_search_result_hit.additional_properties = d
-        return dataspace_search_result_hit
+        dataspace_search_entity_hit.additional_properties = d
+        return dataspace_search_entity_hit
 
     @property
     def additional_keys(self) -> list[str]:

@@ -2,44 +2,48 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.dataspace_entity_type import DataspaceEntityType
-
-T = TypeVar("T", bound="TableResultInfo")
+T = TypeVar("T", bound="ChunkHit")
 
 
 @_attrs_define
-class TableResultInfo:
-    """Summary info about a table in search results.
+class ChunkHit:
+    """A single OCR chunk hit within a page.
 
     Attributes:
-        table_name (str):
-        table_entity_type (DataspaceEntityType):
-        total_tables_count (int):
+        chunk_id (UUID):
+        text (str):
+        highlight (str):
+        score (float):
     """
 
-    table_name: str
-    table_entity_type: DataspaceEntityType
-    total_tables_count: int
+    chunk_id: UUID
+    text: str
+    highlight: str
+    score: float
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        table_name = self.table_name
+        chunk_id = str(self.chunk_id)
 
-        table_entity_type = self.table_entity_type.value
+        text = self.text
 
-        total_tables_count = self.total_tables_count
+        highlight = self.highlight
+
+        score = self.score
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "table_name": table_name,
-                "table_entity_type": table_entity_type,
-                "total_tables_count": total_tables_count,
+                "chunk_id": chunk_id,
+                "text": text,
+                "highlight": highlight,
+                "score": score,
             }
         )
 
@@ -48,20 +52,23 @@ class TableResultInfo:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        table_name = d.pop("table_name")
+        chunk_id = UUID(d.pop("chunk_id"))
 
-        table_entity_type = DataspaceEntityType(d.pop("table_entity_type"))
+        text = d.pop("text")
 
-        total_tables_count = d.pop("total_tables_count")
+        highlight = d.pop("highlight")
 
-        table_result_info = cls(
-            table_name=table_name,
-            table_entity_type=table_entity_type,
-            total_tables_count=total_tables_count,
+        score = d.pop("score")
+
+        chunk_hit = cls(
+            chunk_id=chunk_id,
+            text=text,
+            highlight=highlight,
+            score=score,
         )
 
-        table_result_info.additional_properties = d
-        return table_result_info
+        chunk_hit.additional_properties = d
+        return chunk_hit
 
     @property
     def additional_keys(self) -> list[str]:

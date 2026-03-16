@@ -12,8 +12,9 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.dataspace_search_result_hit import DataspaceSearchResultHit
+    from ..models.dataspace_search_entity_hit import DataspaceSearchEntityHit
     from ..models.entity_search_result_hit_attribute import EntitySearchResultHitAttribute
+    from ..models.page_hit import PageHit
     from ..models.user_metadata import UserMetadata
 
 
@@ -43,7 +44,9 @@ class DataspaceResourceResultHit:
         created (datetime.datetime | None | Unset):
         created_by (None | Unset | UserMetadata):
         updated (datetime.datetime | None | Unset):
-        project (DataspaceSearchResultHit | None | Unset):
+        project (DataspaceSearchEntityHit | None | Unset):
+        matched_pages_count (int | Unset): Total number of pages in this resource that matched the keyword Default: 0.
+        page_hits (list[PageHit] | Unset):
     """
 
     id: UUID
@@ -64,11 +67,13 @@ class DataspaceResourceResultHit:
     created: datetime.datetime | None | Unset = UNSET
     created_by: None | Unset | UserMetadata = UNSET
     updated: datetime.datetime | None | Unset = UNSET
-    project: DataspaceSearchResultHit | None | Unset = UNSET
+    project: DataspaceSearchEntityHit | None | Unset = UNSET
+    matched_pages_count: int | Unset = 0
+    page_hits: list[PageHit] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.dataspace_search_result_hit import DataspaceSearchResultHit
+        from ..models.dataspace_search_entity_hit import DataspaceSearchEntityHit
         from ..models.user_metadata import UserMetadata
 
         id = str(self.id)
@@ -195,10 +200,19 @@ class DataspaceResourceResultHit:
         project: dict[str, Any] | None | Unset
         if isinstance(self.project, Unset):
             project = UNSET
-        elif isinstance(self.project, DataspaceSearchResultHit):
+        elif isinstance(self.project, DataspaceSearchEntityHit):
             project = self.project.to_dict()
         else:
             project = self.project
+
+        matched_pages_count = self.matched_pages_count
+
+        page_hits: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.page_hits, Unset):
+            page_hits = []
+            for page_hits_item_data in self.page_hits:
+                page_hits_item = page_hits_item_data.to_dict()
+                page_hits.append(page_hits_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -242,13 +256,18 @@ class DataspaceResourceResultHit:
             field_dict["updated"] = updated
         if project is not UNSET:
             field_dict["project"] = project
+        if matched_pages_count is not UNSET:
+            field_dict["matched_pages_count"] = matched_pages_count
+        if page_hits is not UNSET:
+            field_dict["page_hits"] = page_hits
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.dataspace_search_result_hit import DataspaceSearchResultHit
+        from ..models.dataspace_search_entity_hit import DataspaceSearchEntityHit
         from ..models.entity_search_result_hit_attribute import EntitySearchResultHitAttribute
+        from ..models.page_hit import PageHit
         from ..models.user_metadata import UserMetadata
 
         d = dict(src_dict)
@@ -440,7 +459,7 @@ class DataspaceResourceResultHit:
 
         updated = _parse_updated(d.pop("updated", UNSET))
 
-        def _parse_project(data: object) -> DataspaceSearchResultHit | None | Unset:
+        def _parse_project(data: object) -> DataspaceSearchEntityHit | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -448,14 +467,25 @@ class DataspaceResourceResultHit:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                project_type_0 = DataspaceSearchResultHit.from_dict(data)
+                project_type_0 = DataspaceSearchEntityHit.from_dict(data)
 
                 return project_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(DataspaceSearchResultHit | None | Unset, data)
+            return cast(DataspaceSearchEntityHit | None | Unset, data)
 
         project = _parse_project(d.pop("project", UNSET))
+
+        matched_pages_count = d.pop("matched_pages_count", UNSET)
+
+        _page_hits = d.pop("page_hits", UNSET)
+        page_hits: list[PageHit] | Unset = UNSET
+        if _page_hits is not UNSET:
+            page_hits = []
+            for page_hits_item_data in _page_hits:
+                page_hits_item = PageHit.from_dict(page_hits_item_data)
+
+                page_hits.append(page_hits_item)
 
         dataspace_resource_result_hit = cls(
             id=id,
@@ -477,6 +507,8 @@ class DataspaceResourceResultHit:
             created_by=created_by,
             updated=updated,
             project=project,
+            matched_pages_count=matched_pages_count,
+            page_hits=page_hits,
         )
 
         dataspace_resource_result_hit.additional_properties = d

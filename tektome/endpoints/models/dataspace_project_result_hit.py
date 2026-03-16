@@ -12,7 +12,7 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.dataspace_search_result_hit import DataspaceSearchResultHit
+    from ..models.dataspace_search_entity_hit import DataspaceSearchEntityHit
     from ..models.entity_search_result_hit_attribute import EntitySearchResultHitAttribute
     from ..models.user_metadata import UserMetadata
 
@@ -46,7 +46,7 @@ class DataspaceProjectResultHit:
         matched_resources_count (int | Unset): Number of resources in this project that matched the query Default: 0.
         matched_pages_count (int | Unset): Total number of pages across matched resources that matched the keyword
             Default: 0.
-        resource_hits (list[DataspaceSearchResultHit] | Unset):
+        resource_hits (list[DataspaceSearchEntityHit] | Unset):
     """
 
     id: UUID
@@ -69,7 +69,7 @@ class DataspaceProjectResultHit:
     updated: datetime.datetime | None | Unset = UNSET
     matched_resources_count: int | Unset = 0
     matched_pages_count: int | Unset = 0
-    resource_hits: list[DataspaceSearchResultHit] | Unset = UNSET
+    resource_hits: list[DataspaceSearchEntityHit] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -258,7 +258,7 @@ class DataspaceProjectResultHit:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.dataspace_search_result_hit import DataspaceSearchResultHit
+        from ..models.dataspace_search_entity_hit import DataspaceSearchEntityHit
         from ..models.entity_search_result_hit_attribute import EntitySearchResultHitAttribute
         from ..models.user_metadata import UserMetadata
 
@@ -456,11 +456,11 @@ class DataspaceProjectResultHit:
         matched_pages_count = d.pop("matched_pages_count", UNSET)
 
         _resource_hits = d.pop("resource_hits", UNSET)
-        resource_hits: list[DataspaceSearchResultHit] | Unset = UNSET
+        resource_hits: list[DataspaceSearchEntityHit] | Unset = UNSET
         if _resource_hits is not UNSET:
             resource_hits = []
             for resource_hits_item_data in _resource_hits:
-                resource_hits_item = DataspaceSearchResultHit.from_dict(resource_hits_item_data)
+                resource_hits_item = DataspaceSearchEntityHit.from_dict(resource_hits_item_data)
 
                 resource_hits.append(resource_hits_item)
 

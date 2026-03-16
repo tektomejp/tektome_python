@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from ..models.dataspace_resource_result_hit import DataspaceResourceResultHit
     from ..models.dataspace_resource_search_result_debug_type_0 import DataspaceResourceSearchResultDebugType0
     from ..models.table_result_info import TableResultInfo
+    from ..models.total_objects_count import TotalObjectsCount
 
 
 T = TypeVar("T", bound="DataspaceResourceSearchResult")
@@ -25,10 +26,10 @@ class DataspaceResourceSearchResult:
         page (int):
         page_size (int):
         total_page (int):
-        project_count (int):
-        resource_count (int):
         hits (list[DataspaceResourceResultHit]):
         type_ (Literal['resource'] | Unset):  Default: 'resource'.
+        total_objects_count (TotalObjectsCount | Unset): Aggregated counts of matched objects across the entire search
+            result.
         tables (list[TableResultInfo] | Unset):
         debug (DataspaceResourceSearchResultDebugType0 | None | Unset):
     """
@@ -36,10 +37,9 @@ class DataspaceResourceSearchResult:
     page: int
     page_size: int
     total_page: int
-    project_count: int
-    resource_count: int
     hits: list[DataspaceResourceResultHit]
     type_: Literal["resource"] | Unset = "resource"
+    total_objects_count: TotalObjectsCount | Unset = UNSET
     tables: list[TableResultInfo] | Unset = UNSET
     debug: DataspaceResourceSearchResultDebugType0 | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -53,16 +53,16 @@ class DataspaceResourceSearchResult:
 
         total_page = self.total_page
 
-        project_count = self.project_count
-
-        resource_count = self.resource_count
-
         hits = []
         for hits_item_data in self.hits:
             hits_item = hits_item_data.to_dict()
             hits.append(hits_item)
 
         type_ = self.type_
+
+        total_objects_count: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.total_objects_count, Unset):
+            total_objects_count = self.total_objects_count.to_dict()
 
         tables: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.tables, Unset):
@@ -86,13 +86,13 @@ class DataspaceResourceSearchResult:
                 "page": page,
                 "page_size": page_size,
                 "total_page": total_page,
-                "project_count": project_count,
-                "resource_count": resource_count,
                 "hits": hits,
             }
         )
         if type_ is not UNSET:
             field_dict["type"] = type_
+        if total_objects_count is not UNSET:
+            field_dict["total_objects_count"] = total_objects_count
         if tables is not UNSET:
             field_dict["tables"] = tables
         if debug is not UNSET:
@@ -105,6 +105,7 @@ class DataspaceResourceSearchResult:
         from ..models.dataspace_resource_result_hit import DataspaceResourceResultHit
         from ..models.dataspace_resource_search_result_debug_type_0 import DataspaceResourceSearchResultDebugType0
         from ..models.table_result_info import TableResultInfo
+        from ..models.total_objects_count import TotalObjectsCount
 
         d = dict(src_dict)
         page = d.pop("page")
@@ -112,10 +113,6 @@ class DataspaceResourceSearchResult:
         page_size = d.pop("page_size")
 
         total_page = d.pop("total_page")
-
-        project_count = d.pop("project_count")
-
-        resource_count = d.pop("resource_count")
 
         hits = []
         _hits = d.pop("hits")
@@ -127,6 +124,13 @@ class DataspaceResourceSearchResult:
         type_ = cast(Literal["resource"] | Unset, d.pop("type", UNSET))
         if type_ != "resource" and not isinstance(type_, Unset):
             raise ValueError(f"type must match const 'resource', got '{type_}'")
+
+        _total_objects_count = d.pop("total_objects_count", UNSET)
+        total_objects_count: TotalObjectsCount | Unset
+        if isinstance(_total_objects_count, Unset):
+            total_objects_count = UNSET
+        else:
+            total_objects_count = TotalObjectsCount.from_dict(_total_objects_count)
 
         _tables = d.pop("tables", UNSET)
         tables: list[TableResultInfo] | Unset = UNSET
@@ -158,10 +162,9 @@ class DataspaceResourceSearchResult:
             page=page,
             page_size=page_size,
             total_page=total_page,
-            project_count=project_count,
-            resource_count=resource_count,
             hits=hits,
             type_=type_,
+            total_objects_count=total_objects_count,
             tables=tables,
             debug=debug,
         )
