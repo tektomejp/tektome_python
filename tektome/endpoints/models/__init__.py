@@ -158,6 +158,7 @@ from .choice_schema import ChoiceSchema
 from .chunk import Chunk
 from .chunk_group_component_schema_get_out import ChunkGroupComponentSchemaGetOut
 from .chunk_group_component_schema_path_in import ChunkGroupComponentSchemaPathIn
+from .chunk_hit import ChunkHit
 from .citation_category_path import CitationCategoryPath
 from .citations_query_in import CitationsQueryIn
 from .citations_query_in_order_by import CitationsQueryInOrderBy
@@ -269,6 +270,7 @@ from .dataspace_resource_search_result import DataspaceResourceSearchResult
 from .dataspace_resource_search_result_debug_type_0 import DataspaceResourceSearchResultDebugType0
 from .dataspace_resource_upload_in import DataspaceResourceUploadIn
 from .dataspace_schema import DataspaceSchema
+from .dataspace_search_entity_hit import DataspaceSearchEntityHit
 from .dataspace_search_filter_configuration_in import DataspaceSearchFilterConfigurationIn
 from .dataspace_search_filter_configuration_in_patch import DataspaceSearchFilterConfigurationInPatch
 from .dataspace_search_filter_configuration_out import DataspaceSearchFilterConfigurationOut
@@ -287,7 +289,6 @@ from .dataspace_search_request_get_out_highlight_keywords_type_0 import (
 from .dataspace_search_request_is_saved_patch_in import DataspaceSearchRequestIsSavedPatchIn
 from .dataspace_search_request_path import DataspaceSearchRequestPath
 from .dataspace_search_request_schema import DataspaceSearchRequestSchema
-from .dataspace_search_result_hit import DataspaceSearchResultHit
 from .dataspace_search_result_out import DataspaceSearchResultOut
 from .dataspace_search_schema import DataspaceSearchSchema
 from .dataspace_search_tag_config_out import DataspaceSearchTagConfigOut
@@ -646,6 +647,7 @@ from .organizations_post_in import OrganizationsPostIn
 from .page_component_schema_get_out import PageComponentSchemaGetOut
 from .page_component_schema_get_out_tables_type_0 import PageComponentSchemaGetOutTablesType0
 from .page_component_schema_path_in import PageComponentSchemaPathIn
+from .page_hit import PageHit
 from .paged_approval_ticket_candidate_out import PagedApprovalTicketCandidateOut
 from .paged_artifact_template_group_get_out import PagedArtifactTemplateGroupGetOut
 from .paged_citations import PagedCitations
@@ -1034,6 +1036,7 @@ from .template_path import TemplatePath
 from .template_update_in import TemplateUpdateIn
 from .time_attribute_schema_in import TimeAttributeSchemaIn
 from .time_attribute_schema_out import TimeAttributeSchemaOut
+from .total_objects_count import TotalObjectsCount
 from .transaction_types import TransactionTypes
 from .transform import Transform
 from .ttos_folder_copy_out import TtosFolderCopyOut
@@ -1229,6 +1232,7 @@ __all__ = (
     "Chunk",
     "ChunkGroupComponentSchemaGetOut",
     "ChunkGroupComponentSchemaPathIn",
+    "ChunkHit",
     "CitationCategoryPath",
     "CitationsQueryIn",
     "CitationsQueryInOrderBy",
@@ -1319,6 +1323,7 @@ __all__ = (
     "DataspaceResourceSearchResultDebugType0",
     "DataspaceResourceUploadIn",
     "DataspaceSchema",
+    "DataspaceSearchEntityHit",
     "DataspaceSearchFilterConfigurationIn",
     "DataspaceSearchFilterConfigurationInPatch",
     "DataspaceSearchFilterConfigurationOut",
@@ -1333,7 +1338,6 @@ __all__ = (
     "DataspaceSearchRequestIsSavedPatchIn",
     "DataspaceSearchRequestPath",
     "DataspaceSearchRequestSchema",
-    "DataspaceSearchResultHit",
     "DataspaceSearchResultOut",
     "DataspaceSearchSchema",
     "DataspaceSearchTagConfigOut",
@@ -1717,6 +1721,7 @@ __all__ = (
     "PagedSectionGetOut",
     "Pagedstr",
     "PagedTemplateOut",
+    "PageHit",
     "PaginatedResponseRequirementTemplateContainerGetOut",
     "PaginatedResponseRequirementTemplateGetOut",
     "ParsedTektomeResponseEntry",
@@ -2033,6 +2038,7 @@ __all__ = (
     "TemplateUpdateIn",
     "TimeAttributeSchemaIn",
     "TimeAttributeSchemaOut",
+    "TotalObjectsCount",
     "TransactionTypes",
     "Transform",
     "TtosFolderCopyOut",

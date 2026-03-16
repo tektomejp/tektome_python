@@ -11,7 +11,7 @@ from ..models.dataspace_entity_type import DataspaceEntityType
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.dataspace_search_result_hit import DataspaceSearchResultHit
+    from ..models.dataspace_search_entity_hit import DataspaceSearchEntityHit
     from ..models.table_row_cell_info import TableRowCellInfo
 
 
@@ -23,14 +23,14 @@ class DataspaceTableResultHit:
     """Entity-level hit from table search. Each hit carries the full parent entity and table rows.
 
     Attributes:
-        parent_entity (DataspaceSearchResultHit): Base fields for a single search hit (project or resource).
+        parent_entity (DataspaceSearchEntityHit): Base fields for a single entity search hit (project or resource).
         parent_entity_type (DataspaceEntityType):
         table_id (UUID):
         score (float):
         rows (list[list[TableRowCellInfo]] | Unset):
     """
 
-    parent_entity: DataspaceSearchResultHit
+    parent_entity: DataspaceSearchEntityHit
     parent_entity_type: DataspaceEntityType
     table_id: UUID
     score: float
@@ -74,11 +74,11 @@ class DataspaceTableResultHit:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.dataspace_search_result_hit import DataspaceSearchResultHit
+        from ..models.dataspace_search_entity_hit import DataspaceSearchEntityHit
         from ..models.table_row_cell_info import TableRowCellInfo
 
         d = dict(src_dict)
-        parent_entity = DataspaceSearchResultHit.from_dict(d.pop("parent_entity"))
+        parent_entity = DataspaceSearchEntityHit.from_dict(d.pop("parent_entity"))
 
         parent_entity_type = DataspaceEntityType(d.pop("parent_entity_type"))
 
