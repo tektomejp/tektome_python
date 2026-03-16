@@ -32,6 +32,7 @@ class DataspaceProjectResourcesGetOut:
         updated_by (UserMetadata):
         created (datetime.datetime):
         updated (datetime.datetime):
+        viewer_file (None | str | Unset):
         folder_id (None | Unset | UUID):
         core_project_id (None | Unset | UUID):
         id (None | Unset | UUID):
@@ -44,6 +45,7 @@ class DataspaceProjectResourcesGetOut:
     updated_by: UserMetadata
     created: datetime.datetime
     updated: datetime.datetime
+    viewer_file: None | str | Unset = UNSET
     folder_id: None | Unset | UUID = UNSET
     core_project_id: None | Unset | UUID = UNSET
     id: None | Unset | UUID = UNSET
@@ -63,6 +65,12 @@ class DataspaceProjectResourcesGetOut:
         created = self.created.isoformat()
 
         updated = self.updated.isoformat()
+
+        viewer_file: None | str | Unset
+        if isinstance(self.viewer_file, Unset):
+            viewer_file = UNSET
+        else:
+            viewer_file = self.viewer_file
 
         folder_id: None | str | Unset
         if isinstance(self.folder_id, Unset):
@@ -101,6 +109,8 @@ class DataspaceProjectResourcesGetOut:
                 "updated": updated,
             }
         )
+        if viewer_file is not UNSET:
+            field_dict["viewer_file"] = viewer_file
         if folder_id is not UNSET:
             field_dict["folder_id"] = folder_id
         if core_project_id is not UNSET:
@@ -130,6 +140,15 @@ class DataspaceProjectResourcesGetOut:
         created = isoparse(d.pop("created"))
 
         updated = isoparse(d.pop("updated"))
+
+        def _parse_viewer_file(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        viewer_file = _parse_viewer_file(d.pop("viewer_file", UNSET))
 
         def _parse_folder_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -190,6 +209,7 @@ class DataspaceProjectResourcesGetOut:
             updated_by=updated_by,
             created=created,
             updated=updated,
+            viewer_file=viewer_file,
             folder_id=folder_id,
             core_project_id=core_project_id,
             id=id,
