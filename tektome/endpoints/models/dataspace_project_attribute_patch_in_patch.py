@@ -12,7 +12,9 @@ if TYPE_CHECKING:
     from ..models.dataspace_project_attribute_patch_in_patch_attribute_metadata_type_0 import (
         DataspaceProjectAttributePatchInPatchAttributeMetadataType0,
     )
-    from ..models.table_metadata_update_request import TableMetadataUpdateRequest
+    from ..models.dataspace_project_attribute_patch_in_patch_table_attribute_config_type_0 import (
+        DataspaceProjectAttributePatchInPatchTableAttributeConfigType0,
+    )
 
 
 T = TypeVar("T", bound="DataspaceProjectAttributePatchInPatch")
@@ -27,7 +29,7 @@ class DataspaceProjectAttributePatchInPatch:
         enabled (bool | None | Unset):
         hidden (bool | None | Unset):
         attribute_metadata (DataspaceProjectAttributePatchInPatchAttributeMetadataType0 | None | Unset):
-        table_attribute_config (None | TableMetadataUpdateRequest | Unset):
+        table_attribute_config (DataspaceProjectAttributePatchInPatchTableAttributeConfigType0 | None | Unset):
     """
 
     attribute_label: None | str | Unset = UNSET
@@ -35,14 +37,16 @@ class DataspaceProjectAttributePatchInPatch:
     enabled: bool | None | Unset = UNSET
     hidden: bool | None | Unset = UNSET
     attribute_metadata: DataspaceProjectAttributePatchInPatchAttributeMetadataType0 | None | Unset = UNSET
-    table_attribute_config: None | TableMetadataUpdateRequest | Unset = UNSET
+    table_attribute_config: DataspaceProjectAttributePatchInPatchTableAttributeConfigType0 | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.dataspace_project_attribute_patch_in_patch_attribute_metadata_type_0 import (
             DataspaceProjectAttributePatchInPatchAttributeMetadataType0,
         )
-        from ..models.table_metadata_update_request import TableMetadataUpdateRequest
+        from ..models.dataspace_project_attribute_patch_in_patch_table_attribute_config_type_0 import (
+            DataspaceProjectAttributePatchInPatchTableAttributeConfigType0,
+        )
 
         attribute_label: None | str | Unset
         if isinstance(self.attribute_label, Unset):
@@ -79,7 +83,7 @@ class DataspaceProjectAttributePatchInPatch:
         table_attribute_config: dict[str, Any] | None | Unset
         if isinstance(self.table_attribute_config, Unset):
             table_attribute_config = UNSET
-        elif isinstance(self.table_attribute_config, TableMetadataUpdateRequest):
+        elif isinstance(self.table_attribute_config, DataspaceProjectAttributePatchInPatchTableAttributeConfigType0):
             table_attribute_config = self.table_attribute_config.to_dict()
         else:
             table_attribute_config = self.table_attribute_config
@@ -107,7 +111,9 @@ class DataspaceProjectAttributePatchInPatch:
         from ..models.dataspace_project_attribute_patch_in_patch_attribute_metadata_type_0 import (
             DataspaceProjectAttributePatchInPatchAttributeMetadataType0,
         )
-        from ..models.table_metadata_update_request import TableMetadataUpdateRequest
+        from ..models.dataspace_project_attribute_patch_in_patch_table_attribute_config_type_0 import (
+            DataspaceProjectAttributePatchInPatchTableAttributeConfigType0,
+        )
 
         d = dict(src_dict)
 
@@ -166,7 +172,9 @@ class DataspaceProjectAttributePatchInPatch:
 
         attribute_metadata = _parse_attribute_metadata(d.pop("attribute_metadata", UNSET))
 
-        def _parse_table_attribute_config(data: object) -> None | TableMetadataUpdateRequest | Unset:
+        def _parse_table_attribute_config(
+            data: object,
+        ) -> DataspaceProjectAttributePatchInPatchTableAttributeConfigType0 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -174,12 +182,14 @@ class DataspaceProjectAttributePatchInPatch:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                table_attribute_config_type_0 = TableMetadataUpdateRequest.from_dict(data)
+                table_attribute_config_type_0 = (
+                    DataspaceProjectAttributePatchInPatchTableAttributeConfigType0.from_dict(data)
+                )
 
                 return table_attribute_config_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | TableMetadataUpdateRequest | Unset, data)
+            return cast(DataspaceProjectAttributePatchInPatchTableAttributeConfigType0 | None | Unset, data)
 
         table_attribute_config = _parse_table_attribute_config(d.pop("table_attribute_config", UNSET))
 
