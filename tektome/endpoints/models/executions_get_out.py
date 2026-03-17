@@ -35,6 +35,7 @@ class ExecutionsGetOut:
         created (datetime.datetime):
         updated (datetime.datetime):
         memo (None | str | Unset):
+        candidates_count (int | None | Unset):
         id (None | Unset | UUID):
         summary (None | str | Unset): A brief summary of the tickets from the execution
         metadata (ExecutionsGetOutMetadata | Unset): The raw metadata received for this specific execution
@@ -42,6 +43,9 @@ class ExecutionsGetOut:
         status (str | Unset): The status of the execution (e.g., pending, completed, failed) Default: 'pending'.
         start_time (datetime.datetime | None | Unset):
         end_time (datetime.datetime | None | Unset):
+        current_approval_step (None | Unset | UUID): The approval ticket representing the current step of this execution
+        requested_approval_count (int | Unset): Total number of approval steps for this execution that the user/agent
+            has been requested to review Default: 0.
     """
 
     created_by: UserMetadata
@@ -53,6 +57,7 @@ class ExecutionsGetOut:
     created: datetime.datetime
     updated: datetime.datetime
     memo: None | str | Unset = UNSET
+    candidates_count: int | None | Unset = UNSET
     id: None | Unset | UUID = UNSET
     summary: None | str | Unset = UNSET
     metadata: ExecutionsGetOutMetadata | Unset = UNSET
@@ -60,6 +65,8 @@ class ExecutionsGetOut:
     status: str | Unset = "pending"
     start_time: datetime.datetime | None | Unset = UNSET
     end_time: datetime.datetime | None | Unset = UNSET
+    current_approval_step: None | Unset | UUID = UNSET
+    requested_approval_count: int | Unset = 0
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -84,6 +91,12 @@ class ExecutionsGetOut:
             memo = UNSET
         else:
             memo = self.memo
+
+        candidates_count: int | None | Unset
+        if isinstance(self.candidates_count, Unset):
+            candidates_count = UNSET
+        else:
+            candidates_count = self.candidates_count
 
         id: None | str | Unset
         if isinstance(self.id, Unset):
@@ -129,6 +142,16 @@ class ExecutionsGetOut:
         else:
             end_time = self.end_time
 
+        current_approval_step: None | str | Unset
+        if isinstance(self.current_approval_step, Unset):
+            current_approval_step = UNSET
+        elif isinstance(self.current_approval_step, UUID):
+            current_approval_step = str(self.current_approval_step)
+        else:
+            current_approval_step = self.current_approval_step
+
+        requested_approval_count = self.requested_approval_count
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -145,6 +168,8 @@ class ExecutionsGetOut:
         )
         if memo is not UNSET:
             field_dict["memo"] = memo
+        if candidates_count is not UNSET:
+            field_dict["candidates_count"] = candidates_count
         if id is not UNSET:
             field_dict["id"] = id
         if summary is not UNSET:
@@ -159,6 +184,10 @@ class ExecutionsGetOut:
             field_dict["start_time"] = start_time
         if end_time is not UNSET:
             field_dict["end_time"] = end_time
+        if current_approval_step is not UNSET:
+            field_dict["current_approval_step"] = current_approval_step
+        if requested_approval_count is not UNSET:
+            field_dict["requested_approval_count"] = requested_approval_count
 
         return field_dict
 
@@ -194,6 +223,15 @@ class ExecutionsGetOut:
             return cast(None | str | Unset, data)
 
         memo = _parse_memo(d.pop("memo", UNSET))
+
+        def _parse_candidates_count(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        candidates_count = _parse_candidates_count(d.pop("candidates_count", UNSET))
 
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -281,6 +319,25 @@ class ExecutionsGetOut:
 
         end_time = _parse_end_time(d.pop("end_time", UNSET))
 
+        def _parse_current_approval_step(data: object) -> None | Unset | UUID:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                current_approval_step_type_0 = UUID(data)
+
+                return current_approval_step_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | Unset | UUID, data)
+
+        current_approval_step = _parse_current_approval_step(d.pop("current_approval_step", UNSET))
+
+        requested_approval_count = d.pop("requested_approval_count", UNSET)
+
         executions_get_out = cls(
             created_by=created_by,
             updated_by=updated_by,
@@ -291,6 +348,7 @@ class ExecutionsGetOut:
             created=created,
             updated=updated,
             memo=memo,
+            candidates_count=candidates_count,
             id=id,
             summary=summary,
             metadata=metadata,
@@ -298,6 +356,8 @@ class ExecutionsGetOut:
             status=status,
             start_time=start_time,
             end_time=end_time,
+            current_approval_step=current_approval_step,
+            requested_approval_count=requested_approval_count,
         )
 
         executions_get_out.additional_properties = d

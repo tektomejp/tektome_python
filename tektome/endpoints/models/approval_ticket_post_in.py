@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -25,11 +25,13 @@ class ApprovalTicketPostIn:
         candidates (list[CandidateItem]):
         should_wait (bool | Unset): Mark the ticket to indicate that the caller intends to wait for the approval result
             before proceeding with execution Default: False.
+        requested_approval_count (int | None | Unset):
     """
 
     category: ApprovalCategoryTypes
     candidates: list[CandidateItem]
     should_wait: bool | Unset = False
+    requested_approval_count: int | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,6 +44,12 @@ class ApprovalTicketPostIn:
 
         should_wait = self.should_wait
 
+        requested_approval_count: int | None | Unset
+        if isinstance(self.requested_approval_count, Unset):
+            requested_approval_count = UNSET
+        else:
+            requested_approval_count = self.requested_approval_count
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -52,6 +60,8 @@ class ApprovalTicketPostIn:
         )
         if should_wait is not UNSET:
             field_dict["should_wait"] = should_wait
+        if requested_approval_count is not UNSET:
+            field_dict["requested_approval_count"] = requested_approval_count
 
         return field_dict
 
@@ -71,10 +81,20 @@ class ApprovalTicketPostIn:
 
         should_wait = d.pop("should_wait", UNSET)
 
+        def _parse_requested_approval_count(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        requested_approval_count = _parse_requested_approval_count(d.pop("requested_approval_count", UNSET))
+
         approval_ticket_post_in = cls(
             category=category,
             candidates=candidates,
             should_wait=should_wait,
+            requested_approval_count=requested_approval_count,
         )
 
         approval_ticket_post_in.additional_properties = d
