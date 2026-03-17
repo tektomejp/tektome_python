@@ -6,14 +6,14 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="TableMetadataUpdateRequestRenameColumnsType0")
+T = TypeVar("T", bound="DataspaceProjectAttributePatchInPatchTableAttributeConfigType0")
 
 
 @_attrs_define
-class TableMetadataUpdateRequestRenameColumnsType0:
+class DataspaceProjectAttributePatchInPatchTableAttributeConfigType0:
     """ """
 
-    additional_properties: dict[str, str] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
 
@@ -25,19 +25,19 @@ class TableMetadataUpdateRequestRenameColumnsType0:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        table_metadata_update_request_rename_columns_type_0 = cls()
+        dataspace_project_attribute_patch_in_patch_table_attribute_config_type_0 = cls()
 
-        table_metadata_update_request_rename_columns_type_0.additional_properties = d
-        return table_metadata_update_request_rename_columns_type_0
+        dataspace_project_attribute_patch_in_patch_table_attribute_config_type_0.additional_properties = d
+        return dataspace_project_attribute_patch_in_patch_table_attribute_config_type_0
 
     @property
     def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
-    def __getitem__(self, key: str) -> str:
+    def __getitem__(self, key: str) -> Any:
         return self.additional_properties[key]
 
-    def __setitem__(self, key: str, value: str) -> None:
+    def __setitem__(self, key: str, value: Any) -> None:
         self.additional_properties[key] = value
 
     def __delitem__(self, key: str) -> None:

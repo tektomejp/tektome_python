@@ -226,6 +226,9 @@ from .dataspace_project_attribute_patch_in_patch import DataspaceProjectAttribut
 from .dataspace_project_attribute_patch_in_patch_attribute_metadata_type_0 import (
     DataspaceProjectAttributePatchInPatchAttributeMetadataType0,
 )
+from .dataspace_project_attribute_patch_in_patch_table_attribute_config_type_0 import (
+    DataspaceProjectAttributePatchInPatchTableAttributeConfigType0,
+)
 from .dataspace_project_attribute_path import DataspaceProjectAttributePath
 from .dataspace_project_attribute_post_in import DataspaceProjectAttributePostIn
 from .dataspace_project_attribute_post_in_attribute_metadata_type_0 import (
@@ -252,6 +255,9 @@ from .dataspace_required_schema import DataspaceRequiredSchema
 from .dataspace_resource_attribute_patch_in_patch import DataspaceResourceAttributePatchInPatch
 from .dataspace_resource_attribute_patch_in_patch_attribute_metadata_type_0 import (
     DataspaceResourceAttributePatchInPatchAttributeMetadataType0,
+)
+from .dataspace_resource_attribute_patch_in_patch_table_attribute_config_type_0 import (
+    DataspaceResourceAttributePatchInPatchTableAttributeConfigType0,
 )
 from .dataspace_resource_file_attribute_path import DataspaceResourceFileAttributePath
 from .dataspace_resource_file_attribute_post_out import DataspaceResourceFileAttributePostOut
@@ -1005,9 +1011,6 @@ from .table_column import TableColumn
 from .table_column_info import TableColumnInfo
 from .table_column_mapping import TableColumnMapping
 from .table_column_mapping_entity_type import TableColumnMappingEntityType
-from .table_column_type import TableColumnType
-from .table_metadata_update_request import TableMetadataUpdateRequest
-from .table_metadata_update_request_rename_columns_type_0 import TableMetadataUpdateRequestRenameColumnsType0
 from .table_result_info import TableResultInfo
 from .table_row_cell_info import TableRowCellInfo
 from .target_model_entity_filter_options import TargetModelEntityFilterOptions
@@ -1291,6 +1294,7 @@ __all__ = (
     "DataspaceProcessPath",
     "DataspaceProjectAttributePatchInPatch",
     "DataspaceProjectAttributePatchInPatchAttributeMetadataType0",
+    "DataspaceProjectAttributePatchInPatchTableAttributeConfigType0",
     "DataspaceProjectAttributePath",
     "DataspaceProjectAttributePostIn",
     "DataspaceProjectAttributePostInAttributeMetadataType0",
@@ -1310,6 +1314,7 @@ __all__ = (
     "DataspaceRequiredSchema",
     "DataspaceResourceAttributePatchInPatch",
     "DataspaceResourceAttributePatchInPatchAttributeMetadataType0",
+    "DataspaceResourceAttributePatchInPatchTableAttributeConfigType0",
     "DataspaceResourceFileAttributePath",
     "DataspaceResourceFileAttributePostOut",
     "DataspaceResourceFileAttributePostOutAttributeMetadataType0",
@@ -2009,9 +2014,6 @@ __all__ = (
     "TableColumnInfo",
     "TableColumnMapping",
     "TableColumnMappingEntityType",
-    "TableColumnType",
-    "TableMetadataUpdateRequest",
-    "TableMetadataUpdateRequestRenameColumnsType0",
     "TableResultInfo",
     "TableRowCellInfo",
     "TargetModelEntityFilterOptions",
