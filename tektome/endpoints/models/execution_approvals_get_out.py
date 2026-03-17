@@ -29,6 +29,7 @@ class ExecutionApprovalsGetOut:
         updated_by (UserMetadata):
         approval_candidates (list[ApprovalTicketCandidateOut]):
         process_details (ExecutionProcessGetOut): Process details within an execution group
+        candidates_count (int):
         category (str): The category of the approval ticket
         execution (UUID): The execution associated with this approval ticket
         process (UUID): The process associated with this approval ticket
@@ -38,12 +39,14 @@ class ExecutionApprovalsGetOut:
         id (None | Unset | UUID):
         status (str | Unset): The status of the approval ticket Default: 'pending'.
         reviewed_at (datetime.datetime | None | Unset): The timestamp when the approval ticket was reviewed
+        step_number (int | Unset): The step number of this approval ticket within its execution Default: 1.
     """
 
     created_by: UserMetadata
     updated_by: UserMetadata
     approval_candidates: list[ApprovalTicketCandidateOut]
     process_details: ExecutionProcessGetOut
+    candidates_count: int
     category: str
     execution: UUID
     process: UUID
@@ -53,6 +56,7 @@ class ExecutionApprovalsGetOut:
     id: None | Unset | UUID = UNSET
     status: str | Unset = "pending"
     reviewed_at: datetime.datetime | None | Unset = UNSET
+    step_number: int | Unset = 1
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -68,6 +72,8 @@ class ExecutionApprovalsGetOut:
             approval_candidates.append(approval_candidates_item)
 
         process_details = self.process_details.to_dict()
+
+        candidates_count = self.candidates_count
 
         category = self.category
 
@@ -105,6 +111,8 @@ class ExecutionApprovalsGetOut:
         else:
             reviewed_at = self.reviewed_at
 
+        step_number = self.step_number
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -113,6 +121,7 @@ class ExecutionApprovalsGetOut:
                 "updated_by": updated_by,
                 "approval_candidates": approval_candidates,
                 "process_details": process_details,
+                "candidates_count": candidates_count,
                 "category": category,
                 "execution": execution,
                 "process": process,
@@ -128,6 +137,8 @@ class ExecutionApprovalsGetOut:
             field_dict["status"] = status
         if reviewed_at is not UNSET:
             field_dict["reviewed_at"] = reviewed_at
+        if step_number is not UNSET:
+            field_dict["step_number"] = step_number
 
         return field_dict
 
@@ -150,6 +161,8 @@ class ExecutionApprovalsGetOut:
             approval_candidates.append(approval_candidates_item)
 
         process_details = ExecutionProcessGetOut.from_dict(d.pop("process_details"))
+
+        candidates_count = d.pop("candidates_count")
 
         category = d.pop("category")
 
@@ -214,11 +227,14 @@ class ExecutionApprovalsGetOut:
 
         reviewed_at = _parse_reviewed_at(d.pop("reviewed_at", UNSET))
 
+        step_number = d.pop("step_number", UNSET)
+
         execution_approvals_get_out = cls(
             created_by=created_by,
             updated_by=updated_by,
             approval_candidates=approval_candidates,
             process_details=process_details,
+            candidates_count=candidates_count,
             category=category,
             execution=execution,
             process=process,
@@ -228,6 +244,7 @@ class ExecutionApprovalsGetOut:
             id=id,
             status=status,
             reviewed_at=reviewed_at,
+            step_number=step_number,
         )
 
         execution_approvals_get_out.additional_properties = d

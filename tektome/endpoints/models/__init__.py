@@ -5,6 +5,8 @@ from .a_dataspace_path_params import ADataspacePathParams
 from .a_project_default_path import AProjectDefaultPath
 from .a_requirement_path import ARequirementPath
 from .a_simulate_long_call_post_out import ASimulateLongCallPostOut
+from .add_approval_ticket_candidate_multi_part_body_params import AddApprovalTicketCandidateMultiPartBodyParams
+from .add_candidate_post_in import AddCandidatePostIn
 from .affected_requirement_out import AffectedRequirementOut
 from .aggregate_llm_usage_post_in import AggregateLLMUsagePostIn
 from .aggregated_llm_usage_post_out import AggregatedLLMUsagePostOut
@@ -14,6 +16,7 @@ from .any_attribute_schema_in import AnyAttributeSchemaIn
 from .any_resource_pagination_schema_in import AnyResourcePaginationSchemaIn
 from .any_resource_schema_in import AnyResourceSchemaIn
 from .any_valued_attribute_schema_in import AnyValuedAttributeSchemaIn
+from .approval_candidate_select_path_params import ApprovalCandidateSelectPathParams
 from .approval_candidates_path_params import ApprovalCandidatesPathParams
 from .approval_category_types import ApprovalCategoryTypes
 from .approval_entry_schema import ApprovalEntrySchema
@@ -22,6 +25,9 @@ from .approval_status import ApprovalStatus
 from .approval_status_patch_in import ApprovalStatusPatchIn
 from .approval_ticket_candidate_out import ApprovalTicketCandidateOut
 from .approval_ticket_candidate_out_instructions import ApprovalTicketCandidateOutInstructions
+from .approval_ticket_candidate_patch_out import ApprovalTicketCandidatePatchOut
+from .approval_ticket_candidate_patch_out_data_snapshot_type_0 import ApprovalTicketCandidatePatchOutDataSnapshotType0
+from .approval_ticket_candidate_patch_out_instructions import ApprovalTicketCandidatePatchOutInstructions
 from .approval_ticket_get_out import ApprovalTicketGetOut
 from .approval_ticket_patch_in_patch import ApprovalTicketPatchInPatch
 from .approval_ticket_post_in import ApprovalTicketPostIn
@@ -64,7 +70,6 @@ from .attribute_extraction_post_out import AttributeExtractionPostOut
 from .attribute_extraction_status_choices import AttributeExtractionStatusChoices
 from .attribute_get_out import AttributeGetOut
 from .attribute_get_out_value_type_7 import AttributeGetOutValueType7
-from .attribute_input_payload import AttributeInputPayload
 from .attribute_metadata import AttributeMetadata
 from .attribute_object_types import AttributeObjectTypes
 from .attribute_patch_in_patch import AttributePatchInPatch
@@ -144,6 +149,8 @@ from .bulk_review_post_in_action import BulkReviewPostInAction
 from .bulk_user_invitation_schema_out import BulkUserInvitationSchemaOut
 from .candidate_item import CandidateItem
 from .candidate_item_kind import CandidateItemKind
+from .candidate_select_post_in import CandidateSelectPostIn
+from .candidate_select_status import CandidateSelectStatus
 from .chat import Chat
 from .chat_chunks_type_0_item import ChatChunksType0Item
 from .chat_post_in import ChatPostIn
@@ -739,6 +746,7 @@ from .process_post_in import ProcessPostIn
 from .process_post_in_patch import ProcessPostInPatch
 from .process_type_choices import ProcessTypeChoices
 from .project_accept_invite_post_in import ProjectAcceptInvitePostIn
+from .project_attribute_input_payload import ProjectAttributeInputPayload
 from .project_check_delete_out import ProjectCheckDeleteOut
 from .project_choices_get_out import ProjectChoicesGetOut
 from .project_default_path import ProjectDefaultPath
@@ -850,6 +858,7 @@ from .research_mode_enum import ResearchModeEnum
 from .research_template_path_in import ResearchTemplatePathIn
 from .research_template_resources_out import ResearchTemplateResourcesOut
 from .resource_allow_edit_schema_patch_in_patch import ResourceAllowEditSchemaPatchInPatch
+from .resource_attribute_input_payload import ResourceAttributeInputPayload
 from .resource_capture_section_component_schema import ResourceCaptureSectionComponentSchema
 from .resource_capture_section_component_schema_positional_text_type_0 import (
     ResourceCaptureSectionComponentSchemaPositionalTextType0,
@@ -907,6 +916,8 @@ from .run_artifact_post_out import RunArtifactPostOut
 from .run_artifact_post_path import RunArtifactPostPath
 from .sample_async_external_call_response import SampleAsyncExternalCallResponse
 from .sample_simulate_unhandled_exception_response import SampleSimulateUnhandledExceptionResponse
+from .scoped_bulk_review_post_in import ScopedBulkReviewPostIn
+from .scoped_bulk_review_post_in_action import ScopedBulkReviewPostInAction
 from .search_bim_elements_bim_element_type_path import SearchBimElementsBimElementTypePath
 from .search_document_post_in import SearchDocumentPostIn
 from .search_document_result_post_out import SearchDocumentResultPostOut
@@ -1079,6 +1090,8 @@ from .verify_otp_post_in import VerifyOTPPostIn
 __all__ = (
     "ABimProjectElementTypePath",
     "ADataspacePathParams",
+    "AddApprovalTicketCandidateMultiPartBodyParams",
+    "AddCandidatePostIn",
     "AffectedRequirementOut",
     "AggregatedLLMUsagePostOut",
     "AggregatedUsageByModel",
@@ -1088,6 +1101,7 @@ __all__ = (
     "AnyResourcePaginationSchemaIn",
     "AnyResourceSchemaIn",
     "AnyValuedAttributeSchemaIn",
+    "ApprovalCandidateSelectPathParams",
     "ApprovalCandidatesPathParams",
     "ApprovalCategoryTypes",
     "ApprovalEntrySchema",
@@ -1096,6 +1110,9 @@ __all__ = (
     "ApprovalStatusPatchIn",
     "ApprovalTicketCandidateOut",
     "ApprovalTicketCandidateOutInstructions",
+    "ApprovalTicketCandidatePatchOut",
+    "ApprovalTicketCandidatePatchOutDataSnapshotType0",
+    "ApprovalTicketCandidatePatchOutInstructions",
     "ApprovalTicketGetOut",
     "ApprovalTicketPatchInPatch",
     "ApprovalTicketPostIn",
@@ -1141,7 +1158,6 @@ __all__ = (
     "AttributeExtractionStatusChoices",
     "AttributeGetOut",
     "AttributeGetOutValueType7",
-    "AttributeInputPayload",
     "AttributeMetadata",
     "AttributeObjectTypes",
     "AttributePatchInPatch",
@@ -1221,6 +1237,8 @@ __all__ = (
     "BulkUserInvitationSchemaOut",
     "CandidateItem",
     "CandidateItemKind",
+    "CandidateSelectPostIn",
+    "CandidateSelectStatus",
     "Chat",
     "ChatChunksType0Item",
     "ChatPostIn",
@@ -1766,6 +1784,7 @@ __all__ = (
     "ProcessPostInPatch",
     "ProcessTypeChoices",
     "ProjectAcceptInvitePostIn",
+    "ProjectAttributeInputPayload",
     "ProjectCheckDeleteOut",
     "ProjectChoicesGetOut",
     "ProjectDefaultPath",
@@ -1867,6 +1886,7 @@ __all__ = (
     "ResearchTemplatePathIn",
     "ResearchTemplateResourcesOut",
     "ResourceAllowEditSchemaPatchInPatch",
+    "ResourceAttributeInputPayload",
     "ResourceCaptureSectionComponentSchema",
     "ResourceCaptureSectionComponentSchemaPositionalTextType0",
     "ResourceChildren",
@@ -1922,6 +1942,8 @@ __all__ = (
     "RunArtifactPostPath",
     "SampleAsyncExternalCallResponse",
     "SampleSimulateUnhandledExceptionResponse",
+    "ScopedBulkReviewPostIn",
+    "ScopedBulkReviewPostInAction",
     "SearchBimElementsBimElementTypePath",
     "SearchDocumentPostIn",
     "SearchDocumentResultPostOut",

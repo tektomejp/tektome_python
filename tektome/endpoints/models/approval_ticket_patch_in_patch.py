@@ -19,10 +19,12 @@ class ApprovalTicketPatchInPatch:
     Attributes:
         category (ApprovalCategoryTypes | None | Unset):
         status (ApprovalStatusPatchIn | None | Unset):
+        is_auto_select_first_candidate (bool | None | Unset):
     """
 
     category: ApprovalCategoryTypes | None | Unset = UNSET
     status: ApprovalStatusPatchIn | None | Unset = UNSET
+    is_auto_select_first_candidate: bool | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,6 +44,12 @@ class ApprovalTicketPatchInPatch:
         else:
             status = self.status
 
+        is_auto_select_first_candidate: bool | None | Unset
+        if isinstance(self.is_auto_select_first_candidate, Unset):
+            is_auto_select_first_candidate = UNSET
+        else:
+            is_auto_select_first_candidate = self.is_auto_select_first_candidate
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -49,6 +57,8 @@ class ApprovalTicketPatchInPatch:
             field_dict["category"] = category
         if status is not UNSET:
             field_dict["status"] = status
+        if is_auto_select_first_candidate is not UNSET:
+            field_dict["is_auto_select_first_candidate"] = is_auto_select_first_candidate
 
         return field_dict
 
@@ -90,9 +100,21 @@ class ApprovalTicketPatchInPatch:
 
         status = _parse_status(d.pop("status", UNSET))
 
+        def _parse_is_auto_select_first_candidate(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        is_auto_select_first_candidate = _parse_is_auto_select_first_candidate(
+            d.pop("is_auto_select_first_candidate", UNSET)
+        )
+
         approval_ticket_patch_in_patch = cls(
             category=category,
             status=status,
+            is_auto_select_first_candidate=is_auto_select_first_candidate,
         )
 
         approval_ticket_patch_in_patch.additional_properties = d

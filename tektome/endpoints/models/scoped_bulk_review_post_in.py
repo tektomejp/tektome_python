@@ -2,38 +2,31 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import Any, TypeVar
-from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.bulk_review_post_in_action import BulkReviewPostInAction
+from ..models.scoped_bulk_review_post_in_action import ScopedBulkReviewPostInAction
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="BulkReviewPostIn")
+T = TypeVar("T", bound="ScopedBulkReviewPostIn")
 
 
 @_attrs_define
-class BulkReviewPostIn:
-    """
+class ScopedBulkReviewPostIn:
+    """Scoped bulk review input for reviewing all pending tickets in a scope
+
     Attributes:
-        approval_ids (list[UUID]): List of Approval Ticket IDs to be approved or rejected.
-        action (BulkReviewPostInAction): Action to be performed on the approval tickets.
-        is_auto_select_first_candidate (bool | Unset): True - Auto-selects the first candidate for tickets that have no
-            selected candidate Default: True.
+        action (ScopedBulkReviewPostInAction): Action to be performed on the approval tickets.
+        is_auto_select_first_candidate (bool | Unset): If True, auto-selects the first candidate for tickets that have
+            no selected candidate. Default: False.
     """
 
-    approval_ids: list[UUID]
-    action: BulkReviewPostInAction
-    is_auto_select_first_candidate: bool | Unset = True
+    action: ScopedBulkReviewPostInAction
+    is_auto_select_first_candidate: bool | Unset = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        approval_ids = []
-        for approval_ids_item_data in self.approval_ids:
-            approval_ids_item = str(approval_ids_item_data)
-            approval_ids.append(approval_ids_item)
-
         action = self.action.value
 
         is_auto_select_first_candidate = self.is_auto_select_first_candidate
@@ -42,7 +35,6 @@ class BulkReviewPostIn:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "approval_ids": approval_ids,
                 "action": action,
             }
         )
@@ -54,25 +46,17 @@ class BulkReviewPostIn:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        approval_ids = []
-        _approval_ids = d.pop("approval_ids")
-        for approval_ids_item_data in _approval_ids:
-            approval_ids_item = UUID(approval_ids_item_data)
-
-            approval_ids.append(approval_ids_item)
-
-        action = BulkReviewPostInAction(d.pop("action"))
+        action = ScopedBulkReviewPostInAction(d.pop("action"))
 
         is_auto_select_first_candidate = d.pop("is_auto_select_first_candidate", UNSET)
 
-        bulk_review_post_in = cls(
-            approval_ids=approval_ids,
+        scoped_bulk_review_post_in = cls(
             action=action,
             is_auto_select_first_candidate=is_auto_select_first_candidate,
         )
 
-        bulk_review_post_in.additional_properties = d
-        return bulk_review_post_in
+        scoped_bulk_review_post_in.additional_properties = d
+        return scoped_bulk_review_post_in
 
     @property
     def additional_keys(self) -> list[str]:
