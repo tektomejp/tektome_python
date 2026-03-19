@@ -176,3 +176,7 @@ with ctx.client(raise_on_unexpected_status=False) as client:
 - Python 3.13+ required
 - Schema validation uses Pydantic v2
 - Both sync and async clients are supported (`ctx.client()` for sync, async context manager for async)
+
+## References
+
+The `/references` directory contains markdown files detailing specific Tektome concepts, like "attribute extraction", "citation creation", etc. Use these to help understand how to use the SDK for common tasks.
