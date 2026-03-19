@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_folder_resource_request import CreateFolderResourceRequest
+from ...models.folder_resource_post_in import FolderResourcePostIn
 from ...types import Response
 
 
 def _get_kwargs(
     folder_id: UUID,
     *,
-    body: CreateFolderResourceRequest,
+    body: FolderResourcePostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,15 +56,24 @@ def sync_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateFolderResourceRequest,
+    body: FolderResourcePostIn,
 ) -> Response[Any]:
-    """Detach resources from a folder
+    """Delete Remove Resource
 
-     Remove the association between one or more resources and the specified folder.
+     0vX2r1gq
+
+    Remove resource(s) from the folder using resource id(s)
+
+    Args:
+        request: Request object
+        path_params: FolderPathIn object containing folder_id
+        payload: Payload containing resource_id(s) to be removed
+
+    Returns: None
 
     Args:
         folder_id (UUID):
-        body (CreateFolderResourceRequest): Schema for attaching a resource(s) to a folder.
+        body (FolderResourcePostIn): Schema for attaching a lawtalk resource(s) to a folder.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -90,15 +99,24 @@ async def asyncio_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateFolderResourceRequest,
+    body: FolderResourcePostIn,
 ) -> Response[Any]:
-    """Detach resources from a folder
+    """Delete Remove Resource
 
-     Remove the association between one or more resources and the specified folder.
+     0vX2r1gq
+
+    Remove resource(s) from the folder using resource id(s)
+
+    Args:
+        request: Request object
+        path_params: FolderPathIn object containing folder_id
+        payload: Payload containing resource_id(s) to be removed
+
+    Returns: None
 
     Args:
         folder_id (UUID):
-        body (CreateFolderResourceRequest): Schema for attaching a resource(s) to a folder.
+        body (FolderResourcePostIn): Schema for attaching a lawtalk resource(s) to a folder.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

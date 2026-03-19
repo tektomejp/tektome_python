@@ -60,9 +60,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list[RequirementSchema]]:
-    """List resource group requirements
+    """Get Requirements From Resource Group
 
-     Retrieve all requirements associated with a specific resource group.
+     y88KdBEZ
+
+    Get list of requirements associated with a resource group.
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -91,9 +93,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> list[RequirementSchema] | None:
-    """List resource group requirements
+    """Get Requirements From Resource Group
 
-     Retrieve all requirements associated with a specific resource group.
+     y88KdBEZ
+
+    Get list of requirements associated with a resource group.
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -117,9 +121,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list[RequirementSchema]]:
-    """List resource group requirements
+    """Get Requirements From Resource Group
 
-     Retrieve all requirements associated with a specific resource group.
+     y88KdBEZ
+
+    Get list of requirements associated with a resource group.
 
     Args:
         resource_group_id (UUID): Resource group ID
@@ -146,9 +152,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> list[RequirementSchema] | None:
-    """List resource group requirements
+    """Get Requirements From Resource Group
 
-     Retrieve all requirements associated with a specific resource group.
+     y88KdBEZ
+
+    Get list of requirements associated with a resource group.
 
     Args:
         resource_group_id (UUID): Resource group ID

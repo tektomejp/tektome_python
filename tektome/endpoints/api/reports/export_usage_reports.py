@@ -68,11 +68,18 @@ def sync_detailed(
     month: int,
     year: int | Unset = UNSET,
 ) -> Response[Any]:
-    """Export usage reports as ZIP
+    """Get Export Usage Reports
 
-     Export usage reports for a specific organization and month/year as a downloadable ZIP file
-    containing multiple CSV reports including daily activities, project statistics, LLM usage, and cost
-    details.
+     7wGb8ZfA
+
+    Export usage reports for a specific organization and month/year as a ZIP file containing multiple
+    CSV reports.
+
+    Args:
+        request: The HTTP request object.
+        query_params: Query parameters including organization_id, month, and year.
+
+    Returns: A FileResponse containing the ZIP file with the usage reports.
 
     Args:
         organization_id (UUID):
@@ -110,11 +117,18 @@ async def asyncio_detailed(
     month: int,
     year: int | Unset = UNSET,
 ) -> Response[Any]:
-    """Export usage reports as ZIP
+    """Get Export Usage Reports
 
-     Export usage reports for a specific organization and month/year as a downloadable ZIP file
-    containing multiple CSV reports including daily activities, project statistics, LLM usage, and cost
-    details.
+     7wGb8ZfA
+
+    Export usage reports for a specific organization and month/year as a ZIP file containing multiple
+    CSV reports.
+
+    Args:
+        request: The HTTP request object.
+        query_params: Query parameters including organization_id, month, and year.
+
+    Returns: A FileResponse containing the ZIP file with the usage reports.
 
     Args:
         organization_id (UUID):

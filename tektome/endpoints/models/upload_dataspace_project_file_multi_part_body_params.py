@@ -12,7 +12,7 @@ from .. import types
 from ..types import File
 
 if TYPE_CHECKING:
-    from ..models.dataspace_resource_upload_request import DataspaceResourceUploadRequest
+    from ..models.dataspace_resource_upload_in import DataspaceResourceUploadIn
 
 
 T = TypeVar("T", bound="UploadDataspaceProjectFileMultiPartBodyParams")
@@ -23,11 +23,11 @@ class UploadDataspaceProjectFileMultiPartBodyParams:
     """
     Attributes:
         file (File):
-        payload (DataspaceResourceUploadRequest):
+        payload (DataspaceResourceUploadIn):
     """
 
     file: File
-    payload: DataspaceResourceUploadRequest
+    payload: DataspaceResourceUploadIn
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,12 +60,12 @@ class UploadDataspaceProjectFileMultiPartBodyParams:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.dataspace_resource_upload_request import DataspaceResourceUploadRequest
+        from ..models.dataspace_resource_upload_in import DataspaceResourceUploadIn
 
         d = dict(src_dict)
         file = File(payload=BytesIO(d.pop("file")))
 
-        payload = DataspaceResourceUploadRequest.from_dict(d.pop("payload"))
+        payload = DataspaceResourceUploadIn.from_dict(d.pop("payload"))
 
         upload_dataspace_project_file_multi_part_body_params = cls(
             file=file,

@@ -48,9 +48,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete requirement items
+    """Delete Requirement Items
 
-     Delete the entire requirement items table associated with a requirement and reset any approvals.
+     JnQkM31C
+
+    Get all requirement items associated to a requirement
 
     Args:
         requirement_id (UUID):
@@ -79,9 +81,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete requirement items
+    """Delete Requirement Items
 
-     Delete the entire requirement items table associated with a requirement and reset any approvals.
+     JnQkM31C
+
+    Get all requirement items associated to a requirement
 
     Args:
         requirement_id (UUID):

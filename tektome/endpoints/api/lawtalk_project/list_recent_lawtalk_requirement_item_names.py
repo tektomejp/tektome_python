@@ -7,6 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.pagedstr import Pagedstr
 from ...types import UNSET, Response, Unset
 
 
@@ -41,14 +42,19 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Pagedstr | None:
+    if response.status_code == 200:
+        response_200 = Pagedstr.from_dict(response.json())
+
+        return response_200
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Pagedstr]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,10 +69,18 @@ def sync_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[Any]:
-    """List recent requirement item names
+) -> Response[Pagedstr]:
+    """Get Project Recent Requirement Item Names
 
-     Retrieve the most recently created requirement item names for a project.
+     9Lk1fuzC
+    Retrieves the 5 most recent requirement item names for a project.
+
+    Args:
+        request: The HTTP request object.
+        path_params: Path parameters containing the project ID.
+
+    Returns:
+        A list of recent requirement item names.
 
     Args:
         project_id (UUID):
@@ -78,7 +92,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[Pagedstr]
     """
 
     kwargs = _get_kwargs(
@@ -94,16 +108,24 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[Any]:
-    """List recent requirement item names
+) -> Pagedstr | None:
+    """Get Project Recent Requirement Item Names
 
-     Retrieve the most recently created requirement item names for a project.
+     9Lk1fuzC
+    Retrieves the 5 most recent requirement item names for a project.
+
+    Args:
+        request: The HTTP request object.
+        path_params: Path parameters containing the project ID.
+
+    Returns:
+        A list of recent requirement item names.
 
     Args:
         project_id (UUID):
@@ -115,7 +137,47 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Pagedstr
+    """
+
+    return sync_detailed(
+        project_id=project_id,
+        client=client,
+        page=page,
+        page_size=page_size,
+    ).parsed
+
+
+async def asyncio_detailed(
+    project_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
+) -> Response[Pagedstr]:
+    """Get Project Recent Requirement Item Names
+
+     9Lk1fuzC
+    Retrieves the 5 most recent requirement item names for a project.
+
+    Args:
+        request: The HTTP request object.
+        path_params: Path parameters containing the project ID.
+
+    Returns:
+        A list of recent requirement item names.
+
+    Args:
+        project_id (UUID):
+        page (int | Unset):  Default: 1.
+        page_size (int | None | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[Pagedstr]
     """
 
     kwargs = _get_kwargs(
@@ -127,3 +189,45 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    project_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
+) -> Pagedstr | None:
+    """Get Project Recent Requirement Item Names
+
+     9Lk1fuzC
+    Retrieves the 5 most recent requirement item names for a project.
+
+    Args:
+        request: The HTTP request object.
+        path_params: Path parameters containing the project ID.
+
+    Returns:
+        A list of recent requirement item names.
+
+    Args:
+        project_id (UUID):
+        page (int | Unset):  Default: 1.
+        page_size (int | None | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Pagedstr
+    """
+
+    return (
+        await asyncio_detailed(
+            project_id=project_id,
+            client=client,
+            page=page,
+            page_size=page_size,
+        )
+    ).parsed

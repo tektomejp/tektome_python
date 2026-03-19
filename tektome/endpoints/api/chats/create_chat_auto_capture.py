@@ -6,13 +6,13 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.create_chat_auto_capture_response import CreateChatAutoCaptureResponse
-from ...models.create_lawtalk_requirement_chat_request import CreateLawtalkRequirementChatRequest
+from ...models.lawtalk_requirement_chat_post_in import LawtalkRequirementChatPostIn
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: CreateLawtalkRequirementChatRequest,
+    body: LawtalkRequirementChatPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -57,16 +57,24 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateLawtalkRequirementChatRequest,
+    body: LawtalkRequirementChatPostIn,
 ) -> Response[CreateChatAutoCaptureResponse]:
-    """Send auto-capture chat message
+    """Post Chat Auto Capture
 
-     Send a chat message for automatic specification capture against a requirement. Optionally scope by
-    resource groups. Returns the chatroom ID.
+     LYaOS3Op
+
+
+    Post a chat message to a lawtalk requirement chatroom.
 
     Args:
-        body (CreateLawtalkRequirementChatRequest): Serializer for posting a chat message to a
-            lawtalk requirement chatroom.
+        request: The request object containing authentication and user information.
+        payload:  The payload containing chatroom ID, prompt, recipe, and requirement details.
+
+    Returns: Chatroom ID of the created or existing chatroom.
+
+    Args:
+        body (LawtalkRequirementChatPostIn): Serializer for posting a chat message to a lawtalk
+            requirement chatroom.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -90,16 +98,24 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: CreateLawtalkRequirementChatRequest,
+    body: LawtalkRequirementChatPostIn,
 ) -> CreateChatAutoCaptureResponse | None:
-    """Send auto-capture chat message
+    """Post Chat Auto Capture
 
-     Send a chat message for automatic specification capture against a requirement. Optionally scope by
-    resource groups. Returns the chatroom ID.
+     LYaOS3Op
+
+
+    Post a chat message to a lawtalk requirement chatroom.
 
     Args:
-        body (CreateLawtalkRequirementChatRequest): Serializer for posting a chat message to a
-            lawtalk requirement chatroom.
+        request: The request object containing authentication and user information.
+        payload:  The payload containing chatroom ID, prompt, recipe, and requirement details.
+
+    Returns: Chatroom ID of the created or existing chatroom.
+
+    Args:
+        body (LawtalkRequirementChatPostIn): Serializer for posting a chat message to a lawtalk
+            requirement chatroom.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -118,16 +134,24 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateLawtalkRequirementChatRequest,
+    body: LawtalkRequirementChatPostIn,
 ) -> Response[CreateChatAutoCaptureResponse]:
-    """Send auto-capture chat message
+    """Post Chat Auto Capture
 
-     Send a chat message for automatic specification capture against a requirement. Optionally scope by
-    resource groups. Returns the chatroom ID.
+     LYaOS3Op
+
+
+    Post a chat message to a lawtalk requirement chatroom.
 
     Args:
-        body (CreateLawtalkRequirementChatRequest): Serializer for posting a chat message to a
-            lawtalk requirement chatroom.
+        request: The request object containing authentication and user information.
+        payload:  The payload containing chatroom ID, prompt, recipe, and requirement details.
+
+    Returns: Chatroom ID of the created or existing chatroom.
+
+    Args:
+        body (LawtalkRequirementChatPostIn): Serializer for posting a chat message to a lawtalk
+            requirement chatroom.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -149,16 +173,24 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: CreateLawtalkRequirementChatRequest,
+    body: LawtalkRequirementChatPostIn,
 ) -> CreateChatAutoCaptureResponse | None:
-    """Send auto-capture chat message
+    """Post Chat Auto Capture
 
-     Send a chat message for automatic specification capture against a requirement. Optionally scope by
-    resource groups. Returns the chatroom ID.
+     LYaOS3Op
+
+
+    Post a chat message to a lawtalk requirement chatroom.
 
     Args:
-        body (CreateLawtalkRequirementChatRequest): Serializer for posting a chat message to a
-            lawtalk requirement chatroom.
+        request: The request object containing authentication and user information.
+        payload:  The payload containing chatroom ID, prompt, recipe, and requirement details.
+
+    Returns: Chatroom ID of the created or existing chatroom.
+
+    Args:
+        body (LawtalkRequirementChatPostIn): Serializer for posting a chat message to a lawtalk
+            requirement chatroom.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

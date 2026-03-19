@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.template_from_artifact_request import TemplateFromArtifactRequest
-from ...models.template_response import TemplateResponse
+from ...models.template_from_artifact_in import TemplateFromArtifactIn
+from ...models.template_out import TemplateOut
 from ...types import Response
 
 
 def _get_kwargs(
     organization_id: UUID,
     *,
-    body: TemplateFromArtifactRequest,
+    body: TemplateFromArtifactIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -34,9 +34,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> TemplateResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> TemplateOut | None:
     if response.status_code == 201:
-        response_201 = TemplateResponse.from_dict(response.json())
+        response_201 = TemplateOut.from_dict(response.json())
 
         return response_201
 
@@ -46,7 +46,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[TemplateResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[TemplateOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,23 +59,23 @@ def sync_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: TemplateFromArtifactRequest,
-) -> Response[TemplateResponse]:
-    """Create template from artifact
+    body: TemplateFromArtifactIn,
+) -> Response[TemplateOut]:
+    """Create a new template from an existing artifact
 
-     Create a new process template from an existing artifact. The artifact must exist and belong to the
-    authenticated user's organization.
+     VxJkL9mN
+    Create a new template from an existing artifact. The artifact must exist and belong to the user.
 
     Args:
         organization_id (UUID):
-        body (TemplateFromArtifactRequest): Schema for creating a new template from an artifact.
+        body (TemplateFromArtifactIn): Schema for creating a new template from an artifact.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[TemplateResponse]
+        Response[TemplateOut]
     """
 
     kwargs = _get_kwargs(
@@ -94,23 +94,23 @@ def sync(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: TemplateFromArtifactRequest,
-) -> TemplateResponse | None:
-    """Create template from artifact
+    body: TemplateFromArtifactIn,
+) -> TemplateOut | None:
+    """Create a new template from an existing artifact
 
-     Create a new process template from an existing artifact. The artifact must exist and belong to the
-    authenticated user's organization.
+     VxJkL9mN
+    Create a new template from an existing artifact. The artifact must exist and belong to the user.
 
     Args:
         organization_id (UUID):
-        body (TemplateFromArtifactRequest): Schema for creating a new template from an artifact.
+        body (TemplateFromArtifactIn): Schema for creating a new template from an artifact.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        TemplateResponse
+        TemplateOut
     """
 
     return sync_detailed(
@@ -124,23 +124,23 @@ async def asyncio_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: TemplateFromArtifactRequest,
-) -> Response[TemplateResponse]:
-    """Create template from artifact
+    body: TemplateFromArtifactIn,
+) -> Response[TemplateOut]:
+    """Create a new template from an existing artifact
 
-     Create a new process template from an existing artifact. The artifact must exist and belong to the
-    authenticated user's organization.
+     VxJkL9mN
+    Create a new template from an existing artifact. The artifact must exist and belong to the user.
 
     Args:
         organization_id (UUID):
-        body (TemplateFromArtifactRequest): Schema for creating a new template from an artifact.
+        body (TemplateFromArtifactIn): Schema for creating a new template from an artifact.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[TemplateResponse]
+        Response[TemplateOut]
     """
 
     kwargs = _get_kwargs(
@@ -157,23 +157,23 @@ async def asyncio(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: TemplateFromArtifactRequest,
-) -> TemplateResponse | None:
-    """Create template from artifact
+    body: TemplateFromArtifactIn,
+) -> TemplateOut | None:
+    """Create a new template from an existing artifact
 
-     Create a new process template from an existing artifact. The artifact must exist and belong to the
-    authenticated user's organization.
+     VxJkL9mN
+    Create a new template from an existing artifact. The artifact must exist and belong to the user.
 
     Args:
         organization_id (UUID):
-        body (TemplateFromArtifactRequest): Schema for creating a new template from an artifact.
+        body (TemplateFromArtifactIn): Schema for creating a new template from an artifact.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        TemplateResponse
+        TemplateOut
     """
 
     return (

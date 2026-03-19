@@ -7,14 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_folder_request import CreateFolderRequest
+from ...models.folder_post_in import FolderPostIn
+from ...models.folder_post_out import FolderPostOut
 from ...types import Response
 
 
 def _get_kwargs(
     folder_id: UUID,
     *,
-    body: CreateFolderRequest,
+    body: FolderPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -33,14 +34,19 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> FolderPostOut | None:
+    if response.status_code == 201:
+        response_201 = FolderPostOut.from_dict(response.json())
+
+        return response_201
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[FolderPostOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,22 +59,31 @@ def sync_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateFolderRequest,
-) -> Response[Any]:
-    """Create a subfolder
+    body: FolderPostIn,
+) -> Response[FolderPostOut]:
+    """Post Create Subfolder
 
-     Create a new subfolder within the specified parent folder.
+     SPUDyo5b
+
+    Create a new subfolder
+
+    Args:
+        request: Request object
+        path_params: FolderPathIn object containing folder_id
+        payload: FolderPostIn object containing name of the new folder
+
+    Returns: Folder object containing the new folder
 
     Args:
         folder_id (UUID):
-        body (CreateFolderRequest): Schema for creating a folder.
+        body (FolderPostIn): Schema for creating a folder.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[FolderPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -83,26 +98,73 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateFolderRequest,
-) -> Response[Any]:
-    """Create a subfolder
+    body: FolderPostIn,
+) -> FolderPostOut | None:
+    """Post Create Subfolder
 
-     Create a new subfolder within the specified parent folder.
+     SPUDyo5b
+
+    Create a new subfolder
+
+    Args:
+        request: Request object
+        path_params: FolderPathIn object containing folder_id
+        payload: FolderPostIn object containing name of the new folder
+
+    Returns: Folder object containing the new folder
 
     Args:
         folder_id (UUID):
-        body (CreateFolderRequest): Schema for creating a folder.
+        body (FolderPostIn): Schema for creating a folder.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        FolderPostOut
+    """
+
+    return sync_detailed(
+        folder_id=folder_id,
+        client=client,
+        body=body,
+    ).parsed
+
+
+async def asyncio_detailed(
+    folder_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    body: FolderPostIn,
+) -> Response[FolderPostOut]:
+    """Post Create Subfolder
+
+     SPUDyo5b
+
+    Create a new subfolder
+
+    Args:
+        request: Request object
+        path_params: FolderPathIn object containing folder_id
+        payload: FolderPostIn object containing name of the new folder
+
+    Returns: Folder object containing the new folder
+
+    Args:
+        folder_id (UUID):
+        body (FolderPostIn): Schema for creating a folder.
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[FolderPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -113,3 +175,43 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    folder_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    body: FolderPostIn,
+) -> FolderPostOut | None:
+    """Post Create Subfolder
+
+     SPUDyo5b
+
+    Create a new subfolder
+
+    Args:
+        request: Request object
+        path_params: FolderPathIn object containing folder_id
+        payload: FolderPostIn object containing name of the new folder
+
+    Returns: Folder object containing the new folder
+
+    Args:
+        folder_id (UUID):
+        body (FolderPostIn): Schema for creating a folder.
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        FolderPostOut
+    """
+
+    return (
+        await asyncio_detailed(
+            folder_id=folder_id,
+            client=client,
+            body=body,
+        )
+    ).parsed

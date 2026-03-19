@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.requirement_research_template_response import RequirementResearchTemplateResponse
+from ...models.requirement_research_template_get_out import RequirementResearchTemplateGetOut
 from ...types import Response
 
 
@@ -27,9 +27,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RequirementResearchTemplateResponse | None:
+) -> RequirementResearchTemplateGetOut | None:
     if response.status_code == 200:
-        response_200 = RequirementResearchTemplateResponse.from_dict(response.json())
+        response_200 = RequirementResearchTemplateGetOut.from_dict(response.json())
 
         return response_200
 
@@ -41,7 +41,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[RequirementResearchTemplateResponse]:
+) -> Response[RequirementResearchTemplateGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,10 +54,17 @@ def sync_detailed(
     research_template_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[RequirementResearchTemplateResponse]:
-    """Get an AI research template by ID
+) -> Response[RequirementResearchTemplateGetOut]:
+    """Retrieve Research Template
 
-     Retrieve a specific AI research template by its ID.
+     R1C1E1A4
+
+    Retrieve a research template by its ID.
+
+    Args:
+        path_params: Path parameters containing the research_template_id.
+
+    Returns: The retrieved ResearchTemplate instance.
 
     Args:
         research_template_id (UUID):
@@ -67,7 +74,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementResearchTemplateResponse]
+        Response[RequirementResearchTemplateGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -85,10 +92,17 @@ def sync(
     research_template_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> RequirementResearchTemplateResponse | None:
-    """Get an AI research template by ID
+) -> RequirementResearchTemplateGetOut | None:
+    """Retrieve Research Template
 
-     Retrieve a specific AI research template by its ID.
+     R1C1E1A4
+
+    Retrieve a research template by its ID.
+
+    Args:
+        path_params: Path parameters containing the research_template_id.
+
+    Returns: The retrieved ResearchTemplate instance.
 
     Args:
         research_template_id (UUID):
@@ -98,7 +112,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementResearchTemplateResponse
+        RequirementResearchTemplateGetOut
     """
 
     return sync_detailed(
@@ -111,10 +125,17 @@ async def asyncio_detailed(
     research_template_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[RequirementResearchTemplateResponse]:
-    """Get an AI research template by ID
+) -> Response[RequirementResearchTemplateGetOut]:
+    """Retrieve Research Template
 
-     Retrieve a specific AI research template by its ID.
+     R1C1E1A4
+
+    Retrieve a research template by its ID.
+
+    Args:
+        path_params: Path parameters containing the research_template_id.
+
+    Returns: The retrieved ResearchTemplate instance.
 
     Args:
         research_template_id (UUID):
@@ -124,7 +145,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementResearchTemplateResponse]
+        Response[RequirementResearchTemplateGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -140,10 +161,17 @@ async def asyncio(
     research_template_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> RequirementResearchTemplateResponse | None:
-    """Get an AI research template by ID
+) -> RequirementResearchTemplateGetOut | None:
+    """Retrieve Research Template
 
-     Retrieve a specific AI research template by its ID.
+     R1C1E1A4
+
+    Retrieve a research template by its ID.
+
+    Args:
+        path_params: Path parameters containing the research_template_id.
+
+    Returns: The retrieved ResearchTemplate instance.
 
     Args:
         research_template_id (UUID):
@@ -153,7 +181,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementResearchTemplateResponse
+        RequirementResearchTemplateGetOut
     """
 
     return (

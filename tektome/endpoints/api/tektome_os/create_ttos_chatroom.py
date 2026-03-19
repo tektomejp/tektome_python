@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.chatroom_response import ChatroomResponse
-from ...models.create_chatroom_request import CreateChatroomRequest
+from ...models.chatroom_post_in import ChatroomPostIn
+from ...models.chatroom_post_out import ChatroomPostOut
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: CreateChatroomRequest,
+    body: ChatroomPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -29,9 +29,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ChatroomResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ChatroomPostOut | None:
     if response.status_code == 201:
-        response_201 = ChatroomResponse.from_dict(response.json())
+        response_201 = ChatroomPostOut.from_dict(response.json())
 
         return response_201
 
@@ -41,7 +41,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ChatroomResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ChatroomPostOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,22 +53,25 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateChatroomRequest,
-) -> Response[ChatroomResponse]:
-    """Create a chatroom
+    body: ChatroomPostIn,
+) -> Response[ChatroomPostOut]:
+    """Create a new chatroom for TektomeOS operations and instantiate artifacts
 
-     Create a new chatroom and initialize it with default artifacts including an instructions file and a
-    main process file.
+     AqZqtBsY
+    Create a new chatroom for TektomeOS operations and instantiate artifacts
+    - creates a chatroom
+    - creates INSTRUCTIONS.md, this artifact is appended to agent's instruction/system prompt
+    - creates main.openflow, this artifact is the main openflow file for the agent
 
     Args:
-        body (CreateChatroomRequest):
+        body (ChatroomPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ChatroomResponse]
+        Response[ChatroomPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -85,22 +88,25 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: CreateChatroomRequest,
-) -> ChatroomResponse | None:
-    """Create a chatroom
+    body: ChatroomPostIn,
+) -> ChatroomPostOut | None:
+    """Create a new chatroom for TektomeOS operations and instantiate artifacts
 
-     Create a new chatroom and initialize it with default artifacts including an instructions file and a
-    main process file.
+     AqZqtBsY
+    Create a new chatroom for TektomeOS operations and instantiate artifacts
+    - creates a chatroom
+    - creates INSTRUCTIONS.md, this artifact is appended to agent's instruction/system prompt
+    - creates main.openflow, this artifact is the main openflow file for the agent
 
     Args:
-        body (CreateChatroomRequest):
+        body (ChatroomPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ChatroomResponse
+        ChatroomPostOut
     """
 
     return sync_detailed(
@@ -112,22 +118,25 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateChatroomRequest,
-) -> Response[ChatroomResponse]:
-    """Create a chatroom
+    body: ChatroomPostIn,
+) -> Response[ChatroomPostOut]:
+    """Create a new chatroom for TektomeOS operations and instantiate artifacts
 
-     Create a new chatroom and initialize it with default artifacts including an instructions file and a
-    main process file.
+     AqZqtBsY
+    Create a new chatroom for TektomeOS operations and instantiate artifacts
+    - creates a chatroom
+    - creates INSTRUCTIONS.md, this artifact is appended to agent's instruction/system prompt
+    - creates main.openflow, this artifact is the main openflow file for the agent
 
     Args:
-        body (CreateChatroomRequest):
+        body (ChatroomPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ChatroomResponse]
+        Response[ChatroomPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -142,22 +151,25 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: CreateChatroomRequest,
-) -> ChatroomResponse | None:
-    """Create a chatroom
+    body: ChatroomPostIn,
+) -> ChatroomPostOut | None:
+    """Create a new chatroom for TektomeOS operations and instantiate artifacts
 
-     Create a new chatroom and initialize it with default artifacts including an instructions file and a
-    main process file.
+     AqZqtBsY
+    Create a new chatroom for TektomeOS operations and instantiate artifacts
+    - creates a chatroom
+    - creates INSTRUCTIONS.md, this artifact is appended to agent's instruction/system prompt
+    - creates main.openflow, this artifact is the main openflow file for the agent
 
     Args:
-        body (CreateChatroomRequest):
+        body (ChatroomPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ChatroomResponse
+        ChatroomPostOut
     """
 
     return (

@@ -51,10 +51,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a payment record
+    """Delete Payment Record
 
-     Soft-delete a payment record. Credit records cannot be deleted if doing so would result in a
-    negative organization balance.
+     YSCUc2FD
+
+    Delete a payment record.
 
     Args:
         organization_id (UUID):
@@ -86,10 +87,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a payment record
+    """Delete Payment Record
 
-     Soft-delete a payment record. Credit records cannot be deleted if doing so would result in a
-    negative organization balance.
+     YSCUc2FD
+
+    Delete a payment record.
 
     Args:
         organization_id (UUID):

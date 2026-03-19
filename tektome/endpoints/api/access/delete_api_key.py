@@ -48,9 +48,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete an API key
+    """Delete Api Key
 
-     Permanently delete an API key owned by the authenticated user.
+     Delete an API key for the current user.
 
     Args:
         api_key_id (UUID):
@@ -79,9 +79,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete an API key
+    """Delete Api Key
 
-     Permanently delete an API key owned by the authenticated user.
+     Delete an API key for the current user.
 
     Args:
         api_key_id (UUID):

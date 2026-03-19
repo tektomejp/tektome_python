@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.users_schema_request import UsersSchemaRequest
+from ...models.users_schema_in import UsersSchemaIn
 from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
     *,
-    body: UsersSchemaRequest,
+    body: UsersSchemaIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,15 +56,17 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UsersSchemaRequest,
+    body: UsersSchemaIn,
 ) -> Response[Any]:
-    """Remove members from a dataspace
+    """Remove Dataspace Member
 
-     Remove one or more users from a dataspace, revoking their role assignments and access.
+     mlVn290Q
+
+    Remove members from a dataspace
 
     Args:
         dataspace_id (UUID):
-        body (UsersSchemaRequest): Schema for getting user IDs
+        body (UsersSchemaIn): Schema for getting user IDs
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -90,15 +92,17 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UsersSchemaRequest,
+    body: UsersSchemaIn,
 ) -> Response[Any]:
-    """Remove members from a dataspace
+    """Remove Dataspace Member
 
-     Remove one or more users from a dataspace, revoking their role assignments and access.
+     mlVn290Q
+
+    Remove members from a dataspace
 
     Args:
         dataspace_id (UUID):
-        body (UsersSchemaRequest): Schema for getting user IDs
+        body (UsersSchemaIn): Schema for getting user IDs
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

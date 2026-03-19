@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.gen_breadcrumbs_response import GenBreadcrumbsResponse
+from ...models.gen_breadcrumbs_get_out import GenBreadcrumbsGetOut
 from ...types import Response
 
 
@@ -25,9 +25,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> GenBreadcrumbsResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> GenBreadcrumbsGetOut | None:
     if response.status_code == 200:
-        response_200 = GenBreadcrumbsResponse.from_dict(response.json())
+        response_200 = GenBreadcrumbsGetOut.from_dict(response.json())
 
         return response_200
 
@@ -39,7 +39,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[GenBreadcrumbsResponse]:
+) -> Response[GenBreadcrumbsGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -52,10 +52,8 @@ def sync_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[GenBreadcrumbsResponse]:
-    """Get folder breadcrumb path
-
-     Generate the breadcrumb navigation path for a folder, including all parent folders up to the root.
+) -> Response[GenBreadcrumbsGetOut]:
+    """Get Folder Breadcrumbs
 
     Args:
         folder_id (UUID):
@@ -65,7 +63,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GenBreadcrumbsResponse]
+        Response[GenBreadcrumbsGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -83,10 +81,8 @@ def sync(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> GenBreadcrumbsResponse | None:
-    """Get folder breadcrumb path
-
-     Generate the breadcrumb navigation path for a folder, including all parent folders up to the root.
+) -> GenBreadcrumbsGetOut | None:
+    """Get Folder Breadcrumbs
 
     Args:
         folder_id (UUID):
@@ -96,7 +92,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GenBreadcrumbsResponse
+        GenBreadcrumbsGetOut
     """
 
     return sync_detailed(
@@ -109,10 +105,8 @@ async def asyncio_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[GenBreadcrumbsResponse]:
-    """Get folder breadcrumb path
-
-     Generate the breadcrumb navigation path for a folder, including all parent folders up to the root.
+) -> Response[GenBreadcrumbsGetOut]:
+    """Get Folder Breadcrumbs
 
     Args:
         folder_id (UUID):
@@ -122,7 +116,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GenBreadcrumbsResponse]
+        Response[GenBreadcrumbsGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -138,10 +132,8 @@ async def asyncio(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> GenBreadcrumbsResponse | None:
-    """Get folder breadcrumb path
-
-     Generate the breadcrumb navigation path for a folder, including all parent folders up to the root.
+) -> GenBreadcrumbsGetOut | None:
+    """Get Folder Breadcrumbs
 
     Args:
         folder_id (UUID):
@@ -151,7 +143,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GenBreadcrumbsResponse
+        GenBreadcrumbsGetOut
     """
 
     return (

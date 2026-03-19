@@ -48,9 +48,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a requirement
+    """Delete Requirement
 
-     Permanently delete a requirement and all its associated data.
+     NMtB754i
+
+    Delete a requirement given a requirement id
 
     Args:
         requirement_id (UUID):
@@ -79,9 +81,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a requirement
+    """Delete Requirement
 
-     Permanently delete a requirement and all its associated data.
+     NMtB754i
+
+    Delete a requirement given a requirement id
 
     Args:
         requirement_id (UUID):

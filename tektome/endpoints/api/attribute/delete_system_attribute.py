@@ -62,9 +62,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     name: str,
 ) -> Response[Any]:
-    """Delete a system attribute
+    """Delete System Attribute
 
-     Delete a system attribute from an entity. The attribute name must start with `system:`.
+     iRKICjKc
+
+    Delete a system attribute. Name must start with `system:`
 
     Args:
         object_type (DeleteSystemAttributeAttributeObjectTypes):
@@ -99,9 +101,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     name: str,
 ) -> Response[Any]:
-    """Delete a system attribute
+    """Delete System Attribute
 
-     Delete a system attribute from an entity. The attribute name must start with `system:`.
+     iRKICjKc
+
+    Delete a system attribute. Name must start with `system:`
 
     Args:
         object_type (DeleteSystemAttributeAttributeObjectTypes):

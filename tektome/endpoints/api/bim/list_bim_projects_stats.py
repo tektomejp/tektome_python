@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bim_project_stats_response import BimProjectStatsResponse
+from ...models.bim_project_stats_get_out import BimProjectStatsGetOut
 from ...types import UNSET, Response, Unset
 
 
@@ -34,12 +34,12 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> list[BimProjectStatsResponse] | None:
+) -> list[BimProjectStatsGetOut] | None:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = BimProjectStatsResponse.from_dict(response_200_item_data)
+            response_200_item = BimProjectStatsGetOut.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
@@ -53,7 +53,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[list[BimProjectStatsResponse]]:
+) -> Response[list[BimProjectStatsGetOut]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -67,10 +67,17 @@ def sync_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | Unset = 100,
-) -> Response[list[BimProjectStatsResponse]]:
-    """List all BIM project statistics
+) -> Response[list[BimProjectStatsGetOut]]:
+    """Get All Bim Projects Stats
 
-     Retrieve paginated statistics for all BIM projects, including object, view, and sheet counts.
+     b2e0a67c
+
+    Get statistics for all BIM projects with pagination.
+    Default (and maximum) page size is 100 projects.
+
+    Args:
+        page: Page number (starts from 1)
+        page_size: Number of projects per page (default and maximum 100)
 
     Args:
         page (int | Unset):  Default: 1.
@@ -81,7 +88,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list[BimProjectStatsResponse]]
+        Response[list[BimProjectStatsGetOut]]
     """
 
     kwargs = _get_kwargs(
@@ -101,10 +108,17 @@ def sync(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | Unset = 100,
-) -> list[BimProjectStatsResponse] | None:
-    """List all BIM project statistics
+) -> list[BimProjectStatsGetOut] | None:
+    """Get All Bim Projects Stats
 
-     Retrieve paginated statistics for all BIM projects, including object, view, and sheet counts.
+     b2e0a67c
+
+    Get statistics for all BIM projects with pagination.
+    Default (and maximum) page size is 100 projects.
+
+    Args:
+        page: Page number (starts from 1)
+        page_size: Number of projects per page (default and maximum 100)
 
     Args:
         page (int | Unset):  Default: 1.
@@ -115,7 +129,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list[BimProjectStatsResponse]
+        list[BimProjectStatsGetOut]
     """
 
     return sync_detailed(
@@ -130,10 +144,17 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | Unset = 100,
-) -> Response[list[BimProjectStatsResponse]]:
-    """List all BIM project statistics
+) -> Response[list[BimProjectStatsGetOut]]:
+    """Get All Bim Projects Stats
 
-     Retrieve paginated statistics for all BIM projects, including object, view, and sheet counts.
+     b2e0a67c
+
+    Get statistics for all BIM projects with pagination.
+    Default (and maximum) page size is 100 projects.
+
+    Args:
+        page: Page number (starts from 1)
+        page_size: Number of projects per page (default and maximum 100)
 
     Args:
         page (int | Unset):  Default: 1.
@@ -144,7 +165,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list[BimProjectStatsResponse]]
+        Response[list[BimProjectStatsGetOut]]
     """
 
     kwargs = _get_kwargs(
@@ -162,10 +183,17 @@ async def asyncio(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | Unset = 100,
-) -> list[BimProjectStatsResponse] | None:
-    """List all BIM project statistics
+) -> list[BimProjectStatsGetOut] | None:
+    """Get All Bim Projects Stats
 
-     Retrieve paginated statistics for all BIM projects, including object, view, and sheet counts.
+     b2e0a67c
+
+    Get statistics for all BIM projects with pagination.
+    Default (and maximum) page size is 100 projects.
+
+    Args:
+        page: Page number (starts from 1)
+        page_size: Number of projects per page (default and maximum 100)
 
     Args:
         page (int | Unset):  Default: 1.
@@ -176,7 +204,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list[BimProjectStatsResponse]
+        list[BimProjectStatsGetOut]
     """
 
     return (

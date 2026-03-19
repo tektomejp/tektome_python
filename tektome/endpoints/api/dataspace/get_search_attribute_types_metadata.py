@@ -48,10 +48,14 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[SimpleAttributeTypeActionSchema]:
-    """Get attribute type metadata for search
+    """Get Search Attribute Types Metadata
 
-     Retrieve metadata about available attribute types, their allowed search actions, and acceptable data
-    types for filtering.
+     ZCrVOixw
+
+    Get metadata about attribute types, their allowed actions, and acceptable data types.
+
+    Returns a dictionary with attribute types as keys and lists of available actions
+    with their corresponding value types.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -74,10 +78,14 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> SimpleAttributeTypeActionSchema | None:
-    """Get attribute type metadata for search
+    """Get Search Attribute Types Metadata
 
-     Retrieve metadata about available attribute types, their allowed search actions, and acceptable data
-    types for filtering.
+     ZCrVOixw
+
+    Get metadata about attribute types, their allowed actions, and acceptable data types.
+
+    Returns a dictionary with attribute types as keys and lists of available actions
+    with their corresponding value types.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -96,10 +104,14 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[SimpleAttributeTypeActionSchema]:
-    """Get attribute type metadata for search
+    """Get Search Attribute Types Metadata
 
-     Retrieve metadata about available attribute types, their allowed search actions, and acceptable data
-    types for filtering.
+     ZCrVOixw
+
+    Get metadata about attribute types, their allowed actions, and acceptable data types.
+
+    Returns a dictionary with attribute types as keys and lists of available actions
+    with their corresponding value types.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -120,10 +132,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> SimpleAttributeTypeActionSchema | None:
-    """Get attribute type metadata for search
+    """Get Search Attribute Types Metadata
 
-     Retrieve metadata about available attribute types, their allowed search actions, and acceptable data
-    types for filtering.
+     ZCrVOixw
+
+    Get metadata about attribute types, their allowed actions, and acceptable data types.
+
+    Returns a dictionary with attribute types as keys and lists of available actions
+    with their corresponding value types.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

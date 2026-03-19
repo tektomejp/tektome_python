@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_requirement_request import CreateRequirementRequest
-from ...models.requirement_response import RequirementResponse
+from ...models.requirement_get_out import RequirementGetOut
+from ...models.requirement_post_in import RequirementPostIn
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: CreateRequirementRequest,
+    body: RequirementPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -29,9 +29,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> RequirementResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> RequirementGetOut | None:
     if response.status_code == 201:
-        response_201 = RequirementResponse.from_dict(response.json())
+        response_201 = RequirementGetOut.from_dict(response.json())
 
         return response_201
 
@@ -41,7 +41,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[RequirementResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[RequirementGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,21 +53,23 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateRequirementRequest,
-) -> Response[RequirementResponse]:
-    """Create a requirement
+    body: RequirementPostIn,
+) -> Response[RequirementGetOut]:
+    """Post Requirement
 
-     Create a new requirement within a project.
+     B7GNMWv5
+
+    Create a requirement given a project id in the payload.
 
     Args:
-        body (CreateRequirementRequest):
+        body (RequirementPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementResponse]
+        Response[RequirementGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -84,21 +86,23 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: CreateRequirementRequest,
-) -> RequirementResponse | None:
-    """Create a requirement
+    body: RequirementPostIn,
+) -> RequirementGetOut | None:
+    """Post Requirement
 
-     Create a new requirement within a project.
+     B7GNMWv5
+
+    Create a requirement given a project id in the payload.
 
     Args:
-        body (CreateRequirementRequest):
+        body (RequirementPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementResponse
+        RequirementGetOut
     """
 
     return sync_detailed(
@@ -110,21 +114,23 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateRequirementRequest,
-) -> Response[RequirementResponse]:
-    """Create a requirement
+    body: RequirementPostIn,
+) -> Response[RequirementGetOut]:
+    """Post Requirement
 
-     Create a new requirement within a project.
+     B7GNMWv5
+
+    Create a requirement given a project id in the payload.
 
     Args:
-        body (CreateRequirementRequest):
+        body (RequirementPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementResponse]
+        Response[RequirementGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -139,21 +145,23 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: CreateRequirementRequest,
-) -> RequirementResponse | None:
-    """Create a requirement
+    body: RequirementPostIn,
+) -> RequirementGetOut | None:
+    """Post Requirement
 
-     Create a new requirement within a project.
+     B7GNMWv5
+
+    Create a requirement given a project id in the payload.
 
     Args:
-        body (CreateRequirementRequest):
+        body (RequirementPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementResponse
+        RequirementGetOut
     """
 
     return (

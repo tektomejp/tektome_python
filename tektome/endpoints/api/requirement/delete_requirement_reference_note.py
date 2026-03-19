@@ -48,9 +48,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a reference note
+    """Delete Reference Note
 
-     Permanently delete a reference note associated with a requirement.
+     LKvWzBo2
+
+        Delete a reference note associated to a requirement
 
     Args:
         reference_note_id (UUID):
@@ -79,9 +81,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a reference note
+    """Delete Reference Note
 
-     Permanently delete a reference note associated with a requirement.
+     LKvWzBo2
+
+        Delete a reference note associated to a requirement
 
     Args:
         reference_note_id (UUID):

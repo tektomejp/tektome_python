@@ -61,10 +61,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: CreatePaymentRecordMultiPartBodyParams,
 ) -> Response[PaymentRecordOutBase]:
-    """Create a payment record
+    """Post Payment Records
 
-     Create a new payment record for an organization. A supporting ZIP file (proof of payment) can
-    optionally be uploaded. Debit transactions are validated against the organization's current balance.
+     YSCUc2FA
+
+    Create a new payment record for an organization.
 
     Args:
         organization_id (UUID):
@@ -96,10 +97,11 @@ def sync(
     client: AuthenticatedClient,
     body: CreatePaymentRecordMultiPartBodyParams,
 ) -> PaymentRecordOutBase | None:
-    """Create a payment record
+    """Post Payment Records
 
-     Create a new payment record for an organization. A supporting ZIP file (proof of payment) can
-    optionally be uploaded. Debit transactions are validated against the organization's current balance.
+     YSCUc2FA
+
+    Create a new payment record for an organization.
 
     Args:
         organization_id (UUID):
@@ -126,10 +128,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: CreatePaymentRecordMultiPartBodyParams,
 ) -> Response[PaymentRecordOutBase]:
-    """Create a payment record
+    """Post Payment Records
 
-     Create a new payment record for an organization. A supporting ZIP file (proof of payment) can
-    optionally be uploaded. Debit transactions are validated against the organization's current balance.
+     YSCUc2FA
+
+    Create a new payment record for an organization.
 
     Args:
         organization_id (UUID):
@@ -159,10 +162,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: CreatePaymentRecordMultiPartBodyParams,
 ) -> PaymentRecordOutBase | None:
-    """Create a payment record
+    """Post Payment Records
 
-     Create a new payment record for an organization. A supporting ZIP file (proof of payment) can
-    optionally be uploaded. Debit transactions are validated against the organization's current balance.
+     YSCUc2FA
+
+    Create a new payment record for an organization.
 
     Args:
         organization_id (UUID):

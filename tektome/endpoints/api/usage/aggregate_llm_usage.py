@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.aggregated_llm_usage_response import AggregatedLLMUsageResponse
-from ...models.create_aggregate_llm_usage_request import CreateAggregateLLMUsageRequest
+from ...models.aggregate_llm_usage_post_in import AggregateLLMUsagePostIn
+from ...models.aggregated_llm_usage_post_out import AggregatedLLMUsagePostOut
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: CreateAggregateLLMUsageRequest,
+    body: AggregateLLMUsagePostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,9 +31,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> AggregatedLLMUsageResponse | None:
+) -> AggregatedLLMUsagePostOut | None:
     if response.status_code == 200:
-        response_200 = AggregatedLLMUsageResponse.from_dict(response.json())
+        response_200 = AggregatedLLMUsagePostOut.from_dict(response.json())
 
         return response_200
 
@@ -45,7 +45,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[AggregatedLLMUsageResponse]:
+) -> Response[AggregatedLLMUsagePostOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,22 +57,31 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateAggregateLLMUsageRequest,
-) -> Response[AggregatedLLMUsageResponse]:
-    """Aggregate LLM usage statistics
+    body: AggregateLLMUsagePostIn,
+) -> Response[AggregatedLLMUsagePostOut]:
+    """Post Aggregate Llm Usage
 
-     Aggregate LLM usage statistics by kind or model within a specified date range. Supports optional
-    filtering by organization, dataspace, project, or user.
+     jQ10-kjE
+    Aggregate LLM usage statistics by kind or model within a date range.<br>
+    This route is for internal use only. Do not allow user to directly set parameters except for date
+    ranges.<br>
+    The following parameters are optional:<br>
+    - organization_id
+    - dataspace_id
+    - project_id
+    - user_id
+    <br>
+    Set them explicitly to null to filter entries unset when LLM was called.<br>
 
     Args:
-        body (CreateAggregateLLMUsageRequest):
+        body (AggregateLLMUsagePostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AggregatedLLMUsageResponse]
+        Response[AggregatedLLMUsagePostOut]
     """
 
     kwargs = _get_kwargs(
@@ -89,22 +98,31 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: CreateAggregateLLMUsageRequest,
-) -> AggregatedLLMUsageResponse | None:
-    """Aggregate LLM usage statistics
+    body: AggregateLLMUsagePostIn,
+) -> AggregatedLLMUsagePostOut | None:
+    """Post Aggregate Llm Usage
 
-     Aggregate LLM usage statistics by kind or model within a specified date range. Supports optional
-    filtering by organization, dataspace, project, or user.
+     jQ10-kjE
+    Aggregate LLM usage statistics by kind or model within a date range.<br>
+    This route is for internal use only. Do not allow user to directly set parameters except for date
+    ranges.<br>
+    The following parameters are optional:<br>
+    - organization_id
+    - dataspace_id
+    - project_id
+    - user_id
+    <br>
+    Set them explicitly to null to filter entries unset when LLM was called.<br>
 
     Args:
-        body (CreateAggregateLLMUsageRequest):
+        body (AggregateLLMUsagePostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AggregatedLLMUsageResponse
+        AggregatedLLMUsagePostOut
     """
 
     return sync_detailed(
@@ -116,22 +134,31 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateAggregateLLMUsageRequest,
-) -> Response[AggregatedLLMUsageResponse]:
-    """Aggregate LLM usage statistics
+    body: AggregateLLMUsagePostIn,
+) -> Response[AggregatedLLMUsagePostOut]:
+    """Post Aggregate Llm Usage
 
-     Aggregate LLM usage statistics by kind or model within a specified date range. Supports optional
-    filtering by organization, dataspace, project, or user.
+     jQ10-kjE
+    Aggregate LLM usage statistics by kind or model within a date range.<br>
+    This route is for internal use only. Do not allow user to directly set parameters except for date
+    ranges.<br>
+    The following parameters are optional:<br>
+    - organization_id
+    - dataspace_id
+    - project_id
+    - user_id
+    <br>
+    Set them explicitly to null to filter entries unset when LLM was called.<br>
 
     Args:
-        body (CreateAggregateLLMUsageRequest):
+        body (AggregateLLMUsagePostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AggregatedLLMUsageResponse]
+        Response[AggregatedLLMUsagePostOut]
     """
 
     kwargs = _get_kwargs(
@@ -146,22 +173,31 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: CreateAggregateLLMUsageRequest,
-) -> AggregatedLLMUsageResponse | None:
-    """Aggregate LLM usage statistics
+    body: AggregateLLMUsagePostIn,
+) -> AggregatedLLMUsagePostOut | None:
+    """Post Aggregate Llm Usage
 
-     Aggregate LLM usage statistics by kind or model within a specified date range. Supports optional
-    filtering by organization, dataspace, project, or user.
+     jQ10-kjE
+    Aggregate LLM usage statistics by kind or model within a date range.<br>
+    This route is for internal use only. Do not allow user to directly set parameters except for date
+    ranges.<br>
+    The following parameters are optional:<br>
+    - organization_id
+    - dataspace_id
+    - project_id
+    - user_id
+    <br>
+    Set them explicitly to null to filter entries unset when LLM was called.<br>
 
     Args:
-        body (CreateAggregateLLMUsageRequest):
+        body (AggregateLLMUsagePostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AggregatedLLMUsageResponse
+        AggregatedLLMUsagePostOut
     """
 
     return (

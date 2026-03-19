@@ -5,14 +5,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_lawtalk_empty_project_request import CreateLawtalkEmptyProjectRequest
-from ...models.error_response import ErrorResponse
+from ...models.error_out import ErrorOut
+from ...models.lawtalk_empty_project_post_in import LawtalkEmptyProjectPostIn
+from ...models.lawtalk_empty_project_post_out import LawtalkEmptyProjectPostOut
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: CreateLawtalkEmptyProjectRequest,
+    body: LawtalkEmptyProjectPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -29,19 +30,26 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorResponse | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorOut | LawtalkEmptyProjectPostOut | None:
+    if response.status_code == 201:
+        response_201 = LawtalkEmptyProjectPostOut.from_dict(response.json())
+
+        return response_201
+
     if response.status_code == 400:
-        response_400 = ErrorResponse.from_dict(response.json())
+        response_400 = ErrorOut.from_dict(response.json())
 
         return response_400
 
     if response.status_code == 403:
-        response_403 = ErrorResponse.from_dict(response.json())
+        response_403 = ErrorOut.from_dict(response.json())
 
         return response_403
 
     if response.status_code == 500:
-        response_500 = ErrorResponse.from_dict(response.json())
+        response_500 = ErrorOut.from_dict(response.json())
 
         return response_500
 
@@ -51,7 +59,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorResponse]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorOut | LawtalkEmptyProjectPostOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,22 +73,36 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateLawtalkEmptyProjectRequest,
-) -> Response[ErrorResponse]:
-    """Create an empty project
+    body: LawtalkEmptyProjectPostIn,
+) -> Response[ErrorOut | LawtalkEmptyProjectPostOut]:
+    """Post Create Empty Project
 
-     Create a new project with only a name and description. The project is initialized with default
-    settings and the creator is assigned as project owner.
+     0QhuKpae
+
+    Creates and returns a new empty Lawtalk project with default attributes.
+
+    default attributes:
+        name: name of project
+        description: description of project
 
     Args:
-        body (CreateLawtalkEmptyProjectRequest):
+        request: The HTTP request object.
+        payload: Contains the input data for the project, including name and
+            description.
+
+    Returns:
+        LawtalkProject: The newly created project instance with its attributes
+        set accordingly.
+
+    Args:
+        body (LawtalkEmptyProjectPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorResponse]
+        Response[ErrorOut | LawtalkEmptyProjectPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -95,22 +119,36 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: CreateLawtalkEmptyProjectRequest,
-) -> ErrorResponse | None:
-    """Create an empty project
+    body: LawtalkEmptyProjectPostIn,
+) -> ErrorOut | LawtalkEmptyProjectPostOut | None:
+    """Post Create Empty Project
 
-     Create a new project with only a name and description. The project is initialized with default
-    settings and the creator is assigned as project owner.
+     0QhuKpae
+
+    Creates and returns a new empty Lawtalk project with default attributes.
+
+    default attributes:
+        name: name of project
+        description: description of project
 
     Args:
-        body (CreateLawtalkEmptyProjectRequest):
+        request: The HTTP request object.
+        payload: Contains the input data for the project, including name and
+            description.
+
+    Returns:
+        LawtalkProject: The newly created project instance with its attributes
+        set accordingly.
+
+    Args:
+        body (LawtalkEmptyProjectPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorResponse
+        ErrorOut | LawtalkEmptyProjectPostOut
     """
 
     return sync_detailed(
@@ -122,22 +160,36 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateLawtalkEmptyProjectRequest,
-) -> Response[ErrorResponse]:
-    """Create an empty project
+    body: LawtalkEmptyProjectPostIn,
+) -> Response[ErrorOut | LawtalkEmptyProjectPostOut]:
+    """Post Create Empty Project
 
-     Create a new project with only a name and description. The project is initialized with default
-    settings and the creator is assigned as project owner.
+     0QhuKpae
+
+    Creates and returns a new empty Lawtalk project with default attributes.
+
+    default attributes:
+        name: name of project
+        description: description of project
 
     Args:
-        body (CreateLawtalkEmptyProjectRequest):
+        request: The HTTP request object.
+        payload: Contains the input data for the project, including name and
+            description.
+
+    Returns:
+        LawtalkProject: The newly created project instance with its attributes
+        set accordingly.
+
+    Args:
+        body (LawtalkEmptyProjectPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorResponse]
+        Response[ErrorOut | LawtalkEmptyProjectPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -152,22 +204,36 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: CreateLawtalkEmptyProjectRequest,
-) -> ErrorResponse | None:
-    """Create an empty project
+    body: LawtalkEmptyProjectPostIn,
+) -> ErrorOut | LawtalkEmptyProjectPostOut | None:
+    """Post Create Empty Project
 
-     Create a new project with only a name and description. The project is initialized with default
-    settings and the creator is assigned as project owner.
+     0QhuKpae
+
+    Creates and returns a new empty Lawtalk project with default attributes.
+
+    default attributes:
+        name: name of project
+        description: description of project
 
     Args:
-        body (CreateLawtalkEmptyProjectRequest):
+        request: The HTTP request object.
+        payload: Contains the input data for the project, including name and
+            description.
+
+    Returns:
+        LawtalkProject: The newly created project instance with its attributes
+        set accordingly.
+
+    Args:
+        body (LawtalkEmptyProjectPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorResponse
+        ErrorOut | LawtalkEmptyProjectPostOut
     """
 
     return (

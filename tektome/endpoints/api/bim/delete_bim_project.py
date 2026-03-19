@@ -48,11 +48,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a BIM project
+    """Delete Bim Project
 
-     Delete a BIM project and all its associated elements. This is an asynchronous operation. To retrieve
-    the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the task/process ID
-    returned in this response.
+     43f83ad7
+
+    Delete a BIM project.
 
     Args:
         bim_project_id (UUID):
@@ -81,11 +81,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a BIM project
+    """Delete Bim Project
 
-     Delete a BIM project and all its associated elements. This is an asynchronous operation. To retrieve
-    the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the task/process ID
-    returned in this response.
+     43f83ad7
+
+    Delete a BIM project.
 
     Args:
         bim_project_id (UUID):

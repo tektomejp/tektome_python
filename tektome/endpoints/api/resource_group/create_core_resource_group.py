@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_resource_group_request import CreateResourceGroupRequest
-from ...models.resource_group_response import ResourceGroupResponse
+from ...models.resource_group_post_in import ResourceGroupPostIn
+from ...models.resource_group_schema import ResourceGroupSchema
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: CreateResourceGroupRequest,
+    body: ResourceGroupPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -29,9 +29,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ResourceGroupResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ResourceGroupSchema | None:
     if response.status_code == 201:
-        response_201 = ResourceGroupResponse.from_dict(response.json())
+        response_201 = ResourceGroupSchema.from_dict(response.json())
 
         return response_201
 
@@ -41,9 +41,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ResourceGroupResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ResourceGroupSchema]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,21 +53,25 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateResourceGroupRequest,
-) -> Response[ResourceGroupResponse]:
-    """Create a resource group
+    body: ResourceGroupPostIn,
+) -> Response[ResourceGroupSchema]:
+    """Post Resource Group
 
-     Create a new resource group for a project. Each project may have at most one resource group.
+     awdsstsb
+
+    Create a new core project  in user's current organization
+
+    Create a core project.
 
     Args:
-        body (CreateResourceGroupRequest):
+        body (ResourceGroupPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceGroupResponse]
+        Response[ResourceGroupSchema]
     """
 
     kwargs = _get_kwargs(
@@ -86,21 +88,25 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: CreateResourceGroupRequest,
-) -> ResourceGroupResponse | None:
-    """Create a resource group
+    body: ResourceGroupPostIn,
+) -> ResourceGroupSchema | None:
+    """Post Resource Group
 
-     Create a new resource group for a project. Each project may have at most one resource group.
+     awdsstsb
+
+    Create a new core project  in user's current organization
+
+    Create a core project.
 
     Args:
-        body (CreateResourceGroupRequest):
+        body (ResourceGroupPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceGroupResponse
+        ResourceGroupSchema
     """
 
     return sync_detailed(
@@ -112,21 +118,25 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateResourceGroupRequest,
-) -> Response[ResourceGroupResponse]:
-    """Create a resource group
+    body: ResourceGroupPostIn,
+) -> Response[ResourceGroupSchema]:
+    """Post Resource Group
 
-     Create a new resource group for a project. Each project may have at most one resource group.
+     awdsstsb
+
+    Create a new core project  in user's current organization
+
+    Create a core project.
 
     Args:
-        body (CreateResourceGroupRequest):
+        body (ResourceGroupPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceGroupResponse]
+        Response[ResourceGroupSchema]
     """
 
     kwargs = _get_kwargs(
@@ -141,21 +151,25 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: CreateResourceGroupRequest,
-) -> ResourceGroupResponse | None:
-    """Create a resource group
+    body: ResourceGroupPostIn,
+) -> ResourceGroupSchema | None:
+    """Post Resource Group
 
-     Create a new resource group for a project. Each project may have at most one resource group.
+     awdsstsb
+
+    Create a new core project  in user's current organization
+
+    Create a core project.
 
     Args:
-        body (CreateResourceGroupRequest):
+        body (ResourceGroupPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceGroupResponse
+        ResourceGroupSchema
     """
 
     return (

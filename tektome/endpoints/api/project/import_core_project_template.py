@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.project_template_import_request import ProjectTemplateImportRequest
-from ...models.template_response import TemplateResponse
+from ...models.project_template_import_in import ProjectTemplateImportIn
+from ...models.template_out import TemplateOut
 from ...types import Response
 
 
 def _get_kwargs(
     project_id: UUID,
     *,
-    body: ProjectTemplateImportRequest,
+    body: ProjectTemplateImportIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -34,9 +34,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> TemplateResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> TemplateOut | None:
     if response.status_code == 201:
-        response_201 = TemplateResponse.from_dict(response.json())
+        response_201 = TemplateOut.from_dict(response.json())
 
         return response_201
 
@@ -46,7 +46,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[TemplateResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[TemplateOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,22 +59,24 @@ def sync_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProjectTemplateImportRequest,
-) -> Response[TemplateResponse]:
-    """Import a template into a project
+    body: ProjectTemplateImportIn,
+) -> Response[TemplateOut]:
+    """Import Template To Project
 
-     Import a base process template into the specified project, creating a project-level copy.
+     NhP4WKrP
+
+    Import a base template into the current project.
 
     Args:
         project_id (UUID):
-        body (ProjectTemplateImportRequest): Schema for importing a template into a project.
+        body (ProjectTemplateImportIn): Schema for importing a template into a project.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[TemplateResponse]
+        Response[TemplateOut]
     """
 
     kwargs = _get_kwargs(
@@ -93,22 +95,24 @@ def sync(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProjectTemplateImportRequest,
-) -> TemplateResponse | None:
-    """Import a template into a project
+    body: ProjectTemplateImportIn,
+) -> TemplateOut | None:
+    """Import Template To Project
 
-     Import a base process template into the specified project, creating a project-level copy.
+     NhP4WKrP
+
+    Import a base template into the current project.
 
     Args:
         project_id (UUID):
-        body (ProjectTemplateImportRequest): Schema for importing a template into a project.
+        body (ProjectTemplateImportIn): Schema for importing a template into a project.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        TemplateResponse
+        TemplateOut
     """
 
     return sync_detailed(
@@ -122,22 +126,24 @@ async def asyncio_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProjectTemplateImportRequest,
-) -> Response[TemplateResponse]:
-    """Import a template into a project
+    body: ProjectTemplateImportIn,
+) -> Response[TemplateOut]:
+    """Import Template To Project
 
-     Import a base process template into the specified project, creating a project-level copy.
+     NhP4WKrP
+
+    Import a base template into the current project.
 
     Args:
         project_id (UUID):
-        body (ProjectTemplateImportRequest): Schema for importing a template into a project.
+        body (ProjectTemplateImportIn): Schema for importing a template into a project.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[TemplateResponse]
+        Response[TemplateOut]
     """
 
     kwargs = _get_kwargs(
@@ -154,22 +160,24 @@ async def asyncio(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProjectTemplateImportRequest,
-) -> TemplateResponse | None:
-    """Import a template into a project
+    body: ProjectTemplateImportIn,
+) -> TemplateOut | None:
+    """Import Template To Project
 
-     Import a base process template into the specified project, creating a project-level copy.
+     NhP4WKrP
+
+    Import a base template into the current project.
 
     Args:
         project_id (UUID):
-        body (ProjectTemplateImportRequest): Schema for importing a template into a project.
+        body (ProjectTemplateImportIn): Schema for importing a template into a project.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        TemplateResponse
+        TemplateOut
     """
 
     return (

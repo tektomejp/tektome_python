@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_bim_batch_element_request_request import CreateBimBatchElementRequestRequest
+from ...models.bim_batch_element_request_post_in import BimBatchElementRequestPostIn
 from ...models.get_batch_bim_elements_bim_element_type_path import GetBatchBimElementsBimElementTypePath
 from ...types import Response
 
@@ -14,7 +14,7 @@ from ...types import Response
 def _get_kwargs(
     bim_type: GetBatchBimElementsBimElementTypePath,
     *,
-    body: CreateBimBatchElementRequestRequest,
+    body: BimBatchElementRequestPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,16 +56,21 @@ def sync_detailed(
     bim_type: GetBatchBimElementsBimElementTypePath,
     *,
     client: AuthenticatedClient,
-    body: CreateBimBatchElementRequestRequest,
+    body: BimBatchElementRequestPostIn,
 ) -> Response[Any]:
-    """Get multiple BIM elements by IDs
+    """Get Batch Bim Elements
 
-     Retrieve multiple BIM elements (objects or views) by their IDs in a single request. Maximum 50 IDs
-    per request.
+     6SswzuVE
+
+    Get multiple BIM elements by their IDs. Could be BIM objects or views.
+
+    Arguments:
+        - bim_type: Type of BIM element (object or view)
+        - payload: Request body containing list of IDs to retrieve (max 50)
 
     Args:
         bim_type (GetBatchBimElementsBimElementTypePath): Enum for BIM object types.
-        body (CreateBimBatchElementRequestRequest): Schema for batch BIM element retrieval request
+        body (BimBatchElementRequestPostIn): Schema for batch BIM element retrieval request
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -91,16 +96,21 @@ async def asyncio_detailed(
     bim_type: GetBatchBimElementsBimElementTypePath,
     *,
     client: AuthenticatedClient,
-    body: CreateBimBatchElementRequestRequest,
+    body: BimBatchElementRequestPostIn,
 ) -> Response[Any]:
-    """Get multiple BIM elements by IDs
+    """Get Batch Bim Elements
 
-     Retrieve multiple BIM elements (objects or views) by their IDs in a single request. Maximum 50 IDs
-    per request.
+     6SswzuVE
+
+    Get multiple BIM elements by their IDs. Could be BIM objects or views.
+
+    Arguments:
+        - bim_type: Type of BIM element (object or view)
+        - payload: Request body containing list of IDs to retrieve (max 50)
 
     Args:
         bim_type (GetBatchBimElementsBimElementTypePath): Enum for BIM object types.
-        body (CreateBimBatchElementRequestRequest): Schema for batch BIM element retrieval request
+        body (BimBatchElementRequestPostIn): Schema for batch BIM element retrieval request
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -7,30 +7,18 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
     folder_id: UUID,
-    *,
-    include_resources: bool | Unset = False,
-    force: bool | Unset = False,
 ) -> dict[str, Any]:
-
-    params: dict[str, Any] = {}
-
-    params["include_resources"] = include_resources
-
-    params["force"] = force
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/api/core/folders/{folder_id}/".format(
             folder_id=quote(str(folder_id), safe=""),
         ),
-        "params": params,
     }
 
     return _kwargs
@@ -59,17 +47,21 @@ def sync_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-    include_resources: bool | Unset = False,
-    force: bool | Unset = False,
 ) -> Response[Any]:
-    """Delete a folder
+    """Delete Folder
 
-     Delete a folder. Optionally delete all resources within it. Root folders cannot be deleted.
+     k4-aSnXD
+
+    Delete a folder. User may choose to also delete all resources in the folder.
+
+    Args:
+        request: Request object
+        path_params: FolderPathIn object containing folder_id
+
+    Returns: None
 
     Args:
         folder_id (UUID):
-        include_resources (bool | Unset):  Default: False.
-        force (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -81,8 +73,6 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         folder_id=folder_id,
-        include_resources=include_resources,
-        force=force,
     )
 
     response = client.get_httpx_client().request(
@@ -96,17 +86,21 @@ async def asyncio_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-    include_resources: bool | Unset = False,
-    force: bool | Unset = False,
 ) -> Response[Any]:
-    """Delete a folder
+    """Delete Folder
 
-     Delete a folder. Optionally delete all resources within it. Root folders cannot be deleted.
+     k4-aSnXD
+
+    Delete a folder. User may choose to also delete all resources in the folder.
+
+    Args:
+        request: Request object
+        path_params: FolderPathIn object containing folder_id
+
+    Returns: None
 
     Args:
         folder_id (UUID):
-        include_resources (bool | Unset):  Default: False.
-        force (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -118,8 +112,6 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         folder_id=folder_id,
-        include_resources=include_resources,
-        force=force,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)

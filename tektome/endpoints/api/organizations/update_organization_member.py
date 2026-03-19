@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.organization_member_roles_schema_request import OrganizationMemberRolesSchemaRequest
+from ...models.organization_member_roles_schema_in import OrganizationMemberRolesSchemaIn
 from ...types import Response
 
 
 def _get_kwargs(
     organization_id: UUID,
     *,
-    body: list[OrganizationMemberRolesSchemaRequest],
+    body: list[OrganizationMemberRolesSchemaIn],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -62,15 +62,17 @@ def sync_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[OrganizationMemberRolesSchemaRequest],
+    body: list[OrganizationMemberRolesSchemaIn],
 ) -> Response[Any]:
-    """Update member roles
+    """Update Organization Member
 
-     Update the role assignments for one or more members within an organization.
+     LmJZvWQx
+
+    Update a member's role in an organization.
 
     Args:
         organization_id (UUID):
-        body (list[OrganizationMemberRolesSchemaRequest]):
+        body (list[OrganizationMemberRolesSchemaIn]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -96,15 +98,17 @@ async def asyncio_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[OrganizationMemberRolesSchemaRequest],
+    body: list[OrganizationMemberRolesSchemaIn],
 ) -> Response[Any]:
-    """Update member roles
+    """Update Organization Member
 
-     Update the role assignments for one or more members within an organization.
+     LmJZvWQx
+
+    Update a member's role in an organization.
 
     Args:
         organization_id (UUID):
-        body (list[OrganizationMemberRolesSchemaRequest]):
+        body (list[OrganizationMemberRolesSchemaIn]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

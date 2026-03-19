@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_retrieve_bim_sheet_request import CreateRetrieveBimSheetRequest
-from ...models.retrieve_bim_sheet_response import RetrieveBimSheetResponse
+from ...models.retrieve_bim_sheet_post_in import RetrieveBimSheetPostIn
+from ...models.retrieve_bim_sheet_post_out import RetrieveBimSheetPostOut
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: CreateRetrieveBimSheetRequest,
+    body: RetrieveBimSheetPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,9 +31,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RetrieveBimSheetResponse | None:
+) -> RetrieveBimSheetPostOut | None:
     if response.status_code == 200:
-        response_200 = RetrieveBimSheetResponse.from_dict(response.json())
+        response_200 = RetrieveBimSheetPostOut.from_dict(response.json())
 
         return response_200
 
@@ -45,7 +45,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[RetrieveBimSheetResponse]:
+) -> Response[RetrieveBimSheetPostOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,22 +57,40 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateRetrieveBimSheetRequest,
-) -> Response[RetrieveBimSheetResponse]:
-    """List BIM sheets in a project
+    body: RetrieveBimSheetPostIn,
+) -> Response[RetrieveBimSheetPostOut]:
+    """Retrieve Bim Sheets In Project
 
-     Retrieve BIM sheets within a project, supporting both full retrieval and paginated queries.
-    Optionally return only sheet IDs.
+     EmmyoTSu
+
+    Retrieve BIM sheets within a specified project, supporting both full and paginated retrieval.
 
     Args:
-        body (CreateRetrieveBimSheetRequest):
+        request: The incoming request object (explicitly ignored in this function).
+        payload (RetrieveBimSheetPostIn): Input data containing retrieval options, including project ID,
+            pagination parameters, flags for retrieving all sheets or only IDs, and optional field
+    selection.
+
+    Returns:
+        dict: A dictionary with a single key 'data', containing either:
+            - A list of sheet IDs if 'only_ids' is True.
+            - A list of detailed sheet payloads if 'only_ids' is False.
+            - An empty list if no results are found.
+
+    Notes:
+        - Pagination defaults to page 1 and page_size 1 if invalid values are provided.
+        - Only instances of BimSheet are included in the detailed payload.
+        - The response always conforms to the expected schema: {'data': [...]}
+
+    Args:
+        body (RetrieveBimSheetPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RetrieveBimSheetResponse]
+        Response[RetrieveBimSheetPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -89,22 +107,40 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: CreateRetrieveBimSheetRequest,
-) -> RetrieveBimSheetResponse | None:
-    """List BIM sheets in a project
+    body: RetrieveBimSheetPostIn,
+) -> RetrieveBimSheetPostOut | None:
+    """Retrieve Bim Sheets In Project
 
-     Retrieve BIM sheets within a project, supporting both full retrieval and paginated queries.
-    Optionally return only sheet IDs.
+     EmmyoTSu
+
+    Retrieve BIM sheets within a specified project, supporting both full and paginated retrieval.
 
     Args:
-        body (CreateRetrieveBimSheetRequest):
+        request: The incoming request object (explicitly ignored in this function).
+        payload (RetrieveBimSheetPostIn): Input data containing retrieval options, including project ID,
+            pagination parameters, flags for retrieving all sheets or only IDs, and optional field
+    selection.
+
+    Returns:
+        dict: A dictionary with a single key 'data', containing either:
+            - A list of sheet IDs if 'only_ids' is True.
+            - A list of detailed sheet payloads if 'only_ids' is False.
+            - An empty list if no results are found.
+
+    Notes:
+        - Pagination defaults to page 1 and page_size 1 if invalid values are provided.
+        - Only instances of BimSheet are included in the detailed payload.
+        - The response always conforms to the expected schema: {'data': [...]}
+
+    Args:
+        body (RetrieveBimSheetPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RetrieveBimSheetResponse
+        RetrieveBimSheetPostOut
     """
 
     return sync_detailed(
@@ -116,22 +152,40 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateRetrieveBimSheetRequest,
-) -> Response[RetrieveBimSheetResponse]:
-    """List BIM sheets in a project
+    body: RetrieveBimSheetPostIn,
+) -> Response[RetrieveBimSheetPostOut]:
+    """Retrieve Bim Sheets In Project
 
-     Retrieve BIM sheets within a project, supporting both full retrieval and paginated queries.
-    Optionally return only sheet IDs.
+     EmmyoTSu
+
+    Retrieve BIM sheets within a specified project, supporting both full and paginated retrieval.
 
     Args:
-        body (CreateRetrieveBimSheetRequest):
+        request: The incoming request object (explicitly ignored in this function).
+        payload (RetrieveBimSheetPostIn): Input data containing retrieval options, including project ID,
+            pagination parameters, flags for retrieving all sheets or only IDs, and optional field
+    selection.
+
+    Returns:
+        dict: A dictionary with a single key 'data', containing either:
+            - A list of sheet IDs if 'only_ids' is True.
+            - A list of detailed sheet payloads if 'only_ids' is False.
+            - An empty list if no results are found.
+
+    Notes:
+        - Pagination defaults to page 1 and page_size 1 if invalid values are provided.
+        - Only instances of BimSheet are included in the detailed payload.
+        - The response always conforms to the expected schema: {'data': [...]}
+
+    Args:
+        body (RetrieveBimSheetPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RetrieveBimSheetResponse]
+        Response[RetrieveBimSheetPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -146,22 +200,40 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: CreateRetrieveBimSheetRequest,
-) -> RetrieveBimSheetResponse | None:
-    """List BIM sheets in a project
+    body: RetrieveBimSheetPostIn,
+) -> RetrieveBimSheetPostOut | None:
+    """Retrieve Bim Sheets In Project
 
-     Retrieve BIM sheets within a project, supporting both full retrieval and paginated queries.
-    Optionally return only sheet IDs.
+     EmmyoTSu
+
+    Retrieve BIM sheets within a specified project, supporting both full and paginated retrieval.
 
     Args:
-        body (CreateRetrieveBimSheetRequest):
+        request: The incoming request object (explicitly ignored in this function).
+        payload (RetrieveBimSheetPostIn): Input data containing retrieval options, including project ID,
+            pagination parameters, flags for retrieving all sheets or only IDs, and optional field
+    selection.
+
+    Returns:
+        dict: A dictionary with a single key 'data', containing either:
+            - A list of sheet IDs if 'only_ids' is True.
+            - A list of detailed sheet payloads if 'only_ids' is False.
+            - An empty list if no results are found.
+
+    Notes:
+        - Pagination defaults to page 1 and page_size 1 if invalid values are provided.
+        - Only instances of BimSheet are included in the detailed payload.
+        - The response always conforms to the expected schema: {'data': [...]}
+
+    Args:
+        body (RetrieveBimSheetPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RetrieveBimSheetResponse
+        RetrieveBimSheetPostOut
     """
 
     return (

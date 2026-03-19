@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.project_choices_response import ProjectChoicesResponse
+from ...models.project_choices_get_out import ProjectChoicesGetOut
 from ...types import Response
 
 
@@ -19,9 +19,9 @@ def _get_kwargs() -> dict[str, Any]:
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ProjectChoicesResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ProjectChoicesGetOut | None:
     if response.status_code == 200:
-        response_200 = ProjectChoicesResponse.from_dict(response.json())
+        response_200 = ProjectChoicesGetOut.from_dict(response.json())
 
         return response_200
 
@@ -33,7 +33,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ProjectChoicesResponse]:
+) -> Response[ProjectChoicesGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -45,18 +45,23 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[ProjectChoicesResponse]:
-    """Get available project attribute choices
+) -> Response[ProjectChoicesGetOut]:
+    """Get Project Choices
 
-     Retrieve the distinct building type and structure options available for project selection. Results
-    are sorted alphabetically.
+     8nyrsx31
+
+    Retrieve available building types and structures for project selection.
+
+    This endpoint returns distinct choices for `building_type` and `structure` attributes
+    found in LawtalkStringAttribute. The results are sorted alphabetically and formatted
+    for use in project creation or filtering UIs.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProjectChoicesResponse]
+        Response[ProjectChoicesGetOut]
     """
 
     kwargs = _get_kwargs()
@@ -71,18 +76,23 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-) -> ProjectChoicesResponse | None:
-    """Get available project attribute choices
+) -> ProjectChoicesGetOut | None:
+    """Get Project Choices
 
-     Retrieve the distinct building type and structure options available for project selection. Results
-    are sorted alphabetically.
+     8nyrsx31
+
+    Retrieve available building types and structures for project selection.
+
+    This endpoint returns distinct choices for `building_type` and `structure` attributes
+    found in LawtalkStringAttribute. The results are sorted alphabetically and formatted
+    for use in project creation or filtering UIs.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProjectChoicesResponse
+        ProjectChoicesGetOut
     """
 
     return sync_detailed(
@@ -93,18 +103,23 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[ProjectChoicesResponse]:
-    """Get available project attribute choices
+) -> Response[ProjectChoicesGetOut]:
+    """Get Project Choices
 
-     Retrieve the distinct building type and structure options available for project selection. Results
-    are sorted alphabetically.
+     8nyrsx31
+
+    Retrieve available building types and structures for project selection.
+
+    This endpoint returns distinct choices for `building_type` and `structure` attributes
+    found in LawtalkStringAttribute. The results are sorted alphabetically and formatted
+    for use in project creation or filtering UIs.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProjectChoicesResponse]
+        Response[ProjectChoicesGetOut]
     """
 
     kwargs = _get_kwargs()
@@ -117,18 +132,23 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-) -> ProjectChoicesResponse | None:
-    """Get available project attribute choices
+) -> ProjectChoicesGetOut | None:
+    """Get Project Choices
 
-     Retrieve the distinct building type and structure options available for project selection. Results
-    are sorted alphabetically.
+     8nyrsx31
+
+    Retrieve available building types and structures for project selection.
+
+    This endpoint returns distinct choices for `building_type` and `structure` attributes
+    found in LawtalkStringAttribute. The results are sorted alphabetically and formatted
+    for use in project creation or filtering UIs.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProjectChoicesResponse
+        ProjectChoicesGetOut
     """
 
     return (

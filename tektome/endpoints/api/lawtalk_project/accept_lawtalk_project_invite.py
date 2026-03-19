@@ -5,15 +5,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_project_accept_invite_request import CreateProjectAcceptInviteRequest
-from ...models.error_response import ErrorResponse
-from ...models.project_invite_accept_response import ProjectInviteAcceptResponse
+from ...models.error_out import ErrorOut
+from ...models.project_accept_invite_post_in import ProjectAcceptInvitePostIn
+from ...models.project_invite_accept_post_out import ProjectInviteAcceptPostOut
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: CreateProjectAcceptInviteRequest,
+    body: ProjectAcceptInvitePostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -32,99 +32,99 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorResponse | ProjectInviteAcceptResponse | None:
+) -> ErrorOut | ProjectInviteAcceptPostOut | None:
     if response.status_code == 200:
-        response_200 = ProjectInviteAcceptResponse.from_dict(response.json())
+        response_200 = ProjectInviteAcceptPostOut.from_dict(response.json())
 
         return response_200
 
     if response.status_code == 400:
-        response_400 = ErrorResponse.from_dict(response.json())
+        response_400 = ErrorOut.from_dict(response.json())
 
         return response_400
 
     if response.status_code == 401:
-        response_401 = ErrorResponse.from_dict(response.json())
+        response_401 = ErrorOut.from_dict(response.json())
 
         return response_401
 
     if response.status_code == 402:
-        response_402 = ErrorResponse.from_dict(response.json())
+        response_402 = ErrorOut.from_dict(response.json())
 
         return response_402
 
     if response.status_code == 403:
-        response_403 = ErrorResponse.from_dict(response.json())
+        response_403 = ErrorOut.from_dict(response.json())
 
         return response_403
 
     if response.status_code == 404:
-        response_404 = ErrorResponse.from_dict(response.json())
+        response_404 = ErrorOut.from_dict(response.json())
 
         return response_404
 
     if response.status_code == 405:
-        response_405 = ErrorResponse.from_dict(response.json())
+        response_405 = ErrorOut.from_dict(response.json())
 
         return response_405
 
     if response.status_code == 406:
-        response_406 = ErrorResponse.from_dict(response.json())
+        response_406 = ErrorOut.from_dict(response.json())
 
         return response_406
 
     if response.status_code == 407:
-        response_407 = ErrorResponse.from_dict(response.json())
+        response_407 = ErrorOut.from_dict(response.json())
 
         return response_407
 
     if response.status_code == 408:
-        response_408 = ErrorResponse.from_dict(response.json())
+        response_408 = ErrorOut.from_dict(response.json())
 
         return response_408
 
     if response.status_code == 409:
-        response_409 = ErrorResponse.from_dict(response.json())
+        response_409 = ErrorOut.from_dict(response.json())
 
         return response_409
 
     if response.status_code == 410:
-        response_410 = ErrorResponse.from_dict(response.json())
+        response_410 = ErrorOut.from_dict(response.json())
 
         return response_410
 
     if response.status_code == 411:
-        response_411 = ErrorResponse.from_dict(response.json())
+        response_411 = ErrorOut.from_dict(response.json())
 
         return response_411
 
     if response.status_code == 412:
-        response_412 = ErrorResponse.from_dict(response.json())
+        response_412 = ErrorOut.from_dict(response.json())
 
         return response_412
 
     if response.status_code == 416:
-        response_416 = ErrorResponse.from_dict(response.json())
+        response_416 = ErrorOut.from_dict(response.json())
 
         return response_416
 
     if response.status_code == 418:
-        response_418 = ErrorResponse.from_dict(response.json())
+        response_418 = ErrorOut.from_dict(response.json())
 
         return response_418
 
     if response.status_code == 425:
-        response_425 = ErrorResponse.from_dict(response.json())
+        response_425 = ErrorOut.from_dict(response.json())
 
         return response_425
 
     if response.status_code == 429:
-        response_429 = ErrorResponse.from_dict(response.json())
+        response_429 = ErrorOut.from_dict(response.json())
 
         return response_429
 
     if response.status_code == 451:
-        response_451 = ErrorResponse.from_dict(response.json())
+        response_451 = ErrorOut.from_dict(response.json())
 
         return response_451
 
@@ -136,7 +136,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorResponse | ProjectInviteAcceptResponse]:
+) -> Response[ErrorOut | ProjectInviteAcceptPostOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -148,21 +148,27 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateProjectAcceptInviteRequest,
-) -> Response[ErrorResponse | ProjectInviteAcceptResponse]:
-    """Accept a project invitation
+    body: ProjectAcceptInvitePostIn,
+) -> Response[ErrorOut | ProjectInviteAcceptPostOut]:
+    """Post Accept Project Invite
 
-     Accept a pending project invitation using the invitation token. Returns the project ID on success.
+     fVBx7r4w
+
+    Accept a project invite.
 
     Args:
-        body (CreateProjectAcceptInviteRequest):
+        payload: ProjectAcceptInvitePostIn
+        request: Request object.
+
+    Args:
+        body (ProjectAcceptInvitePostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorResponse | ProjectInviteAcceptResponse]
+        Response[ErrorOut | ProjectInviteAcceptPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -179,21 +185,27 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: CreateProjectAcceptInviteRequest,
-) -> ErrorResponse | ProjectInviteAcceptResponse | None:
-    """Accept a project invitation
+    body: ProjectAcceptInvitePostIn,
+) -> ErrorOut | ProjectInviteAcceptPostOut | None:
+    """Post Accept Project Invite
 
-     Accept a pending project invitation using the invitation token. Returns the project ID on success.
+     fVBx7r4w
+
+    Accept a project invite.
 
     Args:
-        body (CreateProjectAcceptInviteRequest):
+        payload: ProjectAcceptInvitePostIn
+        request: Request object.
+
+    Args:
+        body (ProjectAcceptInvitePostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorResponse | ProjectInviteAcceptResponse
+        ErrorOut | ProjectInviteAcceptPostOut
     """
 
     return sync_detailed(
@@ -205,21 +217,27 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateProjectAcceptInviteRequest,
-) -> Response[ErrorResponse | ProjectInviteAcceptResponse]:
-    """Accept a project invitation
+    body: ProjectAcceptInvitePostIn,
+) -> Response[ErrorOut | ProjectInviteAcceptPostOut]:
+    """Post Accept Project Invite
 
-     Accept a pending project invitation using the invitation token. Returns the project ID on success.
+     fVBx7r4w
+
+    Accept a project invite.
 
     Args:
-        body (CreateProjectAcceptInviteRequest):
+        payload: ProjectAcceptInvitePostIn
+        request: Request object.
+
+    Args:
+        body (ProjectAcceptInvitePostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorResponse | ProjectInviteAcceptResponse]
+        Response[ErrorOut | ProjectInviteAcceptPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -234,21 +252,27 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: CreateProjectAcceptInviteRequest,
-) -> ErrorResponse | ProjectInviteAcceptResponse | None:
-    """Accept a project invitation
+    body: ProjectAcceptInvitePostIn,
+) -> ErrorOut | ProjectInviteAcceptPostOut | None:
+    """Post Accept Project Invite
 
-     Accept a pending project invitation using the invitation token. Returns the project ID on success.
+     fVBx7r4w
+
+    Accept a project invite.
 
     Args:
-        body (CreateProjectAcceptInviteRequest):
+        payload: ProjectAcceptInvitePostIn
+        request: Request object.
+
+    Args:
+        body (ProjectAcceptInvitePostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorResponse | ProjectInviteAcceptResponse
+        ErrorOut | ProjectInviteAcceptPostOut
     """
 
     return (
