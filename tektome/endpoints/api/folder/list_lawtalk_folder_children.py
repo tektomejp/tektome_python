@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.lawtalk_folder_children_get_out import LawtalkFolderChildrenGetOut
+from ...models.lawtalk_folder_children_response import LawtalkFolderChildrenResponse
 from ...models.order_by import OrderBy
 from ...types import UNSET, Response, Unset
 
@@ -63,9 +63,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> LawtalkFolderChildrenGetOut | None:
+) -> LawtalkFolderChildrenResponse | None:
     if response.status_code == 200:
-        response_200 = LawtalkFolderChildrenGetOut.from_dict(response.json())
+        response_200 = LawtalkFolderChildrenResponse.from_dict(response.json())
 
         return response_200
 
@@ -77,7 +77,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[LawtalkFolderChildrenGetOut]:
+) -> Response[LawtalkFolderChildrenResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -95,25 +95,11 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | Unset = 10,
     dataspace_id: None | Unset | UUID = UNSET,
-) -> Response[LawtalkFolderChildrenGetOut]:
-    """Get Folder Children
+) -> Response[LawtalkFolderChildrenResponse]:
+    """List folder children
 
-     g7i4ub58
-
-    Retrieve both folders and resources in current level. Folder will appear first in alphabetical
-    order.
-
-    Use cases:
-        This is used in both main application page and admin page to show folders and resources.
-        The uploaded resources in admin page are manually linked to resource group root folder.
-        This is to cater pagination for both folders and resources in *admin page* only.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path[FolderPathIn] object containing folder_id
-        query_params: Query[FolderQuery] object containing pagination parameters
-
-    Returns:
+     Retrieve paginated subfolders and resources at the current folder level. Folders appear first in
+    alphabetical order.
 
     Args:
         folder_id (UUID):
@@ -128,7 +114,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[LawtalkFolderChildrenGetOut]
+        Response[LawtalkFolderChildrenResponse]
     """
 
     kwargs = _get_kwargs(
@@ -156,25 +142,11 @@ def sync(
     page: int | Unset = 1,
     page_size: int | Unset = 10,
     dataspace_id: None | Unset | UUID = UNSET,
-) -> LawtalkFolderChildrenGetOut | None:
-    """Get Folder Children
+) -> LawtalkFolderChildrenResponse | None:
+    """List folder children
 
-     g7i4ub58
-
-    Retrieve both folders and resources in current level. Folder will appear first in alphabetical
-    order.
-
-    Use cases:
-        This is used in both main application page and admin page to show folders and resources.
-        The uploaded resources in admin page are manually linked to resource group root folder.
-        This is to cater pagination for both folders and resources in *admin page* only.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path[FolderPathIn] object containing folder_id
-        query_params: Query[FolderQuery] object containing pagination parameters
-
-    Returns:
+     Retrieve paginated subfolders and resources at the current folder level. Folders appear first in
+    alphabetical order.
 
     Args:
         folder_id (UUID):
@@ -189,7 +161,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        LawtalkFolderChildrenGetOut
+        LawtalkFolderChildrenResponse
     """
 
     return sync_detailed(
@@ -212,25 +184,11 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | Unset = 10,
     dataspace_id: None | Unset | UUID = UNSET,
-) -> Response[LawtalkFolderChildrenGetOut]:
-    """Get Folder Children
+) -> Response[LawtalkFolderChildrenResponse]:
+    """List folder children
 
-     g7i4ub58
-
-    Retrieve both folders and resources in current level. Folder will appear first in alphabetical
-    order.
-
-    Use cases:
-        This is used in both main application page and admin page to show folders and resources.
-        The uploaded resources in admin page are manually linked to resource group root folder.
-        This is to cater pagination for both folders and resources in *admin page* only.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path[FolderPathIn] object containing folder_id
-        query_params: Query[FolderQuery] object containing pagination parameters
-
-    Returns:
+     Retrieve paginated subfolders and resources at the current folder level. Folders appear first in
+    alphabetical order.
 
     Args:
         folder_id (UUID):
@@ -245,7 +203,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[LawtalkFolderChildrenGetOut]
+        Response[LawtalkFolderChildrenResponse]
     """
 
     kwargs = _get_kwargs(
@@ -271,25 +229,11 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | Unset = 10,
     dataspace_id: None | Unset | UUID = UNSET,
-) -> LawtalkFolderChildrenGetOut | None:
-    """Get Folder Children
+) -> LawtalkFolderChildrenResponse | None:
+    """List folder children
 
-     g7i4ub58
-
-    Retrieve both folders and resources in current level. Folder will appear first in alphabetical
-    order.
-
-    Use cases:
-        This is used in both main application page and admin page to show folders and resources.
-        The uploaded resources in admin page are manually linked to resource group root folder.
-        This is to cater pagination for both folders and resources in *admin page* only.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path[FolderPathIn] object containing folder_id
-        query_params: Query[FolderQuery] object containing pagination parameters
-
-    Returns:
+     Retrieve paginated subfolders and resources at the current folder level. Folders appear first in
+    alphabetical order.
 
     Args:
         folder_id (UUID):
@@ -304,7 +248,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        LawtalkFolderChildrenGetOut
+        LawtalkFolderChildrenResponse
     """
 
     return (

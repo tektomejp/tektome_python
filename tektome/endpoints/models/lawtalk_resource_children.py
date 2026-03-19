@@ -32,6 +32,7 @@ class LawtalkResourceChildren:
         created (datetime.datetime):
         updated (datetime.datetime):
         initialization_status (None | str | Unset):
+        viewer_file (None | str | Unset):
         folder_id (None | Unset | UUID):
         id (None | Unset | UUID):
         is_public (bool | Unset):  Default: False.
@@ -45,6 +46,7 @@ class LawtalkResourceChildren:
     created: datetime.datetime
     updated: datetime.datetime
     initialization_status: None | str | Unset = UNSET
+    viewer_file: None | str | Unset = UNSET
     folder_id: None | Unset | UUID = UNSET
     id: None | Unset | UUID = UNSET
     is_public: bool | Unset = False
@@ -73,6 +75,12 @@ class LawtalkResourceChildren:
             initialization_status = UNSET
         else:
             initialization_status = self.initialization_status
+
+        viewer_file: None | str | Unset
+        if isinstance(self.viewer_file, Unset):
+            viewer_file = UNSET
+        else:
+            viewer_file = self.viewer_file
 
         folder_id: None | str | Unset
         if isinstance(self.folder_id, Unset):
@@ -107,6 +115,8 @@ class LawtalkResourceChildren:
         )
         if initialization_status is not UNSET:
             field_dict["initialization_status"] = initialization_status
+        if viewer_file is not UNSET:
+            field_dict["viewer_file"] = viewer_file
         if folder_id is not UNSET:
             field_dict["folder_id"] = folder_id
         if id is not UNSET:
@@ -150,6 +160,15 @@ class LawtalkResourceChildren:
             return cast(None | str | Unset, data)
 
         initialization_status = _parse_initialization_status(d.pop("initialization_status", UNSET))
+
+        def _parse_viewer_file(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        viewer_file = _parse_viewer_file(d.pop("viewer_file", UNSET))
 
         def _parse_folder_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -196,6 +215,7 @@ class LawtalkResourceChildren:
             created=created,
             updated=updated,
             initialization_status=initialization_status,
+            viewer_file=viewer_file,
             folder_id=folder_id,
             id=id,
             is_public=is_public,

@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.requirement_template_get_out import RequirementTemplateGetOut
+from ...models.requirement_template_response import RequirementTemplateResponse
 from ...types import Response
 
 
@@ -27,9 +27,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RequirementTemplateGetOut | None:
+) -> RequirementTemplateResponse | None:
     if response.status_code == 200:
-        response_200 = RequirementTemplateGetOut.from_dict(response.json())
+        response_200 = RequirementTemplateResponse.from_dict(response.json())
 
         return response_200
 
@@ -41,7 +41,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[RequirementTemplateGetOut]:
+) -> Response[RequirementTemplateResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,12 +54,10 @@ def sync_detailed(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[RequirementTemplateGetOut]:
-    """Retrieve Requirement Template
+) -> Response[RequirementTemplateResponse]:
+    """Get a requirement template by ID
 
-     B7GNMWvD
-
-    Get single requirement templates inside a requirement template container.
+     Retrieve a specific requirement template by its ID.
 
     Args:
         requirement_template_id (UUID):
@@ -69,7 +67,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementTemplateGetOut]
+        Response[RequirementTemplateResponse]
     """
 
     kwargs = _get_kwargs(
@@ -87,12 +85,10 @@ def sync(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> RequirementTemplateGetOut | None:
-    """Retrieve Requirement Template
+) -> RequirementTemplateResponse | None:
+    """Get a requirement template by ID
 
-     B7GNMWvD
-
-    Get single requirement templates inside a requirement template container.
+     Retrieve a specific requirement template by its ID.
 
     Args:
         requirement_template_id (UUID):
@@ -102,7 +98,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementTemplateGetOut
+        RequirementTemplateResponse
     """
 
     return sync_detailed(
@@ -115,12 +111,10 @@ async def asyncio_detailed(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[RequirementTemplateGetOut]:
-    """Retrieve Requirement Template
+) -> Response[RequirementTemplateResponse]:
+    """Get a requirement template by ID
 
-     B7GNMWvD
-
-    Get single requirement templates inside a requirement template container.
+     Retrieve a specific requirement template by its ID.
 
     Args:
         requirement_template_id (UUID):
@@ -130,7 +124,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementTemplateGetOut]
+        Response[RequirementTemplateResponse]
     """
 
     kwargs = _get_kwargs(
@@ -146,12 +140,10 @@ async def asyncio(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> RequirementTemplateGetOut | None:
-    """Retrieve Requirement Template
+) -> RequirementTemplateResponse | None:
+    """Get a requirement template by ID
 
-     B7GNMWvD
-
-    Get single requirement templates inside a requirement template container.
+     Retrieve a specific requirement template by its ID.
 
     Args:
         requirement_template_id (UUID):
@@ -161,7 +153,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementTemplateGetOut
+        RequirementTemplateResponse
     """
 
     return (

@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.folder_resource_post_in import FolderResourcePostIn
+from ...models.create_lawtalk_folder_resource_request import CreateLawtalkFolderResourceRequest
 from ...types import Response
 
 
 def _get_kwargs(
     folder_id: UUID,
     *,
-    body: FolderResourcePostIn,
+    body: CreateLawtalkFolderResourceRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,26 +56,17 @@ def sync_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: FolderResourcePostIn,
+    body: CreateLawtalkFolderResourceRequest,
 ) -> Response[Any]:
-    """Post Add Resource
+    """Attach resources to a folder
 
-     fn1DZAvx
-
-    Attach one or more Lawtalk resources to a folder.
-
-    Args:
-        request: The HTTP request object.
-        path_params (FolderPathIn): Path parameters including the target folder.
-        payload (FolderResourcePostIn): Input schema containing resource IDs to attach.
-
-    Returns:
-        204: No Content if successful.
-        400: Bad Request if any resource is already attached to the folder.
+     Attach one or more resources to a folder. A resource cannot be attached if it already exists in the
+    folder.
 
     Args:
         folder_id (UUID):
-        body (FolderResourcePostIn): Schema for attaching a lawtalk resource(s) to a folder.
+        body (CreateLawtalkFolderResourceRequest): Schema for attaching a lawtalk resource(s) to a
+            folder.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -101,26 +92,17 @@ async def asyncio_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: FolderResourcePostIn,
+    body: CreateLawtalkFolderResourceRequest,
 ) -> Response[Any]:
-    """Post Add Resource
+    """Attach resources to a folder
 
-     fn1DZAvx
-
-    Attach one or more Lawtalk resources to a folder.
-
-    Args:
-        request: The HTTP request object.
-        path_params (FolderPathIn): Path parameters including the target folder.
-        payload (FolderResourcePostIn): Input schema containing resource IDs to attach.
-
-    Returns:
-        204: No Content if successful.
-        400: Bad Request if any resource is already attached to the folder.
+     Attach one or more resources to a folder. A resource cannot be attached if it already exists in the
+    folder.
 
     Args:
         folder_id (UUID):
-        body (FolderResourcePostIn): Schema for attaching a lawtalk resource(s) to a folder.
+        body (CreateLawtalkFolderResourceRequest): Schema for attaching a lawtalk resource(s) to a
+            folder.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

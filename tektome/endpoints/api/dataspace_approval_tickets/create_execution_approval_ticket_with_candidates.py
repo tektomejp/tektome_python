@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.approval_ticket_get_out import ApprovalTicketGetOut
+from ...models.approval_ticket_response import ApprovalTicketResponse
 from ...models.create_execution_approval_ticket_with_candidates_multi_part_body_params import (
     CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams,
 )
@@ -36,9 +36,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ApprovalTicketGetOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ApprovalTicketResponse | None:
     if response.status_code == 201:
-        response_201 = ApprovalTicketGetOut.from_dict(response.json())
+        response_201 = ApprovalTicketResponse.from_dict(response.json())
 
         return response_201
 
@@ -50,7 +50,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ApprovalTicketGetOut]:
+) -> Response[ApprovalTicketResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,29 +65,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams,
-) -> Response[ApprovalTicketGetOut]:
-    """Post Approval Ticket
+) -> Response[ApprovalTicketResponse]:
+    """Create an approval ticket for an execution
 
-     Dx_aYOR8
-
-    Create an approval ticket for the given execution.
-
-    1. Validate the execution ID from path parameters.
-    2. Retrieve the associated execution and process.
-    3. Create an ApprovalTicket instance.
-    4. For each candidate in the payload, create an ApprovalTicketCandidate instance.
-    5. Auto-select the first candidate (temporary behavior).
-    6. If a file is provided and the category is FILE_EXTRACTION, upload the file to sandbox for history
-    tracking.
-    7. If the execution group is set to auto-approve - set status and handle approved ticket.
-
-    Args:
-        file: Optional file upload, when new resource got generated for approval
-        request: Request object
-        payload: Approval ticket payload
-        path_params: Path parameters containing execution_id
-
-    Returns: 201 Created with the created ApprovalTicket containing updated candidates
+     Create an approval ticket with candidates for the specified execution. If a file is provided, it is
+    uploaded for history tracking. Auto-approve settings are applied when configured.
 
     Args:
         dataspace_id (UUID):
@@ -99,7 +81,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ApprovalTicketGetOut]
+        Response[ApprovalTicketResponse]
     """
 
     kwargs = _get_kwargs(
@@ -121,29 +103,11 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams,
-) -> ApprovalTicketGetOut | None:
-    """Post Approval Ticket
+) -> ApprovalTicketResponse | None:
+    """Create an approval ticket for an execution
 
-     Dx_aYOR8
-
-    Create an approval ticket for the given execution.
-
-    1. Validate the execution ID from path parameters.
-    2. Retrieve the associated execution and process.
-    3. Create an ApprovalTicket instance.
-    4. For each candidate in the payload, create an ApprovalTicketCandidate instance.
-    5. Auto-select the first candidate (temporary behavior).
-    6. If a file is provided and the category is FILE_EXTRACTION, upload the file to sandbox for history
-    tracking.
-    7. If the execution group is set to auto-approve - set status and handle approved ticket.
-
-    Args:
-        file: Optional file upload, when new resource got generated for approval
-        request: Request object
-        payload: Approval ticket payload
-        path_params: Path parameters containing execution_id
-
-    Returns: 201 Created with the created ApprovalTicket containing updated candidates
+     Create an approval ticket with candidates for the specified execution. If a file is provided, it is
+    uploaded for history tracking. Auto-approve settings are applied when configured.
 
     Args:
         dataspace_id (UUID):
@@ -155,7 +119,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ApprovalTicketGetOut
+        ApprovalTicketResponse
     """
 
     return sync_detailed(
@@ -172,29 +136,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams,
-) -> Response[ApprovalTicketGetOut]:
-    """Post Approval Ticket
+) -> Response[ApprovalTicketResponse]:
+    """Create an approval ticket for an execution
 
-     Dx_aYOR8
-
-    Create an approval ticket for the given execution.
-
-    1. Validate the execution ID from path parameters.
-    2. Retrieve the associated execution and process.
-    3. Create an ApprovalTicket instance.
-    4. For each candidate in the payload, create an ApprovalTicketCandidate instance.
-    5. Auto-select the first candidate (temporary behavior).
-    6. If a file is provided and the category is FILE_EXTRACTION, upload the file to sandbox for history
-    tracking.
-    7. If the execution group is set to auto-approve - set status and handle approved ticket.
-
-    Args:
-        file: Optional file upload, when new resource got generated for approval
-        request: Request object
-        payload: Approval ticket payload
-        path_params: Path parameters containing execution_id
-
-    Returns: 201 Created with the created ApprovalTicket containing updated candidates
+     Create an approval ticket with candidates for the specified execution. If a file is provided, it is
+    uploaded for history tracking. Auto-approve settings are applied when configured.
 
     Args:
         dataspace_id (UUID):
@@ -206,7 +152,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ApprovalTicketGetOut]
+        Response[ApprovalTicketResponse]
     """
 
     kwargs = _get_kwargs(
@@ -226,29 +172,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams,
-) -> ApprovalTicketGetOut | None:
-    """Post Approval Ticket
+) -> ApprovalTicketResponse | None:
+    """Create an approval ticket for an execution
 
-     Dx_aYOR8
-
-    Create an approval ticket for the given execution.
-
-    1. Validate the execution ID from path parameters.
-    2. Retrieve the associated execution and process.
-    3. Create an ApprovalTicket instance.
-    4. For each candidate in the payload, create an ApprovalTicketCandidate instance.
-    5. Auto-select the first candidate (temporary behavior).
-    6. If a file is provided and the category is FILE_EXTRACTION, upload the file to sandbox for history
-    tracking.
-    7. If the execution group is set to auto-approve - set status and handle approved ticket.
-
-    Args:
-        file: Optional file upload, when new resource got generated for approval
-        request: Request object
-        payload: Approval ticket payload
-        path_params: Path parameters containing execution_id
-
-    Returns: 201 Created with the created ApprovalTicket containing updated candidates
+     Create an approval ticket with candidates for the specified execution. If a file is provided, it is
+    uploaded for history tracking. Auto-approve settings are applied when configured.
 
     Args:
         dataspace_id (UUID):
@@ -260,7 +188,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ApprovalTicketGetOut
+        ApprovalTicketResponse
     """
 
     return (

@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.dataspace_fuzzy_search_configuration_get_out import DataspaceFuzzySearchConfigurationGetOut
+from ...models.dataspace_fuzzy_search_configuration_response import DataspaceFuzzySearchConfigurationResponse
 from ...types import Response
 
 
@@ -27,9 +27,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> DataspaceFuzzySearchConfigurationGetOut | None:
+) -> DataspaceFuzzySearchConfigurationResponse | None:
     if response.status_code == 200:
-        response_200 = DataspaceFuzzySearchConfigurationGetOut.from_dict(response.json())
+        response_200 = DataspaceFuzzySearchConfigurationResponse.from_dict(response.json())
 
         return response_200
 
@@ -41,7 +41,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[DataspaceFuzzySearchConfigurationGetOut]:
+) -> Response[DataspaceFuzzySearchConfigurationResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,12 +54,11 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[DataspaceFuzzySearchConfigurationGetOut]:
-    """Get Dataspace Fuzzy Search Config
+) -> Response[DataspaceFuzzySearchConfigurationResponse]:
+    """Get fuzzy search configuration
 
-     DGdHN7zW
-
-    Retrieve fuzzy search configuration (excluded attributes name and types) for the current dataspace.
+     Retrieve the fuzzy search configuration for a dataspace, including excluded attribute names and
+    types. Creates a default configuration if one does not yet exist.
 
     Args:
         dataspace_id (UUID):
@@ -69,7 +68,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DataspaceFuzzySearchConfigurationGetOut]
+        Response[DataspaceFuzzySearchConfigurationResponse]
     """
 
     kwargs = _get_kwargs(
@@ -87,12 +86,11 @@ def sync(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> DataspaceFuzzySearchConfigurationGetOut | None:
-    """Get Dataspace Fuzzy Search Config
+) -> DataspaceFuzzySearchConfigurationResponse | None:
+    """Get fuzzy search configuration
 
-     DGdHN7zW
-
-    Retrieve fuzzy search configuration (excluded attributes name and types) for the current dataspace.
+     Retrieve the fuzzy search configuration for a dataspace, including excluded attribute names and
+    types. Creates a default configuration if one does not yet exist.
 
     Args:
         dataspace_id (UUID):
@@ -102,7 +100,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DataspaceFuzzySearchConfigurationGetOut
+        DataspaceFuzzySearchConfigurationResponse
     """
 
     return sync_detailed(
@@ -115,12 +113,11 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[DataspaceFuzzySearchConfigurationGetOut]:
-    """Get Dataspace Fuzzy Search Config
+) -> Response[DataspaceFuzzySearchConfigurationResponse]:
+    """Get fuzzy search configuration
 
-     DGdHN7zW
-
-    Retrieve fuzzy search configuration (excluded attributes name and types) for the current dataspace.
+     Retrieve the fuzzy search configuration for a dataspace, including excluded attribute names and
+    types. Creates a default configuration if one does not yet exist.
 
     Args:
         dataspace_id (UUID):
@@ -130,7 +127,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DataspaceFuzzySearchConfigurationGetOut]
+        Response[DataspaceFuzzySearchConfigurationResponse]
     """
 
     kwargs = _get_kwargs(
@@ -146,12 +143,11 @@ async def asyncio(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> DataspaceFuzzySearchConfigurationGetOut | None:
-    """Get Dataspace Fuzzy Search Config
+) -> DataspaceFuzzySearchConfigurationResponse | None:
+    """Get fuzzy search configuration
 
-     DGdHN7zW
-
-    Retrieve fuzzy search configuration (excluded attributes name and types) for the current dataspace.
+     Retrieve the fuzzy search configuration for a dataspace, including excluded attribute names and
+    types. Creates a default configuration if one does not yet exist.
 
     Args:
         dataspace_id (UUID):
@@ -161,7 +157,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DataspaceFuzzySearchConfigurationGetOut
+        DataspaceFuzzySearchConfigurationResponse
     """
 
     return (

@@ -48,17 +48,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Capture Section Component
+    """Delete a section capture
 
-     WhYKuV6I
-
-    Deletes a CaptureSectionComponent object
-
-    Args:
-        request: Request object
-        path_params: path params of type DeleteCaptureSectionComponentPath
-
-    Returns: 204, None
+     Delete a capture (screenshot) component from a requirement section and unlink associated page
+    resources.
 
     Args:
         capture_id (UUID):
@@ -87,17 +80,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Capture Section Component
+    """Delete a section capture
 
-     WhYKuV6I
-
-    Deletes a CaptureSectionComponent object
-
-    Args:
-        request: Request object
-        path_params: path params of type DeleteCaptureSectionComponentPath
-
-    Returns: 204, None
+     Delete a capture (screenshot) component from a requirement section and unlink associated page
+    resources.
 
     Args:
         capture_id (UUID):

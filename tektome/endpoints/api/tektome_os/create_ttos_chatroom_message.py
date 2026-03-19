@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.chatroom_id_post_in import ChatroomIdPostIn
+from ...models.create_chatroom_id_request import CreateChatroomIdRequest
 from ...models.generic_http_error import GenericHttpError
 from ...types import Response
 
@@ -15,7 +15,7 @@ from ...types import Response
 def _get_kwargs(
     chatroom_id: UUID,
     *,
-    body: ChatroomIdPostIn,
+    body: CreateChatroomIdRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -150,21 +150,16 @@ def sync_detailed(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ChatroomIdPostIn,
+    body: CreateChatroomIdRequest,
 ) -> Response[Any | GenericHttpError]:
-    """Send a message to TektomeOS LLM agent in a chatroom
+    """Send a chatroom message
 
-     gBOBN2PR
-    Send a message to TektomeOS LLM agent in a chatroom.<br>
-    Listen to ElectricSQL appagent_chatroom, appagent_message, appagent_artifact, appagent_toolcall
-    tables for updates.<br>
-    # Note
-    There is about 100ms delay between firing and appagent_chatroom.status updates.<br>
-    Optimistically set appagent_chatroom.status to `processing` on client side when sending message.<br>
+     Send a message to the AI agent in a chatroom. The agent processes the message asynchronously.
+    Monitor the chatroom and related entities for real-time updates.
 
     Args:
         chatroom_id (UUID):
-        body (ChatroomIdPostIn):
+        body (CreateChatroomIdRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -190,21 +185,16 @@ def sync(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ChatroomIdPostIn,
+    body: CreateChatroomIdRequest,
 ) -> Any | GenericHttpError | None:
-    """Send a message to TektomeOS LLM agent in a chatroom
+    """Send a chatroom message
 
-     gBOBN2PR
-    Send a message to TektomeOS LLM agent in a chatroom.<br>
-    Listen to ElectricSQL appagent_chatroom, appagent_message, appagent_artifact, appagent_toolcall
-    tables for updates.<br>
-    # Note
-    There is about 100ms delay between firing and appagent_chatroom.status updates.<br>
-    Optimistically set appagent_chatroom.status to `processing` on client side when sending message.<br>
+     Send a message to the AI agent in a chatroom. The agent processes the message asynchronously.
+    Monitor the chatroom and related entities for real-time updates.
 
     Args:
         chatroom_id (UUID):
-        body (ChatroomIdPostIn):
+        body (CreateChatroomIdRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -225,21 +215,16 @@ async def asyncio_detailed(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ChatroomIdPostIn,
+    body: CreateChatroomIdRequest,
 ) -> Response[Any | GenericHttpError]:
-    """Send a message to TektomeOS LLM agent in a chatroom
+    """Send a chatroom message
 
-     gBOBN2PR
-    Send a message to TektomeOS LLM agent in a chatroom.<br>
-    Listen to ElectricSQL appagent_chatroom, appagent_message, appagent_artifact, appagent_toolcall
-    tables for updates.<br>
-    # Note
-    There is about 100ms delay between firing and appagent_chatroom.status updates.<br>
-    Optimistically set appagent_chatroom.status to `processing` on client side when sending message.<br>
+     Send a message to the AI agent in a chatroom. The agent processes the message asynchronously.
+    Monitor the chatroom and related entities for real-time updates.
 
     Args:
         chatroom_id (UUID):
-        body (ChatroomIdPostIn):
+        body (CreateChatroomIdRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -263,21 +248,16 @@ async def asyncio(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ChatroomIdPostIn,
+    body: CreateChatroomIdRequest,
 ) -> Any | GenericHttpError | None:
-    """Send a message to TektomeOS LLM agent in a chatroom
+    """Send a chatroom message
 
-     gBOBN2PR
-    Send a message to TektomeOS LLM agent in a chatroom.<br>
-    Listen to ElectricSQL appagent_chatroom, appagent_message, appagent_artifact, appagent_toolcall
-    tables for updates.<br>
-    # Note
-    There is about 100ms delay between firing and appagent_chatroom.status updates.<br>
-    Optimistically set appagent_chatroom.status to `processing` on client side when sending message.<br>
+     Send a message to the AI agent in a chatroom. The agent processes the message asynchronously.
+    Monitor the chatroom and related entities for real-time updates.
 
     Args:
         chatroom_id (UUID):
-        body (ChatroomIdPostIn):
+        body (CreateChatroomIdRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

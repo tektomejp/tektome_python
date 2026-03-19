@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.error_out import ErrorOut
-from ...models.search_payload_v4_get_out import SearchPayloadV4GetOut
+from ...models.error_response import ErrorResponse
+from ...models.search_payload_v4_response import SearchPayloadV4Response
 from ...types import UNSET, Response, Unset
 
 
@@ -57,99 +57,99 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorOut | SearchPayloadV4GetOut | None:
+) -> ErrorResponse | SearchPayloadV4Response | None:
     if response.status_code == 200:
-        response_200 = SearchPayloadV4GetOut.from_dict(response.json())
+        response_200 = SearchPayloadV4Response.from_dict(response.json())
 
         return response_200
 
     if response.status_code == 400:
-        response_400 = ErrorOut.from_dict(response.json())
+        response_400 = ErrorResponse.from_dict(response.json())
 
         return response_400
 
     if response.status_code == 401:
-        response_401 = ErrorOut.from_dict(response.json())
+        response_401 = ErrorResponse.from_dict(response.json())
 
         return response_401
 
     if response.status_code == 402:
-        response_402 = ErrorOut.from_dict(response.json())
+        response_402 = ErrorResponse.from_dict(response.json())
 
         return response_402
 
     if response.status_code == 403:
-        response_403 = ErrorOut.from_dict(response.json())
+        response_403 = ErrorResponse.from_dict(response.json())
 
         return response_403
 
     if response.status_code == 404:
-        response_404 = ErrorOut.from_dict(response.json())
+        response_404 = ErrorResponse.from_dict(response.json())
 
         return response_404
 
     if response.status_code == 405:
-        response_405 = ErrorOut.from_dict(response.json())
+        response_405 = ErrorResponse.from_dict(response.json())
 
         return response_405
 
     if response.status_code == 406:
-        response_406 = ErrorOut.from_dict(response.json())
+        response_406 = ErrorResponse.from_dict(response.json())
 
         return response_406
 
     if response.status_code == 407:
-        response_407 = ErrorOut.from_dict(response.json())
+        response_407 = ErrorResponse.from_dict(response.json())
 
         return response_407
 
     if response.status_code == 408:
-        response_408 = ErrorOut.from_dict(response.json())
+        response_408 = ErrorResponse.from_dict(response.json())
 
         return response_408
 
     if response.status_code == 409:
-        response_409 = ErrorOut.from_dict(response.json())
+        response_409 = ErrorResponse.from_dict(response.json())
 
         return response_409
 
     if response.status_code == 410:
-        response_410 = ErrorOut.from_dict(response.json())
+        response_410 = ErrorResponse.from_dict(response.json())
 
         return response_410
 
     if response.status_code == 411:
-        response_411 = ErrorOut.from_dict(response.json())
+        response_411 = ErrorResponse.from_dict(response.json())
 
         return response_411
 
     if response.status_code == 412:
-        response_412 = ErrorOut.from_dict(response.json())
+        response_412 = ErrorResponse.from_dict(response.json())
 
         return response_412
 
     if response.status_code == 416:
-        response_416 = ErrorOut.from_dict(response.json())
+        response_416 = ErrorResponse.from_dict(response.json())
 
         return response_416
 
     if response.status_code == 418:
-        response_418 = ErrorOut.from_dict(response.json())
+        response_418 = ErrorResponse.from_dict(response.json())
 
         return response_418
 
     if response.status_code == 425:
-        response_425 = ErrorOut.from_dict(response.json())
+        response_425 = ErrorResponse.from_dict(response.json())
 
         return response_425
 
     if response.status_code == 429:
-        response_429 = ErrorOut.from_dict(response.json())
+        response_429 = ErrorResponse.from_dict(response.json())
 
         return response_429
 
     if response.status_code == 451:
-        response_451 = ErrorOut.from_dict(response.json())
+        response_451 = ErrorResponse.from_dict(response.json())
 
         return response_451
 
@@ -161,7 +161,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorOut | SearchPayloadV4GetOut]:
+) -> Response[ErrorResponse | SearchPayloadV4Response]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -180,37 +180,11 @@ def sync_detailed(
     skip: int | Unset = 0,
     sort_by_pages: bool | Unset = False,
     debug: bool | Unset = False,
-) -> Response[ErrorOut | SearchPayloadV4GetOut]:
-    r"""Search Ocr Page V4
+) -> Response[ErrorResponse | SearchPayloadV4Response]:
+    """Search project resource pages (v4)
 
-     c1Jmj7Br
-
-    Searching for OCR result from the given query and keywords.
-
-    Logic:
-
-        - If only query is provided, will perform vector search
-            (Score is based on cosine similarity)
-
-            PS. Current embedding model is Azure Text Embedding ADA002
-            Will change to 003 - Large once re-embedding is done
-
-        - If only keyword is provided, will perform exact search
-            (Score is based on BM25)
-
-        - If both query and keyword are provided, will perform hybrid search
-            (Score is based on RRF - Reciprocal Rank Fusion)
-
-    Results:
-        {
-            \"tektome_response\": return a list of all hits with its matching chunk info.
-            \"parsed_tektome_response\": return a list of grouped sections in each resource-group.
-        }
-
-    Noted:
-        if sort_by_pages is True, the list result will be sorted by (page number ascending, score
-    descending)
-        else, the list result will be sorted by (score descending, page number ascending)
+     Search extracted pages in project resources using vector, exact, or hybrid search modes. Supports
+    query-based semantic search and keyword-based exact matching.
 
     Args:
         project_id (UUID):
@@ -226,7 +200,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorOut | SearchPayloadV4GetOut]
+        Response[ErrorResponse | SearchPayloadV4Response]
     """
 
     kwargs = _get_kwargs(
@@ -256,37 +230,11 @@ def sync(
     skip: int | Unset = 0,
     sort_by_pages: bool | Unset = False,
     debug: bool | Unset = False,
-) -> ErrorOut | SearchPayloadV4GetOut | None:
-    r"""Search Ocr Page V4
+) -> ErrorResponse | SearchPayloadV4Response | None:
+    """Search project resource pages (v4)
 
-     c1Jmj7Br
-
-    Searching for OCR result from the given query and keywords.
-
-    Logic:
-
-        - If only query is provided, will perform vector search
-            (Score is based on cosine similarity)
-
-            PS. Current embedding model is Azure Text Embedding ADA002
-            Will change to 003 - Large once re-embedding is done
-
-        - If only keyword is provided, will perform exact search
-            (Score is based on BM25)
-
-        - If both query and keyword are provided, will perform hybrid search
-            (Score is based on RRF - Reciprocal Rank Fusion)
-
-    Results:
-        {
-            \"tektome_response\": return a list of all hits with its matching chunk info.
-            \"parsed_tektome_response\": return a list of grouped sections in each resource-group.
-        }
-
-    Noted:
-        if sort_by_pages is True, the list result will be sorted by (page number ascending, score
-    descending)
-        else, the list result will be sorted by (score descending, page number ascending)
+     Search extracted pages in project resources using vector, exact, or hybrid search modes. Supports
+    query-based semantic search and keyword-based exact matching.
 
     Args:
         project_id (UUID):
@@ -302,7 +250,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorOut | SearchPayloadV4GetOut
+        ErrorResponse | SearchPayloadV4Response
     """
 
     return sync_detailed(
@@ -327,37 +275,11 @@ async def asyncio_detailed(
     skip: int | Unset = 0,
     sort_by_pages: bool | Unset = False,
     debug: bool | Unset = False,
-) -> Response[ErrorOut | SearchPayloadV4GetOut]:
-    r"""Search Ocr Page V4
+) -> Response[ErrorResponse | SearchPayloadV4Response]:
+    """Search project resource pages (v4)
 
-     c1Jmj7Br
-
-    Searching for OCR result from the given query and keywords.
-
-    Logic:
-
-        - If only query is provided, will perform vector search
-            (Score is based on cosine similarity)
-
-            PS. Current embedding model is Azure Text Embedding ADA002
-            Will change to 003 - Large once re-embedding is done
-
-        - If only keyword is provided, will perform exact search
-            (Score is based on BM25)
-
-        - If both query and keyword are provided, will perform hybrid search
-            (Score is based on RRF - Reciprocal Rank Fusion)
-
-    Results:
-        {
-            \"tektome_response\": return a list of all hits with its matching chunk info.
-            \"parsed_tektome_response\": return a list of grouped sections in each resource-group.
-        }
-
-    Noted:
-        if sort_by_pages is True, the list result will be sorted by (page number ascending, score
-    descending)
-        else, the list result will be sorted by (score descending, page number ascending)
+     Search extracted pages in project resources using vector, exact, or hybrid search modes. Supports
+    query-based semantic search and keyword-based exact matching.
 
     Args:
         project_id (UUID):
@@ -373,7 +295,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorOut | SearchPayloadV4GetOut]
+        Response[ErrorResponse | SearchPayloadV4Response]
     """
 
     kwargs = _get_kwargs(
@@ -401,37 +323,11 @@ async def asyncio(
     skip: int | Unset = 0,
     sort_by_pages: bool | Unset = False,
     debug: bool | Unset = False,
-) -> ErrorOut | SearchPayloadV4GetOut | None:
-    r"""Search Ocr Page V4
+) -> ErrorResponse | SearchPayloadV4Response | None:
+    """Search project resource pages (v4)
 
-     c1Jmj7Br
-
-    Searching for OCR result from the given query and keywords.
-
-    Logic:
-
-        - If only query is provided, will perform vector search
-            (Score is based on cosine similarity)
-
-            PS. Current embedding model is Azure Text Embedding ADA002
-            Will change to 003 - Large once re-embedding is done
-
-        - If only keyword is provided, will perform exact search
-            (Score is based on BM25)
-
-        - If both query and keyword are provided, will perform hybrid search
-            (Score is based on RRF - Reciprocal Rank Fusion)
-
-    Results:
-        {
-            \"tektome_response\": return a list of all hits with its matching chunk info.
-            \"parsed_tektome_response\": return a list of grouped sections in each resource-group.
-        }
-
-    Noted:
-        if sort_by_pages is True, the list result will be sorted by (page number ascending, score
-    descending)
-        else, the list result will be sorted by (score descending, page number ascending)
+     Search extracted pages in project resources using vector, exact, or hybrid search modes. Supports
+    query-based semantic search and keyword-based exact matching.
 
     Args:
         project_id (UUID):
@@ -447,7 +343,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorOut | SearchPayloadV4GetOut
+        ErrorResponse | SearchPayloadV4Response
     """
 
     return (

@@ -65,20 +65,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: CreateRequirementSectionCaptureMultiPartBodyParams,
 ) -> Response[ResourceCaptureSectionComponentSchema]:
-    """Post Capture Section Component
+    """Create a section capture
 
-     y0Pe8-Po
-
-
-    Create a CaptureSectionComponent object
-
-    Args:
-        request: Request object
-        path_params: path params of type CreateCaptureSectionComponentPath
-        payload: request payload of type CreateCaptureSectionComponentPostIn
-        screenshot_file: image file object
-
-    Returns: 201, CaptureSectionComponentSchema
+     Create a capture (screenshot) component within a requirement section. Extracts text from the
+    specified bounding area of a resource page.
 
     Args:
         section_id (UUID):
@@ -110,20 +100,10 @@ def sync(
     client: AuthenticatedClient,
     body: CreateRequirementSectionCaptureMultiPartBodyParams,
 ) -> ResourceCaptureSectionComponentSchema | None:
-    """Post Capture Section Component
+    """Create a section capture
 
-     y0Pe8-Po
-
-
-    Create a CaptureSectionComponent object
-
-    Args:
-        request: Request object
-        path_params: path params of type CreateCaptureSectionComponentPath
-        payload: request payload of type CreateCaptureSectionComponentPostIn
-        screenshot_file: image file object
-
-    Returns: 201, CaptureSectionComponentSchema
+     Create a capture (screenshot) component within a requirement section. Extracts text from the
+    specified bounding area of a resource page.
 
     Args:
         section_id (UUID):
@@ -150,20 +130,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: CreateRequirementSectionCaptureMultiPartBodyParams,
 ) -> Response[ResourceCaptureSectionComponentSchema]:
-    """Post Capture Section Component
+    """Create a section capture
 
-     y0Pe8-Po
-
-
-    Create a CaptureSectionComponent object
-
-    Args:
-        request: Request object
-        path_params: path params of type CreateCaptureSectionComponentPath
-        payload: request payload of type CreateCaptureSectionComponentPostIn
-        screenshot_file: image file object
-
-    Returns: 201, CaptureSectionComponentSchema
+     Create a capture (screenshot) component within a requirement section. Extracts text from the
+    specified bounding area of a resource page.
 
     Args:
         section_id (UUID):
@@ -193,20 +163,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: CreateRequirementSectionCaptureMultiPartBodyParams,
 ) -> ResourceCaptureSectionComponentSchema | None:
-    """Post Capture Section Component
+    """Create a section capture
 
-     y0Pe8-Po
-
-
-    Create a CaptureSectionComponent object
-
-    Args:
-        request: Request object
-        path_params: path params of type CreateCaptureSectionComponentPath
-        payload: request payload of type CreateCaptureSectionComponentPostIn
-        screenshot_file: image file object
-
-    Returns: 201, CaptureSectionComponentSchema
+     Create a capture (screenshot) component within a requirement section. Extracts text from the
+    specified bounding area of a resource page.
 
     Args:
         section_id (UUID):

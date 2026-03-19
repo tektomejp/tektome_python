@@ -9,10 +9,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from .. import types
-from ..types import File
+from ..types import UNSET, File, FileTypes, Unset
 
 if TYPE_CHECKING:
-    from ..models.payment_record_post_in import PaymentRecordPostIn
+    from ..models.create_payment_record_request import CreatePaymentRecordRequest
 
 
 T = TypeVar("T", bound="CreatePaymentRecordMultiPartBodyParams")
@@ -22,36 +22,40 @@ T = TypeVar("T", bound="CreatePaymentRecordMultiPartBodyParams")
 class CreatePaymentRecordMultiPartBodyParams:
     """
     Attributes:
-        file (File):
-        payload (PaymentRecordPostIn): Schema for creating a new payment record.
+        payload (CreatePaymentRecordRequest): Schema for creating a new payment record.
+        file (File | Unset):
     """
 
-    file: File
-    payload: PaymentRecordPostIn
+    payload: CreatePaymentRecordRequest
+    file: File | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        file = self.file.to_tuple()
-
         payload = self.payload.to_dict()
+
+        file: FileTypes | Unset = UNSET
+        if not isinstance(self.file, Unset):
+            file = self.file.to_tuple()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "file": file,
                 "payload": payload,
             }
         )
+        if file is not UNSET:
+            field_dict["file"] = file
 
         return field_dict
 
     def to_multipart(self) -> types.RequestFiles:
         files: types.RequestFiles = []
 
-        files.append(("file", self.file.to_tuple()))
-
         files.append(("payload", (None, json.dumps(self.payload.to_dict()).encode(), "application/json")))
+
+        if not isinstance(self.file, Unset):
+            files.append(("file", self.file.to_tuple()))
 
         for prop_name, prop in self.additional_properties.items():
             files.append((prop_name, (None, str(prop).encode(), "text/plain")))
@@ -60,16 +64,21 @@ class CreatePaymentRecordMultiPartBodyParams:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.payment_record_post_in import PaymentRecordPostIn
+        from ..models.create_payment_record_request import CreatePaymentRecordRequest
 
         d = dict(src_dict)
-        file = File(payload=BytesIO(d.pop("file")))
+        payload = CreatePaymentRecordRequest.from_dict(d.pop("payload"))
 
-        payload = PaymentRecordPostIn.from_dict(d.pop("payload"))
+        _file = d.pop("file", UNSET)
+        file: File | Unset
+        if isinstance(_file, Unset):
+            file = UNSET
+        else:
+            file = File(payload=BytesIO(_file))
 
         create_payment_record_multi_part_body_params = cls(
-            file=file,
             payload=payload,
+            file=file,
         )
 
         create_payment_record_multi_part_body_params.additional_properties = d

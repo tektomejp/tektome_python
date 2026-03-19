@@ -18,12 +18,12 @@ class TableCellUpdate:
     Attributes:
         row_index (int):
         column (str):
-        value (bool | datetime.date | datetime.datetime | float | int | None | str):
+        value (bool | datetime.date | datetime.datetime | float | int | list[str] | None | str):
     """
 
     row_index: int
     column: str
-    value: bool | datetime.date | datetime.datetime | float | int | None | str
+    value: bool | datetime.date | datetime.datetime | float | int | list[str] | None | str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -31,11 +31,14 @@ class TableCellUpdate:
 
         column = self.column
 
-        value: bool | float | int | None | str
+        value: bool | float | int | list[str] | None | str
         if isinstance(self.value, datetime.date):
             value = self.value.isoformat()
         elif isinstance(self.value, datetime.datetime):
             value = self.value.isoformat()
+        elif isinstance(self.value, list):
+            value = self.value
+
         else:
             value = self.value
 
@@ -58,7 +61,9 @@ class TableCellUpdate:
 
         column = d.pop("column")
 
-        def _parse_value(data: object) -> bool | datetime.date | datetime.datetime | float | int | None | str:
+        def _parse_value(
+            data: object,
+        ) -> bool | datetime.date | datetime.datetime | float | int | list[str] | None | str:
             if data is None:
                 return data
             try:
@@ -77,7 +82,15 @@ class TableCellUpdate:
                 return componentsschemas_date_time_type_type_1
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(bool | datetime.date | datetime.datetime | float | int | None | str, data)
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                componentsschemas_table_cell_value_type_type_2 = cast(list[str], data)
+
+                return componentsschemas_table_cell_value_type_type_2
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(bool | datetime.date | datetime.datetime | float | int | list[str] | None | str, data)
 
         value = _parse_value(d.pop("value"))
 
