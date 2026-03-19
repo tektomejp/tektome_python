@@ -10,11 +10,11 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.attribute_citations_get_out import AttributeCitationsGetOut
-    from ..models.bim_citations_get_out import BIMCitationsGetOut
-    from ..models.image_citations_get_out import ImageCitationsGetOut
-    from ..models.pdf_citations_get_out import PDFCitationsGetOut
-    from ..models.raw_text_citations_get_out import RawTextCitationsGetOut
+    from ..models.attribute_citations_response import AttributeCitationsResponse
+    from ..models.bim_citations_response import BIMCitationsResponse
+    from ..models.image_citations_response import ImageCitationsResponse
+    from ..models.pdf_citations_response import PDFCitationsResponse
+    from ..models.raw_text_citations_response import RawTextCitationsResponse
 
 
 T = TypeVar("T", bound="AttributeReviewedData")
@@ -34,8 +34,8 @@ class AttributeReviewedData:
         error_message (None | str | Unset):
         type_ (None | str | Unset):
         extraction_reasoning (None | str | Unset):
-        citations (list[AttributeCitationsGetOut | BIMCitationsGetOut | ImageCitationsGetOut | PDFCitationsGetOut |
-            RawTextCitationsGetOut] | None | Unset):
+        citations (list[AttributeCitationsResponse | BIMCitationsResponse | ImageCitationsResponse |
+            PDFCitationsResponse | RawTextCitationsResponse] | None | Unset):
     """
 
     id: None | Unset | UUID = UNSET
@@ -49,11 +49,11 @@ class AttributeReviewedData:
     extraction_reasoning: None | str | Unset = UNSET
     citations: (
         list[
-            AttributeCitationsGetOut
-            | BIMCitationsGetOut
-            | ImageCitationsGetOut
-            | PDFCitationsGetOut
-            | RawTextCitationsGetOut
+            AttributeCitationsResponse
+            | BIMCitationsResponse
+            | ImageCitationsResponse
+            | PDFCitationsResponse
+            | RawTextCitationsResponse
         ]
         | None
         | Unset
@@ -61,10 +61,10 @@ class AttributeReviewedData:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.bim_citations_get_out import BIMCitationsGetOut
-        from ..models.image_citations_get_out import ImageCitationsGetOut
-        from ..models.pdf_citations_get_out import PDFCitationsGetOut
-        from ..models.raw_text_citations_get_out import RawTextCitationsGetOut
+        from ..models.bim_citations_response import BIMCitationsResponse
+        from ..models.image_citations_response import ImageCitationsResponse
+        from ..models.pdf_citations_response import PDFCitationsResponse
+        from ..models.raw_text_citations_response import RawTextCitationsResponse
 
         id: None | str | Unset
         if isinstance(self.id, Unset):
@@ -125,13 +125,13 @@ class AttributeReviewedData:
             citations = []
             for citations_type_0_item_data in self.citations:
                 citations_type_0_item: dict[str, Any]
-                if isinstance(citations_type_0_item_data, PDFCitationsGetOut):
+                if isinstance(citations_type_0_item_data, PDFCitationsResponse):
                     citations_type_0_item = citations_type_0_item_data.to_dict()
-                elif isinstance(citations_type_0_item_data, RawTextCitationsGetOut):
+                elif isinstance(citations_type_0_item_data, RawTextCitationsResponse):
                     citations_type_0_item = citations_type_0_item_data.to_dict()
-                elif isinstance(citations_type_0_item_data, BIMCitationsGetOut):
+                elif isinstance(citations_type_0_item_data, BIMCitationsResponse):
                     citations_type_0_item = citations_type_0_item_data.to_dict()
-                elif isinstance(citations_type_0_item_data, ImageCitationsGetOut):
+                elif isinstance(citations_type_0_item_data, ImageCitationsResponse):
                     citations_type_0_item = citations_type_0_item_data.to_dict()
                 else:
                     citations_type_0_item = citations_type_0_item_data.to_dict()
@@ -169,11 +169,11 @@ class AttributeReviewedData:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.attribute_citations_get_out import AttributeCitationsGetOut
-        from ..models.bim_citations_get_out import BIMCitationsGetOut
-        from ..models.image_citations_get_out import ImageCitationsGetOut
-        from ..models.pdf_citations_get_out import PDFCitationsGetOut
-        from ..models.raw_text_citations_get_out import RawTextCitationsGetOut
+        from ..models.attribute_citations_response import AttributeCitationsResponse
+        from ..models.bim_citations_response import BIMCitationsResponse
+        from ..models.image_citations_response import ImageCitationsResponse
+        from ..models.pdf_citations_response import PDFCitationsResponse
+        from ..models.raw_text_citations_response import RawTextCitationsResponse
 
         d = dict(src_dict)
 
@@ -263,11 +263,11 @@ class AttributeReviewedData:
             data: object,
         ) -> (
             list[
-                AttributeCitationsGetOut
-                | BIMCitationsGetOut
-                | ImageCitationsGetOut
-                | PDFCitationsGetOut
-                | RawTextCitationsGetOut
+                AttributeCitationsResponse
+                | BIMCitationsResponse
+                | ImageCitationsResponse
+                | PDFCitationsResponse
+                | RawTextCitationsResponse
             ]
             | None
             | Unset
@@ -286,16 +286,16 @@ class AttributeReviewedData:
                     def _parse_citations_type_0_item(
                         data: object,
                     ) -> (
-                        AttributeCitationsGetOut
-                        | BIMCitationsGetOut
-                        | ImageCitationsGetOut
-                        | PDFCitationsGetOut
-                        | RawTextCitationsGetOut
+                        AttributeCitationsResponse
+                        | BIMCitationsResponse
+                        | ImageCitationsResponse
+                        | PDFCitationsResponse
+                        | RawTextCitationsResponse
                     ):
                         try:
                             if not isinstance(data, dict):
                                 raise TypeError()
-                            componentsschemas_citations_type_0 = PDFCitationsGetOut.from_dict(data)
+                            componentsschemas_citations_type_0 = PDFCitationsResponse.from_dict(data)
 
                             return componentsschemas_citations_type_0
                         except (TypeError, ValueError, AttributeError, KeyError):
@@ -303,7 +303,7 @@ class AttributeReviewedData:
                         try:
                             if not isinstance(data, dict):
                                 raise TypeError()
-                            componentsschemas_citations_type_1 = RawTextCitationsGetOut.from_dict(data)
+                            componentsschemas_citations_type_1 = RawTextCitationsResponse.from_dict(data)
 
                             return componentsschemas_citations_type_1
                         except (TypeError, ValueError, AttributeError, KeyError):
@@ -311,7 +311,7 @@ class AttributeReviewedData:
                         try:
                             if not isinstance(data, dict):
                                 raise TypeError()
-                            componentsschemas_citations_type_2 = BIMCitationsGetOut.from_dict(data)
+                            componentsschemas_citations_type_2 = BIMCitationsResponse.from_dict(data)
 
                             return componentsschemas_citations_type_2
                         except (TypeError, ValueError, AttributeError, KeyError):
@@ -319,14 +319,14 @@ class AttributeReviewedData:
                         try:
                             if not isinstance(data, dict):
                                 raise TypeError()
-                            componentsschemas_citations_type_3 = ImageCitationsGetOut.from_dict(data)
+                            componentsschemas_citations_type_3 = ImageCitationsResponse.from_dict(data)
 
                             return componentsschemas_citations_type_3
                         except (TypeError, ValueError, AttributeError, KeyError):
                             pass
                         if not isinstance(data, dict):
                             raise TypeError()
-                        componentsschemas_citations_type_4 = AttributeCitationsGetOut.from_dict(data)
+                        componentsschemas_citations_type_4 = AttributeCitationsResponse.from_dict(data)
 
                         return componentsschemas_citations_type_4
 
@@ -339,11 +339,11 @@ class AttributeReviewedData:
                 pass
             return cast(
                 list[
-                    AttributeCitationsGetOut
-                    | BIMCitationsGetOut
-                    | ImageCitationsGetOut
-                    | PDFCitationsGetOut
-                    | RawTextCitationsGetOut
+                    AttributeCitationsResponse
+                    | BIMCitationsResponse
+                    | ImageCitationsResponse
+                    | PDFCitationsResponse
+                    | RawTextCitationsResponse
                 ]
                 | None
                 | Unset,

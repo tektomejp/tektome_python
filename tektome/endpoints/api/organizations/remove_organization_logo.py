@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.error_output_schema_out import ErrorOutputSchemaOut
-from ...models.organizations_get_out import OrganizationsGetOut
+from ...models.error_output_schema_response import ErrorOutputSchemaResponse
+from ...models.organizations_response import OrganizationsResponse
 from ...types import Response
 
 
@@ -28,14 +28,14 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorOutputSchemaOut | OrganizationsGetOut | None:
+) -> ErrorOutputSchemaResponse | OrganizationsResponse | None:
     if response.status_code == 200:
-        response_200 = OrganizationsGetOut.from_dict(response.json())
+        response_200 = OrganizationsResponse.from_dict(response.json())
 
         return response_200
 
     if response.status_code == 400:
-        response_400 = ErrorOutputSchemaOut.from_dict(response.json())
+        response_400 = ErrorOutputSchemaResponse.from_dict(response.json())
 
         return response_400
 
@@ -47,7 +47,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorOutputSchemaOut | OrganizationsGetOut]:
+) -> Response[ErrorOutputSchemaResponse | OrganizationsResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -60,7 +60,7 @@ def sync_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ErrorOutputSchemaOut | OrganizationsGetOut]:
+) -> Response[ErrorOutputSchemaResponse | OrganizationsResponse]:
     """Remove organization logo
 
      Remove the logo image from an organization.
@@ -73,7 +73,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorOutputSchemaOut | OrganizationsGetOut]
+        Response[ErrorOutputSchemaResponse | OrganizationsResponse]
     """
 
     kwargs = _get_kwargs(
@@ -91,7 +91,7 @@ def sync(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> ErrorOutputSchemaOut | OrganizationsGetOut | None:
+) -> ErrorOutputSchemaResponse | OrganizationsResponse | None:
     """Remove organization logo
 
      Remove the logo image from an organization.
@@ -104,7 +104,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorOutputSchemaOut | OrganizationsGetOut
+        ErrorOutputSchemaResponse | OrganizationsResponse
     """
 
     return sync_detailed(
@@ -117,7 +117,7 @@ async def asyncio_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ErrorOutputSchemaOut | OrganizationsGetOut]:
+) -> Response[ErrorOutputSchemaResponse | OrganizationsResponse]:
     """Remove organization logo
 
      Remove the logo image from an organization.
@@ -130,7 +130,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorOutputSchemaOut | OrganizationsGetOut]
+        Response[ErrorOutputSchemaResponse | OrganizationsResponse]
     """
 
     kwargs = _get_kwargs(
@@ -146,7 +146,7 @@ async def asyncio(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> ErrorOutputSchemaOut | OrganizationsGetOut | None:
+) -> ErrorOutputSchemaResponse | OrganizationsResponse | None:
     """Remove organization logo
 
      Remove the logo image from an organization.
@@ -159,7 +159,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorOutputSchemaOut | OrganizationsGetOut
+        ErrorOutputSchemaResponse | OrganizationsResponse
     """
 
     return (

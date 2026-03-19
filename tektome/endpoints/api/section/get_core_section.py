@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.section_get_out import SectionGetOut
+from ...models.section_response import SectionResponse
 from ...types import Response
 
 
@@ -25,9 +25,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> SectionGetOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> SectionResponse | None:
     if response.status_code == 200:
-        response_200 = SectionGetOut.from_dict(response.json())
+        response_200 = SectionResponse.from_dict(response.json())
 
         return response_200
 
@@ -37,7 +37,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[SectionGetOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[SectionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -50,7 +50,7 @@ def sync_detailed(
     section_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[SectionGetOut]:
+) -> Response[SectionResponse]:
     """Get a section by ID
 
      Retrieve the details of a specific section by its ID.
@@ -63,7 +63,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SectionGetOut]
+        Response[SectionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -81,7 +81,7 @@ def sync(
     section_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> SectionGetOut | None:
+) -> SectionResponse | None:
     """Get a section by ID
 
      Retrieve the details of a specific section by its ID.
@@ -94,7 +94,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SectionGetOut
+        SectionResponse
     """
 
     return sync_detailed(
@@ -107,7 +107,7 @@ async def asyncio_detailed(
     section_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[SectionGetOut]:
+) -> Response[SectionResponse]:
     """Get a section by ID
 
      Retrieve the details of a specific section by its ID.
@@ -120,7 +120,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SectionGetOut]
+        Response[SectionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -136,7 +136,7 @@ async def asyncio(
     section_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> SectionGetOut | None:
+) -> SectionResponse | None:
     """Get a section by ID
 
      Retrieve the details of a specific section by its ID.
@@ -149,7 +149,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SectionGetOut
+        SectionResponse
     """
 
     return (

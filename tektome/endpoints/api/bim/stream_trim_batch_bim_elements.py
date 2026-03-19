@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bim_batch_trim_element_request_post_in import BimBatchTrimElementRequestPostIn
+from ...models.create_bim_batch_trim_element_request_request import CreateBimBatchTrimElementRequestRequest
 from ...models.stream_trim_batch_bim_elements_bim_element_type_path import StreamTrimBatchBimElementsBimElementTypePath
 from ...types import Response
 
@@ -14,7 +14,7 @@ from ...types import Response
 def _get_kwargs(
     bim_type: StreamTrimBatchBimElementsBimElementTypePath,
     *,
-    body: BimBatchTrimElementRequestPostIn,
+    body: CreateBimBatchTrimElementRequestRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,7 +56,7 @@ def sync_detailed(
     bim_type: StreamTrimBatchBimElementsBimElementTypePath,
     *,
     client: AuthenticatedClient,
-    body: BimBatchTrimElementRequestPostIn,
+    body: CreateBimBatchTrimElementRequestRequest,
 ) -> Response[Any]:
     """Stream trimmed BIM elements as NDJSON
 
@@ -65,8 +65,8 @@ def sync_detailed(
 
     Args:
         bim_type (StreamTrimBatchBimElementsBimElementTypePath): Enum for BIM object types.
-        body (BimBatchTrimElementRequestPostIn): Schema for batch BIM element retrieval with
-            trimming request
+        body (CreateBimBatchTrimElementRequestRequest): Schema for batch BIM element retrieval
+            with trimming request
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -92,7 +92,7 @@ async def asyncio_detailed(
     bim_type: StreamTrimBatchBimElementsBimElementTypePath,
     *,
     client: AuthenticatedClient,
-    body: BimBatchTrimElementRequestPostIn,
+    body: CreateBimBatchTrimElementRequestRequest,
 ) -> Response[Any]:
     """Stream trimmed BIM elements as NDJSON
 
@@ -101,8 +101,8 @@ async def asyncio_detailed(
 
     Args:
         bim_type (StreamTrimBatchBimElementsBimElementTypePath): Enum for BIM object types.
-        body (BimBatchTrimElementRequestPostIn): Schema for batch BIM element retrieval with
-            trimming request
+        body (CreateBimBatchTrimElementRequestRequest): Schema for batch BIM element retrieval
+            with trimming request
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

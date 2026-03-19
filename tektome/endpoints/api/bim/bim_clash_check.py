@@ -7,16 +7,16 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bim_clash_check_post_in import BimClashCheckPostIn
-from ...models.bim_clash_check_post_out import BimClashCheckPostOut
-from ...models.error_response_post_out import ErrorResponsePostOut
+from ...models.bim_clash_check_response import BimClashCheckResponse
+from ...models.create_bim_clash_check_request import CreateBimClashCheckRequest
+from ...models.error_response_response import ErrorResponseResponse
 from ...types import Response
 
 
 def _get_kwargs(
     bim_project_id: UUID,
     *,
-    body: BimClashCheckPostIn,
+    body: CreateBimClashCheckRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -37,19 +37,19 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BimClashCheckPostOut | ErrorResponsePostOut | None:
+) -> BimClashCheckResponse | ErrorResponseResponse | None:
     if response.status_code == 200:
-        response_200 = BimClashCheckPostOut.from_dict(response.json())
+        response_200 = BimClashCheckResponse.from_dict(response.json())
 
         return response_200
 
     if response.status_code == 404:
-        response_404 = ErrorResponsePostOut.from_dict(response.json())
+        response_404 = ErrorResponseResponse.from_dict(response.json())
 
         return response_404
 
     if response.status_code == 500:
-        response_500 = ErrorResponsePostOut.from_dict(response.json())
+        response_500 = ErrorResponseResponse.from_dict(response.json())
 
         return response_500
 
@@ -61,7 +61,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BimClashCheckPostOut | ErrorResponsePostOut]:
+) -> Response[BimClashCheckResponse | ErrorResponseResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -74,8 +74,8 @@ def sync_detailed(
     bim_project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BimClashCheckPostIn,
-) -> Response[BimClashCheckPostOut | ErrorResponsePostOut]:
+    body: CreateBimClashCheckRequest,
+) -> Response[BimClashCheckResponse | ErrorResponseResponse]:
     """Run BIM clash detection
 
      Perform clash detection on the provided BIM object IDs within a BIM project. This is an asynchronous
@@ -84,14 +84,14 @@ def sync_detailed(
 
     Args:
         bim_project_id (UUID):
-        body (BimClashCheckPostIn): Schema for BIM clash check request.
+        body (CreateBimClashCheckRequest): Schema for BIM clash check request.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimClashCheckPostOut | ErrorResponsePostOut]
+        Response[BimClashCheckResponse | ErrorResponseResponse]
     """
 
     kwargs = _get_kwargs(
@@ -110,8 +110,8 @@ def sync(
     bim_project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BimClashCheckPostIn,
-) -> BimClashCheckPostOut | ErrorResponsePostOut | None:
+    body: CreateBimClashCheckRequest,
+) -> BimClashCheckResponse | ErrorResponseResponse | None:
     """Run BIM clash detection
 
      Perform clash detection on the provided BIM object IDs within a BIM project. This is an asynchronous
@@ -120,14 +120,14 @@ def sync(
 
     Args:
         bim_project_id (UUID):
-        body (BimClashCheckPostIn): Schema for BIM clash check request.
+        body (CreateBimClashCheckRequest): Schema for BIM clash check request.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimClashCheckPostOut | ErrorResponsePostOut
+        BimClashCheckResponse | ErrorResponseResponse
     """
 
     return sync_detailed(
@@ -141,8 +141,8 @@ async def asyncio_detailed(
     bim_project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BimClashCheckPostIn,
-) -> Response[BimClashCheckPostOut | ErrorResponsePostOut]:
+    body: CreateBimClashCheckRequest,
+) -> Response[BimClashCheckResponse | ErrorResponseResponse]:
     """Run BIM clash detection
 
      Perform clash detection on the provided BIM object IDs within a BIM project. This is an asynchronous
@@ -151,14 +151,14 @@ async def asyncio_detailed(
 
     Args:
         bim_project_id (UUID):
-        body (BimClashCheckPostIn): Schema for BIM clash check request.
+        body (CreateBimClashCheckRequest): Schema for BIM clash check request.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimClashCheckPostOut | ErrorResponsePostOut]
+        Response[BimClashCheckResponse | ErrorResponseResponse]
     """
 
     kwargs = _get_kwargs(
@@ -175,8 +175,8 @@ async def asyncio(
     bim_project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BimClashCheckPostIn,
-) -> BimClashCheckPostOut | ErrorResponsePostOut | None:
+    body: CreateBimClashCheckRequest,
+) -> BimClashCheckResponse | ErrorResponseResponse | None:
     """Run BIM clash detection
 
      Perform clash detection on the provided BIM object IDs within a BIM project. This is an asynchronous
@@ -185,14 +185,14 @@ async def asyncio(
 
     Args:
         bim_project_id (UUID):
-        body (BimClashCheckPostIn): Schema for BIM clash check request.
+        body (CreateBimClashCheckRequest): Schema for BIM clash check request.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimClashCheckPostOut | ErrorResponsePostOut
+        BimClashCheckResponse | ErrorResponseResponse
     """
 
     return (

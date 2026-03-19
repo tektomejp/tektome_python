@@ -7,7 +7,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.create_organization_multi_part_body_params import CreateOrganizationMultiPartBodyParams
 from ...models.create_organization_response import CreateOrganizationResponse
-from ...models.organizations_get_out import OrganizationsGetOut
+from ...models.organizations_response import OrganizationsResponse
 from ...types import Response
 
 
@@ -30,9 +30,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> CreateOrganizationResponse | OrganizationsGetOut | None:
+) -> CreateOrganizationResponse | OrganizationsResponse | None:
     if response.status_code == 201:
-        response_201 = OrganizationsGetOut.from_dict(response.json())
+        response_201 = OrganizationsResponse.from_dict(response.json())
 
         return response_201
 
@@ -49,7 +49,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[CreateOrganizationResponse | OrganizationsGetOut]:
+) -> Response[CreateOrganizationResponse | OrganizationsResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -62,7 +62,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: CreateOrganizationMultiPartBodyParams,
-) -> Response[CreateOrganizationResponse | OrganizationsGetOut]:
+) -> Response[CreateOrganizationResponse | OrganizationsResponse]:
     """Create an organization
 
      Create a new organization with the specified name, description, timezone, and language. An optional
@@ -76,7 +76,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CreateOrganizationResponse | OrganizationsGetOut]
+        Response[CreateOrganizationResponse | OrganizationsResponse]
     """
 
     kwargs = _get_kwargs(
@@ -94,7 +94,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: CreateOrganizationMultiPartBodyParams,
-) -> CreateOrganizationResponse | OrganizationsGetOut | None:
+) -> CreateOrganizationResponse | OrganizationsResponse | None:
     """Create an organization
 
      Create a new organization with the specified name, description, timezone, and language. An optional
@@ -108,7 +108,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CreateOrganizationResponse | OrganizationsGetOut
+        CreateOrganizationResponse | OrganizationsResponse
     """
 
     return sync_detailed(
@@ -121,7 +121,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: CreateOrganizationMultiPartBodyParams,
-) -> Response[CreateOrganizationResponse | OrganizationsGetOut]:
+) -> Response[CreateOrganizationResponse | OrganizationsResponse]:
     """Create an organization
 
      Create a new organization with the specified name, description, timezone, and language. An optional
@@ -135,7 +135,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CreateOrganizationResponse | OrganizationsGetOut]
+        Response[CreateOrganizationResponse | OrganizationsResponse]
     """
 
     kwargs = _get_kwargs(
@@ -151,7 +151,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: CreateOrganizationMultiPartBodyParams,
-) -> CreateOrganizationResponse | OrganizationsGetOut | None:
+) -> CreateOrganizationResponse | OrganizationsResponse | None:
     """Create an organization
 
      Create a new organization with the specified name, description, timezone, and language. An optional
@@ -165,7 +165,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CreateOrganizationResponse | OrganizationsGetOut
+        CreateOrganizationResponse | OrganizationsResponse
     """
 
     return (

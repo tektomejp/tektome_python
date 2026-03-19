@@ -7,16 +7,16 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.create_ttos_folder_request import CreateTtosFolderRequest
 from ...models.generic_http_error import GenericHttpError
-from ...models.ttos_folder_post_in import TtosFolderPostIn
-from ...models.ttos_folder_post_out import TtosFolderPostOut
+from ...models.ttos_folder_response import TtosFolderResponse
 from ...types import Response
 
 
 def _get_kwargs(
     chatroom_id: UUID,
     *,
-    body: TtosFolderPostIn,
+    body: CreateTtosFolderRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -37,9 +37,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> GenericHttpError | TtosFolderPostOut | None:
+) -> GenericHttpError | TtosFolderResponse | None:
     if response.status_code == 201:
-        response_201 = TtosFolderPostOut.from_dict(response.json())
+        response_201 = TtosFolderResponse.from_dict(response.json())
 
         return response_201
 
@@ -141,7 +141,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[GenericHttpError | TtosFolderPostOut]:
+) -> Response[GenericHttpError | TtosFolderResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -154,22 +154,22 @@ def sync_detailed(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: TtosFolderPostIn,
-) -> Response[GenericHttpError | TtosFolderPostOut]:
+    body: CreateTtosFolderRequest,
+) -> Response[GenericHttpError | TtosFolderResponse]:
     """Create a folder
 
      Create a new folder in a chatroom at the specified path.
 
     Args:
         chatroom_id (UUID):
-        body (TtosFolderPostIn):
+        body (CreateTtosFolderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GenericHttpError | TtosFolderPostOut]
+        Response[GenericHttpError | TtosFolderResponse]
     """
 
     kwargs = _get_kwargs(
@@ -188,22 +188,22 @@ def sync(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: TtosFolderPostIn,
-) -> GenericHttpError | TtosFolderPostOut | None:
+    body: CreateTtosFolderRequest,
+) -> GenericHttpError | TtosFolderResponse | None:
     """Create a folder
 
      Create a new folder in a chatroom at the specified path.
 
     Args:
         chatroom_id (UUID):
-        body (TtosFolderPostIn):
+        body (CreateTtosFolderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GenericHttpError | TtosFolderPostOut
+        GenericHttpError | TtosFolderResponse
     """
 
     return sync_detailed(
@@ -217,22 +217,22 @@ async def asyncio_detailed(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: TtosFolderPostIn,
-) -> Response[GenericHttpError | TtosFolderPostOut]:
+    body: CreateTtosFolderRequest,
+) -> Response[GenericHttpError | TtosFolderResponse]:
     """Create a folder
 
      Create a new folder in a chatroom at the specified path.
 
     Args:
         chatroom_id (UUID):
-        body (TtosFolderPostIn):
+        body (CreateTtosFolderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GenericHttpError | TtosFolderPostOut]
+        Response[GenericHttpError | TtosFolderResponse]
     """
 
     kwargs = _get_kwargs(
@@ -249,22 +249,22 @@ async def asyncio(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: TtosFolderPostIn,
-) -> GenericHttpError | TtosFolderPostOut | None:
+    body: CreateTtosFolderRequest,
+) -> GenericHttpError | TtosFolderResponse | None:
     """Create a folder
 
      Create a new folder in a chatroom at the specified path.
 
     Args:
         chatroom_id (UUID):
-        body (TtosFolderPostIn):
+        body (CreateTtosFolderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GenericHttpError | TtosFolderPostOut
+        GenericHttpError | TtosFolderResponse
     """
 
     return (

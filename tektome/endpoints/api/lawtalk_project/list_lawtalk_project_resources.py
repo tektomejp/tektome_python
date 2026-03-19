@@ -7,7 +7,6 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.paged_lawtalk_project_resource_get_out import PagedLawtalkProjectResourceGetOut
 from ...types import UNSET, Response, Unset
 
 
@@ -69,23 +68,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> PagedLawtalkProjectResourceGetOut | None:
-    if response.status_code == 200:
-        response_200 = PagedLawtalkProjectResourceGetOut.from_dict(response.json())
-
-        return response_200
-
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[PagedLawtalkProjectResourceGetOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -103,7 +93,7 @@ def sync_detailed(
     is_public: bool | None | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[PagedLawtalkProjectResourceGetOut]:
+) -> Response[Any]:
     """List project resources
 
      Retrieve a paginated list of all resources under a project. Supports filtering by search query,
@@ -122,7 +112,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PagedLawtalkProjectResourceGetOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -141,48 +131,6 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    project_id: UUID,
-    *,
-    client: AuthenticatedClient,
-    search_query: None | str | Unset = UNSET,
-    keywords: list[str] | None | Unset = UNSET,
-    is_public: bool | None | Unset = UNSET,
-    page: int | Unset = 1,
-    page_size: int | None | Unset = UNSET,
-) -> PagedLawtalkProjectResourceGetOut | None:
-    """List project resources
-
-     Retrieve a paginated list of all resources under a project. Supports filtering by search query,
-    keywords, and public visibility.
-
-    Args:
-        project_id (UUID):
-        search_query (None | str | Unset):
-        keywords (list[str] | None | Unset):
-        is_public (bool | None | Unset):
-        page (int | Unset):  Default: 1.
-        page_size (int | None | Unset):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        PagedLawtalkProjectResourceGetOut
-    """
-
-    return sync_detailed(
-        project_id=project_id,
-        client=client,
-        search_query=search_query,
-        keywords=keywords,
-        is_public=is_public,
-        page=page,
-        page_size=page_size,
-    ).parsed
-
-
 async def asyncio_detailed(
     project_id: UUID,
     *,
@@ -192,7 +140,7 @@ async def asyncio_detailed(
     is_public: bool | None | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[PagedLawtalkProjectResourceGetOut]:
+) -> Response[Any]:
     """List project resources
 
      Retrieve a paginated list of all resources under a project. Supports filtering by search query,
@@ -211,7 +159,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PagedLawtalkProjectResourceGetOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -226,47 +174,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    project_id: UUID,
-    *,
-    client: AuthenticatedClient,
-    search_query: None | str | Unset = UNSET,
-    keywords: list[str] | None | Unset = UNSET,
-    is_public: bool | None | Unset = UNSET,
-    page: int | Unset = 1,
-    page_size: int | None | Unset = UNSET,
-) -> PagedLawtalkProjectResourceGetOut | None:
-    """List project resources
-
-     Retrieve a paginated list of all resources under a project. Supports filtering by search query,
-    keywords, and public visibility.
-
-    Args:
-        project_id (UUID):
-        search_query (None | str | Unset):
-        keywords (list[str] | None | Unset):
-        is_public (bool | None | Unset):
-        page (int | Unset):  Default: 1.
-        page_size (int | None | Unset):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        PagedLawtalkProjectResourceGetOut
-    """
-
-    return (
-        await asyncio_detailed(
-            project_id=project_id,
-            client=client,
-            search_query=search_query,
-            keywords=keywords,
-            is_public=is_public,
-            page=page,
-            page_size=page_size,
-        )
-    ).parsed

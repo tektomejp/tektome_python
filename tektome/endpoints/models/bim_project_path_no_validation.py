@@ -7,28 +7,45 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.bim_element_type_v2_path import BimElementTypeV2Path
+
 T = TypeVar("T", bound="BimProjectPathNoValidation")
 
 
 @_attrs_define
 class BimProjectPathNoValidation:
-    """Path parameters for the BimProjectPostPath schema without validation.
+    """Async path parameters for BIM element operations with project validation.
 
     Attributes:
         bim_project_id (UUID):
+        bim_type (BimElementTypeV2Path): An enumeration representing different BIM (Building Information Modeling)
+            element types for V2 API paths.
+
+            Attributes:
+                OBJECT (str): Represents a BIM object element type, mapped to the string "bim-object".
+                VIEW (str): Represents a BIM view element type, mapped to the string "bim-view".
+                SHEET (str): Represents a BIM sheet element type, mapped to the string "bim-sheet".
+
+            Methods:
+                resolve_bim_element_class(bim_element):
+                    Resolves and returns the corresponding document class for a given BIM element type.
     """
 
     bim_project_id: UUID
+    bim_type: BimElementTypeV2Path
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         bim_project_id = str(self.bim_project_id)
+
+        bim_type = self.bim_type.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "bim_project_id": bim_project_id,
+                "bim_type": bim_type,
             }
         )
 
@@ -39,8 +56,11 @@ class BimProjectPathNoValidation:
         d = dict(src_dict)
         bim_project_id = UUID(d.pop("bim_project_id"))
 
+        bim_type = BimElementTypeV2Path(d.pop("bim_type"))
+
         bim_project_path_no_validation = cls(
             bim_project_id=bim_project_id,
+            bim_type=bim_type,
         )
 
         bim_project_path_no_validation.additional_properties = d

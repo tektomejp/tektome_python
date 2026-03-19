@@ -7,11 +7,11 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.attribute_get_out import AttributeGetOut
-from ...models.attribute_patch_in_patch import AttributePatchInPatch
+from ...models.attribute_response import AttributeResponse
 from ...models.patch_general_dataspace_attribute_dataspace_entity_type import (
     PatchGeneralDataspaceAttributeDataspaceEntityType,
 )
+from ...models.update_attribute_request import UpdateAttributeRequest
 from ...types import Response
 
 
@@ -20,7 +20,7 @@ def _get_kwargs(
     attribute_category: PatchGeneralDataspaceAttributeDataspaceEntityType,
     attribute_id: UUID,
     *,
-    body: AttributePatchInPatch,
+    body: UpdateAttributeRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -41,9 +41,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AttributeGetOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AttributeResponse | None:
     if response.status_code == 200:
-        response_200 = AttributeGetOut.from_dict(response.json())
+        response_200 = AttributeResponse.from_dict(response.json())
 
         return response_200
 
@@ -53,7 +53,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AttributeGetOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AttributeResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -68,8 +68,8 @@ def sync_detailed(
     attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: AttributePatchInPatch,
-) -> Response[AttributeGetOut]:
+    body: UpdateAttributeRequest,
+) -> Response[AttributeResponse]:
     """Update an attribute in a dataspace
 
      Partially update a project or resource attribute. The update is validated against the dataspace's
@@ -79,14 +79,14 @@ def sync_detailed(
         dataspace_id (UUID):
         attribute_category (PatchGeneralDataspaceAttributeDataspaceEntityType):
         attribute_id (UUID):
-        body (AttributePatchInPatch):
+        body (UpdateAttributeRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AttributeGetOut]
+        Response[AttributeResponse]
     """
 
     kwargs = _get_kwargs(
@@ -109,8 +109,8 @@ def sync(
     attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: AttributePatchInPatch,
-) -> AttributeGetOut | None:
+    body: UpdateAttributeRequest,
+) -> AttributeResponse | None:
     """Update an attribute in a dataspace
 
      Partially update a project or resource attribute. The update is validated against the dataspace's
@@ -120,14 +120,14 @@ def sync(
         dataspace_id (UUID):
         attribute_category (PatchGeneralDataspaceAttributeDataspaceEntityType):
         attribute_id (UUID):
-        body (AttributePatchInPatch):
+        body (UpdateAttributeRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AttributeGetOut
+        AttributeResponse
     """
 
     return sync_detailed(
@@ -145,8 +145,8 @@ async def asyncio_detailed(
     attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: AttributePatchInPatch,
-) -> Response[AttributeGetOut]:
+    body: UpdateAttributeRequest,
+) -> Response[AttributeResponse]:
     """Update an attribute in a dataspace
 
      Partially update a project or resource attribute. The update is validated against the dataspace's
@@ -156,14 +156,14 @@ async def asyncio_detailed(
         dataspace_id (UUID):
         attribute_category (PatchGeneralDataspaceAttributeDataspaceEntityType):
         attribute_id (UUID):
-        body (AttributePatchInPatch):
+        body (UpdateAttributeRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AttributeGetOut]
+        Response[AttributeResponse]
     """
 
     kwargs = _get_kwargs(
@@ -184,8 +184,8 @@ async def asyncio(
     attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: AttributePatchInPatch,
-) -> AttributeGetOut | None:
+    body: UpdateAttributeRequest,
+) -> AttributeResponse | None:
     """Update an attribute in a dataspace
 
      Partially update a project or resource attribute. The update is validated against the dataspace's
@@ -195,14 +195,14 @@ async def asyncio(
         dataspace_id (UUID):
         attribute_category (PatchGeneralDataspaceAttributeDataspaceEntityType):
         attribute_id (UUID):
-        body (AttributePatchInPatch):
+        body (UpdateAttributeRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AttributeGetOut
+        AttributeResponse
     """
 
     return (

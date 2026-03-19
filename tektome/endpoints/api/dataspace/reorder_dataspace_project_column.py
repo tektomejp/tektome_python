@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.dataspace_project_reorder_column_post_in import DataspaceProjectReorderColumnPostIn
+from ...models.create_dataspace_project_reorder_column_request import CreateDataspaceProjectReorderColumnRequest
 from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
     *,
-    body: DataspaceProjectReorderColumnPostIn,
+    body: CreateDataspaceProjectReorderColumnRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,7 +56,7 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceProjectReorderColumnPostIn,
+    body: CreateDataspaceProjectReorderColumnRequest,
 ) -> Response[Any]:
     """Reorder a project attribute column
 
@@ -65,8 +65,8 @@ def sync_detailed(
 
     Args:
         dataspace_id (UUID):
-        body (DataspaceProjectReorderColumnPostIn): Schema for reordering columns in a dataspace
-            project.
+        body (CreateDataspaceProjectReorderColumnRequest): Schema for reordering columns in a
+            dataspace project.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -92,7 +92,7 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceProjectReorderColumnPostIn,
+    body: CreateDataspaceProjectReorderColumnRequest,
 ) -> Response[Any]:
     """Reorder a project attribute column
 
@@ -101,8 +101,8 @@ async def asyncio_detailed(
 
     Args:
         dataspace_id (UUID):
-        body (DataspaceProjectReorderColumnPostIn): Schema for reordering columns in a dataspace
-            project.
+        body (CreateDataspaceProjectReorderColumnRequest): Schema for reordering columns in a
+            dataspace project.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

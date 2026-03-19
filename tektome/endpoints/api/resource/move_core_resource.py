@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.file_move_patch_schema_in import FileMovePatchSchemaIn
+from ...models.file_move_patch_schema_request import FileMovePatchSchemaRequest
 from ...types import Response
 
 
 def _get_kwargs(
     resource_id: UUID,
     *,
-    body: FileMovePatchSchemaIn,
+    body: FileMovePatchSchemaRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,7 +56,7 @@ def sync_detailed(
     resource_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: FileMovePatchSchemaIn,
+    body: FileMovePatchSchemaRequest,
 ) -> Response[Any]:
     """Move a resource to another folder
 
@@ -64,7 +64,7 @@ def sync_detailed(
 
     Args:
         resource_id (UUID):
-        body (FileMovePatchSchemaIn):
+        body (FileMovePatchSchemaRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -90,7 +90,7 @@ async def asyncio_detailed(
     resource_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: FileMovePatchSchemaIn,
+    body: FileMovePatchSchemaRequest,
 ) -> Response[Any]:
     """Move a resource to another folder
 
@@ -98,7 +98,7 @@ async def asyncio_detailed(
 
     Args:
         resource_id (UUID):
-        body (FileMovePatchSchemaIn):
+        body (FileMovePatchSchemaRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

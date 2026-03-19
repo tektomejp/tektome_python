@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.approval_ticket_get_out import ApprovalTicketGetOut
+from ...models.approval_ticket_response import ApprovalTicketResponse
 from ...models.create_execution_approval_ticket_with_candidates_multi_part_body_params import (
     CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams,
 )
@@ -36,9 +36,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ApprovalTicketGetOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ApprovalTicketResponse | None:
     if response.status_code == 201:
-        response_201 = ApprovalTicketGetOut.from_dict(response.json())
+        response_201 = ApprovalTicketResponse.from_dict(response.json())
 
         return response_201
 
@@ -50,7 +50,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ApprovalTicketGetOut]:
+) -> Response[ApprovalTicketResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,7 +65,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams,
-) -> Response[ApprovalTicketGetOut]:
+) -> Response[ApprovalTicketResponse]:
     """Create an approval ticket for an execution
 
      Create an approval ticket with candidates for the specified execution. If a file is provided, it is
@@ -81,7 +81,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ApprovalTicketGetOut]
+        Response[ApprovalTicketResponse]
     """
 
     kwargs = _get_kwargs(
@@ -103,7 +103,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams,
-) -> ApprovalTicketGetOut | None:
+) -> ApprovalTicketResponse | None:
     """Create an approval ticket for an execution
 
      Create an approval ticket with candidates for the specified execution. If a file is provided, it is
@@ -119,7 +119,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ApprovalTicketGetOut
+        ApprovalTicketResponse
     """
 
     return sync_detailed(
@@ -136,7 +136,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams,
-) -> Response[ApprovalTicketGetOut]:
+) -> Response[ApprovalTicketResponse]:
     """Create an approval ticket for an execution
 
      Create an approval ticket with candidates for the specified execution. If a file is provided, it is
@@ -152,7 +152,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ApprovalTicketGetOut]
+        Response[ApprovalTicketResponse]
     """
 
     kwargs = _get_kwargs(
@@ -172,7 +172,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams,
-) -> ApprovalTicketGetOut | None:
+) -> ApprovalTicketResponse | None:
     """Create an approval ticket for an execution
 
      Create an approval ticket with candidates for the specified execution. If a file is provided, it is
@@ -188,7 +188,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ApprovalTicketGetOut
+        ApprovalTicketResponse
     """
 
     return (

@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bim_key_value_search_post_v2_in import BimKeyValueSearchPostV2In
+from ...models.bim_key_value_search_post_v2_request import BimKeyValueSearchPostV2Request
 from ...models.stream_bim_element_key_value_search_bim_element_type_v2_path import (
     StreamBimElementKeyValueSearchBimElementTypeV2Path,
 )
@@ -17,7 +17,7 @@ from ...types import UNSET, Response
 def _get_kwargs(
     bim_element: StreamBimElementKeyValueSearchBimElementTypeV2Path,
     *,
-    body: BimKeyValueSearchPostV2In,
+    body: BimKeyValueSearchPostV2Request,
     bim_project_id: UUID,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -68,7 +68,7 @@ def sync_detailed(
     bim_element: StreamBimElementKeyValueSearchBimElementTypeV2Path,
     *,
     client: AuthenticatedClient,
-    body: BimKeyValueSearchPostV2In,
+    body: BimKeyValueSearchPostV2Request,
     bim_project_id: UUID,
 ) -> Response[Any]:
     """Stream BIM key-value search results
@@ -90,7 +90,8 @@ def sync_detailed(
                     Resolves and returns the corresponding document class for a given BIM element
             type.
         bim_project_id (UUID):
-        body (BimKeyValueSearchPostV2In): Schema for key-value search in BIM file_content JSON.
+        body (BimKeyValueSearchPostV2Request): Schema for key-value search in BIM file_content
+            JSON.
 
             Supports wildcard patterns using '*':
             - key="*" matches any key name
@@ -123,7 +124,7 @@ async def asyncio_detailed(
     bim_element: StreamBimElementKeyValueSearchBimElementTypeV2Path,
     *,
     client: AuthenticatedClient,
-    body: BimKeyValueSearchPostV2In,
+    body: BimKeyValueSearchPostV2Request,
     bim_project_id: UUID,
 ) -> Response[Any]:
     """Stream BIM key-value search results
@@ -145,7 +146,8 @@ async def asyncio_detailed(
                     Resolves and returns the corresponding document class for a given BIM element
             type.
         bim_project_id (UUID):
-        body (BimKeyValueSearchPostV2In): Schema for key-value search in BIM file_content JSON.
+        body (BimKeyValueSearchPostV2Request): Schema for key-value search in BIM file_content
+            JSON.
 
             Supports wildcard patterns using '*':
             - key="*" matches any key name

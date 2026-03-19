@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.error_out import ErrorOut
-from ...models.task_post_out import TaskPostOut
+from ...models.error_response import ErrorResponse
+from ...models.task_response import TaskResponse
 from ...types import Response
 
 
@@ -25,19 +25,21 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorOut | TaskPostOut | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorResponse | TaskResponse | None:
     if response.status_code == 201:
-        response_201 = TaskPostOut.from_dict(response.json())
+        response_201 = TaskResponse.from_dict(response.json())
 
         return response_201
 
     if response.status_code == 400:
-        response_400 = ErrorOut.from_dict(response.json())
+        response_400 = ErrorResponse.from_dict(response.json())
 
         return response_400
 
     if response.status_code == 429:
-        response_429 = ErrorOut.from_dict(response.json())
+        response_429 = ErrorResponse.from_dict(response.json())
 
         return response_429
 
@@ -49,7 +51,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorOut | TaskPostOut]:
+) -> Response[ErrorResponse | TaskResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -62,7 +64,7 @@ def sync_detailed(
     resource_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[ErrorOut | TaskPostOut]:
+) -> Response[ErrorResponse | TaskResponse]:
     """Initialize resource OCR extraction
 
      Start OCR text extraction for a PDF resource. This is an asynchronous operation. To retrieve the
@@ -77,7 +79,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorOut | TaskPostOut]
+        Response[ErrorResponse | TaskResponse]
     """
 
     kwargs = _get_kwargs(
@@ -95,7 +97,7 @@ def sync(
     resource_id: str,
     *,
     client: AuthenticatedClient,
-) -> ErrorOut | TaskPostOut | None:
+) -> ErrorResponse | TaskResponse | None:
     """Initialize resource OCR extraction
 
      Start OCR text extraction for a PDF resource. This is an asynchronous operation. To retrieve the
@@ -110,7 +112,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorOut | TaskPostOut
+        ErrorResponse | TaskResponse
     """
 
     return sync_detailed(
@@ -123,7 +125,7 @@ async def asyncio_detailed(
     resource_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[ErrorOut | TaskPostOut]:
+) -> Response[ErrorResponse | TaskResponse]:
     """Initialize resource OCR extraction
 
      Start OCR text extraction for a PDF resource. This is an asynchronous operation. To retrieve the
@@ -138,7 +140,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorOut | TaskPostOut]
+        Response[ErrorResponse | TaskResponse]
     """
 
     kwargs = _get_kwargs(
@@ -154,7 +156,7 @@ async def asyncio(
     resource_id: str,
     *,
     client: AuthenticatedClient,
-) -> ErrorOut | TaskPostOut | None:
+) -> ErrorResponse | TaskResponse | None:
     """Initialize resource OCR extraction
 
      Start OCR text extraction for a PDF resource. This is an asynchronous operation. To retrieve the
@@ -169,7 +171,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorOut | TaskPostOut
+        ErrorResponse | TaskResponse
     """
 
     return (

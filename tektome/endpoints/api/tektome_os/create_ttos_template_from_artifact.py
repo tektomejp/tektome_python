@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.template_from_artifact_in import TemplateFromArtifactIn
-from ...models.template_out import TemplateOut
+from ...models.template_from_artifact_request import TemplateFromArtifactRequest
+from ...models.template_response import TemplateResponse
 from ...types import Response
 
 
 def _get_kwargs(
     organization_id: UUID,
     *,
-    body: TemplateFromArtifactIn,
+    body: TemplateFromArtifactRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -34,9 +34,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> TemplateOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> TemplateResponse | None:
     if response.status_code == 201:
-        response_201 = TemplateOut.from_dict(response.json())
+        response_201 = TemplateResponse.from_dict(response.json())
 
         return response_201
 
@@ -46,7 +46,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[TemplateOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[TemplateResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,8 +59,8 @@ def sync_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: TemplateFromArtifactIn,
-) -> Response[TemplateOut]:
+    body: TemplateFromArtifactRequest,
+) -> Response[TemplateResponse]:
     """Create template from artifact
 
      Create a new process template from an existing artifact. The artifact must exist and belong to the
@@ -68,14 +68,14 @@ def sync_detailed(
 
     Args:
         organization_id (UUID):
-        body (TemplateFromArtifactIn): Schema for creating a new template from an artifact.
+        body (TemplateFromArtifactRequest): Schema for creating a new template from an artifact.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[TemplateOut]
+        Response[TemplateResponse]
     """
 
     kwargs = _get_kwargs(
@@ -94,8 +94,8 @@ def sync(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: TemplateFromArtifactIn,
-) -> TemplateOut | None:
+    body: TemplateFromArtifactRequest,
+) -> TemplateResponse | None:
     """Create template from artifact
 
      Create a new process template from an existing artifact. The artifact must exist and belong to the
@@ -103,14 +103,14 @@ def sync(
 
     Args:
         organization_id (UUID):
-        body (TemplateFromArtifactIn): Schema for creating a new template from an artifact.
+        body (TemplateFromArtifactRequest): Schema for creating a new template from an artifact.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        TemplateOut
+        TemplateResponse
     """
 
     return sync_detailed(
@@ -124,8 +124,8 @@ async def asyncio_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: TemplateFromArtifactIn,
-) -> Response[TemplateOut]:
+    body: TemplateFromArtifactRequest,
+) -> Response[TemplateResponse]:
     """Create template from artifact
 
      Create a new process template from an existing artifact. The artifact must exist and belong to the
@@ -133,14 +133,14 @@ async def asyncio_detailed(
 
     Args:
         organization_id (UUID):
-        body (TemplateFromArtifactIn): Schema for creating a new template from an artifact.
+        body (TemplateFromArtifactRequest): Schema for creating a new template from an artifact.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[TemplateOut]
+        Response[TemplateResponse]
     """
 
     kwargs = _get_kwargs(
@@ -157,8 +157,8 @@ async def asyncio(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: TemplateFromArtifactIn,
-) -> TemplateOut | None:
+    body: TemplateFromArtifactRequest,
+) -> TemplateResponse | None:
     """Create template from artifact
 
      Create a new process template from an existing artifact. The artifact must exist and belong to the
@@ -166,14 +166,14 @@ async def asyncio(
 
     Args:
         organization_id (UUID):
-        body (TemplateFromArtifactIn): Schema for creating a new template from an artifact.
+        body (TemplateFromArtifactRequest): Schema for creating a new template from an artifact.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        TemplateOut
+        TemplateResponse
     """
 
     return (

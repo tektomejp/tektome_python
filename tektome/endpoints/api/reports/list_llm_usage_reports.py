@@ -7,7 +7,6 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.list_llm_usage_reports_period_types import ListLlmUsageReportsPeriodTypes
-from ...models.paged_llm_usage_report_get_out import PagedLLMUsageReportGetOut
 from ...types import UNSET, Response, Unset
 
 
@@ -47,23 +46,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> PagedLLMUsageReportGetOut | None:
-    if response.status_code == 200:
-        response_200 = PagedLLMUsageReportGetOut.from_dict(response.json())
-
-        return response_200
-
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[PagedLLMUsageReportGetOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -79,7 +69,7 @@ def sync_detailed(
     period_type: ListLlmUsageReportsPeriodTypes,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[PagedLLMUsageReportGetOut]:
+) -> Response[Any]:
     """List LLM usage reports
 
      Retrieve paginated LLM usage reports for a specific organization and period type, ordered by period
@@ -96,7 +86,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PagedLLMUsageReportGetOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -113,42 +103,6 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    *,
-    client: AuthenticatedClient,
-    organization_id: UUID,
-    period_type: ListLlmUsageReportsPeriodTypes,
-    page: int | Unset = 1,
-    page_size: int | None | Unset = UNSET,
-) -> PagedLLMUsageReportGetOut | None:
-    """List LLM usage reports
-
-     Retrieve paginated LLM usage reports for a specific organization and period type, ordered by period
-    descending.
-
-    Args:
-        organization_id (UUID):
-        period_type (ListLlmUsageReportsPeriodTypes):
-        page (int | Unset):  Default: 1.
-        page_size (int | None | Unset):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        PagedLLMUsageReportGetOut
-    """
-
-    return sync_detailed(
-        client=client,
-        organization_id=organization_id,
-        period_type=period_type,
-        page=page,
-        page_size=page_size,
-    ).parsed
-
-
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
@@ -156,7 +110,7 @@ async def asyncio_detailed(
     period_type: ListLlmUsageReportsPeriodTypes,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[PagedLLMUsageReportGetOut]:
+) -> Response[Any]:
     """List LLM usage reports
 
      Retrieve paginated LLM usage reports for a specific organization and period type, ordered by period
@@ -173,7 +127,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PagedLLMUsageReportGetOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -186,41 +140,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    *,
-    client: AuthenticatedClient,
-    organization_id: UUID,
-    period_type: ListLlmUsageReportsPeriodTypes,
-    page: int | Unset = 1,
-    page_size: int | None | Unset = UNSET,
-) -> PagedLLMUsageReportGetOut | None:
-    """List LLM usage reports
-
-     Retrieve paginated LLM usage reports for a specific organization and period type, ordered by period
-    descending.
-
-    Args:
-        organization_id (UUID):
-        period_type (ListLlmUsageReportsPeriodTypes):
-        page (int | Unset):  Default: 1.
-        page_size (int | None | Unset):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        PagedLLMUsageReportGetOut
-    """
-
-    return (
-        await asyncio_detailed(
-            client=client,
-            organization_id=organization_id,
-            period_type=period_type,
-            page=page,
-            page_size=page_size,
-        )
-    ).parsed

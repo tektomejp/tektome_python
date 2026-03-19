@@ -8,7 +8,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.get_attribute_pdf_citation_dataspace_entity_type import GetAttributePdfCitationDataspaceEntityType
-from ...models.pdf_citation_schema_out import PDFCitationSchemaOut
+from ...models.pdf_citation_schema_response import PDFCitationSchemaResponse
 from ...types import Response
 
 
@@ -32,9 +32,11 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> PDFCitationSchemaOut | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> PDFCitationSchemaResponse | None:
     if response.status_code == 200:
-        response_200 = PDFCitationSchemaOut.from_dict(response.json())
+        response_200 = PDFCitationSchemaResponse.from_dict(response.json())
 
         return response_200
 
@@ -46,7 +48,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[PDFCitationSchemaOut]:
+) -> Response[PDFCitationSchemaResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -62,7 +64,7 @@ def sync_detailed(
     pdf_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[PDFCitationSchemaOut]:
+) -> Response[PDFCitationSchemaResponse]:
     """Get a PDF citation by ID
 
      Retrieve the details of a specific PDF citation associated with an attribute.
@@ -78,7 +80,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PDFCitationSchemaOut]
+        Response[PDFCitationSchemaResponse]
     """
 
     kwargs = _get_kwargs(
@@ -102,7 +104,7 @@ def sync(
     pdf_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> PDFCitationSchemaOut | None:
+) -> PDFCitationSchemaResponse | None:
     """Get a PDF citation by ID
 
      Retrieve the details of a specific PDF citation associated with an attribute.
@@ -118,7 +120,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        PDFCitationSchemaOut
+        PDFCitationSchemaResponse
     """
 
     return sync_detailed(
@@ -137,7 +139,7 @@ async def asyncio_detailed(
     pdf_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[PDFCitationSchemaOut]:
+) -> Response[PDFCitationSchemaResponse]:
     """Get a PDF citation by ID
 
      Retrieve the details of a specific PDF citation associated with an attribute.
@@ -153,7 +155,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PDFCitationSchemaOut]
+        Response[PDFCitationSchemaResponse]
     """
 
     kwargs = _get_kwargs(
@@ -175,7 +177,7 @@ async def asyncio(
     pdf_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> PDFCitationSchemaOut | None:
+) -> PDFCitationSchemaResponse | None:
     """Get a PDF citation by ID
 
      Retrieve the details of a specific PDF citation associated with an attribute.
@@ -191,7 +193,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        PDFCitationSchemaOut
+        PDFCitationSchemaResponse
     """
 
     return (

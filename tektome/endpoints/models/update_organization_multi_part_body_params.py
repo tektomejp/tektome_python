@@ -12,7 +12,7 @@ from .. import types
 from ..types import UNSET, File, FileTypes, Unset
 
 if TYPE_CHECKING:
-    from ..models.organizations_patch_in import OrganizationsPatchIn
+    from ..models.update_organizations_request import UpdateOrganizationsRequest
 
 
 T = TypeVar("T", bound="UpdateOrganizationMultiPartBodyParams")
@@ -22,11 +22,11 @@ T = TypeVar("T", bound="UpdateOrganizationMultiPartBodyParams")
 class UpdateOrganizationMultiPartBodyParams:
     """
     Attributes:
-        payload (OrganizationsPatchIn):
+        payload (UpdateOrganizationsRequest):
         logo_file (File | Unset):
     """
 
-    payload: OrganizationsPatchIn
+    payload: UpdateOrganizationsRequest
     logo_file: File | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -64,10 +64,10 @@ class UpdateOrganizationMultiPartBodyParams:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.organizations_patch_in import OrganizationsPatchIn
+        from ..models.update_organizations_request import UpdateOrganizationsRequest
 
         d = dict(src_dict)
-        payload = OrganizationsPatchIn.from_dict(d.pop("payload"))
+        payload = UpdateOrganizationsRequest.from_dict(d.pop("payload"))
 
         _logo_file = d.pop("logo_file", UNSET)
         logo_file: File | Unset

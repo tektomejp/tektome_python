@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bim_batch_element_request_post_in import BimBatchElementRequestPostIn
+from ...models.create_bim_batch_element_request_request import CreateBimBatchElementRequestRequest
 from ...models.get_batch_bim_elements_bim_element_type_path import GetBatchBimElementsBimElementTypePath
 from ...types import Response
 
@@ -14,7 +14,7 @@ from ...types import Response
 def _get_kwargs(
     bim_type: GetBatchBimElementsBimElementTypePath,
     *,
-    body: BimBatchElementRequestPostIn,
+    body: CreateBimBatchElementRequestRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,7 +56,7 @@ def sync_detailed(
     bim_type: GetBatchBimElementsBimElementTypePath,
     *,
     client: AuthenticatedClient,
-    body: BimBatchElementRequestPostIn,
+    body: CreateBimBatchElementRequestRequest,
 ) -> Response[Any]:
     """Get multiple BIM elements by IDs
 
@@ -65,7 +65,7 @@ def sync_detailed(
 
     Args:
         bim_type (GetBatchBimElementsBimElementTypePath): Enum for BIM object types.
-        body (BimBatchElementRequestPostIn): Schema for batch BIM element retrieval request
+        body (CreateBimBatchElementRequestRequest): Schema for batch BIM element retrieval request
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -91,7 +91,7 @@ async def asyncio_detailed(
     bim_type: GetBatchBimElementsBimElementTypePath,
     *,
     client: AuthenticatedClient,
-    body: BimBatchElementRequestPostIn,
+    body: CreateBimBatchElementRequestRequest,
 ) -> Response[Any]:
     """Get multiple BIM elements by IDs
 
@@ -100,7 +100,7 @@ async def asyncio_detailed(
 
     Args:
         bim_type (GetBatchBimElementsBimElementTypePath): Enum for BIM object types.
-        body (BimBatchElementRequestPostIn): Schema for batch BIM element retrieval request
+        body (CreateBimBatchElementRequestRequest): Schema for batch BIM element retrieval request
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

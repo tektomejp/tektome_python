@@ -7,16 +7,16 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.artifact_patch_in import ArtifactPatchIn
-from ...models.artifact_patch_out import ArtifactPatchOut
+from ...models.artifact_response import ArtifactResponse
 from ...models.generic_http_error import GenericHttpError
+from ...models.update_artifact_request import UpdateArtifactRequest
 from ...types import Response
 
 
 def _get_kwargs(
     artifact_id: UUID,
     *,
-    body: ArtifactPatchIn,
+    body: UpdateArtifactRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -37,9 +37,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ArtifactPatchOut | GenericHttpError | None:
+) -> ArtifactResponse | GenericHttpError | None:
     if response.status_code == 200:
-        response_200 = ArtifactPatchOut.from_dict(response.json())
+        response_200 = ArtifactResponse.from_dict(response.json())
 
         return response_200
 
@@ -141,7 +141,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ArtifactPatchOut | GenericHttpError]:
+) -> Response[ArtifactResponse | GenericHttpError]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -154,8 +154,8 @@ def sync_detailed(
     artifact_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ArtifactPatchIn,
-) -> Response[ArtifactPatchOut | GenericHttpError]:
+    body: UpdateArtifactRequest,
+) -> Response[ArtifactResponse | GenericHttpError]:
     """Update an artifact
 
      Partially update an existing artifact's path, description, or content. Read-only artifacts cannot be
@@ -163,14 +163,14 @@ def sync_detailed(
 
     Args:
         artifact_id (UUID):
-        body (ArtifactPatchIn):
+        body (UpdateArtifactRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ArtifactPatchOut | GenericHttpError]
+        Response[ArtifactResponse | GenericHttpError]
     """
 
     kwargs = _get_kwargs(
@@ -189,8 +189,8 @@ def sync(
     artifact_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ArtifactPatchIn,
-) -> ArtifactPatchOut | GenericHttpError | None:
+    body: UpdateArtifactRequest,
+) -> ArtifactResponse | GenericHttpError | None:
     """Update an artifact
 
      Partially update an existing artifact's path, description, or content. Read-only artifacts cannot be
@@ -198,14 +198,14 @@ def sync(
 
     Args:
         artifact_id (UUID):
-        body (ArtifactPatchIn):
+        body (UpdateArtifactRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ArtifactPatchOut | GenericHttpError
+        ArtifactResponse | GenericHttpError
     """
 
     return sync_detailed(
@@ -219,8 +219,8 @@ async def asyncio_detailed(
     artifact_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ArtifactPatchIn,
-) -> Response[ArtifactPatchOut | GenericHttpError]:
+    body: UpdateArtifactRequest,
+) -> Response[ArtifactResponse | GenericHttpError]:
     """Update an artifact
 
      Partially update an existing artifact's path, description, or content. Read-only artifacts cannot be
@@ -228,14 +228,14 @@ async def asyncio_detailed(
 
     Args:
         artifact_id (UUID):
-        body (ArtifactPatchIn):
+        body (UpdateArtifactRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ArtifactPatchOut | GenericHttpError]
+        Response[ArtifactResponse | GenericHttpError]
     """
 
     kwargs = _get_kwargs(
@@ -252,8 +252,8 @@ async def asyncio(
     artifact_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ArtifactPatchIn,
-) -> ArtifactPatchOut | GenericHttpError | None:
+    body: UpdateArtifactRequest,
+) -> ArtifactResponse | GenericHttpError | None:
     """Update an artifact
 
      Partially update an existing artifact's path, description, or content. Read-only artifacts cannot be
@@ -261,14 +261,14 @@ async def asyncio(
 
     Args:
         artifact_id (UUID):
-        body (ArtifactPatchIn):
+        body (UpdateArtifactRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ArtifactPatchOut | GenericHttpError
+        ArtifactResponse | GenericHttpError
     """
 
     return (

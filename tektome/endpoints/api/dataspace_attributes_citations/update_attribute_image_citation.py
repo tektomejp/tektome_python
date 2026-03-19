@@ -7,11 +7,11 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.image_citation_patch_in_patch import ImageCitationPatchInPatch
-from ...models.image_citation_schema_out import ImageCitationSchemaOut
+from ...models.image_citation_schema_response import ImageCitationSchemaResponse
 from ...models.update_attribute_image_citation_dataspace_entity_type import (
     UpdateAttributeImageCitationDataspaceEntityType,
 )
+from ...models.update_image_citation_request import UpdateImageCitationRequest
 from ...types import Response
 
 
@@ -21,7 +21,7 @@ def _get_kwargs(
     attribute_id: UUID,
     image_citation_id: UUID,
     *,
-    body: ImageCitationPatchInPatch,
+    body: UpdateImageCitationRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -43,9 +43,11 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ImageCitationSchemaOut | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ImageCitationSchemaResponse | None:
     if response.status_code == 200:
-        response_200 = ImageCitationSchemaOut.from_dict(response.json())
+        response_200 = ImageCitationSchemaResponse.from_dict(response.json())
 
         return response_200
 
@@ -57,7 +59,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ImageCitationSchemaOut]:
+) -> Response[ImageCitationSchemaResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -73,8 +75,8 @@ def sync_detailed(
     image_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ImageCitationPatchInPatch,
-) -> Response[ImageCitationSchemaOut]:
+    body: UpdateImageCitationRequest,
+) -> Response[ImageCitationSchemaResponse]:
     """Update an image citation
 
      Update the details of a specific image citation associated with an attribute.
@@ -84,14 +86,14 @@ def sync_detailed(
         attribute_category (UpdateAttributeImageCitationDataspaceEntityType):
         attribute_id (UUID):
         image_citation_id (UUID):
-        body (ImageCitationPatchInPatch):
+        body (UpdateImageCitationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ImageCitationSchemaOut]
+        Response[ImageCitationSchemaResponse]
     """
 
     kwargs = _get_kwargs(
@@ -116,8 +118,8 @@ def sync(
     image_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ImageCitationPatchInPatch,
-) -> ImageCitationSchemaOut | None:
+    body: UpdateImageCitationRequest,
+) -> ImageCitationSchemaResponse | None:
     """Update an image citation
 
      Update the details of a specific image citation associated with an attribute.
@@ -127,14 +129,14 @@ def sync(
         attribute_category (UpdateAttributeImageCitationDataspaceEntityType):
         attribute_id (UUID):
         image_citation_id (UUID):
-        body (ImageCitationPatchInPatch):
+        body (UpdateImageCitationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ImageCitationSchemaOut
+        ImageCitationSchemaResponse
     """
 
     return sync_detailed(
@@ -154,8 +156,8 @@ async def asyncio_detailed(
     image_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ImageCitationPatchInPatch,
-) -> Response[ImageCitationSchemaOut]:
+    body: UpdateImageCitationRequest,
+) -> Response[ImageCitationSchemaResponse]:
     """Update an image citation
 
      Update the details of a specific image citation associated with an attribute.
@@ -165,14 +167,14 @@ async def asyncio_detailed(
         attribute_category (UpdateAttributeImageCitationDataspaceEntityType):
         attribute_id (UUID):
         image_citation_id (UUID):
-        body (ImageCitationPatchInPatch):
+        body (UpdateImageCitationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ImageCitationSchemaOut]
+        Response[ImageCitationSchemaResponse]
     """
 
     kwargs = _get_kwargs(
@@ -195,8 +197,8 @@ async def asyncio(
     image_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ImageCitationPatchInPatch,
-) -> ImageCitationSchemaOut | None:
+    body: UpdateImageCitationRequest,
+) -> ImageCitationSchemaResponse | None:
     """Update an image citation
 
      Update the details of a specific image citation associated with an attribute.
@@ -206,14 +208,14 @@ async def asyncio(
         attribute_category (UpdateAttributeImageCitationDataspaceEntityType):
         attribute_id (UUID):
         image_citation_id (UUID):
-        body (ImageCitationPatchInPatch):
+        body (UpdateImageCitationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ImageCitationSchemaOut
+        ImageCitationSchemaResponse
     """
 
     return (

@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.retrieve_bim_sheet_post_in import RetrieveBimSheetPostIn
-from ...models.retrieve_bim_sheet_post_out import RetrieveBimSheetPostOut
+from ...models.create_retrieve_bim_sheet_request import CreateRetrieveBimSheetRequest
+from ...models.retrieve_bim_sheet_response import RetrieveBimSheetResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: RetrieveBimSheetPostIn,
+    body: CreateRetrieveBimSheetRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,9 +31,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RetrieveBimSheetPostOut | None:
+) -> RetrieveBimSheetResponse | None:
     if response.status_code == 200:
-        response_200 = RetrieveBimSheetPostOut.from_dict(response.json())
+        response_200 = RetrieveBimSheetResponse.from_dict(response.json())
 
         return response_200
 
@@ -45,7 +45,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[RetrieveBimSheetPostOut]:
+) -> Response[RetrieveBimSheetResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,22 +57,22 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: RetrieveBimSheetPostIn,
-) -> Response[RetrieveBimSheetPostOut]:
+    body: CreateRetrieveBimSheetRequest,
+) -> Response[RetrieveBimSheetResponse]:
     """List BIM sheets in a project
 
      Retrieve BIM sheets within a project, supporting both full retrieval and paginated queries.
     Optionally return only sheet IDs.
 
     Args:
-        body (RetrieveBimSheetPostIn):
+        body (CreateRetrieveBimSheetRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RetrieveBimSheetPostOut]
+        Response[RetrieveBimSheetResponse]
     """
 
     kwargs = _get_kwargs(
@@ -89,22 +89,22 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: RetrieveBimSheetPostIn,
-) -> RetrieveBimSheetPostOut | None:
+    body: CreateRetrieveBimSheetRequest,
+) -> RetrieveBimSheetResponse | None:
     """List BIM sheets in a project
 
      Retrieve BIM sheets within a project, supporting both full retrieval and paginated queries.
     Optionally return only sheet IDs.
 
     Args:
-        body (RetrieveBimSheetPostIn):
+        body (CreateRetrieveBimSheetRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RetrieveBimSheetPostOut
+        RetrieveBimSheetResponse
     """
 
     return sync_detailed(
@@ -116,22 +116,22 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: RetrieveBimSheetPostIn,
-) -> Response[RetrieveBimSheetPostOut]:
+    body: CreateRetrieveBimSheetRequest,
+) -> Response[RetrieveBimSheetResponse]:
     """List BIM sheets in a project
 
      Retrieve BIM sheets within a project, supporting both full retrieval and paginated queries.
     Optionally return only sheet IDs.
 
     Args:
-        body (RetrieveBimSheetPostIn):
+        body (CreateRetrieveBimSheetRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RetrieveBimSheetPostOut]
+        Response[RetrieveBimSheetResponse]
     """
 
     kwargs = _get_kwargs(
@@ -146,22 +146,22 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: RetrieveBimSheetPostIn,
-) -> RetrieveBimSheetPostOut | None:
+    body: CreateRetrieveBimSheetRequest,
+) -> RetrieveBimSheetResponse | None:
     """List BIM sheets in a project
 
      Retrieve BIM sheets within a project, supporting both full retrieval and paginated queries.
     Optionally return only sheet IDs.
 
     Args:
-        body (RetrieveBimSheetPostIn):
+        body (CreateRetrieveBimSheetRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RetrieveBimSheetPostOut
+        RetrieveBimSheetResponse
     """
 
     return (

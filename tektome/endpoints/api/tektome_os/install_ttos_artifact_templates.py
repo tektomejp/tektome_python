@@ -8,7 +8,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.generic_http_error import GenericHttpError
-from ...models.install_artifact_templates_post_in import InstallArtifactTemplatesPostIn
+from ...models.install_artifact_templates_request import InstallArtifactTemplatesRequest
 from ...models.install_ttos_artifact_templates_response import InstallTtosArtifactTemplatesResponse
 from ...types import Response
 
@@ -16,7 +16,7 @@ from ...types import Response
 def _get_kwargs(
     chatroom_id: UUID,
     *,
-    body: InstallArtifactTemplatesPostIn,
+    body: InstallArtifactTemplatesRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -154,7 +154,7 @@ def sync_detailed(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: InstallArtifactTemplatesPostIn,
+    body: InstallArtifactTemplatesRequest,
 ) -> Response[GenericHttpError | InstallTtosArtifactTemplatesResponse]:
     """Install artifact template groups into a chatroom
 
@@ -165,7 +165,7 @@ def sync_detailed(
 
     Args:
         chatroom_id (UUID):
-        body (InstallArtifactTemplatesPostIn):
+        body (InstallArtifactTemplatesRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -191,7 +191,7 @@ def sync(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: InstallArtifactTemplatesPostIn,
+    body: InstallArtifactTemplatesRequest,
 ) -> GenericHttpError | InstallTtosArtifactTemplatesResponse | None:
     """Install artifact template groups into a chatroom
 
@@ -202,7 +202,7 @@ def sync(
 
     Args:
         chatroom_id (UUID):
-        body (InstallArtifactTemplatesPostIn):
+        body (InstallArtifactTemplatesRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -223,7 +223,7 @@ async def asyncio_detailed(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: InstallArtifactTemplatesPostIn,
+    body: InstallArtifactTemplatesRequest,
 ) -> Response[GenericHttpError | InstallTtosArtifactTemplatesResponse]:
     """Install artifact template groups into a chatroom
 
@@ -234,7 +234,7 @@ async def asyncio_detailed(
 
     Args:
         chatroom_id (UUID):
-        body (InstallArtifactTemplatesPostIn):
+        body (InstallArtifactTemplatesRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -258,7 +258,7 @@ async def asyncio(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: InstallArtifactTemplatesPostIn,
+    body: InstallArtifactTemplatesRequest,
 ) -> GenericHttpError | InstallTtosArtifactTemplatesResponse | None:
     """Install artifact template groups into a chatroom
 
@@ -269,7 +269,7 @@ async def asyncio(
 
     Args:
         chatroom_id (UUID):
-        body (InstallArtifactTemplatesPostIn):
+        body (InstallArtifactTemplatesRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

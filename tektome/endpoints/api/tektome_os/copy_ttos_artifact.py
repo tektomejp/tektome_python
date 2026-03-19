@@ -7,17 +7,17 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.artifact_copy_in import ArtifactCopyIn
-from ...models.artifact_copy_out import ArtifactCopyOut
+from ...models.artifact_copy_request import ArtifactCopyRequest
+from ...models.artifact_copy_response import ArtifactCopyResponse
 from ...models.generic_http_error import GenericHttpError
-from ...models.ttos_folder_copy_out import TtosFolderCopyOut
+from ...models.ttos_folder_copy_response import TtosFolderCopyResponse
 from ...types import Response
 
 
 def _get_kwargs(
     artifact_id: UUID,
     *,
-    body: ArtifactCopyIn,
+    body: ArtifactCopyRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -38,21 +38,21 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ArtifactCopyOut | TtosFolderCopyOut | GenericHttpError | None:
+) -> ArtifactCopyResponse | TtosFolderCopyResponse | GenericHttpError | None:
     if response.status_code == 201:
 
-        def _parse_response_201(data: object) -> ArtifactCopyOut | TtosFolderCopyOut:
+        def _parse_response_201(data: object) -> ArtifactCopyResponse | TtosFolderCopyResponse:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                response_201_type_0 = ArtifactCopyOut.from_dict(data)
+                response_201_type_0 = ArtifactCopyResponse.from_dict(data)
 
                 return response_201_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             if not isinstance(data, dict):
                 raise TypeError()
-            response_201_type_1 = TtosFolderCopyOut.from_dict(data)
+            response_201_type_1 = TtosFolderCopyResponse.from_dict(data)
 
             return response_201_type_1
 
@@ -158,7 +158,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ArtifactCopyOut | TtosFolderCopyOut | GenericHttpError]:
+) -> Response[ArtifactCopyResponse | TtosFolderCopyResponse | GenericHttpError]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -171,8 +171,8 @@ def sync_detailed(
     artifact_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ArtifactCopyIn,
-) -> Response[ArtifactCopyOut | TtosFolderCopyOut | GenericHttpError]:
+    body: ArtifactCopyRequest,
+) -> Response[ArtifactCopyResponse | TtosFolderCopyResponse | GenericHttpError]:
     """Copy an artifact or folder
 
      Copy an artifact to a new path. For folder artifacts, all artifacts within the folder are copied as
@@ -180,14 +180,14 @@ def sync_detailed(
 
     Args:
         artifact_id (UUID):
-        body (ArtifactCopyIn):
+        body (ArtifactCopyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ArtifactCopyOut | TtosFolderCopyOut | GenericHttpError]
+        Response[ArtifactCopyResponse | TtosFolderCopyResponse | GenericHttpError]
     """
 
     kwargs = _get_kwargs(
@@ -206,8 +206,8 @@ def sync(
     artifact_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ArtifactCopyIn,
-) -> ArtifactCopyOut | TtosFolderCopyOut | GenericHttpError | None:
+    body: ArtifactCopyRequest,
+) -> ArtifactCopyResponse | TtosFolderCopyResponse | GenericHttpError | None:
     """Copy an artifact or folder
 
      Copy an artifact to a new path. For folder artifacts, all artifacts within the folder are copied as
@@ -215,14 +215,14 @@ def sync(
 
     Args:
         artifact_id (UUID):
-        body (ArtifactCopyIn):
+        body (ArtifactCopyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ArtifactCopyOut | TtosFolderCopyOut | GenericHttpError
+        ArtifactCopyResponse | TtosFolderCopyResponse | GenericHttpError
     """
 
     return sync_detailed(
@@ -236,8 +236,8 @@ async def asyncio_detailed(
     artifact_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ArtifactCopyIn,
-) -> Response[ArtifactCopyOut | TtosFolderCopyOut | GenericHttpError]:
+    body: ArtifactCopyRequest,
+) -> Response[ArtifactCopyResponse | TtosFolderCopyResponse | GenericHttpError]:
     """Copy an artifact or folder
 
      Copy an artifact to a new path. For folder artifacts, all artifacts within the folder are copied as
@@ -245,14 +245,14 @@ async def asyncio_detailed(
 
     Args:
         artifact_id (UUID):
-        body (ArtifactCopyIn):
+        body (ArtifactCopyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ArtifactCopyOut | TtosFolderCopyOut | GenericHttpError]
+        Response[ArtifactCopyResponse | TtosFolderCopyResponse | GenericHttpError]
     """
 
     kwargs = _get_kwargs(
@@ -269,8 +269,8 @@ async def asyncio(
     artifact_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ArtifactCopyIn,
-) -> ArtifactCopyOut | TtosFolderCopyOut | GenericHttpError | None:
+    body: ArtifactCopyRequest,
+) -> ArtifactCopyResponse | TtosFolderCopyResponse | GenericHttpError | None:
     """Copy an artifact or folder
 
      Copy an artifact to a new path. For folder artifacts, all artifacts within the folder are copied as
@@ -278,14 +278,14 @@ async def asyncio(
 
     Args:
         artifact_id (UUID):
-        body (ArtifactCopyIn):
+        body (ArtifactCopyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ArtifactCopyOut | TtosFolderCopyOut | GenericHttpError
+        ArtifactCopyResponse | TtosFolderCopyResponse | GenericHttpError
     """
 
     return (

@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.import_resource_group_post_in import ImportResourceGroupPostIn
+from ...models.import_resource_group_request import ImportResourceGroupRequest
 from ...types import Response
 
 
 def _get_kwargs(
     project_id: UUID,
     *,
-    body: ImportResourceGroupPostIn,
+    body: ImportResourceGroupRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,7 +56,7 @@ def sync_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ImportResourceGroupPostIn,
+    body: ImportResourceGroupRequest,
 ) -> Response[Any]:
     """Import resource groups to project
 
@@ -64,7 +64,7 @@ def sync_detailed(
 
     Args:
         project_id (UUID):
-        body (ImportResourceGroupPostIn):
+        body (ImportResourceGroupRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -90,7 +90,7 @@ async def asyncio_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ImportResourceGroupPostIn,
+    body: ImportResourceGroupRequest,
 ) -> Response[Any]:
     """Import resource groups to project
 
@@ -98,7 +98,7 @@ async def asyncio_detailed(
 
     Args:
         project_id (UUID):
-        body (ImportResourceGroupPostIn):
+        body (ImportResourceGroupRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

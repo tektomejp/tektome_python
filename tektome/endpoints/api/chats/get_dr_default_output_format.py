@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.get_dr_default_output_format_get_out import GetDRDefaultOutputFormatGetOut
+from ...models.get_dr_default_output_format_response import GetDRDefaultOutputFormatResponse
 from ...types import Response
 
 
@@ -21,9 +21,9 @@ def _get_kwargs() -> dict[str, Any]:
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> GetDRDefaultOutputFormatGetOut | None:
+) -> GetDRDefaultOutputFormatResponse | None:
     if response.status_code == 200:
-        response_200 = GetDRDefaultOutputFormatGetOut.from_dict(response.json())
+        response_200 = GetDRDefaultOutputFormatResponse.from_dict(response.json())
 
         return response_200
 
@@ -35,7 +35,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[GetDRDefaultOutputFormatGetOut]:
+) -> Response[GetDRDefaultOutputFormatResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -47,7 +47,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[GetDRDefaultOutputFormatGetOut]:
+) -> Response[GetDRDefaultOutputFormatResponse]:
     """Get deep research default output format
 
      Retrieve the default output format setting for deep research. Returns an empty string if no default
@@ -58,7 +58,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GetDRDefaultOutputFormatGetOut]
+        Response[GetDRDefaultOutputFormatResponse]
     """
 
     kwargs = _get_kwargs()
@@ -73,7 +73,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-) -> GetDRDefaultOutputFormatGetOut | None:
+) -> GetDRDefaultOutputFormatResponse | None:
     """Get deep research default output format
 
      Retrieve the default output format setting for deep research. Returns an empty string if no default
@@ -84,7 +84,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GetDRDefaultOutputFormatGetOut
+        GetDRDefaultOutputFormatResponse
     """
 
     return sync_detailed(
@@ -95,7 +95,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[GetDRDefaultOutputFormatGetOut]:
+) -> Response[GetDRDefaultOutputFormatResponse]:
     """Get deep research default output format
 
      Retrieve the default output format setting for deep research. Returns an empty string if no default
@@ -106,7 +106,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GetDRDefaultOutputFormatGetOut]
+        Response[GetDRDefaultOutputFormatResponse]
     """
 
     kwargs = _get_kwargs()
@@ -119,7 +119,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-) -> GetDRDefaultOutputFormatGetOut | None:
+) -> GetDRDefaultOutputFormatResponse | None:
     """Get deep research default output format
 
      Retrieve the default output format setting for deep research. Returns an empty string if no default
@@ -130,7 +130,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GetDRDefaultOutputFormatGetOut
+        GetDRDefaultOutputFormatResponse
     """
 
     return (

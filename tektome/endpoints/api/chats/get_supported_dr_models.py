@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.get_supported_dr_models_get_out import GetSupportedDRModelsGetOut
+from ...models.get_supported_dr_models_response import GetSupportedDRModelsResponse
 from ...types import Response
 
 
@@ -21,9 +21,9 @@ def _get_kwargs() -> dict[str, Any]:
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> GetSupportedDRModelsGetOut | None:
+) -> GetSupportedDRModelsResponse | None:
     if response.status_code == 200:
-        response_200 = GetSupportedDRModelsGetOut.from_dict(response.json())
+        response_200 = GetSupportedDRModelsResponse.from_dict(response.json())
 
         return response_200
 
@@ -35,7 +35,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[GetSupportedDRModelsGetOut]:
+) -> Response[GetSupportedDRModelsResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -47,7 +47,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[GetSupportedDRModelsGetOut]:
+) -> Response[GetSupportedDRModelsResponse]:
     """List deep research models
 
      Retrieve the list of supported AI models for deep research, including whether each model supports
@@ -58,7 +58,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GetSupportedDRModelsGetOut]
+        Response[GetSupportedDRModelsResponse]
     """
 
     kwargs = _get_kwargs()
@@ -73,7 +73,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-) -> GetSupportedDRModelsGetOut | None:
+) -> GetSupportedDRModelsResponse | None:
     """List deep research models
 
      Retrieve the list of supported AI models for deep research, including whether each model supports
@@ -84,7 +84,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GetSupportedDRModelsGetOut
+        GetSupportedDRModelsResponse
     """
 
     return sync_detailed(
@@ -95,7 +95,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[GetSupportedDRModelsGetOut]:
+) -> Response[GetSupportedDRModelsResponse]:
     """List deep research models
 
      Retrieve the list of supported AI models for deep research, including whether each model supports
@@ -106,7 +106,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GetSupportedDRModelsGetOut]
+        Response[GetSupportedDRModelsResponse]
     """
 
     kwargs = _get_kwargs()
@@ -119,7 +119,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-) -> GetSupportedDRModelsGetOut | None:
+) -> GetSupportedDRModelsResponse | None:
     """List deep research models
 
      Retrieve the list of supported AI models for deep research, including whether each model supports
@@ -130,7 +130,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GetSupportedDRModelsGetOut
+        GetSupportedDRModelsResponse
     """
 
     return (

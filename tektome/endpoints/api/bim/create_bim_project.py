@@ -5,15 +5,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bim_project_post_in import BimProjectPostIn
-from ...models.bim_project_post_out import BimProjectPostOut
-from ...models.error_response_post_out import ErrorResponsePostOut
+from ...models.bim_project_response import BimProjectResponse
+from ...models.create_bim_project_request import CreateBimProjectRequest
+from ...models.error_response_response import ErrorResponseResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: BimProjectPostIn,
+    body: CreateBimProjectRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -32,14 +32,14 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BimProjectPostOut | ErrorResponsePostOut | None:
+) -> BimProjectResponse | ErrorResponseResponse | None:
     if response.status_code == 200:
-        response_200 = BimProjectPostOut.from_dict(response.json())
+        response_200 = BimProjectResponse.from_dict(response.json())
 
         return response_200
 
     if response.status_code == 404:
-        response_404 = ErrorResponsePostOut.from_dict(response.json())
+        response_404 = ErrorResponseResponse.from_dict(response.json())
 
         return response_404
 
@@ -51,7 +51,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BimProjectPostOut | ErrorResponsePostOut]:
+) -> Response[BimProjectResponse | ErrorResponseResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,21 +63,21 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: BimProjectPostIn,
-) -> Response[BimProjectPostOut | ErrorResponsePostOut]:
+    body: CreateBimProjectRequest,
+) -> Response[BimProjectResponse | ErrorResponseResponse]:
     """Create a BIM project
 
      Create a new BIM project associated with an existing resource.
 
     Args:
-        body (BimProjectPostIn):
+        body (CreateBimProjectRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimProjectPostOut | ErrorResponsePostOut]
+        Response[BimProjectResponse | ErrorResponseResponse]
     """
 
     kwargs = _get_kwargs(
@@ -94,21 +94,21 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: BimProjectPostIn,
-) -> BimProjectPostOut | ErrorResponsePostOut | None:
+    body: CreateBimProjectRequest,
+) -> BimProjectResponse | ErrorResponseResponse | None:
     """Create a BIM project
 
      Create a new BIM project associated with an existing resource.
 
     Args:
-        body (BimProjectPostIn):
+        body (CreateBimProjectRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimProjectPostOut | ErrorResponsePostOut
+        BimProjectResponse | ErrorResponseResponse
     """
 
     return sync_detailed(
@@ -120,21 +120,21 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: BimProjectPostIn,
-) -> Response[BimProjectPostOut | ErrorResponsePostOut]:
+    body: CreateBimProjectRequest,
+) -> Response[BimProjectResponse | ErrorResponseResponse]:
     """Create a BIM project
 
      Create a new BIM project associated with an existing resource.
 
     Args:
-        body (BimProjectPostIn):
+        body (CreateBimProjectRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimProjectPostOut | ErrorResponsePostOut]
+        Response[BimProjectResponse | ErrorResponseResponse]
     """
 
     kwargs = _get_kwargs(
@@ -149,21 +149,21 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: BimProjectPostIn,
-) -> BimProjectPostOut | ErrorResponsePostOut | None:
+    body: CreateBimProjectRequest,
+) -> BimProjectResponse | ErrorResponseResponse | None:
     """Create a BIM project
 
      Create a new BIM project associated with an existing resource.
 
     Args:
-        body (BimProjectPostIn):
+        body (CreateBimProjectRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimProjectPostOut | ErrorResponsePostOut
+        BimProjectResponse | ErrorResponseResponse
     """
 
     return (

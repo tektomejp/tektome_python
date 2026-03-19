@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.dataspace_patch_in_patch import DataspacePatchInPatch
+from ...models.update_dataspace_request import UpdateDataspaceRequest
 from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
     *,
-    body: DataspacePatchInPatch,
+    body: UpdateDataspaceRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,7 +56,7 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspacePatchInPatch,
+    body: UpdateDataspaceRequest,
 ) -> Response[Any]:
     """Update dataspace details
 
@@ -64,7 +64,7 @@ def sync_detailed(
 
     Args:
         dataspace_id (UUID):
-        body (DataspacePatchInPatch):
+        body (UpdateDataspaceRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -90,7 +90,7 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspacePatchInPatch,
+    body: UpdateDataspaceRequest,
 ) -> Response[Any]:
     """Update dataspace details
 
@@ -98,7 +98,7 @@ async def asyncio_detailed(
 
     Args:
         dataspace_id (UUID):
-        body (DataspacePatchInPatch):
+        body (UpdateDataspaceRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

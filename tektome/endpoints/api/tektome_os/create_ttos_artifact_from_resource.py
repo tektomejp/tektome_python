@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.artifact_from_resource_post_in import ArtifactFromResourcePostIn
-from ...models.artifact_from_resource_post_out import ArtifactFromResourcePostOut
+from ...models.artifact_from_resource_response import ArtifactFromResourceResponse
+from ...models.create_artifact_from_resource_request import CreateArtifactFromResourceRequest
 from ...models.generic_http_error import GenericHttpError
 from ...types import Response
 
@@ -16,7 +16,7 @@ from ...types import Response
 def _get_kwargs(
     chatroom_id: UUID,
     *,
-    body: ArtifactFromResourcePostIn,
+    body: CreateArtifactFromResourceRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -37,9 +37,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ArtifactFromResourcePostOut | GenericHttpError | None:
+) -> ArtifactFromResourceResponse | GenericHttpError | None:
     if response.status_code == 201:
-        response_201 = ArtifactFromResourcePostOut.from_dict(response.json())
+        response_201 = ArtifactFromResourceResponse.from_dict(response.json())
 
         return response_201
 
@@ -141,7 +141,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ArtifactFromResourcePostOut | GenericHttpError]:
+) -> Response[ArtifactFromResourceResponse | GenericHttpError]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -154,8 +154,8 @@ def sync_detailed(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ArtifactFromResourcePostIn,
-) -> Response[ArtifactFromResourcePostOut | GenericHttpError]:
+    body: CreateArtifactFromResourceRequest,
+) -> Response[ArtifactFromResourceResponse | GenericHttpError]:
     """Create a new resource-linked artifact
 
      Create a new artifact in the specified chatroom by linking an existing resource. The created
@@ -164,14 +164,14 @@ def sync_detailed(
 
     Args:
         chatroom_id (UUID):
-        body (ArtifactFromResourcePostIn):
+        body (CreateArtifactFromResourceRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ArtifactFromResourcePostOut | GenericHttpError]
+        Response[ArtifactFromResourceResponse | GenericHttpError]
     """
 
     kwargs = _get_kwargs(
@@ -190,8 +190,8 @@ def sync(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ArtifactFromResourcePostIn,
-) -> ArtifactFromResourcePostOut | GenericHttpError | None:
+    body: CreateArtifactFromResourceRequest,
+) -> ArtifactFromResourceResponse | GenericHttpError | None:
     """Create a new resource-linked artifact
 
      Create a new artifact in the specified chatroom by linking an existing resource. The created
@@ -200,14 +200,14 @@ def sync(
 
     Args:
         chatroom_id (UUID):
-        body (ArtifactFromResourcePostIn):
+        body (CreateArtifactFromResourceRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ArtifactFromResourcePostOut | GenericHttpError
+        ArtifactFromResourceResponse | GenericHttpError
     """
 
     return sync_detailed(
@@ -221,8 +221,8 @@ async def asyncio_detailed(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ArtifactFromResourcePostIn,
-) -> Response[ArtifactFromResourcePostOut | GenericHttpError]:
+    body: CreateArtifactFromResourceRequest,
+) -> Response[ArtifactFromResourceResponse | GenericHttpError]:
     """Create a new resource-linked artifact
 
      Create a new artifact in the specified chatroom by linking an existing resource. The created
@@ -231,14 +231,14 @@ async def asyncio_detailed(
 
     Args:
         chatroom_id (UUID):
-        body (ArtifactFromResourcePostIn):
+        body (CreateArtifactFromResourceRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ArtifactFromResourcePostOut | GenericHttpError]
+        Response[ArtifactFromResourceResponse | GenericHttpError]
     """
 
     kwargs = _get_kwargs(
@@ -255,8 +255,8 @@ async def asyncio(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ArtifactFromResourcePostIn,
-) -> ArtifactFromResourcePostOut | GenericHttpError | None:
+    body: CreateArtifactFromResourceRequest,
+) -> ArtifactFromResourceResponse | GenericHttpError | None:
     """Create a new resource-linked artifact
 
      Create a new artifact in the specified chatroom by linking an existing resource. The created
@@ -265,14 +265,14 @@ async def asyncio(
 
     Args:
         chatroom_id (UUID):
-        body (ArtifactFromResourcePostIn):
+        body (CreateArtifactFromResourceRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ArtifactFromResourcePostOut | GenericHttpError
+        ArtifactFromResourceResponse | GenericHttpError
     """
 
     return (

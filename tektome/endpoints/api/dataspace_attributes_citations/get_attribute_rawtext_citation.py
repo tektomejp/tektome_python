@@ -10,7 +10,7 @@ from ...client import AuthenticatedClient, Client
 from ...models.get_attribute_rawtext_citation_dataspace_entity_type import (
     GetAttributeRawtextCitationDataspaceEntityType,
 )
-from ...models.raw_text_citation_schema_out import RawTextCitationSchemaOut
+from ...models.raw_text_citation_schema_response import RawTextCitationSchemaResponse
 from ...types import Response
 
 
@@ -36,9 +36,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RawTextCitationSchemaOut | None:
+) -> RawTextCitationSchemaResponse | None:
     if response.status_code == 200:
-        response_200 = RawTextCitationSchemaOut.from_dict(response.json())
+        response_200 = RawTextCitationSchemaResponse.from_dict(response.json())
 
         return response_200
 
@@ -50,7 +50,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[RawTextCitationSchemaOut]:
+) -> Response[RawTextCitationSchemaResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -66,7 +66,7 @@ def sync_detailed(
     rawtext_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[RawTextCitationSchemaOut]:
+) -> Response[RawTextCitationSchemaResponse]:
     """Get a raw text citation by ID
 
      Retrieve the details of a specific raw text citation associated with an attribute.
@@ -82,7 +82,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RawTextCitationSchemaOut]
+        Response[RawTextCitationSchemaResponse]
     """
 
     kwargs = _get_kwargs(
@@ -106,7 +106,7 @@ def sync(
     rawtext_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> RawTextCitationSchemaOut | None:
+) -> RawTextCitationSchemaResponse | None:
     """Get a raw text citation by ID
 
      Retrieve the details of a specific raw text citation associated with an attribute.
@@ -122,7 +122,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RawTextCitationSchemaOut
+        RawTextCitationSchemaResponse
     """
 
     return sync_detailed(
@@ -141,7 +141,7 @@ async def asyncio_detailed(
     rawtext_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[RawTextCitationSchemaOut]:
+) -> Response[RawTextCitationSchemaResponse]:
     """Get a raw text citation by ID
 
      Retrieve the details of a specific raw text citation associated with an attribute.
@@ -157,7 +157,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RawTextCitationSchemaOut]
+        Response[RawTextCitationSchemaResponse]
     """
 
     kwargs = _get_kwargs(
@@ -179,7 +179,7 @@ async def asyncio(
     rawtext_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> RawTextCitationSchemaOut | None:
+) -> RawTextCitationSchemaResponse | None:
     """Get a raw text citation by ID
 
      Retrieve the details of a specific raw text citation associated with an attribute.
@@ -195,7 +195,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RawTextCitationSchemaOut
+        RawTextCitationSchemaResponse
     """
 
     return (

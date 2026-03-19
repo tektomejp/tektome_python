@@ -8,8 +8,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.dataspace_search_request_schema import DataspaceSearchRequestSchema
-from ...models.dataspace_search_result_out import DataspaceSearchResultOut
-from ...models.error_out import ErrorOut
+from ...models.error_response import ErrorResponse
 from ...types import Response
 
 
@@ -35,16 +34,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> DataspaceSearchResultOut | ErrorOut | None:
-    if response.status_code == 200:
-        response_200 = DataspaceSearchResultOut.from_dict(response.json())
-
-        return response_200
-
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorResponse | None:
     if response.status_code == 400:
-        response_400 = ErrorOut.from_dict(response.json())
+        response_400 = ErrorResponse.from_dict(response.json())
 
         return response_400
 
@@ -54,9 +46,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[DataspaceSearchResultOut | ErrorOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -70,7 +60,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: DataspaceSearchRequestSchema,
-) -> Response[DataspaceSearchResultOut | ErrorOut]:
+) -> Response[ErrorResponse]:
     """Execute a new search
 
      Execute a new search request within a dataspace and return paginated results. Only the most recent
@@ -85,7 +75,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DataspaceSearchResultOut | ErrorOut]
+        Response[ErrorResponse]
     """
 
     kwargs = _get_kwargs(
@@ -105,7 +95,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: DataspaceSearchRequestSchema,
-) -> DataspaceSearchResultOut | ErrorOut | None:
+) -> ErrorResponse | None:
     """Execute a new search
 
      Execute a new search request within a dataspace and return paginated results. Only the most recent
@@ -120,7 +110,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DataspaceSearchResultOut | ErrorOut
+        ErrorResponse
     """
 
     return sync_detailed(
@@ -135,7 +125,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: DataspaceSearchRequestSchema,
-) -> Response[DataspaceSearchResultOut | ErrorOut]:
+) -> Response[ErrorResponse]:
     """Execute a new search
 
      Execute a new search request within a dataspace and return paginated results. Only the most recent
@@ -150,7 +140,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DataspaceSearchResultOut | ErrorOut]
+        Response[ErrorResponse]
     """
 
     kwargs = _get_kwargs(
@@ -168,7 +158,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: DataspaceSearchRequestSchema,
-) -> DataspaceSearchResultOut | ErrorOut | None:
+) -> ErrorResponse | None:
     """Execute a new search
 
      Execute a new search request within a dataspace and return paginated results. Only the most recent
@@ -183,7 +173,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DataspaceSearchResultOut | ErrorOut
+        ErrorResponse
     """
 
     return (

@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.lawtalk_general_attribute_body_put_in import LawtalkGeneralAttributeBodyPutIn
+from ...models.replace_lawtalk_general_attribute_body_request import ReplaceLawtalkGeneralAttributeBodyRequest
 from ...models.update_general_lawtalk_attributes_attribute_object_types import (
     UpdateGeneralLawtalkAttributesAttributeObjectTypes,
 )
@@ -18,7 +18,7 @@ def _get_kwargs(
     object_type: UpdateGeneralLawtalkAttributesAttributeObjectTypes,
     object_id: UUID,
     *,
-    body: LawtalkGeneralAttributeBodyPutIn,
+    body: ReplaceLawtalkGeneralAttributeBodyRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -62,7 +62,7 @@ def sync_detailed(
     object_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: LawtalkGeneralAttributeBodyPutIn,
+    body: ReplaceLawtalkGeneralAttributeBodyRequest,
 ) -> Response[Any]:
     """Set general attributes on an entity
 
@@ -72,7 +72,7 @@ def sync_detailed(
     Args:
         object_type (UpdateGeneralLawtalkAttributesAttributeObjectTypes):
         object_id (UUID):
-        body (LawtalkGeneralAttributeBodyPutIn):
+        body (ReplaceLawtalkGeneralAttributeBodyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -100,7 +100,7 @@ async def asyncio_detailed(
     object_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: LawtalkGeneralAttributeBodyPutIn,
+    body: ReplaceLawtalkGeneralAttributeBodyRequest,
 ) -> Response[Any]:
     """Set general attributes on an entity
 
@@ -110,7 +110,7 @@ async def asyncio_detailed(
     Args:
         object_type (UpdateGeneralLawtalkAttributesAttributeObjectTypes):
         object_id (UUID):
-        body (LawtalkGeneralAttributeBodyPutIn):
+        body (ReplaceLawtalkGeneralAttributeBodyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

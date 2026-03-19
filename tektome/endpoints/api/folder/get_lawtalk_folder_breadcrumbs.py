@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.lawtalk_gen_breadcrumbs_get_out import LawtalkGenBreadcrumbsGetOut
+from ...models.lawtalk_gen_breadcrumbs_response import LawtalkGenBreadcrumbsResponse
 from ...types import Response
 
 
@@ -27,9 +27,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> LawtalkGenBreadcrumbsGetOut | None:
+) -> LawtalkGenBreadcrumbsResponse | None:
     if response.status_code == 200:
-        response_200 = LawtalkGenBreadcrumbsGetOut.from_dict(response.json())
+        response_200 = LawtalkGenBreadcrumbsResponse.from_dict(response.json())
 
         return response_200
 
@@ -41,7 +41,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[LawtalkGenBreadcrumbsGetOut]:
+) -> Response[LawtalkGenBreadcrumbsResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,7 +54,7 @@ def sync_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[LawtalkGenBreadcrumbsGetOut]:
+) -> Response[LawtalkGenBreadcrumbsResponse]:
     """Get folder breadcrumbs
 
      Generate breadcrumb navigation data for a folder, including its parent folder hierarchy and
@@ -68,7 +68,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[LawtalkGenBreadcrumbsGetOut]
+        Response[LawtalkGenBreadcrumbsResponse]
     """
 
     kwargs = _get_kwargs(
@@ -86,7 +86,7 @@ def sync(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> LawtalkGenBreadcrumbsGetOut | None:
+) -> LawtalkGenBreadcrumbsResponse | None:
     """Get folder breadcrumbs
 
      Generate breadcrumb navigation data for a folder, including its parent folder hierarchy and
@@ -100,7 +100,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        LawtalkGenBreadcrumbsGetOut
+        LawtalkGenBreadcrumbsResponse
     """
 
     return sync_detailed(
@@ -113,7 +113,7 @@ async def asyncio_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[LawtalkGenBreadcrumbsGetOut]:
+) -> Response[LawtalkGenBreadcrumbsResponse]:
     """Get folder breadcrumbs
 
      Generate breadcrumb navigation data for a folder, including its parent folder hierarchy and
@@ -127,7 +127,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[LawtalkGenBreadcrumbsGetOut]
+        Response[LawtalkGenBreadcrumbsResponse]
     """
 
     kwargs = _get_kwargs(
@@ -143,7 +143,7 @@ async def asyncio(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> LawtalkGenBreadcrumbsGetOut | None:
+) -> LawtalkGenBreadcrumbsResponse | None:
     """Get folder breadcrumbs
 
      Generate breadcrumb navigation data for a folder, including its parent folder hierarchy and
@@ -157,7 +157,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        LawtalkGenBreadcrumbsGetOut
+        LawtalkGenBreadcrumbsResponse
     """
 
     return (

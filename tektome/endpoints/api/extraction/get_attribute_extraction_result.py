@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.get_extracted_result_get_out import GetExtractedResultGetOut
+from ...models.get_extracted_result_response import GetExtractedResultResponse
 from ...types import Response
 
 
@@ -27,9 +27,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> GetExtractedResultGetOut | None:
+) -> GetExtractedResultResponse | None:
     if response.status_code == 200:
-        response_200 = GetExtractedResultGetOut.from_dict(response.json())
+        response_200 = GetExtractedResultResponse.from_dict(response.json())
 
         return response_200
 
@@ -41,7 +41,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[GetExtractedResultGetOut]:
+) -> Response[GetExtractedResultResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,7 +54,7 @@ def sync_detailed(
     attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[GetExtractedResultGetOut]:
+) -> Response[GetExtractedResultResponse]:
     """Get extraction result for an attribute
 
      Retrieve the extracted value, status, reasoning, and cited sources for a specific attribute. Returns
@@ -68,7 +68,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GetExtractedResultGetOut]
+        Response[GetExtractedResultResponse]
     """
 
     kwargs = _get_kwargs(
@@ -86,7 +86,7 @@ def sync(
     attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> GetExtractedResultGetOut | None:
+) -> GetExtractedResultResponse | None:
     """Get extraction result for an attribute
 
      Retrieve the extracted value, status, reasoning, and cited sources for a specific attribute. Returns
@@ -100,7 +100,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GetExtractedResultGetOut
+        GetExtractedResultResponse
     """
 
     return sync_detailed(
@@ -113,7 +113,7 @@ async def asyncio_detailed(
     attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[GetExtractedResultGetOut]:
+) -> Response[GetExtractedResultResponse]:
     """Get extraction result for an attribute
 
      Retrieve the extracted value, status, reasoning, and cited sources for a specific attribute. Returns
@@ -127,7 +127,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GetExtractedResultGetOut]
+        Response[GetExtractedResultResponse]
     """
 
     kwargs = _get_kwargs(
@@ -143,7 +143,7 @@ async def asyncio(
     attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> GetExtractedResultGetOut | None:
+) -> GetExtractedResultResponse | None:
     """Get extraction result for an attribute
 
      Retrieve the extracted value, status, reasoning, and cited sources for a specific attribute. Returns
@@ -157,7 +157,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GetExtractedResultGetOut
+        GetExtractedResultResponse
     """
 
     return (

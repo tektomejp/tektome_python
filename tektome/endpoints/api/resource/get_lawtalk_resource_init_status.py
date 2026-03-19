@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.background_task_status_out import BackgroundTaskStatusOut
-from ...models.error_out import ErrorOut
+from ...models.background_task_status_response import BackgroundTaskStatusResponse
+from ...models.error_response import ErrorResponse
 from ...types import Response
 
 
@@ -27,14 +27,14 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BackgroundTaskStatusOut | ErrorOut | None:
+) -> BackgroundTaskStatusResponse | ErrorResponse | None:
     if response.status_code == 200:
-        response_200 = BackgroundTaskStatusOut.from_dict(response.json())
+        response_200 = BackgroundTaskStatusResponse.from_dict(response.json())
 
         return response_200
 
     if response.status_code == 404:
-        response_404 = ErrorOut.from_dict(response.json())
+        response_404 = ErrorResponse.from_dict(response.json())
 
         return response_404
 
@@ -46,7 +46,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BackgroundTaskStatusOut | ErrorOut]:
+) -> Response[BackgroundTaskStatusResponse | ErrorResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,7 +59,7 @@ def sync_detailed(
     resource_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[BackgroundTaskStatusOut | ErrorOut]:
+) -> Response[BackgroundTaskStatusResponse | ErrorResponse]:
     """Get resource initialization status
 
      Retrieve the current OCR extraction status of a resource.
@@ -72,7 +72,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BackgroundTaskStatusOut | ErrorOut]
+        Response[BackgroundTaskStatusResponse | ErrorResponse]
     """
 
     kwargs = _get_kwargs(
@@ -90,7 +90,7 @@ def sync(
     resource_id: str,
     *,
     client: AuthenticatedClient,
-) -> BackgroundTaskStatusOut | ErrorOut | None:
+) -> BackgroundTaskStatusResponse | ErrorResponse | None:
     """Get resource initialization status
 
      Retrieve the current OCR extraction status of a resource.
@@ -103,7 +103,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BackgroundTaskStatusOut | ErrorOut
+        BackgroundTaskStatusResponse | ErrorResponse
     """
 
     return sync_detailed(
@@ -116,7 +116,7 @@ async def asyncio_detailed(
     resource_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[BackgroundTaskStatusOut | ErrorOut]:
+) -> Response[BackgroundTaskStatusResponse | ErrorResponse]:
     """Get resource initialization status
 
      Retrieve the current OCR extraction status of a resource.
@@ -129,7 +129,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BackgroundTaskStatusOut | ErrorOut]
+        Response[BackgroundTaskStatusResponse | ErrorResponse]
     """
 
     kwargs = _get_kwargs(
@@ -145,7 +145,7 @@ async def asyncio(
     resource_id: str,
     *,
     client: AuthenticatedClient,
-) -> BackgroundTaskStatusOut | ErrorOut | None:
+) -> BackgroundTaskStatusResponse | ErrorResponse | None:
     """Get resource initialization status
 
      Retrieve the current OCR extraction status of a resource.
@@ -158,7 +158,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BackgroundTaskStatusOut | ErrorOut
+        BackgroundTaskStatusResponse | ErrorResponse
     """
 
     return (

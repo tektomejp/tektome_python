@@ -5,13 +5,13 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.organization_switch_schema_in import OrganizationSwitchSchemaIn
+from ...models.organization_switch_schema_request import OrganizationSwitchSchemaRequest
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: OrganizationSwitchSchemaIn,
+    body: OrganizationSwitchSchemaRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -50,7 +50,7 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: OrganizationSwitchSchemaIn,
+    body: OrganizationSwitchSchemaRequest,
 ) -> Response[Any]:
     """Switch Admin User Organization
 
@@ -66,7 +66,7 @@ def sync_detailed(
     Returns: 204, None
 
     Args:
-        body (OrganizationSwitchSchemaIn):
+        body (OrganizationSwitchSchemaRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -90,7 +90,7 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: OrganizationSwitchSchemaIn,
+    body: OrganizationSwitchSchemaRequest,
 ) -> Response[Any]:
     """Switch Admin User Organization
 
@@ -106,7 +106,7 @@ async def asyncio_detailed(
     Returns: 204, None
 
     Args:
-        body (OrganizationSwitchSchemaIn):
+        body (OrganizationSwitchSchemaRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

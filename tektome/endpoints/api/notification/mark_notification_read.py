@@ -8,7 +8,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.generic_http_error import GenericHttpError
-from ...models.notification_read_out import NotificationReadOut
+from ...models.notification_read_response import NotificationReadResponse
 from ...types import Response
 
 
@@ -28,9 +28,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> GenericHttpError | NotificationReadOut | None:
+) -> GenericHttpError | NotificationReadResponse | None:
     if response.status_code == 200:
-        response_200 = NotificationReadOut.from_dict(response.json())
+        response_200 = NotificationReadResponse.from_dict(response.json())
 
         return response_200
 
@@ -132,7 +132,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[GenericHttpError | NotificationReadOut]:
+) -> Response[GenericHttpError | NotificationReadResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -145,7 +145,7 @@ def sync_detailed(
     notification_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[GenericHttpError | NotificationReadOut]:
+) -> Response[GenericHttpError | NotificationReadResponse]:
     """Mark a notification as read
 
      p7JrM3nX
@@ -162,7 +162,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GenericHttpError | NotificationReadOut]
+        Response[GenericHttpError | NotificationReadResponse]
     """
 
     kwargs = _get_kwargs(
@@ -180,7 +180,7 @@ def sync(
     notification_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> GenericHttpError | NotificationReadOut | None:
+) -> GenericHttpError | NotificationReadResponse | None:
     """Mark a notification as read
 
      p7JrM3nX
@@ -197,7 +197,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GenericHttpError | NotificationReadOut
+        GenericHttpError | NotificationReadResponse
     """
 
     return sync_detailed(
@@ -210,7 +210,7 @@ async def asyncio_detailed(
     notification_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[GenericHttpError | NotificationReadOut]:
+) -> Response[GenericHttpError | NotificationReadResponse]:
     """Mark a notification as read
 
      p7JrM3nX
@@ -227,7 +227,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GenericHttpError | NotificationReadOut]
+        Response[GenericHttpError | NotificationReadResponse]
     """
 
     kwargs = _get_kwargs(
@@ -243,7 +243,7 @@ async def asyncio(
     notification_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> GenericHttpError | NotificationReadOut | None:
+) -> GenericHttpError | NotificationReadResponse | None:
     """Mark a notification as read
 
      p7JrM3nX
@@ -260,7 +260,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GenericHttpError | NotificationReadOut
+        GenericHttpError | NotificationReadResponse
     """
 
     return (

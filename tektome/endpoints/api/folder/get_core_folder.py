@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.folder_get_out import FolderGetOut
+from ...models.folder_response import FolderResponse
 from ...types import Response
 
 
@@ -25,9 +25,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> FolderGetOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> FolderResponse | None:
     if response.status_code == 200:
-        response_200 = FolderGetOut.from_dict(response.json())
+        response_200 = FolderResponse.from_dict(response.json())
 
         return response_200
 
@@ -37,7 +37,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[FolderGetOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[FolderResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -50,7 +50,7 @@ def sync_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[FolderGetOut]:
+) -> Response[FolderResponse]:
     """Get a folder with its contents
 
      Retrieve a folder along with its resources and child folders.
@@ -63,7 +63,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[FolderGetOut]
+        Response[FolderResponse]
     """
 
     kwargs = _get_kwargs(
@@ -81,7 +81,7 @@ def sync(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> FolderGetOut | None:
+) -> FolderResponse | None:
     """Get a folder with its contents
 
      Retrieve a folder along with its resources and child folders.
@@ -94,7 +94,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        FolderGetOut
+        FolderResponse
     """
 
     return sync_detailed(
@@ -107,7 +107,7 @@ async def asyncio_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[FolderGetOut]:
+) -> Response[FolderResponse]:
     """Get a folder with its contents
 
      Retrieve a folder along with its resources and child folders.
@@ -120,7 +120,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[FolderGetOut]
+        Response[FolderResponse]
     """
 
     kwargs = _get_kwargs(
@@ -136,7 +136,7 @@ async def asyncio(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> FolderGetOut | None:
+) -> FolderResponse | None:
     """Get a folder with its contents
 
      Retrieve a folder along with its resources and child folders.
@@ -149,7 +149,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        FolderGetOut
+        FolderResponse
     """
 
     return (

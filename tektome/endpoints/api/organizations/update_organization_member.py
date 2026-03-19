@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.organization_member_roles_schema_in import OrganizationMemberRolesSchemaIn
+from ...models.organization_member_roles_schema_request import OrganizationMemberRolesSchemaRequest
 from ...types import Response
 
 
 def _get_kwargs(
     organization_id: UUID,
     *,
-    body: list[OrganizationMemberRolesSchemaIn],
+    body: list[OrganizationMemberRolesSchemaRequest],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -62,7 +62,7 @@ def sync_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[OrganizationMemberRolesSchemaIn],
+    body: list[OrganizationMemberRolesSchemaRequest],
 ) -> Response[Any]:
     """Update member roles
 
@@ -70,7 +70,7 @@ def sync_detailed(
 
     Args:
         organization_id (UUID):
-        body (list[OrganizationMemberRolesSchemaIn]):
+        body (list[OrganizationMemberRolesSchemaRequest]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -96,7 +96,7 @@ async def asyncio_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[OrganizationMemberRolesSchemaIn],
+    body: list[OrganizationMemberRolesSchemaRequest],
 ) -> Response[Any]:
     """Update member roles
 
@@ -104,7 +104,7 @@ async def asyncio_detailed(
 
     Args:
         organization_id (UUID):
-        body (list[OrganizationMemberRolesSchemaIn]):
+        body (list[OrganizationMemberRolesSchemaRequest]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

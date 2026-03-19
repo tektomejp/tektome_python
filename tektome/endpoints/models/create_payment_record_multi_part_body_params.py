@@ -12,7 +12,7 @@ from .. import types
 from ..types import UNSET, File, FileTypes, Unset
 
 if TYPE_CHECKING:
-    from ..models.payment_record_post_in import PaymentRecordPostIn
+    from ..models.create_payment_record_request import CreatePaymentRecordRequest
 
 
 T = TypeVar("T", bound="CreatePaymentRecordMultiPartBodyParams")
@@ -22,11 +22,11 @@ T = TypeVar("T", bound="CreatePaymentRecordMultiPartBodyParams")
 class CreatePaymentRecordMultiPartBodyParams:
     """
     Attributes:
-        payload (PaymentRecordPostIn): Schema for creating a new payment record.
+        payload (CreatePaymentRecordRequest): Schema for creating a new payment record.
         file (File | Unset):
     """
 
-    payload: PaymentRecordPostIn
+    payload: CreatePaymentRecordRequest
     file: File | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -64,10 +64,10 @@ class CreatePaymentRecordMultiPartBodyParams:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.payment_record_post_in import PaymentRecordPostIn
+        from ..models.create_payment_record_request import CreatePaymentRecordRequest
 
         d = dict(src_dict)
-        payload = PaymentRecordPostIn.from_dict(d.pop("payload"))
+        payload = CreatePaymentRecordRequest.from_dict(d.pop("payload"))
 
         _file = d.pop("file", UNSET)
         file: File | Unset

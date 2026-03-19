@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.login_post_out import LoginPostOut
-from ...models.verify_otp_post_in import VerifyOTPPostIn
+from ...models.create_verify_otp_request import CreateVerifyOTPRequest
+from ...models.login_response import LoginResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: VerifyOTPPostIn,
+    body: CreateVerifyOTPRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -29,9 +29,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> LoginPostOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> LoginResponse | None:
     if response.status_code == 200:
-        response_200 = LoginPostOut.from_dict(response.json())
+        response_200 = LoginResponse.from_dict(response.json())
 
         return response_200
 
@@ -41,7 +41,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[LoginPostOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[LoginResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,22 +53,22 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
-    body: VerifyOTPPostIn,
-) -> Response[LoginPostOut]:
+    body: CreateVerifyOTPRequest,
+) -> Response[LoginResponse]:
     """Verify OTP code
 
      Verify a one-time password and create a session if successful. Returns access and refresh tokens.
     The OTP has a limited number of attempts and expiration time.
 
     Args:
-        body (VerifyOTPPostIn):
+        body (CreateVerifyOTPRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[LoginPostOut]
+        Response[LoginResponse]
     """
 
     kwargs = _get_kwargs(
@@ -85,22 +85,22 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient | Client,
-    body: VerifyOTPPostIn,
-) -> LoginPostOut | None:
+    body: CreateVerifyOTPRequest,
+) -> LoginResponse | None:
     """Verify OTP code
 
      Verify a one-time password and create a session if successful. Returns access and refresh tokens.
     The OTP has a limited number of attempts and expiration time.
 
     Args:
-        body (VerifyOTPPostIn):
+        body (CreateVerifyOTPRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        LoginPostOut
+        LoginResponse
     """
 
     return sync_detailed(
@@ -112,22 +112,22 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
-    body: VerifyOTPPostIn,
-) -> Response[LoginPostOut]:
+    body: CreateVerifyOTPRequest,
+) -> Response[LoginResponse]:
     """Verify OTP code
 
      Verify a one-time password and create a session if successful. Returns access and refresh tokens.
     The OTP has a limited number of attempts and expiration time.
 
     Args:
-        body (VerifyOTPPostIn):
+        body (CreateVerifyOTPRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[LoginPostOut]
+        Response[LoginResponse]
     """
 
     kwargs = _get_kwargs(
@@ -142,22 +142,22 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient | Client,
-    body: VerifyOTPPostIn,
-) -> LoginPostOut | None:
+    body: CreateVerifyOTPRequest,
+) -> LoginResponse | None:
     """Verify OTP code
 
      Verify a one-time password and create a session if successful. Returns access and refresh tokens.
     The OTP has a limited number of attempts and expiration time.
 
     Args:
-        body (VerifyOTPPostIn):
+        body (CreateVerifyOTPRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        LoginPostOut
+        LoginResponse
     """
 
     return (

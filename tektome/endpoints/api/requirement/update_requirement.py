@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.requirement_patch_in_patch import RequirementPatchInPatch
 from ...models.requirement_schema import RequirementSchema
+from ...models.update_requirement_request import UpdateRequirementRequest
 from ...types import Response
 
 
 def _get_kwargs(
     requirement_id: UUID,
     *,
-    body: RequirementPatchInPatch,
+    body: UpdateRequirementRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -59,7 +59,7 @@ def sync_detailed(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementPatchInPatch,
+    body: UpdateRequirementRequest,
 ) -> Response[RequirementSchema]:
     """Update a requirement
 
@@ -68,7 +68,7 @@ def sync_detailed(
 
     Args:
         requirement_id (UUID):
-        body (RequirementPatchInPatch):
+        body (UpdateRequirementRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -94,7 +94,7 @@ def sync(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementPatchInPatch,
+    body: UpdateRequirementRequest,
 ) -> RequirementSchema | None:
     """Update a requirement
 
@@ -103,7 +103,7 @@ def sync(
 
     Args:
         requirement_id (UUID):
-        body (RequirementPatchInPatch):
+        body (UpdateRequirementRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -124,7 +124,7 @@ async def asyncio_detailed(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementPatchInPatch,
+    body: UpdateRequirementRequest,
 ) -> Response[RequirementSchema]:
     """Update a requirement
 
@@ -133,7 +133,7 @@ async def asyncio_detailed(
 
     Args:
         requirement_id (UUID):
-        body (RequirementPatchInPatch):
+        body (UpdateRequirementRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -157,7 +157,7 @@ async def asyncio(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementPatchInPatch,
+    body: UpdateRequirementRequest,
 ) -> RequirementSchema | None:
     """Update a requirement
 
@@ -166,7 +166,7 @@ async def asyncio(
 
     Args:
         requirement_id (UUID):
-        body (RequirementPatchInPatch):
+        body (UpdateRequirementRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

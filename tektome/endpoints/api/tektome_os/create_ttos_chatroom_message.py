@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.chatroom_id_post_in import ChatroomIdPostIn
+from ...models.create_chatroom_id_request import CreateChatroomIdRequest
 from ...models.generic_http_error import GenericHttpError
 from ...types import Response
 
@@ -15,7 +15,7 @@ from ...types import Response
 def _get_kwargs(
     chatroom_id: UUID,
     *,
-    body: ChatroomIdPostIn,
+    body: CreateChatroomIdRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -150,7 +150,7 @@ def sync_detailed(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ChatroomIdPostIn,
+    body: CreateChatroomIdRequest,
 ) -> Response[Any | GenericHttpError]:
     """Send a chatroom message
 
@@ -159,7 +159,7 @@ def sync_detailed(
 
     Args:
         chatroom_id (UUID):
-        body (ChatroomIdPostIn):
+        body (CreateChatroomIdRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -185,7 +185,7 @@ def sync(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ChatroomIdPostIn,
+    body: CreateChatroomIdRequest,
 ) -> Any | GenericHttpError | None:
     """Send a chatroom message
 
@@ -194,7 +194,7 @@ def sync(
 
     Args:
         chatroom_id (UUID):
-        body (ChatroomIdPostIn):
+        body (CreateChatroomIdRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -215,7 +215,7 @@ async def asyncio_detailed(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ChatroomIdPostIn,
+    body: CreateChatroomIdRequest,
 ) -> Response[Any | GenericHttpError]:
     """Send a chatroom message
 
@@ -224,7 +224,7 @@ async def asyncio_detailed(
 
     Args:
         chatroom_id (UUID):
-        body (ChatroomIdPostIn):
+        body (CreateChatroomIdRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -248,7 +248,7 @@ async def asyncio(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ChatroomIdPostIn,
+    body: CreateChatroomIdRequest,
 ) -> Any | GenericHttpError | None:
     """Send a chatroom message
 
@@ -257,7 +257,7 @@ async def asyncio(
 
     Args:
         chatroom_id (UUID):
-        body (ChatroomIdPostIn):
+        body (CreateChatroomIdRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

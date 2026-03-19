@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.run_artifact_post_in import RunArtifactPostIn
-from ...models.run_artifact_post_out import RunArtifactPostOut
+from ...models.create_run_artifact_request import CreateRunArtifactRequest
+from ...models.run_artifact_response import RunArtifactResponse
 from ...types import Response
 
 
 def _get_kwargs(
     artifact_id: UUID,
     *,
-    body: RunArtifactPostIn,
+    body: CreateRunArtifactRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -34,9 +34,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> RunArtifactPostOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> RunArtifactResponse | None:
     if response.status_code == 201:
-        response_201 = RunArtifactPostOut.from_dict(response.json())
+        response_201 = RunArtifactResponse.from_dict(response.json())
 
         return response_201
 
@@ -46,7 +46,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[RunArtifactPostOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[RunArtifactResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,8 +59,8 @@ def sync_detailed(
     artifact_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RunArtifactPostIn,
-) -> Response[RunArtifactPostOut]:
+    body: CreateRunArtifactRequest,
+) -> Response[RunArtifactResponse]:
     """Run an artifact
 
      Execute an artifact and save the result as a new or existing artifact. Only .openflow.json artifacts
@@ -68,14 +68,14 @@ def sync_detailed(
 
     Args:
         artifact_id (UUID):
-        body (RunArtifactPostIn):
+        body (CreateRunArtifactRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RunArtifactPostOut]
+        Response[RunArtifactResponse]
     """
 
     kwargs = _get_kwargs(
@@ -94,8 +94,8 @@ def sync(
     artifact_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RunArtifactPostIn,
-) -> RunArtifactPostOut | None:
+    body: CreateRunArtifactRequest,
+) -> RunArtifactResponse | None:
     """Run an artifact
 
      Execute an artifact and save the result as a new or existing artifact. Only .openflow.json artifacts
@@ -103,14 +103,14 @@ def sync(
 
     Args:
         artifact_id (UUID):
-        body (RunArtifactPostIn):
+        body (CreateRunArtifactRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RunArtifactPostOut
+        RunArtifactResponse
     """
 
     return sync_detailed(
@@ -124,8 +124,8 @@ async def asyncio_detailed(
     artifact_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RunArtifactPostIn,
-) -> Response[RunArtifactPostOut]:
+    body: CreateRunArtifactRequest,
+) -> Response[RunArtifactResponse]:
     """Run an artifact
 
      Execute an artifact and save the result as a new or existing artifact. Only .openflow.json artifacts
@@ -133,14 +133,14 @@ async def asyncio_detailed(
 
     Args:
         artifact_id (UUID):
-        body (RunArtifactPostIn):
+        body (CreateRunArtifactRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RunArtifactPostOut]
+        Response[RunArtifactResponse]
     """
 
     kwargs = _get_kwargs(
@@ -157,8 +157,8 @@ async def asyncio(
     artifact_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RunArtifactPostIn,
-) -> RunArtifactPostOut | None:
+    body: CreateRunArtifactRequest,
+) -> RunArtifactResponse | None:
     """Run an artifact
 
      Execute an artifact and save the result as a new or existing artifact. Only .openflow.json artifacts
@@ -166,14 +166,14 @@ async def asyncio(
 
     Args:
         artifact_id (UUID):
-        body (RunArtifactPostIn):
+        body (CreateRunArtifactRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RunArtifactPostOut
+        RunArtifactResponse
     """
 
     return (

@@ -8,6 +8,7 @@ from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
     from ..models.folder_required_schema import FolderRequiredSchema
+    from ..models.resource_schema import ResourceSchema
 
 
 T = TypeVar("T", bound="FolderLevelMetadata")
@@ -18,19 +19,27 @@ class FolderLevelMetadata:
     """
     Attributes:
         core_attributes (FolderRequiredSchema): Folder required schema
+        resources (list[ResourceSchema]):
     """
 
     core_attributes: FolderRequiredSchema
+    resources: list[ResourceSchema]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         core_attributes = self.core_attributes.to_dict()
+
+        resources = []
+        for resources_item_data in self.resources:
+            resources_item = resources_item_data.to_dict()
+            resources.append(resources_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "core_attributes": core_attributes,
+                "resources": resources,
             }
         )
 
@@ -39,12 +48,21 @@ class FolderLevelMetadata:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.folder_required_schema import FolderRequiredSchema
+        from ..models.resource_schema import ResourceSchema
 
         d = dict(src_dict)
         core_attributes = FolderRequiredSchema.from_dict(d.pop("core_attributes"))
 
+        resources = []
+        _resources = d.pop("resources")
+        for resources_item_data in _resources:
+            resources_item = ResourceSchema.from_dict(resources_item_data)
+
+            resources.append(resources_item)
+
         folder_level_metadata = cls(
             core_attributes=core_attributes,
+            resources=resources,
         )
 
         folder_level_metadata.additional_properties = d

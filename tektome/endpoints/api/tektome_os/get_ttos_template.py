@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.template_out import TemplateOut
+from ...models.template_response import TemplateResponse
 from ...types import Response
 
 
@@ -27,9 +27,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> TemplateOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> TemplateResponse | None:
     if response.status_code == 200:
-        response_200 = TemplateOut.from_dict(response.json())
+        response_200 = TemplateResponse.from_dict(response.json())
 
         return response_200
 
@@ -39,7 +39,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[TemplateOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[TemplateResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,7 +53,7 @@ def sync_detailed(
     template_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[TemplateOut]:
+) -> Response[TemplateResponse]:
     """Get a process template
 
      Retrieve a specific process template by its ID.
@@ -67,7 +67,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[TemplateOut]
+        Response[TemplateResponse]
     """
 
     kwargs = _get_kwargs(
@@ -87,7 +87,7 @@ def sync(
     template_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> TemplateOut | None:
+) -> TemplateResponse | None:
     """Get a process template
 
      Retrieve a specific process template by its ID.
@@ -101,7 +101,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        TemplateOut
+        TemplateResponse
     """
 
     return sync_detailed(
@@ -116,7 +116,7 @@ async def asyncio_detailed(
     template_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[TemplateOut]:
+) -> Response[TemplateResponse]:
     """Get a process template
 
      Retrieve a specific process template by its ID.
@@ -130,7 +130,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[TemplateOut]
+        Response[TemplateResponse]
     """
 
     kwargs = _get_kwargs(
@@ -148,7 +148,7 @@ async def asyncio(
     template_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> TemplateOut | None:
+) -> TemplateResponse | None:
     """Get a process template
 
      Retrieve a specific process template by its ID.
@@ -162,7 +162,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        TemplateOut
+        TemplateResponse
     """
 
     return (

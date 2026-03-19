@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bim_project_stats_get_out import BimProjectStatsGetOut
+from ...models.bim_project_stats_response import BimProjectStatsResponse
 from ...types import UNSET, Response
 
 
@@ -31,9 +31,11 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> BimProjectStatsGetOut | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> BimProjectStatsResponse | None:
     if response.status_code == 200:
-        response_200 = BimProjectStatsGetOut.from_dict(response.json())
+        response_200 = BimProjectStatsResponse.from_dict(response.json())
 
         return response_200
 
@@ -45,7 +47,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BimProjectStatsGetOut]:
+) -> Response[BimProjectStatsResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -58,7 +60,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     resource_id: UUID,
-) -> Response[BimProjectStatsGetOut]:
+) -> Response[BimProjectStatsResponse]:
     """Get BIM project by resource ID
 
      Retrieve the latest BIM project data and statistics (object, view, and sheet counts) for a given
@@ -72,7 +74,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimProjectStatsGetOut]
+        Response[BimProjectStatsResponse]
     """
 
     kwargs = _get_kwargs(
@@ -90,7 +92,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     resource_id: UUID,
-) -> BimProjectStatsGetOut | None:
+) -> BimProjectStatsResponse | None:
     """Get BIM project by resource ID
 
      Retrieve the latest BIM project data and statistics (object, view, and sheet counts) for a given
@@ -104,7 +106,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimProjectStatsGetOut
+        BimProjectStatsResponse
     """
 
     return sync_detailed(
@@ -117,7 +119,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     resource_id: UUID,
-) -> Response[BimProjectStatsGetOut]:
+) -> Response[BimProjectStatsResponse]:
     """Get BIM project by resource ID
 
      Retrieve the latest BIM project data and statistics (object, view, and sheet counts) for a given
@@ -131,7 +133,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimProjectStatsGetOut]
+        Response[BimProjectStatsResponse]
     """
 
     kwargs = _get_kwargs(
@@ -147,7 +149,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     resource_id: UUID,
-) -> BimProjectStatsGetOut | None:
+) -> BimProjectStatsResponse | None:
     """Get BIM project by resource ID
 
      Retrieve the latest BIM project data and statistics (object, view, and sheet counts) for a given
@@ -161,7 +163,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimProjectStatsGetOut
+        BimProjectStatsResponse
     """
 
     return (

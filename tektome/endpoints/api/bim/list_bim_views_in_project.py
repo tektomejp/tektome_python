@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.retrieve_bim_views_in_project_post_in import RetrieveBimViewsInProjectPostIn
-from ...models.retrieve_bim_views_in_project_post_out import RetrieveBimViewsInProjectPostOut
+from ...models.create_retrieve_bim_views_in_project_request import CreateRetrieveBimViewsInProjectRequest
+from ...models.retrieve_bim_views_in_project_response import RetrieveBimViewsInProjectResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: RetrieveBimViewsInProjectPostIn,
+    body: CreateRetrieveBimViewsInProjectRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,9 +31,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RetrieveBimViewsInProjectPostOut | None:
+) -> RetrieveBimViewsInProjectResponse | None:
     if response.status_code == 200:
-        response_200 = RetrieveBimViewsInProjectPostOut.from_dict(response.json())
+        response_200 = RetrieveBimViewsInProjectResponse.from_dict(response.json())
 
         return response_200
 
@@ -45,7 +45,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[RetrieveBimViewsInProjectPostOut]:
+) -> Response[RetrieveBimViewsInProjectResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,22 +57,22 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: RetrieveBimViewsInProjectPostIn,
-) -> Response[RetrieveBimViewsInProjectPostOut]:
+    body: CreateRetrieveBimViewsInProjectRequest,
+) -> Response[RetrieveBimViewsInProjectResponse]:
     """List BIM views in a project
 
      Retrieve BIM views within a project, supporting both bulk and paginated queries. Optionally return
     only view IDs.
 
     Args:
-        body (RetrieveBimViewsInProjectPostIn):
+        body (CreateRetrieveBimViewsInProjectRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RetrieveBimViewsInProjectPostOut]
+        Response[RetrieveBimViewsInProjectResponse]
     """
 
     kwargs = _get_kwargs(
@@ -89,22 +89,22 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: RetrieveBimViewsInProjectPostIn,
-) -> RetrieveBimViewsInProjectPostOut | None:
+    body: CreateRetrieveBimViewsInProjectRequest,
+) -> RetrieveBimViewsInProjectResponse | None:
     """List BIM views in a project
 
      Retrieve BIM views within a project, supporting both bulk and paginated queries. Optionally return
     only view IDs.
 
     Args:
-        body (RetrieveBimViewsInProjectPostIn):
+        body (CreateRetrieveBimViewsInProjectRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RetrieveBimViewsInProjectPostOut
+        RetrieveBimViewsInProjectResponse
     """
 
     return sync_detailed(
@@ -116,22 +116,22 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: RetrieveBimViewsInProjectPostIn,
-) -> Response[RetrieveBimViewsInProjectPostOut]:
+    body: CreateRetrieveBimViewsInProjectRequest,
+) -> Response[RetrieveBimViewsInProjectResponse]:
     """List BIM views in a project
 
      Retrieve BIM views within a project, supporting both bulk and paginated queries. Optionally return
     only view IDs.
 
     Args:
-        body (RetrieveBimViewsInProjectPostIn):
+        body (CreateRetrieveBimViewsInProjectRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RetrieveBimViewsInProjectPostOut]
+        Response[RetrieveBimViewsInProjectResponse]
     """
 
     kwargs = _get_kwargs(
@@ -146,22 +146,22 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: RetrieveBimViewsInProjectPostIn,
-) -> RetrieveBimViewsInProjectPostOut | None:
+    body: CreateRetrieveBimViewsInProjectRequest,
+) -> RetrieveBimViewsInProjectResponse | None:
     """List BIM views in a project
 
      Retrieve BIM views within a project, supporting both bulk and paginated queries. Optionally return
     only view IDs.
 
     Args:
-        body (RetrieveBimViewsInProjectPostIn):
+        body (CreateRetrieveBimViewsInProjectRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RetrieveBimViewsInProjectPostOut
+        RetrieveBimViewsInProjectResponse
     """
 
     return (

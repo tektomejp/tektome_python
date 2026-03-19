@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.system_attribute_body_put_in import SystemAttributeBodyPutIn
+from ...models.replace_system_attribute_body_request import ReplaceSystemAttributeBodyRequest
 from ...models.upsert_system_attributes_attribute_object_types import UpsertSystemAttributesAttributeObjectTypes
 from ...types import Response
 
@@ -16,7 +16,7 @@ def _get_kwargs(
     object_type: UpsertSystemAttributesAttributeObjectTypes,
     object_id: UUID,
     *,
-    body: SystemAttributeBodyPutIn,
+    body: ReplaceSystemAttributeBodyRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -60,7 +60,7 @@ def sync_detailed(
     object_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: SystemAttributeBodyPutIn,
+    body: ReplaceSystemAttributeBodyRequest,
 ) -> Response[Any]:
     """Upsert system attributes
 
@@ -70,7 +70,7 @@ def sync_detailed(
     Args:
         object_type (UpsertSystemAttributesAttributeObjectTypes):
         object_id (UUID):
-        body (SystemAttributeBodyPutIn):
+        body (ReplaceSystemAttributeBodyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -98,7 +98,7 @@ async def asyncio_detailed(
     object_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: SystemAttributeBodyPutIn,
+    body: ReplaceSystemAttributeBodyRequest,
 ) -> Response[Any]:
     """Upsert system attributes
 
@@ -108,7 +108,7 @@ async def asyncio_detailed(
     Args:
         object_type (UpsertSystemAttributesAttributeObjectTypes):
         object_id (UUID):
-        body (SystemAttributeBodyPutIn):
+        body (ReplaceSystemAttributeBodyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

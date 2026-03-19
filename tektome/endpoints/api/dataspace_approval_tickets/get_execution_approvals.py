@@ -10,7 +10,6 @@ from ...client import AuthenticatedClient, Client
 from ...models.get_execution_approvals_approval_category_types import GetExecutionApprovalsApprovalCategoryTypes
 from ...models.get_execution_approvals_approval_status import GetExecutionApprovalsApprovalStatus
 from ...models.get_execution_approvals_process_type_choices import GetExecutionApprovalsProcessTypeChoices
-from ...models.paged_execution_approvals_get_out import PagedExecutionApprovalsGetOut
 from ...types import UNSET, Response, Unset
 
 
@@ -145,23 +144,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> PagedExecutionApprovalsGetOut | None:
-    if response.status_code == 200:
-        response_200 = PagedExecutionApprovalsGetOut.from_dict(response.json())
-
-        return response_200
-
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[PagedExecutionApprovalsGetOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -186,7 +176,7 @@ def sync_detailed(
     entity_attributes_extracted_ids: list[UUID] | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[PagedExecutionApprovalsGetOut]:
+) -> Response[Any]:
     """List approval tickets
 
      Retrieve a paginated list of approval tickets for the current dataspace. Supports filtering by query
@@ -216,7 +206,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PagedExecutionApprovalsGetOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -242,73 +232,6 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    dataspace_id: UUID,
-    *,
-    client: AuthenticatedClient,
-    execution_id: None | Unset | UUID = UNSET,
-    status: list[GetExecutionApprovalsApprovalStatus] | Unset = UNSET,
-    process_types: list[GetExecutionApprovalsProcessTypeChoices] | Unset = UNSET,
-    process_ids: list[UUID] | Unset = UNSET,
-    execution_group_ids: list[UUID] | Unset = UNSET,
-    target_files_ids: list[UUID] | Unset = UNSET,
-    target_entity_ids: list[UUID] | Unset = UNSET,
-    category: list[GetExecutionApprovalsApprovalCategoryTypes] | Unset = UNSET,
-    file_attributes_extracted_ids: list[UUID] | Unset = UNSET,
-    entity_attributes_extracted_ids: list[UUID] | Unset = UNSET,
-    page: int | Unset = 1,
-    page_size: int | None | Unset = UNSET,
-) -> PagedExecutionApprovalsGetOut | None:
-    """List approval tickets
-
-     Retrieve a paginated list of approval tickets for the current dataspace. Supports filtering by query
-    parameters.
-
-    Args:
-        dataspace_id (UUID):
-        execution_id (None | Unset | UUID):
-        status (list[GetExecutionApprovalsApprovalStatus] | Unset): Approval status to filter
-            executions
-        process_types (list[GetExecutionApprovalsProcessTypeChoices] | Unset): Process types
-        process_ids (list[UUID] | Unset): Process IDs
-        execution_group_ids (list[UUID] | Unset): list of Execution group IDs
-        target_files_ids (list[UUID] | Unset): Target core resource file IDs
-        target_entity_ids (list[UUID] | Unset): Target DS entity IDs
-        category (list[GetExecutionApprovalsApprovalCategoryTypes] | Unset): Approval category to
-            filter executions
-        file_attributes_extracted_ids (list[UUID] | Unset): Filter executions with these UUID file
-            attributes extracted
-        entity_attributes_extracted_ids (list[UUID] | Unset): Filter executions with these UUID
-            entity attributes extracted
-        page (int | Unset):  Default: 1.
-        page_size (int | None | Unset):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        PagedExecutionApprovalsGetOut
-    """
-
-    return sync_detailed(
-        dataspace_id=dataspace_id,
-        client=client,
-        execution_id=execution_id,
-        status=status,
-        process_types=process_types,
-        process_ids=process_ids,
-        execution_group_ids=execution_group_ids,
-        target_files_ids=target_files_ids,
-        target_entity_ids=target_entity_ids,
-        category=category,
-        file_attributes_extracted_ids=file_attributes_extracted_ids,
-        entity_attributes_extracted_ids=entity_attributes_extracted_ids,
-        page=page,
-        page_size=page_size,
-    ).parsed
-
-
 async def asyncio_detailed(
     dataspace_id: UUID,
     *,
@@ -325,7 +248,7 @@ async def asyncio_detailed(
     entity_attributes_extracted_ids: list[UUID] | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[PagedExecutionApprovalsGetOut]:
+) -> Response[Any]:
     """List approval tickets
 
      Retrieve a paginated list of approval tickets for the current dataspace. Supports filtering by query
@@ -355,7 +278,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PagedExecutionApprovalsGetOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -377,72 +300,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    dataspace_id: UUID,
-    *,
-    client: AuthenticatedClient,
-    execution_id: None | Unset | UUID = UNSET,
-    status: list[GetExecutionApprovalsApprovalStatus] | Unset = UNSET,
-    process_types: list[GetExecutionApprovalsProcessTypeChoices] | Unset = UNSET,
-    process_ids: list[UUID] | Unset = UNSET,
-    execution_group_ids: list[UUID] | Unset = UNSET,
-    target_files_ids: list[UUID] | Unset = UNSET,
-    target_entity_ids: list[UUID] | Unset = UNSET,
-    category: list[GetExecutionApprovalsApprovalCategoryTypes] | Unset = UNSET,
-    file_attributes_extracted_ids: list[UUID] | Unset = UNSET,
-    entity_attributes_extracted_ids: list[UUID] | Unset = UNSET,
-    page: int | Unset = 1,
-    page_size: int | None | Unset = UNSET,
-) -> PagedExecutionApprovalsGetOut | None:
-    """List approval tickets
-
-     Retrieve a paginated list of approval tickets for the current dataspace. Supports filtering by query
-    parameters.
-
-    Args:
-        dataspace_id (UUID):
-        execution_id (None | Unset | UUID):
-        status (list[GetExecutionApprovalsApprovalStatus] | Unset): Approval status to filter
-            executions
-        process_types (list[GetExecutionApprovalsProcessTypeChoices] | Unset): Process types
-        process_ids (list[UUID] | Unset): Process IDs
-        execution_group_ids (list[UUID] | Unset): list of Execution group IDs
-        target_files_ids (list[UUID] | Unset): Target core resource file IDs
-        target_entity_ids (list[UUID] | Unset): Target DS entity IDs
-        category (list[GetExecutionApprovalsApprovalCategoryTypes] | Unset): Approval category to
-            filter executions
-        file_attributes_extracted_ids (list[UUID] | Unset): Filter executions with these UUID file
-            attributes extracted
-        entity_attributes_extracted_ids (list[UUID] | Unset): Filter executions with these UUID
-            entity attributes extracted
-        page (int | Unset):  Default: 1.
-        page_size (int | None | Unset):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        PagedExecutionApprovalsGetOut
-    """
-
-    return (
-        await asyncio_detailed(
-            dataspace_id=dataspace_id,
-            client=client,
-            execution_id=execution_id,
-            status=status,
-            process_types=process_types,
-            process_ids=process_ids,
-            execution_group_ids=execution_group_ids,
-            target_files_ids=target_files_ids,
-            target_entity_ids=target_entity_ids,
-            category=category,
-            file_attributes_extracted_ids=file_attributes_extracted_ids,
-            entity_attributes_extracted_ids=entity_attributes_extracted_ids,
-            page=page,
-            page_size=page_size,
-        )
-    ).parsed
