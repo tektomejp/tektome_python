@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.folder_move_patch_in import FolderMovePatchIn
+from ...models.update_folder_move_request import UpdateFolderMoveRequest
 from ...types import Response
 
 
 def _get_kwargs(
     folder_id: UUID,
     *,
-    body: FolderMovePatchIn,
+    body: UpdateFolderMoveRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,24 +56,16 @@ def sync_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: FolderMovePatchIn,
+    body: UpdateFolderMoveRequest,
 ) -> Response[Any]:
-    """Patch Move Folder Parent
+    """Move a folder to a new parent
 
-     d0qaLmaN
-
-    Move a folder to a new parent folder.
-
-    Args:
-        request: Request object
-        path_params: Path parameters containing folder_id
-        payload: FolderMovePatchIn object containing parent_folder_id
-
-    Returns: 204, None
+     Move a folder to a different parent folder. Cannot move root folders or move a folder into its own
+    subfolder.
 
     Args:
         folder_id (UUID):
-        body (FolderMovePatchIn):
+        body (UpdateFolderMoveRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -99,24 +91,16 @@ async def asyncio_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: FolderMovePatchIn,
+    body: UpdateFolderMoveRequest,
 ) -> Response[Any]:
-    """Patch Move Folder Parent
+    """Move a folder to a new parent
 
-     d0qaLmaN
-
-    Move a folder to a new parent folder.
-
-    Args:
-        request: Request object
-        path_params: Path parameters containing folder_id
-        payload: FolderMovePatchIn object containing parent_folder_id
-
-    Returns: 204, None
+     Move a folder to a different parent folder. Cannot move root folders or move a folder into its own
+    subfolder.
 
     Args:
         folder_id (UUID):
-        body (FolderMovePatchIn):
+        body (UpdateFolderMoveRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

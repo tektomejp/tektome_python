@@ -59,11 +59,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list[RequirementSchema]]:
-    """Get Requirements From Resource
+    """List resource requirements
 
-     ZeD2yVdP
-
-    Get list of requirements associated with a resource
+     Retrieve all requirements associated with a specific resource.
 
     Args:
         resource_id (str):
@@ -92,11 +90,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> list[RequirementSchema] | None:
-    """Get Requirements From Resource
+    """List resource requirements
 
-     ZeD2yVdP
-
-    Get list of requirements associated with a resource
+     Retrieve all requirements associated with a specific resource.
 
     Args:
         resource_id (str):
@@ -120,11 +116,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list[RequirementSchema]]:
-    """Get Requirements From Resource
+    """List resource requirements
 
-     ZeD2yVdP
-
-    Get list of requirements associated with a resource
+     Retrieve all requirements associated with a specific resource.
 
     Args:
         resource_id (str):
@@ -151,11 +145,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> list[RequirementSchema] | None:
-    """Get Requirements From Resource
+    """List resource requirements
 
-     ZeD2yVdP
-
-    Get list of requirements associated with a resource
+     Retrieve all requirements associated with a specific resource.
 
     Args:
         resource_id (str):

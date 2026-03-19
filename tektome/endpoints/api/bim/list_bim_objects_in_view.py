@@ -6,15 +6,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.retrieve_bim_objects_in_view_post_in import RetrieveBimObjectsInViewPostIn
-from ...models.retrieve_bim_objects_in_view_post_out import RetrieveBimObjectsInViewPostOut
+from ...models.create_retrieve_bim_objects_in_view_request import CreateRetrieveBimObjectsInViewRequest
+from ...models.retrieve_bim_objects_in_view_response import RetrieveBimObjectsInViewResponse
 from ...types import Response
 
 
 def _get_kwargs(
     bim_view_id: str,
     *,
-    body: RetrieveBimObjectsInViewPostIn,
+    body: CreateRetrieveBimObjectsInViewRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -35,9 +35,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RetrieveBimObjectsInViewPostOut | None:
+) -> RetrieveBimObjectsInViewResponse | None:
     if response.status_code == 200:
-        response_200 = RetrieveBimObjectsInViewPostOut.from_dict(response.json())
+        response_200 = RetrieveBimObjectsInViewResponse.from_dict(response.json())
 
         return response_200
 
@@ -49,7 +49,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[RetrieveBimObjectsInViewPostOut]:
+) -> Response[RetrieveBimObjectsInViewResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -62,39 +62,23 @@ def sync_detailed(
     bim_view_id: str,
     *,
     client: AuthenticatedClient,
-    body: RetrieveBimObjectsInViewPostIn,
-) -> Response[RetrieveBimObjectsInViewPostOut]:
-    """Get Bim Objects In View
+    body: CreateRetrieveBimObjectsInViewRequest,
+) -> Response[RetrieveBimObjectsInViewResponse]:
+    """List BIM objects in a view
 
-     G6TIUvXn
-
-    Retrieves BIM objects that intersect with a specified BIM view.
-
-    Args:
-        request: The HTTP request object (unused).
-        bim_view_id (str): The identifier of the BIM view to query.
-        payload (RetrieveBimObjectsInViewPostIn): Parameters for the retrieval, including project ID,
-            pagination options, and flags for returning only IDs or all objects at once.
-
-    Returns:
-        dict: A dictionary containing the BIM objects data. The format depends on the payload options:
-            - If `all_at_once` and `only_ids` are True, returns a list of object IDs.
-            - If `all_at_once` is True, returns a list of full object dictionaries.
-            - Otherwise, returns paginated results as IDs or full object dictionaries.
-
-    Raises:
-        HttpError: If the BIM view is not found, no objects are found, or an internal error occurs.
+     Retrieve BIM objects that intersect with a specific BIM view. Supports bulk and paginated retrieval,
+    with an option to return only object IDs.
 
     Args:
         bim_view_id (str):
-        body (RetrieveBimObjectsInViewPostIn):
+        body (CreateRetrieveBimObjectsInViewRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RetrieveBimObjectsInViewPostOut]
+        Response[RetrieveBimObjectsInViewResponse]
     """
 
     kwargs = _get_kwargs(
@@ -113,39 +97,23 @@ def sync(
     bim_view_id: str,
     *,
     client: AuthenticatedClient,
-    body: RetrieveBimObjectsInViewPostIn,
-) -> RetrieveBimObjectsInViewPostOut | None:
-    """Get Bim Objects In View
+    body: CreateRetrieveBimObjectsInViewRequest,
+) -> RetrieveBimObjectsInViewResponse | None:
+    """List BIM objects in a view
 
-     G6TIUvXn
-
-    Retrieves BIM objects that intersect with a specified BIM view.
-
-    Args:
-        request: The HTTP request object (unused).
-        bim_view_id (str): The identifier of the BIM view to query.
-        payload (RetrieveBimObjectsInViewPostIn): Parameters for the retrieval, including project ID,
-            pagination options, and flags for returning only IDs or all objects at once.
-
-    Returns:
-        dict: A dictionary containing the BIM objects data. The format depends on the payload options:
-            - If `all_at_once` and `only_ids` are True, returns a list of object IDs.
-            - If `all_at_once` is True, returns a list of full object dictionaries.
-            - Otherwise, returns paginated results as IDs or full object dictionaries.
-
-    Raises:
-        HttpError: If the BIM view is not found, no objects are found, or an internal error occurs.
+     Retrieve BIM objects that intersect with a specific BIM view. Supports bulk and paginated retrieval,
+    with an option to return only object IDs.
 
     Args:
         bim_view_id (str):
-        body (RetrieveBimObjectsInViewPostIn):
+        body (CreateRetrieveBimObjectsInViewRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RetrieveBimObjectsInViewPostOut
+        RetrieveBimObjectsInViewResponse
     """
 
     return sync_detailed(
@@ -159,39 +127,23 @@ async def asyncio_detailed(
     bim_view_id: str,
     *,
     client: AuthenticatedClient,
-    body: RetrieveBimObjectsInViewPostIn,
-) -> Response[RetrieveBimObjectsInViewPostOut]:
-    """Get Bim Objects In View
+    body: CreateRetrieveBimObjectsInViewRequest,
+) -> Response[RetrieveBimObjectsInViewResponse]:
+    """List BIM objects in a view
 
-     G6TIUvXn
-
-    Retrieves BIM objects that intersect with a specified BIM view.
-
-    Args:
-        request: The HTTP request object (unused).
-        bim_view_id (str): The identifier of the BIM view to query.
-        payload (RetrieveBimObjectsInViewPostIn): Parameters for the retrieval, including project ID,
-            pagination options, and flags for returning only IDs or all objects at once.
-
-    Returns:
-        dict: A dictionary containing the BIM objects data. The format depends on the payload options:
-            - If `all_at_once` and `only_ids` are True, returns a list of object IDs.
-            - If `all_at_once` is True, returns a list of full object dictionaries.
-            - Otherwise, returns paginated results as IDs or full object dictionaries.
-
-    Raises:
-        HttpError: If the BIM view is not found, no objects are found, or an internal error occurs.
+     Retrieve BIM objects that intersect with a specific BIM view. Supports bulk and paginated retrieval,
+    with an option to return only object IDs.
 
     Args:
         bim_view_id (str):
-        body (RetrieveBimObjectsInViewPostIn):
+        body (CreateRetrieveBimObjectsInViewRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RetrieveBimObjectsInViewPostOut]
+        Response[RetrieveBimObjectsInViewResponse]
     """
 
     kwargs = _get_kwargs(
@@ -208,39 +160,23 @@ async def asyncio(
     bim_view_id: str,
     *,
     client: AuthenticatedClient,
-    body: RetrieveBimObjectsInViewPostIn,
-) -> RetrieveBimObjectsInViewPostOut | None:
-    """Get Bim Objects In View
+    body: CreateRetrieveBimObjectsInViewRequest,
+) -> RetrieveBimObjectsInViewResponse | None:
+    """List BIM objects in a view
 
-     G6TIUvXn
-
-    Retrieves BIM objects that intersect with a specified BIM view.
-
-    Args:
-        request: The HTTP request object (unused).
-        bim_view_id (str): The identifier of the BIM view to query.
-        payload (RetrieveBimObjectsInViewPostIn): Parameters for the retrieval, including project ID,
-            pagination options, and flags for returning only IDs or all objects at once.
-
-    Returns:
-        dict: A dictionary containing the BIM objects data. The format depends on the payload options:
-            - If `all_at_once` and `only_ids` are True, returns a list of object IDs.
-            - If `all_at_once` is True, returns a list of full object dictionaries.
-            - Otherwise, returns paginated results as IDs or full object dictionaries.
-
-    Raises:
-        HttpError: If the BIM view is not found, no objects are found, or an internal error occurs.
+     Retrieve BIM objects that intersect with a specific BIM view. Supports bulk and paginated retrieval,
+    with an option to return only object IDs.
 
     Args:
         bim_view_id (str):
-        body (RetrieveBimObjectsInViewPostIn):
+        body (CreateRetrieveBimObjectsInViewRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RetrieveBimObjectsInViewPostOut
+        RetrieveBimObjectsInViewResponse
     """
 
     return (

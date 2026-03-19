@@ -7,9 +7,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.environment_variable_patch_in import EnvironmentVariablePatchIn
 from ...models.environment_variable_response import EnvironmentVariableResponse
 from ...models.generic_http_error import GenericHttpError
+from ...models.update_environment_variable_request import UpdateEnvironmentVariableRequest
 from ...types import Response
 
 
@@ -17,7 +17,7 @@ def _get_kwargs(
     organization_id: UUID,
     var_id: UUID,
     *,
-    body: EnvironmentVariablePatchIn,
+    body: UpdateEnvironmentVariableRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -157,18 +157,16 @@ def sync_detailed(
     var_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: EnvironmentVariablePatchIn,
+    body: UpdateEnvironmentVariableRequest,
 ) -> Response[EnvironmentVariableResponse | GenericHttpError]:
-    """Update Environment Variable
+    """Update an environment variable
 
-     1Yvt9Nh5
-
-    Update an existing environment variable.
+     Update the value and/or description of an existing environment variable.
 
     Args:
         organization_id (UUID):
         var_id (UUID):
-        body (EnvironmentVariablePatchIn):
+        body (UpdateEnvironmentVariableRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -196,18 +194,16 @@ def sync(
     var_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: EnvironmentVariablePatchIn,
+    body: UpdateEnvironmentVariableRequest,
 ) -> EnvironmentVariableResponse | GenericHttpError | None:
-    """Update Environment Variable
+    """Update an environment variable
 
-     1Yvt9Nh5
-
-    Update an existing environment variable.
+     Update the value and/or description of an existing environment variable.
 
     Args:
         organization_id (UUID):
         var_id (UUID):
-        body (EnvironmentVariablePatchIn):
+        body (UpdateEnvironmentVariableRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -230,18 +226,16 @@ async def asyncio_detailed(
     var_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: EnvironmentVariablePatchIn,
+    body: UpdateEnvironmentVariableRequest,
 ) -> Response[EnvironmentVariableResponse | GenericHttpError]:
-    """Update Environment Variable
+    """Update an environment variable
 
-     1Yvt9Nh5
-
-    Update an existing environment variable.
+     Update the value and/or description of an existing environment variable.
 
     Args:
         organization_id (UUID):
         var_id (UUID):
-        body (EnvironmentVariablePatchIn):
+        body (UpdateEnvironmentVariableRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -267,18 +261,16 @@ async def asyncio(
     var_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: EnvironmentVariablePatchIn,
+    body: UpdateEnvironmentVariableRequest,
 ) -> EnvironmentVariableResponse | GenericHttpError | None:
-    """Update Environment Variable
+    """Update an environment variable
 
-     1Yvt9Nh5
-
-    Update an existing environment variable.
+     Update the value and/or description of an existing environment variable.
 
     Args:
         organization_id (UUID):
         var_id (UUID):
-        body (EnvironmentVariablePatchIn):
+        body (UpdateEnvironmentVariableRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

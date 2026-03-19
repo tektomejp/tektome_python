@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bulk_user_invitation_schema_out import BulkUserInvitationSchemaOut
-from ...models.invite_user_by_email_schema_in import InviteUserByEmailSchemaIn
+from ...models.bulk_user_invitation_schema_response import BulkUserInvitationSchemaResponse
+from ...models.invite_user_by_email_schema_request import InviteUserByEmailSchemaRequest
 from ...types import Response
 
 
 def _get_kwargs(
     project_id: UUID,
     *,
-    body: list[InviteUserByEmailSchemaIn],
+    body: list[InviteUserByEmailSchemaRequest],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -39,9 +39,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BulkUserInvitationSchemaOut | None:
+) -> BulkUserInvitationSchemaResponse | None:
     if response.status_code == 200:
-        response_200 = BulkUserInvitationSchemaOut.from_dict(response.json())
+        response_200 = BulkUserInvitationSchemaResponse.from_dict(response.json())
 
         return response_200
 
@@ -53,7 +53,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BulkUserInvitationSchemaOut]:
+) -> Response[BulkUserInvitationSchemaResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -66,31 +66,23 @@ def sync_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[InviteUserByEmailSchemaIn],
-) -> Response[BulkUserInvitationSchemaOut]:
-    """Add Project Members
+    body: list[InviteUserByEmailSchemaRequest],
+) -> Response[BulkUserInvitationSchemaResponse]:
+    """Add members to a project
 
-     3nYqfKX0
-
-    Add members to a project with specific roles. Creates a new user if the user does not exist.
-
-    Args:
-        request: Request object.
-        path_params: Path params of type ProjectDefaultPath
-        user_role_assignments: List of user role assignments.
-
-    Returns: 204, None
+     Add one or more members to a project with specific roles. Creates new user accounts for members who
+    do not yet exist and sends email notifications.
 
     Args:
         project_id (UUID):
-        body (list[InviteUserByEmailSchemaIn]):
+        body (list[InviteUserByEmailSchemaRequest]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BulkUserInvitationSchemaOut]
+        Response[BulkUserInvitationSchemaResponse]
     """
 
     kwargs = _get_kwargs(
@@ -109,31 +101,23 @@ def sync(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[InviteUserByEmailSchemaIn],
-) -> BulkUserInvitationSchemaOut | None:
-    """Add Project Members
+    body: list[InviteUserByEmailSchemaRequest],
+) -> BulkUserInvitationSchemaResponse | None:
+    """Add members to a project
 
-     3nYqfKX0
-
-    Add members to a project with specific roles. Creates a new user if the user does not exist.
-
-    Args:
-        request: Request object.
-        path_params: Path params of type ProjectDefaultPath
-        user_role_assignments: List of user role assignments.
-
-    Returns: 204, None
+     Add one or more members to a project with specific roles. Creates new user accounts for members who
+    do not yet exist and sends email notifications.
 
     Args:
         project_id (UUID):
-        body (list[InviteUserByEmailSchemaIn]):
+        body (list[InviteUserByEmailSchemaRequest]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BulkUserInvitationSchemaOut
+        BulkUserInvitationSchemaResponse
     """
 
     return sync_detailed(
@@ -147,31 +131,23 @@ async def asyncio_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[InviteUserByEmailSchemaIn],
-) -> Response[BulkUserInvitationSchemaOut]:
-    """Add Project Members
+    body: list[InviteUserByEmailSchemaRequest],
+) -> Response[BulkUserInvitationSchemaResponse]:
+    """Add members to a project
 
-     3nYqfKX0
-
-    Add members to a project with specific roles. Creates a new user if the user does not exist.
-
-    Args:
-        request: Request object.
-        path_params: Path params of type ProjectDefaultPath
-        user_role_assignments: List of user role assignments.
-
-    Returns: 204, None
+     Add one or more members to a project with specific roles. Creates new user accounts for members who
+    do not yet exist and sends email notifications.
 
     Args:
         project_id (UUID):
-        body (list[InviteUserByEmailSchemaIn]):
+        body (list[InviteUserByEmailSchemaRequest]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BulkUserInvitationSchemaOut]
+        Response[BulkUserInvitationSchemaResponse]
     """
 
     kwargs = _get_kwargs(
@@ -188,31 +164,23 @@ async def asyncio(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[InviteUserByEmailSchemaIn],
-) -> BulkUserInvitationSchemaOut | None:
-    """Add Project Members
+    body: list[InviteUserByEmailSchemaRequest],
+) -> BulkUserInvitationSchemaResponse | None:
+    """Add members to a project
 
-     3nYqfKX0
-
-    Add members to a project with specific roles. Creates a new user if the user does not exist.
-
-    Args:
-        request: Request object.
-        path_params: Path params of type ProjectDefaultPath
-        user_role_assignments: List of user role assignments.
-
-    Returns: 204, None
+     Add one or more members to a project with specific roles. Creates new user accounts for members who
+    do not yet exist and sends email notifications.
 
     Args:
         project_id (UUID):
-        body (list[InviteUserByEmailSchemaIn]):
+        body (list[InviteUserByEmailSchemaRequest]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BulkUserInvitationSchemaOut
+        BulkUserInvitationSchemaResponse
     """
 
     return (

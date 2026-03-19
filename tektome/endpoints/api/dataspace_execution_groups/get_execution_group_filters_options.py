@@ -7,7 +7,6 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.execution_group_filter_get_out import ExecutionGroupFilterGetOut
 from ...types import Response
 
 
@@ -27,23 +26,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ExecutionGroupFilterGetOut | None:
-    if response.status_code == 200:
-        response_200 = ExecutionGroupFilterGetOut.from_dict(response.json())
-
-        return response_200
-
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ExecutionGroupFilterGetOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,22 +47,11 @@ def sync_detailed(
     execution_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ExecutionGroupFilterGetOut]:
-    """Get Execution Group Filters
+) -> Response[Any]:
+    """Get execution group filter options
 
-     VNpQ2raA
-
-    Retrieve execution group details based on the provided execution group ID.
-
-
-    Attributes name are distinct on the context of the execution group as it belong to a specific
-    dataspace.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
-
-    Returns: ExecutionGroup - The execution group instance.
+     Retrieve available filter options for a specific execution group. Returns distinct values for
+    processes, process types, target files, target entities, and extracted attributes.
 
     Args:
         dataspace_id (UUID):
@@ -83,7 +62,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ExecutionGroupFilterGetOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -98,68 +77,16 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    dataspace_id: UUID,
-    execution_group_id: UUID,
-    *,
-    client: AuthenticatedClient,
-) -> ExecutionGroupFilterGetOut | None:
-    """Get Execution Group Filters
-
-     VNpQ2raA
-
-    Retrieve execution group details based on the provided execution group ID.
-
-
-    Attributes name are distinct on the context of the execution group as it belong to a specific
-    dataspace.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
-
-    Returns: ExecutionGroup - The execution group instance.
-
-    Args:
-        dataspace_id (UUID):
-        execution_group_id (UUID): The UUID of the execution group
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        ExecutionGroupFilterGetOut
-    """
-
-    return sync_detailed(
-        dataspace_id=dataspace_id,
-        execution_group_id=execution_group_id,
-        client=client,
-    ).parsed
-
-
 async def asyncio_detailed(
     dataspace_id: UUID,
     execution_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ExecutionGroupFilterGetOut]:
-    """Get Execution Group Filters
+) -> Response[Any]:
+    """Get execution group filter options
 
-     VNpQ2raA
-
-    Retrieve execution group details based on the provided execution group ID.
-
-
-    Attributes name are distinct on the context of the execution group as it belong to a specific
-    dataspace.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
-
-    Returns: ExecutionGroup - The execution group instance.
+     Retrieve available filter options for a specific execution group. Returns distinct values for
+    processes, process types, target files, target entities, and extracted attributes.
 
     Args:
         dataspace_id (UUID):
@@ -170,7 +97,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ExecutionGroupFilterGetOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -181,46 +108,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    dataspace_id: UUID,
-    execution_group_id: UUID,
-    *,
-    client: AuthenticatedClient,
-) -> ExecutionGroupFilterGetOut | None:
-    """Get Execution Group Filters
-
-     VNpQ2raA
-
-    Retrieve execution group details based on the provided execution group ID.
-
-
-    Attributes name are distinct on the context of the execution group as it belong to a specific
-    dataspace.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
-
-    Returns: ExecutionGroup - The execution group instance.
-
-    Args:
-        dataspace_id (UUID):
-        execution_group_id (UUID): The UUID of the execution group
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        ExecutionGroupFilterGetOut
-    """
-
-    return (
-        await asyncio_detailed(
-            dataspace_id=dataspace_id,
-            execution_group_id=execution_group_id,
-            client=client,
-        )
-    ).parsed

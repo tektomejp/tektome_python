@@ -7,7 +7,6 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.paged_section_get_out import PagedSectionGetOut
 from ...types import UNSET, Response, Unset
 
 
@@ -42,19 +41,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> PagedSectionGetOut | None:
-    if response.status_code == 200:
-        response_200 = PagedSectionGetOut.from_dict(response.json())
-
-        return response_200
-
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[PagedSectionGetOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,12 +63,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[PagedSectionGetOut]:
-    """Get Sections In Project
+) -> Response[Any]:
+    """List sections in a project
 
-     48plIwnA
-
-    Get all sections that belong to the given project_id
+     Retrieve all sections that belong to the specified project.
 
     Args:
         project_id (UUID):
@@ -86,7 +78,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PagedSectionGetOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -102,52 +94,16 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    project_id: UUID,
-    *,
-    client: AuthenticatedClient,
-    page: int | Unset = 1,
-    page_size: int | None | Unset = UNSET,
-) -> PagedSectionGetOut | None:
-    """Get Sections In Project
-
-     48plIwnA
-
-    Get all sections that belong to the given project_id
-
-    Args:
-        project_id (UUID):
-        page (int | Unset):  Default: 1.
-        page_size (int | None | Unset):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        PagedSectionGetOut
-    """
-
-    return sync_detailed(
-        project_id=project_id,
-        client=client,
-        page=page,
-        page_size=page_size,
-    ).parsed
-
-
 async def asyncio_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[PagedSectionGetOut]:
-    """Get Sections In Project
+) -> Response[Any]:
+    """List sections in a project
 
-     48plIwnA
-
-    Get all sections that belong to the given project_id
+     Retrieve all sections that belong to the specified project.
 
     Args:
         project_id (UUID):
@@ -159,7 +115,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PagedSectionGetOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -171,39 +127,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    project_id: UUID,
-    *,
-    client: AuthenticatedClient,
-    page: int | Unset = 1,
-    page_size: int | None | Unset = UNSET,
-) -> PagedSectionGetOut | None:
-    """Get Sections In Project
-
-     48plIwnA
-
-    Get all sections that belong to the given project_id
-
-    Args:
-        project_id (UUID):
-        page (int | Unset):  Default: 1.
-        page_size (int | None | Unset):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        PagedSectionGetOut
-    """
-
-    return (
-        await asyncio_detailed(
-            project_id=project_id,
-            client=client,
-            page=page,
-            page_size=page_size,
-        )
-    ).parsed

@@ -8,14 +8,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.lawtalk_project_schema import LawtalkProjectSchema
-from ...models.remove_resource_group_post_in import RemoveResourceGroupPostIn
+from ...models.remove_resource_group_request import RemoveResourceGroupRequest
 from ...types import Response
 
 
 def _get_kwargs(
     project_id: UUID,
     *,
-    body: RemoveResourceGroupPostIn,
+    body: RemoveResourceGroupRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -61,17 +61,16 @@ def sync_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RemoveResourceGroupPostIn,
+    body: RemoveResourceGroupRequest,
 ) -> Response[LawtalkProjectSchema]:
-    """Delete Remove Resource Group
+    """Remove resource groups from project
 
-     bwdCjIDK
-
-    Remove Lawtalk's Resource Groups from a project.
+     Remove imported resource groups from a project. Resource groups that are currently referenced by
+    requirements cannot be removed.
 
     Args:
         project_id (UUID):
-        body (RemoveResourceGroupPostIn):
+        body (RemoveResourceGroupRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -97,17 +96,16 @@ def sync(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RemoveResourceGroupPostIn,
+    body: RemoveResourceGroupRequest,
 ) -> LawtalkProjectSchema | None:
-    """Delete Remove Resource Group
+    """Remove resource groups from project
 
-     bwdCjIDK
-
-    Remove Lawtalk's Resource Groups from a project.
+     Remove imported resource groups from a project. Resource groups that are currently referenced by
+    requirements cannot be removed.
 
     Args:
         project_id (UUID):
-        body (RemoveResourceGroupPostIn):
+        body (RemoveResourceGroupRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -128,17 +126,16 @@ async def asyncio_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RemoveResourceGroupPostIn,
+    body: RemoveResourceGroupRequest,
 ) -> Response[LawtalkProjectSchema]:
-    """Delete Remove Resource Group
+    """Remove resource groups from project
 
-     bwdCjIDK
-
-    Remove Lawtalk's Resource Groups from a project.
+     Remove imported resource groups from a project. Resource groups that are currently referenced by
+    requirements cannot be removed.
 
     Args:
         project_id (UUID):
-        body (RemoveResourceGroupPostIn):
+        body (RemoveResourceGroupRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -162,17 +159,16 @@ async def asyncio(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RemoveResourceGroupPostIn,
+    body: RemoveResourceGroupRequest,
 ) -> LawtalkProjectSchema | None:
-    """Delete Remove Resource Group
+    """Remove resource groups from project
 
-     bwdCjIDK
-
-    Remove Lawtalk's Resource Groups from a project.
+     Remove imported resource groups from a project. Resource groups that are currently referenced by
+    requirements cannot be removed.
 
     Args:
         project_id (UUID):
-        body (RemoveResourceGroupPostIn):
+        body (RemoveResourceGroupRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

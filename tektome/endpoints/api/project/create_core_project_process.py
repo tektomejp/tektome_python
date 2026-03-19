@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.process_out import ProcessOut
-from ...models.process_post_in import ProcessPostIn
+from ...models.create_process_request import CreateProcessRequest
+from ...models.process_response import ProcessResponse
 from ...types import Response
 
 
 def _get_kwargs(
     project_id: UUID,
     *,
-    body: ProcessPostIn,
+    body: CreateProcessRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -34,9 +34,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ProcessOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ProcessResponse | None:
     if response.status_code == 201:
-        response_201 = ProcessOut.from_dict(response.json())
+        response_201 = ProcessResponse.from_dict(response.json())
 
         return response_201
 
@@ -46,7 +46,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ProcessOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ProcessResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,24 +59,22 @@ def sync_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProcessPostIn,
-) -> Response[ProcessOut]:
-    """Post Project Processes
+    body: CreateProcessRequest,
+) -> Response[ProcessResponse]:
+    """Create a process in a project
 
-     vmDfHeys
-
-    Register a process from a template.
+     Register a new process from a template within the specified project.
 
     Args:
         project_id (UUID):
-        body (ProcessPostIn):
+        body (CreateProcessRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProcessOut]
+        Response[ProcessResponse]
     """
 
     kwargs = _get_kwargs(
@@ -95,24 +93,22 @@ def sync(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProcessPostIn,
-) -> ProcessOut | None:
-    """Post Project Processes
+    body: CreateProcessRequest,
+) -> ProcessResponse | None:
+    """Create a process in a project
 
-     vmDfHeys
-
-    Register a process from a template.
+     Register a new process from a template within the specified project.
 
     Args:
         project_id (UUID):
-        body (ProcessPostIn):
+        body (CreateProcessRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProcessOut
+        ProcessResponse
     """
 
     return sync_detailed(
@@ -126,24 +122,22 @@ async def asyncio_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProcessPostIn,
-) -> Response[ProcessOut]:
-    """Post Project Processes
+    body: CreateProcessRequest,
+) -> Response[ProcessResponse]:
+    """Create a process in a project
 
-     vmDfHeys
-
-    Register a process from a template.
+     Register a new process from a template within the specified project.
 
     Args:
         project_id (UUID):
-        body (ProcessPostIn):
+        body (CreateProcessRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProcessOut]
+        Response[ProcessResponse]
     """
 
     kwargs = _get_kwargs(
@@ -160,24 +154,22 @@ async def asyncio(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProcessPostIn,
-) -> ProcessOut | None:
-    """Post Project Processes
+    body: CreateProcessRequest,
+) -> ProcessResponse | None:
+    """Create a process in a project
 
-     vmDfHeys
-
-    Register a process from a template.
+     Register a new process from a template within the specified project.
 
     Args:
         project_id (UUID):
-        body (ProcessPostIn):
+        body (CreateProcessRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProcessOut
+        ProcessResponse
     """
 
     return (

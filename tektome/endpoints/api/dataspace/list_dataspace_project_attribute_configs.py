@@ -7,7 +7,6 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.paged_dataspace_project_attribute_post_out import PagedDataspaceProjectAttributePostOut
 from ...types import UNSET, Response, Unset
 
 
@@ -42,23 +41,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> PagedDataspaceProjectAttributePostOut | None:
-    if response.status_code == 200:
-        response_200 = PagedDataspaceProjectAttributePostOut.from_dict(response.json())
-
-        return response_200
-
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[PagedDataspaceProjectAttributePostOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -73,12 +63,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[PagedDataspaceProjectAttributePostOut]:
-    """Get Dataspace Project Attribute Configs
+) -> Response[Any]:
+    """List project attribute column configurations
 
-     x16N0f5E
-
-    Retrieves the column attributes of a dataspace project
+     Retrieve all configured attribute columns for projects within a dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -90,7 +78,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PagedDataspaceProjectAttributePostOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -106,52 +94,16 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    dataspace_id: UUID,
-    *,
-    client: AuthenticatedClient,
-    page: int | Unset = 1,
-    page_size: int | None | Unset = UNSET,
-) -> PagedDataspaceProjectAttributePostOut | None:
-    """Get Dataspace Project Attribute Configs
-
-     x16N0f5E
-
-    Retrieves the column attributes of a dataspace project
-
-    Args:
-        dataspace_id (UUID):
-        page (int | Unset):  Default: 1.
-        page_size (int | None | Unset):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        PagedDataspaceProjectAttributePostOut
-    """
-
-    return sync_detailed(
-        dataspace_id=dataspace_id,
-        client=client,
-        page=page,
-        page_size=page_size,
-    ).parsed
-
-
 async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[PagedDataspaceProjectAttributePostOut]:
-    """Get Dataspace Project Attribute Configs
+) -> Response[Any]:
+    """List project attribute column configurations
 
-     x16N0f5E
-
-    Retrieves the column attributes of a dataspace project
+     Retrieve all configured attribute columns for projects within a dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -163,7 +115,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PagedDataspaceProjectAttributePostOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -175,39 +127,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    dataspace_id: UUID,
-    *,
-    client: AuthenticatedClient,
-    page: int | Unset = 1,
-    page_size: int | None | Unset = UNSET,
-) -> PagedDataspaceProjectAttributePostOut | None:
-    """Get Dataspace Project Attribute Configs
-
-     x16N0f5E
-
-    Retrieves the column attributes of a dataspace project
-
-    Args:
-        dataspace_id (UUID):
-        page (int | Unset):  Default: 1.
-        page_size (int | None | Unset):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        PagedDataspaceProjectAttributePostOut
-    """
-
-    return (
-        await asyncio_detailed(
-            dataspace_id=dataspace_id,
-            client=client,
-            page=page,
-            page_size=page_size,
-        )
-    ).parsed

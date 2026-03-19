@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.dataspace_member_schema_in import DataspaceMemberSchemaIn
+from ...models.dataspace_member_schema_request import DataspaceMemberSchemaRequest
 from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
     *,
-    body: list[DataspaceMemberSchemaIn],
+    body: list[DataspaceMemberSchemaRequest],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -62,17 +62,15 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[DataspaceMemberSchemaIn],
+    body: list[DataspaceMemberSchemaRequest],
 ) -> Response[Any]:
-    """Update Dataspace Member
+    """Update a member's role in a dataspace
 
-     83LmAnb8
-
-    Update a member's role in a dataspace
+     Update the role assignments of one or more members within a dataspace.
 
     Args:
         dataspace_id (UUID):
-        body (list[DataspaceMemberSchemaIn]):
+        body (list[DataspaceMemberSchemaRequest]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -98,17 +96,15 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[DataspaceMemberSchemaIn],
+    body: list[DataspaceMemberSchemaRequest],
 ) -> Response[Any]:
-    """Update Dataspace Member
+    """Update a member's role in a dataspace
 
-     83LmAnb8
-
-    Update a member's role in a dataspace
+     Update the role assignments of one or more members within a dataspace.
 
     Args:
         dataspace_id (UUID):
-        body (list[DataspaceMemberSchemaIn]):
+        body (list[DataspaceMemberSchemaRequest]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

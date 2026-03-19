@@ -5,13 +5,13 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.improve_user_prompt_query_in import ImproveUserPromptQueryIn
+from ...models.improve_user_prompt_query_request import ImproveUserPromptQueryRequest
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: ImproveUserPromptQueryIn,
+    body: ImproveUserPromptQueryRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -51,27 +51,15 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: ImproveUserPromptQueryIn,
+    body: ImproveUserPromptQueryRequest,
 ) -> Response[str]:
-    """Post Followup User Query
+    """Generate follow-up questions
 
-     iwVaQyqA
-
-    Post a chat message to a lawtalk requirement chatroom for improving user query.
-    Args:
-        request: The request object containing authentication and user information.
-        payload: The payload containing user prompt to improve.
-
-    Returns: Stream 3 followup string questions based on the user query in this format:
-    ```
-    1. <followup question 1>
-    2. <followup question 2>
-    3. <followup question 3>
-    ```
-    The client should listen to the stream and display the followup questions as they arrive.
+     Generate clarifying follow-up questions based on a user's research query and project context.
+    Returns a streaming response with numbered follow-up questions.
 
     Args:
-        body (ImproveUserPromptQueryIn): Serializer for improving user prompt query.
+        body (ImproveUserPromptQueryRequest): Serializer for improving user prompt query.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -95,27 +83,15 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: ImproveUserPromptQueryIn,
+    body: ImproveUserPromptQueryRequest,
 ) -> str | None:
-    """Post Followup User Query
+    """Generate follow-up questions
 
-     iwVaQyqA
-
-    Post a chat message to a lawtalk requirement chatroom for improving user query.
-    Args:
-        request: The request object containing authentication and user information.
-        payload: The payload containing user prompt to improve.
-
-    Returns: Stream 3 followup string questions based on the user query in this format:
-    ```
-    1. <followup question 1>
-    2. <followup question 2>
-    3. <followup question 3>
-    ```
-    The client should listen to the stream and display the followup questions as they arrive.
+     Generate clarifying follow-up questions based on a user's research query and project context.
+    Returns a streaming response with numbered follow-up questions.
 
     Args:
-        body (ImproveUserPromptQueryIn): Serializer for improving user prompt query.
+        body (ImproveUserPromptQueryRequest): Serializer for improving user prompt query.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -134,27 +110,15 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: ImproveUserPromptQueryIn,
+    body: ImproveUserPromptQueryRequest,
 ) -> Response[str]:
-    """Post Followup User Query
+    """Generate follow-up questions
 
-     iwVaQyqA
-
-    Post a chat message to a lawtalk requirement chatroom for improving user query.
-    Args:
-        request: The request object containing authentication and user information.
-        payload: The payload containing user prompt to improve.
-
-    Returns: Stream 3 followup string questions based on the user query in this format:
-    ```
-    1. <followup question 1>
-    2. <followup question 2>
-    3. <followup question 3>
-    ```
-    The client should listen to the stream and display the followup questions as they arrive.
+     Generate clarifying follow-up questions based on a user's research query and project context.
+    Returns a streaming response with numbered follow-up questions.
 
     Args:
-        body (ImproveUserPromptQueryIn): Serializer for improving user prompt query.
+        body (ImproveUserPromptQueryRequest): Serializer for improving user prompt query.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -176,27 +140,15 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: ImproveUserPromptQueryIn,
+    body: ImproveUserPromptQueryRequest,
 ) -> str | None:
-    """Post Followup User Query
+    """Generate follow-up questions
 
-     iwVaQyqA
-
-    Post a chat message to a lawtalk requirement chatroom for improving user query.
-    Args:
-        request: The request object containing authentication and user information.
-        payload: The payload containing user prompt to improve.
-
-    Returns: Stream 3 followup string questions based on the user query in this format:
-    ```
-    1. <followup question 1>
-    2. <followup question 2>
-    3. <followup question 3>
-    ```
-    The client should listen to the stream and display the followup questions as they arrive.
+     Generate clarifying follow-up questions based on a user's research query and project context.
+    Returns a streaming response with numbered follow-up questions.
 
     Args:
-        body (ImproveUserPromptQueryIn): Serializer for improving user prompt query.
+        body (ImproveUserPromptQueryRequest): Serializer for improving user prompt query.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

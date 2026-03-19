@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.dataspace_project_attribute_post_in import DataspaceProjectAttributePostIn
-from ...models.dataspace_project_attribute_post_out import DataspaceProjectAttributePostOut
+from ...models.create_dataspace_project_attribute_request import CreateDataspaceProjectAttributeRequest
+from ...models.dataspace_project_attribute_response import DataspaceProjectAttributeResponse
 from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
     *,
-    body: DataspaceProjectAttributePostIn,
+    body: CreateDataspaceProjectAttributeRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -36,9 +36,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> DataspaceProjectAttributePostOut | None:
+) -> DataspaceProjectAttributeResponse | None:
     if response.status_code == 201:
-        response_201 = DataspaceProjectAttributePostOut.from_dict(response.json())
+        response_201 = DataspaceProjectAttributeResponse.from_dict(response.json())
 
         return response_201
 
@@ -50,7 +50,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[DataspaceProjectAttributePostOut]:
+) -> Response[DataspaceProjectAttributeResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,37 +63,24 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceProjectAttributePostIn,
-) -> Response[DataspaceProjectAttributePostOut]:
-    """Post Dataspace Project Attribute Config
+    body: CreateDataspaceProjectAttributeRequest,
+) -> Response[DataspaceProjectAttributeResponse]:
+    """Create a project attribute column configuration
 
-     x16N0f5D
-
-    Creates the column attributes of a dataspace project
-
-    Valid attribute types are:
-    - string_attributes
-    - integer_attributes
-    - float_attributes
-    - boolean_attributes
-    - date_attributes
-    - datetime_attributes
-    - time_attributes
-    - table_attributes
-    - single_select_attributes
-    - multi_select_attributes
+     Add a new attribute column configuration for projects in a dataspace. Supported types include
+    string, integer, float, boolean, date, datetime, time, table, single select, and multi select.
 
     Args:
         dataspace_id (UUID):
-        body (DataspaceProjectAttributePostIn): Schema for posting attributes to a project in a
-            dataspace.
+        body (CreateDataspaceProjectAttributeRequest): Schema for posting attributes to a project
+            in a dataspace.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DataspaceProjectAttributePostOut]
+        Response[DataspaceProjectAttributeResponse]
     """
 
     kwargs = _get_kwargs(
@@ -112,37 +99,24 @@ def sync(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceProjectAttributePostIn,
-) -> DataspaceProjectAttributePostOut | None:
-    """Post Dataspace Project Attribute Config
+    body: CreateDataspaceProjectAttributeRequest,
+) -> DataspaceProjectAttributeResponse | None:
+    """Create a project attribute column configuration
 
-     x16N0f5D
-
-    Creates the column attributes of a dataspace project
-
-    Valid attribute types are:
-    - string_attributes
-    - integer_attributes
-    - float_attributes
-    - boolean_attributes
-    - date_attributes
-    - datetime_attributes
-    - time_attributes
-    - table_attributes
-    - single_select_attributes
-    - multi_select_attributes
+     Add a new attribute column configuration for projects in a dataspace. Supported types include
+    string, integer, float, boolean, date, datetime, time, table, single select, and multi select.
 
     Args:
         dataspace_id (UUID):
-        body (DataspaceProjectAttributePostIn): Schema for posting attributes to a project in a
-            dataspace.
+        body (CreateDataspaceProjectAttributeRequest): Schema for posting attributes to a project
+            in a dataspace.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DataspaceProjectAttributePostOut
+        DataspaceProjectAttributeResponse
     """
 
     return sync_detailed(
@@ -156,37 +130,24 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceProjectAttributePostIn,
-) -> Response[DataspaceProjectAttributePostOut]:
-    """Post Dataspace Project Attribute Config
+    body: CreateDataspaceProjectAttributeRequest,
+) -> Response[DataspaceProjectAttributeResponse]:
+    """Create a project attribute column configuration
 
-     x16N0f5D
-
-    Creates the column attributes of a dataspace project
-
-    Valid attribute types are:
-    - string_attributes
-    - integer_attributes
-    - float_attributes
-    - boolean_attributes
-    - date_attributes
-    - datetime_attributes
-    - time_attributes
-    - table_attributes
-    - single_select_attributes
-    - multi_select_attributes
+     Add a new attribute column configuration for projects in a dataspace. Supported types include
+    string, integer, float, boolean, date, datetime, time, table, single select, and multi select.
 
     Args:
         dataspace_id (UUID):
-        body (DataspaceProjectAttributePostIn): Schema for posting attributes to a project in a
-            dataspace.
+        body (CreateDataspaceProjectAttributeRequest): Schema for posting attributes to a project
+            in a dataspace.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DataspaceProjectAttributePostOut]
+        Response[DataspaceProjectAttributeResponse]
     """
 
     kwargs = _get_kwargs(
@@ -203,37 +164,24 @@ async def asyncio(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceProjectAttributePostIn,
-) -> DataspaceProjectAttributePostOut | None:
-    """Post Dataspace Project Attribute Config
+    body: CreateDataspaceProjectAttributeRequest,
+) -> DataspaceProjectAttributeResponse | None:
+    """Create a project attribute column configuration
 
-     x16N0f5D
-
-    Creates the column attributes of a dataspace project
-
-    Valid attribute types are:
-    - string_attributes
-    - integer_attributes
-    - float_attributes
-    - boolean_attributes
-    - date_attributes
-    - datetime_attributes
-    - time_attributes
-    - table_attributes
-    - single_select_attributes
-    - multi_select_attributes
+     Add a new attribute column configuration for projects in a dataspace. Supported types include
+    string, integer, float, boolean, date, datetime, time, table, single select, and multi select.
 
     Args:
         dataspace_id (UUID):
-        body (DataspaceProjectAttributePostIn): Schema for posting attributes to a project in a
-            dataspace.
+        body (CreateDataspaceProjectAttributeRequest): Schema for posting attributes to a project
+            in a dataspace.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DataspaceProjectAttributePostOut
+        DataspaceProjectAttributeResponse
     """
 
     return (

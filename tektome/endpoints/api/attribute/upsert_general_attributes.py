@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.default_attribute_body_put_in import DefaultAttributeBodyPutIn
+from ...models.replace_default_attribute_body_request import ReplaceDefaultAttributeBodyRequest
 from ...models.upsert_general_attributes_attribute_object_types import UpsertGeneralAttributesAttributeObjectTypes
 from ...types import Response
 
@@ -16,7 +16,7 @@ def _get_kwargs(
     object_type: UpsertGeneralAttributesAttributeObjectTypes,
     object_id: UUID,
     *,
-    body: DefaultAttributeBodyPutIn,
+    body: ReplaceDefaultAttributeBodyRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -60,23 +60,18 @@ def sync_detailed(
     object_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DefaultAttributeBodyPutIn,
+    body: ReplaceDefaultAttributeBodyRequest,
 ) -> Response[Any]:
-    """Put General Attributes
+    """Upsert general attributes
 
-     Grnw6Lxx
-
-    Set general attributes. General attributes cannot begin with `system:`
-    General attributes are returned to the user side.
-
-
-    **WARNING**: Only pass the keys to be added/updated,
-    It won't mutate the attributes that are not provided in the payload.
+     Set or update general (user-facing) attributes on an entity. Only provided keys are added or
+    updated; omitted keys remain unchanged. Table attributes must be updated through dedicated table
+    endpoints.
 
     Args:
         object_type (UpsertGeneralAttributesAttributeObjectTypes):
         object_id (UUID):
-        body (DefaultAttributeBodyPutIn):
+        body (ReplaceDefaultAttributeBodyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -104,23 +99,18 @@ async def asyncio_detailed(
     object_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DefaultAttributeBodyPutIn,
+    body: ReplaceDefaultAttributeBodyRequest,
 ) -> Response[Any]:
-    """Put General Attributes
+    """Upsert general attributes
 
-     Grnw6Lxx
-
-    Set general attributes. General attributes cannot begin with `system:`
-    General attributes are returned to the user side.
-
-
-    **WARNING**: Only pass the keys to be added/updated,
-    It won't mutate the attributes that are not provided in the payload.
+     Set or update general (user-facing) attributes on an entity. Only provided keys are added or
+    updated; omitted keys remain unchanged. Table attributes must be updated through dedicated table
+    endpoints.
 
     Args:
         object_type (UpsertGeneralAttributesAttributeObjectTypes):
         object_id (UUID):
-        body (DefaultAttributeBodyPutIn):
+        body (ReplaceDefaultAttributeBodyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

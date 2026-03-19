@@ -7,12 +7,12 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bim_object_post_out import BimObjectPostOut
-from ...models.bim_view_object_link_post_out import BimViewObjectLinkPostOut
-from ...models.bim_view_post_out import BimViewPostOut
+from ...models.bim_object_response import BimObjectResponse
+from ...models.bim_view_object_link_response import BimViewObjectLinkResponse
+from ...models.bim_view_response import BimViewResponse
 from ...models.create_bim_element_bim_element_type_path import CreateBimElementBimElementTypePath
 from ...models.create_bim_element_file_params import CreateBimElementFileParams
-from ...models.error_response_post_out import ErrorResponsePostOut
+from ...models.error_response_response import ErrorResponseResponse
 from ...types import Response
 
 
@@ -40,14 +40,14 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BimObjectPostOut | BimViewObjectLinkPostOut | BimViewPostOut | ErrorResponsePostOut | None:
+) -> BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponseResponse | None:
     if response.status_code == 200:
 
-        def _parse_response_200(data: object) -> BimObjectPostOut | BimViewObjectLinkPostOut | BimViewPostOut:
+        def _parse_response_200(data: object) -> BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                response_200_type_0 = BimObjectPostOut.from_dict(data)
+                response_200_type_0 = BimObjectResponse.from_dict(data)
 
                 return response_200_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
@@ -55,14 +55,14 @@ def _parse_response(
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                response_200_type_1 = BimViewPostOut.from_dict(data)
+                response_200_type_1 = BimViewResponse.from_dict(data)
 
                 return response_200_type_1
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             if not isinstance(data, dict):
                 raise TypeError()
-            response_200_type_2 = BimViewObjectLinkPostOut.from_dict(data)
+            response_200_type_2 = BimViewObjectLinkResponse.from_dict(data)
 
             return response_200_type_2
 
@@ -71,17 +71,17 @@ def _parse_response(
         return response_200
 
     if response.status_code == 400:
-        response_400 = ErrorResponsePostOut.from_dict(response.json())
+        response_400 = ErrorResponseResponse.from_dict(response.json())
 
         return response_400
 
     if response.status_code == 404:
-        response_404 = ErrorResponsePostOut.from_dict(response.json())
+        response_404 = ErrorResponseResponse.from_dict(response.json())
 
         return response_404
 
     if response.status_code == 501:
-        response_501 = ErrorResponsePostOut.from_dict(response.json())
+        response_501 = ErrorResponseResponse.from_dict(response.json())
 
         return response_501
 
@@ -93,7 +93,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BimObjectPostOut | BimViewObjectLinkPostOut | BimViewPostOut | ErrorResponsePostOut]:
+) -> Response[BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponseResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -108,13 +108,12 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: CreateBimElementFileParams,
-) -> Response[BimObjectPostOut | BimViewObjectLinkPostOut | BimViewPostOut | ErrorResponsePostOut]:
-    """Post Bim Element Handler
+) -> Response[BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponseResponse]:
+    """Upload BIM elements to a project
 
-     1lv861wz
-
-    Post a BIM element. Could be BIM object, BIM view, or agnostically wherein the handler will try to
-    determine the type of the element submitted.
+     Upload BIM element files (objects, views, or agnostic) to a project for processing. This is an
+    asynchronous operation. To retrieve the results, use the get_celery_task
+    (/api/core/tasks/{task_id}/) endpoint with the task/process ID returned in this response.
 
     Args:
         bim_project_id (UUID):
@@ -126,7 +125,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimObjectPostOut | BimViewObjectLinkPostOut | BimViewPostOut | ErrorResponsePostOut]
+        Response[BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponseResponse]
     """
 
     kwargs = _get_kwargs(
@@ -148,13 +147,12 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: CreateBimElementFileParams,
-) -> BimObjectPostOut | BimViewObjectLinkPostOut | BimViewPostOut | ErrorResponsePostOut | None:
-    """Post Bim Element Handler
+) -> BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponseResponse | None:
+    """Upload BIM elements to a project
 
-     1lv861wz
-
-    Post a BIM element. Could be BIM object, BIM view, or agnostically wherein the handler will try to
-    determine the type of the element submitted.
+     Upload BIM element files (objects, views, or agnostic) to a project for processing. This is an
+    asynchronous operation. To retrieve the results, use the get_celery_task
+    (/api/core/tasks/{task_id}/) endpoint with the task/process ID returned in this response.
 
     Args:
         bim_project_id (UUID):
@@ -166,7 +164,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimObjectPostOut | BimViewObjectLinkPostOut | BimViewPostOut | ErrorResponsePostOut
+        BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponseResponse
     """
 
     return sync_detailed(
@@ -183,13 +181,12 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: CreateBimElementFileParams,
-) -> Response[BimObjectPostOut | BimViewObjectLinkPostOut | BimViewPostOut | ErrorResponsePostOut]:
-    """Post Bim Element Handler
+) -> Response[BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponseResponse]:
+    """Upload BIM elements to a project
 
-     1lv861wz
-
-    Post a BIM element. Could be BIM object, BIM view, or agnostically wherein the handler will try to
-    determine the type of the element submitted.
+     Upload BIM element files (objects, views, or agnostic) to a project for processing. This is an
+    asynchronous operation. To retrieve the results, use the get_celery_task
+    (/api/core/tasks/{task_id}/) endpoint with the task/process ID returned in this response.
 
     Args:
         bim_project_id (UUID):
@@ -201,7 +198,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimObjectPostOut | BimViewObjectLinkPostOut | BimViewPostOut | ErrorResponsePostOut]
+        Response[BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponseResponse]
     """
 
     kwargs = _get_kwargs(
@@ -221,13 +218,12 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: CreateBimElementFileParams,
-) -> BimObjectPostOut | BimViewObjectLinkPostOut | BimViewPostOut | ErrorResponsePostOut | None:
-    """Post Bim Element Handler
+) -> BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponseResponse | None:
+    """Upload BIM elements to a project
 
-     1lv861wz
-
-    Post a BIM element. Could be BIM object, BIM view, or agnostically wherein the handler will try to
-    determine the type of the element submitted.
+     Upload BIM element files (objects, views, or agnostic) to a project for processing. This is an
+    asynchronous operation. To retrieve the results, use the get_celery_task
+    (/api/core/tasks/{task_id}/) endpoint with the task/process ID returned in this response.
 
     Args:
         bim_project_id (UUID):
@@ -239,7 +235,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimObjectPostOut | BimViewObjectLinkPostOut | BimViewPostOut | ErrorResponsePostOut
+        BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponseResponse
     """
 
     return (

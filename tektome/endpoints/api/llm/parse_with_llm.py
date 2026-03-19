@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.llm_parser_post_in import LlmParserPostIn
-from ...models.llm_parser_post_out import LlmParserPostOut
+from ...models.create_llm_parser_request import CreateLlmParserRequest
+from ...models.llm_parser_response import LlmParserResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: LlmParserPostIn,
+    body: CreateLlmParserRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -29,9 +29,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> LlmParserPostOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> LlmParserResponse | None:
     if response.status_code == 200:
-        response_200 = LlmParserPostOut.from_dict(response.json())
+        response_200 = LlmParserResponse.from_dict(response.json())
 
         return response_200
 
@@ -41,7 +41,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[LlmParserPostOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[LlmParserResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,25 +53,22 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: LlmParserPostIn,
-) -> Response[LlmParserPostOut]:
-    """Post Llm Parser
+    body: CreateLlmParserRequest,
+) -> Response[LlmParserResponse]:
+    """Parse text using an LLM
 
-     VshaaQ36
-    Generic llm parser. Config is loaded from database: OaiConfig, if it does not exist in the database
-    it is loaded from: <br>
-    `/workspaces/law-ai-gateway/app/appcore/constants/oai_configs.py`<br>
-    If the config is not found in the database and the default config file: 422<br>
+     Send a query to a configured LLM model for parsing and return the result. The LLM configuration is
+    loaded from the database or falls back to defaults.
 
     Args:
-        body (LlmParserPostIn):
+        body (CreateLlmParserRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[LlmParserPostOut]
+        Response[LlmParserResponse]
     """
 
     kwargs = _get_kwargs(
@@ -88,25 +85,22 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: LlmParserPostIn,
-) -> LlmParserPostOut | None:
-    """Post Llm Parser
+    body: CreateLlmParserRequest,
+) -> LlmParserResponse | None:
+    """Parse text using an LLM
 
-     VshaaQ36
-    Generic llm parser. Config is loaded from database: OaiConfig, if it does not exist in the database
-    it is loaded from: <br>
-    `/workspaces/law-ai-gateway/app/appcore/constants/oai_configs.py`<br>
-    If the config is not found in the database and the default config file: 422<br>
+     Send a query to a configured LLM model for parsing and return the result. The LLM configuration is
+    loaded from the database or falls back to defaults.
 
     Args:
-        body (LlmParserPostIn):
+        body (CreateLlmParserRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        LlmParserPostOut
+        LlmParserResponse
     """
 
     return sync_detailed(
@@ -118,25 +112,22 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: LlmParserPostIn,
-) -> Response[LlmParserPostOut]:
-    """Post Llm Parser
+    body: CreateLlmParserRequest,
+) -> Response[LlmParserResponse]:
+    """Parse text using an LLM
 
-     VshaaQ36
-    Generic llm parser. Config is loaded from database: OaiConfig, if it does not exist in the database
-    it is loaded from: <br>
-    `/workspaces/law-ai-gateway/app/appcore/constants/oai_configs.py`<br>
-    If the config is not found in the database and the default config file: 422<br>
+     Send a query to a configured LLM model for parsing and return the result. The LLM configuration is
+    loaded from the database or falls back to defaults.
 
     Args:
-        body (LlmParserPostIn):
+        body (CreateLlmParserRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[LlmParserPostOut]
+        Response[LlmParserResponse]
     """
 
     kwargs = _get_kwargs(
@@ -151,25 +142,22 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: LlmParserPostIn,
-) -> LlmParserPostOut | None:
-    """Post Llm Parser
+    body: CreateLlmParserRequest,
+) -> LlmParserResponse | None:
+    """Parse text using an LLM
 
-     VshaaQ36
-    Generic llm parser. Config is loaded from database: OaiConfig, if it does not exist in the database
-    it is loaded from: <br>
-    `/workspaces/law-ai-gateway/app/appcore/constants/oai_configs.py`<br>
-    If the config is not found in the database and the default config file: 422<br>
+     Send a query to a configured LLM model for parsing and return the result. The LLM configuration is
+    loaded from the database or falls back to defaults.
 
     Args:
-        body (LlmParserPostIn):
+        body (CreateLlmParserRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        LlmParserPostOut
+        LlmParserResponse
     """
 
     return (

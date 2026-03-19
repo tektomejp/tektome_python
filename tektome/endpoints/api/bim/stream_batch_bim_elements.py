@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bim_batch_element_request_post_in import BimBatchElementRequestPostIn
+from ...models.create_bim_batch_element_request_request import CreateBimBatchElementRequestRequest
 from ...models.stream_batch_bim_elements_bim_element_type_path import StreamBatchBimElementsBimElementTypePath
 from ...types import Response
 
@@ -14,7 +14,7 @@ from ...types import Response
 def _get_kwargs(
     bim_type: StreamBatchBimElementsBimElementTypePath,
     *,
-    body: BimBatchElementRequestPostIn,
+    body: CreateBimBatchElementRequestRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,35 +56,16 @@ def sync_detailed(
     bim_type: StreamBatchBimElementsBimElementTypePath,
     *,
     client: AuthenticatedClient,
-    body: BimBatchElementRequestPostIn,
+    body: CreateBimBatchElementRequestRequest,
 ) -> Response[Any]:
-    """Stream Batch Bim Elements
+    """Stream multiple BIM elements as NDJSON
 
-     56af7d2e
-
-    Stream multiple BIM elements by their IDs as NDJSON. Could be BIM objects or views.
-
-    This endpoint provides a streaming alternative to get_batch_bim_elements with:
-    - NDJSON (Newline Delimited JSON) response format for efficient streaming
-    - Optimized for speed with batch processing
-    - No 404 errors for missing IDs - instead marks them as not found in response
-    - Filters duplicate IDs automatically
-    - Returns elements with metadata indicating whether they were found
-
-    Arguments:
-        - bim_type: Type of BIM element (object or view)
-        - payload: Request body containing list of IDs to retrieve (max 50000)
-
-    Response Format (NDJSON):
-        Each line contains a JSON object with:
-        - id: The requested element ID
-        - data: The element's file data (if found and available)
-        - found: Boolean indicating if the element was found
-        - error: Optional error message if element found but data unavailable
+     Stream multiple BIM elements by their IDs as NDJSON (Newline Delimited JSON). Supports up to 50,000
+    IDs, deduplicates automatically, and marks missing elements in the response.
 
     Args:
         bim_type (StreamBatchBimElementsBimElementTypePath): Enum for BIM object types.
-        body (BimBatchElementRequestPostIn): Schema for batch BIM element retrieval request
+        body (CreateBimBatchElementRequestRequest): Schema for batch BIM element retrieval request
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -110,35 +91,16 @@ async def asyncio_detailed(
     bim_type: StreamBatchBimElementsBimElementTypePath,
     *,
     client: AuthenticatedClient,
-    body: BimBatchElementRequestPostIn,
+    body: CreateBimBatchElementRequestRequest,
 ) -> Response[Any]:
-    """Stream Batch Bim Elements
+    """Stream multiple BIM elements as NDJSON
 
-     56af7d2e
-
-    Stream multiple BIM elements by their IDs as NDJSON. Could be BIM objects or views.
-
-    This endpoint provides a streaming alternative to get_batch_bim_elements with:
-    - NDJSON (Newline Delimited JSON) response format for efficient streaming
-    - Optimized for speed with batch processing
-    - No 404 errors for missing IDs - instead marks them as not found in response
-    - Filters duplicate IDs automatically
-    - Returns elements with metadata indicating whether they were found
-
-    Arguments:
-        - bim_type: Type of BIM element (object or view)
-        - payload: Request body containing list of IDs to retrieve (max 50000)
-
-    Response Format (NDJSON):
-        Each line contains a JSON object with:
-        - id: The requested element ID
-        - data: The element's file data (if found and available)
-        - found: Boolean indicating if the element was found
-        - error: Optional error message if element found but data unavailable
+     Stream multiple BIM elements by their IDs as NDJSON (Newline Delimited JSON). Supports up to 50,000
+    IDs, deduplicates automatically, and marks missing elements in the response.
 
     Args:
         bim_type (StreamBatchBimElementsBimElementTypePath): Enum for BIM object types.
-        body (BimBatchElementRequestPostIn): Schema for batch BIM element retrieval request
+        body (CreateBimBatchElementRequestRequest): Schema for batch BIM element retrieval request
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

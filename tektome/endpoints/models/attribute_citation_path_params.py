@@ -1,0 +1,88 @@
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import Any, TypeVar
+from uuid import UUID
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..models.dataspace_entity_type import DataspaceEntityType
+
+T = TypeVar("T", bound="AttributeCitationPathParams")
+
+
+@_attrs_define
+class AttributeCitationPathParams:
+    """
+    Attributes:
+        attribute_id (UUID):
+        dataspace_id (UUID):
+        attribute_category (DataspaceEntityType):
+        cited_attribute_id (UUID):
+    """
+
+    attribute_id: UUID
+    dataspace_id: UUID
+    attribute_category: DataspaceEntityType
+    cited_attribute_id: UUID
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        attribute_id = str(self.attribute_id)
+
+        dataspace_id = str(self.dataspace_id)
+
+        attribute_category = self.attribute_category.value
+
+        cited_attribute_id = str(self.cited_attribute_id)
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "attribute_id": attribute_id,
+                "dataspace_id": dataspace_id,
+                "attribute_category": attribute_category,
+                "cited_attribute_id": cited_attribute_id,
+            }
+        )
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
+        attribute_id = UUID(d.pop("attribute_id"))
+
+        dataspace_id = UUID(d.pop("dataspace_id"))
+
+        attribute_category = DataspaceEntityType(d.pop("attribute_category"))
+
+        cited_attribute_id = UUID(d.pop("cited_attribute_id"))
+
+        attribute_citation_path_params = cls(
+            attribute_id=attribute_id,
+            dataspace_id=dataspace_id,
+            attribute_category=attribute_category,
+            cited_attribute_id=cited_attribute_id,
+        )
+
+        attribute_citation_path_params.additional_properties = d
+        return attribute_citation_path_params
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties

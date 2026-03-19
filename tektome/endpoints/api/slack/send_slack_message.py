@@ -5,13 +5,13 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.send_msg_post_in import SendMsgPostIn
+from ...models.create_send_msg_request import CreateSendMsgRequest
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: SendMsgPostIn,
+    body: CreateSendMsgRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -50,16 +50,14 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: SendMsgPostIn,
+    body: CreateSendMsgRequest,
 ) -> Response[Any]:
-    """Post Send Slack Msg
+    """Send a Slack notification message
 
-     3F0LPj5a
-
-    Send a message to Slack channel: #tektome_deep_research_user.
+     Send a text message to the configured Slack notification channel.
 
     Args:
-        body (SendMsgPostIn):
+        body (CreateSendMsgRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -83,16 +81,14 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: SendMsgPostIn,
+    body: CreateSendMsgRequest,
 ) -> Response[Any]:
-    """Post Send Slack Msg
+    """Send a Slack notification message
 
-     3F0LPj5a
-
-    Send a message to Slack channel: #tektome_deep_research_user.
+     Send a text message to the configured Slack notification channel.
 
     Args:
-        body (SendMsgPostIn):
+        body (CreateSendMsgRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

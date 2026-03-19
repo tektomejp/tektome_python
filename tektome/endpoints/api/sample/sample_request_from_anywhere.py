@@ -41,10 +41,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Req Obj From Anywhere
+    """Test request context propagation
 
-     lIecGn0x
-    This is a demonstration of how to access the request object from anywhere in the codebase.
+     Sample endpoint that demonstrates accessing the request object from nested function calls. Returns
+    the current request ID.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -67,10 +67,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Req Obj From Anywhere
+    """Test request context propagation
 
-     lIecGn0x
-    This is a demonstration of how to access the request object from anywhere in the codebase.
+     Sample endpoint that demonstrates accessing the request object from nested function calls. Returns
+    the current request ID.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
