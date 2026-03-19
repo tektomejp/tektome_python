@@ -59,9 +59,22 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: UploadPaymentRecordFileFileParams,
 ) -> Response[Any]:
-    """Upload payment record file
+    """Post Payment Record File
 
-     Replace or upload a supporting file for an existing payment record.
+     YSCUc2FL
+
+    POST replace/upload a supporting file for a payment record.
+
+    This is done as a POST endpoint to handle file uploads as Django PATCH/PUT behavior does not work
+    well on unit tests
+    https://django-ninja.dev/guides/input/file-params/#handling-requestfiles-in-putpatch-requests
+
+    Args:
+        request: HttpRequest
+        path_params: Path parameters containing organization_id and payment_record_id
+        file: UploadedFile - The file to be uploaded as proof for the payment record
+
+    Returns: 204 No Content on success
 
     Args:
         organization_id (UUID):
@@ -96,9 +109,22 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: UploadPaymentRecordFileFileParams,
 ) -> Response[Any]:
-    """Upload payment record file
+    """Post Payment Record File
 
-     Replace or upload a supporting file for an existing payment record.
+     YSCUc2FL
+
+    POST replace/upload a supporting file for a payment record.
+
+    This is done as a POST endpoint to handle file uploads as Django PATCH/PUT behavior does not work
+    well on unit tests
+    https://django-ninja.dev/guides/input/file-params/#handling-requestfiles-in-putpatch-requests
+
+    Args:
+        request: HttpRequest
+        path_params: Path parameters containing organization_id and payment_record_id
+        file: UploadedFile - The file to be uploaded as proof for the payment record
+
+    Returns: 204 No Content on success
 
     Args:
         organization_id (UUID):

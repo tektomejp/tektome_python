@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_process_request import CreateProcessRequest
-from ...models.process_response import ProcessResponse
+from ...models.process_out import ProcessOut
+from ...models.process_post_in import ProcessPostIn
 from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
     *,
-    body: CreateProcessRequest,
+    body: ProcessPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -34,9 +34,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ProcessResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ProcessOut | None:
     if response.status_code == 201:
-        response_201 = ProcessResponse.from_dict(response.json())
+        response_201 = ProcessOut.from_dict(response.json())
 
         return response_201
 
@@ -46,7 +46,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ProcessResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ProcessOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,22 +59,24 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateProcessRequest,
-) -> Response[ProcessResponse]:
-    """Create a process in a dataspace
+    body: ProcessPostIn,
+) -> Response[ProcessOut]:
+    """Post Dataspace Processes
 
-     Register a new process from an existing template within a dataspace.
+     gBzesU5a
+
+    Register a process from a template.
 
     Args:
         dataspace_id (UUID):
-        body (CreateProcessRequest):
+        body (ProcessPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProcessResponse]
+        Response[ProcessOut]
     """
 
     kwargs = _get_kwargs(
@@ -93,22 +95,24 @@ def sync(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateProcessRequest,
-) -> ProcessResponse | None:
-    """Create a process in a dataspace
+    body: ProcessPostIn,
+) -> ProcessOut | None:
+    """Post Dataspace Processes
 
-     Register a new process from an existing template within a dataspace.
+     gBzesU5a
+
+    Register a process from a template.
 
     Args:
         dataspace_id (UUID):
-        body (CreateProcessRequest):
+        body (ProcessPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProcessResponse
+        ProcessOut
     """
 
     return sync_detailed(
@@ -122,22 +126,24 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateProcessRequest,
-) -> Response[ProcessResponse]:
-    """Create a process in a dataspace
+    body: ProcessPostIn,
+) -> Response[ProcessOut]:
+    """Post Dataspace Processes
 
-     Register a new process from an existing template within a dataspace.
+     gBzesU5a
+
+    Register a process from a template.
 
     Args:
         dataspace_id (UUID):
-        body (CreateProcessRequest):
+        body (ProcessPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProcessResponse]
+        Response[ProcessOut]
     """
 
     kwargs = _get_kwargs(
@@ -154,22 +160,24 @@ async def asyncio(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateProcessRequest,
-) -> ProcessResponse | None:
-    """Create a process in a dataspace
+    body: ProcessPostIn,
+) -> ProcessOut | None:
+    """Post Dataspace Processes
 
-     Register a new process from an existing template within a dataspace.
+     gBzesU5a
+
+    Register a process from a template.
 
     Args:
         dataspace_id (UUID):
-        body (CreateProcessRequest):
+        body (ProcessPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProcessResponse
+        ProcessOut
     """
 
     return (

@@ -5,15 +5,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.core_project_post_in import CoreProjectPostIn
 from ...models.core_project_schema import CoreProjectSchema
-from ...models.create_core_project_request import CreateCoreProjectRequest
 from ...models.create_core_project_response import CreateCoreProjectResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: CreateCoreProjectRequest,
+    body: CoreProjectPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -63,14 +63,17 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateCoreProjectRequest,
+    body: CoreProjectPostIn,
 ) -> Response[CoreProjectSchema | CreateCoreProjectResponse]:
-    """Create a new project
+    """Post Project
 
-     Create a new project in the authenticated user's current organization.
+     awdssts1
+
+    Create a new core project in user's current organization
+    Create a core project.
 
     Args:
-        body (CreateCoreProjectRequest):
+        body (CoreProjectPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -94,14 +97,17 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: CreateCoreProjectRequest,
+    body: CoreProjectPostIn,
 ) -> CoreProjectSchema | CreateCoreProjectResponse | None:
-    """Create a new project
+    """Post Project
 
-     Create a new project in the authenticated user's current organization.
+     awdssts1
+
+    Create a new core project in user's current organization
+    Create a core project.
 
     Args:
-        body (CreateCoreProjectRequest):
+        body (CoreProjectPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -120,14 +126,17 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateCoreProjectRequest,
+    body: CoreProjectPostIn,
 ) -> Response[CoreProjectSchema | CreateCoreProjectResponse]:
-    """Create a new project
+    """Post Project
 
-     Create a new project in the authenticated user's current organization.
+     awdssts1
+
+    Create a new core project in user's current organization
+    Create a core project.
 
     Args:
-        body (CreateCoreProjectRequest):
+        body (CoreProjectPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -149,14 +158,17 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: CreateCoreProjectRequest,
+    body: CoreProjectPostIn,
 ) -> CoreProjectSchema | CreateCoreProjectResponse | None:
-    """Create a new project
+    """Post Project
 
-     Create a new project in the authenticated user's current organization.
+     awdssts1
+
+    Create a new core project in user's current organization
+    Create a core project.
 
     Args:
-        body (CreateCoreProjectRequest):
+        body (CoreProjectPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

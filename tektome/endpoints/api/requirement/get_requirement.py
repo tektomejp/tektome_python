@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.requirement_response import RequirementResponse
+from ...models.requirement_get_out import RequirementGetOut
 from ...types import Response
 
 
@@ -25,9 +25,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> RequirementResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> RequirementGetOut | None:
     if response.status_code == 200:
-        response_200 = RequirementResponse.from_dict(response.json())
+        response_200 = RequirementGetOut.from_dict(response.json())
 
         return response_200
 
@@ -37,7 +37,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[RequirementResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[RequirementGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -50,10 +50,14 @@ def sync_detailed(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[RequirementResponse]:
-    """Get requirement details
+) -> Response[RequirementGetOut]:
+    """Get Requirement
 
-     Retrieve a requirement by ID, including its sections, captures, and recent chat rooms.
+     iy_IJGrL
+
+    Get requirement by id
+    chatrooms:
+        return latest 10 chatrooms for the requirement
 
     Args:
         requirement_id (UUID):
@@ -63,7 +67,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementResponse]
+        Response[RequirementGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -81,10 +85,14 @@ def sync(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> RequirementResponse | None:
-    """Get requirement details
+) -> RequirementGetOut | None:
+    """Get Requirement
 
-     Retrieve a requirement by ID, including its sections, captures, and recent chat rooms.
+     iy_IJGrL
+
+    Get requirement by id
+    chatrooms:
+        return latest 10 chatrooms for the requirement
 
     Args:
         requirement_id (UUID):
@@ -94,7 +102,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementResponse
+        RequirementGetOut
     """
 
     return sync_detailed(
@@ -107,10 +115,14 @@ async def asyncio_detailed(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[RequirementResponse]:
-    """Get requirement details
+) -> Response[RequirementGetOut]:
+    """Get Requirement
 
-     Retrieve a requirement by ID, including its sections, captures, and recent chat rooms.
+     iy_IJGrL
+
+    Get requirement by id
+    chatrooms:
+        return latest 10 chatrooms for the requirement
 
     Args:
         requirement_id (UUID):
@@ -120,7 +132,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementResponse]
+        Response[RequirementGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -136,10 +148,14 @@ async def asyncio(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> RequirementResponse | None:
-    """Get requirement details
+) -> RequirementGetOut | None:
+    """Get Requirement
 
-     Retrieve a requirement by ID, including its sections, captures, and recent chat rooms.
+     iy_IJGrL
+
+    Get requirement by id
+    chatrooms:
+        return latest 10 chatrooms for the requirement
 
     Args:
         requirement_id (UUID):
@@ -149,7 +165,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementResponse
+        RequirementGetOut
     """
 
     return (

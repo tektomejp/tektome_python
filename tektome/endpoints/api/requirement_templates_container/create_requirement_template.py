@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_requirement_template_request import CreateRequirementTemplateRequest
-from ...models.requirement_template_response import RequirementTemplateResponse
+from ...models.requirement_template_get_out import RequirementTemplateGetOut
+from ...models.requirement_template_post_in import RequirementTemplatePostIn
 from ...types import Response
 
 
 def _get_kwargs(
     requirement_template_container_id: UUID,
     *,
-    body: CreateRequirementTemplateRequest,
+    body: RequirementTemplatePostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -36,9 +36,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RequirementTemplateResponse | None:
+) -> RequirementTemplateGetOut | None:
     if response.status_code == 201:
-        response_201 = RequirementTemplateResponse.from_dict(response.json())
+        response_201 = RequirementTemplateGetOut.from_dict(response.json())
 
         return response_201
 
@@ -50,7 +50,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[RequirementTemplateResponse]:
+) -> Response[RequirementTemplateGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,23 +63,24 @@ def sync_detailed(
     requirement_template_container_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateRequirementTemplateRequest,
-) -> Response[RequirementTemplateResponse]:
-    """Create a requirement template
+    body: RequirementTemplatePostIn,
+) -> Response[RequirementTemplateGetOut]:
+    """Post Requirement Template
 
-     Create a new requirement template inside a requirement template container. The template title must
-    be unique within the organization.
+     B7GNMWv9
+
+    Create a requirement template inside a requirement template container.
 
     Args:
         requirement_template_container_id (UUID):
-        body (CreateRequirementTemplateRequest): Serializer for creating a Requirement Template.
+        body (RequirementTemplatePostIn): Serializer for creating a Requirement Template.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementTemplateResponse]
+        Response[RequirementTemplateGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -98,23 +99,24 @@ def sync(
     requirement_template_container_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateRequirementTemplateRequest,
-) -> RequirementTemplateResponse | None:
-    """Create a requirement template
+    body: RequirementTemplatePostIn,
+) -> RequirementTemplateGetOut | None:
+    """Post Requirement Template
 
-     Create a new requirement template inside a requirement template container. The template title must
-    be unique within the organization.
+     B7GNMWv9
+
+    Create a requirement template inside a requirement template container.
 
     Args:
         requirement_template_container_id (UUID):
-        body (CreateRequirementTemplateRequest): Serializer for creating a Requirement Template.
+        body (RequirementTemplatePostIn): Serializer for creating a Requirement Template.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementTemplateResponse
+        RequirementTemplateGetOut
     """
 
     return sync_detailed(
@@ -128,23 +130,24 @@ async def asyncio_detailed(
     requirement_template_container_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateRequirementTemplateRequest,
-) -> Response[RequirementTemplateResponse]:
-    """Create a requirement template
+    body: RequirementTemplatePostIn,
+) -> Response[RequirementTemplateGetOut]:
+    """Post Requirement Template
 
-     Create a new requirement template inside a requirement template container. The template title must
-    be unique within the organization.
+     B7GNMWv9
+
+    Create a requirement template inside a requirement template container.
 
     Args:
         requirement_template_container_id (UUID):
-        body (CreateRequirementTemplateRequest): Serializer for creating a Requirement Template.
+        body (RequirementTemplatePostIn): Serializer for creating a Requirement Template.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementTemplateResponse]
+        Response[RequirementTemplateGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -161,23 +164,24 @@ async def asyncio(
     requirement_template_container_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateRequirementTemplateRequest,
-) -> RequirementTemplateResponse | None:
-    """Create a requirement template
+    body: RequirementTemplatePostIn,
+) -> RequirementTemplateGetOut | None:
+    """Post Requirement Template
 
-     Create a new requirement template inside a requirement template container. The template title must
-    be unique within the organization.
+     B7GNMWv9
+
+    Create a requirement template inside a requirement template container.
 
     Args:
         requirement_template_container_id (UUID):
-        body (CreateRequirementTemplateRequest): Serializer for creating a Requirement Template.
+        body (RequirementTemplatePostIn): Serializer for creating a Requirement Template.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementTemplateResponse
+        RequirementTemplateGetOut
     """
 
     return (

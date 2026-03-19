@@ -6,14 +6,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.generic_http_error import GenericHttpError
-from ...models.mark_all_read_request import MarkAllReadRequest
-from ...models.mark_all_read_response import MarkAllReadResponse
+from ...models.mark_all_read_in import MarkAllReadIn
+from ...models.mark_all_read_out import MarkAllReadOut
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: MarkAllReadRequest,
+    body: MarkAllReadIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -32,9 +32,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> GenericHttpError | MarkAllReadResponse | None:
+) -> GenericHttpError | MarkAllReadOut | None:
     if response.status_code == 200:
-        response_200 = MarkAllReadResponse.from_dict(response.json())
+        response_200 = MarkAllReadOut.from_dict(response.json())
 
         return response_200
 
@@ -136,7 +136,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[GenericHttpError | MarkAllReadResponse]:
+) -> Response[GenericHttpError | MarkAllReadOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -148,8 +148,8 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: MarkAllReadRequest,
-) -> Response[GenericHttpError | MarkAllReadResponse]:
+    body: MarkAllReadIn,
+) -> Response[GenericHttpError | MarkAllReadOut]:
     """Mark all notifications as read, allow filtering by organization and dataspace
 
      qW9sK4mZ
@@ -159,14 +159,14 @@ def sync_detailed(
     Supports filtering by organization and dataspace.
 
     Args:
-        body (MarkAllReadRequest): Input schema for marking all notifications as read.
+        body (MarkAllReadIn): Input schema for marking all notifications as read.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GenericHttpError | MarkAllReadResponse]
+        Response[GenericHttpError | MarkAllReadOut]
     """
 
     kwargs = _get_kwargs(
@@ -183,8 +183,8 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: MarkAllReadRequest,
-) -> GenericHttpError | MarkAllReadResponse | None:
+    body: MarkAllReadIn,
+) -> GenericHttpError | MarkAllReadOut | None:
     """Mark all notifications as read, allow filtering by organization and dataspace
 
      qW9sK4mZ
@@ -194,14 +194,14 @@ def sync(
     Supports filtering by organization and dataspace.
 
     Args:
-        body (MarkAllReadRequest): Input schema for marking all notifications as read.
+        body (MarkAllReadIn): Input schema for marking all notifications as read.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GenericHttpError | MarkAllReadResponse
+        GenericHttpError | MarkAllReadOut
     """
 
     return sync_detailed(
@@ -213,8 +213,8 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: MarkAllReadRequest,
-) -> Response[GenericHttpError | MarkAllReadResponse]:
+    body: MarkAllReadIn,
+) -> Response[GenericHttpError | MarkAllReadOut]:
     """Mark all notifications as read, allow filtering by organization and dataspace
 
      qW9sK4mZ
@@ -224,14 +224,14 @@ async def asyncio_detailed(
     Supports filtering by organization and dataspace.
 
     Args:
-        body (MarkAllReadRequest): Input schema for marking all notifications as read.
+        body (MarkAllReadIn): Input schema for marking all notifications as read.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GenericHttpError | MarkAllReadResponse]
+        Response[GenericHttpError | MarkAllReadOut]
     """
 
     kwargs = _get_kwargs(
@@ -246,8 +246,8 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: MarkAllReadRequest,
-) -> GenericHttpError | MarkAllReadResponse | None:
+    body: MarkAllReadIn,
+) -> GenericHttpError | MarkAllReadOut | None:
     """Mark all notifications as read, allow filtering by organization and dataspace
 
      qW9sK4mZ
@@ -257,14 +257,14 @@ async def asyncio(
     Supports filtering by organization and dataspace.
 
     Args:
-        body (MarkAllReadRequest): Input schema for marking all notifications as read.
+        body (MarkAllReadIn): Input schema for marking all notifications as read.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GenericHttpError | MarkAllReadResponse
+        GenericHttpError | MarkAllReadOut
     """
 
     return (

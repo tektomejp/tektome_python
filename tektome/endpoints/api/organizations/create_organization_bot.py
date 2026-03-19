@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.error_output_schema_response import ErrorOutputSchemaResponse
-from ...models.organization_bot_user_response import OrganizationBotUserResponse
+from ...models.error_output_schema_out import ErrorOutputSchemaOut
+from ...models.organization_bot_user_out import OrganizationBotUserOut
 from ...types import Response
 
 
@@ -28,19 +28,19 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorOutputSchemaResponse | OrganizationBotUserResponse | None:
+) -> ErrorOutputSchemaOut | OrganizationBotUserOut | None:
     if response.status_code == 201:
-        response_201 = OrganizationBotUserResponse.from_dict(response.json())
+        response_201 = OrganizationBotUserOut.from_dict(response.json())
 
         return response_201
 
     if response.status_code == 400:
-        response_400 = ErrorOutputSchemaResponse.from_dict(response.json())
+        response_400 = ErrorOutputSchemaOut.from_dict(response.json())
 
         return response_400
 
     if response.status_code == 404:
-        response_404 = ErrorOutputSchemaResponse.from_dict(response.json())
+        response_404 = ErrorOutputSchemaOut.from_dict(response.json())
 
         return response_404
 
@@ -52,7 +52,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorOutputSchemaResponse | OrganizationBotUserResponse]:
+) -> Response[ErrorOutputSchemaOut | OrganizationBotUserOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,11 +65,16 @@ def sync_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ErrorOutputSchemaResponse | OrganizationBotUserResponse]:
-    """Create organization bot user
+) -> Response[ErrorOutputSchemaOut | OrganizationBotUserOut]:
+    """Create Organization Bot
 
-     Create a bot user for the organization with administrator privileges. Only one bot user is allowed
-    per organization. Bot users are system accounts for automated tasks.
+     zStwPoBb
+
+    Create a bot user for the organization with Organization Admin role.
+
+    Bot users are system accounts that can perform automated tasks
+    within the organization. Only one bot user is allowed per organization.
+    The bot user will have Organization Admin privileges.
 
     Args:
         organization_id (UUID):
@@ -79,7 +84,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorOutputSchemaResponse | OrganizationBotUserResponse]
+        Response[ErrorOutputSchemaOut | OrganizationBotUserOut]
     """
 
     kwargs = _get_kwargs(
@@ -97,11 +102,16 @@ def sync(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> ErrorOutputSchemaResponse | OrganizationBotUserResponse | None:
-    """Create organization bot user
+) -> ErrorOutputSchemaOut | OrganizationBotUserOut | None:
+    """Create Organization Bot
 
-     Create a bot user for the organization with administrator privileges. Only one bot user is allowed
-    per organization. Bot users are system accounts for automated tasks.
+     zStwPoBb
+
+    Create a bot user for the organization with Organization Admin role.
+
+    Bot users are system accounts that can perform automated tasks
+    within the organization. Only one bot user is allowed per organization.
+    The bot user will have Organization Admin privileges.
 
     Args:
         organization_id (UUID):
@@ -111,7 +121,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorOutputSchemaResponse | OrganizationBotUserResponse
+        ErrorOutputSchemaOut | OrganizationBotUserOut
     """
 
     return sync_detailed(
@@ -124,11 +134,16 @@ async def asyncio_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ErrorOutputSchemaResponse | OrganizationBotUserResponse]:
-    """Create organization bot user
+) -> Response[ErrorOutputSchemaOut | OrganizationBotUserOut]:
+    """Create Organization Bot
 
-     Create a bot user for the organization with administrator privileges. Only one bot user is allowed
-    per organization. Bot users are system accounts for automated tasks.
+     zStwPoBb
+
+    Create a bot user for the organization with Organization Admin role.
+
+    Bot users are system accounts that can perform automated tasks
+    within the organization. Only one bot user is allowed per organization.
+    The bot user will have Organization Admin privileges.
 
     Args:
         organization_id (UUID):
@@ -138,7 +153,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorOutputSchemaResponse | OrganizationBotUserResponse]
+        Response[ErrorOutputSchemaOut | OrganizationBotUserOut]
     """
 
     kwargs = _get_kwargs(
@@ -154,11 +169,16 @@ async def asyncio(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> ErrorOutputSchemaResponse | OrganizationBotUserResponse | None:
-    """Create organization bot user
+) -> ErrorOutputSchemaOut | OrganizationBotUserOut | None:
+    """Create Organization Bot
 
-     Create a bot user for the organization with administrator privileges. Only one bot user is allowed
-    per organization. Bot users are system accounts for automated tasks.
+     zStwPoBb
+
+    Create a bot user for the organization with Organization Admin role.
+
+    Bot users are system accounts that can perform automated tasks
+    within the organization. Only one bot user is allowed per organization.
+    The bot user will have Organization Admin privileges.
 
     Args:
         organization_id (UUID):
@@ -168,7 +188,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorOutputSchemaResponse | OrganizationBotUserResponse
+        ErrorOutputSchemaOut | OrganizationBotUserOut
     """
 
     return (

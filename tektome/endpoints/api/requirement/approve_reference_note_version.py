@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.reference_note_version_response import ReferenceNoteVersionResponse
+from ...models.reference_note_version_get_out import ReferenceNoteVersionGetOut
 from ...types import Response
 
 
@@ -29,9 +29,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ReferenceNoteVersionResponse | None:
+) -> ReferenceNoteVersionGetOut | None:
     if response.status_code == 200:
-        response_200 = ReferenceNoteVersionResponse.from_dict(response.json())
+        response_200 = ReferenceNoteVersionGetOut.from_dict(response.json())
 
         return response_200
 
@@ -43,7 +43,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ReferenceNoteVersionResponse]:
+) -> Response[ReferenceNoteVersionGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,11 +57,16 @@ def sync_detailed(
     version_number: int,
     *,
     client: AuthenticatedClient,
-) -> Response[ReferenceNoteVersionResponse]:
-    """Approve a reference note version
+) -> Response[ReferenceNoteVersionGetOut]:
+    """Patch Reference Note Approval
 
-     Record the authenticated user's approval on a specific version of a reference note. Each user can
-    only approve once per version.
+     JnQkM31L
+
+    Approve a specific version of a reference note associated to a requirement
+
+    Args:
+        request: Request object
+        path_params: path params of type ReferenceNoteVersionPath
 
     Args:
         reference_note_id (UUID):
@@ -72,7 +77,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ReferenceNoteVersionResponse]
+        Response[ReferenceNoteVersionGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -92,11 +97,16 @@ def sync(
     version_number: int,
     *,
     client: AuthenticatedClient,
-) -> ReferenceNoteVersionResponse | None:
-    """Approve a reference note version
+) -> ReferenceNoteVersionGetOut | None:
+    """Patch Reference Note Approval
 
-     Record the authenticated user's approval on a specific version of a reference note. Each user can
-    only approve once per version.
+     JnQkM31L
+
+    Approve a specific version of a reference note associated to a requirement
+
+    Args:
+        request: Request object
+        path_params: path params of type ReferenceNoteVersionPath
 
     Args:
         reference_note_id (UUID):
@@ -107,7 +117,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ReferenceNoteVersionResponse
+        ReferenceNoteVersionGetOut
     """
 
     return sync_detailed(
@@ -122,11 +132,16 @@ async def asyncio_detailed(
     version_number: int,
     *,
     client: AuthenticatedClient,
-) -> Response[ReferenceNoteVersionResponse]:
-    """Approve a reference note version
+) -> Response[ReferenceNoteVersionGetOut]:
+    """Patch Reference Note Approval
 
-     Record the authenticated user's approval on a specific version of a reference note. Each user can
-    only approve once per version.
+     JnQkM31L
+
+    Approve a specific version of a reference note associated to a requirement
+
+    Args:
+        request: Request object
+        path_params: path params of type ReferenceNoteVersionPath
 
     Args:
         reference_note_id (UUID):
@@ -137,7 +152,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ReferenceNoteVersionResponse]
+        Response[ReferenceNoteVersionGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -155,11 +170,16 @@ async def asyncio(
     version_number: int,
     *,
     client: AuthenticatedClient,
-) -> ReferenceNoteVersionResponse | None:
-    """Approve a reference note version
+) -> ReferenceNoteVersionGetOut | None:
+    """Patch Reference Note Approval
 
-     Record the authenticated user's approval on a specific version of a reference note. Each user can
-    only approve once per version.
+     JnQkM31L
+
+    Approve a specific version of a reference note associated to a requirement
+
+    Args:
+        request: Request object
+        path_params: path params of type ReferenceNoteVersionPath
 
     Args:
         reference_note_id (UUID):
@@ -170,7 +190,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ReferenceNoteVersionResponse
+        ReferenceNoteVersionGetOut
     """
 
     return (

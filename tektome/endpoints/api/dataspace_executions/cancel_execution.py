@@ -51,10 +51,20 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Cancel ongoing execution
+    r"""Cancel ongoing execution
 
-     Cancel an in-progress execution by its ID. Also disables any pending approval tickets associated
-    with this execution.
+     a-JrLhA9
+
+    Cancel ongoing execution by execution ID.
+
+    Updates the status of the specified execution to \"cancelled\".
+    Also updates any pending approval tickets associated with this execution to \"disabled\".
+
+    Args:
+        request: The incoming HTTP request.
+        path_params: The path parameters containing the execution_id.
+
+    Returns: 204 No Content on successful cancellation.
 
     Args:
         dataspace_id (UUID):
@@ -86,10 +96,20 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Cancel ongoing execution
+    r"""Cancel ongoing execution
 
-     Cancel an in-progress execution by its ID. Also disables any pending approval tickets associated
-    with this execution.
+     a-JrLhA9
+
+    Cancel ongoing execution by execution ID.
+
+    Updates the status of the specified execution to \"cancelled\".
+    Also updates any pending approval tickets associated with this execution to \"disabled\".
+
+    Args:
+        request: The incoming HTTP request.
+        path_params: The path parameters containing the execution_id.
+
+    Returns: 204 No Content on successful cancellation.
 
     Args:
         dataspace_id (UUID):

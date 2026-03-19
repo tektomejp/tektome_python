@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.blob_upload_request_response import BlobUploadRequestResponse
-from ...models.create_blob_upload_request_request import CreateBlobUploadRequestRequest
+from ...models.blob_upload_request_post_in import BlobUploadRequestPostIn
+from ...models.blob_upload_request_post_out import BlobUploadRequestPostOut
 from ...types import Response
 
 
 def _get_kwargs(
     resource_group_id: UUID,
     *,
-    body: CreateBlobUploadRequestRequest,
+    body: BlobUploadRequestPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -36,9 +36,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BlobUploadRequestResponse | None:
+) -> BlobUploadRequestPostOut | None:
     if response.status_code == 200:
-        response_200 = BlobUploadRequestResponse.from_dict(response.json())
+        response_200 = BlobUploadRequestPostOut.from_dict(response.json())
 
         return response_200
 
@@ -50,7 +50,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BlobUploadRequestResponse]:
+) -> Response[BlobUploadRequestPostOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,25 +63,43 @@ def sync_detailed(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateBlobUploadRequestRequest,
-) -> Response[BlobUploadRequestResponse]:
-    """Request a blob upload URL
+    body: BlobUploadRequestPostIn,
+) -> Response[BlobUploadRequestPostOut]:
+    """Post Blob Upload Request
 
-     Request a write-only upload URL for large files (500MB+). The client uploads directly to storage
-    using the returned URL, then calls the complete endpoint to finalize. The URL expires after 15
-    minutes.
+     U71dMUjv
+
+    Request a blob upload URL for large files.
+
+    This endpoint is designed for uploading large files (500MB-1GB+) that would
+    otherwise timeout or consume excessive server memory. Instead of uploading
+    through the server, the client receives a write-only SAS URL to upload
+    directly to Azure Blob Storage.
+
+    **Flow:**
+    1. Call this endpoint with the file name to get an upload URL
+    2. Upload the file directly to Azure Blob Storage using the returned `upload_url`
+    3. Call POST /groups/{resource_group_id}/upload/complete/ with the `upload_id`
+
+    **Security:**
+    - The SAS URL is write-only (cannot read other blobs)
+    - The SAS URL is path-specific (can only write to the designated blob)
+    - The SAS URL expires after a short time (default 15 minutes)
+
+    **Notes:**
+    - The `upload_id` must be used within the expiration time
+    - The blob path is auto-generated with a UUID to prevent conflicts
 
     Args:
         resource_group_id (UUID): Resource group ID
-        body (CreateBlobUploadRequestRequest): Input schema for requesting a streaming upload SAS
-            URL.
+        body (BlobUploadRequestPostIn): Input schema for requesting a streaming upload SAS URL.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BlobUploadRequestResponse]
+        Response[BlobUploadRequestPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -100,25 +118,43 @@ def sync(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateBlobUploadRequestRequest,
-) -> BlobUploadRequestResponse | None:
-    """Request a blob upload URL
+    body: BlobUploadRequestPostIn,
+) -> BlobUploadRequestPostOut | None:
+    """Post Blob Upload Request
 
-     Request a write-only upload URL for large files (500MB+). The client uploads directly to storage
-    using the returned URL, then calls the complete endpoint to finalize. The URL expires after 15
-    minutes.
+     U71dMUjv
+
+    Request a blob upload URL for large files.
+
+    This endpoint is designed for uploading large files (500MB-1GB+) that would
+    otherwise timeout or consume excessive server memory. Instead of uploading
+    through the server, the client receives a write-only SAS URL to upload
+    directly to Azure Blob Storage.
+
+    **Flow:**
+    1. Call this endpoint with the file name to get an upload URL
+    2. Upload the file directly to Azure Blob Storage using the returned `upload_url`
+    3. Call POST /groups/{resource_group_id}/upload/complete/ with the `upload_id`
+
+    **Security:**
+    - The SAS URL is write-only (cannot read other blobs)
+    - The SAS URL is path-specific (can only write to the designated blob)
+    - The SAS URL expires after a short time (default 15 minutes)
+
+    **Notes:**
+    - The `upload_id` must be used within the expiration time
+    - The blob path is auto-generated with a UUID to prevent conflicts
 
     Args:
         resource_group_id (UUID): Resource group ID
-        body (CreateBlobUploadRequestRequest): Input schema for requesting a streaming upload SAS
-            URL.
+        body (BlobUploadRequestPostIn): Input schema for requesting a streaming upload SAS URL.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BlobUploadRequestResponse
+        BlobUploadRequestPostOut
     """
 
     return sync_detailed(
@@ -132,25 +168,43 @@ async def asyncio_detailed(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateBlobUploadRequestRequest,
-) -> Response[BlobUploadRequestResponse]:
-    """Request a blob upload URL
+    body: BlobUploadRequestPostIn,
+) -> Response[BlobUploadRequestPostOut]:
+    """Post Blob Upload Request
 
-     Request a write-only upload URL for large files (500MB+). The client uploads directly to storage
-    using the returned URL, then calls the complete endpoint to finalize. The URL expires after 15
-    minutes.
+     U71dMUjv
+
+    Request a blob upload URL for large files.
+
+    This endpoint is designed for uploading large files (500MB-1GB+) that would
+    otherwise timeout or consume excessive server memory. Instead of uploading
+    through the server, the client receives a write-only SAS URL to upload
+    directly to Azure Blob Storage.
+
+    **Flow:**
+    1. Call this endpoint with the file name to get an upload URL
+    2. Upload the file directly to Azure Blob Storage using the returned `upload_url`
+    3. Call POST /groups/{resource_group_id}/upload/complete/ with the `upload_id`
+
+    **Security:**
+    - The SAS URL is write-only (cannot read other blobs)
+    - The SAS URL is path-specific (can only write to the designated blob)
+    - The SAS URL expires after a short time (default 15 minutes)
+
+    **Notes:**
+    - The `upload_id` must be used within the expiration time
+    - The blob path is auto-generated with a UUID to prevent conflicts
 
     Args:
         resource_group_id (UUID): Resource group ID
-        body (CreateBlobUploadRequestRequest): Input schema for requesting a streaming upload SAS
-            URL.
+        body (BlobUploadRequestPostIn): Input schema for requesting a streaming upload SAS URL.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BlobUploadRequestResponse]
+        Response[BlobUploadRequestPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -167,25 +221,43 @@ async def asyncio(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateBlobUploadRequestRequest,
-) -> BlobUploadRequestResponse | None:
-    """Request a blob upload URL
+    body: BlobUploadRequestPostIn,
+) -> BlobUploadRequestPostOut | None:
+    """Post Blob Upload Request
 
-     Request a write-only upload URL for large files (500MB+). The client uploads directly to storage
-    using the returned URL, then calls the complete endpoint to finalize. The URL expires after 15
-    minutes.
+     U71dMUjv
+
+    Request a blob upload URL for large files.
+
+    This endpoint is designed for uploading large files (500MB-1GB+) that would
+    otherwise timeout or consume excessive server memory. Instead of uploading
+    through the server, the client receives a write-only SAS URL to upload
+    directly to Azure Blob Storage.
+
+    **Flow:**
+    1. Call this endpoint with the file name to get an upload URL
+    2. Upload the file directly to Azure Blob Storage using the returned `upload_url`
+    3. Call POST /groups/{resource_group_id}/upload/complete/ with the `upload_id`
+
+    **Security:**
+    - The SAS URL is write-only (cannot read other blobs)
+    - The SAS URL is path-specific (can only write to the designated blob)
+    - The SAS URL expires after a short time (default 15 minutes)
+
+    **Notes:**
+    - The `upload_id` must be used within the expiration time
+    - The blob path is auto-generated with a UUID to prevent conflicts
 
     Args:
         resource_group_id (UUID): Resource group ID
-        body (CreateBlobUploadRequestRequest): Input schema for requesting a streaming upload SAS
-            URL.
+        body (BlobUploadRequestPostIn): Input schema for requesting a streaming upload SAS URL.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BlobUploadRequestResponse
+        BlobUploadRequestPostOut
     """
 
     return (

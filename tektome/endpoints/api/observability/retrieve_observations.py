@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.observability_ids_request import ObservabilityIdsRequest
-from ...models.observability_schema_response import ObservabilitySchemaResponse
+from ...models.observability_ids_in import ObservabilityIdsIn
+from ...models.observability_schema_out import ObservabilitySchemaOut
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: ObservabilityIdsRequest,
+    body: ObservabilityIdsIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,12 +31,12 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> list[ObservabilitySchemaResponse] | None:
+) -> list[ObservabilitySchemaOut] | None:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = ObservabilitySchemaResponse.from_dict(response_200_item_data)
+            response_200_item = ObservabilitySchemaOut.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
@@ -50,7 +50,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[list[ObservabilitySchemaResponse]]:
+) -> Response[list[ObservabilitySchemaOut]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -62,21 +62,24 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: ObservabilityIdsRequest,
-) -> Response[list[ObservabilitySchemaResponse]]:
-    """Retrieve observation records
+    body: ObservabilityIdsIn,
+) -> Response[list[ObservabilitySchemaOut]]:
+    """Post Retrieve Observations
 
-     Retrieve observation records for a list of entity IDs.
+     gtU7xd9c
+
+    Get observation information for an entity from given list of observed entity IDs
+    in the request payload.
 
     Args:
-        body (ObservabilityIdsRequest):
+        body (ObservabilityIdsIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list[ObservabilitySchemaResponse]]
+        Response[list[ObservabilitySchemaOut]]
     """
 
     kwargs = _get_kwargs(
@@ -93,21 +96,24 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: ObservabilityIdsRequest,
-) -> list[ObservabilitySchemaResponse] | None:
-    """Retrieve observation records
+    body: ObservabilityIdsIn,
+) -> list[ObservabilitySchemaOut] | None:
+    """Post Retrieve Observations
 
-     Retrieve observation records for a list of entity IDs.
+     gtU7xd9c
+
+    Get observation information for an entity from given list of observed entity IDs
+    in the request payload.
 
     Args:
-        body (ObservabilityIdsRequest):
+        body (ObservabilityIdsIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list[ObservabilitySchemaResponse]
+        list[ObservabilitySchemaOut]
     """
 
     return sync_detailed(
@@ -119,21 +125,24 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: ObservabilityIdsRequest,
-) -> Response[list[ObservabilitySchemaResponse]]:
-    """Retrieve observation records
+    body: ObservabilityIdsIn,
+) -> Response[list[ObservabilitySchemaOut]]:
+    """Post Retrieve Observations
 
-     Retrieve observation records for a list of entity IDs.
+     gtU7xd9c
+
+    Get observation information for an entity from given list of observed entity IDs
+    in the request payload.
 
     Args:
-        body (ObservabilityIdsRequest):
+        body (ObservabilityIdsIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list[ObservabilitySchemaResponse]]
+        Response[list[ObservabilitySchemaOut]]
     """
 
     kwargs = _get_kwargs(
@@ -148,21 +157,24 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: ObservabilityIdsRequest,
-) -> list[ObservabilitySchemaResponse] | None:
-    """Retrieve observation records
+    body: ObservabilityIdsIn,
+) -> list[ObservabilitySchemaOut] | None:
+    """Post Retrieve Observations
 
-     Retrieve observation records for a list of entity IDs.
+     gtU7xd9c
+
+    Get observation information for an entity from given list of observed entity IDs
+    in the request payload.
 
     Args:
-        body (ObservabilityIdsRequest):
+        body (ObservabilityIdsIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list[ObservabilitySchemaResponse]
+        list[ObservabilitySchemaOut]
     """
 
     return (

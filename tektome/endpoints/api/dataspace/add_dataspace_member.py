@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bulk_user_invitation_schema_response import BulkUserInvitationSchemaResponse
-from ...models.invite_user_by_email_schema_request import InviteUserByEmailSchemaRequest
+from ...models.bulk_user_invitation_schema_out import BulkUserInvitationSchemaOut
+from ...models.invite_user_by_email_schema_in import InviteUserByEmailSchemaIn
 from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
     *,
-    body: list[InviteUserByEmailSchemaRequest],
+    body: list[InviteUserByEmailSchemaIn],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -39,9 +39,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BulkUserInvitationSchemaResponse | None:
+) -> BulkUserInvitationSchemaOut | None:
     if response.status_code == 200:
-        response_200 = BulkUserInvitationSchemaResponse.from_dict(response.json())
+        response_200 = BulkUserInvitationSchemaOut.from_dict(response.json())
 
         return response_200
 
@@ -53,7 +53,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BulkUserInvitationSchemaResponse]:
+) -> Response[BulkUserInvitationSchemaOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -66,23 +66,24 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[InviteUserByEmailSchemaRequest],
-) -> Response[BulkUserInvitationSchemaResponse]:
-    """Add members to a dataspace
+    body: list[InviteUserByEmailSchemaIn],
+) -> Response[BulkUserInvitationSchemaOut]:
+    """Add Dataspace Member
 
-     Invite one or more users to join a dataspace with specified roles. Email notifications are sent to
-    invited users.
+     MnAo2Kmx
+
+    Add a member to a dataspace
 
     Args:
         dataspace_id (UUID):
-        body (list[InviteUserByEmailSchemaRequest]):
+        body (list[InviteUserByEmailSchemaIn]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BulkUserInvitationSchemaResponse]
+        Response[BulkUserInvitationSchemaOut]
     """
 
     kwargs = _get_kwargs(
@@ -101,23 +102,24 @@ def sync(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[InviteUserByEmailSchemaRequest],
-) -> BulkUserInvitationSchemaResponse | None:
-    """Add members to a dataspace
+    body: list[InviteUserByEmailSchemaIn],
+) -> BulkUserInvitationSchemaOut | None:
+    """Add Dataspace Member
 
-     Invite one or more users to join a dataspace with specified roles. Email notifications are sent to
-    invited users.
+     MnAo2Kmx
+
+    Add a member to a dataspace
 
     Args:
         dataspace_id (UUID):
-        body (list[InviteUserByEmailSchemaRequest]):
+        body (list[InviteUserByEmailSchemaIn]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BulkUserInvitationSchemaResponse
+        BulkUserInvitationSchemaOut
     """
 
     return sync_detailed(
@@ -131,23 +133,24 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[InviteUserByEmailSchemaRequest],
-) -> Response[BulkUserInvitationSchemaResponse]:
-    """Add members to a dataspace
+    body: list[InviteUserByEmailSchemaIn],
+) -> Response[BulkUserInvitationSchemaOut]:
+    """Add Dataspace Member
 
-     Invite one or more users to join a dataspace with specified roles. Email notifications are sent to
-    invited users.
+     MnAo2Kmx
+
+    Add a member to a dataspace
 
     Args:
         dataspace_id (UUID):
-        body (list[InviteUserByEmailSchemaRequest]):
+        body (list[InviteUserByEmailSchemaIn]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BulkUserInvitationSchemaResponse]
+        Response[BulkUserInvitationSchemaOut]
     """
 
     kwargs = _get_kwargs(
@@ -164,23 +167,24 @@ async def asyncio(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[InviteUserByEmailSchemaRequest],
-) -> BulkUserInvitationSchemaResponse | None:
-    """Add members to a dataspace
+    body: list[InviteUserByEmailSchemaIn],
+) -> BulkUserInvitationSchemaOut | None:
+    """Add Dataspace Member
 
-     Invite one or more users to join a dataspace with specified roles. Email notifications are sent to
-    invited users.
+     MnAo2Kmx
+
+    Add a member to a dataspace
 
     Args:
         dataspace_id (UUID):
-        body (list[InviteUserByEmailSchemaRequest]):
+        body (list[InviteUserByEmailSchemaIn]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BulkUserInvitationSchemaResponse
+        BulkUserInvitationSchemaOut
     """
 
     return (

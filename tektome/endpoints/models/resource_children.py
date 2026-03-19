@@ -32,7 +32,6 @@ class ResourceChildren:
         created_by (UserMetadata):
         updated_by (UserMetadata):
         id (None | Unset | UUID):
-        viewer_file (None | str | Unset):
         is_public (bool | Unset):  Default: False.
         initialization_status (None | str | Unset):
         bim_project_id (None | Unset | UUID):
@@ -46,7 +45,6 @@ class ResourceChildren:
     created_by: UserMetadata
     updated_by: UserMetadata
     id: None | Unset | UUID = UNSET
-    viewer_file: None | str | Unset = UNSET
     is_public: bool | Unset = False
     initialization_status: None | str | Unset = UNSET
     bim_project_id: None | Unset | UUID = UNSET
@@ -74,12 +72,6 @@ class ResourceChildren:
             id = str(self.id)
         else:
             id = self.id
-
-        viewer_file: None | str | Unset
-        if isinstance(self.viewer_file, Unset):
-            viewer_file = UNSET
-        else:
-            viewer_file = self.viewer_file
 
         is_public = self.is_public
 
@@ -112,8 +104,6 @@ class ResourceChildren:
         )
         if id is not UNSET:
             field_dict["id"] = id
-        if viewer_file is not UNSET:
-            field_dict["viewer_file"] = viewer_file
         if is_public is not UNSET:
             field_dict["is_public"] = is_public
         if initialization_status is not UNSET:
@@ -161,15 +151,6 @@ class ResourceChildren:
 
         id = _parse_id(d.pop("id", UNSET))
 
-        def _parse_viewer_file(data: object) -> None | str | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | str | Unset, data)
-
-        viewer_file = _parse_viewer_file(d.pop("viewer_file", UNSET))
-
         is_public = d.pop("is_public", UNSET)
 
         def _parse_initialization_status(data: object) -> None | str | Unset:
@@ -207,7 +188,6 @@ class ResourceChildren:
             created_by=created_by,
             updated_by=updated_by,
             id=id,
-            viewer_file=viewer_file,
             is_public=is_public,
             initialization_status=initialization_status,
             bim_project_id=bim_project_id,

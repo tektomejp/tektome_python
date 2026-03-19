@@ -149,9 +149,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[EnvironmentVariableResponse | GenericHttpError]:
-    """Get an environment variable
+    """Get Environment Variable
 
-     Retrieve a specific environment variable by its ID.
+     xQFaxgeo
+
+    Retrieve an environment variable by its ID.
 
     Args:
         organization_id (UUID):
@@ -183,9 +185,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> EnvironmentVariableResponse | GenericHttpError | None:
-    """Get an environment variable
+    """Get Environment Variable
 
-     Retrieve a specific environment variable by its ID.
+     xQFaxgeo
+
+    Retrieve an environment variable by its ID.
 
     Args:
         organization_id (UUID):
@@ -212,9 +216,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[EnvironmentVariableResponse | GenericHttpError]:
-    """Get an environment variable
+    """Get Environment Variable
 
-     Retrieve a specific environment variable by its ID.
+     xQFaxgeo
+
+    Retrieve an environment variable by its ID.
 
     Args:
         organization_id (UUID):
@@ -244,9 +250,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> EnvironmentVariableResponse | GenericHttpError | None:
-    """Get an environment variable
+    """Get Environment Variable
 
-     Retrieve a specific environment variable by its ID.
+     xQFaxgeo
+
+    Retrieve an environment variable by its ID.
 
     Args:
         organization_id (UUID):

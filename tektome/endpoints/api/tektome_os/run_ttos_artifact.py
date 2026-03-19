@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_run_artifact_request import CreateRunArtifactRequest
-from ...models.run_artifact_response import RunArtifactResponse
+from ...models.run_artifact_post_in import RunArtifactPostIn
+from ...models.run_artifact_post_out import RunArtifactPostOut
 from ...types import Response
 
 
 def _get_kwargs(
     artifact_id: UUID,
     *,
-    body: CreateRunArtifactRequest,
+    body: RunArtifactPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -34,9 +34,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> RunArtifactResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> RunArtifactPostOut | None:
     if response.status_code == 201:
-        response_201 = RunArtifactResponse.from_dict(response.json())
+        response_201 = RunArtifactPostOut.from_dict(response.json())
 
         return response_201
 
@@ -46,7 +46,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[RunArtifactResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[RunArtifactPostOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,23 +59,33 @@ def sync_detailed(
     artifact_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateRunArtifactRequest,
-) -> Response[RunArtifactResponse]:
-    """Run an artifact
+    body: RunArtifactPostIn,
+) -> Response[RunArtifactPostOut]:
+    """Post Run Artifact
 
-     Execute an artifact and save the result as a new or existing artifact. Only .openflow.json artifacts
-    are supported. Either result_artifact_id or result_artifact_path must be provided.
+     h0Yl75SU
+    Run an artifact by its ID.
+    Only .openflow artifacts are supported. .py artifacts are not supported yet.
+    The result is saved as another artifact. If `result_artifact_id` is provided, the result will be
+    saved to that artifact. Otherwise, a new artifact will be created.
+    - If `result_artifact_id` is provided, it must belong to the same chatroom as the artifact being
+    run.
+    - If `result_artifact_id` is provided, result_artifact_name and result_artifact_extension must not
+    be provided.
+    - If `result_artifact_id` is not provided, a new artifact will be created with the provided
+    `result_artifact_name` and `result_artifact_extension`.
+    - If `result_artifact_id` is provided, its status must be one of `completed` or `failed`.
 
     Args:
         artifact_id (UUID):
-        body (CreateRunArtifactRequest):
+        body (RunArtifactPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RunArtifactResponse]
+        Response[RunArtifactPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -94,23 +104,33 @@ def sync(
     artifact_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateRunArtifactRequest,
-) -> RunArtifactResponse | None:
-    """Run an artifact
+    body: RunArtifactPostIn,
+) -> RunArtifactPostOut | None:
+    """Post Run Artifact
 
-     Execute an artifact and save the result as a new or existing artifact. Only .openflow.json artifacts
-    are supported. Either result_artifact_id or result_artifact_path must be provided.
+     h0Yl75SU
+    Run an artifact by its ID.
+    Only .openflow artifacts are supported. .py artifacts are not supported yet.
+    The result is saved as another artifact. If `result_artifact_id` is provided, the result will be
+    saved to that artifact. Otherwise, a new artifact will be created.
+    - If `result_artifact_id` is provided, it must belong to the same chatroom as the artifact being
+    run.
+    - If `result_artifact_id` is provided, result_artifact_name and result_artifact_extension must not
+    be provided.
+    - If `result_artifact_id` is not provided, a new artifact will be created with the provided
+    `result_artifact_name` and `result_artifact_extension`.
+    - If `result_artifact_id` is provided, its status must be one of `completed` or `failed`.
 
     Args:
         artifact_id (UUID):
-        body (CreateRunArtifactRequest):
+        body (RunArtifactPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RunArtifactResponse
+        RunArtifactPostOut
     """
 
     return sync_detailed(
@@ -124,23 +144,33 @@ async def asyncio_detailed(
     artifact_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateRunArtifactRequest,
-) -> Response[RunArtifactResponse]:
-    """Run an artifact
+    body: RunArtifactPostIn,
+) -> Response[RunArtifactPostOut]:
+    """Post Run Artifact
 
-     Execute an artifact and save the result as a new or existing artifact. Only .openflow.json artifacts
-    are supported. Either result_artifact_id or result_artifact_path must be provided.
+     h0Yl75SU
+    Run an artifact by its ID.
+    Only .openflow artifacts are supported. .py artifacts are not supported yet.
+    The result is saved as another artifact. If `result_artifact_id` is provided, the result will be
+    saved to that artifact. Otherwise, a new artifact will be created.
+    - If `result_artifact_id` is provided, it must belong to the same chatroom as the artifact being
+    run.
+    - If `result_artifact_id` is provided, result_artifact_name and result_artifact_extension must not
+    be provided.
+    - If `result_artifact_id` is not provided, a new artifact will be created with the provided
+    `result_artifact_name` and `result_artifact_extension`.
+    - If `result_artifact_id` is provided, its status must be one of `completed` or `failed`.
 
     Args:
         artifact_id (UUID):
-        body (CreateRunArtifactRequest):
+        body (RunArtifactPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RunArtifactResponse]
+        Response[RunArtifactPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -157,23 +187,33 @@ async def asyncio(
     artifact_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateRunArtifactRequest,
-) -> RunArtifactResponse | None:
-    """Run an artifact
+    body: RunArtifactPostIn,
+) -> RunArtifactPostOut | None:
+    """Post Run Artifact
 
-     Execute an artifact and save the result as a new or existing artifact. Only .openflow.json artifacts
-    are supported. Either result_artifact_id or result_artifact_path must be provided.
+     h0Yl75SU
+    Run an artifact by its ID.
+    Only .openflow artifacts are supported. .py artifacts are not supported yet.
+    The result is saved as another artifact. If `result_artifact_id` is provided, the result will be
+    saved to that artifact. Otherwise, a new artifact will be created.
+    - If `result_artifact_id` is provided, it must belong to the same chatroom as the artifact being
+    run.
+    - If `result_artifact_id` is provided, result_artifact_name and result_artifact_extension must not
+    be provided.
+    - If `result_artifact_id` is not provided, a new artifact will be created with the provided
+    `result_artifact_name` and `result_artifact_extension`.
+    - If `result_artifact_id` is provided, its status must be one of `completed` or `failed`.
 
     Args:
         artifact_id (UUID):
-        body (CreateRunArtifactRequest):
+        body (RunArtifactPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RunArtifactResponse
+        RunArtifactPostOut
     """
 
     return (

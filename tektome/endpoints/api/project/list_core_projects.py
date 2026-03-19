@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.generic_paginated_output import GenericPaginatedOutput
+from ...models.paged_core_project_schema import PagedCoreProjectSchema
 from ...types import UNSET, Response, Unset
 
 
@@ -37,9 +37,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> GenericPaginatedOutput | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> PagedCoreProjectSchema | None:
     if response.status_code == 200:
-        response_200 = GenericPaginatedOutput.from_dict(response.json())
+        response_200 = PagedCoreProjectSchema.from_dict(response.json())
 
         return response_200
 
@@ -51,7 +51,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[GenericPaginatedOutput]:
+) -> Response[PagedCoreProjectSchema]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,10 +65,12 @@ def sync_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[GenericPaginatedOutput]:
-    """List all projects
+) -> Response[PagedCoreProjectSchema]:
+    """Get Projects
 
-     Retrieve all projects belonging to the authenticated user's current organization.
+     gtU7xd9p
+
+    Get all core projects belonging to user's current organization.
 
     Args:
         page (int | Unset):  Default: 1.
@@ -79,7 +81,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GenericPaginatedOutput]
+        Response[PagedCoreProjectSchema]
     """
 
     kwargs = _get_kwargs(
@@ -99,10 +101,12 @@ def sync(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> GenericPaginatedOutput | None:
-    """List all projects
+) -> PagedCoreProjectSchema | None:
+    """Get Projects
 
-     Retrieve all projects belonging to the authenticated user's current organization.
+     gtU7xd9p
+
+    Get all core projects belonging to user's current organization.
 
     Args:
         page (int | Unset):  Default: 1.
@@ -113,7 +117,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GenericPaginatedOutput
+        PagedCoreProjectSchema
     """
 
     return sync_detailed(
@@ -128,10 +132,12 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[GenericPaginatedOutput]:
-    """List all projects
+) -> Response[PagedCoreProjectSchema]:
+    """Get Projects
 
-     Retrieve all projects belonging to the authenticated user's current organization.
+     gtU7xd9p
+
+    Get all core projects belonging to user's current organization.
 
     Args:
         page (int | Unset):  Default: 1.
@@ -142,7 +148,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GenericPaginatedOutput]
+        Response[PagedCoreProjectSchema]
     """
 
     kwargs = _get_kwargs(
@@ -160,10 +166,12 @@ async def asyncio(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> GenericPaginatedOutput | None:
-    """List all projects
+) -> PagedCoreProjectSchema | None:
+    """Get Projects
 
-     Retrieve all projects belonging to the authenticated user's current organization.
+     gtU7xd9p
+
+    Get all core projects belonging to user's current organization.
 
     Args:
         page (int | Unset):  Default: 1.
@@ -174,7 +182,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GenericPaginatedOutput
+        PagedCoreProjectSchema
     """
 
     return (

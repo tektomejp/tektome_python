@@ -5,13 +5,13 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.replace_entity_tracker_request import ReplaceEntityTrackerRequest
+from ...models.entity_tracker_put_in import EntityTrackerPutIn
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: ReplaceEntityTrackerRequest,
+    body: EntityTrackerPutIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -50,15 +50,16 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: ReplaceEntityTrackerRequest,
+    body: EntityTrackerPutIn,
 ) -> Response[Any]:
-    """Upsert entity view tracking
+    """Put Entity Tracker
 
-     Create or update view tracking records for entities. Records when the authenticated user last viewed
-    each entity.
+     1AbIfjMA
+
+    Create or mark entities as viewed by the user.
 
     Args:
-        body (ReplaceEntityTrackerRequest):
+        body (EntityTrackerPutIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -82,15 +83,16 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: ReplaceEntityTrackerRequest,
+    body: EntityTrackerPutIn,
 ) -> Response[Any]:
-    """Upsert entity view tracking
+    """Put Entity Tracker
 
-     Create or update view tracking records for entities. Records when the authenticated user last viewed
-    each entity.
+     1AbIfjMA
+
+    Create or mark entities as viewed by the user.
 
     Args:
-        body (ReplaceEntityTrackerRequest):
+        body (EntityTrackerPutIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

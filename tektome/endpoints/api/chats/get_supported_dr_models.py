@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.get_supported_dr_models_response import GetSupportedDRModelsResponse
+from ...models.get_supported_dr_models_get_out import GetSupportedDRModelsGetOut
 from ...types import Response
 
 
@@ -21,9 +21,9 @@ def _get_kwargs() -> dict[str, Any]:
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> GetSupportedDRModelsResponse | None:
+) -> GetSupportedDRModelsGetOut | None:
     if response.status_code == 200:
-        response_200 = GetSupportedDRModelsResponse.from_dict(response.json())
+        response_200 = GetSupportedDRModelsGetOut.from_dict(response.json())
 
         return response_200
 
@@ -35,7 +35,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[GetSupportedDRModelsResponse]:
+) -> Response[GetSupportedDRModelsGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -47,18 +47,18 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[GetSupportedDRModelsResponse]:
-    """List deep research models
+) -> Response[GetSupportedDRModelsGetOut]:
+    """Get Supported Dr Models
 
-     Retrieve the list of supported AI models for deep research, including whether each model supports
-    web search.
+     saKXEkQn
+    Get the supported deep research models.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GetSupportedDRModelsResponse]
+        Response[GetSupportedDRModelsGetOut]
     """
 
     kwargs = _get_kwargs()
@@ -73,18 +73,18 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-) -> GetSupportedDRModelsResponse | None:
-    """List deep research models
+) -> GetSupportedDRModelsGetOut | None:
+    """Get Supported Dr Models
 
-     Retrieve the list of supported AI models for deep research, including whether each model supports
-    web search.
+     saKXEkQn
+    Get the supported deep research models.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GetSupportedDRModelsResponse
+        GetSupportedDRModelsGetOut
     """
 
     return sync_detailed(
@@ -95,18 +95,18 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[GetSupportedDRModelsResponse]:
-    """List deep research models
+) -> Response[GetSupportedDRModelsGetOut]:
+    """Get Supported Dr Models
 
-     Retrieve the list of supported AI models for deep research, including whether each model supports
-    web search.
+     saKXEkQn
+    Get the supported deep research models.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GetSupportedDRModelsResponse]
+        Response[GetSupportedDRModelsGetOut]
     """
 
     kwargs = _get_kwargs()
@@ -119,18 +119,18 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-) -> GetSupportedDRModelsResponse | None:
-    """List deep research models
+) -> GetSupportedDRModelsGetOut | None:
+    """Get Supported Dr Models
 
-     Retrieve the list of supported AI models for deep research, including whether each model supports
-    web search.
+     saKXEkQn
+    Get the supported deep research models.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GetSupportedDRModelsResponse
+        GetSupportedDRModelsGetOut
     """
 
     return (

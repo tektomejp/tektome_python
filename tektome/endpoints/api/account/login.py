@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_login_v2_request import CreateLoginV2Request
-from ...models.login_response import LoginResponse
+from ...models.login_post_out import LoginPostOut
+from ...models.login_v2_post_in import LoginV2PostIn
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: CreateLoginV2Request,
+    body: LoginV2PostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -29,9 +29,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> LoginResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> LoginPostOut | None:
     if response.status_code == 200:
-        response_200 = LoginResponse.from_dict(response.json())
+        response_200 = LoginPostOut.from_dict(response.json())
 
         return response_200
 
@@ -41,7 +41,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[LoginResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[LoginPostOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,22 +53,21 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateLoginV2Request,
-) -> Response[LoginResponse]:
-    """Login with OAuth provider
+    body: LoginV2PostIn,
+) -> Response[LoginPostOut]:
+    """Post Login V2
 
-     Authenticate using an OAuth provider access token (Google or Microsoft). Creates a session and
-    returns access and refresh tokens. The user must have been invited to at least one organization.
+     Log in using an access token; creates a session and user if not present.
 
     Args:
-        body (CreateLoginV2Request):
+        body (LoginV2PostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[LoginResponse]
+        Response[LoginPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -85,22 +84,21 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: CreateLoginV2Request,
-) -> LoginResponse | None:
-    """Login with OAuth provider
+    body: LoginV2PostIn,
+) -> LoginPostOut | None:
+    """Post Login V2
 
-     Authenticate using an OAuth provider access token (Google or Microsoft). Creates a session and
-    returns access and refresh tokens. The user must have been invited to at least one organization.
+     Log in using an access token; creates a session and user if not present.
 
     Args:
-        body (CreateLoginV2Request):
+        body (LoginV2PostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        LoginResponse
+        LoginPostOut
     """
 
     return sync_detailed(
@@ -112,22 +110,21 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateLoginV2Request,
-) -> Response[LoginResponse]:
-    """Login with OAuth provider
+    body: LoginV2PostIn,
+) -> Response[LoginPostOut]:
+    """Post Login V2
 
-     Authenticate using an OAuth provider access token (Google or Microsoft). Creates a session and
-    returns access and refresh tokens. The user must have been invited to at least one organization.
+     Log in using an access token; creates a session and user if not present.
 
     Args:
-        body (CreateLoginV2Request):
+        body (LoginV2PostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[LoginResponse]
+        Response[LoginPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -142,22 +139,21 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: CreateLoginV2Request,
-) -> LoginResponse | None:
-    """Login with OAuth provider
+    body: LoginV2PostIn,
+) -> LoginPostOut | None:
+    """Post Login V2
 
-     Authenticate using an OAuth provider access token (Google or Microsoft). Creates a session and
-    returns access and refresh tokens. The user must have been invited to at least one organization.
+     Log in using an access token; creates a session and user if not present.
 
     Args:
-        body (CreateLoginV2Request):
+        body (LoginV2PostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        LoginResponse
+        LoginPostOut
     """
 
     return (

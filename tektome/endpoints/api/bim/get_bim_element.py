@@ -58,9 +58,15 @@ def sync_detailed(
     client: AuthenticatedClient,
     id: str,
 ) -> Response[Any]:
-    """Get a single BIM element
+    """Get Bim Element
 
-     Retrieve a BIM element (object or view) by its ID and type.
+     d4769d26
+
+    Get a BIM element. Could be BIM object or view.
+
+    Arguments:
+        - bim_type: Type of BIM element (object or view)
+        - id: The ID of the BIM element to retrieve
 
     Args:
         bim_type (GetBimElementBimElementTypePath): Enum for BIM object types.
@@ -92,9 +98,15 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     id: str,
 ) -> Response[Any]:
-    """Get a single BIM element
+    """Get Bim Element
 
-     Retrieve a BIM element (object or view) by its ID and type.
+     d4769d26
+
+    Get a BIM element. Could be BIM object or view.
+
+    Arguments:
+        - bim_type: Type of BIM element (object or view)
+        - id: The ID of the BIM element to retrieve
 
     Args:
         bim_type (GetBimElementBimElementTypePath): Enum for BIM object types.

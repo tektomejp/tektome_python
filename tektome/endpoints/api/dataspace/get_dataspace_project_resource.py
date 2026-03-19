@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.dataspace_project_resources_response import DataspaceProjectResourcesResponse
+from ...models.dataspace_project_resources_get_out import DataspaceProjectResourcesGetOut
 from ...types import Response
 
 
@@ -27,9 +27,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> DataspaceProjectResourcesResponse | None:
+) -> DataspaceProjectResourcesGetOut | None:
     if response.status_code == 200:
-        response_200 = DataspaceProjectResourcesResponse.from_dict(response.json())
+        response_200 = DataspaceProjectResourcesGetOut.from_dict(response.json())
 
         return response_200
 
@@ -41,7 +41,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[DataspaceProjectResourcesResponse]:
+) -> Response[DataspaceProjectResourcesGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,11 +54,12 @@ def sync_detailed(
     resource_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[DataspaceProjectResourcesResponse]:
-    """Get a dataspace project resource by ID
+) -> Response[DataspaceProjectResourcesGetOut]:
+    """Retrieve Dataspace Projects Resource
 
-     Retrieve detailed information about a specific resource within a dataspace project, including its
-    attributes.
+     5TZZsLaB
+
+    Get resource by ID for a specific project in the current dataspace.
 
     Args:
         resource_id (UUID):
@@ -68,7 +69,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DataspaceProjectResourcesResponse]
+        Response[DataspaceProjectResourcesGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -86,11 +87,12 @@ def sync(
     resource_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> DataspaceProjectResourcesResponse | None:
-    """Get a dataspace project resource by ID
+) -> DataspaceProjectResourcesGetOut | None:
+    """Retrieve Dataspace Projects Resource
 
-     Retrieve detailed information about a specific resource within a dataspace project, including its
-    attributes.
+     5TZZsLaB
+
+    Get resource by ID for a specific project in the current dataspace.
 
     Args:
         resource_id (UUID):
@@ -100,7 +102,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DataspaceProjectResourcesResponse
+        DataspaceProjectResourcesGetOut
     """
 
     return sync_detailed(
@@ -113,11 +115,12 @@ async def asyncio_detailed(
     resource_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[DataspaceProjectResourcesResponse]:
-    """Get a dataspace project resource by ID
+) -> Response[DataspaceProjectResourcesGetOut]:
+    """Retrieve Dataspace Projects Resource
 
-     Retrieve detailed information about a specific resource within a dataspace project, including its
-    attributes.
+     5TZZsLaB
+
+    Get resource by ID for a specific project in the current dataspace.
 
     Args:
         resource_id (UUID):
@@ -127,7 +130,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DataspaceProjectResourcesResponse]
+        Response[DataspaceProjectResourcesGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -143,11 +146,12 @@ async def asyncio(
     resource_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> DataspaceProjectResourcesResponse | None:
-    """Get a dataspace project resource by ID
+) -> DataspaceProjectResourcesGetOut | None:
+    """Retrieve Dataspace Projects Resource
 
-     Retrieve detailed information about a specific resource within a dataspace project, including its
-    attributes.
+     5TZZsLaB
+
+    Get resource by ID for a specific project in the current dataspace.
 
     Args:
         resource_id (UUID):
@@ -157,7 +161,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DataspaceProjectResourcesResponse
+        DataspaceProjectResourcesGetOut
     """
 
     return (

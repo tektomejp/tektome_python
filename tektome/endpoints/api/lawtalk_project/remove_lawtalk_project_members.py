@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.users_schema_request import UsersSchemaRequest
+from ...models.users_schema_in import UsersSchemaIn
 from ...types import Response
 
 
 def _get_kwargs(
     project_id: UUID,
     *,
-    body: UsersSchemaRequest,
+    body: UsersSchemaIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,15 +56,25 @@ def sync_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UsersSchemaRequest,
+    body: UsersSchemaIn,
 ) -> Response[Any]:
-    """Remove members from a project
+    """Remove Project Members
 
-     Remove one or more members from a project. Removes their role assignments from the project.
+     Xh2JkL9m
+
+    Remove multiple members from a project. If member has no account login yet and member has no other
+    invitations, then delete the user member.
+
+    Args:
+        request: Request object.
+        path_params: Path params of type ProjectDefaultPath
+        payload: payload of type ProjectBulkRemoveMembersIn
+
+    Returns: 204, None
 
     Args:
         project_id (UUID):
-        body (UsersSchemaRequest): Schema for getting user IDs
+        body (UsersSchemaIn): Schema for getting user IDs
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -90,15 +100,25 @@ async def asyncio_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UsersSchemaRequest,
+    body: UsersSchemaIn,
 ) -> Response[Any]:
-    """Remove members from a project
+    """Remove Project Members
 
-     Remove one or more members from a project. Removes their role assignments from the project.
+     Xh2JkL9m
+
+    Remove multiple members from a project. If member has no account login yet and member has no other
+    invitations, then delete the user member.
+
+    Args:
+        request: Request object.
+        path_params: Path params of type ProjectDefaultPath
+        payload: payload of type ProjectBulkRemoveMembersIn
+
+    Returns: 204, None
 
     Args:
         project_id (UUID):
-        body (UsersSchemaRequest): Schema for getting user IDs
+        body (UsersSchemaIn): Schema for getting user IDs
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
