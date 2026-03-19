@@ -7,7 +7,6 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.paginated_response_requirement_template_get_out import PaginatedResponseRequirementTemplateGetOut
 from ...types import UNSET, Response, Unset
 
 
@@ -55,23 +54,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> PaginatedResponseRequirementTemplateGetOut | None:
-    if response.status_code == 200:
-        response_200 = PaginatedResponseRequirementTemplateGetOut.from_dict(response.json())
-
-        return response_200
-
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[PaginatedResponseRequirementTemplateGetOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -87,7 +77,7 @@ def sync_detailed(
     view_mode: None | str | Unset = UNSET,
     page: int | None | Unset = 1,
     page_size: int | None | Unset = 30,
-) -> Response[PaginatedResponseRequirementTemplateGetOut]:
+) -> Response[Any]:
     """List requirement templates in a container
 
      Retrieve a paginated list of all requirement templates inside a container. Each template is
@@ -104,7 +94,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PaginatedResponseRequirementTemplateGetOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -121,42 +111,6 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    requirement_template_container_id: UUID,
-    *,
-    client: AuthenticatedClient,
-    view_mode: None | str | Unset = UNSET,
-    page: int | None | Unset = 1,
-    page_size: int | None | Unset = 30,
-) -> PaginatedResponseRequirementTemplateGetOut | None:
-    """List requirement templates in a container
-
-     Retrieve a paginated list of all requirement templates inside a container. Each template is
-    annotated with whether it has been updated since the user last viewed it.
-
-    Args:
-        requirement_template_container_id (UUID):
-        view_mode (None | str | Unset):
-        page (int | None | Unset):  Default: 1.
-        page_size (int | None | Unset):  Default: 30.
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        PaginatedResponseRequirementTemplateGetOut
-    """
-
-    return sync_detailed(
-        requirement_template_container_id=requirement_template_container_id,
-        client=client,
-        view_mode=view_mode,
-        page=page,
-        page_size=page_size,
-    ).parsed
-
-
 async def asyncio_detailed(
     requirement_template_container_id: UUID,
     *,
@@ -164,7 +118,7 @@ async def asyncio_detailed(
     view_mode: None | str | Unset = UNSET,
     page: int | None | Unset = 1,
     page_size: int | None | Unset = 30,
-) -> Response[PaginatedResponseRequirementTemplateGetOut]:
+) -> Response[Any]:
     """List requirement templates in a container
 
      Retrieve a paginated list of all requirement templates inside a container. Each template is
@@ -181,7 +135,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PaginatedResponseRequirementTemplateGetOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -194,41 +148,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    requirement_template_container_id: UUID,
-    *,
-    client: AuthenticatedClient,
-    view_mode: None | str | Unset = UNSET,
-    page: int | None | Unset = 1,
-    page_size: int | None | Unset = 30,
-) -> PaginatedResponseRequirementTemplateGetOut | None:
-    """List requirement templates in a container
-
-     Retrieve a paginated list of all requirement templates inside a container. Each template is
-    annotated with whether it has been updated since the user last viewed it.
-
-    Args:
-        requirement_template_container_id (UUID):
-        view_mode (None | str | Unset):
-        page (int | None | Unset):  Default: 1.
-        page_size (int | None | Unset):  Default: 30.
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        PaginatedResponseRequirementTemplateGetOut
-    """
-
-    return (
-        await asyncio_detailed(
-            requirement_template_container_id=requirement_template_container_id,
-            client=client,
-            view_mode=view_mode,
-            page=page,
-            page_size=page_size,
-        )
-    ).parsed

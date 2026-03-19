@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.simulate_long_call_post_out import SimulateLongCallPostOut
+from ...models.simulate_long_call_response import SimulateLongCallResponse
 from ...types import UNSET, Response, Unset
 
 
@@ -31,9 +31,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> SimulateLongCallPostOut | None:
+) -> SimulateLongCallResponse | None:
     if response.status_code == 200:
-        response_200 = SimulateLongCallPostOut.from_dict(response.json())
+        response_200 = SimulateLongCallResponse.from_dict(response.json())
 
         return response_200
 
@@ -45,7 +45,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[SimulateLongCallPostOut]:
+) -> Response[SimulateLongCallResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -58,7 +58,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     delay: float | Unset = 1.0,
-) -> Response[SimulateLongCallPostOut]:
+) -> Response[SimulateLongCallResponse]:
     """Simulate a long synchronous call
 
      Sample endpoint that simulates a blocking synchronous call with a configurable delay for testing
@@ -72,7 +72,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SimulateLongCallPostOut]
+        Response[SimulateLongCallResponse]
     """
 
     kwargs = _get_kwargs(
@@ -90,7 +90,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     delay: float | Unset = 1.0,
-) -> SimulateLongCallPostOut | None:
+) -> SimulateLongCallResponse | None:
     """Simulate a long synchronous call
 
      Sample endpoint that simulates a blocking synchronous call with a configurable delay for testing
@@ -104,7 +104,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SimulateLongCallPostOut
+        SimulateLongCallResponse
     """
 
     return sync_detailed(
@@ -117,7 +117,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     delay: float | Unset = 1.0,
-) -> Response[SimulateLongCallPostOut]:
+) -> Response[SimulateLongCallResponse]:
     """Simulate a long synchronous call
 
      Sample endpoint that simulates a blocking synchronous call with a configurable delay for testing
@@ -131,7 +131,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SimulateLongCallPostOut]
+        Response[SimulateLongCallResponse]
     """
 
     kwargs = _get_kwargs(
@@ -147,7 +147,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     delay: float | Unset = 1.0,
-) -> SimulateLongCallPostOut | None:
+) -> SimulateLongCallResponse | None:
     """Simulate a long synchronous call
 
      Sample endpoint that simulates a blocking synchronous call with a configurable delay for testing
@@ -161,7 +161,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SimulateLongCallPostOut
+        SimulateLongCallResponse
     """
 
     return (

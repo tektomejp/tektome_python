@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.project_patch_members_schema_in import ProjectPatchMembersSchemaIn
+from ...models.project_patch_members_schema_request import ProjectPatchMembersSchemaRequest
 from ...types import Response
 
 
 def _get_kwargs(
     project_id: UUID,
     *,
-    body: list[ProjectPatchMembersSchemaIn],
+    body: list[ProjectPatchMembersSchemaRequest],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -59,7 +59,7 @@ def sync_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[ProjectPatchMembersSchemaIn],
+    body: list[ProjectPatchMembersSchemaRequest],
 ) -> Response[Any]:
     """Update project member roles
 
@@ -67,7 +67,7 @@ def sync_detailed(
 
     Args:
         project_id (UUID):
-        body (list[ProjectPatchMembersSchemaIn]):
+        body (list[ProjectPatchMembersSchemaRequest]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -93,7 +93,7 @@ async def asyncio_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[ProjectPatchMembersSchemaIn],
+    body: list[ProjectPatchMembersSchemaRequest],
 ) -> Response[Any]:
     """Update project member roles
 
@@ -101,7 +101,7 @@ async def asyncio_detailed(
 
     Args:
         project_id (UUID):
-        body (list[ProjectPatchMembersSchemaIn]):
+        body (list[ProjectPatchMembersSchemaRequest]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

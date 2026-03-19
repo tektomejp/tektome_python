@@ -8,14 +8,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.lawtalk_project_schema import LawtalkProjectSchema
-from ...models.remove_resource_group_post_in import RemoveResourceGroupPostIn
+from ...models.remove_resource_group_request import RemoveResourceGroupRequest
 from ...types import Response
 
 
 def _get_kwargs(
     project_id: UUID,
     *,
-    body: RemoveResourceGroupPostIn,
+    body: RemoveResourceGroupRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -61,7 +61,7 @@ def sync_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RemoveResourceGroupPostIn,
+    body: RemoveResourceGroupRequest,
 ) -> Response[LawtalkProjectSchema]:
     """Remove resource groups from project
 
@@ -70,7 +70,7 @@ def sync_detailed(
 
     Args:
         project_id (UUID):
-        body (RemoveResourceGroupPostIn):
+        body (RemoveResourceGroupRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -96,7 +96,7 @@ def sync(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RemoveResourceGroupPostIn,
+    body: RemoveResourceGroupRequest,
 ) -> LawtalkProjectSchema | None:
     """Remove resource groups from project
 
@@ -105,7 +105,7 @@ def sync(
 
     Args:
         project_id (UUID):
-        body (RemoveResourceGroupPostIn):
+        body (RemoveResourceGroupRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RemoveResourceGroupPostIn,
+    body: RemoveResourceGroupRequest,
 ) -> Response[LawtalkProjectSchema]:
     """Remove resource groups from project
 
@@ -135,7 +135,7 @@ async def asyncio_detailed(
 
     Args:
         project_id (UUID):
-        body (RemoveResourceGroupPostIn):
+        body (RemoveResourceGroupRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -159,7 +159,7 @@ async def asyncio(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RemoveResourceGroupPostIn,
+    body: RemoveResourceGroupRequest,
 ) -> LawtalkProjectSchema | None:
     """Remove resource groups from project
 
@@ -168,7 +168,7 @@ async def asyncio(
 
     Args:
         project_id (UUID):
-        body (RemoveResourceGroupPostIn):
+        body (RemoveResourceGroupRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

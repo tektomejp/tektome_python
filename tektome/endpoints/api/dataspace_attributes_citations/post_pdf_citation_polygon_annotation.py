@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.pdf_citation_polygon_annotation_get_out import PDFCitationPolygonAnnotationGetOut
-from ...models.pdf_citation_polygon_annotation_post_in import PDFCitationPolygonAnnotationPostIn
+from ...models.create_pdf_citation_polygon_annotation_request import CreatePDFCitationPolygonAnnotationRequest
+from ...models.pdf_citation_polygon_annotation_response import PDFCitationPolygonAnnotationResponse
 from ...models.post_pdf_citation_polygon_annotation_dataspace_entity_type import (
     PostPdfCitationPolygonAnnotationDataspaceEntityType,
 )
@@ -21,7 +21,7 @@ def _get_kwargs(
     attribute_id: UUID,
     pdf_citation_id: UUID,
     *,
-    body: PDFCitationPolygonAnnotationPostIn,
+    body: CreatePDFCitationPolygonAnnotationRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -45,9 +45,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> PDFCitationPolygonAnnotationGetOut | None:
+) -> PDFCitationPolygonAnnotationResponse | None:
     if response.status_code == 201:
-        response_201 = PDFCitationPolygonAnnotationGetOut.from_dict(response.json())
+        response_201 = PDFCitationPolygonAnnotationResponse.from_dict(response.json())
 
         return response_201
 
@@ -59,7 +59,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[PDFCitationPolygonAnnotationGetOut]:
+) -> Response[PDFCitationPolygonAnnotationResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -75,8 +75,8 @@ def sync_detailed(
     pdf_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: PDFCitationPolygonAnnotationPostIn,
-) -> Response[PDFCitationPolygonAnnotationGetOut]:
+    body: CreatePDFCitationPolygonAnnotationRequest,
+) -> Response[PDFCitationPolygonAnnotationResponse]:
     """Add a polygon annotation to the PDF citation.
 
      Creates a new PDF citation polygon
@@ -86,14 +86,14 @@ def sync_detailed(
         attribute_category (PostPdfCitationPolygonAnnotationDataspaceEntityType):
         attribute_id (UUID):
         pdf_citation_id (UUID):
-        body (PDFCitationPolygonAnnotationPostIn):
+        body (CreatePDFCitationPolygonAnnotationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PDFCitationPolygonAnnotationGetOut]
+        Response[PDFCitationPolygonAnnotationResponse]
     """
 
     kwargs = _get_kwargs(
@@ -118,8 +118,8 @@ def sync(
     pdf_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: PDFCitationPolygonAnnotationPostIn,
-) -> PDFCitationPolygonAnnotationGetOut | None:
+    body: CreatePDFCitationPolygonAnnotationRequest,
+) -> PDFCitationPolygonAnnotationResponse | None:
     """Add a polygon annotation to the PDF citation.
 
      Creates a new PDF citation polygon
@@ -129,14 +129,14 @@ def sync(
         attribute_category (PostPdfCitationPolygonAnnotationDataspaceEntityType):
         attribute_id (UUID):
         pdf_citation_id (UUID):
-        body (PDFCitationPolygonAnnotationPostIn):
+        body (CreatePDFCitationPolygonAnnotationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        PDFCitationPolygonAnnotationGetOut
+        PDFCitationPolygonAnnotationResponse
     """
 
     return sync_detailed(
@@ -156,8 +156,8 @@ async def asyncio_detailed(
     pdf_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: PDFCitationPolygonAnnotationPostIn,
-) -> Response[PDFCitationPolygonAnnotationGetOut]:
+    body: CreatePDFCitationPolygonAnnotationRequest,
+) -> Response[PDFCitationPolygonAnnotationResponse]:
     """Add a polygon annotation to the PDF citation.
 
      Creates a new PDF citation polygon
@@ -167,14 +167,14 @@ async def asyncio_detailed(
         attribute_category (PostPdfCitationPolygonAnnotationDataspaceEntityType):
         attribute_id (UUID):
         pdf_citation_id (UUID):
-        body (PDFCitationPolygonAnnotationPostIn):
+        body (CreatePDFCitationPolygonAnnotationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PDFCitationPolygonAnnotationGetOut]
+        Response[PDFCitationPolygonAnnotationResponse]
     """
 
     kwargs = _get_kwargs(
@@ -197,8 +197,8 @@ async def asyncio(
     pdf_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: PDFCitationPolygonAnnotationPostIn,
-) -> PDFCitationPolygonAnnotationGetOut | None:
+    body: CreatePDFCitationPolygonAnnotationRequest,
+) -> PDFCitationPolygonAnnotationResponse | None:
     """Add a polygon annotation to the PDF citation.
 
      Creates a new PDF citation polygon
@@ -208,14 +208,14 @@ async def asyncio(
         attribute_category (PostPdfCitationPolygonAnnotationDataspaceEntityType):
         attribute_id (UUID):
         pdf_citation_id (UUID):
-        body (PDFCitationPolygonAnnotationPostIn):
+        body (CreatePDFCitationPolygonAnnotationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        PDFCitationPolygonAnnotationGetOut
+        PDFCitationPolygonAnnotationResponse
     """
 
     return (

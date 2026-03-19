@@ -7,11 +7,11 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.raw_text_citation_patch_in_patch import RawTextCitationPatchInPatch
-from ...models.raw_text_citation_schema_out import RawTextCitationSchemaOut
+from ...models.raw_text_citation_schema_response import RawTextCitationSchemaResponse
 from ...models.update_attribute_rawtext_citation_dataspace_entity_type import (
     UpdateAttributeRawtextCitationDataspaceEntityType,
 )
+from ...models.update_raw_text_citation_request import UpdateRawTextCitationRequest
 from ...types import Response
 
 
@@ -21,7 +21,7 @@ def _get_kwargs(
     attribute_id: UUID,
     rawtext_citation_id: UUID,
     *,
-    body: RawTextCitationPatchInPatch,
+    body: UpdateRawTextCitationRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -45,9 +45,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RawTextCitationSchemaOut | None:
+) -> RawTextCitationSchemaResponse | None:
     if response.status_code == 200:
-        response_200 = RawTextCitationSchemaOut.from_dict(response.json())
+        response_200 = RawTextCitationSchemaResponse.from_dict(response.json())
 
         return response_200
 
@@ -59,7 +59,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[RawTextCitationSchemaOut]:
+) -> Response[RawTextCitationSchemaResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -75,8 +75,8 @@ def sync_detailed(
     rawtext_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RawTextCitationPatchInPatch,
-) -> Response[RawTextCitationSchemaOut]:
+    body: UpdateRawTextCitationRequest,
+) -> Response[RawTextCitationSchemaResponse]:
     """Update a raw text citation
 
      Update the details of a specific raw text citation associated with an attribute.
@@ -86,14 +86,14 @@ def sync_detailed(
         attribute_category (UpdateAttributeRawtextCitationDataspaceEntityType):
         attribute_id (UUID):
         rawtext_citation_id (UUID):
-        body (RawTextCitationPatchInPatch):
+        body (UpdateRawTextCitationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RawTextCitationSchemaOut]
+        Response[RawTextCitationSchemaResponse]
     """
 
     kwargs = _get_kwargs(
@@ -118,8 +118,8 @@ def sync(
     rawtext_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RawTextCitationPatchInPatch,
-) -> RawTextCitationSchemaOut | None:
+    body: UpdateRawTextCitationRequest,
+) -> RawTextCitationSchemaResponse | None:
     """Update a raw text citation
 
      Update the details of a specific raw text citation associated with an attribute.
@@ -129,14 +129,14 @@ def sync(
         attribute_category (UpdateAttributeRawtextCitationDataspaceEntityType):
         attribute_id (UUID):
         rawtext_citation_id (UUID):
-        body (RawTextCitationPatchInPatch):
+        body (UpdateRawTextCitationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RawTextCitationSchemaOut
+        RawTextCitationSchemaResponse
     """
 
     return sync_detailed(
@@ -156,8 +156,8 @@ async def asyncio_detailed(
     rawtext_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RawTextCitationPatchInPatch,
-) -> Response[RawTextCitationSchemaOut]:
+    body: UpdateRawTextCitationRequest,
+) -> Response[RawTextCitationSchemaResponse]:
     """Update a raw text citation
 
      Update the details of a specific raw text citation associated with an attribute.
@@ -167,14 +167,14 @@ async def asyncio_detailed(
         attribute_category (UpdateAttributeRawtextCitationDataspaceEntityType):
         attribute_id (UUID):
         rawtext_citation_id (UUID):
-        body (RawTextCitationPatchInPatch):
+        body (UpdateRawTextCitationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RawTextCitationSchemaOut]
+        Response[RawTextCitationSchemaResponse]
     """
 
     kwargs = _get_kwargs(
@@ -197,8 +197,8 @@ async def asyncio(
     rawtext_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RawTextCitationPatchInPatch,
-) -> RawTextCitationSchemaOut | None:
+    body: UpdateRawTextCitationRequest,
+) -> RawTextCitationSchemaResponse | None:
     """Update a raw text citation
 
      Update the details of a specific raw text citation associated with an attribute.
@@ -208,14 +208,14 @@ async def asyncio(
         attribute_category (UpdateAttributeRawtextCitationDataspaceEntityType):
         attribute_id (UUID):
         rawtext_citation_id (UUID):
-        body (RawTextCitationPatchInPatch):
+        body (UpdateRawTextCitationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RawTextCitationSchemaOut
+        RawTextCitationSchemaResponse
     """
 
     return (

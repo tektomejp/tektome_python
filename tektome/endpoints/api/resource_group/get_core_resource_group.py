@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.resource_group_schema import ResourceGroupSchema
+from ...models.resource_group_response import ResourceGroupResponse
 from ...types import Response
 
 
@@ -25,9 +25,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ResourceGroupSchema | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ResourceGroupResponse | None:
     if response.status_code == 200:
-        response_200 = ResourceGroupSchema.from_dict(response.json())
+        response_200 = ResourceGroupResponse.from_dict(response.json())
 
         return response_200
 
@@ -37,7 +37,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ResourceGroupSchema]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ResourceGroupResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -50,7 +52,7 @@ def sync_detailed(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ResourceGroupSchema]:
+) -> Response[ResourceGroupResponse]:
     """Get a resource group
 
      Retrieve the details of a specific resource group by its ID.
@@ -63,7 +65,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceGroupSchema]
+        Response[ResourceGroupResponse]
     """
 
     kwargs = _get_kwargs(
@@ -81,7 +83,7 @@ def sync(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> ResourceGroupSchema | None:
+) -> ResourceGroupResponse | None:
     """Get a resource group
 
      Retrieve the details of a specific resource group by its ID.
@@ -94,7 +96,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceGroupSchema
+        ResourceGroupResponse
     """
 
     return sync_detailed(
@@ -107,7 +109,7 @@ async def asyncio_detailed(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ResourceGroupSchema]:
+) -> Response[ResourceGroupResponse]:
     """Get a resource group
 
      Retrieve the details of a specific resource group by its ID.
@@ -120,7 +122,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceGroupSchema]
+        Response[ResourceGroupResponse]
     """
 
     kwargs = _get_kwargs(
@@ -136,7 +138,7 @@ async def asyncio(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> ResourceGroupSchema | None:
+) -> ResourceGroupResponse | None:
     """Get a resource group
 
      Retrieve the details of a specific resource group by its ID.
@@ -149,7 +151,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceGroupSchema
+        ResourceGroupResponse
     """
 
     return (

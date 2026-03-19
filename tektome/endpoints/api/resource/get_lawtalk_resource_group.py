@@ -7,7 +7,6 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.lawtalk_resource_group_schema import LawtalkResourceGroupSchema
 from ...types import Response
 
 
@@ -25,23 +24,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> LawtalkResourceGroupSchema | None:
-    if response.status_code == 200:
-        response_200 = LawtalkResourceGroupSchema.from_dict(response.json())
-
-        return response_200
-
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[LawtalkResourceGroupSchema]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,7 +44,7 @@ def sync_detailed(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[LawtalkResourceGroupSchema]:
+) -> Response[Any]:
     """Get resource group details
 
      Retrieve detailed information about a specific resource group by its ID.
@@ -67,7 +57,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[LawtalkResourceGroupSchema]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -81,37 +71,11 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    resource_group_id: UUID,
-    *,
-    client: AuthenticatedClient,
-) -> LawtalkResourceGroupSchema | None:
-    """Get resource group details
-
-     Retrieve detailed information about a specific resource group by its ID.
-
-    Args:
-        resource_group_id (UUID): Resource group ID
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        LawtalkResourceGroupSchema
-    """
-
-    return sync_detailed(
-        resource_group_id=resource_group_id,
-        client=client,
-    ).parsed
-
-
 async def asyncio_detailed(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[LawtalkResourceGroupSchema]:
+) -> Response[Any]:
     """Get resource group details
 
      Retrieve detailed information about a specific resource group by its ID.
@@ -124,7 +88,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[LawtalkResourceGroupSchema]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -134,31 +98,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    resource_group_id: UUID,
-    *,
-    client: AuthenticatedClient,
-) -> LawtalkResourceGroupSchema | None:
-    """Get resource group details
-
-     Retrieve detailed information about a specific resource group by its ID.
-
-    Args:
-        resource_group_id (UUID): Resource group ID
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        LawtalkResourceGroupSchema
-    """
-
-    return (
-        await asyncio_detailed(
-            resource_group_id=resource_group_id,
-            client=client,
-        )
-    ).parsed

@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.payment_record_patch_in_patch import PaymentRecordPatchInPatch
+from ...models.update_payment_record_request import UpdatePaymentRecordRequest
 from ...types import Response
 
 
@@ -15,7 +15,7 @@ def _get_kwargs(
     organization_id: UUID,
     payment_record_id: UUID,
     *,
-    body: PaymentRecordPatchInPatch,
+    body: UpdatePaymentRecordRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -59,7 +59,7 @@ def sync_detailed(
     payment_record_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: PaymentRecordPatchInPatch,
+    body: UpdatePaymentRecordRequest,
 ) -> Response[Any]:
     """Update a payment record
 
@@ -69,7 +69,7 @@ def sync_detailed(
     Args:
         organization_id (UUID):
         payment_record_id (UUID):
-        body (PaymentRecordPatchInPatch):
+        body (UpdatePaymentRecordRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -97,7 +97,7 @@ async def asyncio_detailed(
     payment_record_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: PaymentRecordPatchInPatch,
+    body: UpdatePaymentRecordRequest,
 ) -> Response[Any]:
     """Update a payment record
 
@@ -107,7 +107,7 @@ async def asyncio_detailed(
     Args:
         organization_id (UUID):
         payment_record_id (UUID):
-        body (PaymentRecordPatchInPatch):
+        body (UpdatePaymentRecordRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

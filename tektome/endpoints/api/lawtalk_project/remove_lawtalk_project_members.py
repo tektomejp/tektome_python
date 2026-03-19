@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.users_schema_in import UsersSchemaIn
+from ...models.users_schema_request import UsersSchemaRequest
 from ...types import Response
 
 
 def _get_kwargs(
     project_id: UUID,
     *,
-    body: UsersSchemaIn,
+    body: UsersSchemaRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,7 +56,7 @@ def sync_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UsersSchemaIn,
+    body: UsersSchemaRequest,
 ) -> Response[Any]:
     """Remove members from a project
 
@@ -64,7 +64,7 @@ def sync_detailed(
 
     Args:
         project_id (UUID):
-        body (UsersSchemaIn): Schema for getting user IDs
+        body (UsersSchemaRequest): Schema for getting user IDs
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -90,7 +90,7 @@ async def asyncio_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UsersSchemaIn,
+    body: UsersSchemaRequest,
 ) -> Response[Any]:
     """Remove members from a project
 
@@ -98,7 +98,7 @@ async def asyncio_detailed(
 
     Args:
         project_id (UUID):
-        body (UsersSchemaIn): Schema for getting user IDs
+        body (UsersSchemaRequest): Schema for getting user IDs
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

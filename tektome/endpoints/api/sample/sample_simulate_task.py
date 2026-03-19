@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.simulate_task_post_in import SimulateTaskPostIn
-from ...models.simulate_task_post_out import SimulateTaskPostOut
+from ...models.create_simulate_task_request import CreateSimulateTaskRequest
+from ...models.simulate_task_response import SimulateTaskResponse
 from ...types import UNSET, Response
 
 
 def _get_kwargs(
     *,
-    body: SimulateTaskPostIn,
+    body: CreateSimulateTaskRequest,
     delay: int,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -37,9 +37,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> SimulateTaskPostOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> SimulateTaskResponse | None:
     if response.status_code == 200:
-        response_200 = SimulateTaskPostOut.from_dict(response.json())
+        response_200 = SimulateTaskResponse.from_dict(response.json())
 
         return response_200
 
@@ -49,7 +49,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[SimulateTaskPostOut]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[SimulateTaskResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -61,9 +63,9 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: SimulateTaskPostIn,
+    body: CreateSimulateTaskRequest,
     delay: int,
-) -> Response[SimulateTaskPostOut]:
+) -> Response[SimulateTaskResponse]:
     """Simulate an asynchronous task
 
      Submit a sample asynchronous task for testing purposes. This is an asynchronous operation. To
@@ -72,7 +74,7 @@ def sync_detailed(
 
     Args:
         delay (int):
-        body (SimulateTaskPostIn): For demonstration purpose, this should be in
+        body (CreateSimulateTaskRequest): For demonstration purpose, this should be in
             /serializers/<same_name_as_this_file>.py
 
     Raises:
@@ -80,7 +82,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SimulateTaskPostOut]
+        Response[SimulateTaskResponse]
     """
 
     kwargs = _get_kwargs(
@@ -98,9 +100,9 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: SimulateTaskPostIn,
+    body: CreateSimulateTaskRequest,
     delay: int,
-) -> SimulateTaskPostOut | None:
+) -> SimulateTaskResponse | None:
     """Simulate an asynchronous task
 
      Submit a sample asynchronous task for testing purposes. This is an asynchronous operation. To
@@ -109,7 +111,7 @@ def sync(
 
     Args:
         delay (int):
-        body (SimulateTaskPostIn): For demonstration purpose, this should be in
+        body (CreateSimulateTaskRequest): For demonstration purpose, this should be in
             /serializers/<same_name_as_this_file>.py
 
     Raises:
@@ -117,7 +119,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SimulateTaskPostOut
+        SimulateTaskResponse
     """
 
     return sync_detailed(
@@ -130,9 +132,9 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: SimulateTaskPostIn,
+    body: CreateSimulateTaskRequest,
     delay: int,
-) -> Response[SimulateTaskPostOut]:
+) -> Response[SimulateTaskResponse]:
     """Simulate an asynchronous task
 
      Submit a sample asynchronous task for testing purposes. This is an asynchronous operation. To
@@ -141,7 +143,7 @@ async def asyncio_detailed(
 
     Args:
         delay (int):
-        body (SimulateTaskPostIn): For demonstration purpose, this should be in
+        body (CreateSimulateTaskRequest): For demonstration purpose, this should be in
             /serializers/<same_name_as_this_file>.py
 
     Raises:
@@ -149,7 +151,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SimulateTaskPostOut]
+        Response[SimulateTaskResponse]
     """
 
     kwargs = _get_kwargs(
@@ -165,9 +167,9 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: SimulateTaskPostIn,
+    body: CreateSimulateTaskRequest,
     delay: int,
-) -> SimulateTaskPostOut | None:
+) -> SimulateTaskResponse | None:
     """Simulate an asynchronous task
 
      Submit a sample asynchronous task for testing purposes. This is an asynchronous operation. To
@@ -176,7 +178,7 @@ async def asyncio(
 
     Args:
         delay (int):
-        body (SimulateTaskPostIn): For demonstration purpose, this should be in
+        body (CreateSimulateTaskRequest): For demonstration purpose, this should be in
             /serializers/<same_name_as_this_file>.py
 
     Raises:
@@ -184,7 +186,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SimulateTaskPostOut
+        SimulateTaskResponse
     """
 
     return (

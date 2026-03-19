@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.execution_group_detail_get_out import ExecutionGroupDetailGetOut
+from ...models.execution_group_detail_response import ExecutionGroupDetailResponse
 from ...types import Response
 
 
@@ -29,9 +29,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ExecutionGroupDetailGetOut | None:
+) -> ExecutionGroupDetailResponse | None:
     if response.status_code == 200:
-        response_200 = ExecutionGroupDetailGetOut.from_dict(response.json())
+        response_200 = ExecutionGroupDetailResponse.from_dict(response.json())
 
         return response_200
 
@@ -43,7 +43,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ExecutionGroupDetailGetOut]:
+) -> Response[ExecutionGroupDetailResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,7 +57,7 @@ def sync_detailed(
     execution_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ExecutionGroupDetailGetOut]:
+) -> Response[ExecutionGroupDetailResponse]:
     """Get execution group details
 
      Retrieve detailed information about a specific execution group by its ID.
@@ -71,7 +71,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ExecutionGroupDetailGetOut]
+        Response[ExecutionGroupDetailResponse]
     """
 
     kwargs = _get_kwargs(
@@ -91,7 +91,7 @@ def sync(
     execution_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> ExecutionGroupDetailGetOut | None:
+) -> ExecutionGroupDetailResponse | None:
     """Get execution group details
 
      Retrieve detailed information about a specific execution group by its ID.
@@ -105,7 +105,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ExecutionGroupDetailGetOut
+        ExecutionGroupDetailResponse
     """
 
     return sync_detailed(
@@ -120,7 +120,7 @@ async def asyncio_detailed(
     execution_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ExecutionGroupDetailGetOut]:
+) -> Response[ExecutionGroupDetailResponse]:
     """Get execution group details
 
      Retrieve detailed information about a specific execution group by its ID.
@@ -134,7 +134,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ExecutionGroupDetailGetOut]
+        Response[ExecutionGroupDetailResponse]
     """
 
     kwargs = _get_kwargs(
@@ -152,7 +152,7 @@ async def asyncio(
     execution_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> ExecutionGroupDetailGetOut | None:
+) -> ExecutionGroupDetailResponse | None:
     """Get execution group details
 
      Retrieve detailed information about a specific execution group by its ID.
@@ -166,7 +166,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ExecutionGroupDetailGetOut
+        ExecutionGroupDetailResponse
     """
 
     return (

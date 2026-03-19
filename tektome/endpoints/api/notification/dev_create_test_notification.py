@@ -5,15 +5,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.create_notification_testing_request import CreateNotificationTestingRequest
 from ...models.generic_http_error import GenericHttpError
-from ...models.notification_get_out import NotificationGetOut
-from ...models.notification_testing_post_in import NotificationTestingPostIn
+from ...models.notification_response import NotificationResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: NotificationTestingPostIn,
+    body: CreateNotificationTestingRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -32,12 +32,12 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> GenericHttpError | list[NotificationGetOut] | None:
+) -> GenericHttpError | list[NotificationResponse] | None:
     if response.status_code == 201:
         response_201 = []
         _response_201 = response.json()
         for response_201_item_data in _response_201:
-            response_201_item = NotificationGetOut.from_dict(response_201_item_data)
+            response_201_item = NotificationResponse.from_dict(response_201_item_data)
 
             response_201.append(response_201_item)
 
@@ -141,7 +141,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[GenericHttpError | list[NotificationGetOut]]:
+) -> Response[GenericHttpError | list[NotificationResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -153,8 +153,8 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: NotificationTestingPostIn,
-) -> Response[GenericHttpError | list[NotificationGetOut]]:
+    body: CreateNotificationTestingRequest,
+) -> Response[GenericHttpError | list[NotificationResponse]]:
     """Create test notifications for development purposes. (Disabled in production)
 
      crspHnfm
@@ -168,14 +168,14 @@ def sync_detailed(
     Note: This endpoint is marked as obsolete and may be removed in future releases.
 
     Args:
-        body (NotificationTestingPostIn): Input schema for creating test notifications.
+        body (CreateNotificationTestingRequest): Input schema for creating test notifications.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GenericHttpError | list[NotificationGetOut]]
+        Response[GenericHttpError | list[NotificationResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -192,8 +192,8 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: NotificationTestingPostIn,
-) -> GenericHttpError | list[NotificationGetOut] | None:
+    body: CreateNotificationTestingRequest,
+) -> GenericHttpError | list[NotificationResponse] | None:
     """Create test notifications for development purposes. (Disabled in production)
 
      crspHnfm
@@ -207,14 +207,14 @@ def sync(
     Note: This endpoint is marked as obsolete and may be removed in future releases.
 
     Args:
-        body (NotificationTestingPostIn): Input schema for creating test notifications.
+        body (CreateNotificationTestingRequest): Input schema for creating test notifications.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GenericHttpError | list[NotificationGetOut]
+        GenericHttpError | list[NotificationResponse]
     """
 
     return sync_detailed(
@@ -226,8 +226,8 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: NotificationTestingPostIn,
-) -> Response[GenericHttpError | list[NotificationGetOut]]:
+    body: CreateNotificationTestingRequest,
+) -> Response[GenericHttpError | list[NotificationResponse]]:
     """Create test notifications for development purposes. (Disabled in production)
 
      crspHnfm
@@ -241,14 +241,14 @@ async def asyncio_detailed(
     Note: This endpoint is marked as obsolete and may be removed in future releases.
 
     Args:
-        body (NotificationTestingPostIn): Input schema for creating test notifications.
+        body (CreateNotificationTestingRequest): Input schema for creating test notifications.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GenericHttpError | list[NotificationGetOut]]
+        Response[GenericHttpError | list[NotificationResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -263,8 +263,8 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: NotificationTestingPostIn,
-) -> GenericHttpError | list[NotificationGetOut] | None:
+    body: CreateNotificationTestingRequest,
+) -> GenericHttpError | list[NotificationResponse] | None:
     """Create test notifications for development purposes. (Disabled in production)
 
      crspHnfm
@@ -278,14 +278,14 @@ async def asyncio(
     Note: This endpoint is marked as obsolete and may be removed in future releases.
 
     Args:
-        body (NotificationTestingPostIn): Input schema for creating test notifications.
+        body (CreateNotificationTestingRequest): Input schema for creating test notifications.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GenericHttpError | list[NotificationGetOut]
+        GenericHttpError | list[NotificationResponse]
     """
 
     return (

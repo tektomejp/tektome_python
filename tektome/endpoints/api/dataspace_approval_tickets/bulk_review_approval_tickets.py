@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bulk_review_post_in import BulkReviewPostIn
+from ...models.create_bulk_review_request import CreateBulkReviewRequest
 from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
     *,
-    body: BulkReviewPostIn,
+    body: CreateBulkReviewRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,7 +56,7 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BulkReviewPostIn,
+    body: CreateBulkReviewRequest,
 ) -> Response[Any]:
     """Bulk review approval tickets
 
@@ -65,7 +65,7 @@ def sync_detailed(
 
     Args:
         dataspace_id (UUID):
-        body (BulkReviewPostIn):
+        body (CreateBulkReviewRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -91,7 +91,7 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BulkReviewPostIn,
+    body: CreateBulkReviewRequest,
 ) -> Response[Any]:
     """Bulk review approval tickets
 
@@ -100,7 +100,7 @@ async def asyncio_detailed(
 
     Args:
         dataspace_id (UUID):
-        body (BulkReviewPostIn):
+        body (CreateBulkReviewRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

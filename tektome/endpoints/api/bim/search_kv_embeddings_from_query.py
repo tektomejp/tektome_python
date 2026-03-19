@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bim_query_to_keys_values_in import BimQueryToKeysValuesIn
-from ...models.bim_query_to_keys_values_out import BimQueryToKeysValuesOut
+from ...models.bim_query_to_keys_values_request import BimQueryToKeysValuesRequest
+from ...models.bim_query_to_keys_values_response import BimQueryToKeysValuesResponse
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     bim_project_id: UUID,
     *,
-    body: BimQueryToKeysValuesIn,
+    body: BimQueryToKeysValuesRequest,
     limit: int | Unset = 100,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -44,24 +44,24 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BimQueryToKeysValuesOut | None:
+) -> BimQueryToKeysValuesResponse | None:
     if response.status_code == 200:
-        response_200 = BimQueryToKeysValuesOut.from_dict(response.json())
+        response_200 = BimQueryToKeysValuesResponse.from_dict(response.json())
 
         return response_200
 
     if response.status_code == 400:
-        response_400 = BimQueryToKeysValuesOut.from_dict(response.json())
+        response_400 = BimQueryToKeysValuesResponse.from_dict(response.json())
 
         return response_400
 
     if response.status_code == 404:
-        response_404 = BimQueryToKeysValuesOut.from_dict(response.json())
+        response_404 = BimQueryToKeysValuesResponse.from_dict(response.json())
 
         return response_404
 
     if response.status_code == 500:
-        response_500 = BimQueryToKeysValuesOut.from_dict(response.json())
+        response_500 = BimQueryToKeysValuesResponse.from_dict(response.json())
 
         return response_500
 
@@ -73,7 +73,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BimQueryToKeysValuesOut]:
+) -> Response[BimQueryToKeysValuesResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -86,9 +86,9 @@ def sync_detailed(
     bim_project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BimQueryToKeysValuesIn,
+    body: BimQueryToKeysValuesRequest,
     limit: int | Unset = 100,
-) -> Response[BimQueryToKeysValuesOut]:
+) -> Response[BimQueryToKeysValuesResponse]:
     r"""Query To Keys Values
 
      4K3g3D3e
@@ -127,8 +127,8 @@ def sync_detailed(
     Args:
         bim_project_id (UUID):
         limit (int | Unset):  Default: 100.
-        body (BimQueryToKeysValuesIn): Schema for validating BIM query input to retrieve key-value
-            embeddings.
+        body (BimQueryToKeysValuesRequest): Schema for validating BIM query input to retrieve key-
+            value embeddings.
 
             This schema ensures that a query string is provided and non-empty before
             processing BIM key-value embedding requests.
@@ -144,7 +144,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimQueryToKeysValuesOut]
+        Response[BimQueryToKeysValuesResponse]
     """
 
     kwargs = _get_kwargs(
@@ -164,9 +164,9 @@ def sync(
     bim_project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BimQueryToKeysValuesIn,
+    body: BimQueryToKeysValuesRequest,
     limit: int | Unset = 100,
-) -> BimQueryToKeysValuesOut | None:
+) -> BimQueryToKeysValuesResponse | None:
     r"""Query To Keys Values
 
      4K3g3D3e
@@ -205,8 +205,8 @@ def sync(
     Args:
         bim_project_id (UUID):
         limit (int | Unset):  Default: 100.
-        body (BimQueryToKeysValuesIn): Schema for validating BIM query input to retrieve key-value
-            embeddings.
+        body (BimQueryToKeysValuesRequest): Schema for validating BIM query input to retrieve key-
+            value embeddings.
 
             This schema ensures that a query string is provided and non-empty before
             processing BIM key-value embedding requests.
@@ -222,7 +222,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimQueryToKeysValuesOut
+        BimQueryToKeysValuesResponse
     """
 
     return sync_detailed(
@@ -237,9 +237,9 @@ async def asyncio_detailed(
     bim_project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BimQueryToKeysValuesIn,
+    body: BimQueryToKeysValuesRequest,
     limit: int | Unset = 100,
-) -> Response[BimQueryToKeysValuesOut]:
+) -> Response[BimQueryToKeysValuesResponse]:
     r"""Query To Keys Values
 
      4K3g3D3e
@@ -278,8 +278,8 @@ async def asyncio_detailed(
     Args:
         bim_project_id (UUID):
         limit (int | Unset):  Default: 100.
-        body (BimQueryToKeysValuesIn): Schema for validating BIM query input to retrieve key-value
-            embeddings.
+        body (BimQueryToKeysValuesRequest): Schema for validating BIM query input to retrieve key-
+            value embeddings.
 
             This schema ensures that a query string is provided and non-empty before
             processing BIM key-value embedding requests.
@@ -295,7 +295,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimQueryToKeysValuesOut]
+        Response[BimQueryToKeysValuesResponse]
     """
 
     kwargs = _get_kwargs(
@@ -313,9 +313,9 @@ async def asyncio(
     bim_project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BimQueryToKeysValuesIn,
+    body: BimQueryToKeysValuesRequest,
     limit: int | Unset = 100,
-) -> BimQueryToKeysValuesOut | None:
+) -> BimQueryToKeysValuesResponse | None:
     r"""Query To Keys Values
 
      4K3g3D3e
@@ -354,8 +354,8 @@ async def asyncio(
     Args:
         bim_project_id (UUID):
         limit (int | Unset):  Default: 100.
-        body (BimQueryToKeysValuesIn): Schema for validating BIM query input to retrieve key-value
-            embeddings.
+        body (BimQueryToKeysValuesRequest): Schema for validating BIM query input to retrieve key-
+            value embeddings.
 
             This schema ensures that a query string is provided and non-empty before
             processing BIM key-value embedding requests.
@@ -371,7 +371,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimQueryToKeysValuesOut
+        BimQueryToKeysValuesResponse
     """
 
     return (

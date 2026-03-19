@@ -7,8 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.artifact_post_in import ArtifactPostIn
-from ...models.artifact_post_out import ArtifactPostOut
+from ...models.create_artifact_request import CreateArtifactRequest
 from ...models.generic_http_error import GenericHttpError
 from ...types import Response
 
@@ -16,7 +15,7 @@ from ...types import Response
 def _get_kwargs(
     chatroom_id: UUID,
     *,
-    body: ArtifactPostIn,
+    body: CreateArtifactRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -35,14 +34,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ArtifactPostOut | GenericHttpError | None:
-    if response.status_code == 201:
-        response_201 = ArtifactPostOut.from_dict(response.json())
-
-        return response_201
-
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> GenericHttpError | None:
     if response.status_code == 400:
         response_400 = GenericHttpError.from_dict(response.json())
 
@@ -139,9 +131,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ArtifactPostOut | GenericHttpError]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[GenericHttpError]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -154,22 +144,22 @@ def sync_detailed(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ArtifactPostIn,
-) -> Response[ArtifactPostOut | GenericHttpError]:
+    body: CreateArtifactRequest,
+) -> Response[GenericHttpError]:
     """Create an artifact
 
      Create a new artifact in a chatroom with specified path, description, and content.
 
     Args:
         chatroom_id (UUID):
-        body (ArtifactPostIn):
+        body (CreateArtifactRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ArtifactPostOut | GenericHttpError]
+        Response[GenericHttpError]
     """
 
     kwargs = _get_kwargs(
@@ -188,22 +178,22 @@ def sync(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ArtifactPostIn,
-) -> ArtifactPostOut | GenericHttpError | None:
+    body: CreateArtifactRequest,
+) -> GenericHttpError | None:
     """Create an artifact
 
      Create a new artifact in a chatroom with specified path, description, and content.
 
     Args:
         chatroom_id (UUID):
-        body (ArtifactPostIn):
+        body (CreateArtifactRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ArtifactPostOut | GenericHttpError
+        GenericHttpError
     """
 
     return sync_detailed(
@@ -217,22 +207,22 @@ async def asyncio_detailed(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ArtifactPostIn,
-) -> Response[ArtifactPostOut | GenericHttpError]:
+    body: CreateArtifactRequest,
+) -> Response[GenericHttpError]:
     """Create an artifact
 
      Create a new artifact in a chatroom with specified path, description, and content.
 
     Args:
         chatroom_id (UUID):
-        body (ArtifactPostIn):
+        body (CreateArtifactRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ArtifactPostOut | GenericHttpError]
+        Response[GenericHttpError]
     """
 
     kwargs = _get_kwargs(
@@ -249,22 +239,22 @@ async def asyncio(
     chatroom_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ArtifactPostIn,
-) -> ArtifactPostOut | GenericHttpError | None:
+    body: CreateArtifactRequest,
+) -> GenericHttpError | None:
     """Create an artifact
 
      Create a new artifact in a chatroom with specified path, description, and content.
 
     Args:
         chatroom_id (UUID):
-        body (ArtifactPostIn):
+        body (CreateArtifactRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ArtifactPostOut | GenericHttpError
+        GenericHttpError
     """
 
     return (

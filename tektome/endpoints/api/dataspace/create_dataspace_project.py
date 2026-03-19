@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.core_project_post_in import CoreProjectPostIn
-from ...models.dataspace_projects_schema_out import DataspaceProjectsSchemaOut
+from ...models.create_core_project_request import CreateCoreProjectRequest
+from ...models.dataspace_projects_schema_response import DataspaceProjectsSchemaResponse
 from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
     *,
-    body: CoreProjectPostIn,
+    body: CreateCoreProjectRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -36,9 +36,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> DataspaceProjectsSchemaOut | None:
+) -> DataspaceProjectsSchemaResponse | None:
     if response.status_code == 201:
-        response_201 = DataspaceProjectsSchemaOut.from_dict(response.json())
+        response_201 = DataspaceProjectsSchemaResponse.from_dict(response.json())
 
         return response_201
 
@@ -50,7 +50,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[DataspaceProjectsSchemaOut]:
+) -> Response[DataspaceProjectsSchemaResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,22 +63,22 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CoreProjectPostIn,
-) -> Response[DataspaceProjectsSchemaOut]:
+    body: CreateCoreProjectRequest,
+) -> Response[DataspaceProjectsSchemaResponse]:
     """Create a project in a dataspace
 
      Create a new project within a dataspace. A root folder is automatically created for the project.
 
     Args:
         dataspace_id (UUID):
-        body (CoreProjectPostIn):
+        body (CreateCoreProjectRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DataspaceProjectsSchemaOut]
+        Response[DataspaceProjectsSchemaResponse]
     """
 
     kwargs = _get_kwargs(
@@ -97,22 +97,22 @@ def sync(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CoreProjectPostIn,
-) -> DataspaceProjectsSchemaOut | None:
+    body: CreateCoreProjectRequest,
+) -> DataspaceProjectsSchemaResponse | None:
     """Create a project in a dataspace
 
      Create a new project within a dataspace. A root folder is automatically created for the project.
 
     Args:
         dataspace_id (UUID):
-        body (CoreProjectPostIn):
+        body (CreateCoreProjectRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DataspaceProjectsSchemaOut
+        DataspaceProjectsSchemaResponse
     """
 
     return sync_detailed(
@@ -126,22 +126,22 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CoreProjectPostIn,
-) -> Response[DataspaceProjectsSchemaOut]:
+    body: CreateCoreProjectRequest,
+) -> Response[DataspaceProjectsSchemaResponse]:
     """Create a project in a dataspace
 
      Create a new project within a dataspace. A root folder is automatically created for the project.
 
     Args:
         dataspace_id (UUID):
-        body (CoreProjectPostIn):
+        body (CreateCoreProjectRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DataspaceProjectsSchemaOut]
+        Response[DataspaceProjectsSchemaResponse]
     """
 
     kwargs = _get_kwargs(
@@ -158,22 +158,22 @@ async def asyncio(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CoreProjectPostIn,
-) -> DataspaceProjectsSchemaOut | None:
+    body: CreateCoreProjectRequest,
+) -> DataspaceProjectsSchemaResponse | None:
     """Create a project in a dataspace
 
      Create a new project within a dataspace. A root folder is automatically created for the project.
 
     Args:
         dataspace_id (UUID):
-        body (CoreProjectPostIn):
+        body (CreateCoreProjectRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DataspaceProjectsSchemaOut
+        DataspaceProjectsSchemaResponse
     """
 
     return (

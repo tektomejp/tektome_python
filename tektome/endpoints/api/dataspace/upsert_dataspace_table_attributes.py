@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.dataspace_table_attribute_patch_in import DataspaceTableAttributePatchIn
+from ...models.update_dataspace_table_attribute_request import UpdateDataspaceTableAttributeRequest
 from ...models.upsert_dataspace_table_attributes_dataspace_entity_type import (
     UpsertDataspaceTableAttributesDataspaceEntityType,
 )
@@ -19,7 +19,7 @@ def _get_kwargs(
     attribute_category: UpsertDataspaceTableAttributesDataspaceEntityType,
     attribute_id: UUID,
     *,
-    body: DataspaceTableAttributePatchIn,
+    body: UpdateDataspaceTableAttributeRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -65,7 +65,7 @@ def sync_detailed(
     attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceTableAttributePatchIn,
+    body: UpdateDataspaceTableAttributeRequest,
 ) -> Response[Any]:
     """Update table attribute cells
 
@@ -76,7 +76,7 @@ def sync_detailed(
         dataspace_id (UUID):
         attribute_category (UpsertDataspaceTableAttributesDataspaceEntityType):
         attribute_id (UUID):
-        body (DataspaceTableAttributePatchIn): Schema for updating table attribute cells via
+        body (UpdateDataspaceTableAttributeRequest): Schema for updating table attribute cells via
             attribute_id.
 
     Raises:
@@ -107,7 +107,7 @@ async def asyncio_detailed(
     attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceTableAttributePatchIn,
+    body: UpdateDataspaceTableAttributeRequest,
 ) -> Response[Any]:
     """Update table attribute cells
 
@@ -118,7 +118,7 @@ async def asyncio_detailed(
         dataspace_id (UUID):
         attribute_category (UpsertDataspaceTableAttributesDataspaceEntityType):
         attribute_id (UUID):
-        body (DataspaceTableAttributePatchIn): Schema for updating table attribute cells via
+        body (UpdateDataspaceTableAttributeRequest): Schema for updating table attribute cells via
             attribute_id.
 
     Raises:

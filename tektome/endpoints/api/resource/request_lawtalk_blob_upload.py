@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.blob_upload_request_post_in import BlobUploadRequestPostIn
-from ...models.blob_upload_request_post_out import BlobUploadRequestPostOut
+from ...models.blob_upload_request_response import BlobUploadRequestResponse
+from ...models.create_blob_upload_request_request import CreateBlobUploadRequestRequest
 from ...types import Response
 
 
 def _get_kwargs(
     resource_group_id: UUID,
     *,
-    body: BlobUploadRequestPostIn,
+    body: CreateBlobUploadRequestRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -36,9 +36,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BlobUploadRequestPostOut | None:
+) -> BlobUploadRequestResponse | None:
     if response.status_code == 200:
-        response_200 = BlobUploadRequestPostOut.from_dict(response.json())
+        response_200 = BlobUploadRequestResponse.from_dict(response.json())
 
         return response_200
 
@@ -50,7 +50,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BlobUploadRequestPostOut]:
+) -> Response[BlobUploadRequestResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,8 +63,8 @@ def sync_detailed(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BlobUploadRequestPostIn,
-) -> Response[BlobUploadRequestPostOut]:
+    body: CreateBlobUploadRequestRequest,
+) -> Response[BlobUploadRequestResponse]:
     """Request a blob upload URL
 
      Request a write-only upload URL for large files (500MB+). The client uploads directly to storage
@@ -73,14 +73,15 @@ def sync_detailed(
 
     Args:
         resource_group_id (UUID): Resource group ID
-        body (BlobUploadRequestPostIn): Input schema for requesting a streaming upload SAS URL.
+        body (CreateBlobUploadRequestRequest): Input schema for requesting a streaming upload SAS
+            URL.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BlobUploadRequestPostOut]
+        Response[BlobUploadRequestResponse]
     """
 
     kwargs = _get_kwargs(
@@ -99,8 +100,8 @@ def sync(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BlobUploadRequestPostIn,
-) -> BlobUploadRequestPostOut | None:
+    body: CreateBlobUploadRequestRequest,
+) -> BlobUploadRequestResponse | None:
     """Request a blob upload URL
 
      Request a write-only upload URL for large files (500MB+). The client uploads directly to storage
@@ -109,14 +110,15 @@ def sync(
 
     Args:
         resource_group_id (UUID): Resource group ID
-        body (BlobUploadRequestPostIn): Input schema for requesting a streaming upload SAS URL.
+        body (CreateBlobUploadRequestRequest): Input schema for requesting a streaming upload SAS
+            URL.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BlobUploadRequestPostOut
+        BlobUploadRequestResponse
     """
 
     return sync_detailed(
@@ -130,8 +132,8 @@ async def asyncio_detailed(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BlobUploadRequestPostIn,
-) -> Response[BlobUploadRequestPostOut]:
+    body: CreateBlobUploadRequestRequest,
+) -> Response[BlobUploadRequestResponse]:
     """Request a blob upload URL
 
      Request a write-only upload URL for large files (500MB+). The client uploads directly to storage
@@ -140,14 +142,15 @@ async def asyncio_detailed(
 
     Args:
         resource_group_id (UUID): Resource group ID
-        body (BlobUploadRequestPostIn): Input schema for requesting a streaming upload SAS URL.
+        body (CreateBlobUploadRequestRequest): Input schema for requesting a streaming upload SAS
+            URL.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BlobUploadRequestPostOut]
+        Response[BlobUploadRequestResponse]
     """
 
     kwargs = _get_kwargs(
@@ -164,8 +167,8 @@ async def asyncio(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BlobUploadRequestPostIn,
-) -> BlobUploadRequestPostOut | None:
+    body: CreateBlobUploadRequestRequest,
+) -> BlobUploadRequestResponse | None:
     """Request a blob upload URL
 
      Request a write-only upload URL for large files (500MB+). The client uploads directly to storage
@@ -174,14 +177,15 @@ async def asyncio(
 
     Args:
         resource_group_id (UUID): Resource group ID
-        body (BlobUploadRequestPostIn): Input schema for requesting a streaming upload SAS URL.
+        body (CreateBlobUploadRequestRequest): Input schema for requesting a streaming upload SAS
+            URL.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BlobUploadRequestPostOut
+        BlobUploadRequestResponse
     """
 
     return (

@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.section_creation_post_in import SectionCreationPostIn
-from ...models.section_get_out import SectionGetOut
+from ...models.create_section_creation_request import CreateSectionCreationRequest
+from ...models.section_response import SectionResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: SectionCreationPostIn,
+    body: CreateSectionCreationRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -29,9 +29,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> SectionGetOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> SectionResponse | None:
     if response.status_code == 201:
-        response_201 = SectionGetOut.from_dict(response.json())
+        response_201 = SectionResponse.from_dict(response.json())
 
         return response_201
 
@@ -41,7 +41,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[SectionGetOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[SectionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,14 +53,14 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: SectionCreationPostIn,
-) -> Response[SectionGetOut]:
+    body: CreateSectionCreationRequest,
+) -> Response[SectionResponse]:
     """Create a new section
 
      Create a new section for organizing resources and attributes within a project.
 
     Args:
-        body (SectionCreationPostIn): Serializer for creating a new section.
+        body (CreateSectionCreationRequest): Serializer for creating a new section.
             This serializer includes all necessary fields to create a section.
             It includes fields for resource IDs, page components, paragraphs, tables,
             chunk groups, and attributes.
@@ -84,7 +84,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SectionGetOut]
+        Response[SectionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -101,14 +101,14 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: SectionCreationPostIn,
-) -> SectionGetOut | None:
+    body: CreateSectionCreationRequest,
+) -> SectionResponse | None:
     """Create a new section
 
      Create a new section for organizing resources and attributes within a project.
 
     Args:
-        body (SectionCreationPostIn): Serializer for creating a new section.
+        body (CreateSectionCreationRequest): Serializer for creating a new section.
             This serializer includes all necessary fields to create a section.
             It includes fields for resource IDs, page components, paragraphs, tables,
             chunk groups, and attributes.
@@ -132,7 +132,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SectionGetOut
+        SectionResponse
     """
 
     return sync_detailed(
@@ -144,14 +144,14 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: SectionCreationPostIn,
-) -> Response[SectionGetOut]:
+    body: CreateSectionCreationRequest,
+) -> Response[SectionResponse]:
     """Create a new section
 
      Create a new section for organizing resources and attributes within a project.
 
     Args:
-        body (SectionCreationPostIn): Serializer for creating a new section.
+        body (CreateSectionCreationRequest): Serializer for creating a new section.
             This serializer includes all necessary fields to create a section.
             It includes fields for resource IDs, page components, paragraphs, tables,
             chunk groups, and attributes.
@@ -175,7 +175,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SectionGetOut]
+        Response[SectionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -190,14 +190,14 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: SectionCreationPostIn,
-) -> SectionGetOut | None:
+    body: CreateSectionCreationRequest,
+) -> SectionResponse | None:
     """Create a new section
 
      Create a new section for organizing resources and attributes within a project.
 
     Args:
-        body (SectionCreationPostIn): Serializer for creating a new section.
+        body (CreateSectionCreationRequest): Serializer for creating a new section.
             This serializer includes all necessary fields to create a section.
             It includes fields for resource IDs, page components, paragraphs, tables,
             chunk groups, and attributes.
@@ -221,7 +221,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SectionGetOut
+        SectionResponse
     """
 
     return (

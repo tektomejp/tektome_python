@@ -7,7 +7,6 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.paged_approval_ticket_candidate_out import PagedApprovalTicketCandidateOut
 from ...types import UNSET, Response, Unset
 
 
@@ -44,23 +43,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> PagedApprovalTicketCandidateOut | None:
-    if response.status_code == 200:
-        response_200 = PagedApprovalTicketCandidateOut.from_dict(response.json())
-
-        return response_200
-
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[PagedApprovalTicketCandidateOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -76,7 +66,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[PagedApprovalTicketCandidateOut]:
+) -> Response[Any]:
     """List candidates for an approval ticket
 
      Retrieve the list of candidates associated with a specific approval ticket, including their data
@@ -93,7 +83,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PagedApprovalTicketCandidateOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -110,42 +100,6 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    dataspace_id: UUID,
-    approval_id: UUID,
-    *,
-    client: AuthenticatedClient,
-    page: int | Unset = 1,
-    page_size: int | None | Unset = UNSET,
-) -> PagedApprovalTicketCandidateOut | None:
-    """List candidates for an approval ticket
-
-     Retrieve the list of candidates associated with a specific approval ticket, including their data
-    snapshots and review state.
-
-    Args:
-        dataspace_id (UUID):
-        approval_id (UUID):
-        page (int | Unset):  Default: 1.
-        page_size (int | None | Unset):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        PagedApprovalTicketCandidateOut
-    """
-
-    return sync_detailed(
-        dataspace_id=dataspace_id,
-        approval_id=approval_id,
-        client=client,
-        page=page,
-        page_size=page_size,
-    ).parsed
-
-
 async def asyncio_detailed(
     dataspace_id: UUID,
     approval_id: UUID,
@@ -153,7 +107,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[PagedApprovalTicketCandidateOut]:
+) -> Response[Any]:
     """List candidates for an approval ticket
 
      Retrieve the list of candidates associated with a specific approval ticket, including their data
@@ -170,7 +124,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PagedApprovalTicketCandidateOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -183,41 +137,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    dataspace_id: UUID,
-    approval_id: UUID,
-    *,
-    client: AuthenticatedClient,
-    page: int | Unset = 1,
-    page_size: int | None | Unset = UNSET,
-) -> PagedApprovalTicketCandidateOut | None:
-    """List candidates for an approval ticket
-
-     Retrieve the list of candidates associated with a specific approval ticket, including their data
-    snapshots and review state.
-
-    Args:
-        dataspace_id (UUID):
-        approval_id (UUID):
-        page (int | Unset):  Default: 1.
-        page_size (int | None | Unset):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        PagedApprovalTicketCandidateOut
-    """
-
-    return (
-        await asyncio_detailed(
-            dataspace_id=dataspace_id,
-            approval_id=approval_id,
-            client=client,
-            page=page,
-            page_size=page_size,
-        )
-    ).parsed

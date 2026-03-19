@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.requirement_view_research_template_patch_in import RequirementViewResearchTemplatePatchIn
+from ...models.update_requirement_view_research_template_request import UpdateRequirementViewResearchTemplateRequest
 from ...types import Response
 
 
@@ -15,7 +15,7 @@ def _get_kwargs(
     requirement_id: UUID,
     research_template_id: UUID,
     *,
-    body: RequirementViewResearchTemplatePatchIn,
+    body: UpdateRequirementViewResearchTemplateRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -59,7 +59,7 @@ def sync_detailed(
     research_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementViewResearchTemplatePatchIn,
+    body: UpdateRequirementViewResearchTemplateRequest,
 ) -> Response[Any]:
     """Update research template visibility
 
@@ -68,8 +68,8 @@ def sync_detailed(
     Args:
         requirement_id (UUID):
         research_template_id (UUID):
-        body (RequirementViewResearchTemplatePatchIn): Schema for updating a Requirement Research
-            Template.
+        body (UpdateRequirementViewResearchTemplateRequest): Schema for updating a Requirement
+            Research Template.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -97,7 +97,7 @@ async def asyncio_detailed(
     research_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementViewResearchTemplatePatchIn,
+    body: UpdateRequirementViewResearchTemplateRequest,
 ) -> Response[Any]:
     """Update research template visibility
 
@@ -106,8 +106,8 @@ async def asyncio_detailed(
     Args:
         requirement_id (UUID):
         research_template_id (UUID):
-        body (RequirementViewResearchTemplatePatchIn): Schema for updating a Requirement Research
-            Template.
+        body (UpdateRequirementViewResearchTemplateRequest): Schema for updating a Requirement
+            Research Template.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

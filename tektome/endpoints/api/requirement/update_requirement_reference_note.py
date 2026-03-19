@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.reference_note_patch_in_patch import ReferenceNotePatchInPatch
+from ...models.update_reference_note_request import UpdateReferenceNoteRequest
 from ...types import Response
 
 
 def _get_kwargs(
     reference_note_id: UUID,
     *,
-    body: ReferenceNotePatchInPatch,
+    body: UpdateReferenceNoteRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,7 +56,7 @@ def sync_detailed(
     reference_note_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ReferenceNotePatchInPatch,
+    body: UpdateReferenceNoteRequest,
 ) -> Response[Any]:
     """Update a reference note
 
@@ -64,7 +64,7 @@ def sync_detailed(
 
     Args:
         reference_note_id (UUID):
-        body (ReferenceNotePatchInPatch):
+        body (UpdateReferenceNoteRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -90,7 +90,7 @@ async def asyncio_detailed(
     reference_note_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ReferenceNotePatchInPatch,
+    body: UpdateReferenceNoteRequest,
 ) -> Response[Any]:
     """Update a reference note
 
@@ -98,7 +98,7 @@ async def asyncio_detailed(
 
     Args:
         reference_note_id (UUID):
-        body (ReferenceNotePatchInPatch):
+        body (UpdateReferenceNoteRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

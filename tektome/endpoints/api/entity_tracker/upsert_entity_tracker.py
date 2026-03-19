@@ -5,13 +5,13 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.entity_tracker_put_in import EntityTrackerPutIn
+from ...models.replace_entity_tracker_request import ReplaceEntityTrackerRequest
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: EntityTrackerPutIn,
+    body: ReplaceEntityTrackerRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -50,7 +50,7 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: EntityTrackerPutIn,
+    body: ReplaceEntityTrackerRequest,
 ) -> Response[Any]:
     """Upsert entity view tracking
 
@@ -58,7 +58,7 @@ def sync_detailed(
     each entity.
 
     Args:
-        body (EntityTrackerPutIn):
+        body (ReplaceEntityTrackerRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -82,7 +82,7 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: EntityTrackerPutIn,
+    body: ReplaceEntityTrackerRequest,
 ) -> Response[Any]:
     """Upsert entity view tracking
 
@@ -90,7 +90,7 @@ async def asyncio_detailed(
     each entity.
 
     Args:
-        body (EntityTrackerPutIn):
+        body (ReplaceEntityTrackerRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

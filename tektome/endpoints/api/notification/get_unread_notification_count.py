@@ -7,7 +7,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.generic_http_error import GenericHttpError
-from ...models.unread_count_out import UnreadCountOut
+from ...models.unread_count_response import UnreadCountResponse
 from ...types import UNSET, Response, Unset
 
 
@@ -50,9 +50,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> GenericHttpError | UnreadCountOut | None:
+) -> GenericHttpError | UnreadCountResponse | None:
     if response.status_code == 200:
-        response_200 = UnreadCountOut.from_dict(response.json())
+        response_200 = UnreadCountResponse.from_dict(response.json())
 
         return response_200
 
@@ -154,7 +154,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[GenericHttpError | UnreadCountOut]:
+) -> Response[GenericHttpError | UnreadCountResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -168,7 +168,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     organization_id: None | Unset | UUID = UNSET,
     dataspace_id: None | Unset | UUID = UNSET,
-) -> Response[GenericHttpError | UnreadCountOut]:
+) -> Response[GenericHttpError | UnreadCountResponse]:
     """Return unread notification count
 
      m2KpL8vQ
@@ -186,7 +186,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GenericHttpError | UnreadCountOut]
+        Response[GenericHttpError | UnreadCountResponse]
     """
 
     kwargs = _get_kwargs(
@@ -206,7 +206,7 @@ def sync(
     client: AuthenticatedClient,
     organization_id: None | Unset | UUID = UNSET,
     dataspace_id: None | Unset | UUID = UNSET,
-) -> GenericHttpError | UnreadCountOut | None:
+) -> GenericHttpError | UnreadCountResponse | None:
     """Return unread notification count
 
      m2KpL8vQ
@@ -224,7 +224,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GenericHttpError | UnreadCountOut
+        GenericHttpError | UnreadCountResponse
     """
 
     return sync_detailed(
@@ -239,7 +239,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     organization_id: None | Unset | UUID = UNSET,
     dataspace_id: None | Unset | UUID = UNSET,
-) -> Response[GenericHttpError | UnreadCountOut]:
+) -> Response[GenericHttpError | UnreadCountResponse]:
     """Return unread notification count
 
      m2KpL8vQ
@@ -257,7 +257,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GenericHttpError | UnreadCountOut]
+        Response[GenericHttpError | UnreadCountResponse]
     """
 
     kwargs = _get_kwargs(
@@ -275,7 +275,7 @@ async def asyncio(
     client: AuthenticatedClient,
     organization_id: None | Unset | UUID = UNSET,
     dataspace_id: None | Unset | UUID = UNSET,
-) -> GenericHttpError | UnreadCountOut | None:
+) -> GenericHttpError | UnreadCountResponse | None:
     """Return unread notification count
 
      m2KpL8vQ
@@ -293,7 +293,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GenericHttpError | UnreadCountOut
+        GenericHttpError | UnreadCountResponse
     """
 
     return (

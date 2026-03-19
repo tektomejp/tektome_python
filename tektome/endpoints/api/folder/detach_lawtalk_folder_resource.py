@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.lawtalk_folder_resource_post_in import LawtalkFolderResourcePostIn
+from ...models.create_lawtalk_folder_resource_request import CreateLawtalkFolderResourceRequest
 from ...types import Response
 
 
 def _get_kwargs(
     folder_id: UUID,
     *,
-    body: LawtalkFolderResourcePostIn,
+    body: CreateLawtalkFolderResourceRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,7 +56,7 @@ def sync_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: LawtalkFolderResourcePostIn,
+    body: CreateLawtalkFolderResourceRequest,
 ) -> Response[Any]:
     """Detach resources from a folder
 
@@ -64,7 +64,7 @@ def sync_detailed(
 
     Args:
         folder_id (UUID):
-        body (LawtalkFolderResourcePostIn): Schema for attaching a lawtalk resource(s) to a
+        body (CreateLawtalkFolderResourceRequest): Schema for attaching a lawtalk resource(s) to a
             folder.
 
     Raises:
@@ -91,7 +91,7 @@ async def asyncio_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: LawtalkFolderResourcePostIn,
+    body: CreateLawtalkFolderResourceRequest,
 ) -> Response[Any]:
     """Detach resources from a folder
 
@@ -99,7 +99,7 @@ async def asyncio_detailed(
 
     Args:
         folder_id (UUID):
-        body (LawtalkFolderResourcePostIn): Schema for attaching a lawtalk resource(s) to a
+        body (CreateLawtalkFolderResourceRequest): Schema for attaching a lawtalk resource(s) to a
             folder.
 
     Raises:

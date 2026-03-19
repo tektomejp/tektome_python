@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.dataspace_search_tag_config_out import DataspaceSearchTagConfigOut
+from ...models.dataspace_search_tag_config_response import DataspaceSearchTagConfigResponse
 from ...types import Response
 
 
@@ -27,12 +27,12 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> list[DataspaceSearchTagConfigOut] | None:
+) -> list[DataspaceSearchTagConfigResponse] | None:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = DataspaceSearchTagConfigOut.from_dict(response_200_item_data)
+            response_200_item = DataspaceSearchTagConfigResponse.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
@@ -46,7 +46,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[list[DataspaceSearchTagConfigOut]]:
+) -> Response[list[DataspaceSearchTagConfigResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,7 +59,7 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[list[DataspaceSearchTagConfigOut]]:
+) -> Response[list[DataspaceSearchTagConfigResponse]]:
     """List all search tag configurations
 
      Retrieve all search tag configurations for a dataspace. Tag configurations group search filters
@@ -73,7 +73,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list[DataspaceSearchTagConfigOut]]
+        Response[list[DataspaceSearchTagConfigResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -91,7 +91,7 @@ def sync(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> list[DataspaceSearchTagConfigOut] | None:
+) -> list[DataspaceSearchTagConfigResponse] | None:
     """List all search tag configurations
 
      Retrieve all search tag configurations for a dataspace. Tag configurations group search filters
@@ -105,7 +105,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list[DataspaceSearchTagConfigOut]
+        list[DataspaceSearchTagConfigResponse]
     """
 
     return sync_detailed(
@@ -118,7 +118,7 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[list[DataspaceSearchTagConfigOut]]:
+) -> Response[list[DataspaceSearchTagConfigResponse]]:
     """List all search tag configurations
 
      Retrieve all search tag configurations for a dataspace. Tag configurations group search filters
@@ -132,7 +132,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list[DataspaceSearchTagConfigOut]]
+        Response[list[DataspaceSearchTagConfigResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -148,7 +148,7 @@ async def asyncio(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> list[DataspaceSearchTagConfigOut] | None:
+) -> list[DataspaceSearchTagConfigResponse] | None:
     """List all search tag configurations
 
      Retrieve all search tag configurations for a dataspace. Tag configurations group search filters
@@ -162,7 +162,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list[DataspaceSearchTagConfigOut]
+        list[DataspaceSearchTagConfigResponse]
     """
 
     return (

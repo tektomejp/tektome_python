@@ -7,9 +7,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bim_citation_patch_in_patch import BIMCitationPatchInPatch
-from ...models.bim_citation_schema_out import BIMCitationSchemaOut
+from ...models.bim_citation_schema_response import BIMCitationSchemaResponse
 from ...models.update_attribute_bim_citation_dataspace_entity_type import UpdateAttributeBimCitationDataspaceEntityType
+from ...models.update_bim_citation_request import UpdateBIMCitationRequest
 from ...types import Response
 
 
@@ -19,7 +19,7 @@ def _get_kwargs(
     attribute_id: UUID,
     bim_citation_id: UUID,
     *,
-    body: BIMCitationPatchInPatch,
+    body: UpdateBIMCitationRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -41,9 +41,11 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> BIMCitationSchemaOut | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> BIMCitationSchemaResponse | None:
     if response.status_code == 200:
-        response_200 = BIMCitationSchemaOut.from_dict(response.json())
+        response_200 = BIMCitationSchemaResponse.from_dict(response.json())
 
         return response_200
 
@@ -55,7 +57,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BIMCitationSchemaOut]:
+) -> Response[BIMCitationSchemaResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,8 +73,8 @@ def sync_detailed(
     bim_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BIMCitationPatchInPatch,
-) -> Response[BIMCitationSchemaOut]:
+    body: UpdateBIMCitationRequest,
+) -> Response[BIMCitationSchemaResponse]:
     """Update a BIM citation
 
      Update the details of a specific BIM citation associated with an attribute.
@@ -82,14 +84,14 @@ def sync_detailed(
         attribute_category (UpdateAttributeBimCitationDataspaceEntityType):
         attribute_id (UUID):
         bim_citation_id (UUID):
-        body (BIMCitationPatchInPatch):
+        body (UpdateBIMCitationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BIMCitationSchemaOut]
+        Response[BIMCitationSchemaResponse]
     """
 
     kwargs = _get_kwargs(
@@ -114,8 +116,8 @@ def sync(
     bim_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BIMCitationPatchInPatch,
-) -> BIMCitationSchemaOut | None:
+    body: UpdateBIMCitationRequest,
+) -> BIMCitationSchemaResponse | None:
     """Update a BIM citation
 
      Update the details of a specific BIM citation associated with an attribute.
@@ -125,14 +127,14 @@ def sync(
         attribute_category (UpdateAttributeBimCitationDataspaceEntityType):
         attribute_id (UUID):
         bim_citation_id (UUID):
-        body (BIMCitationPatchInPatch):
+        body (UpdateBIMCitationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BIMCitationSchemaOut
+        BIMCitationSchemaResponse
     """
 
     return sync_detailed(
@@ -152,8 +154,8 @@ async def asyncio_detailed(
     bim_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BIMCitationPatchInPatch,
-) -> Response[BIMCitationSchemaOut]:
+    body: UpdateBIMCitationRequest,
+) -> Response[BIMCitationSchemaResponse]:
     """Update a BIM citation
 
      Update the details of a specific BIM citation associated with an attribute.
@@ -163,14 +165,14 @@ async def asyncio_detailed(
         attribute_category (UpdateAttributeBimCitationDataspaceEntityType):
         attribute_id (UUID):
         bim_citation_id (UUID):
-        body (BIMCitationPatchInPatch):
+        body (UpdateBIMCitationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BIMCitationSchemaOut]
+        Response[BIMCitationSchemaResponse]
     """
 
     kwargs = _get_kwargs(
@@ -193,8 +195,8 @@ async def asyncio(
     bim_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BIMCitationPatchInPatch,
-) -> BIMCitationSchemaOut | None:
+    body: UpdateBIMCitationRequest,
+) -> BIMCitationSchemaResponse | None:
     """Update a BIM citation
 
      Update the details of a specific BIM citation associated with an attribute.
@@ -204,14 +206,14 @@ async def asyncio(
         attribute_category (UpdateAttributeBimCitationDataspaceEntityType):
         attribute_id (UUID):
         bim_citation_id (UUID):
-        body (BIMCitationPatchInPatch):
+        body (UpdateBIMCitationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BIMCitationSchemaOut
+        BIMCitationSchemaResponse
     """
 
     return (

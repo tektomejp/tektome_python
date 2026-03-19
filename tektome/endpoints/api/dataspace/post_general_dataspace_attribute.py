@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.attribute_get_out import AttributeGetOut
-from ...models.attribute_post_in import AttributePostIn
+from ...models.attribute_response import AttributeResponse
+from ...models.create_attribute_request import CreateAttributeRequest
 from ...models.post_general_dataspace_attribute_dataspace_entity_type import (
     PostGeneralDataspaceAttributeDataspaceEntityType,
 )
@@ -19,7 +19,7 @@ def _get_kwargs(
     dataspace_id: UUID,
     attribute_category: PostGeneralDataspaceAttributeDataspaceEntityType,
     *,
-    body: AttributePostIn,
+    body: CreateAttributeRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -39,9 +39,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AttributeGetOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AttributeResponse | None:
     if response.status_code == 201:
-        response_201 = AttributeGetOut.from_dict(response.json())
+        response_201 = AttributeResponse.from_dict(response.json())
 
         return response_201
 
@@ -51,7 +51,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AttributeGetOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AttributeResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,8 +65,8 @@ def sync_detailed(
     attribute_category: PostGeneralDataspaceAttributeDataspaceEntityType,
     *,
     client: AuthenticatedClient,
-    body: AttributePostIn,
-) -> Response[AttributeGetOut]:
+    body: CreateAttributeRequest,
+) -> Response[AttributeResponse]:
     """Create an attribute in a dataspace
 
      Create a new attribute for a project or resource, validated against the dataspace's configured
@@ -76,14 +76,14 @@ def sync_detailed(
     Args:
         dataspace_id (UUID):
         attribute_category (PostGeneralDataspaceAttributeDataspaceEntityType):
-        body (AttributePostIn): Schema for patching an attribute.
+        body (CreateAttributeRequest): Schema for patching an attribute.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AttributeGetOut]
+        Response[AttributeResponse]
     """
 
     kwargs = _get_kwargs(
@@ -104,8 +104,8 @@ def sync(
     attribute_category: PostGeneralDataspaceAttributeDataspaceEntityType,
     *,
     client: AuthenticatedClient,
-    body: AttributePostIn,
-) -> AttributeGetOut | None:
+    body: CreateAttributeRequest,
+) -> AttributeResponse | None:
     """Create an attribute in a dataspace
 
      Create a new attribute for a project or resource, validated against the dataspace's configured
@@ -115,14 +115,14 @@ def sync(
     Args:
         dataspace_id (UUID):
         attribute_category (PostGeneralDataspaceAttributeDataspaceEntityType):
-        body (AttributePostIn): Schema for patching an attribute.
+        body (CreateAttributeRequest): Schema for patching an attribute.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AttributeGetOut
+        AttributeResponse
     """
 
     return sync_detailed(
@@ -138,8 +138,8 @@ async def asyncio_detailed(
     attribute_category: PostGeneralDataspaceAttributeDataspaceEntityType,
     *,
     client: AuthenticatedClient,
-    body: AttributePostIn,
-) -> Response[AttributeGetOut]:
+    body: CreateAttributeRequest,
+) -> Response[AttributeResponse]:
     """Create an attribute in a dataspace
 
      Create a new attribute for a project or resource, validated against the dataspace's configured
@@ -149,14 +149,14 @@ async def asyncio_detailed(
     Args:
         dataspace_id (UUID):
         attribute_category (PostGeneralDataspaceAttributeDataspaceEntityType):
-        body (AttributePostIn): Schema for patching an attribute.
+        body (CreateAttributeRequest): Schema for patching an attribute.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AttributeGetOut]
+        Response[AttributeResponse]
     """
 
     kwargs = _get_kwargs(
@@ -175,8 +175,8 @@ async def asyncio(
     attribute_category: PostGeneralDataspaceAttributeDataspaceEntityType,
     *,
     client: AuthenticatedClient,
-    body: AttributePostIn,
-) -> AttributeGetOut | None:
+    body: CreateAttributeRequest,
+) -> AttributeResponse | None:
     """Create an attribute in a dataspace
 
      Create a new attribute for a project or resource, validated against the dataspace's configured
@@ -186,14 +186,14 @@ async def asyncio(
     Args:
         dataspace_id (UUID):
         attribute_category (PostGeneralDataspaceAttributeDataspaceEntityType):
-        body (AttributePostIn): Schema for patching an attribute.
+        body (CreateAttributeRequest): Schema for patching an attribute.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AttributeGetOut
+        AttributeResponse
     """
 
     return (

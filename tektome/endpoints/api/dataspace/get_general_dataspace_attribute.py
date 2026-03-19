@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.attribute_get_out import AttributeGetOut
+from ...models.attribute_response import AttributeResponse
 from ...models.get_general_dataspace_attribute_dataspace_entity_type import (
     GetGeneralDataspaceAttributeDataspaceEntityType,
 )
@@ -32,9 +32,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AttributeGetOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AttributeResponse | None:
     if response.status_code == 200:
-        response_200 = AttributeGetOut.from_dict(response.json())
+        response_200 = AttributeResponse.from_dict(response.json())
 
         return response_200
 
@@ -44,7 +44,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AttributeGetOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AttributeResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,7 +59,7 @@ def sync_detailed(
     attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[AttributeGetOut]:
+) -> Response[AttributeResponse]:
     """Get a dataspace attribute by ID
 
      Retrieve a specific dataspace attribute by its ID. The attribute can belong to either a resource or
@@ -75,7 +75,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AttributeGetOut]
+        Response[AttributeResponse]
     """
 
     kwargs = _get_kwargs(
@@ -97,7 +97,7 @@ def sync(
     attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> AttributeGetOut | None:
+) -> AttributeResponse | None:
     """Get a dataspace attribute by ID
 
      Retrieve a specific dataspace attribute by its ID. The attribute can belong to either a resource or
@@ -113,7 +113,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AttributeGetOut
+        AttributeResponse
     """
 
     return sync_detailed(
@@ -130,7 +130,7 @@ async def asyncio_detailed(
     attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[AttributeGetOut]:
+) -> Response[AttributeResponse]:
     """Get a dataspace attribute by ID
 
      Retrieve a specific dataspace attribute by its ID. The attribute can belong to either a resource or
@@ -146,7 +146,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AttributeGetOut]
+        Response[AttributeResponse]
     """
 
     kwargs = _get_kwargs(
@@ -166,7 +166,7 @@ async def asyncio(
     attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> AttributeGetOut | None:
+) -> AttributeResponse | None:
     """Get a dataspace attribute by ID
 
      Retrieve a specific dataspace attribute by its ID. The attribute can belong to either a resource or
@@ -182,7 +182,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AttributeGetOut
+        AttributeResponse
     """
 
     return (

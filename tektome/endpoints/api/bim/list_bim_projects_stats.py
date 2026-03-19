@@ -5,8 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bim_project_stats_get_out import BimProjectStatsGetOut
-from ...models.error_response_out import ErrorResponseOut
+from ...models.bim_project_stats_response import BimProjectStatsResponse
 from ...types import UNSET, Response, Unset
 
 
@@ -35,26 +34,16 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorResponseOut | list[BimProjectStatsGetOut] | None:
+) -> list[BimProjectStatsResponse] | None:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = BimProjectStatsGetOut.from_dict(response_200_item_data)
+            response_200_item = BimProjectStatsResponse.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
         return response_200
-
-    if response.status_code == 400:
-        response_400 = ErrorResponseOut.from_dict(response.json())
-
-        return response_400
-
-    if response.status_code == 500:
-        response_500 = ErrorResponseOut.from_dict(response.json())
-
-        return response_500
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -64,7 +53,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorResponseOut | list[BimProjectStatsGetOut]]:
+) -> Response[list[BimProjectStatsResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -78,7 +67,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | Unset = 100,
-) -> Response[ErrorResponseOut | list[BimProjectStatsGetOut]]:
+) -> Response[list[BimProjectStatsResponse]]:
     """List all BIM project statistics
 
      Retrieve paginated statistics for all BIM projects, including object, view, and sheet counts.
@@ -92,7 +81,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorResponseOut | list[BimProjectStatsGetOut]]
+        Response[list[BimProjectStatsResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -112,7 +101,7 @@ def sync(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | Unset = 100,
-) -> ErrorResponseOut | list[BimProjectStatsGetOut] | None:
+) -> list[BimProjectStatsResponse] | None:
     """List all BIM project statistics
 
      Retrieve paginated statistics for all BIM projects, including object, view, and sheet counts.
@@ -126,7 +115,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorResponseOut | list[BimProjectStatsGetOut]
+        list[BimProjectStatsResponse]
     """
 
     return sync_detailed(
@@ -141,7 +130,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | Unset = 100,
-) -> Response[ErrorResponseOut | list[BimProjectStatsGetOut]]:
+) -> Response[list[BimProjectStatsResponse]]:
     """List all BIM project statistics
 
      Retrieve paginated statistics for all BIM projects, including object, view, and sheet counts.
@@ -155,7 +144,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorResponseOut | list[BimProjectStatsGetOut]]
+        Response[list[BimProjectStatsResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -173,7 +162,7 @@ async def asyncio(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | Unset = 100,
-) -> ErrorResponseOut | list[BimProjectStatsGetOut] | None:
+) -> list[BimProjectStatsResponse] | None:
     """List all BIM project statistics
 
      Retrieve paginated statistics for all BIM projects, including object, view, and sheet counts.
@@ -187,7 +176,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorResponseOut | list[BimProjectStatsGetOut]
+        list[BimProjectStatsResponse]
     """
 
     return (

@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.generic_check_delete_out import GenericCheckDeleteOut
+from ...models.generic_check_response import GenericCheckResponse
 from ...types import Response
 
 
@@ -25,9 +25,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> GenericCheckDeleteOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> GenericCheckResponse | None:
     if response.status_code == 200:
-        response_200 = GenericCheckDeleteOut.from_dict(response.json())
+        response_200 = GenericCheckResponse.from_dict(response.json())
 
         return response_200
 
@@ -39,7 +39,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[GenericCheckDeleteOut]:
+) -> Response[GenericCheckResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -52,7 +52,7 @@ def sync_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[GenericCheckDeleteOut]:
+) -> Response[GenericCheckResponse]:
     """Check Folder Delete
 
      Hn7bK9mL
@@ -67,7 +67,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GenericCheckDeleteOut]
+        Response[GenericCheckResponse]
     """
 
     kwargs = _get_kwargs(
@@ -85,7 +85,7 @@ def sync(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> GenericCheckDeleteOut | None:
+) -> GenericCheckResponse | None:
     """Check Folder Delete
 
      Hn7bK9mL
@@ -100,7 +100,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GenericCheckDeleteOut
+        GenericCheckResponse
     """
 
     return sync_detailed(
@@ -113,7 +113,7 @@ async def asyncio_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[GenericCheckDeleteOut]:
+) -> Response[GenericCheckResponse]:
     """Check Folder Delete
 
      Hn7bK9mL
@@ -128,7 +128,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GenericCheckDeleteOut]
+        Response[GenericCheckResponse]
     """
 
     kwargs = _get_kwargs(
@@ -144,7 +144,7 @@ async def asyncio(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> GenericCheckDeleteOut | None:
+) -> GenericCheckResponse | None:
     """Check Folder Delete
 
      Hn7bK9mL
@@ -159,7 +159,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GenericCheckDeleteOut
+        GenericCheckResponse
     """
 
     return (

@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.execute_process_post_out import ExecuteProcessPostOut
-from ...models.execute_processes_post_in import ExecuteProcessesPostIn
+from ...models.create_execute_processes_request import CreateExecuteProcessesRequest
+from ...models.execute_process_response import ExecuteProcessResponse
 from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
     *,
-    body: ExecuteProcessesPostIn,
+    body: CreateExecuteProcessesRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -34,9 +34,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ExecuteProcessPostOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ExecuteProcessResponse | None:
     if response.status_code == 200:
-        response_200 = ExecuteProcessPostOut.from_dict(response.json())
+        response_200 = ExecuteProcessResponse.from_dict(response.json())
 
         return response_200
 
@@ -48,7 +48,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ExecuteProcessPostOut]:
+) -> Response[ExecuteProcessResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -61,8 +61,8 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ExecuteProcessesPostIn,
-) -> Response[ExecuteProcessPostOut]:
+    body: CreateExecuteProcessesRequest,
+) -> Response[ExecuteProcessResponse]:
     """Execute processes in a dataspace
 
      Launch one or more process executions against resources or projects in the dataspace. Supports
@@ -70,14 +70,14 @@ def sync_detailed(
 
     Args:
         dataspace_id (UUID):
-        body (ExecuteProcessesPostIn):
+        body (CreateExecuteProcessesRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ExecuteProcessPostOut]
+        Response[ExecuteProcessResponse]
     """
 
     kwargs = _get_kwargs(
@@ -96,8 +96,8 @@ def sync(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ExecuteProcessesPostIn,
-) -> ExecuteProcessPostOut | None:
+    body: CreateExecuteProcessesRequest,
+) -> ExecuteProcessResponse | None:
     """Execute processes in a dataspace
 
      Launch one or more process executions against resources or projects in the dataspace. Supports
@@ -105,14 +105,14 @@ def sync(
 
     Args:
         dataspace_id (UUID):
-        body (ExecuteProcessesPostIn):
+        body (CreateExecuteProcessesRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ExecuteProcessPostOut
+        ExecuteProcessResponse
     """
 
     return sync_detailed(
@@ -126,8 +126,8 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ExecuteProcessesPostIn,
-) -> Response[ExecuteProcessPostOut]:
+    body: CreateExecuteProcessesRequest,
+) -> Response[ExecuteProcessResponse]:
     """Execute processes in a dataspace
 
      Launch one or more process executions against resources or projects in the dataspace. Supports
@@ -135,14 +135,14 @@ async def asyncio_detailed(
 
     Args:
         dataspace_id (UUID):
-        body (ExecuteProcessesPostIn):
+        body (CreateExecuteProcessesRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ExecuteProcessPostOut]
+        Response[ExecuteProcessResponse]
     """
 
     kwargs = _get_kwargs(
@@ -159,8 +159,8 @@ async def asyncio(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ExecuteProcessesPostIn,
-) -> ExecuteProcessPostOut | None:
+    body: CreateExecuteProcessesRequest,
+) -> ExecuteProcessResponse | None:
     """Execute processes in a dataspace
 
      Launch one or more process executions against resources or projects in the dataspace. Supports
@@ -168,14 +168,14 @@ async def asyncio(
 
     Args:
         dataspace_id (UUID):
-        body (ExecuteProcessesPostIn):
+        body (CreateExecuteProcessesRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ExecuteProcessPostOut
+        ExecuteProcessResponse
     """
 
     return (

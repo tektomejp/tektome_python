@@ -12,7 +12,7 @@ from .. import types
 from ..types import UNSET, File, FileTypes, Unset
 
 if TYPE_CHECKING:
-    from ..models.organizations_post_in import OrganizationsPostIn
+    from ..models.create_organizations_request import CreateOrganizationsRequest
 
 
 T = TypeVar("T", bound="CreateOrganizationMultiPartBodyParams")
@@ -22,11 +22,11 @@ T = TypeVar("T", bound="CreateOrganizationMultiPartBodyParams")
 class CreateOrganizationMultiPartBodyParams:
     """
     Attributes:
-        payload (OrganizationsPostIn):
+        payload (CreateOrganizationsRequest):
         logo_file (File | Unset):
     """
 
-    payload: OrganizationsPostIn
+    payload: CreateOrganizationsRequest
     logo_file: File | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -64,10 +64,10 @@ class CreateOrganizationMultiPartBodyParams:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.organizations_post_in import OrganizationsPostIn
+        from ..models.create_organizations_request import CreateOrganizationsRequest
 
         d = dict(src_dict)
-        payload = OrganizationsPostIn.from_dict(d.pop("payload"))
+        payload = CreateOrganizationsRequest.from_dict(d.pop("payload"))
 
         _logo_file = d.pop("logo_file", UNSET)
         logo_file: File | Unset

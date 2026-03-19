@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.default_attribute_body_put_in import DefaultAttributeBodyPutIn
+from ...models.replace_default_attribute_body_request import ReplaceDefaultAttributeBodyRequest
 from ...models.upsert_general_attributes_attribute_object_types import UpsertGeneralAttributesAttributeObjectTypes
 from ...types import Response
 
@@ -16,7 +16,7 @@ def _get_kwargs(
     object_type: UpsertGeneralAttributesAttributeObjectTypes,
     object_id: UUID,
     *,
-    body: DefaultAttributeBodyPutIn,
+    body: ReplaceDefaultAttributeBodyRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -60,7 +60,7 @@ def sync_detailed(
     object_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DefaultAttributeBodyPutIn,
+    body: ReplaceDefaultAttributeBodyRequest,
 ) -> Response[Any]:
     """Upsert general attributes
 
@@ -71,7 +71,7 @@ def sync_detailed(
     Args:
         object_type (UpsertGeneralAttributesAttributeObjectTypes):
         object_id (UUID):
-        body (DefaultAttributeBodyPutIn):
+        body (ReplaceDefaultAttributeBodyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -99,7 +99,7 @@ async def asyncio_detailed(
     object_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DefaultAttributeBodyPutIn,
+    body: ReplaceDefaultAttributeBodyRequest,
 ) -> Response[Any]:
     """Upsert general attributes
 
@@ -110,7 +110,7 @@ async def asyncio_detailed(
     Args:
         object_type (UpsertGeneralAttributesAttributeObjectTypes):
         object_id (UUID):
-        body (DefaultAttributeBodyPutIn):
+        body (ReplaceDefaultAttributeBodyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

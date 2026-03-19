@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bim_key_value_stats_out import BimKeyValueStatsOut
+from ...models.bim_key_value_stats_response import BimKeyValueStatsResponse
 from ...types import Response
 
 
@@ -27,9 +27,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BimKeyValueStatsOut | str | None:
+) -> BimKeyValueStatsResponse | str | None:
     if response.status_code == 200:
-        response_200 = BimKeyValueStatsOut.from_dict(response.json())
+        response_200 = BimKeyValueStatsResponse.from_dict(response.json())
 
         return response_200
 
@@ -49,7 +49,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BimKeyValueStatsOut | str]:
+) -> Response[BimKeyValueStatsResponse | str]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -62,7 +62,7 @@ def sync_detailed(
     bim_project_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[BimKeyValueStatsOut | str]:
+) -> Response[BimKeyValueStatsResponse | str]:
     """Bim Key Value Stats
 
      8MsaUZ2x
@@ -86,7 +86,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimKeyValueStatsOut | str]
+        Response[BimKeyValueStatsResponse | str]
     """
 
     kwargs = _get_kwargs(
@@ -104,7 +104,7 @@ def sync(
     bim_project_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> BimKeyValueStatsOut | str | None:
+) -> BimKeyValueStatsResponse | str | None:
     """Bim Key Value Stats
 
      8MsaUZ2x
@@ -128,7 +128,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimKeyValueStatsOut | str
+        BimKeyValueStatsResponse | str
     """
 
     return sync_detailed(
@@ -141,7 +141,7 @@ async def asyncio_detailed(
     bim_project_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[BimKeyValueStatsOut | str]:
+) -> Response[BimKeyValueStatsResponse | str]:
     """Bim Key Value Stats
 
      8MsaUZ2x
@@ -165,7 +165,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimKeyValueStatsOut | str]
+        Response[BimKeyValueStatsResponse | str]
     """
 
     kwargs = _get_kwargs(
@@ -181,7 +181,7 @@ async def asyncio(
     bim_project_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> BimKeyValueStatsOut | str | None:
+) -> BimKeyValueStatsResponse | str | None:
     """Bim Key Value Stats
 
      8MsaUZ2x
@@ -205,7 +205,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimKeyValueStatsOut | str
+        BimKeyValueStatsResponse | str
     """
 
     return (

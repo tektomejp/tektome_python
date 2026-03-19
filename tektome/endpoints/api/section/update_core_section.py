@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.section_creation_put_in import SectionCreationPutIn
-from ...models.section_get_out import SectionGetOut
+from ...models.replace_section_creation_request import ReplaceSectionCreationRequest
+from ...models.section_response import SectionResponse
 from ...types import Response
 
 
 def _get_kwargs(
     section_id: UUID,
     *,
-    body: SectionCreationPutIn,
+    body: ReplaceSectionCreationRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -34,9 +34,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> SectionGetOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> SectionResponse | None:
     if response.status_code == 200:
-        response_200 = SectionGetOut.from_dict(response.json())
+        response_200 = SectionResponse.from_dict(response.json())
 
         return response_200
 
@@ -46,7 +46,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[SectionGetOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[SectionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,22 +59,22 @@ def sync_detailed(
     section_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: SectionCreationPutIn,
-) -> Response[SectionGetOut]:
+    body: ReplaceSectionCreationRequest,
+) -> Response[SectionResponse]:
     """Update a section
 
      Replace the data of an existing section with the provided payload.
 
     Args:
         section_id (UUID):
-        body (SectionCreationPutIn):
+        body (ReplaceSectionCreationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SectionGetOut]
+        Response[SectionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -93,22 +93,22 @@ def sync(
     section_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: SectionCreationPutIn,
-) -> SectionGetOut | None:
+    body: ReplaceSectionCreationRequest,
+) -> SectionResponse | None:
     """Update a section
 
      Replace the data of an existing section with the provided payload.
 
     Args:
         section_id (UUID):
-        body (SectionCreationPutIn):
+        body (ReplaceSectionCreationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SectionGetOut
+        SectionResponse
     """
 
     return sync_detailed(
@@ -122,22 +122,22 @@ async def asyncio_detailed(
     section_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: SectionCreationPutIn,
-) -> Response[SectionGetOut]:
+    body: ReplaceSectionCreationRequest,
+) -> Response[SectionResponse]:
     """Update a section
 
      Replace the data of an existing section with the provided payload.
 
     Args:
         section_id (UUID):
-        body (SectionCreationPutIn):
+        body (ReplaceSectionCreationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SectionGetOut]
+        Response[SectionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -154,22 +154,22 @@ async def asyncio(
     section_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: SectionCreationPutIn,
-) -> SectionGetOut | None:
+    body: ReplaceSectionCreationRequest,
+) -> SectionResponse | None:
     """Update a section
 
      Replace the data of an existing section with the provided payload.
 
     Args:
         section_id (UUID):
-        body (SectionCreationPutIn):
+        body (ReplaceSectionCreationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SectionGetOut
+        SectionResponse
     """
 
     return (

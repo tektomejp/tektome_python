@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.retrieve_bim_views_in_sheet_get_out import RetrieveBimViewsInSheetGetOut
+from ...models.retrieve_bim_views_in_sheet_response import RetrieveBimViewsInSheetResponse
 from ...types import UNSET, Response, Unset
 
 
@@ -35,9 +35,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RetrieveBimViewsInSheetGetOut | None:
+) -> RetrieveBimViewsInSheetResponse | None:
     if response.status_code == 200:
-        response_200 = RetrieveBimViewsInSheetGetOut.from_dict(response.json())
+        response_200 = RetrieveBimViewsInSheetResponse.from_dict(response.json())
 
         return response_200
 
@@ -49,7 +49,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[RetrieveBimViewsInSheetGetOut]:
+) -> Response[RetrieveBimViewsInSheetResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,7 +63,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     only_ids: bool | Unset = False,
-) -> Response[RetrieveBimViewsInSheetGetOut]:
+) -> Response[RetrieveBimViewsInSheetResponse]:
     """List BIM views in a sheet
 
      Retrieve all BIM views associated with a specific BIM sheet. Optionally return only view IDs.
@@ -77,7 +77,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RetrieveBimViewsInSheetGetOut]
+        Response[RetrieveBimViewsInSheetResponse]
     """
 
     kwargs = _get_kwargs(
@@ -97,7 +97,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     only_ids: bool | Unset = False,
-) -> RetrieveBimViewsInSheetGetOut | None:
+) -> RetrieveBimViewsInSheetResponse | None:
     """List BIM views in a sheet
 
      Retrieve all BIM views associated with a specific BIM sheet. Optionally return only view IDs.
@@ -111,7 +111,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RetrieveBimViewsInSheetGetOut
+        RetrieveBimViewsInSheetResponse
     """
 
     return sync_detailed(
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     only_ids: bool | Unset = False,
-) -> Response[RetrieveBimViewsInSheetGetOut]:
+) -> Response[RetrieveBimViewsInSheetResponse]:
     """List BIM views in a sheet
 
      Retrieve all BIM views associated with a specific BIM sheet. Optionally return only view IDs.
@@ -140,7 +140,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RetrieveBimViewsInSheetGetOut]
+        Response[RetrieveBimViewsInSheetResponse]
     """
 
     kwargs = _get_kwargs(
@@ -158,7 +158,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     only_ids: bool | Unset = False,
-) -> RetrieveBimViewsInSheetGetOut | None:
+) -> RetrieveBimViewsInSheetResponse | None:
     """List BIM views in a sheet
 
      Retrieve all BIM views associated with a specific BIM sheet. Optionally return only view IDs.
@@ -172,7 +172,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RetrieveBimViewsInSheetGetOut
+        RetrieveBimViewsInSheetResponse
     """
 
     return (

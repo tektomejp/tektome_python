@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bulk_user_invitation_schema_out import BulkUserInvitationSchemaOut
-from ...models.invite_user_by_email_schema_in import InviteUserByEmailSchemaIn
+from ...models.bulk_user_invitation_schema_response import BulkUserInvitationSchemaResponse
+from ...models.invite_user_by_email_schema_request import InviteUserByEmailSchemaRequest
 from ...types import Response
 
 
 def _get_kwargs(
     organization_id: UUID,
     *,
-    body: list[InviteUserByEmailSchemaIn],
+    body: list[InviteUserByEmailSchemaRequest],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -39,9 +39,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BulkUserInvitationSchemaOut | None:
+) -> BulkUserInvitationSchemaResponse | None:
     if response.status_code == 200:
-        response_200 = BulkUserInvitationSchemaOut.from_dict(response.json())
+        response_200 = BulkUserInvitationSchemaResponse.from_dict(response.json())
 
         return response_200
 
@@ -53,7 +53,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BulkUserInvitationSchemaOut]:
+) -> Response[BulkUserInvitationSchemaResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -66,8 +66,8 @@ def sync_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[InviteUserByEmailSchemaIn],
-) -> Response[BulkUserInvitationSchemaOut]:
+    body: list[InviteUserByEmailSchemaRequest],
+) -> Response[BulkUserInvitationSchemaResponse]:
     """Invite members to organization
 
      Invite one or more users to an organization by email. Returns lists of successfully added and
@@ -75,14 +75,14 @@ def sync_detailed(
 
     Args:
         organization_id (UUID):
-        body (list[InviteUserByEmailSchemaIn]):
+        body (list[InviteUserByEmailSchemaRequest]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BulkUserInvitationSchemaOut]
+        Response[BulkUserInvitationSchemaResponse]
     """
 
     kwargs = _get_kwargs(
@@ -101,8 +101,8 @@ def sync(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[InviteUserByEmailSchemaIn],
-) -> BulkUserInvitationSchemaOut | None:
+    body: list[InviteUserByEmailSchemaRequest],
+) -> BulkUserInvitationSchemaResponse | None:
     """Invite members to organization
 
      Invite one or more users to an organization by email. Returns lists of successfully added and
@@ -110,14 +110,14 @@ def sync(
 
     Args:
         organization_id (UUID):
-        body (list[InviteUserByEmailSchemaIn]):
+        body (list[InviteUserByEmailSchemaRequest]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BulkUserInvitationSchemaOut
+        BulkUserInvitationSchemaResponse
     """
 
     return sync_detailed(
@@ -131,8 +131,8 @@ async def asyncio_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[InviteUserByEmailSchemaIn],
-) -> Response[BulkUserInvitationSchemaOut]:
+    body: list[InviteUserByEmailSchemaRequest],
+) -> Response[BulkUserInvitationSchemaResponse]:
     """Invite members to organization
 
      Invite one or more users to an organization by email. Returns lists of successfully added and
@@ -140,14 +140,14 @@ async def asyncio_detailed(
 
     Args:
         organization_id (UUID):
-        body (list[InviteUserByEmailSchemaIn]):
+        body (list[InviteUserByEmailSchemaRequest]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BulkUserInvitationSchemaOut]
+        Response[BulkUserInvitationSchemaResponse]
     """
 
     kwargs = _get_kwargs(
@@ -164,8 +164,8 @@ async def asyncio(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[InviteUserByEmailSchemaIn],
-) -> BulkUserInvitationSchemaOut | None:
+    body: list[InviteUserByEmailSchemaRequest],
+) -> BulkUserInvitationSchemaResponse | None:
     """Invite members to organization
 
      Invite one or more users to an organization by email. Returns lists of successfully added and
@@ -173,14 +173,14 @@ async def asyncio(
 
     Args:
         organization_id (UUID):
-        body (list[InviteUserByEmailSchemaIn]):
+        body (list[InviteUserByEmailSchemaRequest]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BulkUserInvitationSchemaOut
+        BulkUserInvitationSchemaResponse
     """
 
     return (

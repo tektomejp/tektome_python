@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_api_key_post_in import CreateAPIKeyPostIn
-from ...models.create_api_key_post_out import CreateAPIKeyPostOut
+from ...models.create_api_key_request import CreateAPIKeyRequest
+from ...models.create_api_key_response import CreateAPIKeyResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: CreateAPIKeyPostIn,
+    body: CreateAPIKeyRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -29,9 +29,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CreateAPIKeyPostOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CreateAPIKeyResponse | None:
     if response.status_code == 201:
-        response_201 = CreateAPIKeyPostOut.from_dict(response.json())
+        response_201 = CreateAPIKeyResponse.from_dict(response.json())
 
         return response_201
 
@@ -41,7 +41,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[CreateAPIKeyPostOut]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[CreateAPIKeyResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,8 +55,8 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateAPIKeyPostIn,
-) -> Response[CreateAPIKeyPostOut]:
+    body: CreateAPIKeyRequest,
+) -> Response[CreateAPIKeyResponse]:
     """Create an API key
 
      Create a new API key for the authenticated user. API keys can be used in the Authorization header as
@@ -62,14 +64,14 @@ def sync_detailed(
     keys per user is enforced.
 
     Args:
-        body (CreateAPIKeyPostIn): Schema for creating a new API key.
+        body (CreateAPIKeyRequest): Schema for creating a new API key.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CreateAPIKeyPostOut]
+        Response[CreateAPIKeyResponse]
     """
 
     kwargs = _get_kwargs(
@@ -86,8 +88,8 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: CreateAPIKeyPostIn,
-) -> CreateAPIKeyPostOut | None:
+    body: CreateAPIKeyRequest,
+) -> CreateAPIKeyResponse | None:
     """Create an API key
 
      Create a new API key for the authenticated user. API keys can be used in the Authorization header as
@@ -95,14 +97,14 @@ def sync(
     keys per user is enforced.
 
     Args:
-        body (CreateAPIKeyPostIn): Schema for creating a new API key.
+        body (CreateAPIKeyRequest): Schema for creating a new API key.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CreateAPIKeyPostOut
+        CreateAPIKeyResponse
     """
 
     return sync_detailed(
@@ -114,8 +116,8 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateAPIKeyPostIn,
-) -> Response[CreateAPIKeyPostOut]:
+    body: CreateAPIKeyRequest,
+) -> Response[CreateAPIKeyResponse]:
     """Create an API key
 
      Create a new API key for the authenticated user. API keys can be used in the Authorization header as
@@ -123,14 +125,14 @@ async def asyncio_detailed(
     keys per user is enforced.
 
     Args:
-        body (CreateAPIKeyPostIn): Schema for creating a new API key.
+        body (CreateAPIKeyRequest): Schema for creating a new API key.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CreateAPIKeyPostOut]
+        Response[CreateAPIKeyResponse]
     """
 
     kwargs = _get_kwargs(
@@ -145,8 +147,8 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: CreateAPIKeyPostIn,
-) -> CreateAPIKeyPostOut | None:
+    body: CreateAPIKeyRequest,
+) -> CreateAPIKeyResponse | None:
     """Create an API key
 
      Create a new API key for the authenticated user. API keys can be used in the Authorization header as
@@ -154,14 +156,14 @@ async def asyncio(
     keys per user is enforced.
 
     Args:
-        body (CreateAPIKeyPostIn): Schema for creating a new API key.
+        body (CreateAPIKeyRequest): Schema for creating a new API key.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CreateAPIKeyPostOut
+        CreateAPIKeyResponse
     """
 
     return (

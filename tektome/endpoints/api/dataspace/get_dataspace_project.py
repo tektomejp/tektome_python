@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.dataspace_projects_get_out import DataspaceProjectsGetOut
+from ...models.dataspace_projects_response import DataspaceProjectsResponse
 from ...types import Response
 
 
@@ -27,9 +27,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> DataspaceProjectsGetOut | None:
+) -> DataspaceProjectsResponse | None:
     if response.status_code == 200:
-        response_200 = DataspaceProjectsGetOut.from_dict(response.json())
+        response_200 = DataspaceProjectsResponse.from_dict(response.json())
 
         return response_200
 
@@ -41,7 +41,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[DataspaceProjectsGetOut]:
+) -> Response[DataspaceProjectsResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,7 +54,7 @@ def sync_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[DataspaceProjectsGetOut]:
+) -> Response[DataspaceProjectsResponse]:
     """Get a dataspace project by ID
 
      Retrieve detailed information about a specific project within a dataspace.
@@ -67,7 +67,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DataspaceProjectsGetOut]
+        Response[DataspaceProjectsResponse]
     """
 
     kwargs = _get_kwargs(
@@ -85,7 +85,7 @@ def sync(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> DataspaceProjectsGetOut | None:
+) -> DataspaceProjectsResponse | None:
     """Get a dataspace project by ID
 
      Retrieve detailed information about a specific project within a dataspace.
@@ -98,7 +98,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DataspaceProjectsGetOut
+        DataspaceProjectsResponse
     """
 
     return sync_detailed(
@@ -111,7 +111,7 @@ async def asyncio_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[DataspaceProjectsGetOut]:
+) -> Response[DataspaceProjectsResponse]:
     """Get a dataspace project by ID
 
      Retrieve detailed information about a specific project within a dataspace.
@@ -124,7 +124,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DataspaceProjectsGetOut]
+        Response[DataspaceProjectsResponse]
     """
 
     kwargs = _get_kwargs(
@@ -140,7 +140,7 @@ async def asyncio(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> DataspaceProjectsGetOut | None:
+) -> DataspaceProjectsResponse | None:
     """Get a dataspace project by ID
 
      Retrieve detailed information about a specific project within a dataspace.
@@ -153,7 +153,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DataspaceProjectsGetOut
+        DataspaceProjectsResponse
     """
 
     return (

@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.execute_process_metadata_get_out import ExecuteProcessMetadataGetOut
+from ...models.execute_process_metadata_response import ExecuteProcessMetadataResponse
 from ...models.get_execute_process_metadata_execute_metadata_kind import GetExecuteProcessMetadataExecuteMetadataKind
 from ...types import UNSET, Response
 
@@ -48,9 +48,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ExecuteProcessMetadataGetOut | None:
+) -> ExecuteProcessMetadataResponse | None:
     if response.status_code == 200:
-        response_200 = ExecuteProcessMetadataGetOut.from_dict(response.json())
+        response_200 = ExecuteProcessMetadataResponse.from_dict(response.json())
 
         return response_200
 
@@ -62,7 +62,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ExecuteProcessMetadataGetOut]:
+) -> Response[ExecuteProcessMetadataResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -78,7 +78,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     kind: GetExecuteProcessMetadataExecuteMetadataKind,
     model_entity_ids: list[UUID],
-) -> Response[ExecuteProcessMetadataGetOut]:
+) -> Response[ExecuteProcessMetadataResponse]:
     """Get execution metadata for a configured process
 
      Retrieve execution metadata for a process, including attribute information for the specified model
@@ -95,7 +95,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ExecuteProcessMetadataGetOut]
+        Response[ExecuteProcessMetadataResponse]
     """
 
     kwargs = _get_kwargs(
@@ -119,7 +119,7 @@ def sync(
     client: AuthenticatedClient,
     kind: GetExecuteProcessMetadataExecuteMetadataKind,
     model_entity_ids: list[UUID],
-) -> ExecuteProcessMetadataGetOut | None:
+) -> ExecuteProcessMetadataResponse | None:
     """Get execution metadata for a configured process
 
      Retrieve execution metadata for a process, including attribute information for the specified model
@@ -136,7 +136,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ExecuteProcessMetadataGetOut
+        ExecuteProcessMetadataResponse
     """
 
     return sync_detailed(
@@ -155,7 +155,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     kind: GetExecuteProcessMetadataExecuteMetadataKind,
     model_entity_ids: list[UUID],
-) -> Response[ExecuteProcessMetadataGetOut]:
+) -> Response[ExecuteProcessMetadataResponse]:
     """Get execution metadata for a configured process
 
      Retrieve execution metadata for a process, including attribute information for the specified model
@@ -172,7 +172,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ExecuteProcessMetadataGetOut]
+        Response[ExecuteProcessMetadataResponse]
     """
 
     kwargs = _get_kwargs(
@@ -194,7 +194,7 @@ async def asyncio(
     client: AuthenticatedClient,
     kind: GetExecuteProcessMetadataExecuteMetadataKind,
     model_entity_ids: list[UUID],
-) -> ExecuteProcessMetadataGetOut | None:
+) -> ExecuteProcessMetadataResponse | None:
     """Get execution metadata for a configured process
 
      Retrieve execution metadata for a process, including attribute information for the specified model
@@ -211,7 +211,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ExecuteProcessMetadataGetOut
+        ExecuteProcessMetadataResponse
     """
 
     return (

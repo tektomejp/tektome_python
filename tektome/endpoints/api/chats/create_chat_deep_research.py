@@ -6,13 +6,13 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.create_chat_deep_research_response import CreateChatDeepResearchResponse
-from ...models.deep_research_chat_post_in import DeepResearchChatPostIn
+from ...models.create_deep_research_chat_request import CreateDeepResearchChatRequest
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: DeepResearchChatPostIn,
+    body: CreateDeepResearchChatRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -57,7 +57,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: DeepResearchChatPostIn,
+    body: CreateDeepResearchChatRequest,
 ) -> Response[CreateChatDeepResearchResponse]:
     """Start deep research chat
 
@@ -65,7 +65,7 @@ def sync_detailed(
     output formats. Returns the chatroom ID.
 
     Args:
-        body (DeepResearchChatPostIn): Serializer for posting a deep research chat message.
+        body (CreateDeepResearchChatRequest): Serializer for posting a deep research chat message.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -89,7 +89,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: DeepResearchChatPostIn,
+    body: CreateDeepResearchChatRequest,
 ) -> CreateChatDeepResearchResponse | None:
     """Start deep research chat
 
@@ -97,7 +97,7 @@ def sync(
     output formats. Returns the chatroom ID.
 
     Args:
-        body (DeepResearchChatPostIn): Serializer for posting a deep research chat message.
+        body (CreateDeepResearchChatRequest): Serializer for posting a deep research chat message.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -116,7 +116,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: DeepResearchChatPostIn,
+    body: CreateDeepResearchChatRequest,
 ) -> Response[CreateChatDeepResearchResponse]:
     """Start deep research chat
 
@@ -124,7 +124,7 @@ async def asyncio_detailed(
     output formats. Returns the chatroom ID.
 
     Args:
-        body (DeepResearchChatPostIn): Serializer for posting a deep research chat message.
+        body (CreateDeepResearchChatRequest): Serializer for posting a deep research chat message.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -146,7 +146,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: DeepResearchChatPostIn,
+    body: CreateDeepResearchChatRequest,
 ) -> CreateChatDeepResearchResponse | None:
     """Start deep research chat
 
@@ -154,7 +154,7 @@ async def asyncio(
     output formats. Returns the chatroom ID.
 
     Args:
-        body (DeepResearchChatPostIn): Serializer for posting a deep research chat message.
+        body (CreateDeepResearchChatRequest): Serializer for posting a deep research chat message.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

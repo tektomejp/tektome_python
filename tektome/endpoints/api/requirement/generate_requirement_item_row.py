@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.generate_requirement_item_row_post_in import GenerateRequirementItemRowPostIn
-from ...models.project_requirement_item_get_out import ProjectRequirementItemGetOut
+from ...models.generate_requirement_item_row_request import GenerateRequirementItemRowRequest
+from ...models.project_requirement_item_response import ProjectRequirementItemResponse
 from ...types import Response
 
 
 def _get_kwargs(
     requirement_id: UUID,
     *,
-    body: GenerateRequirementItemRowPostIn,
+    body: GenerateRequirementItemRowRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -36,9 +36,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Any | ProjectRequirementItemGetOut | None:
+) -> Any | ProjectRequirementItemResponse | None:
     if response.status_code == 200:
-        response_200 = ProjectRequirementItemGetOut.from_dict(response.json())
+        response_200 = ProjectRequirementItemResponse.from_dict(response.json())
 
         return response_200
 
@@ -54,7 +54,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[Any | ProjectRequirementItemGetOut]:
+) -> Response[Any | ProjectRequirementItemResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -67,8 +67,8 @@ def sync_detailed(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: GenerateRequirementItemRowPostIn,
-) -> Response[Any | ProjectRequirementItemGetOut]:
+    body: GenerateRequirementItemRowRequest,
+) -> Response[Any | ProjectRequirementItemResponse]:
     """Generate a requirement item row
 
      Use AI to generate or update a single row in the requirement items table based on the requirement's
@@ -76,14 +76,14 @@ def sync_detailed(
 
     Args:
         requirement_id (UUID):
-        body (GenerateRequirementItemRowPostIn):
+        body (GenerateRequirementItemRowRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ProjectRequirementItemGetOut]
+        Response[Any | ProjectRequirementItemResponse]
     """
 
     kwargs = _get_kwargs(
@@ -102,8 +102,8 @@ def sync(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: GenerateRequirementItemRowPostIn,
-) -> Any | ProjectRequirementItemGetOut | None:
+    body: GenerateRequirementItemRowRequest,
+) -> Any | ProjectRequirementItemResponse | None:
     """Generate a requirement item row
 
      Use AI to generate or update a single row in the requirement items table based on the requirement's
@@ -111,14 +111,14 @@ def sync(
 
     Args:
         requirement_id (UUID):
-        body (GenerateRequirementItemRowPostIn):
+        body (GenerateRequirementItemRowRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | ProjectRequirementItemGetOut
+        Any | ProjectRequirementItemResponse
     """
 
     return sync_detailed(
@@ -132,8 +132,8 @@ async def asyncio_detailed(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: GenerateRequirementItemRowPostIn,
-) -> Response[Any | ProjectRequirementItemGetOut]:
+    body: GenerateRequirementItemRowRequest,
+) -> Response[Any | ProjectRequirementItemResponse]:
     """Generate a requirement item row
 
      Use AI to generate or update a single row in the requirement items table based on the requirement's
@@ -141,14 +141,14 @@ async def asyncio_detailed(
 
     Args:
         requirement_id (UUID):
-        body (GenerateRequirementItemRowPostIn):
+        body (GenerateRequirementItemRowRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ProjectRequirementItemGetOut]
+        Response[Any | ProjectRequirementItemResponse]
     """
 
     kwargs = _get_kwargs(
@@ -165,8 +165,8 @@ async def asyncio(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: GenerateRequirementItemRowPostIn,
-) -> Any | ProjectRequirementItemGetOut | None:
+    body: GenerateRequirementItemRowRequest,
+) -> Any | ProjectRequirementItemResponse | None:
     """Generate a requirement item row
 
      Use AI to generate or update a single row in the requirement items table based on the requirement's
@@ -174,14 +174,14 @@ async def asyncio(
 
     Args:
         requirement_id (UUID):
-        body (GenerateRequirementItemRowPostIn):
+        body (GenerateRequirementItemRowRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | ProjectRequirementItemGetOut
+        Any | ProjectRequirementItemResponse
     """
 
     return (

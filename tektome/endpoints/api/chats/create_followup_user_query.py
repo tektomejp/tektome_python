@@ -5,13 +5,13 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.improve_user_prompt_query_in import ImproveUserPromptQueryIn
+from ...models.improve_user_prompt_query_request import ImproveUserPromptQueryRequest
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: ImproveUserPromptQueryIn,
+    body: ImproveUserPromptQueryRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -51,7 +51,7 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: ImproveUserPromptQueryIn,
+    body: ImproveUserPromptQueryRequest,
 ) -> Response[str]:
     """Generate follow-up questions
 
@@ -59,7 +59,7 @@ def sync_detailed(
     Returns a streaming response with numbered follow-up questions.
 
     Args:
-        body (ImproveUserPromptQueryIn): Serializer for improving user prompt query.
+        body (ImproveUserPromptQueryRequest): Serializer for improving user prompt query.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -83,7 +83,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: ImproveUserPromptQueryIn,
+    body: ImproveUserPromptQueryRequest,
 ) -> str | None:
     """Generate follow-up questions
 
@@ -91,7 +91,7 @@ def sync(
     Returns a streaming response with numbered follow-up questions.
 
     Args:
-        body (ImproveUserPromptQueryIn): Serializer for improving user prompt query.
+        body (ImproveUserPromptQueryRequest): Serializer for improving user prompt query.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -110,7 +110,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: ImproveUserPromptQueryIn,
+    body: ImproveUserPromptQueryRequest,
 ) -> Response[str]:
     """Generate follow-up questions
 
@@ -118,7 +118,7 @@ async def asyncio_detailed(
     Returns a streaming response with numbered follow-up questions.
 
     Args:
-        body (ImproveUserPromptQueryIn): Serializer for improving user prompt query.
+        body (ImproveUserPromptQueryRequest): Serializer for improving user prompt query.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -140,7 +140,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: ImproveUserPromptQueryIn,
+    body: ImproveUserPromptQueryRequest,
 ) -> str | None:
     """Generate follow-up questions
 
@@ -148,7 +148,7 @@ async def asyncio(
     Returns a streaming response with numbered follow-up questions.
 
     Args:
-        body (ImproveUserPromptQueryIn): Serializer for improving user prompt query.
+        body (ImproveUserPromptQueryRequest): Serializer for improving user prompt query.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

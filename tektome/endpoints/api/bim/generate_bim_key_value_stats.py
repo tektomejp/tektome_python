@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bim_key_value_stats_post_out import BimKeyValueStatsPostOut
+from ...models.bim_key_value_stats_post_response import BimKeyValueStatsPostResponse
 from ...types import UNSET, Response, Unset
 
 
@@ -42,9 +42,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BimKeyValueStatsPostOut | str | None:
+) -> BimKeyValueStatsPostResponse | str | None:
     if response.status_code == 200:
-        response_200 = BimKeyValueStatsPostOut.from_dict(response.json())
+        response_200 = BimKeyValueStatsPostResponse.from_dict(response.json())
 
         return response_200
 
@@ -68,7 +68,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BimKeyValueStatsPostOut | str]:
+) -> Response[BimKeyValueStatsPostResponse | str]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -84,7 +84,7 @@ def sync_detailed(
     refresh: bool | Unset = False,
     limit_keys: int | Unset = 1000,
     limit_values: int | Unset = 50,
-) -> Response[BimKeyValueStatsPostOut | str]:
+) -> Response[BimKeyValueStatsPostResponse | str]:
     """Trigger Bim Kv Stats Generation
 
      TYYVPyz5
@@ -108,7 +108,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimKeyValueStatsPostOut | str]
+        Response[BimKeyValueStatsPostResponse | str]
     """
 
     kwargs = _get_kwargs(
@@ -132,7 +132,7 @@ def sync(
     refresh: bool | Unset = False,
     limit_keys: int | Unset = 1000,
     limit_values: int | Unset = 50,
-) -> BimKeyValueStatsPostOut | str | None:
+) -> BimKeyValueStatsPostResponse | str | None:
     """Trigger Bim Kv Stats Generation
 
      TYYVPyz5
@@ -156,7 +156,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimKeyValueStatsPostOut | str
+        BimKeyValueStatsPostResponse | str
     """
 
     return sync_detailed(
@@ -175,7 +175,7 @@ async def asyncio_detailed(
     refresh: bool | Unset = False,
     limit_keys: int | Unset = 1000,
     limit_values: int | Unset = 50,
-) -> Response[BimKeyValueStatsPostOut | str]:
+) -> Response[BimKeyValueStatsPostResponse | str]:
     """Trigger Bim Kv Stats Generation
 
      TYYVPyz5
@@ -199,7 +199,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimKeyValueStatsPostOut | str]
+        Response[BimKeyValueStatsPostResponse | str]
     """
 
     kwargs = _get_kwargs(
@@ -221,7 +221,7 @@ async def asyncio(
     refresh: bool | Unset = False,
     limit_keys: int | Unset = 1000,
     limit_values: int | Unset = 50,
-) -> BimKeyValueStatsPostOut | str | None:
+) -> BimKeyValueStatsPostResponse | str | None:
     """Trigger Bim Kv Stats Generation
 
      TYYVPyz5
@@ -245,7 +245,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimKeyValueStatsPostOut | str
+        BimKeyValueStatsPostResponse | str
     """
 
     return (

@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.requirement_get_out import RequirementGetOut
-from ...models.requirement_post_in import RequirementPostIn
+from ...models.create_requirement_request import CreateRequirementRequest
+from ...models.requirement_response import RequirementResponse
 from ...types import Response
 
 
 def _get_kwargs(
     requirement_template_id: UUID,
     *,
-    body: RequirementPostIn,
+    body: CreateRequirementRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -34,9 +34,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> RequirementGetOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> RequirementResponse | None:
     if response.status_code == 201:
-        response_201 = RequirementGetOut.from_dict(response.json())
+        response_201 = RequirementResponse.from_dict(response.json())
 
         return response_201
 
@@ -46,7 +46,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[RequirementGetOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[RequirementResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,22 +59,22 @@ def sync_detailed(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementPostIn,
-) -> Response[RequirementGetOut]:
+    body: CreateRequirementRequest,
+) -> Response[RequirementResponse]:
     """Import a requirement from a template
 
      Create a new requirement in a project by importing it from an existing requirement template.
 
     Args:
         requirement_template_id (UUID):
-        body (RequirementPostIn):
+        body (CreateRequirementRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementGetOut]
+        Response[RequirementResponse]
     """
 
     kwargs = _get_kwargs(
@@ -93,22 +93,22 @@ def sync(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementPostIn,
-) -> RequirementGetOut | None:
+    body: CreateRequirementRequest,
+) -> RequirementResponse | None:
     """Import a requirement from a template
 
      Create a new requirement in a project by importing it from an existing requirement template.
 
     Args:
         requirement_template_id (UUID):
-        body (RequirementPostIn):
+        body (CreateRequirementRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementGetOut
+        RequirementResponse
     """
 
     return sync_detailed(
@@ -122,22 +122,22 @@ async def asyncio_detailed(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementPostIn,
-) -> Response[RequirementGetOut]:
+    body: CreateRequirementRequest,
+) -> Response[RequirementResponse]:
     """Import a requirement from a template
 
      Create a new requirement in a project by importing it from an existing requirement template.
 
     Args:
         requirement_template_id (UUID):
-        body (RequirementPostIn):
+        body (CreateRequirementRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementGetOut]
+        Response[RequirementResponse]
     """
 
     kwargs = _get_kwargs(
@@ -154,22 +154,22 @@ async def asyncio(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementPostIn,
-) -> RequirementGetOut | None:
+    body: CreateRequirementRequest,
+) -> RequirementResponse | None:
     """Import a requirement from a template
 
      Create a new requirement in a project by importing it from an existing requirement template.
 
     Args:
         requirement_template_id (UUID):
-        body (RequirementPostIn):
+        body (CreateRequirementRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementGetOut
+        RequirementResponse
     """
 
     return (

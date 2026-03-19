@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.blob_upload_complete_post_in import BlobUploadCompletePostIn
+from ...models.create_blob_upload_complete_request import CreateBlobUploadCompleteRequest
 from ...models.resource_upload_schema import ResourceUploadSchema
 from ...types import Response
 
@@ -15,7 +15,7 @@ from ...types import Response
 def _get_kwargs(
     resource_group_id: UUID,
     *,
-    body: BlobUploadCompletePostIn,
+    body: CreateBlobUploadCompleteRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -61,7 +61,7 @@ def sync_detailed(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BlobUploadCompletePostIn,
+    body: CreateBlobUploadCompleteRequest,
 ) -> Response[ResourceUploadSchema]:
     """Complete a blob upload
 
@@ -70,7 +70,7 @@ def sync_detailed(
 
     Args:
         resource_group_id (UUID): Resource group ID
-        body (BlobUploadCompletePostIn): Input schema for completing a blob upload.
+        body (CreateBlobUploadCompleteRequest): Input schema for completing a blob upload.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -96,7 +96,7 @@ def sync(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BlobUploadCompletePostIn,
+    body: CreateBlobUploadCompleteRequest,
 ) -> ResourceUploadSchema | None:
     """Complete a blob upload
 
@@ -105,7 +105,7 @@ def sync(
 
     Args:
         resource_group_id (UUID): Resource group ID
-        body (BlobUploadCompletePostIn): Input schema for completing a blob upload.
+        body (CreateBlobUploadCompleteRequest): Input schema for completing a blob upload.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BlobUploadCompletePostIn,
+    body: CreateBlobUploadCompleteRequest,
 ) -> Response[ResourceUploadSchema]:
     """Complete a blob upload
 
@@ -135,7 +135,7 @@ async def asyncio_detailed(
 
     Args:
         resource_group_id (UUID): Resource group ID
-        body (BlobUploadCompletePostIn): Input schema for completing a blob upload.
+        body (CreateBlobUploadCompleteRequest): Input schema for completing a blob upload.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -159,7 +159,7 @@ async def asyncio(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: BlobUploadCompletePostIn,
+    body: CreateBlobUploadCompleteRequest,
 ) -> ResourceUploadSchema | None:
     """Complete a blob upload
 
@@ -168,7 +168,7 @@ async def asyncio(
 
     Args:
         resource_group_id (UUID): Resource group ID
-        body (BlobUploadCompletePostIn): Input schema for completing a blob upload.
+        body (CreateBlobUploadCompleteRequest): Input schema for completing a blob upload.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

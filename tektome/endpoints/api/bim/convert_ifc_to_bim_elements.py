@@ -7,9 +7,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bim_object_post_out import BimObjectPostOut
+from ...models.bim_object_response import BimObjectResponse
 from ...models.convert_ifc_to_bim_elements_file_params import ConvertIfcToBimElementsFileParams
-from ...models.error_response_post_out import ErrorResponsePostOut
+from ...models.error_response_response import ErrorResponseResponse
 from ...types import Response
 
 
@@ -35,14 +35,14 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BimObjectPostOut | ErrorResponsePostOut | None:
+) -> BimObjectResponse | ErrorResponseResponse | None:
     if response.status_code == 200:
-        response_200 = BimObjectPostOut.from_dict(response.json())
+        response_200 = BimObjectResponse.from_dict(response.json())
 
         return response_200
 
     if response.status_code == 404:
-        response_404 = ErrorResponsePostOut.from_dict(response.json())
+        response_404 = ErrorResponseResponse.from_dict(response.json())
 
         return response_404
 
@@ -54,7 +54,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BimObjectPostOut | ErrorResponsePostOut]:
+) -> Response[BimObjectResponse | ErrorResponseResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -68,7 +68,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: ConvertIfcToBimElementsFileParams,
-) -> Response[BimObjectPostOut | ErrorResponsePostOut]:
+) -> Response[BimObjectResponse | ErrorResponseResponse]:
     """Convert an IFC file to BIM elements
 
      Upload an IFC file and convert it into BIM elements for a specified BIM project. This is an
@@ -84,7 +84,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimObjectPostOut | ErrorResponsePostOut]
+        Response[BimObjectResponse | ErrorResponseResponse]
     """
 
     kwargs = _get_kwargs(
@@ -104,7 +104,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: ConvertIfcToBimElementsFileParams,
-) -> BimObjectPostOut | ErrorResponsePostOut | None:
+) -> BimObjectResponse | ErrorResponseResponse | None:
     """Convert an IFC file to BIM elements
 
      Upload an IFC file and convert it into BIM elements for a specified BIM project. This is an
@@ -120,7 +120,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimObjectPostOut | ErrorResponsePostOut
+        BimObjectResponse | ErrorResponseResponse
     """
 
     return sync_detailed(
@@ -135,7 +135,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: ConvertIfcToBimElementsFileParams,
-) -> Response[BimObjectPostOut | ErrorResponsePostOut]:
+) -> Response[BimObjectResponse | ErrorResponseResponse]:
     """Convert an IFC file to BIM elements
 
      Upload an IFC file and convert it into BIM elements for a specified BIM project. This is an
@@ -151,7 +151,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimObjectPostOut | ErrorResponsePostOut]
+        Response[BimObjectResponse | ErrorResponseResponse]
     """
 
     kwargs = _get_kwargs(
@@ -169,7 +169,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: ConvertIfcToBimElementsFileParams,
-) -> BimObjectPostOut | ErrorResponsePostOut | None:
+) -> BimObjectResponse | ErrorResponseResponse | None:
     """Convert an IFC file to BIM elements
 
      Upload an IFC file and convert it into BIM elements for a specified BIM project. This is an
@@ -185,7 +185,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimObjectPostOut | ErrorResponsePostOut
+        BimObjectResponse | ErrorResponseResponse
     """
 
     return (

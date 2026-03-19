@@ -26,7 +26,7 @@ class PaymentRecordOutBase:
         created_by (UserMetadata):
         updated_by (UserMetadata):
         transaction_type (str):
-        credits_amount (float | str):
+        credits_amount (str):
         reference_id (str):
         created (datetime.datetime):
         updated (datetime.datetime):
@@ -40,7 +40,7 @@ class PaymentRecordOutBase:
     created_by: UserMetadata
     updated_by: UserMetadata
     transaction_type: str
-    credits_amount: float | str
+    credits_amount: str
     reference_id: str
     created: datetime.datetime
     updated: datetime.datetime
@@ -60,7 +60,6 @@ class PaymentRecordOutBase:
 
         transaction_type = self.transaction_type
 
-        credits_amount: float | str
         credits_amount = self.credits_amount
 
         reference_id = self.reference_id
@@ -141,10 +140,7 @@ class PaymentRecordOutBase:
 
         transaction_type = d.pop("transaction_type")
 
-        def _parse_credits_amount(data: object) -> float | str:
-            return cast(float | str, data)
-
-        credits_amount = _parse_credits_amount(d.pop("credits_amount"))
+        credits_amount = d.pop("credits_amount")
 
         reference_id = d.pop("reference_id")
 

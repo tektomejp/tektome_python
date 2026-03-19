@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.image_citation_polygon_annotation_get_out import ImageCitationPolygonAnnotationGetOut
-from ...models.image_citation_polygon_annotation_post_in import ImageCitationPolygonAnnotationPostIn
+from ...models.create_image_citation_polygon_annotation_request import CreateImageCitationPolygonAnnotationRequest
+from ...models.image_citation_polygon_annotation_response import ImageCitationPolygonAnnotationResponse
 from ...models.post_image_citation_polygon_annotation_dataspace_entity_type import (
     PostImageCitationPolygonAnnotationDataspaceEntityType,
 )
@@ -21,7 +21,7 @@ def _get_kwargs(
     attribute_id: UUID,
     image_citation_id: UUID,
     *,
-    body: ImageCitationPolygonAnnotationPostIn,
+    body: CreateImageCitationPolygonAnnotationRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -45,9 +45,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ImageCitationPolygonAnnotationGetOut | None:
+) -> ImageCitationPolygonAnnotationResponse | None:
     if response.status_code == 201:
-        response_201 = ImageCitationPolygonAnnotationGetOut.from_dict(response.json())
+        response_201 = ImageCitationPolygonAnnotationResponse.from_dict(response.json())
 
         return response_201
 
@@ -59,7 +59,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ImageCitationPolygonAnnotationGetOut]:
+) -> Response[ImageCitationPolygonAnnotationResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -75,8 +75,8 @@ def sync_detailed(
     image_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ImageCitationPolygonAnnotationPostIn,
-) -> Response[ImageCitationPolygonAnnotationGetOut]:
+    body: CreateImageCitationPolygonAnnotationRequest,
+) -> Response[ImageCitationPolygonAnnotationResponse]:
     """Add a polygon annotation to the image citation.
 
      Creates a new image citation polygon
@@ -86,14 +86,14 @@ def sync_detailed(
         attribute_category (PostImageCitationPolygonAnnotationDataspaceEntityType):
         attribute_id (UUID):
         image_citation_id (UUID):
-        body (ImageCitationPolygonAnnotationPostIn):
+        body (CreateImageCitationPolygonAnnotationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ImageCitationPolygonAnnotationGetOut]
+        Response[ImageCitationPolygonAnnotationResponse]
     """
 
     kwargs = _get_kwargs(
@@ -118,8 +118,8 @@ def sync(
     image_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ImageCitationPolygonAnnotationPostIn,
-) -> ImageCitationPolygonAnnotationGetOut | None:
+    body: CreateImageCitationPolygonAnnotationRequest,
+) -> ImageCitationPolygonAnnotationResponse | None:
     """Add a polygon annotation to the image citation.
 
      Creates a new image citation polygon
@@ -129,14 +129,14 @@ def sync(
         attribute_category (PostImageCitationPolygonAnnotationDataspaceEntityType):
         attribute_id (UUID):
         image_citation_id (UUID):
-        body (ImageCitationPolygonAnnotationPostIn):
+        body (CreateImageCitationPolygonAnnotationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ImageCitationPolygonAnnotationGetOut
+        ImageCitationPolygonAnnotationResponse
     """
 
     return sync_detailed(
@@ -156,8 +156,8 @@ async def asyncio_detailed(
     image_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ImageCitationPolygonAnnotationPostIn,
-) -> Response[ImageCitationPolygonAnnotationGetOut]:
+    body: CreateImageCitationPolygonAnnotationRequest,
+) -> Response[ImageCitationPolygonAnnotationResponse]:
     """Add a polygon annotation to the image citation.
 
      Creates a new image citation polygon
@@ -167,14 +167,14 @@ async def asyncio_detailed(
         attribute_category (PostImageCitationPolygonAnnotationDataspaceEntityType):
         attribute_id (UUID):
         image_citation_id (UUID):
-        body (ImageCitationPolygonAnnotationPostIn):
+        body (CreateImageCitationPolygonAnnotationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ImageCitationPolygonAnnotationGetOut]
+        Response[ImageCitationPolygonAnnotationResponse]
     """
 
     kwargs = _get_kwargs(
@@ -197,8 +197,8 @@ async def asyncio(
     image_citation_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ImageCitationPolygonAnnotationPostIn,
-) -> ImageCitationPolygonAnnotationGetOut | None:
+    body: CreateImageCitationPolygonAnnotationRequest,
+) -> ImageCitationPolygonAnnotationResponse | None:
     """Add a polygon annotation to the image citation.
 
      Creates a new image citation polygon
@@ -208,14 +208,14 @@ async def asyncio(
         attribute_category (PostImageCitationPolygonAnnotationDataspaceEntityType):
         attribute_id (UUID):
         image_citation_id (UUID):
-        body (ImageCitationPolygonAnnotationPostIn):
+        body (CreateImageCitationPolygonAnnotationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ImageCitationPolygonAnnotationGetOut
+        ImageCitationPolygonAnnotationResponse
     """
 
     return (

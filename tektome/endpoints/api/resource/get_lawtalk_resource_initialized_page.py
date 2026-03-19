@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.get_extracted_page_get_out import GetExtractedPageGetOut
+from ...models.get_extracted_page_response import GetExtractedPageResponse
 from ...types import Response
 
 
@@ -26,9 +26,11 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> GetExtractedPageGetOut | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> GetExtractedPageResponse | None:
     if response.status_code == 200:
-        response_200 = GetExtractedPageGetOut.from_dict(response.json())
+        response_200 = GetExtractedPageResponse.from_dict(response.json())
 
         return response_200
 
@@ -40,7 +42,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[GetExtractedPageGetOut]:
+) -> Response[GetExtractedPageResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,7 +56,7 @@ def sync_detailed(
     page_num: int,
     *,
     client: AuthenticatedClient,
-) -> Response[GetExtractedPageGetOut]:
+) -> Response[GetExtractedPageResponse]:
     """Get extracted page data
 
      Retrieve the OCR-extracted data for a specific page of an initialized resource.
@@ -68,7 +70,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GetExtractedPageGetOut]
+        Response[GetExtractedPageResponse]
     """
 
     kwargs = _get_kwargs(
@@ -88,7 +90,7 @@ def sync(
     page_num: int,
     *,
     client: AuthenticatedClient,
-) -> GetExtractedPageGetOut | None:
+) -> GetExtractedPageResponse | None:
     """Get extracted page data
 
      Retrieve the OCR-extracted data for a specific page of an initialized resource.
@@ -102,7 +104,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GetExtractedPageGetOut
+        GetExtractedPageResponse
     """
 
     return sync_detailed(
@@ -117,7 +119,7 @@ async def asyncio_detailed(
     page_num: int,
     *,
     client: AuthenticatedClient,
-) -> Response[GetExtractedPageGetOut]:
+) -> Response[GetExtractedPageResponse]:
     """Get extracted page data
 
      Retrieve the OCR-extracted data for a specific page of an initialized resource.
@@ -131,7 +133,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GetExtractedPageGetOut]
+        Response[GetExtractedPageResponse]
     """
 
     kwargs = _get_kwargs(
@@ -149,7 +151,7 @@ async def asyncio(
     page_num: int,
     *,
     client: AuthenticatedClient,
-) -> GetExtractedPageGetOut | None:
+) -> GetExtractedPageResponse | None:
     """Get extracted page data
 
      Retrieve the OCR-extracted data for a specific page of an initialized resource.
@@ -163,7 +165,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GetExtractedPageGetOut
+        GetExtractedPageResponse
     """
 
     return (

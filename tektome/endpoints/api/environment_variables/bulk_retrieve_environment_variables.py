@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.environment_variable_filter_in import EnvironmentVariableFilterIn
+from ...models.environment_variable_filter_request import EnvironmentVariableFilterRequest
 from ...models.environment_variable_response import EnvironmentVariableResponse
 from ...models.generic_http_error import GenericHttpError
 from ...types import Response
@@ -16,7 +16,7 @@ from ...types import Response
 def _get_kwargs(
     organization_id: UUID,
     *,
-    body: EnvironmentVariableFilterIn,
+    body: EnvironmentVariableFilterRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -159,7 +159,7 @@ def sync_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: EnvironmentVariableFilterIn,
+    body: EnvironmentVariableFilterRequest,
 ) -> Response[GenericHttpError | list[EnvironmentVariableResponse]]:
     """Bulk retrieve environment variables
 
@@ -168,7 +168,7 @@ def sync_detailed(
 
     Args:
         organization_id (UUID):
-        body (EnvironmentVariableFilterIn): Filter schema for querying environment variables.
+        body (EnvironmentVariableFilterRequest): Filter schema for querying environment variables.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -194,7 +194,7 @@ def sync(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: EnvironmentVariableFilterIn,
+    body: EnvironmentVariableFilterRequest,
 ) -> GenericHttpError | list[EnvironmentVariableResponse] | None:
     """Bulk retrieve environment variables
 
@@ -203,7 +203,7 @@ def sync(
 
     Args:
         organization_id (UUID):
-        body (EnvironmentVariableFilterIn): Filter schema for querying environment variables.
+        body (EnvironmentVariableFilterRequest): Filter schema for querying environment variables.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -224,7 +224,7 @@ async def asyncio_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: EnvironmentVariableFilterIn,
+    body: EnvironmentVariableFilterRequest,
 ) -> Response[GenericHttpError | list[EnvironmentVariableResponse]]:
     """Bulk retrieve environment variables
 
@@ -233,7 +233,7 @@ async def asyncio_detailed(
 
     Args:
         organization_id (UUID):
-        body (EnvironmentVariableFilterIn): Filter schema for querying environment variables.
+        body (EnvironmentVariableFilterRequest): Filter schema for querying environment variables.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -257,7 +257,7 @@ async def asyncio(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: EnvironmentVariableFilterIn,
+    body: EnvironmentVariableFilterRequest,
 ) -> GenericHttpError | list[EnvironmentVariableResponse] | None:
     """Bulk retrieve environment variables
 
@@ -266,7 +266,7 @@ async def asyncio(
 
     Args:
         organization_id (UUID):
-        body (EnvironmentVariableFilterIn): Filter schema for querying environment variables.
+        body (EnvironmentVariableFilterRequest): Filter schema for querying environment variables.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -7,17 +7,17 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.artifact_move_in import ArtifactMoveIn
-from ...models.artifact_move_out import ArtifactMoveOut
+from ...models.artifact_move_request import ArtifactMoveRequest
+from ...models.artifact_move_response import ArtifactMoveResponse
 from ...models.generic_http_error import GenericHttpError
-from ...models.ttos_folder_move_out import TtosFolderMoveOut
+from ...models.ttos_folder_move_response import TtosFolderMoveResponse
 from ...types import Response
 
 
 def _get_kwargs(
     artifact_id: UUID,
     *,
-    body: ArtifactMoveIn,
+    body: ArtifactMoveRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -38,21 +38,21 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ArtifactMoveOut | TtosFolderMoveOut | GenericHttpError | None:
+) -> ArtifactMoveResponse | TtosFolderMoveResponse | GenericHttpError | None:
     if response.status_code == 200:
 
-        def _parse_response_200(data: object) -> ArtifactMoveOut | TtosFolderMoveOut:
+        def _parse_response_200(data: object) -> ArtifactMoveResponse | TtosFolderMoveResponse:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                response_200_type_0 = ArtifactMoveOut.from_dict(data)
+                response_200_type_0 = ArtifactMoveResponse.from_dict(data)
 
                 return response_200_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             if not isinstance(data, dict):
                 raise TypeError()
-            response_200_type_1 = TtosFolderMoveOut.from_dict(data)
+            response_200_type_1 = TtosFolderMoveResponse.from_dict(data)
 
             return response_200_type_1
 
@@ -158,7 +158,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ArtifactMoveOut | TtosFolderMoveOut | GenericHttpError]:
+) -> Response[ArtifactMoveResponse | TtosFolderMoveResponse | GenericHttpError]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -171,8 +171,8 @@ def sync_detailed(
     artifact_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ArtifactMoveIn,
-) -> Response[ArtifactMoveOut | TtosFolderMoveOut | GenericHttpError]:
+    body: ArtifactMoveRequest,
+) -> Response[ArtifactMoveResponse | TtosFolderMoveResponse | GenericHttpError]:
     """Move or rename an artifact
 
      Move or rename an artifact to a new path. For folder artifacts, all artifacts within the folder are
@@ -180,14 +180,14 @@ def sync_detailed(
 
     Args:
         artifact_id (UUID):
-        body (ArtifactMoveIn):
+        body (ArtifactMoveRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ArtifactMoveOut | TtosFolderMoveOut | GenericHttpError]
+        Response[ArtifactMoveResponse | TtosFolderMoveResponse | GenericHttpError]
     """
 
     kwargs = _get_kwargs(
@@ -206,8 +206,8 @@ def sync(
     artifact_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ArtifactMoveIn,
-) -> ArtifactMoveOut | TtosFolderMoveOut | GenericHttpError | None:
+    body: ArtifactMoveRequest,
+) -> ArtifactMoveResponse | TtosFolderMoveResponse | GenericHttpError | None:
     """Move or rename an artifact
 
      Move or rename an artifact to a new path. For folder artifacts, all artifacts within the folder are
@@ -215,14 +215,14 @@ def sync(
 
     Args:
         artifact_id (UUID):
-        body (ArtifactMoveIn):
+        body (ArtifactMoveRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ArtifactMoveOut | TtosFolderMoveOut | GenericHttpError
+        ArtifactMoveResponse | TtosFolderMoveResponse | GenericHttpError
     """
 
     return sync_detailed(
@@ -236,8 +236,8 @@ async def asyncio_detailed(
     artifact_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ArtifactMoveIn,
-) -> Response[ArtifactMoveOut | TtosFolderMoveOut | GenericHttpError]:
+    body: ArtifactMoveRequest,
+) -> Response[ArtifactMoveResponse | TtosFolderMoveResponse | GenericHttpError]:
     """Move or rename an artifact
 
      Move or rename an artifact to a new path. For folder artifacts, all artifacts within the folder are
@@ -245,14 +245,14 @@ async def asyncio_detailed(
 
     Args:
         artifact_id (UUID):
-        body (ArtifactMoveIn):
+        body (ArtifactMoveRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ArtifactMoveOut | TtosFolderMoveOut | GenericHttpError]
+        Response[ArtifactMoveResponse | TtosFolderMoveResponse | GenericHttpError]
     """
 
     kwargs = _get_kwargs(
@@ -269,8 +269,8 @@ async def asyncio(
     artifact_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ArtifactMoveIn,
-) -> ArtifactMoveOut | TtosFolderMoveOut | GenericHttpError | None:
+    body: ArtifactMoveRequest,
+) -> ArtifactMoveResponse | TtosFolderMoveResponse | GenericHttpError | None:
     """Move or rename an artifact
 
      Move or rename an artifact to a new path. For folder artifacts, all artifacts within the folder are
@@ -278,14 +278,14 @@ async def asyncio(
 
     Args:
         artifact_id (UUID):
-        body (ArtifactMoveIn):
+        body (ArtifactMoveRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ArtifactMoveOut | TtosFolderMoveOut | GenericHttpError
+        ArtifactMoveResponse | TtosFolderMoveResponse | GenericHttpError
     """
 
     return (

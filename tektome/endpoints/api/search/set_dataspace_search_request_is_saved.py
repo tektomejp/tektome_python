@@ -7,9 +7,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.dataspace_search_request_get_out import DataspaceSearchRequestGetOut
-from ...models.dataspace_search_request_is_saved_patch_in import DataspaceSearchRequestIsSavedPatchIn
-from ...models.error_out import ErrorOut
+from ...models.dataspace_search_request_response import DataspaceSearchRequestResponse
+from ...models.error_response import ErrorResponse
+from ...models.update_dataspace_search_request_is_saved_request import UpdateDataspaceSearchRequestIsSavedRequest
 from ...types import Response
 
 
@@ -17,7 +17,7 @@ def _get_kwargs(
     dataspace_id: UUID,
     search_request_id: UUID,
     *,
-    body: DataspaceSearchRequestIsSavedPatchIn,
+    body: UpdateDataspaceSearchRequestIsSavedRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -39,99 +39,99 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> DataspaceSearchRequestGetOut | ErrorOut | None:
+) -> DataspaceSearchRequestResponse | ErrorResponse | None:
     if response.status_code == 200:
-        response_200 = DataspaceSearchRequestGetOut.from_dict(response.json())
+        response_200 = DataspaceSearchRequestResponse.from_dict(response.json())
 
         return response_200
 
     if response.status_code == 400:
-        response_400 = ErrorOut.from_dict(response.json())
+        response_400 = ErrorResponse.from_dict(response.json())
 
         return response_400
 
     if response.status_code == 401:
-        response_401 = ErrorOut.from_dict(response.json())
+        response_401 = ErrorResponse.from_dict(response.json())
 
         return response_401
 
     if response.status_code == 402:
-        response_402 = ErrorOut.from_dict(response.json())
+        response_402 = ErrorResponse.from_dict(response.json())
 
         return response_402
 
     if response.status_code == 403:
-        response_403 = ErrorOut.from_dict(response.json())
+        response_403 = ErrorResponse.from_dict(response.json())
 
         return response_403
 
     if response.status_code == 404:
-        response_404 = ErrorOut.from_dict(response.json())
+        response_404 = ErrorResponse.from_dict(response.json())
 
         return response_404
 
     if response.status_code == 405:
-        response_405 = ErrorOut.from_dict(response.json())
+        response_405 = ErrorResponse.from_dict(response.json())
 
         return response_405
 
     if response.status_code == 406:
-        response_406 = ErrorOut.from_dict(response.json())
+        response_406 = ErrorResponse.from_dict(response.json())
 
         return response_406
 
     if response.status_code == 407:
-        response_407 = ErrorOut.from_dict(response.json())
+        response_407 = ErrorResponse.from_dict(response.json())
 
         return response_407
 
     if response.status_code == 408:
-        response_408 = ErrorOut.from_dict(response.json())
+        response_408 = ErrorResponse.from_dict(response.json())
 
         return response_408
 
     if response.status_code == 409:
-        response_409 = ErrorOut.from_dict(response.json())
+        response_409 = ErrorResponse.from_dict(response.json())
 
         return response_409
 
     if response.status_code == 410:
-        response_410 = ErrorOut.from_dict(response.json())
+        response_410 = ErrorResponse.from_dict(response.json())
 
         return response_410
 
     if response.status_code == 411:
-        response_411 = ErrorOut.from_dict(response.json())
+        response_411 = ErrorResponse.from_dict(response.json())
 
         return response_411
 
     if response.status_code == 412:
-        response_412 = ErrorOut.from_dict(response.json())
+        response_412 = ErrorResponse.from_dict(response.json())
 
         return response_412
 
     if response.status_code == 416:
-        response_416 = ErrorOut.from_dict(response.json())
+        response_416 = ErrorResponse.from_dict(response.json())
 
         return response_416
 
     if response.status_code == 418:
-        response_418 = ErrorOut.from_dict(response.json())
+        response_418 = ErrorResponse.from_dict(response.json())
 
         return response_418
 
     if response.status_code == 425:
-        response_425 = ErrorOut.from_dict(response.json())
+        response_425 = ErrorResponse.from_dict(response.json())
 
         return response_425
 
     if response.status_code == 429:
-        response_429 = ErrorOut.from_dict(response.json())
+        response_429 = ErrorResponse.from_dict(response.json())
 
         return response_429
 
     if response.status_code == 451:
-        response_451 = ErrorOut.from_dict(response.json())
+        response_451 = ErrorResponse.from_dict(response.json())
 
         return response_451
 
@@ -143,7 +143,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[DataspaceSearchRequestGetOut | ErrorOut]:
+) -> Response[DataspaceSearchRequestResponse | ErrorResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -157,8 +157,8 @@ def sync_detailed(
     search_request_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceSearchRequestIsSavedPatchIn,
-) -> Response[DataspaceSearchRequestGetOut | ErrorOut]:
+    body: UpdateDataspaceSearchRequestIsSavedRequest,
+) -> Response[DataspaceSearchRequestResponse | ErrorResponse]:
     """Toggle saved status of a search request
 
      Set whether a search request is saved. Saved requests are preserved indefinitely; unsaved requests
@@ -167,7 +167,7 @@ def sync_detailed(
     Args:
         dataspace_id (UUID):
         search_request_id (UUID):
-        body (DataspaceSearchRequestIsSavedPatchIn): For updating is_saved field of a search
+        body (UpdateDataspaceSearchRequestIsSavedRequest): For updating is_saved field of a search
             request
 
     Raises:
@@ -175,7 +175,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DataspaceSearchRequestGetOut | ErrorOut]
+        Response[DataspaceSearchRequestResponse | ErrorResponse]
     """
 
     kwargs = _get_kwargs(
@@ -196,8 +196,8 @@ def sync(
     search_request_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceSearchRequestIsSavedPatchIn,
-) -> DataspaceSearchRequestGetOut | ErrorOut | None:
+    body: UpdateDataspaceSearchRequestIsSavedRequest,
+) -> DataspaceSearchRequestResponse | ErrorResponse | None:
     """Toggle saved status of a search request
 
      Set whether a search request is saved. Saved requests are preserved indefinitely; unsaved requests
@@ -206,7 +206,7 @@ def sync(
     Args:
         dataspace_id (UUID):
         search_request_id (UUID):
-        body (DataspaceSearchRequestIsSavedPatchIn): For updating is_saved field of a search
+        body (UpdateDataspaceSearchRequestIsSavedRequest): For updating is_saved field of a search
             request
 
     Raises:
@@ -214,7 +214,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DataspaceSearchRequestGetOut | ErrorOut
+        DataspaceSearchRequestResponse | ErrorResponse
     """
 
     return sync_detailed(
@@ -230,8 +230,8 @@ async def asyncio_detailed(
     search_request_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceSearchRequestIsSavedPatchIn,
-) -> Response[DataspaceSearchRequestGetOut | ErrorOut]:
+    body: UpdateDataspaceSearchRequestIsSavedRequest,
+) -> Response[DataspaceSearchRequestResponse | ErrorResponse]:
     """Toggle saved status of a search request
 
      Set whether a search request is saved. Saved requests are preserved indefinitely; unsaved requests
@@ -240,7 +240,7 @@ async def asyncio_detailed(
     Args:
         dataspace_id (UUID):
         search_request_id (UUID):
-        body (DataspaceSearchRequestIsSavedPatchIn): For updating is_saved field of a search
+        body (UpdateDataspaceSearchRequestIsSavedRequest): For updating is_saved field of a search
             request
 
     Raises:
@@ -248,7 +248,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DataspaceSearchRequestGetOut | ErrorOut]
+        Response[DataspaceSearchRequestResponse | ErrorResponse]
     """
 
     kwargs = _get_kwargs(
@@ -267,8 +267,8 @@ async def asyncio(
     search_request_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceSearchRequestIsSavedPatchIn,
-) -> DataspaceSearchRequestGetOut | ErrorOut | None:
+    body: UpdateDataspaceSearchRequestIsSavedRequest,
+) -> DataspaceSearchRequestResponse | ErrorResponse | None:
     """Toggle saved status of a search request
 
      Set whether a search request is saved. Saved requests are preserved indefinitely; unsaved requests
@@ -277,7 +277,7 @@ async def asyncio(
     Args:
         dataspace_id (UUID):
         search_request_id (UUID):
-        body (DataspaceSearchRequestIsSavedPatchIn): For updating is_saved field of a search
+        body (UpdateDataspaceSearchRequestIsSavedRequest): For updating is_saved field of a search
             request
 
     Raises:
@@ -285,7 +285,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DataspaceSearchRequestGetOut | ErrorOut
+        DataspaceSearchRequestResponse | ErrorResponse
     """
 
     return (

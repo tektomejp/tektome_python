@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.requirement_get_out import RequirementGetOut
+from ...models.requirement_response import RequirementResponse
 from ...types import Response
 
 
@@ -25,9 +25,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> RequirementGetOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> RequirementResponse | None:
     if response.status_code == 200:
-        response_200 = RequirementGetOut.from_dict(response.json())
+        response_200 = RequirementResponse.from_dict(response.json())
 
         return response_200
 
@@ -37,7 +37,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[RequirementGetOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[RequirementResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -50,7 +50,7 @@ def sync_detailed(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[RequirementGetOut]:
+) -> Response[RequirementResponse]:
     """Get requirement details
 
      Retrieve a requirement by ID, including its sections, captures, and recent chat rooms.
@@ -63,7 +63,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementGetOut]
+        Response[RequirementResponse]
     """
 
     kwargs = _get_kwargs(
@@ -81,7 +81,7 @@ def sync(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> RequirementGetOut | None:
+) -> RequirementResponse | None:
     """Get requirement details
 
      Retrieve a requirement by ID, including its sections, captures, and recent chat rooms.
@@ -94,7 +94,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementGetOut
+        RequirementResponse
     """
 
     return sync_detailed(
@@ -107,7 +107,7 @@ async def asyncio_detailed(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[RequirementGetOut]:
+) -> Response[RequirementResponse]:
     """Get requirement details
 
      Retrieve a requirement by ID, including its sections, captures, and recent chat rooms.
@@ -120,7 +120,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementGetOut]
+        Response[RequirementResponse]
     """
 
     kwargs = _get_kwargs(
@@ -136,7 +136,7 @@ async def asyncio(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> RequirementGetOut | None:
+) -> RequirementResponse | None:
     """Get requirement details
 
      Retrieve a requirement by ID, including its sections, captures, and recent chat rooms.
@@ -149,7 +149,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementGetOut
+        RequirementResponse
     """
 
     return (

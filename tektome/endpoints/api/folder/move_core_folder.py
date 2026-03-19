@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.folder_move_patch_in import FolderMovePatchIn
+from ...models.update_folder_move_request import UpdateFolderMoveRequest
 from ...types import Response
 
 
 def _get_kwargs(
     folder_id: UUID,
     *,
-    body: FolderMovePatchIn,
+    body: UpdateFolderMoveRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,7 +56,7 @@ def sync_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: FolderMovePatchIn,
+    body: UpdateFolderMoveRequest,
 ) -> Response[Any]:
     """Move a folder to a new parent
 
@@ -65,7 +65,7 @@ def sync_detailed(
 
     Args:
         folder_id (UUID):
-        body (FolderMovePatchIn):
+        body (UpdateFolderMoveRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -91,7 +91,7 @@ async def asyncio_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: FolderMovePatchIn,
+    body: UpdateFolderMoveRequest,
 ) -> Response[Any]:
     """Move a folder to a new parent
 
@@ -100,7 +100,7 @@ async def asyncio_detailed(
 
     Args:
         folder_id (UUID):
-        body (FolderMovePatchIn):
+        body (UpdateFolderMoveRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
