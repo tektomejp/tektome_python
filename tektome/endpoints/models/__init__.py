@@ -99,6 +99,9 @@ from .bim_project_path_no_validation import BimProjectPathNoValidation
 from .bim_project_path_params import BimProjectPathParams
 from .bim_project_response import BimProjectResponse
 from .bim_project_stats_response import BimProjectStatsResponse
+from .bim_project_v2_index_task_query import BimProjectV2IndexTaskQuery
+from .bim_project_v2_index_task_response import BimProjectV2IndexTaskResponse
+from .bim_project_v2_index_task_response_status import BimProjectV2IndexTaskResponseStatus
 from .bim_query_to_keys_values_request import BimQueryToKeysValuesRequest
 from .bim_query_to_keys_values_response import BimQueryToKeysValuesResponse
 from .bim_search_item_result_response import BimSearchItemResultResponse
@@ -1101,6 +1104,9 @@ __all__ = (
     "BimProjectPathParams",
     "BimProjectResponse",
     "BimProjectStatsResponse",
+    "BimProjectV2IndexTaskQuery",
+    "BimProjectV2IndexTaskResponse",
+    "BimProjectV2IndexTaskResponseStatus",
     "BimQueryToKeysValuesRequest",
     "BimQueryToKeysValuesResponse",
     "BimSearchItemResultResponse",
