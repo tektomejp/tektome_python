@@ -271,6 +271,7 @@ from .current_organization_schema import CurrentOrganizationSchema
 from .data_type_enum import DataTypeEnum
 from .dataspace_attribute_category_attribute_path_params import DataspaceAttributeCategoryAttributePathParams
 from .dataspace_attribute_category_path_params import DataspaceAttributeCategoryPathParams
+from .dataspace_counts_get_out import DataspaceCountsGetOut
 from .dataspace_delete_path_params import DataspaceDeletePathParams
 from .dataspace_entity_list_query import DataspaceEntityListQuery
 from .dataspace_entity_type import DataspaceEntityType
@@ -280,6 +281,7 @@ from .dataspace_list_response import DataspaceListResponse
 from .dataspace_list_schema_query_request import DataspaceListSchemaQueryRequest
 from .dataspace_member_schema_request import DataspaceMemberSchemaRequest
 from .dataspace_members_schema_response import DataspaceMembersSchemaResponse
+from .dataspace_process_detail import DataspaceProcessDetail
 from .dataspace_process_path_params import DataspaceProcessPathParams
 from .dataspace_project_attribute_path_params import DataspaceProjectAttributePathParams
 from .dataspace_project_attribute_response import DataspaceProjectAttributeResponse
@@ -419,6 +421,7 @@ from .execution_group_status import ExecutionGroupStatus
 from .execution_groups_path_params import ExecutionGroupsPathParams
 from .execution_path_params import ExecutionPathParams
 from .execution_process_response import ExecutionProcessResponse
+from .execution_process_types import ExecutionProcessTypes
 from .execution_query_params import ExecutionQueryParams
 from .execution_query_params_approval_category_types import ExecutionQueryParamsApprovalCategoryTypes
 from .execution_query_params_execution_review_status import ExecutionQueryParamsExecutionReviewStatus
@@ -457,6 +460,8 @@ from .folder_level_metadata import FolderLevelMetadata
 from .folder_metadata_response import FolderMetadataResponse
 from .folder_path_request import FolderPathRequest
 from .folder_required_schema import FolderRequiredSchema
+from .folder_resource_count_out import FolderResourceCountOut
+from .folder_resource_counts_out import FolderResourceCountsOut
 from .folder_response import FolderResponse
 from .folder_schema import FolderSchema
 from .gen_breadcrumbs_project import GenBreadcrumbsProject
@@ -573,7 +578,10 @@ from .list_active_core_project_templates_ui_trigger_kind_choices import (
 )
 from .list_active_dataspace_templates_ui_trigger_kind_choices import ListActiveDataspaceTemplatesUiTriggerKindChoices
 from .list_all_artifact_jobs_get_query import ListAllArtifactJobsGetQuery
+from .list_core_project_processes_ui_trigger_kind_choices import ListCoreProjectProcessesUiTriggerKindChoices
 from .list_core_project_templates_ui_trigger_kind_choices import ListCoreProjectTemplatesUiTriggerKindChoices
+from .list_dataspace_process_usages_ui_trigger_kind_choices import ListDataspaceProcessUsagesUiTriggerKindChoices
+from .list_dataspace_processes_ui_trigger_kind_choices import ListDataspaceProcessesUiTriggerKindChoices
 from .list_dataspace_templates_ui_trigger_kind_choices import ListDataspaceTemplatesUiTriggerKindChoices
 from .list_llm_usage_reports_period_types import ListLlmUsageReportsPeriodTypes
 from .list_requirement_reference_notes_sort import ListRequirementReferenceNotesSort
@@ -652,11 +660,14 @@ from .post_pdf_citation_polygon_annotation_dataspace_entity_type import (
     PostPdfCitationPolygonAnnotationDataspaceEntityType,
 )
 from .process_filter_request import ProcessFilterRequest
+from .process_filter_request_ui_trigger_kind_choices import ProcessFilterRequestUiTriggerKindChoices
 from .process_path_params import ProcessPathParams
 from .process_response import ProcessResponse
 from .process_response_input_schema_patch_type_0 import ProcessResponseInputSchemaPatchType0
 from .process_response_openflow_json import ProcessResponseOpenflowJson
 from .process_type_choices import ProcessTypeChoices
+from .process_usage_query import ProcessUsageQuery
+from .process_usage_query_ui_trigger_kind_choices import ProcessUsageQueryUiTriggerKindChoices
 from .project_attribute_input_payload import ProjectAttributeInputPayload
 from .project_check_response import ProjectCheckResponse
 from .project_choices_response import ProjectChoicesResponse
@@ -673,6 +684,8 @@ from .project_requirement_item_response import ProjectRequirementItemResponse
 from .project_requirement_item_response_value_type_0 import ProjectRequirementItemResponseValueType0
 from .project_requirement_item_table_response import ProjectRequirementItemTableResponse
 from .project_requirement_item_table_response_value_item import ProjectRequirementItemTableResponseValueItem
+from .project_resource_count_out import ProjectResourceCountOut
+from .project_resource_counts_out import ProjectResourceCountsOut
 from .project_template_import_request import ProjectTemplateImportRequest
 from .project_template_path_params import ProjectTemplatePathParams
 from .queue_length_status_response import QueueLengthStatusResponse
@@ -757,6 +770,8 @@ from .resource_capture_section_component_schema_positional_text_type_0 import (
     ResourceCaptureSectionComponentSchemaPositionalTextType0,
 )
 from .resource_children import ResourceChildren
+from .resource_counts_post_in import ResourceCountsPostIn
+from .resource_counts_post_out import ResourceCountsPostOut
 from .resource_create_from_signed_url_request import ResourceCreateFromSignedUrlRequest
 from .resource_folder_children_schema import ResourceFolderChildrenSchema
 from .resource_get_many_schema_response import ResourceGetManySchemaResponse
@@ -1267,6 +1282,7 @@ __all__ = (
     "CurrentOrganizationSchema",
     "DataspaceAttributeCategoryAttributePathParams",
     "DataspaceAttributeCategoryPathParams",
+    "DataspaceCountsGetOut",
     "DataspaceDeletePathParams",
     "DataspaceEntityListQuery",
     "DataspaceEntityType",
@@ -1276,6 +1292,7 @@ __all__ = (
     "DataspaceListSchemaQueryRequest",
     "DataspaceMemberSchemaRequest",
     "DataspaceMembersSchemaResponse",
+    "DataspaceProcessDetail",
     "DataspaceProcessPathParams",
     "DataspaceProjectAttributePathParams",
     "DataspaceProjectAttributeResponse",
@@ -1398,6 +1415,7 @@ __all__ = (
     "ExecutionGroupStatus",
     "ExecutionPathParams",
     "ExecutionProcessResponse",
+    "ExecutionProcessTypes",
     "ExecutionQueryParams",
     "ExecutionQueryParamsApprovalCategoryTypes",
     "ExecutionQueryParamsExecutionReviewStatus",
@@ -1436,6 +1454,8 @@ __all__ = (
     "FolderMetadataResponse",
     "FolderPathRequest",
     "FolderRequiredSchema",
+    "FolderResourceCountOut",
+    "FolderResourceCountsOut",
     "FolderResponse",
     "FolderSchema",
     "GenBreadcrumbsProject",
@@ -1544,7 +1564,10 @@ __all__ = (
     "ListActiveCoreProjectTemplatesUiTriggerKindChoices",
     "ListActiveDataspaceTemplatesUiTriggerKindChoices",
     "ListAllArtifactJobsGetQuery",
+    "ListCoreProjectProcessesUiTriggerKindChoices",
     "ListCoreProjectTemplatesUiTriggerKindChoices",
+    "ListDataspaceProcessesUiTriggerKindChoices",
+    "ListDataspaceProcessUsagesUiTriggerKindChoices",
     "ListDataspaceTemplatesUiTriggerKindChoices",
     "ListLlmUsageReportsPeriodTypes",
     "ListRequirementReferenceNotesSort",
@@ -1617,11 +1640,14 @@ __all__ = (
     "PostPDFCitationPathParams",
     "PostPdfCitationPolygonAnnotationDataspaceEntityType",
     "ProcessFilterRequest",
+    "ProcessFilterRequestUiTriggerKindChoices",
     "ProcessPathParams",
     "ProcessResponse",
     "ProcessResponseInputSchemaPatchType0",
     "ProcessResponseOpenflowJson",
     "ProcessTypeChoices",
+    "ProcessUsageQuery",
+    "ProcessUsageQueryUiTriggerKindChoices",
     "ProjectAttributeInputPayload",
     "ProjectCheckResponse",
     "ProjectChoicesResponse",
@@ -1638,6 +1664,8 @@ __all__ = (
     "ProjectRequirementItemResponseValueType0",
     "ProjectRequirementItemTableResponse",
     "ProjectRequirementItemTableResponseValueItem",
+    "ProjectResourceCountOut",
+    "ProjectResourceCountsOut",
     "ProjectTemplateImportRequest",
     "ProjectTemplatePathParams",
     "QueueLengthStatusResponse",
@@ -1710,6 +1738,8 @@ __all__ = (
     "ResourceCaptureSectionComponentSchema",
     "ResourceCaptureSectionComponentSchemaPositionalTextType0",
     "ResourceChildren",
+    "ResourceCountsPostIn",
+    "ResourceCountsPostOut",
     "ResourceCreateFromSignedUrlRequest",
     "ResourceFolderChildrenSchema",
     "ResourceGetManySchemaResponse",
