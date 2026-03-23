@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.import_resource_group_request import ImportResourceGroupRequest
+from ...models.import_resource_group_post_in import ImportResourceGroupPostIn
 from ...types import Response
 
 
 def _get_kwargs(
     project_id: UUID,
     *,
-    body: ImportResourceGroupRequest,
+    body: ImportResourceGroupPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,15 +56,17 @@ def sync_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ImportResourceGroupRequest,
+    body: ImportResourceGroupPostIn,
 ) -> Response[Any]:
-    """Import resource groups to project
+    """Post Import Resource Group
 
-     Import existing resource groups into a project by linking them as imported resource groups.
+     vJFN9knE
+
+    Import Lawtalk's Resource Groups to a project.
 
     Args:
         project_id (UUID):
-        body (ImportResourceGroupRequest):
+        body (ImportResourceGroupPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -90,15 +92,17 @@ async def asyncio_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ImportResourceGroupRequest,
+    body: ImportResourceGroupPostIn,
 ) -> Response[Any]:
-    """Import resource groups to project
+    """Post Import Resource Group
 
-     Import existing resource groups into a project by linking them as imported resource groups.
+     vJFN9knE
+
+    Import Lawtalk's Resource Groups to a project.
 
     Args:
         project_id (UUID):
-        body (ImportResourceGroupRequest):
+        body (ImportResourceGroupPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

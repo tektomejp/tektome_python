@@ -7,7 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.list_dataspace_processes_ui_trigger_kind_choices import ListDataspaceProcessesUiTriggerKindChoices
+from ...models.paged_process_out import PagedProcessOut
+from ...models.ui_trigger_kind_choices import UiTriggerKindChoices
 from ...types import UNSET, Response, Unset
 
 
@@ -15,7 +16,7 @@ def _get_kwargs(
     dataspace_id: UUID,
     *,
     ui_trigger_name: None | str | Unset = UNSET,
-    ui_trigger_kinds: list[ListDataspaceProcessesUiTriggerKindChoices] | Unset = UNSET,
+    ui_trigger_kind: None | UiTriggerKindChoices | Unset = UNSET,
     name: None | str | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
@@ -30,14 +31,14 @@ def _get_kwargs(
         json_ui_trigger_name = ui_trigger_name
     params["ui_trigger_name"] = json_ui_trigger_name
 
-    json_ui_trigger_kinds: list[str] | Unset = UNSET
-    if not isinstance(ui_trigger_kinds, Unset):
-        json_ui_trigger_kinds = []
-        for ui_trigger_kinds_item_data in ui_trigger_kinds:
-            ui_trigger_kinds_item = ui_trigger_kinds_item_data.value
-            json_ui_trigger_kinds.append(ui_trigger_kinds_item)
-
-    params["ui_trigger_kinds"] = json_ui_trigger_kinds
+    json_ui_trigger_kind: None | str | Unset
+    if isinstance(ui_trigger_kind, Unset):
+        json_ui_trigger_kind = UNSET
+    elif isinstance(ui_trigger_kind, UiTriggerKindChoices):
+        json_ui_trigger_kind = ui_trigger_kind.value
+    else:
+        json_ui_trigger_kind = ui_trigger_kind
+    params["ui_trigger_kind"] = json_ui_trigger_kind
 
     json_name: None | str | Unset
     if isinstance(name, Unset):
@@ -68,14 +69,19 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> PagedProcessOut | None:
+    if response.status_code == 200:
+        response_200 = PagedProcessOut.from_dict(response.json())
+
+        return response_200
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[PagedProcessOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -89,20 +95,22 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     ui_trigger_name: None | str | Unset = UNSET,
-    ui_trigger_kinds: list[ListDataspaceProcessesUiTriggerKindChoices] | Unset = UNSET,
+    ui_trigger_kind: None | UiTriggerKindChoices | Unset = UNSET,
     name: None | str | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[Any]:
-    """List all processes in a dataspace
+) -> Response[PagedProcessOut]:
+    """Get Dataspace Processes
 
-     Retrieve all processes registered within a dataspace. Supports filtering via query parameters.
+     wecRkGrZ
+
+    Retrieve all processes for the current dataspace.
 
     Args:
         dataspace_id (UUID):
         ui_trigger_name (None | str | Unset): Filter processes by UI trigger name.
-        ui_trigger_kinds (list[ListDataspaceProcessesUiTriggerKindChoices] | Unset): Filter
-            processes by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
+        ui_trigger_kind (None | UiTriggerKindChoices | Unset): Filter processes by UI trigger
+            kind. Possible values are defined in UiTriggerKindChoices.
         name (None | str | Unset): The name (or part of the name) of the process to search for.
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
@@ -112,13 +120,13 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[PagedProcessOut]
     """
 
     kwargs = _get_kwargs(
         dataspace_id=dataspace_id,
         ui_trigger_name=ui_trigger_name,
-        ui_trigger_kinds=ui_trigger_kinds,
+        ui_trigger_kind=ui_trigger_kind,
         name=name,
         page=page,
         page_size=page_size,
@@ -131,25 +139,27 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
     ui_trigger_name: None | str | Unset = UNSET,
-    ui_trigger_kinds: list[ListDataspaceProcessesUiTriggerKindChoices] | Unset = UNSET,
+    ui_trigger_kind: None | UiTriggerKindChoices | Unset = UNSET,
     name: None | str | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[Any]:
-    """List all processes in a dataspace
+) -> PagedProcessOut | None:
+    """Get Dataspace Processes
 
-     Retrieve all processes registered within a dataspace. Supports filtering via query parameters.
+     wecRkGrZ
+
+    Retrieve all processes for the current dataspace.
 
     Args:
         dataspace_id (UUID):
         ui_trigger_name (None | str | Unset): Filter processes by UI trigger name.
-        ui_trigger_kinds (list[ListDataspaceProcessesUiTriggerKindChoices] | Unset): Filter
-            processes by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
+        ui_trigger_kind (None | UiTriggerKindChoices | Unset): Filter processes by UI trigger
+            kind. Possible values are defined in UiTriggerKindChoices.
         name (None | str | Unset): The name (or part of the name) of the process to search for.
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
@@ -159,13 +169,57 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        PagedProcessOut
+    """
+
+    return sync_detailed(
+        dataspace_id=dataspace_id,
+        client=client,
+        ui_trigger_name=ui_trigger_name,
+        ui_trigger_kind=ui_trigger_kind,
+        name=name,
+        page=page,
+        page_size=page_size,
+    ).parsed
+
+
+async def asyncio_detailed(
+    dataspace_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    ui_trigger_name: None | str | Unset = UNSET,
+    ui_trigger_kind: None | UiTriggerKindChoices | Unset = UNSET,
+    name: None | str | Unset = UNSET,
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
+) -> Response[PagedProcessOut]:
+    """Get Dataspace Processes
+
+     wecRkGrZ
+
+    Retrieve all processes for the current dataspace.
+
+    Args:
+        dataspace_id (UUID):
+        ui_trigger_name (None | str | Unset): Filter processes by UI trigger name.
+        ui_trigger_kind (None | UiTriggerKindChoices | Unset): Filter processes by UI trigger
+            kind. Possible values are defined in UiTriggerKindChoices.
+        name (None | str | Unset): The name (or part of the name) of the process to search for.
+        page (int | Unset):  Default: 1.
+        page_size (int | None | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[PagedProcessOut]
     """
 
     kwargs = _get_kwargs(
         dataspace_id=dataspace_id,
         ui_trigger_name=ui_trigger_name,
-        ui_trigger_kinds=ui_trigger_kinds,
+        ui_trigger_kind=ui_trigger_kind,
         name=name,
         page=page,
         page_size=page_size,
@@ -174,3 +228,49 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    dataspace_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    ui_trigger_name: None | str | Unset = UNSET,
+    ui_trigger_kind: None | UiTriggerKindChoices | Unset = UNSET,
+    name: None | str | Unset = UNSET,
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
+) -> PagedProcessOut | None:
+    """Get Dataspace Processes
+
+     wecRkGrZ
+
+    Retrieve all processes for the current dataspace.
+
+    Args:
+        dataspace_id (UUID):
+        ui_trigger_name (None | str | Unset): Filter processes by UI trigger name.
+        ui_trigger_kind (None | UiTriggerKindChoices | Unset): Filter processes by UI trigger
+            kind. Possible values are defined in UiTriggerKindChoices.
+        name (None | str | Unset): The name (or part of the name) of the process to search for.
+        page (int | Unset):  Default: 1.
+        page_size (int | None | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        PagedProcessOut
+    """
+
+    return (
+        await asyncio_detailed(
+            dataspace_id=dataspace_id,
+            client=client,
+            ui_trigger_name=ui_trigger_name,
+            ui_trigger_kind=ui_trigger_kind,
+            name=name,
+            page=page,
+            page_size=page_size,
+        )
+    ).parsed

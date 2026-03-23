@@ -51,9 +51,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a project process
+    """Delete Project Process
 
-     Delete a specific process from the specified project.
+     7kvIAKiR
+
+    Delete a specific process in the current project.
 
     Args:
         project_id (UUID):
@@ -85,9 +87,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a project process
+    """Delete Project Process
 
-     Delete a specific process from the specified project.
+     7kvIAKiR
+
+    Delete a specific process in the current project.
 
     Args:
         project_id (UUID):

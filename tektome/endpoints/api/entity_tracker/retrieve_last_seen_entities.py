@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.entity_tracker_response import EntityTrackerResponse
-from ...models.observability_ids_request import ObservabilityIdsRequest
+from ...models.entity_tracker_get_out import EntityTrackerGetOut
+from ...models.observability_ids_in import ObservabilityIdsIn
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: ObservabilityIdsRequest,
+    body: ObservabilityIdsIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,12 +31,12 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> list[EntityTrackerResponse] | None:
+) -> list[EntityTrackerGetOut] | None:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = EntityTrackerResponse.from_dict(response_200_item_data)
+            response_200_item = EntityTrackerGetOut.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
@@ -50,7 +50,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[list[EntityTrackerResponse]]:
+) -> Response[list[EntityTrackerGetOut]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -62,21 +62,23 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: ObservabilityIdsRequest,
-) -> Response[list[EntityTrackerResponse]]:
-    """Retrieve last seen entities
+    body: ObservabilityIdsIn,
+) -> Response[list[EntityTrackerGetOut]]:
+    """Post Retrieve Last Seen Entities
 
-     Retrieve the last-seen timestamps and view modes for a list of tracked entities.
+     1AbIfjMr
+
+    Retrieve last seen observation information for an entity.
 
     Args:
-        body (ObservabilityIdsRequest):
+        body (ObservabilityIdsIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list[EntityTrackerResponse]]
+        Response[list[EntityTrackerGetOut]]
     """
 
     kwargs = _get_kwargs(
@@ -93,21 +95,23 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: ObservabilityIdsRequest,
-) -> list[EntityTrackerResponse] | None:
-    """Retrieve last seen entities
+    body: ObservabilityIdsIn,
+) -> list[EntityTrackerGetOut] | None:
+    """Post Retrieve Last Seen Entities
 
-     Retrieve the last-seen timestamps and view modes for a list of tracked entities.
+     1AbIfjMr
+
+    Retrieve last seen observation information for an entity.
 
     Args:
-        body (ObservabilityIdsRequest):
+        body (ObservabilityIdsIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list[EntityTrackerResponse]
+        list[EntityTrackerGetOut]
     """
 
     return sync_detailed(
@@ -119,21 +123,23 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: ObservabilityIdsRequest,
-) -> Response[list[EntityTrackerResponse]]:
-    """Retrieve last seen entities
+    body: ObservabilityIdsIn,
+) -> Response[list[EntityTrackerGetOut]]:
+    """Post Retrieve Last Seen Entities
 
-     Retrieve the last-seen timestamps and view modes for a list of tracked entities.
+     1AbIfjMr
+
+    Retrieve last seen observation information for an entity.
 
     Args:
-        body (ObservabilityIdsRequest):
+        body (ObservabilityIdsIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list[EntityTrackerResponse]]
+        Response[list[EntityTrackerGetOut]]
     """
 
     kwargs = _get_kwargs(
@@ -148,21 +154,23 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: ObservabilityIdsRequest,
-) -> list[EntityTrackerResponse] | None:
-    """Retrieve last seen entities
+    body: ObservabilityIdsIn,
+) -> list[EntityTrackerGetOut] | None:
+    """Post Retrieve Last Seen Entities
 
-     Retrieve the last-seen timestamps and view modes for a list of tracked entities.
+     1AbIfjMr
+
+    Retrieve last seen observation information for an entity.
 
     Args:
-        body (ObservabilityIdsRequest):
+        body (ObservabilityIdsIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list[EntityTrackerResponse]
+        list[EntityTrackerGetOut]
     """
 
     return (

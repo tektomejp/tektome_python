@@ -12,7 +12,7 @@ from .. import types
 from ..types import File
 
 if TYPE_CHECKING:
-    from ..models.lawtalk_resource_upload_request import LawtalkResourceUploadRequest
+    from ..models.lawtalk_resource_upload_in import LawtalkResourceUploadIn
 
 
 T = TypeVar("T", bound="UploadLawtalkResourceMultiPartBodyParams")
@@ -23,11 +23,11 @@ class UploadLawtalkResourceMultiPartBodyParams:
     """
     Attributes:
         file (File):
-        payload (LawtalkResourceUploadRequest):
+        payload (LawtalkResourceUploadIn):
     """
 
     file: File
-    payload: LawtalkResourceUploadRequest
+    payload: LawtalkResourceUploadIn
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,12 +60,12 @@ class UploadLawtalkResourceMultiPartBodyParams:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.lawtalk_resource_upload_request import LawtalkResourceUploadRequest
+        from ..models.lawtalk_resource_upload_in import LawtalkResourceUploadIn
 
         d = dict(src_dict)
         file = File(payload=BytesIO(d.pop("file")))
 
-        payload = LawtalkResourceUploadRequest.from_dict(d.pop("payload"))
+        payload = LawtalkResourceUploadIn.from_dict(d.pop("payload"))
 
         upload_lawtalk_resource_multi_part_body_params = cls(
             file=file,

@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.error_response import ErrorResponse
-from ...models.resource_ifc_bim_project_creation_response import ResourceIfcBimProjectCreationResponse
+from ...models.error_out import ErrorOut
+from ...models.resource_ifc_bim_project_creation_post_out import ResourceIfcBimProjectCreationPostOut
 from ...models.upload_dataspace_project_bim_file_params import UploadDataspaceProjectBimFileParams
 from ...types import Response
 
@@ -35,14 +35,14 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorResponse | ResourceIfcBimProjectCreationResponse | None:
+) -> ErrorOut | ResourceIfcBimProjectCreationPostOut | None:
     if response.status_code == 201:
-        response_201 = ResourceIfcBimProjectCreationResponse.from_dict(response.json())
+        response_201 = ResourceIfcBimProjectCreationPostOut.from_dict(response.json())
 
         return response_201
 
     if response.status_code == 400:
-        response_400 = ErrorResponse.from_dict(response.json())
+        response_400 = ErrorOut.from_dict(response.json())
 
         return response_400
 
@@ -54,7 +54,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorResponse | ResourceIfcBimProjectCreationResponse]:
+) -> Response[ErrorOut | ResourceIfcBimProjectCreationPostOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -68,13 +68,41 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UploadDataspaceProjectBimFileParams,
-) -> Response[ErrorResponse | ResourceIfcBimProjectCreationResponse]:
-    """Upload an IFC file for BIM processing
+) -> Response[ErrorOut | ResourceIfcBimProjectCreationPostOut]:
+    """Post Upload Dataspace Project Resource Bim
 
-     Upload an IFC (Building Information Model) file to a project and initiate BIM element extraction and
-    classification. Only .ifc files are accepted. This is an asynchronous operation. To retrieve the
-    results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the task/process ID
-    returned in this response.
+     AuBjLcqo
+
+    Upload and process an IFC (Building Information Model) file for BIM analysis.
+
+    This endpoint handles the upload of IFC files and initiates an asynchronous processing
+    pipeline to extract and classify BIM elements. The workflow creates a Resource entity
+    for the uploaded file and a BimProject entity to manage the BIM processing state.
+
+    Args:
+        request: The HTTP request object containing authentication information.
+        path_params: Path parameters containing the project_id.
+        file: The uploaded IFC file (UploadedFile).
+
+    Returns:
+        Tuple[int, dict]: HTTP 201 with response containing:
+            - task_id (UUID): Celery task ID for async BIM processing
+            - resource_id (UUID): ID of created Resource entity
+            - bim_project_id (UUID): ID of created BimProject entity
+            - file_name (str): Original filename (cleaned of path separators)
+            - created (datetime): Resource creation timestamp
+            - updated (datetime): Resource update timestamp
+
+    Raises:
+        HttpError(400): If file is not .ifc format or BIM project creation fails.
+
+    Processing Flow:
+        1. Validates file extension (case-insensitive .ifc check)
+        2. Creates Resource entity with version control
+        3. Creates BimProject associated with Resource
+        4. Triggers async Celery task: process_resource_ifc_to_bim_elements
+        5. Returns task ID for client to poll progress
+        6. On error: Cleans up Resource and returns error response
 
     Args:
         project_id (UUID):
@@ -85,7 +113,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorResponse | ResourceIfcBimProjectCreationResponse]
+        Response[ErrorOut | ResourceIfcBimProjectCreationPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -105,13 +133,41 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: UploadDataspaceProjectBimFileParams,
-) -> ErrorResponse | ResourceIfcBimProjectCreationResponse | None:
-    """Upload an IFC file for BIM processing
+) -> ErrorOut | ResourceIfcBimProjectCreationPostOut | None:
+    """Post Upload Dataspace Project Resource Bim
 
-     Upload an IFC (Building Information Model) file to a project and initiate BIM element extraction and
-    classification. Only .ifc files are accepted. This is an asynchronous operation. To retrieve the
-    results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the task/process ID
-    returned in this response.
+     AuBjLcqo
+
+    Upload and process an IFC (Building Information Model) file for BIM analysis.
+
+    This endpoint handles the upload of IFC files and initiates an asynchronous processing
+    pipeline to extract and classify BIM elements. The workflow creates a Resource entity
+    for the uploaded file and a BimProject entity to manage the BIM processing state.
+
+    Args:
+        request: The HTTP request object containing authentication information.
+        path_params: Path parameters containing the project_id.
+        file: The uploaded IFC file (UploadedFile).
+
+    Returns:
+        Tuple[int, dict]: HTTP 201 with response containing:
+            - task_id (UUID): Celery task ID for async BIM processing
+            - resource_id (UUID): ID of created Resource entity
+            - bim_project_id (UUID): ID of created BimProject entity
+            - file_name (str): Original filename (cleaned of path separators)
+            - created (datetime): Resource creation timestamp
+            - updated (datetime): Resource update timestamp
+
+    Raises:
+        HttpError(400): If file is not .ifc format or BIM project creation fails.
+
+    Processing Flow:
+        1. Validates file extension (case-insensitive .ifc check)
+        2. Creates Resource entity with version control
+        3. Creates BimProject associated with Resource
+        4. Triggers async Celery task: process_resource_ifc_to_bim_elements
+        5. Returns task ID for client to poll progress
+        6. On error: Cleans up Resource and returns error response
 
     Args:
         project_id (UUID):
@@ -122,7 +178,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorResponse | ResourceIfcBimProjectCreationResponse
+        ErrorOut | ResourceIfcBimProjectCreationPostOut
     """
 
     return sync_detailed(
@@ -137,13 +193,41 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: UploadDataspaceProjectBimFileParams,
-) -> Response[ErrorResponse | ResourceIfcBimProjectCreationResponse]:
-    """Upload an IFC file for BIM processing
+) -> Response[ErrorOut | ResourceIfcBimProjectCreationPostOut]:
+    """Post Upload Dataspace Project Resource Bim
 
-     Upload an IFC (Building Information Model) file to a project and initiate BIM element extraction and
-    classification. Only .ifc files are accepted. This is an asynchronous operation. To retrieve the
-    results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the task/process ID
-    returned in this response.
+     AuBjLcqo
+
+    Upload and process an IFC (Building Information Model) file for BIM analysis.
+
+    This endpoint handles the upload of IFC files and initiates an asynchronous processing
+    pipeline to extract and classify BIM elements. The workflow creates a Resource entity
+    for the uploaded file and a BimProject entity to manage the BIM processing state.
+
+    Args:
+        request: The HTTP request object containing authentication information.
+        path_params: Path parameters containing the project_id.
+        file: The uploaded IFC file (UploadedFile).
+
+    Returns:
+        Tuple[int, dict]: HTTP 201 with response containing:
+            - task_id (UUID): Celery task ID for async BIM processing
+            - resource_id (UUID): ID of created Resource entity
+            - bim_project_id (UUID): ID of created BimProject entity
+            - file_name (str): Original filename (cleaned of path separators)
+            - created (datetime): Resource creation timestamp
+            - updated (datetime): Resource update timestamp
+
+    Raises:
+        HttpError(400): If file is not .ifc format or BIM project creation fails.
+
+    Processing Flow:
+        1. Validates file extension (case-insensitive .ifc check)
+        2. Creates Resource entity with version control
+        3. Creates BimProject associated with Resource
+        4. Triggers async Celery task: process_resource_ifc_to_bim_elements
+        5. Returns task ID for client to poll progress
+        6. On error: Cleans up Resource and returns error response
 
     Args:
         project_id (UUID):
@@ -154,7 +238,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorResponse | ResourceIfcBimProjectCreationResponse]
+        Response[ErrorOut | ResourceIfcBimProjectCreationPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -172,13 +256,41 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: UploadDataspaceProjectBimFileParams,
-) -> ErrorResponse | ResourceIfcBimProjectCreationResponse | None:
-    """Upload an IFC file for BIM processing
+) -> ErrorOut | ResourceIfcBimProjectCreationPostOut | None:
+    """Post Upload Dataspace Project Resource Bim
 
-     Upload an IFC (Building Information Model) file to a project and initiate BIM element extraction and
-    classification. Only .ifc files are accepted. This is an asynchronous operation. To retrieve the
-    results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the task/process ID
-    returned in this response.
+     AuBjLcqo
+
+    Upload and process an IFC (Building Information Model) file for BIM analysis.
+
+    This endpoint handles the upload of IFC files and initiates an asynchronous processing
+    pipeline to extract and classify BIM elements. The workflow creates a Resource entity
+    for the uploaded file and a BimProject entity to manage the BIM processing state.
+
+    Args:
+        request: The HTTP request object containing authentication information.
+        path_params: Path parameters containing the project_id.
+        file: The uploaded IFC file (UploadedFile).
+
+    Returns:
+        Tuple[int, dict]: HTTP 201 with response containing:
+            - task_id (UUID): Celery task ID for async BIM processing
+            - resource_id (UUID): ID of created Resource entity
+            - bim_project_id (UUID): ID of created BimProject entity
+            - file_name (str): Original filename (cleaned of path separators)
+            - created (datetime): Resource creation timestamp
+            - updated (datetime): Resource update timestamp
+
+    Raises:
+        HttpError(400): If file is not .ifc format or BIM project creation fails.
+
+    Processing Flow:
+        1. Validates file extension (case-insensitive .ifc check)
+        2. Creates Resource entity with version control
+        3. Creates BimProject associated with Resource
+        4. Triggers async Celery task: process_resource_ifc_to_bim_elements
+        5. Returns task ID for client to poll progress
+        6. On error: Cleans up Resource and returns error response
 
     Args:
         project_id (UUID):
@@ -189,7 +301,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorResponse | ResourceIfcBimProjectCreationResponse
+        ErrorOut | ResourceIfcBimProjectCreationPostOut
     """
 
     return (

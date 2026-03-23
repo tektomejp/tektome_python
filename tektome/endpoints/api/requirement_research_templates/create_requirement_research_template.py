@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_requirement_research_template_request import CreateRequirementResearchTemplateRequest
-from ...models.requirement_research_template_response import RequirementResearchTemplateResponse
+from ...models.requirement_research_template_get_out import RequirementResearchTemplateGetOut
+from ...models.requirement_research_template_post_in import RequirementResearchTemplatePostIn
 from ...types import Response
 
 
 def _get_kwargs(
     requirement_template_id: UUID,
     *,
-    body: CreateRequirementResearchTemplateRequest,
+    body: RequirementResearchTemplatePostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -36,9 +36,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RequirementResearchTemplateResponse | None:
+) -> RequirementResearchTemplateGetOut | None:
     if response.status_code == 201:
-        response_201 = RequirementResearchTemplateResponse.from_dict(response.json())
+        response_201 = RequirementResearchTemplateGetOut.from_dict(response.json())
 
         return response_201
 
@@ -50,7 +50,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[RequirementResearchTemplateResponse]:
+) -> Response[RequirementResearchTemplateGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,24 +63,25 @@ def sync_detailed(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateRequirementResearchTemplateRequest,
-) -> Response[RequirementResearchTemplateResponse]:
-    """Create an AI research template
+    body: RequirementResearchTemplatePostIn,
+) -> Response[RequirementResearchTemplateGetOut]:
+    """Post Research Template
 
-     Create a new AI research template for a requirement template. The specified public resource groups
-    must already exist in the parent requirement template container.
+     R1C1E1A0
+
+    Create a AI Research template
 
     Args:
         requirement_template_id (UUID):
-        body (CreateRequirementResearchTemplateRequest): Serializer for Requirement Template
-            Research Template Post Input.
+        body (RequirementResearchTemplatePostIn): Serializer for Requirement Template Research
+            Template Post Input.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementResearchTemplateResponse]
+        Response[RequirementResearchTemplateGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -99,24 +100,25 @@ def sync(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateRequirementResearchTemplateRequest,
-) -> RequirementResearchTemplateResponse | None:
-    """Create an AI research template
+    body: RequirementResearchTemplatePostIn,
+) -> RequirementResearchTemplateGetOut | None:
+    """Post Research Template
 
-     Create a new AI research template for a requirement template. The specified public resource groups
-    must already exist in the parent requirement template container.
+     R1C1E1A0
+
+    Create a AI Research template
 
     Args:
         requirement_template_id (UUID):
-        body (CreateRequirementResearchTemplateRequest): Serializer for Requirement Template
-            Research Template Post Input.
+        body (RequirementResearchTemplatePostIn): Serializer for Requirement Template Research
+            Template Post Input.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementResearchTemplateResponse
+        RequirementResearchTemplateGetOut
     """
 
     return sync_detailed(
@@ -130,24 +132,25 @@ async def asyncio_detailed(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateRequirementResearchTemplateRequest,
-) -> Response[RequirementResearchTemplateResponse]:
-    """Create an AI research template
+    body: RequirementResearchTemplatePostIn,
+) -> Response[RequirementResearchTemplateGetOut]:
+    """Post Research Template
 
-     Create a new AI research template for a requirement template. The specified public resource groups
-    must already exist in the parent requirement template container.
+     R1C1E1A0
+
+    Create a AI Research template
 
     Args:
         requirement_template_id (UUID):
-        body (CreateRequirementResearchTemplateRequest): Serializer for Requirement Template
-            Research Template Post Input.
+        body (RequirementResearchTemplatePostIn): Serializer for Requirement Template Research
+            Template Post Input.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementResearchTemplateResponse]
+        Response[RequirementResearchTemplateGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -164,24 +167,25 @@ async def asyncio(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateRequirementResearchTemplateRequest,
-) -> RequirementResearchTemplateResponse | None:
-    """Create an AI research template
+    body: RequirementResearchTemplatePostIn,
+) -> RequirementResearchTemplateGetOut | None:
+    """Post Research Template
 
-     Create a new AI research template for a requirement template. The specified public resource groups
-    must already exist in the parent requirement template container.
+     R1C1E1A0
+
+    Create a AI Research template
 
     Args:
         requirement_template_id (UUID):
-        body (CreateRequirementResearchTemplateRequest): Serializer for Requirement Template
-            Research Template Post Input.
+        body (RequirementResearchTemplatePostIn): Serializer for Requirement Template Research
+            Template Post Input.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementResearchTemplateResponse
+        RequirementResearchTemplateGetOut
     """
 
     return (

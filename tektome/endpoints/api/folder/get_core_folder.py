@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.folder_response import FolderResponse
+from ...models.folder_get_out import FolderGetOut
 from ...types import Response
 
 
@@ -25,9 +25,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> FolderResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> FolderGetOut | None:
     if response.status_code == 200:
-        response_200 = FolderResponse.from_dict(response.json())
+        response_200 = FolderGetOut.from_dict(response.json())
 
         return response_200
 
@@ -37,7 +37,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[FolderResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[FolderGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -50,10 +50,20 @@ def sync_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[FolderResponse]:
-    """Get a folder with its contents
+) -> Response[FolderGetOut]:
+    """Get Folder
 
-     Retrieve a folder along with its resources and child folders.
+     isvFT8ZQ
+
+    Get a folder and list all
+    - resources
+    - children of the folder
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing folder_id
+
+    Returns: Folder containing resources and children
 
     Args:
         folder_id (UUID):
@@ -63,7 +73,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[FolderResponse]
+        Response[FolderGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -81,10 +91,20 @@ def sync(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> FolderResponse | None:
-    """Get a folder with its contents
+) -> FolderGetOut | None:
+    """Get Folder
 
-     Retrieve a folder along with its resources and child folders.
+     isvFT8ZQ
+
+    Get a folder and list all
+    - resources
+    - children of the folder
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing folder_id
+
+    Returns: Folder containing resources and children
 
     Args:
         folder_id (UUID):
@@ -94,7 +114,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        FolderResponse
+        FolderGetOut
     """
 
     return sync_detailed(
@@ -107,10 +127,20 @@ async def asyncio_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[FolderResponse]:
-    """Get a folder with its contents
+) -> Response[FolderGetOut]:
+    """Get Folder
 
-     Retrieve a folder along with its resources and child folders.
+     isvFT8ZQ
+
+    Get a folder and list all
+    - resources
+    - children of the folder
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing folder_id
+
+    Returns: Folder containing resources and children
 
     Args:
         folder_id (UUID):
@@ -120,7 +150,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[FolderResponse]
+        Response[FolderGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -136,10 +166,20 @@ async def asyncio(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> FolderResponse | None:
-    """Get a folder with its contents
+) -> FolderGetOut | None:
+    """Get Folder
 
-     Retrieve a folder along with its resources and child folders.
+     isvFT8ZQ
+
+    Get a folder and list all
+    - resources
+    - children of the folder
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing folder_id
+
+    Returns: Folder containing resources and children
 
     Args:
         folder_id (UUID):
@@ -149,7 +189,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        FolderResponse
+        FolderGetOut
     """
 
     return (

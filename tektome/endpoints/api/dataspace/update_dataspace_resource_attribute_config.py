@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.dataspace_resource_file_attribute_schema_response import DataspaceResourceFileAttributeSchemaResponse
-from ...models.update_dataspace_resource_attribute_request import UpdateDataspaceResourceAttributeRequest
+from ...models.dataspace_resource_attribute_patch_in_patch import DataspaceResourceAttributePatchInPatch
+from ...models.dataspace_resource_file_attribute_schema_out import DataspaceResourceFileAttributeSchemaOut
 from ...types import Response
 
 
 def _get_kwargs(
     attribute_config_id: UUID,
     *,
-    body: UpdateDataspaceResourceAttributeRequest,
+    body: DataspaceResourceAttributePatchInPatch,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -36,9 +36,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> DataspaceResourceFileAttributeSchemaResponse | None:
+) -> DataspaceResourceFileAttributeSchemaOut | None:
     if response.status_code == 200:
-        response_200 = DataspaceResourceFileAttributeSchemaResponse.from_dict(response.json())
+        response_200 = DataspaceResourceFileAttributeSchemaOut.from_dict(response.json())
 
         return response_200
 
@@ -50,7 +50,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[DataspaceResourceFileAttributeSchemaResponse]:
+) -> Response[DataspaceResourceFileAttributeSchemaOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,23 +63,24 @@ def sync_detailed(
     attribute_config_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UpdateDataspaceResourceAttributeRequest,
-) -> Response[DataspaceResourceFileAttributeSchemaResponse]:
-    """Update a resource attribute column configuration
+    body: DataspaceResourceAttributePatchInPatch,
+) -> Response[DataspaceResourceFileAttributeSchemaOut]:
+    """Patch Dataspace Resource Attribute Config
 
-     Update an existing resource attribute column configuration, including its label, metadata, and table
-    or select options. Renaming propagates to all resources across projects in the dataspace.
+     x16N0f5A
+
+    Updates the column attributes of a dataspace
 
     Args:
         attribute_config_id (UUID):
-        body (UpdateDataspaceResourceAttributeRequest):
+        body (DataspaceResourceAttributePatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DataspaceResourceFileAttributeSchemaResponse]
+        Response[DataspaceResourceFileAttributeSchemaOut]
     """
 
     kwargs = _get_kwargs(
@@ -98,23 +99,24 @@ def sync(
     attribute_config_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UpdateDataspaceResourceAttributeRequest,
-) -> DataspaceResourceFileAttributeSchemaResponse | None:
-    """Update a resource attribute column configuration
+    body: DataspaceResourceAttributePatchInPatch,
+) -> DataspaceResourceFileAttributeSchemaOut | None:
+    """Patch Dataspace Resource Attribute Config
 
-     Update an existing resource attribute column configuration, including its label, metadata, and table
-    or select options. Renaming propagates to all resources across projects in the dataspace.
+     x16N0f5A
+
+    Updates the column attributes of a dataspace
 
     Args:
         attribute_config_id (UUID):
-        body (UpdateDataspaceResourceAttributeRequest):
+        body (DataspaceResourceAttributePatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DataspaceResourceFileAttributeSchemaResponse
+        DataspaceResourceFileAttributeSchemaOut
     """
 
     return sync_detailed(
@@ -128,23 +130,24 @@ async def asyncio_detailed(
     attribute_config_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UpdateDataspaceResourceAttributeRequest,
-) -> Response[DataspaceResourceFileAttributeSchemaResponse]:
-    """Update a resource attribute column configuration
+    body: DataspaceResourceAttributePatchInPatch,
+) -> Response[DataspaceResourceFileAttributeSchemaOut]:
+    """Patch Dataspace Resource Attribute Config
 
-     Update an existing resource attribute column configuration, including its label, metadata, and table
-    or select options. Renaming propagates to all resources across projects in the dataspace.
+     x16N0f5A
+
+    Updates the column attributes of a dataspace
 
     Args:
         attribute_config_id (UUID):
-        body (UpdateDataspaceResourceAttributeRequest):
+        body (DataspaceResourceAttributePatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DataspaceResourceFileAttributeSchemaResponse]
+        Response[DataspaceResourceFileAttributeSchemaOut]
     """
 
     kwargs = _get_kwargs(
@@ -161,23 +164,24 @@ async def asyncio(
     attribute_config_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UpdateDataspaceResourceAttributeRequest,
-) -> DataspaceResourceFileAttributeSchemaResponse | None:
-    """Update a resource attribute column configuration
+    body: DataspaceResourceAttributePatchInPatch,
+) -> DataspaceResourceFileAttributeSchemaOut | None:
+    """Patch Dataspace Resource Attribute Config
 
-     Update an existing resource attribute column configuration, including its label, metadata, and table
-    or select options. Renaming propagates to all resources across projects in the dataspace.
+     x16N0f5A
+
+    Updates the column attributes of a dataspace
 
     Args:
         attribute_config_id (UUID):
-        body (UpdateDataspaceResourceAttributeRequest):
+        body (DataspaceResourceAttributePatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DataspaceResourceFileAttributeSchemaResponse
+        DataspaceResourceFileAttributeSchemaOut
     """
 
     return (

@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.project_patch_members_schema_request import ProjectPatchMembersSchemaRequest
+from ...models.project_patch_members_schema_in import ProjectPatchMembersSchemaIn
 from ...types import Response
 
 
 def _get_kwargs(
     project_id: UUID,
     *,
-    body: list[ProjectPatchMembersSchemaRequest],
+    body: list[ProjectPatchMembersSchemaIn],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -59,15 +59,24 @@ def sync_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[ProjectPatchMembersSchemaRequest],
+    body: list[ProjectPatchMembersSchemaIn],
 ) -> Response[Any]:
-    """Update project member roles
+    """Update Project Members
 
-     Update the roles of one or more existing project members.
+     6mNqfKX0
+
+    Update members of a project with specific roles.
+
+    Args:
+        request: Request object.
+        path_params: Path params of type ProjectDefaultPath
+        user_role_assignments: List of user role assignments.
+
+    Returns: 204, None
 
     Args:
         project_id (UUID):
-        body (list[ProjectPatchMembersSchemaRequest]):
+        body (list[ProjectPatchMembersSchemaIn]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -93,15 +102,24 @@ async def asyncio_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[ProjectPatchMembersSchemaRequest],
+    body: list[ProjectPatchMembersSchemaIn],
 ) -> Response[Any]:
-    """Update project member roles
+    """Update Project Members
 
-     Update the roles of one or more existing project members.
+     6mNqfKX0
+
+    Update members of a project with specific roles.
+
+    Args:
+        request: Request object.
+        path_params: Path params of type ProjectDefaultPath
+        user_role_assignments: List of user role assignments.
+
+    Returns: 204, None
 
     Args:
         project_id (UUID):
-        body (list[ProjectPatchMembersSchemaRequest]):
+        body (list[ProjectPatchMembersSchemaIn]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

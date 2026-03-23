@@ -7,17 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_project_requirement_item_column_config_request import (
-    CreateProjectRequirementItemColumnConfigRequest,
-)
-from ...models.project_requirement_item_column_config_response import ProjectRequirementItemColumnConfigResponse
+from ...models.project_requirement_item_column_config_out import ProjectRequirementItemColumnConfigOut
+from ...models.project_requirement_item_column_config_post_in import ProjectRequirementItemColumnConfigPostIn
 from ...types import Response
 
 
 def _get_kwargs(
     project_id: UUID,
     *,
-    body: CreateProjectRequirementItemColumnConfigRequest,
+    body: ProjectRequirementItemColumnConfigPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -38,9 +36,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ProjectRequirementItemColumnConfigResponse | None:
+) -> ProjectRequirementItemColumnConfigOut | None:
     if response.status_code == 201:
-        response_201 = ProjectRequirementItemColumnConfigResponse.from_dict(response.json())
+        response_201 = ProjectRequirementItemColumnConfigOut.from_dict(response.json())
 
         return response_201
 
@@ -52,7 +50,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ProjectRequirementItemColumnConfigResponse]:
+) -> Response[ProjectRequirementItemColumnConfigOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,23 +63,24 @@ def sync_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateProjectRequirementItemColumnConfigRequest,
-) -> Response[ProjectRequirementItemColumnConfigResponse]:
-    """Create requirement item column config
+    body: ProjectRequirementItemColumnConfigPostIn,
+) -> Response[ProjectRequirementItemColumnConfigOut]:
+    """Post Project Requirement Item Column Config
 
-     Create a new requirement item column configuration for a project. Column names must be unique within
-    the project.
+     1b2c3d4A
+
+    Create a new requirement item column configuration for a project.
 
     Args:
         project_id (UUID):
-        body (CreateProjectRequirementItemColumnConfigRequest):
+        body (ProjectRequirementItemColumnConfigPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProjectRequirementItemColumnConfigResponse]
+        Response[ProjectRequirementItemColumnConfigOut]
     """
 
     kwargs = _get_kwargs(
@@ -100,23 +99,24 @@ def sync(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateProjectRequirementItemColumnConfigRequest,
-) -> ProjectRequirementItemColumnConfigResponse | None:
-    """Create requirement item column config
+    body: ProjectRequirementItemColumnConfigPostIn,
+) -> ProjectRequirementItemColumnConfigOut | None:
+    """Post Project Requirement Item Column Config
 
-     Create a new requirement item column configuration for a project. Column names must be unique within
-    the project.
+     1b2c3d4A
+
+    Create a new requirement item column configuration for a project.
 
     Args:
         project_id (UUID):
-        body (CreateProjectRequirementItemColumnConfigRequest):
+        body (ProjectRequirementItemColumnConfigPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProjectRequirementItemColumnConfigResponse
+        ProjectRequirementItemColumnConfigOut
     """
 
     return sync_detailed(
@@ -130,23 +130,24 @@ async def asyncio_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateProjectRequirementItemColumnConfigRequest,
-) -> Response[ProjectRequirementItemColumnConfigResponse]:
-    """Create requirement item column config
+    body: ProjectRequirementItemColumnConfigPostIn,
+) -> Response[ProjectRequirementItemColumnConfigOut]:
+    """Post Project Requirement Item Column Config
 
-     Create a new requirement item column configuration for a project. Column names must be unique within
-    the project.
+     1b2c3d4A
+
+    Create a new requirement item column configuration for a project.
 
     Args:
         project_id (UUID):
-        body (CreateProjectRequirementItemColumnConfigRequest):
+        body (ProjectRequirementItemColumnConfigPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProjectRequirementItemColumnConfigResponse]
+        Response[ProjectRequirementItemColumnConfigOut]
     """
 
     kwargs = _get_kwargs(
@@ -163,23 +164,24 @@ async def asyncio(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateProjectRequirementItemColumnConfigRequest,
-) -> ProjectRequirementItemColumnConfigResponse | None:
-    """Create requirement item column config
+    body: ProjectRequirementItemColumnConfigPostIn,
+) -> ProjectRequirementItemColumnConfigOut | None:
+    """Post Project Requirement Item Column Config
 
-     Create a new requirement item column configuration for a project. Column names must be unique within
-    the project.
+     1b2c3d4A
+
+    Create a new requirement item column configuration for a project.
 
     Args:
         project_id (UUID):
-        body (CreateProjectRequirementItemColumnConfigRequest):
+        body (ProjectRequirementItemColumnConfigPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProjectRequirementItemColumnConfigResponse
+        ProjectRequirementItemColumnConfigOut
     """
 
     return (

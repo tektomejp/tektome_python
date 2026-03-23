@@ -7,7 +7,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.create_organization_multi_part_body_params import CreateOrganizationMultiPartBodyParams
 from ...models.create_organization_response import CreateOrganizationResponse
-from ...models.organizations_response import OrganizationsResponse
+from ...models.organizations_get_out import OrganizationsGetOut
 from ...types import Response
 
 
@@ -30,9 +30,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> CreateOrganizationResponse | OrganizationsResponse | None:
+) -> CreateOrganizationResponse | OrganizationsGetOut | None:
     if response.status_code == 201:
-        response_201 = OrganizationsResponse.from_dict(response.json())
+        response_201 = OrganizationsGetOut.from_dict(response.json())
 
         return response_201
 
@@ -49,7 +49,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[CreateOrganizationResponse | OrganizationsResponse]:
+) -> Response[CreateOrganizationResponse | OrganizationsGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -62,11 +62,14 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: CreateOrganizationMultiPartBodyParams,
-) -> Response[CreateOrganizationResponse | OrganizationsResponse]:
-    """Create an organization
+) -> Response[CreateOrganizationResponse | OrganizationsGetOut]:
+    """Post Organization
 
-     Create a new organization with the specified name, description, timezone, and language. An optional
-    logo file can be uploaded.
+     YSCUc2Fk
+
+    Create a new organization.
+
+    Allows optional custom UUID for tektome users.
 
     Args:
         body (CreateOrganizationMultiPartBodyParams):
@@ -76,7 +79,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CreateOrganizationResponse | OrganizationsResponse]
+        Response[CreateOrganizationResponse | OrganizationsGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -94,11 +97,14 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: CreateOrganizationMultiPartBodyParams,
-) -> CreateOrganizationResponse | OrganizationsResponse | None:
-    """Create an organization
+) -> CreateOrganizationResponse | OrganizationsGetOut | None:
+    """Post Organization
 
-     Create a new organization with the specified name, description, timezone, and language. An optional
-    logo file can be uploaded.
+     YSCUc2Fk
+
+    Create a new organization.
+
+    Allows optional custom UUID for tektome users.
 
     Args:
         body (CreateOrganizationMultiPartBodyParams):
@@ -108,7 +114,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CreateOrganizationResponse | OrganizationsResponse
+        CreateOrganizationResponse | OrganizationsGetOut
     """
 
     return sync_detailed(
@@ -121,11 +127,14 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: CreateOrganizationMultiPartBodyParams,
-) -> Response[CreateOrganizationResponse | OrganizationsResponse]:
-    """Create an organization
+) -> Response[CreateOrganizationResponse | OrganizationsGetOut]:
+    """Post Organization
 
-     Create a new organization with the specified name, description, timezone, and language. An optional
-    logo file can be uploaded.
+     YSCUc2Fk
+
+    Create a new organization.
+
+    Allows optional custom UUID for tektome users.
 
     Args:
         body (CreateOrganizationMultiPartBodyParams):
@@ -135,7 +144,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CreateOrganizationResponse | OrganizationsResponse]
+        Response[CreateOrganizationResponse | OrganizationsGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -151,11 +160,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: CreateOrganizationMultiPartBodyParams,
-) -> CreateOrganizationResponse | OrganizationsResponse | None:
-    """Create an organization
+) -> CreateOrganizationResponse | OrganizationsGetOut | None:
+    """Post Organization
 
-     Create a new organization with the specified name, description, timezone, and language. An optional
-    logo file can be uploaded.
+     YSCUc2Fk
+
+    Create a new organization.
+
+    Allows optional custom UUID for tektome users.
 
     Args:
         body (CreateOrganizationMultiPartBodyParams):
@@ -165,7 +177,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CreateOrganizationResponse | OrganizationsResponse
+        CreateOrganizationResponse | OrganizationsGetOut
     """
 
     return (

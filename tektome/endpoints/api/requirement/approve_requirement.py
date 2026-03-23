@@ -48,9 +48,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Approve a requirement
+    """Approve Requirement
 
-     Record the authenticated user's approval on a requirement. Each user can only approve once.
+     mcXB11k0
+
+    Approve a requirement
 
     Args:
         requirement_id (UUID):
@@ -79,9 +81,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Approve a requirement
+    """Approve Requirement
 
-     Record the authenticated user's approval on a requirement. Each user can only approve once.
+     mcXB11k0
+
+    Approve a requirement
 
     Args:
         requirement_id (UUID):

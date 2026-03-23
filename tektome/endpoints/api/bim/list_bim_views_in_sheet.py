@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.retrieve_bim_views_in_sheet_response import RetrieveBimViewsInSheetResponse
+from ...models.retrieve_bim_views_in_sheet_get_out import RetrieveBimViewsInSheetGetOut
 from ...types import UNSET, Response, Unset
 
 
@@ -35,9 +35,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RetrieveBimViewsInSheetResponse | None:
+) -> RetrieveBimViewsInSheetGetOut | None:
     if response.status_code == 200:
-        response_200 = RetrieveBimViewsInSheetResponse.from_dict(response.json())
+        response_200 = RetrieveBimViewsInSheetGetOut.from_dict(response.json())
 
         return response_200
 
@@ -49,7 +49,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[RetrieveBimViewsInSheetResponse]:
+) -> Response[RetrieveBimViewsInSheetGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,10 +63,22 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     only_ids: bool | Unset = False,
-) -> Response[RetrieveBimViewsInSheetResponse]:
-    """List BIM views in a sheet
+) -> Response[RetrieveBimViewsInSheetGetOut]:
+    r"""Retrieve Bim Views In Sheets
 
-     Retrieve all BIM views associated with a specific BIM sheet. Optionally return only view IDs.
+     8V6ckG7x
+
+    Retrieve BIM views associated with a specific BIM sheet.
+
+    Args:
+        request: The request object (unused in this function).
+        bim_sheet_id (str): The unique identifier of the BIM sheet.
+        only_ids (bool, optional): If True, return only the IDs of the views. Defaults to False.
+
+    Returns:
+        dict: A dictionary containing either the list of views (under \"data\") and None for \"error\",
+              or an error message (under \"error\") and an empty list for \"data\" if the sheet or views
+    are not found.
 
     Args:
         bim_sheet_id (str):
@@ -77,7 +89,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RetrieveBimViewsInSheetResponse]
+        Response[RetrieveBimViewsInSheetGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -97,10 +109,22 @@ def sync(
     *,
     client: AuthenticatedClient,
     only_ids: bool | Unset = False,
-) -> RetrieveBimViewsInSheetResponse | None:
-    """List BIM views in a sheet
+) -> RetrieveBimViewsInSheetGetOut | None:
+    r"""Retrieve Bim Views In Sheets
 
-     Retrieve all BIM views associated with a specific BIM sheet. Optionally return only view IDs.
+     8V6ckG7x
+
+    Retrieve BIM views associated with a specific BIM sheet.
+
+    Args:
+        request: The request object (unused in this function).
+        bim_sheet_id (str): The unique identifier of the BIM sheet.
+        only_ids (bool, optional): If True, return only the IDs of the views. Defaults to False.
+
+    Returns:
+        dict: A dictionary containing either the list of views (under \"data\") and None for \"error\",
+              or an error message (under \"error\") and an empty list for \"data\" if the sheet or views
+    are not found.
 
     Args:
         bim_sheet_id (str):
@@ -111,7 +135,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RetrieveBimViewsInSheetResponse
+        RetrieveBimViewsInSheetGetOut
     """
 
     return sync_detailed(
@@ -126,10 +150,22 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     only_ids: bool | Unset = False,
-) -> Response[RetrieveBimViewsInSheetResponse]:
-    """List BIM views in a sheet
+) -> Response[RetrieveBimViewsInSheetGetOut]:
+    r"""Retrieve Bim Views In Sheets
 
-     Retrieve all BIM views associated with a specific BIM sheet. Optionally return only view IDs.
+     8V6ckG7x
+
+    Retrieve BIM views associated with a specific BIM sheet.
+
+    Args:
+        request: The request object (unused in this function).
+        bim_sheet_id (str): The unique identifier of the BIM sheet.
+        only_ids (bool, optional): If True, return only the IDs of the views. Defaults to False.
+
+    Returns:
+        dict: A dictionary containing either the list of views (under \"data\") and None for \"error\",
+              or an error message (under \"error\") and an empty list for \"data\" if the sheet or views
+    are not found.
 
     Args:
         bim_sheet_id (str):
@@ -140,7 +176,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RetrieveBimViewsInSheetResponse]
+        Response[RetrieveBimViewsInSheetGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -158,10 +194,22 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     only_ids: bool | Unset = False,
-) -> RetrieveBimViewsInSheetResponse | None:
-    """List BIM views in a sheet
+) -> RetrieveBimViewsInSheetGetOut | None:
+    r"""Retrieve Bim Views In Sheets
 
-     Retrieve all BIM views associated with a specific BIM sheet. Optionally return only view IDs.
+     8V6ckG7x
+
+    Retrieve BIM views associated with a specific BIM sheet.
+
+    Args:
+        request: The request object (unused in this function).
+        bim_sheet_id (str): The unique identifier of the BIM sheet.
+        only_ids (bool, optional): If True, return only the IDs of the views. Defaults to False.
+
+    Returns:
+        dict: A dictionary containing either the list of views (under \"data\") and None for \"error\",
+              or an error message (under \"error\") and an empty list for \"data\" if the sheet or views
+    are not found.
 
     Args:
         bim_sheet_id (str):
@@ -172,7 +220,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RetrieveBimViewsInSheetResponse
+        RetrieveBimViewsInSheetGetOut
     """
 
     return (

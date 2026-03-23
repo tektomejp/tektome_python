@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.execution_group_detail_response import ExecutionGroupDetailResponse
+from ...models.execution_group_detail_get_out import ExecutionGroupDetailGetOut
 from ...types import Response
 
 
@@ -29,9 +29,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ExecutionGroupDetailResponse | None:
+) -> ExecutionGroupDetailGetOut | None:
     if response.status_code == 200:
-        response_200 = ExecutionGroupDetailResponse.from_dict(response.json())
+        response_200 = ExecutionGroupDetailGetOut.from_dict(response.json())
 
         return response_200
 
@@ -43,7 +43,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ExecutionGroupDetailResponse]:
+) -> Response[ExecutionGroupDetailGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,10 +57,18 @@ def sync_detailed(
     execution_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ExecutionGroupDetailResponse]:
-    """Get execution group details
+) -> Response[ExecutionGroupDetailGetOut]:
+    """Get Execution Group
 
-     Retrieve detailed information about a specific execution group by its ID.
+     VNpQ2rat
+
+    Retrieve details of a specific execution group by its ID.
+
+    Args:
+        request: HttpRequest - The incoming HTTP request.
+        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
+
+    Returns: ExecutionGroup - The execution group instance.
 
     Args:
         dataspace_id (UUID):
@@ -71,7 +79,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ExecutionGroupDetailResponse]
+        Response[ExecutionGroupDetailGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -91,10 +99,18 @@ def sync(
     execution_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> ExecutionGroupDetailResponse | None:
-    """Get execution group details
+) -> ExecutionGroupDetailGetOut | None:
+    """Get Execution Group
 
-     Retrieve detailed information about a specific execution group by its ID.
+     VNpQ2rat
+
+    Retrieve details of a specific execution group by its ID.
+
+    Args:
+        request: HttpRequest - The incoming HTTP request.
+        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
+
+    Returns: ExecutionGroup - The execution group instance.
 
     Args:
         dataspace_id (UUID):
@@ -105,7 +121,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ExecutionGroupDetailResponse
+        ExecutionGroupDetailGetOut
     """
 
     return sync_detailed(
@@ -120,10 +136,18 @@ async def asyncio_detailed(
     execution_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ExecutionGroupDetailResponse]:
-    """Get execution group details
+) -> Response[ExecutionGroupDetailGetOut]:
+    """Get Execution Group
 
-     Retrieve detailed information about a specific execution group by its ID.
+     VNpQ2rat
+
+    Retrieve details of a specific execution group by its ID.
+
+    Args:
+        request: HttpRequest - The incoming HTTP request.
+        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
+
+    Returns: ExecutionGroup - The execution group instance.
 
     Args:
         dataspace_id (UUID):
@@ -134,7 +158,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ExecutionGroupDetailResponse]
+        Response[ExecutionGroupDetailGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -152,10 +176,18 @@ async def asyncio(
     execution_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> ExecutionGroupDetailResponse | None:
-    """Get execution group details
+) -> ExecutionGroupDetailGetOut | None:
+    """Get Execution Group
 
-     Retrieve detailed information about a specific execution group by its ID.
+     VNpQ2rat
+
+    Retrieve details of a specific execution group by its ID.
+
+    Args:
+        request: HttpRequest - The incoming HTTP request.
+        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
+
+    Returns: ExecutionGroup - The execution group instance.
 
     Args:
         dataspace_id (UUID):
@@ -166,7 +198,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ExecutionGroupDetailResponse
+        ExecutionGroupDetailGetOut
     """
 
     return (

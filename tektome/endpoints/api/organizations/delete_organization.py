@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.error_output_schema_response import ErrorOutputSchemaResponse
+from ...models.error_output_schema_out import ErrorOutputSchemaOut
 from ...types import Response
 
 
@@ -27,18 +27,18 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Any | ErrorOutputSchemaResponse | None:
+) -> Any | ErrorOutputSchemaOut | None:
     if response.status_code == 204:
         response_204 = cast(Any, None)
         return response_204
 
     if response.status_code == 400:
-        response_400 = ErrorOutputSchemaResponse.from_dict(response.json())
+        response_400 = ErrorOutputSchemaOut.from_dict(response.json())
 
         return response_400
 
     if response.status_code == 403:
-        response_403 = ErrorOutputSchemaResponse.from_dict(response.json())
+        response_403 = ErrorOutputSchemaOut.from_dict(response.json())
 
         return response_403
 
@@ -50,7 +50,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[Any | ErrorOutputSchemaResponse]:
+) -> Response[Any | ErrorOutputSchemaOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,11 +63,16 @@ def sync_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | ErrorOutputSchemaResponse]:
-    """Delete an organization
+) -> Response[Any | ErrorOutputSchemaOut]:
+    """Delete Organization
 
-     Permanently delete an organization. Requires administrator privileges. Reserved organizations cannot
-    be deleted.
+     ijkHrhIg
+
+    Delete an organization.
+
+    Only allowed if the requested user
+    - has the super admin role
+    - be an Organization Admin
 
     Args:
         organization_id (UUID):
@@ -77,7 +82,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ErrorOutputSchemaResponse]
+        Response[Any | ErrorOutputSchemaOut]
     """
 
     kwargs = _get_kwargs(
@@ -95,11 +100,16 @@ def sync(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Any | ErrorOutputSchemaResponse | None:
-    """Delete an organization
+) -> Any | ErrorOutputSchemaOut | None:
+    """Delete Organization
 
-     Permanently delete an organization. Requires administrator privileges. Reserved organizations cannot
-    be deleted.
+     ijkHrhIg
+
+    Delete an organization.
+
+    Only allowed if the requested user
+    - has the super admin role
+    - be an Organization Admin
 
     Args:
         organization_id (UUID):
@@ -109,7 +119,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | ErrorOutputSchemaResponse
+        Any | ErrorOutputSchemaOut
     """
 
     return sync_detailed(
@@ -122,11 +132,16 @@ async def asyncio_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | ErrorOutputSchemaResponse]:
-    """Delete an organization
+) -> Response[Any | ErrorOutputSchemaOut]:
+    """Delete Organization
 
-     Permanently delete an organization. Requires administrator privileges. Reserved organizations cannot
-    be deleted.
+     ijkHrhIg
+
+    Delete an organization.
+
+    Only allowed if the requested user
+    - has the super admin role
+    - be an Organization Admin
 
     Args:
         organization_id (UUID):
@@ -136,7 +151,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ErrorOutputSchemaResponse]
+        Response[Any | ErrorOutputSchemaOut]
     """
 
     kwargs = _get_kwargs(
@@ -152,11 +167,16 @@ async def asyncio(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Any | ErrorOutputSchemaResponse | None:
-    """Delete an organization
+) -> Any | ErrorOutputSchemaOut | None:
+    """Delete Organization
 
-     Permanently delete an organization. Requires administrator privileges. Reserved organizations cannot
-    be deleted.
+     ijkHrhIg
+
+    Delete an organization.
+
+    Only allowed if the requested user
+    - has the super admin role
+    - be an Organization Admin
 
     Args:
         organization_id (UUID):
@@ -166,7 +186,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | ErrorOutputSchemaResponse
+        Any | ErrorOutputSchemaOut
     """
 
     return (

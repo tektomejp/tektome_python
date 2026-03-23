@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.reference_note_version_response import ReferenceNoteVersionResponse
-from ...models.update_reference_note_version_request import UpdateReferenceNoteVersionRequest
+from ...models.reference_note_version_get_out import ReferenceNoteVersionGetOut
+from ...models.reference_note_version_patch_in_patch import ReferenceNoteVersionPatchInPatch
 from ...types import Response
 
 
@@ -16,7 +16,7 @@ def _get_kwargs(
     reference_note_id: UUID,
     version_number: int,
     *,
-    body: UpdateReferenceNoteVersionRequest,
+    body: ReferenceNoteVersionPatchInPatch,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -38,9 +38,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ReferenceNoteVersionResponse | None:
+) -> ReferenceNoteVersionGetOut | None:
     if response.status_code == 200:
-        response_200 = ReferenceNoteVersionResponse.from_dict(response.json())
+        response_200 = ReferenceNoteVersionGetOut.from_dict(response.json())
 
         return response_200
 
@@ -52,7 +52,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ReferenceNoteVersionResponse]:
+) -> Response[ReferenceNoteVersionGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -66,23 +66,30 @@ def sync_detailed(
     version_number: int,
     *,
     client: AuthenticatedClient,
-    body: UpdateReferenceNoteVersionRequest,
-) -> Response[ReferenceNoteVersionResponse]:
-    """Update a reference note version
+    body: ReferenceNoteVersionPatchInPatch,
+) -> Response[ReferenceNoteVersionGetOut]:
+    """Patch Reference Note Version
 
-     Update the content of a specific version of a reference note.
+     JnQkM31J
+
+    Update a specific version of a reference note associated to a requirement
+
+    Args:
+        payload: request payload of type ReferenceNoteVersionPatchIn
+        request: Request object
+        path_params: path params of type ReferenceNoteVersionPath
 
     Args:
         reference_note_id (UUID):
         version_number (int):
-        body (UpdateReferenceNoteVersionRequest):
+        body (ReferenceNoteVersionPatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ReferenceNoteVersionResponse]
+        Response[ReferenceNoteVersionGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -103,23 +110,30 @@ def sync(
     version_number: int,
     *,
     client: AuthenticatedClient,
-    body: UpdateReferenceNoteVersionRequest,
-) -> ReferenceNoteVersionResponse | None:
-    """Update a reference note version
+    body: ReferenceNoteVersionPatchInPatch,
+) -> ReferenceNoteVersionGetOut | None:
+    """Patch Reference Note Version
 
-     Update the content of a specific version of a reference note.
+     JnQkM31J
+
+    Update a specific version of a reference note associated to a requirement
+
+    Args:
+        payload: request payload of type ReferenceNoteVersionPatchIn
+        request: Request object
+        path_params: path params of type ReferenceNoteVersionPath
 
     Args:
         reference_note_id (UUID):
         version_number (int):
-        body (UpdateReferenceNoteVersionRequest):
+        body (ReferenceNoteVersionPatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ReferenceNoteVersionResponse
+        ReferenceNoteVersionGetOut
     """
 
     return sync_detailed(
@@ -135,23 +149,30 @@ async def asyncio_detailed(
     version_number: int,
     *,
     client: AuthenticatedClient,
-    body: UpdateReferenceNoteVersionRequest,
-) -> Response[ReferenceNoteVersionResponse]:
-    """Update a reference note version
+    body: ReferenceNoteVersionPatchInPatch,
+) -> Response[ReferenceNoteVersionGetOut]:
+    """Patch Reference Note Version
 
-     Update the content of a specific version of a reference note.
+     JnQkM31J
+
+    Update a specific version of a reference note associated to a requirement
+
+    Args:
+        payload: request payload of type ReferenceNoteVersionPatchIn
+        request: Request object
+        path_params: path params of type ReferenceNoteVersionPath
 
     Args:
         reference_note_id (UUID):
         version_number (int):
-        body (UpdateReferenceNoteVersionRequest):
+        body (ReferenceNoteVersionPatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ReferenceNoteVersionResponse]
+        Response[ReferenceNoteVersionGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -170,23 +191,30 @@ async def asyncio(
     version_number: int,
     *,
     client: AuthenticatedClient,
-    body: UpdateReferenceNoteVersionRequest,
-) -> ReferenceNoteVersionResponse | None:
-    """Update a reference note version
+    body: ReferenceNoteVersionPatchInPatch,
+) -> ReferenceNoteVersionGetOut | None:
+    """Patch Reference Note Version
 
-     Update the content of a specific version of a reference note.
+     JnQkM31J
+
+    Update a specific version of a reference note associated to a requirement
+
+    Args:
+        payload: request payload of type ReferenceNoteVersionPatchIn
+        request: Request object
+        path_params: path params of type ReferenceNoteVersionPath
 
     Args:
         reference_note_id (UUID):
         version_number (int):
-        body (UpdateReferenceNoteVersionRequest):
+        body (ReferenceNoteVersionPatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ReferenceNoteVersionResponse
+        ReferenceNoteVersionGetOut
     """
 
     return (

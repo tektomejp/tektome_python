@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_simulate_task_request import CreateSimulateTaskRequest
-from ...models.simulate_task_response import SimulateTaskResponse
+from ...models.simulate_task_post_in import SimulateTaskPostIn
+from ...models.simulate_task_post_out import SimulateTaskPostOut
 from ...types import UNSET, Response
 
 
 def _get_kwargs(
     *,
-    body: CreateSimulateTaskRequest,
+    body: SimulateTaskPostIn,
     delay: int,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -37,9 +37,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> SimulateTaskResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> SimulateTaskPostOut | None:
     if response.status_code == 200:
-        response_200 = SimulateTaskResponse.from_dict(response.json())
+        response_200 = SimulateTaskPostOut.from_dict(response.json())
 
         return response_200
 
@@ -49,9 +49,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[SimulateTaskResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[SimulateTaskPostOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,18 +61,17 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateSimulateTaskRequest,
+    body: SimulateTaskPostIn,
     delay: int,
-) -> Response[SimulateTaskResponse]:
-    """Simulate an asynchronous task
+) -> Response[SimulateTaskPostOut]:
+    """Post Simulate Task
 
-     Submit a sample asynchronous task for testing purposes. This is an asynchronous operation. To
-    retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the
-    task/process ID returned in this response.
+     3F0LPj5x
+    Simulate an async task to test the celery worker.
 
     Args:
         delay (int):
-        body (CreateSimulateTaskRequest): For demonstration purpose, this should be in
+        body (SimulateTaskPostIn): For demonstration purpose, this should be in
             /serializers/<same_name_as_this_file>.py
 
     Raises:
@@ -82,7 +79,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SimulateTaskResponse]
+        Response[SimulateTaskPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -100,18 +97,17 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: CreateSimulateTaskRequest,
+    body: SimulateTaskPostIn,
     delay: int,
-) -> SimulateTaskResponse | None:
-    """Simulate an asynchronous task
+) -> SimulateTaskPostOut | None:
+    """Post Simulate Task
 
-     Submit a sample asynchronous task for testing purposes. This is an asynchronous operation. To
-    retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the
-    task/process ID returned in this response.
+     3F0LPj5x
+    Simulate an async task to test the celery worker.
 
     Args:
         delay (int):
-        body (CreateSimulateTaskRequest): For demonstration purpose, this should be in
+        body (SimulateTaskPostIn): For demonstration purpose, this should be in
             /serializers/<same_name_as_this_file>.py
 
     Raises:
@@ -119,7 +115,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SimulateTaskResponse
+        SimulateTaskPostOut
     """
 
     return sync_detailed(
@@ -132,18 +128,17 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateSimulateTaskRequest,
+    body: SimulateTaskPostIn,
     delay: int,
-) -> Response[SimulateTaskResponse]:
-    """Simulate an asynchronous task
+) -> Response[SimulateTaskPostOut]:
+    """Post Simulate Task
 
-     Submit a sample asynchronous task for testing purposes. This is an asynchronous operation. To
-    retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the
-    task/process ID returned in this response.
+     3F0LPj5x
+    Simulate an async task to test the celery worker.
 
     Args:
         delay (int):
-        body (CreateSimulateTaskRequest): For demonstration purpose, this should be in
+        body (SimulateTaskPostIn): For demonstration purpose, this should be in
             /serializers/<same_name_as_this_file>.py
 
     Raises:
@@ -151,7 +146,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SimulateTaskResponse]
+        Response[SimulateTaskPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -167,18 +162,17 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: CreateSimulateTaskRequest,
+    body: SimulateTaskPostIn,
     delay: int,
-) -> SimulateTaskResponse | None:
-    """Simulate an asynchronous task
+) -> SimulateTaskPostOut | None:
+    """Post Simulate Task
 
-     Submit a sample asynchronous task for testing purposes. This is an asynchronous operation. To
-    retrieve the results, use the get_celery_task (/api/core/tasks/{task_id}/) endpoint with the
-    task/process ID returned in this response.
+     3F0LPj5x
+    Simulate an async task to test the celery worker.
 
     Args:
         delay (int):
-        body (CreateSimulateTaskRequest): For demonstration purpose, this should be in
+        body (SimulateTaskPostIn): For demonstration purpose, this should be in
             /serializers/<same_name_as_this_file>.py
 
     Raises:
@@ -186,7 +180,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SimulateTaskResponse
+        SimulateTaskPostOut
     """
 
     return (

@@ -47,10 +47,12 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a resource
+    """Delete Resource
 
-     Permanently delete a resource, including all its attributes, version control records, and folder
-    associations.
+     Y8iKzZyK
+
+    Delete a single resource with all of its attributes (string, int, floats, bool)
+    Deletes the core version control and all of its core resources
 
     Args:
         resource_id (str):
@@ -79,10 +81,12 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a resource
+    """Delete Resource
 
-     Permanently delete a resource, including all its attributes, version control records, and folder
-    associations.
+     Y8iKzZyK
+
+    Delete a single resource with all of its attributes (string, int, floats, bool)
+    Deletes the core version control and all of its core resources
 
     Args:
         resource_id (str):

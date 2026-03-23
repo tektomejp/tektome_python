@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.update_reference_note_request import UpdateReferenceNoteRequest
+from ...models.reference_note_patch_in_patch import ReferenceNotePatchInPatch
 from ...types import Response
 
 
 def _get_kwargs(
     reference_note_id: UUID,
     *,
-    body: UpdateReferenceNoteRequest,
+    body: ReferenceNotePatchInPatch,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,15 +56,17 @@ def sync_detailed(
     reference_note_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UpdateReferenceNoteRequest,
+    body: ReferenceNotePatchInPatch,
 ) -> Response[Any]:
-    """Update a reference note
+    """Patch Reference Note
 
-     Update the title of a reference note associated with a requirement.
+     Flzky3bC
+
+    Patch a reference note associated to a requirement
 
     Args:
         reference_note_id (UUID):
-        body (UpdateReferenceNoteRequest):
+        body (ReferenceNotePatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -90,15 +92,17 @@ async def asyncio_detailed(
     reference_note_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UpdateReferenceNoteRequest,
+    body: ReferenceNotePatchInPatch,
 ) -> Response[Any]:
-    """Update a reference note
+    """Patch Reference Note
 
-     Update the title of a reference note associated with a requirement.
+     Flzky3bC
+
+    Patch a reference note associated to a requirement
 
     Args:
         reference_note_id (UUID):
-        body (UpdateReferenceNoteRequest):
+        body (ReferenceNotePatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.update_dataspace_request import UpdateDataspaceRequest
+from ...models.dataspace_patch_in_patch import DataspacePatchInPatch
 from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
     *,
-    body: UpdateDataspaceRequest,
+    body: DataspacePatchInPatch,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,15 +56,17 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UpdateDataspaceRequest,
+    body: DataspacePatchInPatch,
 ) -> Response[Any]:
-    """Update dataspace details
+    """Patch Dataspace
 
-     Partially update a dataspace's metadata and attributes. Only the provided fields are modified.
+     tkE0kGxB
+
+    Patch dataspace details by ID
 
     Args:
         dataspace_id (UUID):
-        body (UpdateDataspaceRequest):
+        body (DataspacePatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -90,15 +92,17 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UpdateDataspaceRequest,
+    body: DataspacePatchInPatch,
 ) -> Response[Any]:
-    """Update dataspace details
+    """Patch Dataspace
 
-     Partially update a dataspace's metadata and attributes. Only the provided fields are modified.
+     tkE0kGxB
+
+    Patch dataspace details by ID
 
     Args:
         dataspace_id (UUID):
-        body (UpdateDataspaceRequest):
+        body (DataspacePatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

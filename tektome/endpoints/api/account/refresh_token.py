@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_refresh_request import CreateRefreshRequest
-from ...models.refresh_response import RefreshResponse
+from ...models.refresh_post_in import RefreshPostIn
+from ...models.refresh_post_out import RefreshPostOut
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: CreateRefreshRequest,
+    body: RefreshPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -29,9 +29,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | RefreshResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | RefreshPostOut | None:
     if response.status_code == 200:
-        response_200 = RefreshResponse.from_dict(response.json())
+        response_200 = RefreshPostOut.from_dict(response.json())
 
         return response_200
 
@@ -47,7 +47,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[Any | RefreshResponse]:
+) -> Response[Any | RefreshPostOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,22 +59,22 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
-    body: CreateRefreshRequest,
-) -> Response[Any | RefreshResponse]:
-    """Refresh access token
+    body: RefreshPostIn,
+) -> Response[Any | RefreshPostOut]:
+    """Post Refresh
 
-     Obtain a new access token using a valid refresh token. Returns 401 if the refresh token is invalid
-    or expired.
+     O3m6XHfr
+    Refresh access_token using refresh_token.
 
     Args:
-        body (CreateRefreshRequest):
+        body (RefreshPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | RefreshResponse]
+        Response[Any | RefreshPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -91,22 +91,22 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient | Client,
-    body: CreateRefreshRequest,
-) -> Any | RefreshResponse | None:
-    """Refresh access token
+    body: RefreshPostIn,
+) -> Any | RefreshPostOut | None:
+    """Post Refresh
 
-     Obtain a new access token using a valid refresh token. Returns 401 if the refresh token is invalid
-    or expired.
+     O3m6XHfr
+    Refresh access_token using refresh_token.
 
     Args:
-        body (CreateRefreshRequest):
+        body (RefreshPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | RefreshResponse
+        Any | RefreshPostOut
     """
 
     return sync_detailed(
@@ -118,22 +118,22 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
-    body: CreateRefreshRequest,
-) -> Response[Any | RefreshResponse]:
-    """Refresh access token
+    body: RefreshPostIn,
+) -> Response[Any | RefreshPostOut]:
+    """Post Refresh
 
-     Obtain a new access token using a valid refresh token. Returns 401 if the refresh token is invalid
-    or expired.
+     O3m6XHfr
+    Refresh access_token using refresh_token.
 
     Args:
-        body (CreateRefreshRequest):
+        body (RefreshPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | RefreshResponse]
+        Response[Any | RefreshPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -148,22 +148,22 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient | Client,
-    body: CreateRefreshRequest,
-) -> Any | RefreshResponse | None:
-    """Refresh access token
+    body: RefreshPostIn,
+) -> Any | RefreshPostOut | None:
+    """Post Refresh
 
-     Obtain a new access token using a valid refresh token. Returns 401 if the refresh token is invalid
-    or expired.
+     O3m6XHfr
+    Refresh access_token using refresh_token.
 
     Args:
-        body (CreateRefreshRequest):
+        body (RefreshPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | RefreshResponse
+        Any | RefreshPostOut
     """
 
     return (

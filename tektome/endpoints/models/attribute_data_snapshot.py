@@ -10,9 +10,8 @@ from ..models.attribute_data_snapshot_state import AttributeDataSnapshotState
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.attribute_input_payload import AttributeInputPayload
     from ..models.attribute_reviewed_data import AttributeReviewedData
-    from ..models.project_attribute_input_payload import ProjectAttributeInputPayload
-    from ..models.resource_attribute_input_payload import ResourceAttributeInputPayload
 
 
 T = TypeVar("T", bound="AttributeDataSnapshot")
@@ -27,28 +26,23 @@ class AttributeDataSnapshot:
 
         Attributes:
             state (AttributeDataSnapshotState):
-            input_payload (ProjectAttributeInputPayload | ResourceAttributeInputPayload):
+            input_payload (AttributeInputPayload): Filter fields for attribute candidates — always present.
             snapshot_data_type (Literal['attribute'] | Unset):  Default: 'attribute'.
             data (AttributeReviewedData | None | Unset):
     """
 
     state: AttributeDataSnapshotState
-    input_payload: ProjectAttributeInputPayload | ResourceAttributeInputPayload
+    input_payload: AttributeInputPayload
     snapshot_data_type: Literal["attribute"] | Unset = "attribute"
     data: AttributeReviewedData | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.attribute_reviewed_data import AttributeReviewedData
-        from ..models.project_attribute_input_payload import ProjectAttributeInputPayload
 
         state = self.state.value
 
-        input_payload: dict[str, Any]
-        if isinstance(self.input_payload, ProjectAttributeInputPayload):
-            input_payload = self.input_payload.to_dict()
-        else:
-            input_payload = self.input_payload.to_dict()
+        input_payload = self.input_payload.to_dict()
 
         snapshot_data_type = self.snapshot_data_type
 
@@ -77,29 +71,13 @@ class AttributeDataSnapshot:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.attribute_input_payload import AttributeInputPayload
         from ..models.attribute_reviewed_data import AttributeReviewedData
-        from ..models.project_attribute_input_payload import ProjectAttributeInputPayload
-        from ..models.resource_attribute_input_payload import ResourceAttributeInputPayload
 
         d = dict(src_dict)
         state = AttributeDataSnapshotState(d.pop("state"))
 
-        def _parse_input_payload(data: object) -> ProjectAttributeInputPayload | ResourceAttributeInputPayload:
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                input_payload_type_0 = ProjectAttributeInputPayload.from_dict(data)
-
-                return input_payload_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            if not isinstance(data, dict):
-                raise TypeError()
-            input_payload_type_1 = ResourceAttributeInputPayload.from_dict(data)
-
-            return input_payload_type_1
-
-        input_payload = _parse_input_payload(d.pop("input_payload"))
+        input_payload = AttributeInputPayload.from_dict(d.pop("input_payload"))
 
         snapshot_data_type = cast(Literal["attribute"] | Unset, d.pop("snapshot_data_type", UNSET))
         if snapshot_data_type != "attribute" and not isinstance(snapshot_data_type, Unset):

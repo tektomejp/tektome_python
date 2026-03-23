@@ -12,7 +12,7 @@ from .. import types
 from ..types import UNSET, File, FileTypes, Unset
 
 if TYPE_CHECKING:
-    from ..models.create_approval_ticket_request import CreateApprovalTicketRequest
+    from ..models.approval_ticket_post_in import ApprovalTicketPostIn
 
 
 T = TypeVar("T", bound="CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams")
@@ -22,11 +22,11 @@ T = TypeVar("T", bound="CreateExecutionApprovalTicketWithCandidatesMultiPartBody
 class CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams:
     """
     Attributes:
-        payload (CreateApprovalTicketRequest): Serializer for creating an ApprovalTicket
+        payload (ApprovalTicketPostIn): Serializer for creating an ApprovalTicket
         file (File | Unset):
     """
 
-    payload: CreateApprovalTicketRequest
+    payload: ApprovalTicketPostIn
     file: File | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -64,10 +64,10 @@ class CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.create_approval_ticket_request import CreateApprovalTicketRequest
+        from ..models.approval_ticket_post_in import ApprovalTicketPostIn
 
         d = dict(src_dict)
-        payload = CreateApprovalTicketRequest.from_dict(d.pop("payload"))
+        payload = ApprovalTicketPostIn.from_dict(d.pop("payload"))
 
         _file = d.pop("file", UNSET)
         file: File | Unset
