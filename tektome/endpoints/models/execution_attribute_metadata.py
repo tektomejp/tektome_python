@@ -18,11 +18,9 @@ class ExecutionAttributeMetadata:
 
     Attributes:
         model_entity_ids (list[UUID] | Unset): The UUID of the entity model. Can either be a project or resource model.
-        count (int | Unset): The number of (entity, attribute) pairs in this category. Default: 0.
     """
 
     model_entity_ids: list[UUID] | Unset = UNSET
-    count: int | Unset = 0
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -33,15 +31,11 @@ class ExecutionAttributeMetadata:
                 model_entity_ids_item = str(model_entity_ids_item_data)
                 model_entity_ids.append(model_entity_ids_item)
 
-        count = self.count
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if model_entity_ids is not UNSET:
             field_dict["model_entity_ids"] = model_entity_ids
-        if count is not UNSET:
-            field_dict["count"] = count
 
         return field_dict
 
@@ -57,11 +51,8 @@ class ExecutionAttributeMetadata:
 
                 model_entity_ids.append(model_entity_ids_item)
 
-        count = d.pop("count", UNSET)
-
         execution_attribute_metadata = cls(
             model_entity_ids=model_entity_ids,
-            count=count,
         )
 
         execution_attribute_metadata.additional_properties = d

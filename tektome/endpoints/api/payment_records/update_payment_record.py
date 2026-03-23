@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.update_payment_record_request import UpdatePaymentRecordRequest
+from ...models.payment_record_patch_in_patch import PaymentRecordPatchInPatch
 from ...types import Response
 
 
@@ -15,7 +15,7 @@ def _get_kwargs(
     organization_id: UUID,
     payment_record_id: UUID,
     *,
-    body: UpdatePaymentRecordRequest,
+    body: PaymentRecordPatchInPatch,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -59,17 +59,25 @@ def sync_detailed(
     payment_record_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UpdatePaymentRecordRequest,
+    body: PaymentRecordPatchInPatch,
 ) -> Response[Any]:
-    """Update a payment record
+    """Patch Payment Record
 
-     Partially update a payment record. Changes to credit amounts are validated to ensure the
-    organization balance does not become negative.
+     YSCUc2FC
+
+    Patch a payment record.
+
+    for debit transactions, updating credits_amount must not result in negative organization balance.
+
+    1. we negate the current credits amount of the payment record to get the balance before applying the
+    new amount
+    2. we add the new credits amount to the organization balance
+    3. if the adjusted balance is negative, we raise an error
 
     Args:
         organization_id (UUID):
         payment_record_id (UUID):
-        body (UpdatePaymentRecordRequest):
+        body (PaymentRecordPatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -97,17 +105,25 @@ async def asyncio_detailed(
     payment_record_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UpdatePaymentRecordRequest,
+    body: PaymentRecordPatchInPatch,
 ) -> Response[Any]:
-    """Update a payment record
+    """Patch Payment Record
 
-     Partially update a payment record. Changes to credit amounts are validated to ensure the
-    organization balance does not become negative.
+     YSCUc2FC
+
+    Patch a payment record.
+
+    for debit transactions, updating credits_amount must not result in negative organization balance.
+
+    1. we negate the current credits amount of the payment record to get the balance before applying the
+    new amount
+    2. we add the new credits amount to the organization balance
+    3. if the adjusted balance is negative, we raise an error
 
     Args:
         organization_id (UUID):
         payment_record_id (UUID):
-        body (UpdatePaymentRecordRequest):
+        body (PaymentRecordPatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

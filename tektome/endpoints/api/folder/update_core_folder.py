@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.update_folder_request import UpdateFolderRequest
+from ...models.folder_patch_in import FolderPatchIn
 from ...types import Response
 
 
 def _get_kwargs(
     folder_id: UUID,
     *,
-    body: UpdateFolderRequest,
+    body: FolderPatchIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,15 +56,27 @@ def sync_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UpdateFolderRequest,
+    body: FolderPatchIn,
 ) -> Response[Any]:
-    """Update folder details
+    """Patch Folder
 
-     Update folder properties such as the folder name. Root folders cannot be updated.
+     Q4CN91Ek
+
+    Patch folder details.
+    - name
+
+    # Note: DjangoNinja PatchDict doesn't work correctly with Pydantic schemas
+             that has Field validations(min,max)
+    Args:
+        payload: FolderPatchIn object containing updated folder details (only name for now)
+        request: Request object
+        path_params: FolderPathIn object containing folder_id
+
+    Returns: 204, None
 
     Args:
         folder_id (UUID):
-        body (UpdateFolderRequest): Schema for updating a folder.
+        body (FolderPatchIn): Schema for updating a folder.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -90,15 +102,27 @@ async def asyncio_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UpdateFolderRequest,
+    body: FolderPatchIn,
 ) -> Response[Any]:
-    """Update folder details
+    """Patch Folder
 
-     Update folder properties such as the folder name. Root folders cannot be updated.
+     Q4CN91Ek
+
+    Patch folder details.
+    - name
+
+    # Note: DjangoNinja PatchDict doesn't work correctly with Pydantic schemas
+             that has Field validations(min,max)
+    Args:
+        payload: FolderPatchIn object containing updated folder details (only name for now)
+        request: Request object
+        path_params: FolderPathIn object containing folder_id
+
+    Returns: 204, None
 
     Args:
         folder_id (UUID):
-        body (UpdateFolderRequest): Schema for updating a folder.
+        body (FolderPatchIn): Schema for updating a folder.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -7,6 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.paged_folder_metadata_out import PagedFolderMetadataOut
 from ...types import UNSET, Response, Unset
 
 
@@ -41,14 +42,21 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> PagedFolderMetadataOut | None:
+    if response.status_code == 200:
+        response_200 = PagedFolderMetadataOut.from_dict(response.json())
+
+        return response_200
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[PagedFolderMetadataOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,10 +71,18 @@ def sync_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[Any]:
-    """List all descendant folders
+) -> Response[PagedFolderMetadataOut]:
+    """Get Folder Descendants
 
-     Retrieve a paginated list of all descendant folders nested under the specified folder.
+     fPL6Udoi
+
+    Get all descendant folders under a folder.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing folder_id
+
+    Returns: All folders under the given folder.
 
     Args:
         folder_id (UUID):
@@ -78,7 +94,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[PagedFolderMetadataOut]
     """
 
     kwargs = _get_kwargs(
@@ -94,16 +110,24 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[Any]:
-    """List all descendant folders
+) -> PagedFolderMetadataOut | None:
+    """Get Folder Descendants
 
-     Retrieve a paginated list of all descendant folders nested under the specified folder.
+     fPL6Udoi
+
+    Get all descendant folders under a folder.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing folder_id
+
+    Returns: All folders under the given folder.
 
     Args:
         folder_id (UUID):
@@ -115,7 +139,47 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        PagedFolderMetadataOut
+    """
+
+    return sync_detailed(
+        folder_id=folder_id,
+        client=client,
+        page=page,
+        page_size=page_size,
+    ).parsed
+
+
+async def asyncio_detailed(
+    folder_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
+) -> Response[PagedFolderMetadataOut]:
+    """Get Folder Descendants
+
+     fPL6Udoi
+
+    Get all descendant folders under a folder.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing folder_id
+
+    Returns: All folders under the given folder.
+
+    Args:
+        folder_id (UUID):
+        page (int | Unset):  Default: 1.
+        page_size (int | None | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[PagedFolderMetadataOut]
     """
 
     kwargs = _get_kwargs(
@@ -127,3 +191,45 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    folder_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
+) -> PagedFolderMetadataOut | None:
+    """Get Folder Descendants
+
+     fPL6Udoi
+
+    Get all descendant folders under a folder.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing folder_id
+
+    Returns: All folders under the given folder.
+
+    Args:
+        folder_id (UUID):
+        page (int | Unset):  Default: 1.
+        page_size (int | None | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        PagedFolderMetadataOut
+    """
+
+    return (
+        await asyncio_detailed(
+            folder_id=folder_id,
+            client=client,
+            page=page,
+            page_size=page_size,
+        )
+    ).parsed

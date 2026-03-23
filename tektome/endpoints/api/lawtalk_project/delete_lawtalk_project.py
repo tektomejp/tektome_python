@@ -48,10 +48,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a project
+    """Delete Project
 
-     Permanently delete a project and all associated data. The authenticated user must have project
-    destruction permission.
+     0ROSeYQs
+
+    Delete a project if user is the creator.
 
     Args:
         project_id (UUID):
@@ -80,10 +81,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete a project
+    """Delete Project
 
-     Permanently delete a project and all associated data. The authenticated user must have project
-    destruction permission.
+     0ROSeYQs
+
+    Delete a project if user is the creator.
 
     Args:
         project_id (UUID):

@@ -15,6 +15,7 @@ from ...models.get_dataspace_execution_groups_execution_review_status import (
     GetDataspaceExecutionGroupsExecutionReviewStatus,
 )
 from ...models.get_dataspace_execution_groups_process_type_choices import GetDataspaceExecutionGroupsProcessTypeChoices
+from ...models.paged_execution_group_get_out import PagedExecutionGroupGetOut
 from ...types import UNSET, Response, Unset
 
 
@@ -127,14 +128,23 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> PagedExecutionGroupGetOut | None:
+    if response.status_code == 200:
+        response_200 = PagedExecutionGroupGetOut.from_dict(response.json())
+
+        return response_200
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[PagedExecutionGroupGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -157,10 +167,18 @@ def sync_detailed(
     memo: None | str | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[Any]:
-    """List execution groups in a dataspace
+) -> Response[PagedExecutionGroupGetOut]:
+    """Get Dataspace Execution Groups
 
-     Retrieve all execution groups in the current dataspace. Supports filtering by query parameters.
+     LWV7x0oY
+
+    Retrieve all execution groups in the current dataspace.
+    Args:
+        request: HttpRequest - The incoming HTTP request.
+        path_params: ExecutionGroupsPathParams - The path parameters containing the dataspace ID.
+        query_params: ExecutionGroupQueryParams - The query parameters for filtering execution groups.
+
+    Returns: ExecutionGroupGetOut - process details.
 
     Args:
         dataspace_id (UUID):
@@ -184,7 +202,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[PagedExecutionGroupGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -208,7 +226,7 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
@@ -222,10 +240,18 @@ async def asyncio_detailed(
     memo: None | str | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[Any]:
-    """List execution groups in a dataspace
+) -> PagedExecutionGroupGetOut | None:
+    """Get Dataspace Execution Groups
 
-     Retrieve all execution groups in the current dataspace. Supports filtering by query parameters.
+     LWV7x0oY
+
+    Retrieve all execution groups in the current dataspace.
+    Args:
+        request: HttpRequest - The incoming HTTP request.
+        path_params: ExecutionGroupsPathParams - The path parameters containing the dataspace ID.
+        query_params: ExecutionGroupQueryParams - The query parameters for filtering execution groups.
+
+    Returns: ExecutionGroupGetOut - process details.
 
     Args:
         dataspace_id (UUID):
@@ -249,7 +275,75 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        PagedExecutionGroupGetOut
+    """
+
+    return sync_detailed(
+        dataspace_id=dataspace_id,
+        client=client,
+        process_types=process_types,
+        process_ids=process_ids,
+        status=status,
+        review_status=review_status,
+        launched_by_ids=launched_by_ids,
+        start_datetime=start_datetime,
+        end_datetime=end_datetime,
+        memo=memo,
+        page=page,
+        page_size=page_size,
+    ).parsed
+
+
+async def asyncio_detailed(
+    dataspace_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    process_types: list[GetDataspaceExecutionGroupsProcessTypeChoices] | Unset = UNSET,
+    process_ids: list[UUID] | Unset = UNSET,
+    status: list[GetDataspaceExecutionGroupsExecutionGroupStatus] | Unset = UNSET,
+    review_status: list[GetDataspaceExecutionGroupsExecutionReviewStatus] | Unset = UNSET,
+    launched_by_ids: list[UUID] | Unset = UNSET,
+    start_datetime: datetime.datetime | None | Unset = UNSET,
+    end_datetime: datetime.datetime | None | Unset = UNSET,
+    memo: None | str | Unset = UNSET,
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
+) -> Response[PagedExecutionGroupGetOut]:
+    """Get Dataspace Execution Groups
+
+     LWV7x0oY
+
+    Retrieve all execution groups in the current dataspace.
+    Args:
+        request: HttpRequest - The incoming HTTP request.
+        path_params: ExecutionGroupsPathParams - The path parameters containing the dataspace ID.
+        query_params: ExecutionGroupQueryParams - The query parameters for filtering execution groups.
+
+    Returns: ExecutionGroupGetOut - process details.
+
+    Args:
+        dataspace_id (UUID):
+        process_types (list[GetDataspaceExecutionGroupsProcessTypeChoices] | Unset): Process types
+        process_ids (list[UUID] | Unset): Process IDs
+        status (list[GetDataspaceExecutionGroupsExecutionGroupStatus] | Unset): Execution group
+            statuses
+        review_status (list[GetDataspaceExecutionGroupsExecutionReviewStatus] | Unset):
+            Execution's review statuses
+        launched_by_ids (list[UUID] | Unset): IDs of users who launched the execution groups
+        start_datetime (datetime.datetime | None | Unset): Filter execution groups started on or
+            after this datetime
+        end_datetime (datetime.datetime | None | Unset): Filter execution groups ended on or
+            before this datetime
+        memo (None | str | Unset): Filter execution groups containing this memo text
+        page (int | Unset):  Default: 1.
+        page_size (int | None | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[PagedExecutionGroupGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -269,3 +363,73 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    dataspace_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    process_types: list[GetDataspaceExecutionGroupsProcessTypeChoices] | Unset = UNSET,
+    process_ids: list[UUID] | Unset = UNSET,
+    status: list[GetDataspaceExecutionGroupsExecutionGroupStatus] | Unset = UNSET,
+    review_status: list[GetDataspaceExecutionGroupsExecutionReviewStatus] | Unset = UNSET,
+    launched_by_ids: list[UUID] | Unset = UNSET,
+    start_datetime: datetime.datetime | None | Unset = UNSET,
+    end_datetime: datetime.datetime | None | Unset = UNSET,
+    memo: None | str | Unset = UNSET,
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
+) -> PagedExecutionGroupGetOut | None:
+    """Get Dataspace Execution Groups
+
+     LWV7x0oY
+
+    Retrieve all execution groups in the current dataspace.
+    Args:
+        request: HttpRequest - The incoming HTTP request.
+        path_params: ExecutionGroupsPathParams - The path parameters containing the dataspace ID.
+        query_params: ExecutionGroupQueryParams - The query parameters for filtering execution groups.
+
+    Returns: ExecutionGroupGetOut - process details.
+
+    Args:
+        dataspace_id (UUID):
+        process_types (list[GetDataspaceExecutionGroupsProcessTypeChoices] | Unset): Process types
+        process_ids (list[UUID] | Unset): Process IDs
+        status (list[GetDataspaceExecutionGroupsExecutionGroupStatus] | Unset): Execution group
+            statuses
+        review_status (list[GetDataspaceExecutionGroupsExecutionReviewStatus] | Unset):
+            Execution's review statuses
+        launched_by_ids (list[UUID] | Unset): IDs of users who launched the execution groups
+        start_datetime (datetime.datetime | None | Unset): Filter execution groups started on or
+            after this datetime
+        end_datetime (datetime.datetime | None | Unset): Filter execution groups ended on or
+            before this datetime
+        memo (None | str | Unset): Filter execution groups containing this memo text
+        page (int | Unset):  Default: 1.
+        page_size (int | None | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        PagedExecutionGroupGetOut
+    """
+
+    return (
+        await asyncio_detailed(
+            dataspace_id=dataspace_id,
+            client=client,
+            process_types=process_types,
+            process_ids=process_ids,
+            status=status,
+            review_status=review_status,
+            launched_by_ids=launched_by_ids,
+            start_datetime=start_datetime,
+            end_datetime=end_datetime,
+            memo=memo,
+            page=page,
+            page_size=page_size,
+        )
+    ).parsed

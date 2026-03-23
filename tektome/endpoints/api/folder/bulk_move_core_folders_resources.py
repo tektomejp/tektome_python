@@ -58,9 +58,17 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: BulkMoveFolderResourcesSchema,
 ) -> Response[Any]:
-    """Bulk move folders and resources
+    """Post Move Bulk Folders Resources
 
-     Move multiple folders and resources to a new destination folder in a single operation.
+     Bulk move folders and resources to a new destination folder.
+
+    Args:
+        request: Request object
+        path_params: Path[FolderPathIn] object containing folder_id
+        payload: BulkMoveFolderResourcesSchema object containing ids of folders/resources to be moved
+    and destination_folder_id
+
+    Returns: 204, None
 
     Args:
         folder_id (UUID):
@@ -93,9 +101,17 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: BulkMoveFolderResourcesSchema,
 ) -> Response[Any]:
-    """Bulk move folders and resources
+    """Post Move Bulk Folders Resources
 
-     Move multiple folders and resources to a new destination folder in a single operation.
+     Bulk move folders and resources to a new destination folder.
+
+    Args:
+        request: Request object
+        path_params: Path[FolderPathIn] object containing folder_id
+        payload: BulkMoveFolderResourcesSchema object containing ids of folders/resources to be moved
+    and destination_folder_id
+
+    Returns: 204, None
 
     Args:
         folder_id (UUID):

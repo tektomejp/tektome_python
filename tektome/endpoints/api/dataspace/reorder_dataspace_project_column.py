@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_dataspace_project_reorder_column_request import CreateDataspaceProjectReorderColumnRequest
+from ...models.dataspace_project_reorder_column_post_in import DataspaceProjectReorderColumnPostIn
 from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
     *,
-    body: CreateDataspaceProjectReorderColumnRequest,
+    body: DataspaceProjectReorderColumnPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,17 +56,25 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateDataspaceProjectReorderColumnRequest,
+    body: DataspaceProjectReorderColumnPostIn,
 ) -> Response[Any]:
-    """Reorder a project attribute column
+    """Patch Dataspace Project Reorder Column
 
-     Change the display order of an attribute column for projects within a dataspace by specifying a new
-    index position.
+     x16N0f5K
+
+    Reorder a column in a dataspace project.
+
+    Args:
+        request: The request object containing authentication and user information.
+        path_params: The path parameters containing the dataspace ID.
+        payload: The payload containing the column ID and the new index.
+
+    Returns: 204, None
 
     Args:
         dataspace_id (UUID):
-        body (CreateDataspaceProjectReorderColumnRequest): Schema for reordering columns in a
-            dataspace project.
+        body (DataspaceProjectReorderColumnPostIn): Schema for reordering columns in a dataspace
+            project.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -92,17 +100,25 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateDataspaceProjectReorderColumnRequest,
+    body: DataspaceProjectReorderColumnPostIn,
 ) -> Response[Any]:
-    """Reorder a project attribute column
+    """Patch Dataspace Project Reorder Column
 
-     Change the display order of an attribute column for projects within a dataspace by specifying a new
-    index position.
+     x16N0f5K
+
+    Reorder a column in a dataspace project.
+
+    Args:
+        request: The request object containing authentication and user information.
+        path_params: The path parameters containing the dataspace ID.
+        payload: The payload containing the column ID and the new index.
+
+    Returns: 204, None
 
     Args:
         dataspace_id (UUID):
-        body (CreateDataspaceProjectReorderColumnRequest): Schema for reordering columns in a
-            dataspace project.
+        body (DataspaceProjectReorderColumnPostIn): Schema for reordering columns in a dataspace
+            project.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

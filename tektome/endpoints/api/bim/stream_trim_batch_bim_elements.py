@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_bim_batch_trim_element_request_request import CreateBimBatchTrimElementRequestRequest
+from ...models.bim_batch_trim_element_request_post_in import BimBatchTrimElementRequestPostIn
 from ...models.stream_trim_batch_bim_elements_bim_element_type_path import StreamTrimBatchBimElementsBimElementTypePath
 from ...types import Response
 
@@ -14,7 +14,7 @@ from ...types import Response
 def _get_kwargs(
     bim_type: StreamTrimBatchBimElementsBimElementTypePath,
     *,
-    body: CreateBimBatchTrimElementRequestRequest,
+    body: BimBatchTrimElementRequestPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,17 +56,31 @@ def sync_detailed(
     bim_type: StreamTrimBatchBimElementsBimElementTypePath,
     *,
     client: AuthenticatedClient,
-    body: CreateBimBatchTrimElementRequestRequest,
+    body: BimBatchTrimElementRequestPostIn,
 ) -> Response[Any]:
-    """Stream trimmed BIM elements as NDJSON
+    """Stream Trim Batch Bim Elements
 
-     Stream multiple BIM elements with only specified fields included, using NDJSON format. Useful for
-    retrieving a subset of element data efficiently.
+     7LgqlAg5
+
+    Stream multiple BIM elements by their IDs with trimming as NDJSON.
+
+    This endpoint streams BIM elements with specified fields included based on the
+    provided trim query. It uses NDJSON format for efficient streaming.
+
+    Arguments:
+        - bim_type: Type of BIM element (object or view)
+        - payload: Request body containing list of IDs to retrieve and trim query
+    Response Format (NDJSON):
+        Each line contains a JSON object with:
+        - id: The requested element ID
+        - data: The trimmed element's file data (if found and available)
+        - found: Boolean indicating if the element was found
+        - error: Optional error message if element found but data unavailable
 
     Args:
         bim_type (StreamTrimBatchBimElementsBimElementTypePath): Enum for BIM object types.
-        body (CreateBimBatchTrimElementRequestRequest): Schema for batch BIM element retrieval
-            with trimming request
+        body (BimBatchTrimElementRequestPostIn): Schema for batch BIM element retrieval with
+            trimming request
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -92,17 +106,31 @@ async def asyncio_detailed(
     bim_type: StreamTrimBatchBimElementsBimElementTypePath,
     *,
     client: AuthenticatedClient,
-    body: CreateBimBatchTrimElementRequestRequest,
+    body: BimBatchTrimElementRequestPostIn,
 ) -> Response[Any]:
-    """Stream trimmed BIM elements as NDJSON
+    """Stream Trim Batch Bim Elements
 
-     Stream multiple BIM elements with only specified fields included, using NDJSON format. Useful for
-    retrieving a subset of element data efficiently.
+     7LgqlAg5
+
+    Stream multiple BIM elements by their IDs with trimming as NDJSON.
+
+    This endpoint streams BIM elements with specified fields included based on the
+    provided trim query. It uses NDJSON format for efficient streaming.
+
+    Arguments:
+        - bim_type: Type of BIM element (object or view)
+        - payload: Request body containing list of IDs to retrieve and trim query
+    Response Format (NDJSON):
+        Each line contains a JSON object with:
+        - id: The requested element ID
+        - data: The trimmed element's file data (if found and available)
+        - found: Boolean indicating if the element was found
+        - error: Optional error message if element found but data unavailable
 
     Args:
         bim_type (StreamTrimBatchBimElementsBimElementTypePath): Enum for BIM object types.
-        body (CreateBimBatchTrimElementRequestRequest): Schema for batch BIM element retrieval
-            with trimming request
+        body (BimBatchTrimElementRequestPostIn): Schema for batch BIM element retrieval with
+            trimming request
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

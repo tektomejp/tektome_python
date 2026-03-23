@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.template_override_request import TemplateOverrideRequest
-from ...models.template_response import TemplateResponse
+from ...models.template_out import TemplateOut
+from ...models.template_override_in import TemplateOverrideIn
 from ...types import Response
 
 
@@ -16,7 +16,7 @@ def _get_kwargs(
     project_id: UUID,
     template_id: UUID,
     *,
-    body: TemplateOverrideRequest,
+    body: TemplateOverrideIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -36,9 +36,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> TemplateResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> TemplateOut | None:
     if response.status_code == 200:
-        response_200 = TemplateResponse.from_dict(response.json())
+        response_200 = TemplateOut.from_dict(response.json())
 
         return response_200
 
@@ -48,7 +48,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[TemplateResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[TemplateOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -62,24 +62,26 @@ def sync_detailed(
     template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: TemplateOverrideRequest,
-) -> Response[TemplateResponse]:
-    """Update a project process template
+    body: TemplateOverrideIn,
+) -> Response[TemplateOut]:
+    """Patch Project Template
 
-     Update the configuration of a specific process template within the specified project.
+     F5W1IWYz
+
+    Update a template in the current project.
 
     Args:
         project_id (UUID):
         template_id (UUID): The ID of an existing template.
-        body (TemplateOverrideRequest): Schema for modifying the arguments of dataspace/project-
-            level templates.
+        body (TemplateOverrideIn): Schema for modifying the arguments of dataspace/project-level
+            templates.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[TemplateResponse]
+        Response[TemplateOut]
     """
 
     kwargs = _get_kwargs(
@@ -100,24 +102,26 @@ def sync(
     template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: TemplateOverrideRequest,
-) -> TemplateResponse | None:
-    """Update a project process template
+    body: TemplateOverrideIn,
+) -> TemplateOut | None:
+    """Patch Project Template
 
-     Update the configuration of a specific process template within the specified project.
+     F5W1IWYz
+
+    Update a template in the current project.
 
     Args:
         project_id (UUID):
         template_id (UUID): The ID of an existing template.
-        body (TemplateOverrideRequest): Schema for modifying the arguments of dataspace/project-
-            level templates.
+        body (TemplateOverrideIn): Schema for modifying the arguments of dataspace/project-level
+            templates.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        TemplateResponse
+        TemplateOut
     """
 
     return sync_detailed(
@@ -133,24 +137,26 @@ async def asyncio_detailed(
     template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: TemplateOverrideRequest,
-) -> Response[TemplateResponse]:
-    """Update a project process template
+    body: TemplateOverrideIn,
+) -> Response[TemplateOut]:
+    """Patch Project Template
 
-     Update the configuration of a specific process template within the specified project.
+     F5W1IWYz
+
+    Update a template in the current project.
 
     Args:
         project_id (UUID):
         template_id (UUID): The ID of an existing template.
-        body (TemplateOverrideRequest): Schema for modifying the arguments of dataspace/project-
-            level templates.
+        body (TemplateOverrideIn): Schema for modifying the arguments of dataspace/project-level
+            templates.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[TemplateResponse]
+        Response[TemplateOut]
     """
 
     kwargs = _get_kwargs(
@@ -169,24 +175,26 @@ async def asyncio(
     template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: TemplateOverrideRequest,
-) -> TemplateResponse | None:
-    """Update a project process template
+    body: TemplateOverrideIn,
+) -> TemplateOut | None:
+    """Patch Project Template
 
-     Update the configuration of a specific process template within the specified project.
+     F5W1IWYz
+
+    Update a template in the current project.
 
     Args:
         project_id (UUID):
         template_id (UUID): The ID of an existing template.
-        body (TemplateOverrideRequest): Schema for modifying the arguments of dataspace/project-
-            level templates.
+        body (TemplateOverrideIn): Schema for modifying the arguments of dataspace/project-level
+            templates.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        TemplateResponse
+        TemplateOut
     """
 
     return (

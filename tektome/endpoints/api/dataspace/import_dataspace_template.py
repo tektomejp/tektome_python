@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.dataspace_template_import_request import DataspaceTemplateImportRequest
-from ...models.template_response import TemplateResponse
+from ...models.dataspace_template_import_in import DataspaceTemplateImportIn
+from ...models.template_out import TemplateOut
 from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
     *,
-    body: DataspaceTemplateImportRequest,
+    body: DataspaceTemplateImportIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -34,9 +34,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> TemplateResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> TemplateOut | None:
     if response.status_code == 201:
-        response_201 = TemplateResponse.from_dict(response.json())
+        response_201 = TemplateOut.from_dict(response.json())
 
         return response_201
 
@@ -46,7 +46,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[TemplateResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[TemplateOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,23 +59,24 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceTemplateImportRequest,
-) -> Response[TemplateResponse]:
-    """Import a template into a dataspace
+    body: DataspaceTemplateImportIn,
+) -> Response[TemplateOut]:
+    """Import Template To Dataspace
 
-     Import a base process template into the current dataspace, making it available for use within this
-    dataspace.
+     Ry9WHcEQ
+
+    Import a base template into the current dataspace.
 
     Args:
         dataspace_id (UUID):
-        body (DataspaceTemplateImportRequest): Schema for importing a template into a dataspace.
+        body (DataspaceTemplateImportIn): Schema for importing a template into a dataspace.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[TemplateResponse]
+        Response[TemplateOut]
     """
 
     kwargs = _get_kwargs(
@@ -94,23 +95,24 @@ def sync(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceTemplateImportRequest,
-) -> TemplateResponse | None:
-    """Import a template into a dataspace
+    body: DataspaceTemplateImportIn,
+) -> TemplateOut | None:
+    """Import Template To Dataspace
 
-     Import a base process template into the current dataspace, making it available for use within this
-    dataspace.
+     Ry9WHcEQ
+
+    Import a base template into the current dataspace.
 
     Args:
         dataspace_id (UUID):
-        body (DataspaceTemplateImportRequest): Schema for importing a template into a dataspace.
+        body (DataspaceTemplateImportIn): Schema for importing a template into a dataspace.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        TemplateResponse
+        TemplateOut
     """
 
     return sync_detailed(
@@ -124,23 +126,24 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceTemplateImportRequest,
-) -> Response[TemplateResponse]:
-    """Import a template into a dataspace
+    body: DataspaceTemplateImportIn,
+) -> Response[TemplateOut]:
+    """Import Template To Dataspace
 
-     Import a base process template into the current dataspace, making it available for use within this
-    dataspace.
+     Ry9WHcEQ
+
+    Import a base template into the current dataspace.
 
     Args:
         dataspace_id (UUID):
-        body (DataspaceTemplateImportRequest): Schema for importing a template into a dataspace.
+        body (DataspaceTemplateImportIn): Schema for importing a template into a dataspace.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[TemplateResponse]
+        Response[TemplateOut]
     """
 
     kwargs = _get_kwargs(
@@ -157,23 +160,24 @@ async def asyncio(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceTemplateImportRequest,
-) -> TemplateResponse | None:
-    """Import a template into a dataspace
+    body: DataspaceTemplateImportIn,
+) -> TemplateOut | None:
+    """Import Template To Dataspace
 
-     Import a base process template into the current dataspace, making it available for use within this
-    dataspace.
+     Ry9WHcEQ
+
+    Import a base template into the current dataspace.
 
     Args:
         dataspace_id (UUID):
-        body (DataspaceTemplateImportRequest): Schema for importing a template into a dataspace.
+        body (DataspaceTemplateImportIn): Schema for importing a template into a dataspace.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        TemplateResponse
+        TemplateOut
     """
 
     return (

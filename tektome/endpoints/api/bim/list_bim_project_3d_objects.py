@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.bim_object_3d_response_response import BimObject3DResponseResponse
+from ...models.bim_object_3d_response_get_out import BimObject3DResponseGetOut
 from ...types import UNSET, Response, Unset
 
 
@@ -39,9 +39,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BimObject3DResponseResponse | None:
+) -> BimObject3DResponseGetOut | None:
     if response.status_code == 200:
-        response_200 = BimObject3DResponseResponse.from_dict(response.json())
+        response_200 = BimObject3DResponseGetOut.from_dict(response.json())
 
         return response_200
 
@@ -53,7 +53,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BimObject3DResponseResponse]:
+) -> Response[BimObject3DResponseGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -68,10 +68,12 @@ def sync_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | Unset = 50,
-) -> Response[BimObject3DResponseResponse]:
-    """List 3D BIM objects for a project
+) -> Response[BimObject3DResponseGetOut]:
+    """Get Bim Project 3D Objects
 
-     Retrieve a paginated list of 3D BIM objects for a project, including base64-encoded file content.
+     96ce9cff
+
+    Get all 3D BIM objects for a project with pagination.
 
     Args:
         bim_project_id (UUID):
@@ -83,7 +85,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimObject3DResponseResponse]
+        Response[BimObject3DResponseGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -105,10 +107,12 @@ def sync(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | Unset = 50,
-) -> BimObject3DResponseResponse | None:
-    """List 3D BIM objects for a project
+) -> BimObject3DResponseGetOut | None:
+    """Get Bim Project 3D Objects
 
-     Retrieve a paginated list of 3D BIM objects for a project, including base64-encoded file content.
+     96ce9cff
+
+    Get all 3D BIM objects for a project with pagination.
 
     Args:
         bim_project_id (UUID):
@@ -120,7 +124,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimObject3DResponseResponse
+        BimObject3DResponseGetOut
     """
 
     return sync_detailed(
@@ -137,10 +141,12 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | Unset = 50,
-) -> Response[BimObject3DResponseResponse]:
-    """List 3D BIM objects for a project
+) -> Response[BimObject3DResponseGetOut]:
+    """Get Bim Project 3D Objects
 
-     Retrieve a paginated list of 3D BIM objects for a project, including base64-encoded file content.
+     96ce9cff
+
+    Get all 3D BIM objects for a project with pagination.
 
     Args:
         bim_project_id (UUID):
@@ -152,7 +158,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimObject3DResponseResponse]
+        Response[BimObject3DResponseGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -172,10 +178,12 @@ async def asyncio(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | Unset = 50,
-) -> BimObject3DResponseResponse | None:
-    """List 3D BIM objects for a project
+) -> BimObject3DResponseGetOut | None:
+    """Get Bim Project 3D Objects
 
-     Retrieve a paginated list of 3D BIM objects for a project, including base64-encoded file content.
+     96ce9cff
+
+    Get all 3D BIM objects for a project with pagination.
 
     Args:
         bim_project_id (UUID):
@@ -187,7 +195,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimObject3DResponseResponse
+        BimObject3DResponseGetOut
     """
 
     return (

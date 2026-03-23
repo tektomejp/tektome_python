@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.replace_lawtalk_attribute_body_request import ReplaceLawtalkAttributeBodyRequest
+from ...models.lawtalk_attribute_body_put_in import LawtalkAttributeBodyPutIn
 from ...models.update_lawtalk_attributes_attribute_object_types import UpdateLawtalkAttributesAttributeObjectTypes
 from ...types import Response
 
@@ -16,7 +16,7 @@ def _get_kwargs(
     object_type: UpdateLawtalkAttributesAttributeObjectTypes,
     object_id: UUID,
     *,
-    body: ReplaceLawtalkAttributeBodyRequest,
+    body: LawtalkAttributeBodyPutIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -60,18 +60,18 @@ def sync_detailed(
     object_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ReplaceLawtalkAttributeBodyRequest,
+    body: LawtalkAttributeBodyPutIn,
 ) -> Response[Any]:
-    """Set domain-specific attributes on an entity
+    """Put Lawtalk Attributes
 
-     Set or update domain-specific attributes for an entity such as a folder, resource group, or
-    resource. When the 'name' attribute is provided, uniqueness validation is performed within the
-    entity's parent scope.
+     Sczy4wEz
+
+    Set or update Lawtalk-specific attributes for an entity.
 
     Args:
         object_type (UpdateLawtalkAttributesAttributeObjectTypes):
         object_id (UUID):
-        body (ReplaceLawtalkAttributeBodyRequest):
+        body (LawtalkAttributeBodyPutIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -99,18 +99,18 @@ async def asyncio_detailed(
     object_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ReplaceLawtalkAttributeBodyRequest,
+    body: LawtalkAttributeBodyPutIn,
 ) -> Response[Any]:
-    """Set domain-specific attributes on an entity
+    """Put Lawtalk Attributes
 
-     Set or update domain-specific attributes for an entity such as a folder, resource group, or
-    resource. When the 'name' attribute is provided, uniqueness validation is performed within the
-    entity's parent scope.
+     Sczy4wEz
+
+    Set or update Lawtalk-specific attributes for an entity.
 
     Args:
         object_type (UpdateLawtalkAttributesAttributeObjectTypes):
         object_id (UUID):
-        body (ReplaceLawtalkAttributeBodyRequest):
+        body (LawtalkAttributeBodyPutIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

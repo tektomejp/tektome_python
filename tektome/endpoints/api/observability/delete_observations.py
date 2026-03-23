@@ -5,13 +5,13 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.observability_ids_request import ObservabilityIdsRequest
+from ...models.observability_ids_in import ObservabilityIdsIn
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: ObservabilityIdsRequest,
+    body: ObservabilityIdsIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -50,14 +50,16 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: ObservabilityIdsRequest,
+    body: ObservabilityIdsIn,
 ) -> Response[Any]:
-    """Delete observation records
+    """Delete Observations
 
-     Delete observation records by their IDs.
+     gtU7xd9d
+
+    Deletes observation information for an entity by id.
 
     Args:
-        body (ObservabilityIdsRequest):
+        body (ObservabilityIdsIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -81,14 +83,16 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: ObservabilityIdsRequest,
+    body: ObservabilityIdsIn,
 ) -> Response[Any]:
-    """Delete observation records
+    """Delete Observations
 
-     Delete observation records by their IDs.
+     gtU7xd9d
+
+    Deletes observation information for an entity by id.
 
     Args:
-        body (ObservabilityIdsRequest):
+        body (ObservabilityIdsIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

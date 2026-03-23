@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.get_extracted_result_response import GetExtractedResultResponse
+from ...models.get_extracted_result_get_out import GetExtractedResultGetOut
 from ...types import Response
 
 
@@ -27,9 +27,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> GetExtractedResultResponse | None:
+) -> GetExtractedResultGetOut | None:
     if response.status_code == 200:
-        response_200 = GetExtractedResultResponse.from_dict(response.json())
+        response_200 = GetExtractedResultGetOut.from_dict(response.json())
 
         return response_200
 
@@ -41,7 +41,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[GetExtractedResultResponse]:
+) -> Response[GetExtractedResultGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,11 +54,17 @@ def sync_detailed(
     attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[GetExtractedResultResponse]:
-    """Get extraction result for an attribute
+) -> Response[GetExtractedResultGetOut]:
+    """Get the extracted result for the given Attribute
 
-     Retrieve the extracted value, status, reasoning, and cited sources for a specific attribute. Returns
-    the extraction status, any error messages, and references to source documents.
+     N9FhGpn7
+
+    Get the extracted result for the given Attribute.
+    This includes the value, error message (if any), reasoning (if any), and cited source.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing attribute_id
 
     Args:
         attribute_id (UUID):
@@ -68,7 +74,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GetExtractedResultResponse]
+        Response[GetExtractedResultGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -86,11 +92,17 @@ def sync(
     attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> GetExtractedResultResponse | None:
-    """Get extraction result for an attribute
+) -> GetExtractedResultGetOut | None:
+    """Get the extracted result for the given Attribute
 
-     Retrieve the extracted value, status, reasoning, and cited sources for a specific attribute. Returns
-    the extraction status, any error messages, and references to source documents.
+     N9FhGpn7
+
+    Get the extracted result for the given Attribute.
+    This includes the value, error message (if any), reasoning (if any), and cited source.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing attribute_id
 
     Args:
         attribute_id (UUID):
@@ -100,7 +112,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GetExtractedResultResponse
+        GetExtractedResultGetOut
     """
 
     return sync_detailed(
@@ -113,11 +125,17 @@ async def asyncio_detailed(
     attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[GetExtractedResultResponse]:
-    """Get extraction result for an attribute
+) -> Response[GetExtractedResultGetOut]:
+    """Get the extracted result for the given Attribute
 
-     Retrieve the extracted value, status, reasoning, and cited sources for a specific attribute. Returns
-    the extraction status, any error messages, and references to source documents.
+     N9FhGpn7
+
+    Get the extracted result for the given Attribute.
+    This includes the value, error message (if any), reasoning (if any), and cited source.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing attribute_id
 
     Args:
         attribute_id (UUID):
@@ -127,7 +145,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GetExtractedResultResponse]
+        Response[GetExtractedResultGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -143,11 +161,17 @@ async def asyncio(
     attribute_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> GetExtractedResultResponse | None:
-    """Get extraction result for an attribute
+) -> GetExtractedResultGetOut | None:
+    """Get the extracted result for the given Attribute
 
-     Retrieve the extracted value, status, reasoning, and cited sources for a specific attribute. Returns
-    the extraction status, any error messages, and references to source documents.
+     N9FhGpn7
+
+    Get the extracted result for the given Attribute.
+    This includes the value, error message (if any), reasoning (if any), and cited source.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing attribute_id
 
     Args:
         attribute_id (UUID):
@@ -157,7 +181,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GetExtractedResultResponse
+        GetExtractedResultGetOut
     """
 
     return (

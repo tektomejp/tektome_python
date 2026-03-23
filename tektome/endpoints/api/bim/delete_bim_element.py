@@ -8,7 +8,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.delete_bim_element_bim_element_type_path import DeleteBimElementBimElementTypePath
-from ...models.error_response_response import ErrorResponseResponse
+from ...models.error_response_post_out import ErrorResponsePostOut
 from ...types import Response
 
 
@@ -32,13 +32,13 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Any | ErrorResponseResponse | None:
+) -> Any | ErrorResponsePostOut | None:
     if response.status_code == 204:
         response_204 = cast(Any, None)
         return response_204
 
     if response.status_code == 404:
-        response_404 = ErrorResponseResponse.from_dict(response.json())
+        response_404 = ErrorResponsePostOut.from_dict(response.json())
 
         return response_404
 
@@ -50,7 +50,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[Any | ErrorResponseResponse]:
+) -> Response[Any | ErrorResponsePostOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,10 +65,12 @@ def sync_detailed(
     bim_element_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | ErrorResponseResponse]:
-    """Delete a BIM element
+) -> Response[Any | ErrorResponsePostOut]:
+    """Delete Bim Element
 
-     Delete a specific BIM element (object or view) from a project by its ID.
+     bb01ed07
+
+    Delete a BIM element. Could be BIM object or view.
 
     Args:
         bim_project_id (UUID):
@@ -80,7 +82,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ErrorResponseResponse]
+        Response[Any | ErrorResponsePostOut]
     """
 
     kwargs = _get_kwargs(
@@ -102,10 +104,12 @@ def sync(
     bim_element_id: str,
     *,
     client: AuthenticatedClient,
-) -> Any | ErrorResponseResponse | None:
-    """Delete a BIM element
+) -> Any | ErrorResponsePostOut | None:
+    """Delete Bim Element
 
-     Delete a specific BIM element (object or view) from a project by its ID.
+     bb01ed07
+
+    Delete a BIM element. Could be BIM object or view.
 
     Args:
         bim_project_id (UUID):
@@ -117,7 +121,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | ErrorResponseResponse
+        Any | ErrorResponsePostOut
     """
 
     return sync_detailed(
@@ -134,10 +138,12 @@ async def asyncio_detailed(
     bim_element_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | ErrorResponseResponse]:
-    """Delete a BIM element
+) -> Response[Any | ErrorResponsePostOut]:
+    """Delete Bim Element
 
-     Delete a specific BIM element (object or view) from a project by its ID.
+     bb01ed07
+
+    Delete a BIM element. Could be BIM object or view.
 
     Args:
         bim_project_id (UUID):
@@ -149,7 +155,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ErrorResponseResponse]
+        Response[Any | ErrorResponsePostOut]
     """
 
     kwargs = _get_kwargs(
@@ -169,10 +175,12 @@ async def asyncio(
     bim_element_id: str,
     *,
     client: AuthenticatedClient,
-) -> Any | ErrorResponseResponse | None:
-    """Delete a BIM element
+) -> Any | ErrorResponsePostOut | None:
+    """Delete Bim Element
 
-     Delete a specific BIM element (object or view) from a project by its ID.
+     bb01ed07
+
+    Delete a BIM element. Could be BIM object or view.
 
     Args:
         bim_project_id (UUID):
@@ -184,7 +192,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | ErrorResponseResponse
+        Any | ErrorResponsePostOut
     """
 
     return (

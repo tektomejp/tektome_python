@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.dataspace_members_schema_response import DataspaceMembersSchemaResponse
+from ...models.dataspace_members_schema_out import DataspaceMembersSchemaOut
 from ...types import Response
 
 
@@ -27,12 +27,12 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> list[DataspaceMembersSchemaResponse] | None:
+) -> list[DataspaceMembersSchemaOut] | None:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = DataspaceMembersSchemaResponse.from_dict(response_200_item_data)
+            response_200_item = DataspaceMembersSchemaOut.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
@@ -46,7 +46,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[list[DataspaceMembersSchemaResponse]]:
+) -> Response[list[DataspaceMembersSchemaOut]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,10 +59,12 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[list[DataspaceMembersSchemaResponse]]:
-    """List all members of a dataspace
+) -> Response[list[DataspaceMembersSchemaOut]]:
+    """Get Dataspace Members
 
-     Retrieve all users who are members of the specified dataspace, including their roles.
+     QoK123Lm
+
+    Retrieve all members of a dataspace
 
     Args:
         dataspace_id (UUID):
@@ -72,7 +74,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list[DataspaceMembersSchemaResponse]]
+        Response[list[DataspaceMembersSchemaOut]]
     """
 
     kwargs = _get_kwargs(
@@ -90,10 +92,12 @@ def sync(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> list[DataspaceMembersSchemaResponse] | None:
-    """List all members of a dataspace
+) -> list[DataspaceMembersSchemaOut] | None:
+    """Get Dataspace Members
 
-     Retrieve all users who are members of the specified dataspace, including their roles.
+     QoK123Lm
+
+    Retrieve all members of a dataspace
 
     Args:
         dataspace_id (UUID):
@@ -103,7 +107,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list[DataspaceMembersSchemaResponse]
+        list[DataspaceMembersSchemaOut]
     """
 
     return sync_detailed(
@@ -116,10 +120,12 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[list[DataspaceMembersSchemaResponse]]:
-    """List all members of a dataspace
+) -> Response[list[DataspaceMembersSchemaOut]]:
+    """Get Dataspace Members
 
-     Retrieve all users who are members of the specified dataspace, including their roles.
+     QoK123Lm
+
+    Retrieve all members of a dataspace
 
     Args:
         dataspace_id (UUID):
@@ -129,7 +135,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list[DataspaceMembersSchemaResponse]]
+        Response[list[DataspaceMembersSchemaOut]]
     """
 
     kwargs = _get_kwargs(
@@ -145,10 +151,12 @@ async def asyncio(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> list[DataspaceMembersSchemaResponse] | None:
-    """List all members of a dataspace
+) -> list[DataspaceMembersSchemaOut] | None:
+    """Get Dataspace Members
 
-     Retrieve all users who are members of the specified dataspace, including their roles.
+     QoK123Lm
+
+    Retrieve all members of a dataspace
 
     Args:
         dataspace_id (UUID):
@@ -158,7 +166,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list[DataspaceMembersSchemaResponse]
+        list[DataspaceMembersSchemaOut]
     """
 
     return (

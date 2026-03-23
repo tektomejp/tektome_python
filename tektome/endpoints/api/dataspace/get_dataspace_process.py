@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.process_response import ProcessResponse
+from ...models.process_out import ProcessOut
 from ...types import Response
 
 
@@ -27,9 +27,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ProcessResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ProcessOut | None:
     if response.status_code == 200:
-        response_200 = ProcessResponse.from_dict(response.json())
+        response_200 = ProcessOut.from_dict(response.json())
 
         return response_200
 
@@ -39,7 +39,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ProcessResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ProcessOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,10 +53,12 @@ def sync_detailed(
     process_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ProcessResponse]:
-    """Get a dataspace process by ID
+) -> Response[ProcessOut]:
+    """Retrieve Dataspace Process
 
-     Retrieve detailed information about a specific process within a dataspace.
+     Z_KPugCg
+
+    Retrieve a specific process in the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -67,7 +69,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProcessResponse]
+        Response[ProcessOut]
     """
 
     kwargs = _get_kwargs(
@@ -87,10 +89,12 @@ def sync(
     process_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> ProcessResponse | None:
-    """Get a dataspace process by ID
+) -> ProcessOut | None:
+    """Retrieve Dataspace Process
 
-     Retrieve detailed information about a specific process within a dataspace.
+     Z_KPugCg
+
+    Retrieve a specific process in the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -101,7 +105,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProcessResponse
+        ProcessOut
     """
 
     return sync_detailed(
@@ -116,10 +120,12 @@ async def asyncio_detailed(
     process_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ProcessResponse]:
-    """Get a dataspace process by ID
+) -> Response[ProcessOut]:
+    """Retrieve Dataspace Process
 
-     Retrieve detailed information about a specific process within a dataspace.
+     Z_KPugCg
+
+    Retrieve a specific process in the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -130,7 +136,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProcessResponse]
+        Response[ProcessOut]
     """
 
     kwargs = _get_kwargs(
@@ -148,10 +154,12 @@ async def asyncio(
     process_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> ProcessResponse | None:
-    """Get a dataspace process by ID
+) -> ProcessOut | None:
+    """Retrieve Dataspace Process
 
-     Retrieve detailed information about a specific process within a dataspace.
+     Z_KPugCg
+
+    Retrieve a specific process in the current dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -162,7 +170,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProcessResponse
+        ProcessOut
     """
 
     return (

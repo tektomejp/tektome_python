@@ -8,7 +8,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.get_requirement_items_response_200_type_1 import GetRequirementItemsResponse200Type1
-from ...models.project_requirement_item_table_response import ProjectRequirementItemTableResponse
+from ...models.project_requirement_item_table_get_out import ProjectRequirementItemTableGetOut
 from ...types import Response
 
 
@@ -28,16 +28,16 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableResponse | None:
+) -> GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableGetOut | None:
     if response.status_code == 200:
 
         def _parse_response_200(
             data: object,
-        ) -> GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableResponse:
+        ) -> GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableGetOut:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                response_200_type_0 = ProjectRequirementItemTableResponse.from_dict(data)
+                response_200_type_0 = ProjectRequirementItemTableGetOut.from_dict(data)
 
                 return response_200_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
@@ -60,7 +60,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableResponse]:
+) -> Response[GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -73,10 +73,12 @@ def sync_detailed(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableResponse]:
-    """Get requirement items
+) -> Response[GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableGetOut]:
+    """Get Requirement Items
 
-     Retrieve the requirement items table associated with a requirement.
+     JnQkM31F
+
+    Get all requirement items associated to a requirement
 
     Args:
         requirement_id (UUID):
@@ -86,7 +88,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableResponse]
+        Response[GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -104,10 +106,12 @@ def sync(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableResponse | None:
-    """Get requirement items
+) -> GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableGetOut | None:
+    """Get Requirement Items
 
-     Retrieve the requirement items table associated with a requirement.
+     JnQkM31F
+
+    Get all requirement items associated to a requirement
 
     Args:
         requirement_id (UUID):
@@ -117,7 +121,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableResponse
+        GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableGetOut
     """
 
     return sync_detailed(
@@ -130,10 +134,12 @@ async def asyncio_detailed(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableResponse]:
-    """Get requirement items
+) -> Response[GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableGetOut]:
+    """Get Requirement Items
 
-     Retrieve the requirement items table associated with a requirement.
+     JnQkM31F
+
+    Get all requirement items associated to a requirement
 
     Args:
         requirement_id (UUID):
@@ -143,7 +149,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableResponse]
+        Response[GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -159,10 +165,12 @@ async def asyncio(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableResponse | None:
-    """Get requirement items
+) -> GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableGetOut | None:
+    """Get Requirement Items
 
-     Retrieve the requirement items table associated with a requirement.
+     JnQkM31F
+
+    Get all requirement items associated to a requirement
 
     Args:
         requirement_id (UUID):
@@ -172,7 +180,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableResponse
+        GetRequirementItemsResponse200Type1 | ProjectRequirementItemTableGetOut
     """
 
     return (

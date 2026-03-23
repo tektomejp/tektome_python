@@ -51,9 +51,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[GetTtosJobResponse]:
-    """Get job details
+    """Get Job
 
-     Retrieve the details and current status of a job by its ID.
+     y2N5dRCK
+    Get job's details and status by job ID. See shape in method definition.
 
     Args:
         job_id (UUID):
@@ -82,9 +83,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> GetTtosJobResponse | None:
-    """Get job details
+    """Get Job
 
-     Retrieve the details and current status of a job by its ID.
+     y2N5dRCK
+    Get job's details and status by job ID. See shape in method definition.
 
     Args:
         job_id (UUID):
@@ -108,9 +110,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[GetTtosJobResponse]:
-    """Get job details
+    """Get Job
 
-     Retrieve the details and current status of a job by its ID.
+     y2N5dRCK
+    Get job's details and status by job ID. See shape in method definition.
 
     Args:
         job_id (UUID):
@@ -137,9 +140,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> GetTtosJobResponse | None:
-    """Get job details
+    """Get Job
 
-     Retrieve the details and current status of a job by its ID.
+     y2N5dRCK
+    Get job's details and status by job ID. See shape in method definition.
 
     Args:
         job_id (UUID):

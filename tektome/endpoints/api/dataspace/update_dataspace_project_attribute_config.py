@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.dataspace_project_attribute_schema_response import DataspaceProjectAttributeSchemaResponse
-from ...models.update_dataspace_project_attribute_request import UpdateDataspaceProjectAttributeRequest
+from ...models.dataspace_project_attribute_patch_in_patch import DataspaceProjectAttributePatchInPatch
+from ...models.dataspace_project_attribute_schema_out import DataspaceProjectAttributeSchemaOut
 from ...types import Response
 
 
 def _get_kwargs(
     attribute_config_id: UUID,
     *,
-    body: UpdateDataspaceProjectAttributeRequest,
+    body: DataspaceProjectAttributePatchInPatch,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -36,9 +36,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> DataspaceProjectAttributeSchemaResponse | None:
+) -> DataspaceProjectAttributeSchemaOut | None:
     if response.status_code == 200:
-        response_200 = DataspaceProjectAttributeSchemaResponse.from_dict(response.json())
+        response_200 = DataspaceProjectAttributeSchemaOut.from_dict(response.json())
 
         return response_200
 
@@ -50,7 +50,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[DataspaceProjectAttributeSchemaResponse]:
+) -> Response[DataspaceProjectAttributeSchemaOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,23 +63,25 @@ def sync_detailed(
     attribute_config_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UpdateDataspaceProjectAttributeRequest,
-) -> Response[DataspaceProjectAttributeSchemaResponse]:
-    """Update a project attribute column configuration
+    body: DataspaceProjectAttributePatchInPatch,
+) -> Response[DataspaceProjectAttributeSchemaOut]:
+    """Patch Dataspace Project Attribute Config
 
-     Update an existing project attribute column configuration, including its label, metadata, and table
-    or select options. Renaming propagates to all projects in the dataspace.
+     x16N0f5B
+
+    Updates the column attributes of a dataspace project.
+    attribute name is a computed field based on the attribute label.
 
     Args:
         attribute_config_id (UUID):
-        body (UpdateDataspaceProjectAttributeRequest):
+        body (DataspaceProjectAttributePatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DataspaceProjectAttributeSchemaResponse]
+        Response[DataspaceProjectAttributeSchemaOut]
     """
 
     kwargs = _get_kwargs(
@@ -98,23 +100,25 @@ def sync(
     attribute_config_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UpdateDataspaceProjectAttributeRequest,
-) -> DataspaceProjectAttributeSchemaResponse | None:
-    """Update a project attribute column configuration
+    body: DataspaceProjectAttributePatchInPatch,
+) -> DataspaceProjectAttributeSchemaOut | None:
+    """Patch Dataspace Project Attribute Config
 
-     Update an existing project attribute column configuration, including its label, metadata, and table
-    or select options. Renaming propagates to all projects in the dataspace.
+     x16N0f5B
+
+    Updates the column attributes of a dataspace project.
+    attribute name is a computed field based on the attribute label.
 
     Args:
         attribute_config_id (UUID):
-        body (UpdateDataspaceProjectAttributeRequest):
+        body (DataspaceProjectAttributePatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DataspaceProjectAttributeSchemaResponse
+        DataspaceProjectAttributeSchemaOut
     """
 
     return sync_detailed(
@@ -128,23 +132,25 @@ async def asyncio_detailed(
     attribute_config_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UpdateDataspaceProjectAttributeRequest,
-) -> Response[DataspaceProjectAttributeSchemaResponse]:
-    """Update a project attribute column configuration
+    body: DataspaceProjectAttributePatchInPatch,
+) -> Response[DataspaceProjectAttributeSchemaOut]:
+    """Patch Dataspace Project Attribute Config
 
-     Update an existing project attribute column configuration, including its label, metadata, and table
-    or select options. Renaming propagates to all projects in the dataspace.
+     x16N0f5B
+
+    Updates the column attributes of a dataspace project.
+    attribute name is a computed field based on the attribute label.
 
     Args:
         attribute_config_id (UUID):
-        body (UpdateDataspaceProjectAttributeRequest):
+        body (DataspaceProjectAttributePatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DataspaceProjectAttributeSchemaResponse]
+        Response[DataspaceProjectAttributeSchemaOut]
     """
 
     kwargs = _get_kwargs(
@@ -161,23 +167,25 @@ async def asyncio(
     attribute_config_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UpdateDataspaceProjectAttributeRequest,
-) -> DataspaceProjectAttributeSchemaResponse | None:
-    """Update a project attribute column configuration
+    body: DataspaceProjectAttributePatchInPatch,
+) -> DataspaceProjectAttributeSchemaOut | None:
+    """Patch Dataspace Project Attribute Config
 
-     Update an existing project attribute column configuration, including its label, metadata, and table
-    or select options. Renaming propagates to all projects in the dataspace.
+     x16N0f5B
+
+    Updates the column attributes of a dataspace project.
+    attribute name is a computed field based on the attribute label.
 
     Args:
         attribute_config_id (UUID):
-        body (UpdateDataspaceProjectAttributeRequest):
+        body (DataspaceProjectAttributePatchInPatch):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DataspaceProjectAttributeSchemaResponse
+        DataspaceProjectAttributeSchemaOut
     """
 
     return (

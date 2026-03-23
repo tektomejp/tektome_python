@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.replace_system_attribute_body_request import ReplaceSystemAttributeBodyRequest
+from ...models.system_attribute_body_put_in import SystemAttributeBodyPutIn
 from ...models.upsert_system_attributes_attribute_object_types import UpsertSystemAttributesAttributeObjectTypes
 from ...types import Response
 
@@ -16,7 +16,7 @@ def _get_kwargs(
     object_type: UpsertSystemAttributesAttributeObjectTypes,
     object_id: UUID,
     *,
-    body: ReplaceSystemAttributeBodyRequest,
+    body: SystemAttributeBodyPutIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -60,17 +60,22 @@ def sync_detailed(
     object_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ReplaceSystemAttributeBodyRequest,
+    body: SystemAttributeBodyPutIn,
 ) -> Response[Any]:
-    """Upsert system attributes
+    """Put System Attributes
 
-     Set or update system attributes (prefixed with `system:`) on an entity. System attributes are
-    internal and not returned in user-facing responses. Only provided keys are added or updated.
+     iRKICjKb
+
+    Set system attributes. System attribute's name begins with `system:`
+    System attributes are never returned to the user side.
+
+    **WARNING**: Only pass the keys to be added/updated,
+    It won't mutate the attributes that are not provided in the payload.
 
     Args:
         object_type (UpsertSystemAttributesAttributeObjectTypes):
         object_id (UUID):
-        body (ReplaceSystemAttributeBodyRequest):
+        body (SystemAttributeBodyPutIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -98,17 +103,22 @@ async def asyncio_detailed(
     object_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ReplaceSystemAttributeBodyRequest,
+    body: SystemAttributeBodyPutIn,
 ) -> Response[Any]:
-    """Upsert system attributes
+    """Put System Attributes
 
-     Set or update system attributes (prefixed with `system:`) on an entity. System attributes are
-    internal and not returned in user-facing responses. Only provided keys are added or updated.
+     iRKICjKb
+
+    Set system attributes. System attribute's name begins with `system:`
+    System attributes are never returned to the user side.
+
+    **WARNING**: Only pass the keys to be added/updated,
+    It won't mutate the attributes that are not provided in the payload.
 
     Args:
         object_type (UpsertSystemAttributesAttributeObjectTypes):
         object_id (UUID):
-        body (ReplaceSystemAttributeBodyRequest):
+        body (SystemAttributeBodyPutIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

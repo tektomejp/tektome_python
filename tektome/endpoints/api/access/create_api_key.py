@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_api_key_request import CreateAPIKeyRequest
-from ...models.create_api_key_response import CreateAPIKeyResponse
+from ...models.create_api_key_post_in import CreateAPIKeyPostIn
+from ...models.create_api_key_post_out import CreateAPIKeyPostOut
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: CreateAPIKeyRequest,
+    body: CreateAPIKeyPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -29,9 +29,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CreateAPIKeyResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CreateAPIKeyPostOut | None:
     if response.status_code == 201:
-        response_201 = CreateAPIKeyResponse.from_dict(response.json())
+        response_201 = CreateAPIKeyPostOut.from_dict(response.json())
 
         return response_201
 
@@ -41,9 +41,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[CreateAPIKeyResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[CreateAPIKeyPostOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,23 +53,30 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateAPIKeyRequest,
-) -> Response[CreateAPIKeyResponse]:
-    """Create an API key
+    body: CreateAPIKeyPostIn,
+) -> Response[CreateAPIKeyPostOut]:
+    r"""Create Api Key
 
-     Create a new API key for the authenticated user. API keys can be used in the Authorization header as
-    'Bearer sk-xxxx' to authenticate requests. Keys can be valid for up to one year. A maximum of 100
-    keys per user is enforced.
+     Create a new API key for the current user.
+    API Keys can be used to authenticate and authorize API requests according to the specified scopes.
+    API Keys can be used in place as the user bearer token ex
+    in the Authorization header as
+    ```
+    Authorization: Bearer <sk-xxxx-xxxx-xxxx-xxxx>
+    ```
+    Available scopes:
+        - \"user:all\": Full access as the user.
+    API Keys can be set valid up to one year from the creation date.
 
     Args:
-        body (CreateAPIKeyRequest): Schema for creating a new API key.
+        body (CreateAPIKeyPostIn): Schema for creating a new API key.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CreateAPIKeyResponse]
+        Response[CreateAPIKeyPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -88,23 +93,30 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: CreateAPIKeyRequest,
-) -> CreateAPIKeyResponse | None:
-    """Create an API key
+    body: CreateAPIKeyPostIn,
+) -> CreateAPIKeyPostOut | None:
+    r"""Create Api Key
 
-     Create a new API key for the authenticated user. API keys can be used in the Authorization header as
-    'Bearer sk-xxxx' to authenticate requests. Keys can be valid for up to one year. A maximum of 100
-    keys per user is enforced.
+     Create a new API key for the current user.
+    API Keys can be used to authenticate and authorize API requests according to the specified scopes.
+    API Keys can be used in place as the user bearer token ex
+    in the Authorization header as
+    ```
+    Authorization: Bearer <sk-xxxx-xxxx-xxxx-xxxx>
+    ```
+    Available scopes:
+        - \"user:all\": Full access as the user.
+    API Keys can be set valid up to one year from the creation date.
 
     Args:
-        body (CreateAPIKeyRequest): Schema for creating a new API key.
+        body (CreateAPIKeyPostIn): Schema for creating a new API key.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CreateAPIKeyResponse
+        CreateAPIKeyPostOut
     """
 
     return sync_detailed(
@@ -116,23 +128,30 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateAPIKeyRequest,
-) -> Response[CreateAPIKeyResponse]:
-    """Create an API key
+    body: CreateAPIKeyPostIn,
+) -> Response[CreateAPIKeyPostOut]:
+    r"""Create Api Key
 
-     Create a new API key for the authenticated user. API keys can be used in the Authorization header as
-    'Bearer sk-xxxx' to authenticate requests. Keys can be valid for up to one year. A maximum of 100
-    keys per user is enforced.
+     Create a new API key for the current user.
+    API Keys can be used to authenticate and authorize API requests according to the specified scopes.
+    API Keys can be used in place as the user bearer token ex
+    in the Authorization header as
+    ```
+    Authorization: Bearer <sk-xxxx-xxxx-xxxx-xxxx>
+    ```
+    Available scopes:
+        - \"user:all\": Full access as the user.
+    API Keys can be set valid up to one year from the creation date.
 
     Args:
-        body (CreateAPIKeyRequest): Schema for creating a new API key.
+        body (CreateAPIKeyPostIn): Schema for creating a new API key.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CreateAPIKeyResponse]
+        Response[CreateAPIKeyPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -147,23 +166,30 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: CreateAPIKeyRequest,
-) -> CreateAPIKeyResponse | None:
-    """Create an API key
+    body: CreateAPIKeyPostIn,
+) -> CreateAPIKeyPostOut | None:
+    r"""Create Api Key
 
-     Create a new API key for the authenticated user. API keys can be used in the Authorization header as
-    'Bearer sk-xxxx' to authenticate requests. Keys can be valid for up to one year. A maximum of 100
-    keys per user is enforced.
+     Create a new API key for the current user.
+    API Keys can be used to authenticate and authorize API requests according to the specified scopes.
+    API Keys can be used in place as the user bearer token ex
+    in the Authorization header as
+    ```
+    Authorization: Bearer <sk-xxxx-xxxx-xxxx-xxxx>
+    ```
+    Available scopes:
+        - \"user:all\": Full access as the user.
+    API Keys can be set valid up to one year from the creation date.
 
     Args:
-        body (CreateAPIKeyRequest): Schema for creating a new API key.
+        body (CreateAPIKeyPostIn): Schema for creating a new API key.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CreateAPIKeyResponse
+        CreateAPIKeyPostOut
     """
 
     return (

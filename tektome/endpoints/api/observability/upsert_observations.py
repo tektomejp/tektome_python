@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.observability_schema_response import ObservabilitySchemaResponse
-from ...models.replace_observability_request import ReplaceObservabilityRequest
+from ...models.observability_put_in import ObservabilityPutIn
+from ...models.observability_schema_out import ObservabilitySchemaOut
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: ReplaceObservabilityRequest,
+    body: ObservabilityPutIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,12 +31,12 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> list[ObservabilitySchemaResponse] | None:
+) -> list[ObservabilitySchemaOut] | None:
     if response.status_code == 201:
         response_201 = []
         _response_201 = response.json()
         for response_201_item_data in _response_201:
-            response_201_item = ObservabilitySchemaResponse.from_dict(response_201_item_data)
+            response_201_item = ObservabilitySchemaOut.from_dict(response_201_item_data)
 
             response_201.append(response_201_item)
 
@@ -50,7 +50,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[list[ObservabilitySchemaResponse]]:
+) -> Response[list[ObservabilitySchemaOut]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -62,22 +62,23 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: ReplaceObservabilityRequest,
-) -> Response[list[ObservabilitySchemaResponse]]:
-    """Upsert observation records
+    body: ObservabilityPutIn,
+) -> Response[list[ObservabilitySchemaOut]]:
+    """Put Observations
 
-     Create or update observation records for entities. Tracks whether entities have been viewed by the
-    authenticated user.
+     gtU7xd9a
+
+    Update or create observation information for an entity.
 
     Args:
-        body (ReplaceObservabilityRequest):
+        body (ObservabilityPutIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list[ObservabilitySchemaResponse]]
+        Response[list[ObservabilitySchemaOut]]
     """
 
     kwargs = _get_kwargs(
@@ -94,22 +95,23 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: ReplaceObservabilityRequest,
-) -> list[ObservabilitySchemaResponse] | None:
-    """Upsert observation records
+    body: ObservabilityPutIn,
+) -> list[ObservabilitySchemaOut] | None:
+    """Put Observations
 
-     Create or update observation records for entities. Tracks whether entities have been viewed by the
-    authenticated user.
+     gtU7xd9a
+
+    Update or create observation information for an entity.
 
     Args:
-        body (ReplaceObservabilityRequest):
+        body (ObservabilityPutIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list[ObservabilitySchemaResponse]
+        list[ObservabilitySchemaOut]
     """
 
     return sync_detailed(
@@ -121,22 +123,23 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: ReplaceObservabilityRequest,
-) -> Response[list[ObservabilitySchemaResponse]]:
-    """Upsert observation records
+    body: ObservabilityPutIn,
+) -> Response[list[ObservabilitySchemaOut]]:
+    """Put Observations
 
-     Create or update observation records for entities. Tracks whether entities have been viewed by the
-    authenticated user.
+     gtU7xd9a
+
+    Update or create observation information for an entity.
 
     Args:
-        body (ReplaceObservabilityRequest):
+        body (ObservabilityPutIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list[ObservabilitySchemaResponse]]
+        Response[list[ObservabilitySchemaOut]]
     """
 
     kwargs = _get_kwargs(
@@ -151,22 +154,23 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: ReplaceObservabilityRequest,
-) -> list[ObservabilitySchemaResponse] | None:
-    """Upsert observation records
+    body: ObservabilityPutIn,
+) -> list[ObservabilitySchemaOut] | None:
+    """Put Observations
 
-     Create or update observation records for entities. Tracks whether entities have been viewed by the
-    authenticated user.
+     gtU7xd9a
+
+    Update or create observation information for an entity.
 
     Args:
-        body (ReplaceObservabilityRequest):
+        body (ObservabilityPutIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list[ObservabilitySchemaResponse]
+        list[ObservabilitySchemaOut]
     """
 
     return (

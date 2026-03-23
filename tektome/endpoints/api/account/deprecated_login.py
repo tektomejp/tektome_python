@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_login_request import CreateLoginRequest
-from ...models.login_response import LoginResponse
+from ...models.login_post_in import LoginPostIn
+from ...models.login_post_out import LoginPostOut
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: CreateLoginRequest,
+    body: LoginPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -29,9 +29,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> LoginResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> LoginPostOut | None:
     if response.status_code == 200:
-        response_200 = LoginResponse.from_dict(response.json())
+        response_200 = LoginPostOut.from_dict(response.json())
 
         return response_200
 
@@ -41,7 +41,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[LoginResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[LoginPostOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,21 +53,22 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateLoginRequest,
-) -> Response[LoginResponse]:
-    """Login (deprecated)
+    body: LoginPostIn,
+) -> Response[LoginPostOut]:
+    """Post Login
 
-     Deprecated. Use the /login/v2/ endpoint instead. Authenticates a user and creates a session.
+     8t_Xl9AP
+    Login through API. It creates a session, and a user if not exist.
 
     Args:
-        body (CreateLoginRequest):
+        body (LoginPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[LoginResponse]
+        Response[LoginPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -84,21 +85,22 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: CreateLoginRequest,
-) -> LoginResponse | None:
-    """Login (deprecated)
+    body: LoginPostIn,
+) -> LoginPostOut | None:
+    """Post Login
 
-     Deprecated. Use the /login/v2/ endpoint instead. Authenticates a user and creates a session.
+     8t_Xl9AP
+    Login through API. It creates a session, and a user if not exist.
 
     Args:
-        body (CreateLoginRequest):
+        body (LoginPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        LoginResponse
+        LoginPostOut
     """
 
     return sync_detailed(
@@ -110,21 +112,22 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: CreateLoginRequest,
-) -> Response[LoginResponse]:
-    """Login (deprecated)
+    body: LoginPostIn,
+) -> Response[LoginPostOut]:
+    """Post Login
 
-     Deprecated. Use the /login/v2/ endpoint instead. Authenticates a user and creates a session.
+     8t_Xl9AP
+    Login through API. It creates a session, and a user if not exist.
 
     Args:
-        body (CreateLoginRequest):
+        body (LoginPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[LoginResponse]
+        Response[LoginPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -139,21 +142,22 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: CreateLoginRequest,
-) -> LoginResponse | None:
-    """Login (deprecated)
+    body: LoginPostIn,
+) -> LoginPostOut | None:
+    """Post Login
 
-     Deprecated. Use the /login/v2/ endpoint instead. Authenticates a user and creates a session.
+     8t_Xl9AP
+    Login through API. It creates a session, and a user if not exist.
 
     Args:
-        body (CreateLoginRequest):
+        body (LoginPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        LoginResponse
+        LoginPostOut
     """
 
     return (

@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.file_move_patch_schema_request import FileMovePatchSchemaRequest
+from ...models.file_move_patch_schema_in import FileMovePatchSchemaIn
 from ...types import Response
 
 
 def _get_kwargs(
     resource_id: UUID,
     *,
-    body: FileMovePatchSchemaRequest,
+    body: FileMovePatchSchemaIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,15 +56,22 @@ def sync_detailed(
     resource_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: FileMovePatchSchemaRequest,
+    body: FileMovePatchSchemaIn,
 ) -> Response[Any]:
-    """Move a resource to another folder
+    """Move Resource
 
-     Move a resource to a different destination folder within the same project.
+     Lm210ZmC
+
+    Move a resource to a new folder.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing resource_id
+        payload: Payload containing destination
 
     Args:
         resource_id (UUID):
-        body (FileMovePatchSchemaRequest):
+        body (FileMovePatchSchemaIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -90,15 +97,22 @@ async def asyncio_detailed(
     resource_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: FileMovePatchSchemaRequest,
+    body: FileMovePatchSchemaIn,
 ) -> Response[Any]:
-    """Move a resource to another folder
+    """Move Resource
 
-     Move a resource to a different destination folder within the same project.
+     Lm210ZmC
+
+    Move a resource to a new folder.
+
+    Args:
+        request: Request object
+        path_params: Path parameters containing resource_id
+        payload: Payload containing destination
 
     Args:
         resource_id (UUID):
-        body (FileMovePatchSchemaRequest):
+        body (FileMovePatchSchemaIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
