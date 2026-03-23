@@ -2,7 +2,7 @@
 
 import ssl
 from datetime import date, datetime
-from typing import Any, ClassVar
+from typing import Any, ClassVar, Literal
 from uuid import UUID
 
 import httpx
@@ -123,6 +123,14 @@ class Context(BaseSchema):
     system_base_url: AnyHttpUrl = Field(
         ...,
         description="Tektome's deployment base url ex: https://domain.tld",
+    )
+    system_flow_type: Literal['general', 'project_attr_extraction', 'resource_attr_extraction'] = Field(
+        ...,
+        description=(
+            'The type of this flow. Possible values are "general", '
+            '"project_attr_extraction" (requires system_project_id and system_attribute_definition_ids), '
+            'and "resource_attr_extraction" (requires system_resource_id and system_attribute_definition_ids).'
+        ),
     )
     system_chatroom_id: UUID | None = Field(
         None,
