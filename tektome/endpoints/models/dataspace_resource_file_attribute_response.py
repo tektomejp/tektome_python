@@ -12,6 +12,7 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.dataspace_process_detail import DataspaceProcessDetail
     from ..models.dataspace_resource_file_attribute_response_attribute_metadata_type_0 import (
         DataspaceResourceFileAttributeResponseAttributeMetadataType0,
     )
@@ -33,6 +34,7 @@ class DataspaceResourceFileAttributeResponse:
         index (int):
         created (datetime.datetime):
         updated (datetime.datetime):
+        process_details (DataspaceProcessDetail | None | Unset):
         id (None | Unset | UUID):
         attribute_label (str | Unset):  Default: ''.
         attribute_metadata (DataspaceResourceFileAttributeResponseAttributeMetadataType0 | None | Unset):
@@ -48,6 +50,7 @@ class DataspaceResourceFileAttributeResponse:
     index: int
     created: datetime.datetime
     updated: datetime.datetime
+    process_details: DataspaceProcessDetail | None | Unset = UNSET
     id: None | Unset | UUID = UNSET
     attribute_label: str | Unset = ""
     attribute_metadata: DataspaceResourceFileAttributeResponseAttributeMetadataType0 | None | Unset = UNSET
@@ -57,6 +60,7 @@ class DataspaceResourceFileAttributeResponse:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.dataspace_process_detail import DataspaceProcessDetail
         from ..models.dataspace_resource_file_attribute_response_attribute_metadata_type_0 import (
             DataspaceResourceFileAttributeResponseAttributeMetadataType0,
         )
@@ -74,6 +78,14 @@ class DataspaceResourceFileAttributeResponse:
         created = self.created.isoformat()
 
         updated = self.updated.isoformat()
+
+        process_details: dict[str, Any] | None | Unset
+        if isinstance(self.process_details, Unset):
+            process_details = UNSET
+        elif isinstance(self.process_details, DataspaceProcessDetail):
+            process_details = self.process_details.to_dict()
+        else:
+            process_details = self.process_details
 
         id: None | str | Unset
         if isinstance(self.id, Unset):
@@ -116,6 +128,8 @@ class DataspaceResourceFileAttributeResponse:
                 "updated": updated,
             }
         )
+        if process_details is not UNSET:
+            field_dict["process_details"] = process_details
         if id is not UNSET:
             field_dict["id"] = id
         if attribute_label is not UNSET:
@@ -133,6 +147,7 @@ class DataspaceResourceFileAttributeResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.dataspace_process_detail import DataspaceProcessDetail
         from ..models.dataspace_resource_file_attribute_response_attribute_metadata_type_0 import (
             DataspaceResourceFileAttributeResponseAttributeMetadataType0,
         )
@@ -152,6 +167,23 @@ class DataspaceResourceFileAttributeResponse:
         created = isoparse(d.pop("created"))
 
         updated = isoparse(d.pop("updated"))
+
+        def _parse_process_details(data: object) -> DataspaceProcessDetail | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                process_details_type_0 = DataspaceProcessDetail.from_dict(data)
+
+                return process_details_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(DataspaceProcessDetail | None | Unset, data)
+
+        process_details = _parse_process_details(d.pop("process_details", UNSET))
 
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -212,6 +244,7 @@ class DataspaceResourceFileAttributeResponse:
             index=index,
             created=created,
             updated=updated,
+            process_details=process_details,
             id=id,
             attribute_label=attribute_label,
             attribute_metadata=attribute_metadata,

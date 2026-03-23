@@ -7,28 +7,32 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.list_dataspace_processes_ui_trigger_kind_choices import ListDataspaceProcessesUiTriggerKindChoices
+from ...models.execution_process_types import ExecutionProcessTypes
+from ...models.list_dataspace_process_usages_ui_trigger_kind_choices import (
+    ListDataspaceProcessUsagesUiTriggerKindChoices,
+)
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     dataspace_id: UUID,
     *,
-    ui_trigger_name: None | str | Unset = UNSET,
-    ui_trigger_kinds: list[ListDataspaceProcessesUiTriggerKindChoices] | Unset = UNSET,
-    name: None | str | Unset = UNSET,
+    process_type: ExecutionProcessTypes | None | Unset = UNSET,
+    ui_trigger_kinds: list[ListDataspaceProcessUsagesUiTriggerKindChoices] | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
 
-    json_ui_trigger_name: None | str | Unset
-    if isinstance(ui_trigger_name, Unset):
-        json_ui_trigger_name = UNSET
+    json_process_type: None | str | Unset
+    if isinstance(process_type, Unset):
+        json_process_type = UNSET
+    elif isinstance(process_type, ExecutionProcessTypes):
+        json_process_type = process_type.value
     else:
-        json_ui_trigger_name = ui_trigger_name
-    params["ui_trigger_name"] = json_ui_trigger_name
+        json_process_type = process_type
+    params["process_type"] = json_process_type
 
     json_ui_trigger_kinds: list[str] | Unset = UNSET
     if not isinstance(ui_trigger_kinds, Unset):
@@ -38,13 +42,6 @@ def _get_kwargs(
             json_ui_trigger_kinds.append(ui_trigger_kinds_item)
 
     params["ui_trigger_kinds"] = json_ui_trigger_kinds
-
-    json_name: None | str | Unset
-    if isinstance(name, Unset):
-        json_name = UNSET
-    else:
-        json_name = name
-    params["name"] = json_name
 
     params["page"] = page
 
@@ -59,7 +56,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/api/core/dataspaces/{dataspace_id}/processes/".format(
+        "url": "/api/core/dataspaces/{dataspace_id}/processes/top-usages/".format(
             dataspace_id=quote(str(dataspace_id), safe=""),
         ),
         "params": params,
@@ -88,22 +85,22 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    ui_trigger_name: None | str | Unset = UNSET,
-    ui_trigger_kinds: list[ListDataspaceProcessesUiTriggerKindChoices] | Unset = UNSET,
-    name: None | str | Unset = UNSET,
+    process_type: ExecutionProcessTypes | None | Unset = UNSET,
+    ui_trigger_kinds: list[ListDataspaceProcessUsagesUiTriggerKindChoices] | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[Any]:
-    """List all processes in a dataspace
+    """List most used processes
 
-     Retrieve all processes registered within a dataspace. Supports filtering via query parameters.
+     Retrieve the top N most frequently used processes by the authenticated user within a dataspace.
+    Optionally filter by process type.
 
     Args:
         dataspace_id (UUID):
-        ui_trigger_name (None | str | Unset): Filter processes by UI trigger name.
-        ui_trigger_kinds (list[ListDataspaceProcessesUiTriggerKindChoices] | Unset): Filter
-            processes by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
-        name (None | str | Unset): The name (or part of the name) of the process to search for.
+        process_type (ExecutionProcessTypes | None | Unset): Filter process usage by process type.
+            Possible values are defined in ExecutionProcessTypes.
+        ui_trigger_kinds (list[ListDataspaceProcessUsagesUiTriggerKindChoices] | Unset): Filter
+            process usage by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
 
@@ -117,9 +114,8 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         dataspace_id=dataspace_id,
-        ui_trigger_name=ui_trigger_name,
+        process_type=process_type,
         ui_trigger_kinds=ui_trigger_kinds,
-        name=name,
         page=page,
         page_size=page_size,
     )
@@ -135,22 +131,22 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    ui_trigger_name: None | str | Unset = UNSET,
-    ui_trigger_kinds: list[ListDataspaceProcessesUiTriggerKindChoices] | Unset = UNSET,
-    name: None | str | Unset = UNSET,
+    process_type: ExecutionProcessTypes | None | Unset = UNSET,
+    ui_trigger_kinds: list[ListDataspaceProcessUsagesUiTriggerKindChoices] | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[Any]:
-    """List all processes in a dataspace
+    """List most used processes
 
-     Retrieve all processes registered within a dataspace. Supports filtering via query parameters.
+     Retrieve the top N most frequently used processes by the authenticated user within a dataspace.
+    Optionally filter by process type.
 
     Args:
         dataspace_id (UUID):
-        ui_trigger_name (None | str | Unset): Filter processes by UI trigger name.
-        ui_trigger_kinds (list[ListDataspaceProcessesUiTriggerKindChoices] | Unset): Filter
-            processes by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
-        name (None | str | Unset): The name (or part of the name) of the process to search for.
+        process_type (ExecutionProcessTypes | None | Unset): Filter process usage by process type.
+            Possible values are defined in ExecutionProcessTypes.
+        ui_trigger_kinds (list[ListDataspaceProcessUsagesUiTriggerKindChoices] | Unset): Filter
+            process usage by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
 
@@ -164,9 +160,8 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         dataspace_id=dataspace_id,
-        ui_trigger_name=ui_trigger_name,
+        process_type=process_type,
         ui_trigger_kinds=ui_trigger_kinds,
-        name=name,
         page=page,
         page_size=page_size,
     )

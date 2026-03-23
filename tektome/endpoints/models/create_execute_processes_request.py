@@ -21,11 +21,14 @@ class CreateExecuteProcessesRequest:
     Attributes:
         processes (list[CreateExecuteProcessRequest]):
         auto_approved_output (bool | Unset):  Default: False.
+        should_use_dataspace (bool | Unset): Whether the execution should process all the files and entities within the
+            dataspace or not. Default: False.
         memo (None | str | Unset):
     """
 
     processes: list[CreateExecuteProcessRequest]
     auto_approved_output: bool | Unset = False
+    should_use_dataspace: bool | Unset = False
     memo: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -36,6 +39,8 @@ class CreateExecuteProcessesRequest:
             processes.append(processes_item)
 
         auto_approved_output = self.auto_approved_output
+
+        should_use_dataspace = self.should_use_dataspace
 
         memo: None | str | Unset
         if isinstance(self.memo, Unset):
@@ -52,6 +57,8 @@ class CreateExecuteProcessesRequest:
         )
         if auto_approved_output is not UNSET:
             field_dict["auto_approved_output"] = auto_approved_output
+        if should_use_dataspace is not UNSET:
+            field_dict["should_use_dataspace"] = should_use_dataspace
         if memo is not UNSET:
             field_dict["memo"] = memo
 
@@ -71,6 +78,8 @@ class CreateExecuteProcessesRequest:
 
         auto_approved_output = d.pop("auto_approved_output", UNSET)
 
+        should_use_dataspace = d.pop("should_use_dataspace", UNSET)
+
         def _parse_memo(data: object) -> None | str | Unset:
             if data is None:
                 return data
@@ -83,6 +92,7 @@ class CreateExecuteProcessesRequest:
         create_execute_processes_request = cls(
             processes=processes,
             auto_approved_output=auto_approved_output,
+            should_use_dataspace=should_use_dataspace,
             memo=memo,
         )
 

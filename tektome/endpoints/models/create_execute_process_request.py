@@ -23,12 +23,16 @@ class CreateExecuteProcessRequest:
     Attributes:
         execution_run_args (CreateExecuteProcessRequestExecutionRunArgs):
         process_id (UUID):
+        project_ids (list[UUID] | None | Unset): List of project IDs to execute on processes
+        folder_ids (list[UUID] | None | Unset): List of folder IDs to execute on processes
         kind (None | UiTriggerKindChoices | Unset):
         ui_trigger_ids (list[UUID] | None | Unset):
     """
 
     execution_run_args: CreateExecuteProcessRequestExecutionRunArgs
     process_id: UUID
+    project_ids: list[UUID] | None | Unset = UNSET
+    folder_ids: list[UUID] | None | Unset = UNSET
     kind: None | UiTriggerKindChoices | Unset = UNSET
     ui_trigger_ids: list[UUID] | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -37,6 +41,30 @@ class CreateExecuteProcessRequest:
         execution_run_args = self.execution_run_args.to_dict()
 
         process_id = str(self.process_id)
+
+        project_ids: list[str] | None | Unset
+        if isinstance(self.project_ids, Unset):
+            project_ids = UNSET
+        elif isinstance(self.project_ids, list):
+            project_ids = []
+            for project_ids_type_0_item_data in self.project_ids:
+                project_ids_type_0_item = str(project_ids_type_0_item_data)
+                project_ids.append(project_ids_type_0_item)
+
+        else:
+            project_ids = self.project_ids
+
+        folder_ids: list[str] | None | Unset
+        if isinstance(self.folder_ids, Unset):
+            folder_ids = UNSET
+        elif isinstance(self.folder_ids, list):
+            folder_ids = []
+            for folder_ids_type_0_item_data in self.folder_ids:
+                folder_ids_type_0_item = str(folder_ids_type_0_item_data)
+                folder_ids.append(folder_ids_type_0_item)
+
+        else:
+            folder_ids = self.folder_ids
 
         kind: None | str | Unset
         if isinstance(self.kind, Unset):
@@ -66,6 +94,10 @@ class CreateExecuteProcessRequest:
                 "process_id": process_id,
             }
         )
+        if project_ids is not UNSET:
+            field_dict["project_ids"] = project_ids
+        if folder_ids is not UNSET:
+            field_dict["folder_ids"] = folder_ids
         if kind is not UNSET:
             field_dict["kind"] = kind
         if ui_trigger_ids is not UNSET:
@@ -83,6 +115,50 @@ class CreateExecuteProcessRequest:
         execution_run_args = CreateExecuteProcessRequestExecutionRunArgs.from_dict(d.pop("execution_run_args"))
 
         process_id = UUID(d.pop("process_id"))
+
+        def _parse_project_ids(data: object) -> list[UUID] | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                project_ids_type_0 = []
+                _project_ids_type_0 = data
+                for project_ids_type_0_item_data in _project_ids_type_0:
+                    project_ids_type_0_item = UUID(project_ids_type_0_item_data)
+
+                    project_ids_type_0.append(project_ids_type_0_item)
+
+                return project_ids_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(list[UUID] | None | Unset, data)
+
+        project_ids = _parse_project_ids(d.pop("project_ids", UNSET))
+
+        def _parse_folder_ids(data: object) -> list[UUID] | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                folder_ids_type_0 = []
+                _folder_ids_type_0 = data
+                for folder_ids_type_0_item_data in _folder_ids_type_0:
+                    folder_ids_type_0_item = UUID(folder_ids_type_0_item_data)
+
+                    folder_ids_type_0.append(folder_ids_type_0_item)
+
+                return folder_ids_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(list[UUID] | None | Unset, data)
+
+        folder_ids = _parse_folder_ids(d.pop("folder_ids", UNSET))
 
         def _parse_kind(data: object) -> None | UiTriggerKindChoices | Unset:
             if data is None:
@@ -126,6 +202,8 @@ class CreateExecuteProcessRequest:
         create_execute_process_request = cls(
             execution_run_args=execution_run_args,
             process_id=process_id,
+            project_ids=project_ids,
+            folder_ids=folder_ids,
             kind=kind,
             ui_trigger_ids=ui_trigger_ids,
         )

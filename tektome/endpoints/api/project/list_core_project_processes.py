@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.ui_trigger_kind_choices import UiTriggerKindChoices
+from ...models.list_core_project_processes_ui_trigger_kind_choices import ListCoreProjectProcessesUiTriggerKindChoices
 from ...types import UNSET, Response, Unset
 
 
@@ -15,7 +15,7 @@ def _get_kwargs(
     project_id: UUID,
     *,
     ui_trigger_name: None | str | Unset = UNSET,
-    ui_trigger_kind: None | UiTriggerKindChoices | Unset = UNSET,
+    ui_trigger_kinds: list[ListCoreProjectProcessesUiTriggerKindChoices] | Unset = UNSET,
     name: None | str | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
@@ -30,14 +30,14 @@ def _get_kwargs(
         json_ui_trigger_name = ui_trigger_name
     params["ui_trigger_name"] = json_ui_trigger_name
 
-    json_ui_trigger_kind: None | str | Unset
-    if isinstance(ui_trigger_kind, Unset):
-        json_ui_trigger_kind = UNSET
-    elif isinstance(ui_trigger_kind, UiTriggerKindChoices):
-        json_ui_trigger_kind = ui_trigger_kind.value
-    else:
-        json_ui_trigger_kind = ui_trigger_kind
-    params["ui_trigger_kind"] = json_ui_trigger_kind
+    json_ui_trigger_kinds: list[str] | Unset = UNSET
+    if not isinstance(ui_trigger_kinds, Unset):
+        json_ui_trigger_kinds = []
+        for ui_trigger_kinds_item_data in ui_trigger_kinds:
+            ui_trigger_kinds_item = ui_trigger_kinds_item_data.value
+            json_ui_trigger_kinds.append(ui_trigger_kinds_item)
+
+    params["ui_trigger_kinds"] = json_ui_trigger_kinds
 
     json_name: None | str | Unset
     if isinstance(name, Unset):
@@ -89,7 +89,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     ui_trigger_name: None | str | Unset = UNSET,
-    ui_trigger_kind: None | UiTriggerKindChoices | Unset = UNSET,
+    ui_trigger_kinds: list[ListCoreProjectProcessesUiTriggerKindChoices] | Unset = UNSET,
     name: None | str | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
@@ -102,8 +102,8 @@ def sync_detailed(
     Args:
         project_id (UUID):
         ui_trigger_name (None | str | Unset): Filter processes by UI trigger name.
-        ui_trigger_kind (None | UiTriggerKindChoices | Unset): Filter processes by UI trigger
-            kind. Possible values are defined in UiTriggerKindChoices.
+        ui_trigger_kinds (list[ListCoreProjectProcessesUiTriggerKindChoices] | Unset): Filter
+            processes by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
         name (None | str | Unset): The name (or part of the name) of the process to search for.
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
@@ -119,7 +119,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         project_id=project_id,
         ui_trigger_name=ui_trigger_name,
-        ui_trigger_kind=ui_trigger_kind,
+        ui_trigger_kinds=ui_trigger_kinds,
         name=name,
         page=page,
         page_size=page_size,
@@ -137,7 +137,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     ui_trigger_name: None | str | Unset = UNSET,
-    ui_trigger_kind: None | UiTriggerKindChoices | Unset = UNSET,
+    ui_trigger_kinds: list[ListCoreProjectProcessesUiTriggerKindChoices] | Unset = UNSET,
     name: None | str | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
@@ -150,8 +150,8 @@ async def asyncio_detailed(
     Args:
         project_id (UUID):
         ui_trigger_name (None | str | Unset): Filter processes by UI trigger name.
-        ui_trigger_kind (None | UiTriggerKindChoices | Unset): Filter processes by UI trigger
-            kind. Possible values are defined in UiTriggerKindChoices.
+        ui_trigger_kinds (list[ListCoreProjectProcessesUiTriggerKindChoices] | Unset): Filter
+            processes by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
         name (None | str | Unset): The name (or part of the name) of the process to search for.
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
@@ -167,7 +167,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         project_id=project_id,
         ui_trigger_name=ui_trigger_name,
-        ui_trigger_kind=ui_trigger_kind,
+        ui_trigger_kinds=ui_trigger_kinds,
         name=name,
         page=page,
         page_size=page_size,
