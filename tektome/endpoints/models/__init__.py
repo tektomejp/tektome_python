@@ -104,6 +104,10 @@ from .bim_query_to_keys_values_response import BimQueryToKeysValuesResponse
 from .bim_search_item_result_response import BimSearchItemResultResponse
 from .bim_search_item_result_response_file_content_type_0 import BimSearchItemResultResponseFileContentType0
 from .bim_search_result_response import BimSearchResultResponse
+from .bim_topology_search_box_post_in import BimTopologySearchBoxPostIn
+from .bim_topology_search_post_out import BimTopologySearchPostOut
+from .bim_topology_search_prism_post_in import BimTopologySearchPrismPostIn
+from .bim_topology_search_sphere_post_in import BimTopologySearchSpherePostIn
 from .bim_trim_query_item import BimTrimQueryItem
 from .bim_view_object_link_response import BimViewObjectLinkResponse
 from .bim_view_response import BimViewResponse
@@ -114,6 +118,7 @@ from .blob_upload_request_response import BlobUploadRequestResponse
 from .blob_upload_response import BlobUploadResponse
 from .boolean_attribute_schema_request import BooleanAttributeSchemaRequest
 from .boolean_attribute_schema_response import BooleanAttributeSchemaResponse
+from .boundary import Boundary
 from .bulk_move_folder_resources_schema import BulkMoveFolderResourcesSchema
 from .bulk_user_invitation_schema_response import BulkUserInvitationSchemaResponse
 from .candidate_item import CandidateItem
@@ -629,6 +634,8 @@ from .pdf_citation_schema_response import PDFCitationSchemaResponse
 from .pdf_citations_response import PDFCitationsResponse
 from .pdf_polygon_schema_request import PDFPolygonSchemaRequest
 from .period_types import PeriodTypes
+from .point_2d import Point2D
+from .point_3d import Point3D
 from .polygon_attribute_schema_request import PolygonAttributeSchemaRequest
 from .polygon_attribute_schema_response import PolygonAttributeSchemaResponse
 from .polygon_attribute_schema_response_value_type_0 import PolygonAttributeSchemaResponseValueType0
@@ -1099,6 +1106,10 @@ __all__ = (
     "BimSearchItemResultResponse",
     "BimSearchItemResultResponseFileContentType0",
     "BimSearchResultResponse",
+    "BimTopologySearchBoxPostIn",
+    "BimTopologySearchPostOut",
+    "BimTopologySearchPrismPostIn",
+    "BimTopologySearchSpherePostIn",
     "BimTrimQueryItem",
     "BimViewObjectLinkResponse",
     "BimViewResponse",
@@ -1109,6 +1120,7 @@ __all__ = (
     "BlobUploadResponse",
     "BooleanAttributeSchemaRequest",
     "BooleanAttributeSchemaResponse",
+    "Boundary",
     "BulkMoveFolderResourcesSchema",
     "BulkUserInvitationSchemaResponse",
     "CandidateItem",
@@ -1588,6 +1600,8 @@ __all__ = (
     "PDFCitationsResponse",
     "PDFPolygonSchemaRequest",
     "PeriodTypes",
+    "Point2D",
+    "Point3D",
     "PolygonAttributeSchemaRequest",
     "PolygonAttributeSchemaResponse",
     "PolygonAttributeSchemaResponseValueType0",
