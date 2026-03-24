@@ -59,18 +59,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: AzurePresignedUploadInputSchema,
 ) -> Response[AzurePresignedUploadOutputSchema]:
-    """Presigned File Url
+    """Generate a presigned file upload URL
 
-     cOkNhBwR
-
-    Generate a presigned URL for uploading a file in Azure storage.
-
-    Args:
-        request: Request object
-        payload: The request payload.
-
-    Returns:
-        A presigned URL as a string.
+     Generate a time-limited presigned URL for uploading a file to cloud storage. The URL expires after a
+    configured duration.
 
     Args:
         body (AzurePresignedUploadInputSchema): Schema for input when requesting a presigned
@@ -100,18 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: AzurePresignedUploadInputSchema,
 ) -> AzurePresignedUploadOutputSchema | None:
-    """Presigned File Url
+    """Generate a presigned file upload URL
 
-     cOkNhBwR
-
-    Generate a presigned URL for uploading a file in Azure storage.
-
-    Args:
-        request: Request object
-        payload: The request payload.
-
-    Returns:
-        A presigned URL as a string.
+     Generate a time-limited presigned URL for uploading a file to cloud storage. The URL expires after a
+    configured duration.
 
     Args:
         body (AzurePresignedUploadInputSchema): Schema for input when requesting a presigned
@@ -136,18 +120,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: AzurePresignedUploadInputSchema,
 ) -> Response[AzurePresignedUploadOutputSchema]:
-    """Presigned File Url
+    """Generate a presigned file upload URL
 
-     cOkNhBwR
-
-    Generate a presigned URL for uploading a file in Azure storage.
-
-    Args:
-        request: Request object
-        payload: The request payload.
-
-    Returns:
-        A presigned URL as a string.
+     Generate a time-limited presigned URL for uploading a file to cloud storage. The URL expires after a
+    configured duration.
 
     Args:
         body (AzurePresignedUploadInputSchema): Schema for input when requesting a presigned
@@ -175,18 +151,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: AzurePresignedUploadInputSchema,
 ) -> AzurePresignedUploadOutputSchema | None:
-    """Presigned File Url
+    """Generate a presigned file upload URL
 
-     cOkNhBwR
-
-    Generate a presigned URL for uploading a file in Azure storage.
-
-    Args:
-        request: Request object
-        payload: The request payload.
-
-    Returns:
-        A presigned URL as a string.
+     Generate a time-limited presigned URL for uploading a file to cloud storage. The URL expires after a
+    configured duration.
 
     Args:
         body (AzurePresignedUploadInputSchema): Schema for input when requesting a presigned

@@ -17,17 +17,22 @@ class FileReviewedData:
     """Reviewed data for file upload candidates.
 
     Attributes:
+        resource_signed_url (None | str): Generate a signed URL for the resource file.
         resource_id (None | Unset | UUID):
         resource_name (None | str | Unset):
         resource_url (None | str | Unset):
     """
 
+    resource_signed_url: None | str
     resource_id: None | Unset | UUID = UNSET
     resource_name: None | str | Unset = UNSET
     resource_url: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        resource_signed_url: None | str
+        resource_signed_url = self.resource_signed_url
+
         resource_id: None | str | Unset
         if isinstance(self.resource_id, Unset):
             resource_id = UNSET
@@ -50,7 +55,11 @@ class FileReviewedData:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
+        field_dict.update(
+            {
+                "resource_signed_url": resource_signed_url,
+            }
+        )
         if resource_id is not UNSET:
             field_dict["resource_id"] = resource_id
         if resource_name is not UNSET:
@@ -63,6 +72,13 @@ class FileReviewedData:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+
+        def _parse_resource_signed_url(data: object) -> None | str:
+            if data is None:
+                return data
+            return cast(None | str, data)
+
+        resource_signed_url = _parse_resource_signed_url(d.pop("resource_signed_url"))
 
         def _parse_resource_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -100,6 +116,7 @@ class FileReviewedData:
         resource_url = _parse_resource_url(d.pop("resource_url", UNSET))
 
         file_reviewed_data = cls(
+            resource_signed_url=resource_signed_url,
             resource_id=resource_id,
             resource_name=resource_name,
             resource_url=resource_url,

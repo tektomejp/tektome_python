@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.project_requirement_item_get_out import ProjectRequirementItemGetOut
+from ...models.project_requirement_item_response import ProjectRequirementItemResponse
 from ...types import UNSET, Response
 
 
@@ -36,9 +36,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Any | ProjectRequirementItemGetOut | None:
+) -> Any | ProjectRequirementItemResponse | None:
     if response.status_code == 200:
-        response_200 = ProjectRequirementItemGetOut.from_dict(response.json())
+        response_200 = ProjectRequirementItemResponse.from_dict(response.json())
 
         return response_200
 
@@ -54,7 +54,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[Any | ProjectRequirementItemGetOut]:
+) -> Response[Any | ProjectRequirementItemResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -68,40 +68,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     nonce: int,
-) -> Response[Any | ProjectRequirementItemGetOut]:
-    """Get Stream Table Requirement Items
+) -> Response[Any | ProjectRequirementItemResponse]:
+    """Stream requirement items table generation
 
-     JnQkM31Z
-
-    Streams a new requirement items table using Server-Sent Events (SSE).
-    The new requirement items table is saved to the requirement after streaming is complete.
-
-    If there is no change, the following event is sent:
-
-    ```
-    event: end
-    data: NO_CHANGE
-    ```
-
-    If there is an error, the following event is sent:
-
-    ```
-    event: error
-    data: error message
-    ```
-
-    Otherwise, the generated rows are sent as they are produced:
-
-    ```
-    data: [{row1}]
-
-    data: [{row1},{row2}]
-
-    ...
-
-    event: end
-    data: DONE
-    ```
+     Stream AI-generated requirement items table using Server-Sent Events (SSE). Rows are streamed
+    incrementally as they are produced and saved after completion.
 
     Args:
         requirement_id (UUID):
@@ -112,7 +83,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ProjectRequirementItemGetOut]
+        Response[Any | ProjectRequirementItemResponse]
     """
 
     kwargs = _get_kwargs(
@@ -132,40 +103,11 @@ def sync(
     *,
     client: AuthenticatedClient,
     nonce: int,
-) -> Any | ProjectRequirementItemGetOut | None:
-    """Get Stream Table Requirement Items
+) -> Any | ProjectRequirementItemResponse | None:
+    """Stream requirement items table generation
 
-     JnQkM31Z
-
-    Streams a new requirement items table using Server-Sent Events (SSE).
-    The new requirement items table is saved to the requirement after streaming is complete.
-
-    If there is no change, the following event is sent:
-
-    ```
-    event: end
-    data: NO_CHANGE
-    ```
-
-    If there is an error, the following event is sent:
-
-    ```
-    event: error
-    data: error message
-    ```
-
-    Otherwise, the generated rows are sent as they are produced:
-
-    ```
-    data: [{row1}]
-
-    data: [{row1},{row2}]
-
-    ...
-
-    event: end
-    data: DONE
-    ```
+     Stream AI-generated requirement items table using Server-Sent Events (SSE). Rows are streamed
+    incrementally as they are produced and saved after completion.
 
     Args:
         requirement_id (UUID):
@@ -176,7 +118,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | ProjectRequirementItemGetOut
+        Any | ProjectRequirementItemResponse
     """
 
     return sync_detailed(
@@ -191,40 +133,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     nonce: int,
-) -> Response[Any | ProjectRequirementItemGetOut]:
-    """Get Stream Table Requirement Items
+) -> Response[Any | ProjectRequirementItemResponse]:
+    """Stream requirement items table generation
 
-     JnQkM31Z
-
-    Streams a new requirement items table using Server-Sent Events (SSE).
-    The new requirement items table is saved to the requirement after streaming is complete.
-
-    If there is no change, the following event is sent:
-
-    ```
-    event: end
-    data: NO_CHANGE
-    ```
-
-    If there is an error, the following event is sent:
-
-    ```
-    event: error
-    data: error message
-    ```
-
-    Otherwise, the generated rows are sent as they are produced:
-
-    ```
-    data: [{row1}]
-
-    data: [{row1},{row2}]
-
-    ...
-
-    event: end
-    data: DONE
-    ```
+     Stream AI-generated requirement items table using Server-Sent Events (SSE). Rows are streamed
+    incrementally as they are produced and saved after completion.
 
     Args:
         requirement_id (UUID):
@@ -235,7 +148,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ProjectRequirementItemGetOut]
+        Response[Any | ProjectRequirementItemResponse]
     """
 
     kwargs = _get_kwargs(
@@ -253,40 +166,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     nonce: int,
-) -> Any | ProjectRequirementItemGetOut | None:
-    """Get Stream Table Requirement Items
+) -> Any | ProjectRequirementItemResponse | None:
+    """Stream requirement items table generation
 
-     JnQkM31Z
-
-    Streams a new requirement items table using Server-Sent Events (SSE).
-    The new requirement items table is saved to the requirement after streaming is complete.
-
-    If there is no change, the following event is sent:
-
-    ```
-    event: end
-    data: NO_CHANGE
-    ```
-
-    If there is an error, the following event is sent:
-
-    ```
-    event: error
-    data: error message
-    ```
-
-    Otherwise, the generated rows are sent as they are produced:
-
-    ```
-    data: [{row1}]
-
-    data: [{row1},{row2}]
-
-    ...
-
-    event: end
-    data: DONE
-    ```
+     Stream AI-generated requirement items table using Server-Sent Events (SSE). Rows are streamed
+    incrementally as they are produced and saved after completion.
 
     Args:
         requirement_id (UUID):
@@ -297,7 +181,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | ProjectRequirementItemGetOut
+        Any | ProjectRequirementItemResponse
     """
 
     return (

@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.queue_length_status_get_out import QueueLengthStatusGetOut
+from ...models.queue_length_status_response import QueueLengthStatusResponse
 from ...types import Response
 
 
@@ -21,9 +21,9 @@ def _get_kwargs() -> dict[str, Any]:
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> QueueLengthStatusGetOut | str | None:
+) -> QueueLengthStatusResponse | str | None:
     if response.status_code == 200:
-        response_200 = QueueLengthStatusGetOut.from_dict(response.json())
+        response_200 = QueueLengthStatusResponse.from_dict(response.json())
 
         return response_200
 
@@ -39,7 +39,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[QueueLengthStatusGetOut | str]:
+) -> Response[QueueLengthStatusResponse | str]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -51,19 +51,17 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[QueueLengthStatusGetOut | str]:
-    """Get Queue Length
+) -> Response[QueueLengthStatusResponse | str]:
+    """Get message queue lengths
 
-     Get the total length of the celery and faststream queues using the RabbitMQ API.
-
-    This endpoint returns the number of messages in the celery and faststream queues.
+     Retrieve the current number of pending messages in background processing and streaming queues.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[QueueLengthStatusGetOut | str]
+        Response[QueueLengthStatusResponse | str]
     """
 
     kwargs = _get_kwargs()
@@ -78,19 +76,17 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-) -> QueueLengthStatusGetOut | str | None:
-    """Get Queue Length
+) -> QueueLengthStatusResponse | str | None:
+    """Get message queue lengths
 
-     Get the total length of the celery and faststream queues using the RabbitMQ API.
-
-    This endpoint returns the number of messages in the celery and faststream queues.
+     Retrieve the current number of pending messages in background processing and streaming queues.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        QueueLengthStatusGetOut | str
+        QueueLengthStatusResponse | str
     """
 
     return sync_detailed(
@@ -101,19 +97,17 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[QueueLengthStatusGetOut | str]:
-    """Get Queue Length
+) -> Response[QueueLengthStatusResponse | str]:
+    """Get message queue lengths
 
-     Get the total length of the celery and faststream queues using the RabbitMQ API.
-
-    This endpoint returns the number of messages in the celery and faststream queues.
+     Retrieve the current number of pending messages in background processing and streaming queues.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[QueueLengthStatusGetOut | str]
+        Response[QueueLengthStatusResponse | str]
     """
 
     kwargs = _get_kwargs()
@@ -126,19 +120,17 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-) -> QueueLengthStatusGetOut | str | None:
-    """Get Queue Length
+) -> QueueLengthStatusResponse | str | None:
+    """Get message queue lengths
 
-     Get the total length of the celery and faststream queues using the RabbitMQ API.
-
-    This endpoint returns the number of messages in the celery and faststream queues.
+     Retrieve the current number of pending messages in background processing and streaming queues.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        QueueLengthStatusGetOut | str
+        QueueLengthStatusResponse | str
     """
 
     return (

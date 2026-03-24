@@ -8,7 +8,6 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.list_requirement_reference_notes_sort import ListRequirementReferenceNotesSort
-from ...models.paged_reference_note_schema import PagedReferenceNoteSchema
 from ...types import UNSET, Response, Unset
 
 
@@ -50,23 +49,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> PagedReferenceNoteSchema | None:
-    if response.status_code == 200:
-        response_200 = PagedReferenceNoteSchema.from_dict(response.json())
-
-        return response_200
-
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[PagedReferenceNoteSchema]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -82,16 +72,10 @@ def sync_detailed(
     sort: ListRequirementReferenceNotesSort | Unset = ListRequirementReferenceNotesSort.ASC,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[PagedReferenceNoteSchema]:
-    """Get Reference Notes
+) -> Response[Any]:
+    """List requirement reference notes
 
-     JnQkM31B
-
-    Get reference notes associated to a requirement
-
-    Args:
-        request: Request object
-        path_params: path params of type RequirementPath
+     Retrieve a paginated list of reference notes associated with a requirement.
 
     Args:
         requirement_id (UUID):
@@ -105,7 +89,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PagedReferenceNoteSchema]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -122,48 +106,6 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    requirement_id: UUID,
-    *,
-    client: AuthenticatedClient,
-    sort: ListRequirementReferenceNotesSort | Unset = ListRequirementReferenceNotesSort.ASC,
-    page: int | Unset = 1,
-    page_size: int | None | Unset = UNSET,
-) -> PagedReferenceNoteSchema | None:
-    """Get Reference Notes
-
-     JnQkM31B
-
-    Get reference notes associated to a requirement
-
-    Args:
-        request: Request object
-        path_params: path params of type RequirementPath
-
-    Args:
-        requirement_id (UUID):
-        sort (ListRequirementReferenceNotesSort | Unset):  Default:
-            ListRequirementReferenceNotesSort.ASC.
-        page (int | Unset):  Default: 1.
-        page_size (int | None | Unset):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        PagedReferenceNoteSchema
-    """
-
-    return sync_detailed(
-        requirement_id=requirement_id,
-        client=client,
-        sort=sort,
-        page=page,
-        page_size=page_size,
-    ).parsed
-
-
 async def asyncio_detailed(
     requirement_id: UUID,
     *,
@@ -171,16 +113,10 @@ async def asyncio_detailed(
     sort: ListRequirementReferenceNotesSort | Unset = ListRequirementReferenceNotesSort.ASC,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[PagedReferenceNoteSchema]:
-    """Get Reference Notes
+) -> Response[Any]:
+    """List requirement reference notes
 
-     JnQkM31B
-
-    Get reference notes associated to a requirement
-
-    Args:
-        request: Request object
-        path_params: path params of type RequirementPath
+     Retrieve a paginated list of reference notes associated with a requirement.
 
     Args:
         requirement_id (UUID):
@@ -194,7 +130,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PagedReferenceNoteSchema]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -207,47 +143,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    requirement_id: UUID,
-    *,
-    client: AuthenticatedClient,
-    sort: ListRequirementReferenceNotesSort | Unset = ListRequirementReferenceNotesSort.ASC,
-    page: int | Unset = 1,
-    page_size: int | None | Unset = UNSET,
-) -> PagedReferenceNoteSchema | None:
-    """Get Reference Notes
-
-     JnQkM31B
-
-    Get reference notes associated to a requirement
-
-    Args:
-        request: Request object
-        path_params: path params of type RequirementPath
-
-    Args:
-        requirement_id (UUID):
-        sort (ListRequirementReferenceNotesSort | Unset):  Default:
-            ListRequirementReferenceNotesSort.ASC.
-        page (int | Unset):  Default: 1.
-        page_size (int | None | Unset):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        PagedReferenceNoteSchema
-    """
-
-    return (
-        await asyncio_detailed(
-            requirement_id=requirement_id,
-            client=client,
-            sort=sort,
-            page=page,
-            page_size=page_size,
-        )
-    ).parsed

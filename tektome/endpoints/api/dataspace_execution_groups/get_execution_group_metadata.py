@@ -7,7 +7,6 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.execution_group_processes_metadata_get_out import ExecutionGroupProcessesMetadataGetOut
 from ...types import Response
 
 
@@ -27,23 +26,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ExecutionGroupProcessesMetadataGetOut | None:
-    if response.status_code == 200:
-        response_200 = ExecutionGroupProcessesMetadataGetOut.from_dict(response.json())
-
-        return response_200
-
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ExecutionGroupProcessesMetadataGetOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,18 +47,10 @@ def sync_detailed(
     execution_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ExecutionGroupProcessesMetadataGetOut]:
-    """Get Execution Group Metadata
+) -> Response[Any]:
+    """Get execution group process metadata
 
-     bbRd7fnc
-
-    Retrieve details of a specific execution group by its ID.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
-
-    Returns: ExecutionGroup - The execution group instance.
+     Retrieve metadata about the processes within a specific execution group.
 
     Args:
         dataspace_id (UUID):
@@ -79,7 +61,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ExecutionGroupProcessesMetadataGetOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -94,60 +76,15 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    dataspace_id: UUID,
-    execution_group_id: UUID,
-    *,
-    client: AuthenticatedClient,
-) -> ExecutionGroupProcessesMetadataGetOut | None:
-    """Get Execution Group Metadata
-
-     bbRd7fnc
-
-    Retrieve details of a specific execution group by its ID.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
-
-    Returns: ExecutionGroup - The execution group instance.
-
-    Args:
-        dataspace_id (UUID):
-        execution_group_id (UUID): The UUID of the execution group
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        ExecutionGroupProcessesMetadataGetOut
-    """
-
-    return sync_detailed(
-        dataspace_id=dataspace_id,
-        execution_group_id=execution_group_id,
-        client=client,
-    ).parsed
-
-
 async def asyncio_detailed(
     dataspace_id: UUID,
     execution_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ExecutionGroupProcessesMetadataGetOut]:
-    """Get Execution Group Metadata
+) -> Response[Any]:
+    """Get execution group process metadata
 
-     bbRd7fnc
-
-    Retrieve details of a specific execution group by its ID.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
-
-    Returns: ExecutionGroup - The execution group instance.
+     Retrieve metadata about the processes within a specific execution group.
 
     Args:
         dataspace_id (UUID):
@@ -158,7 +95,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ExecutionGroupProcessesMetadataGetOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -169,42 +106,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    dataspace_id: UUID,
-    execution_group_id: UUID,
-    *,
-    client: AuthenticatedClient,
-) -> ExecutionGroupProcessesMetadataGetOut | None:
-    """Get Execution Group Metadata
-
-     bbRd7fnc
-
-    Retrieve details of a specific execution group by its ID.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionGroupPathParams - The path parameters containing the execution group ID.
-
-    Returns: ExecutionGroup - The execution group instance.
-
-    Args:
-        dataspace_id (UUID):
-        execution_group_id (UUID): The UUID of the execution group
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        ExecutionGroupProcessesMetadataGetOut
-    """
-
-    return (
-        await asyncio_detailed(
-            dataspace_id=dataspace_id,
-            execution_group_id=execution_group_id,
-            client=client,
-        )
-    ).parsed

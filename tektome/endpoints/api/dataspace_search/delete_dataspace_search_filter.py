@@ -51,11 +51,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Dataspace Search Filter
+    """Delete a search filter
 
-     b1rX1o8W
-
-    Delete a filter for the current dataspace. It will also remove all associated fields.
+     Delete a search filter configuration and all its associated fields from a dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -87,11 +85,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Dataspace Search Filter
+    """Delete a search filter
 
-     b1rX1o8W
-
-    Delete a filter for the current dataspace. It will also remove all associated fields.
+     Delete a search filter configuration and all its associated fields from a dataspace.
 
     Args:
         dataspace_id (UUID):

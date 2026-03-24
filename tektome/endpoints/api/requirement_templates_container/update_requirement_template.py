@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.requirement_template_get_out import RequirementTemplateGetOut
-from ...models.requirement_template_patch_in import RequirementTemplatePatchIn
+from ...models.requirement_template_response import RequirementTemplateResponse
+from ...models.update_requirement_template_request import UpdateRequirementTemplateRequest
 from ...types import Response
 
 
 def _get_kwargs(
     requirement_template_id: UUID,
     *,
-    body: RequirementTemplatePatchIn,
+    body: UpdateRequirementTemplateRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -36,9 +36,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RequirementTemplateGetOut | None:
+) -> RequirementTemplateResponse | None:
     if response.status_code == 200:
-        response_200 = RequirementTemplateGetOut.from_dict(response.json())
+        response_200 = RequirementTemplateResponse.from_dict(response.json())
 
         return response_200
 
@@ -50,7 +50,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[RequirementTemplateGetOut]:
+) -> Response[RequirementTemplateResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,24 +63,23 @@ def sync_detailed(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementTemplatePatchIn,
-) -> Response[RequirementTemplateGetOut]:
-    """Patch Requirement Template
+    body: UpdateRequirementTemplateRequest,
+) -> Response[RequirementTemplateResponse]:
+    """Update a requirement template
 
-     B7GNMWvb
-
-    Update a requirement template inside a requirement template container.
+     Partially update a requirement template by its ID. The template name must remain unique within the
+    organization.
 
     Args:
         requirement_template_id (UUID):
-        body (RequirementTemplatePatchIn): Serializer for creating a Requirement Template.
+        body (UpdateRequirementTemplateRequest): Serializer for creating a Requirement Template.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementTemplateGetOut]
+        Response[RequirementTemplateResponse]
     """
 
     kwargs = _get_kwargs(
@@ -99,24 +98,23 @@ def sync(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementTemplatePatchIn,
-) -> RequirementTemplateGetOut | None:
-    """Patch Requirement Template
+    body: UpdateRequirementTemplateRequest,
+) -> RequirementTemplateResponse | None:
+    """Update a requirement template
 
-     B7GNMWvb
-
-    Update a requirement template inside a requirement template container.
+     Partially update a requirement template by its ID. The template name must remain unique within the
+    organization.
 
     Args:
         requirement_template_id (UUID):
-        body (RequirementTemplatePatchIn): Serializer for creating a Requirement Template.
+        body (UpdateRequirementTemplateRequest): Serializer for creating a Requirement Template.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementTemplateGetOut
+        RequirementTemplateResponse
     """
 
     return sync_detailed(
@@ -130,24 +128,23 @@ async def asyncio_detailed(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementTemplatePatchIn,
-) -> Response[RequirementTemplateGetOut]:
-    """Patch Requirement Template
+    body: UpdateRequirementTemplateRequest,
+) -> Response[RequirementTemplateResponse]:
+    """Update a requirement template
 
-     B7GNMWvb
-
-    Update a requirement template inside a requirement template container.
+     Partially update a requirement template by its ID. The template name must remain unique within the
+    organization.
 
     Args:
         requirement_template_id (UUID):
-        body (RequirementTemplatePatchIn): Serializer for creating a Requirement Template.
+        body (UpdateRequirementTemplateRequest): Serializer for creating a Requirement Template.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementTemplateGetOut]
+        Response[RequirementTemplateResponse]
     """
 
     kwargs = _get_kwargs(
@@ -164,24 +161,23 @@ async def asyncio(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementTemplatePatchIn,
-) -> RequirementTemplateGetOut | None:
-    """Patch Requirement Template
+    body: UpdateRequirementTemplateRequest,
+) -> RequirementTemplateResponse | None:
+    """Update a requirement template
 
-     B7GNMWvb
-
-    Update a requirement template inside a requirement template container.
+     Partially update a requirement template by its ID. The template name must remain unique within the
+    organization.
 
     Args:
         requirement_template_id (UUID):
-        body (RequirementTemplatePatchIn): Serializer for creating a Requirement Template.
+        body (UpdateRequirementTemplateRequest): Serializer for creating a Requirement Template.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementTemplateGetOut
+        RequirementTemplateResponse
     """
 
     return (

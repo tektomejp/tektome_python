@@ -7,7 +7,6 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.execution_get_out import ExecutionGetOut
 from ...types import Response
 
 
@@ -27,19 +26,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ExecutionGetOut | None:
-    if response.status_code == 200:
-        response_200 = ExecutionGetOut.from_dict(response.json())
-
-        return response_200
-
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ExecutionGetOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,18 +47,11 @@ def sync_detailed(
     execution_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ExecutionGetOut]:
-    """Get Execution Metadata
+) -> Response[Any]:
+    """Get execution metadata
 
-     p6cozWCR
-
-    Retrieve details of a specific execution by its ID.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionPathParams - The path parameters containing the execution ID.
-
-    Returns: Execution - The execution group instance with serialized detailed metadata.
+     Retrieve detailed metadata for a specific execution by its ID, including status and processing
+    details.
 
     Args:
         dataspace_id (UUID):
@@ -75,7 +62,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ExecutionGetOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -90,60 +77,16 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    dataspace_id: UUID,
-    execution_id: UUID,
-    *,
-    client: AuthenticatedClient,
-) -> ExecutionGetOut | None:
-    """Get Execution Metadata
-
-     p6cozWCR
-
-    Retrieve details of a specific execution by its ID.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionPathParams - The path parameters containing the execution ID.
-
-    Returns: Execution - The execution group instance with serialized detailed metadata.
-
-    Args:
-        dataspace_id (UUID):
-        execution_id (UUID): The UUID of the execution to cancel
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        ExecutionGetOut
-    """
-
-    return sync_detailed(
-        dataspace_id=dataspace_id,
-        execution_id=execution_id,
-        client=client,
-    ).parsed
-
-
 async def asyncio_detailed(
     dataspace_id: UUID,
     execution_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ExecutionGetOut]:
-    """Get Execution Metadata
+) -> Response[Any]:
+    """Get execution metadata
 
-     p6cozWCR
-
-    Retrieve details of a specific execution by its ID.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionPathParams - The path parameters containing the execution ID.
-
-    Returns: Execution - The execution group instance with serialized detailed metadata.
+     Retrieve detailed metadata for a specific execution by its ID, including status and processing
+    details.
 
     Args:
         dataspace_id (UUID):
@@ -154,7 +97,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ExecutionGetOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -165,42 +108,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    dataspace_id: UUID,
-    execution_id: UUID,
-    *,
-    client: AuthenticatedClient,
-) -> ExecutionGetOut | None:
-    """Get Execution Metadata
-
-     p6cozWCR
-
-    Retrieve details of a specific execution by its ID.
-
-    Args:
-        request: HttpRequest - The incoming HTTP request.
-        path_params: ExecutionPathParams - The path parameters containing the execution ID.
-
-    Returns: Execution - The execution group instance with serialized detailed metadata.
-
-    Args:
-        dataspace_id (UUID):
-        execution_id (UUID): The UUID of the execution to cancel
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        ExecutionGetOut
-    """
-
-    return (
-        await asyncio_detailed(
-            dataspace_id=dataspace_id,
-            execution_id=execution_id,
-            client=client,
-        )
-    ).parsed

@@ -8,15 +8,15 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.bim_element_key_value_search_bim_element_type_v2_path import BimElementKeyValueSearchBimElementTypeV2Path
-from ...models.bim_key_value_search_post_in import BimKeyValueSearchPostIn
-from ...models.bim_key_value_search_result_post_out import BimKeyValueSearchResultPostOut
+from ...models.bim_key_value_search_result_response import BimKeyValueSearchResultResponse
+from ...models.create_bim_key_value_search_request import CreateBimKeyValueSearchRequest
 from ...types import UNSET, Response
 
 
 def _get_kwargs(
     bim_element: BimElementKeyValueSearchBimElementTypeV2Path,
     *,
-    body: BimKeyValueSearchPostIn,
+    body: CreateBimKeyValueSearchRequest,
     bim_project_id: UUID,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -46,9 +46,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BimKeyValueSearchResultPostOut | None:
+) -> BimKeyValueSearchResultResponse | None:
     if response.status_code == 200:
-        response_200 = BimKeyValueSearchResultPostOut.from_dict(response.json())
+        response_200 = BimKeyValueSearchResultResponse.from_dict(response.json())
 
         return response_200
 
@@ -60,7 +60,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BimKeyValueSearchResultPostOut]:
+) -> Response[BimKeyValueSearchResultResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -73,14 +73,12 @@ def sync_detailed(
     bim_element: BimElementKeyValueSearchBimElementTypeV2Path,
     *,
     client: AuthenticatedClient,
-    body: BimKeyValueSearchPostIn,
+    body: CreateBimKeyValueSearchRequest,
     bim_project_id: UUID,
-) -> Response[BimKeyValueSearchResultPostOut]:
-    """Bim Element Key Value Search
+) -> Response[BimKeyValueSearchResultResponse]:
+    """Search BIM elements by key-value
 
-     Nh2cP7IZ
-
-    Deprecated Key-Value search endpoint using V1 indices.
+     Deprecated. Use the V2 streaming key-value search endpoint instead.
 
     Args:
         bim_element (BimElementKeyValueSearchBimElementTypeV2Path): An enumeration representing
@@ -96,7 +94,8 @@ def sync_detailed(
                     Resolves and returns the corresponding document class for a given BIM element
             type.
         bim_project_id (UUID):
-        body (BimKeyValueSearchPostIn): Schema for key-value search in BIM file_content JSON.
+        body (CreateBimKeyValueSearchRequest): Schema for key-value search in BIM file_content
+            JSON.
 
             Supports wildcard patterns using '*':
             - key="*" matches any key name
@@ -109,7 +108,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimKeyValueSearchResultPostOut]
+        Response[BimKeyValueSearchResultResponse]
     """
 
     kwargs = _get_kwargs(
@@ -129,14 +128,12 @@ def sync(
     bim_element: BimElementKeyValueSearchBimElementTypeV2Path,
     *,
     client: AuthenticatedClient,
-    body: BimKeyValueSearchPostIn,
+    body: CreateBimKeyValueSearchRequest,
     bim_project_id: UUID,
-) -> BimKeyValueSearchResultPostOut | None:
-    """Bim Element Key Value Search
+) -> BimKeyValueSearchResultResponse | None:
+    """Search BIM elements by key-value
 
-     Nh2cP7IZ
-
-    Deprecated Key-Value search endpoint using V1 indices.
+     Deprecated. Use the V2 streaming key-value search endpoint instead.
 
     Args:
         bim_element (BimElementKeyValueSearchBimElementTypeV2Path): An enumeration representing
@@ -152,7 +149,8 @@ def sync(
                     Resolves and returns the corresponding document class for a given BIM element
             type.
         bim_project_id (UUID):
-        body (BimKeyValueSearchPostIn): Schema for key-value search in BIM file_content JSON.
+        body (CreateBimKeyValueSearchRequest): Schema for key-value search in BIM file_content
+            JSON.
 
             Supports wildcard patterns using '*':
             - key="*" matches any key name
@@ -165,7 +163,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimKeyValueSearchResultPostOut
+        BimKeyValueSearchResultResponse
     """
 
     return sync_detailed(
@@ -180,14 +178,12 @@ async def asyncio_detailed(
     bim_element: BimElementKeyValueSearchBimElementTypeV2Path,
     *,
     client: AuthenticatedClient,
-    body: BimKeyValueSearchPostIn,
+    body: CreateBimKeyValueSearchRequest,
     bim_project_id: UUID,
-) -> Response[BimKeyValueSearchResultPostOut]:
-    """Bim Element Key Value Search
+) -> Response[BimKeyValueSearchResultResponse]:
+    """Search BIM elements by key-value
 
-     Nh2cP7IZ
-
-    Deprecated Key-Value search endpoint using V1 indices.
+     Deprecated. Use the V2 streaming key-value search endpoint instead.
 
     Args:
         bim_element (BimElementKeyValueSearchBimElementTypeV2Path): An enumeration representing
@@ -203,7 +199,8 @@ async def asyncio_detailed(
                     Resolves and returns the corresponding document class for a given BIM element
             type.
         bim_project_id (UUID):
-        body (BimKeyValueSearchPostIn): Schema for key-value search in BIM file_content JSON.
+        body (CreateBimKeyValueSearchRequest): Schema for key-value search in BIM file_content
+            JSON.
 
             Supports wildcard patterns using '*':
             - key="*" matches any key name
@@ -216,7 +213,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimKeyValueSearchResultPostOut]
+        Response[BimKeyValueSearchResultResponse]
     """
 
     kwargs = _get_kwargs(
@@ -234,14 +231,12 @@ async def asyncio(
     bim_element: BimElementKeyValueSearchBimElementTypeV2Path,
     *,
     client: AuthenticatedClient,
-    body: BimKeyValueSearchPostIn,
+    body: CreateBimKeyValueSearchRequest,
     bim_project_id: UUID,
-) -> BimKeyValueSearchResultPostOut | None:
-    """Bim Element Key Value Search
+) -> BimKeyValueSearchResultResponse | None:
+    """Search BIM elements by key-value
 
-     Nh2cP7IZ
-
-    Deprecated Key-Value search endpoint using V1 indices.
+     Deprecated. Use the V2 streaming key-value search endpoint instead.
 
     Args:
         bim_element (BimElementKeyValueSearchBimElementTypeV2Path): An enumeration representing
@@ -257,7 +252,8 @@ async def asyncio(
                     Resolves and returns the corresponding document class for a given BIM element
             type.
         bim_project_id (UUID):
-        body (BimKeyValueSearchPostIn): Schema for key-value search in BIM file_content JSON.
+        body (CreateBimKeyValueSearchRequest): Schema for key-value search in BIM file_content
+            JSON.
 
             Supports wildcard patterns using '*':
             - key="*" matches any key name
@@ -270,7 +266,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimKeyValueSearchResultPostOut
+        BimKeyValueSearchResultResponse
     """
 
     return (

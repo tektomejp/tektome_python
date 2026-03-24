@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.folder_resource_post_in import FolderResourcePostIn
+from ...models.create_folder_resource_request import CreateFolderResourceRequest
 from ...types import Response
 
 
 def _get_kwargs(
     folder_id: UUID,
     *,
-    body: FolderResourcePostIn,
+    body: CreateFolderResourceRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,24 +56,15 @@ def sync_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: FolderResourcePostIn,
+    body: CreateFolderResourceRequest,
 ) -> Response[Any]:
-    """Delete Remove Resource
+    """Detach resources from a folder
 
-     0vX2r1gq
-
-    Remove resource(s) from the folder using resource id(s)
-
-    Args:
-        request: Request object
-        path_params: FolderPathIn object containing folder_id
-        payload: Payload containing resource_id(s) to be removed
-
-    Returns: None
+     Remove the association between one or more resources and the specified folder.
 
     Args:
         folder_id (UUID):
-        body (FolderResourcePostIn): Schema for attaching a lawtalk resource(s) to a folder.
+        body (CreateFolderResourceRequest): Schema for attaching a resource(s) to a folder.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -99,24 +90,15 @@ async def asyncio_detailed(
     folder_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: FolderResourcePostIn,
+    body: CreateFolderResourceRequest,
 ) -> Response[Any]:
-    """Delete Remove Resource
+    """Detach resources from a folder
 
-     0vX2r1gq
-
-    Remove resource(s) from the folder using resource id(s)
-
-    Args:
-        request: Request object
-        path_params: FolderPathIn object containing folder_id
-        payload: Payload containing resource_id(s) to be removed
-
-    Returns: None
+     Remove the association between one or more resources and the specified folder.
 
     Args:
         folder_id (UUID):
-        body (FolderResourcePostIn): Schema for attaching a lawtalk resource(s) to a folder.
+        body (CreateFolderResourceRequest): Schema for attaching a resource(s) to a folder.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

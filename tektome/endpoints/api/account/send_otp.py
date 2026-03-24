@@ -5,13 +5,13 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.login_email_post_in import LoginEmailPostIn
+from ...models.create_login_email_request import CreateLoginEmailRequest
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: LoginEmailPostIn,
+    body: CreateLoginEmailRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -50,15 +50,15 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
-    body: LoginEmailPostIn,
+    body: CreateLoginEmailRequest,
 ) -> Response[Any]:
-    """Post Send Otp
+    """Send OTP code
 
-     aTopcOpY
-    Send OTP to user email.
+     Send a one-time password (OTP) to the specified email address for authentication. Rate-limited to
+    prevent abuse. Always returns 204 regardless of whether the email exists.
 
     Args:
-        body (LoginEmailPostIn):
+        body (CreateLoginEmailRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -82,15 +82,15 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
-    body: LoginEmailPostIn,
+    body: CreateLoginEmailRequest,
 ) -> Response[Any]:
-    """Post Send Otp
+    """Send OTP code
 
-     aTopcOpY
-    Send OTP to user email.
+     Send a one-time password (OTP) to the specified email address for authentication. Rate-limited to
+    prevent abuse. Always returns 204 regardless of whether the email exists.
 
     Args:
-        body (LoginEmailPostIn):
+        body (CreateLoginEmailRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -5,13 +5,13 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.requirement_template_bulk_import_post_in import RequirementTemplateBulkImportPostIn
+from ...models.create_requirement_template_bulk_import_request import CreateRequirementTemplateBulkImportRequest
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: RequirementTemplateBulkImportPostIn,
+    body: CreateRequirementTemplateBulkImportRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -50,17 +50,16 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: RequirementTemplateBulkImportPostIn,
+    body: CreateRequirementTemplateBulkImportRequest,
 ) -> Response[Any]:
-    """Post Bulk Import Requirements From Templates
+    """Bulk import requirements from templates
 
-     B7GNMWA0
-
-    bulk create requirements from the requirement templates
+     Create multiple requirements in a project by importing them from a list of requirement templates in
+    a single operation.
 
     Args:
-        body (RequirementTemplateBulkImportPostIn): Serializer for Requirement Template Bulk
-            Import.
+        body (CreateRequirementTemplateBulkImportRequest): Serializer for Requirement Template
+            Bulk Import.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -84,17 +83,16 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: RequirementTemplateBulkImportPostIn,
+    body: CreateRequirementTemplateBulkImportRequest,
 ) -> Response[Any]:
-    """Post Bulk Import Requirements From Templates
+    """Bulk import requirements from templates
 
-     B7GNMWA0
-
-    bulk create requirements from the requirement templates
+     Create multiple requirements in a project by importing them from a list of requirement templates in
+    a single operation.
 
     Args:
-        body (RequirementTemplateBulkImportPostIn): Serializer for Requirement Template Bulk
-            Import.
+        body (CreateRequirementTemplateBulkImportRequest): Serializer for Requirement Template
+            Bulk Import.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

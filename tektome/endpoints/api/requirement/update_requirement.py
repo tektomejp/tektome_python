@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.requirement_patch_in_patch import RequirementPatchInPatch
 from ...models.requirement_schema import RequirementSchema
+from ...models.update_requirement_request import UpdateRequirementRequest
 from ...types import Response
 
 
 def _get_kwargs(
     requirement_id: UUID,
     *,
-    body: RequirementPatchInPatch,
+    body: UpdateRequirementRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -59,17 +59,16 @@ def sync_detailed(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementPatchInPatch,
+    body: UpdateRequirementRequest,
 ) -> Response[RequirementSchema]:
-    """Patch Requirement
+    """Update a requirement
 
-     L6y3h9iF
-
-    Update a requirement given a project id and requirement id
+     Update requirement attributes such as name and summary. Name changes automatically generate a new
+    embedding vector for search.
 
     Args:
         requirement_id (UUID):
-        body (RequirementPatchInPatch):
+        body (UpdateRequirementRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -95,17 +94,16 @@ def sync(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementPatchInPatch,
+    body: UpdateRequirementRequest,
 ) -> RequirementSchema | None:
-    """Patch Requirement
+    """Update a requirement
 
-     L6y3h9iF
-
-    Update a requirement given a project id and requirement id
+     Update requirement attributes such as name and summary. Name changes automatically generate a new
+    embedding vector for search.
 
     Args:
         requirement_id (UUID):
-        body (RequirementPatchInPatch):
+        body (UpdateRequirementRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -126,17 +124,16 @@ async def asyncio_detailed(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementPatchInPatch,
+    body: UpdateRequirementRequest,
 ) -> Response[RequirementSchema]:
-    """Patch Requirement
+    """Update a requirement
 
-     L6y3h9iF
-
-    Update a requirement given a project id and requirement id
+     Update requirement attributes such as name and summary. Name changes automatically generate a new
+    embedding vector for search.
 
     Args:
         requirement_id (UUID):
-        body (RequirementPatchInPatch):
+        body (UpdateRequirementRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -160,17 +157,16 @@ async def asyncio(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementPatchInPatch,
+    body: UpdateRequirementRequest,
 ) -> RequirementSchema | None:
-    """Patch Requirement
+    """Update a requirement
 
-     L6y3h9iF
-
-    Update a requirement given a project id and requirement id
+     Update requirement attributes such as name and summary. Name changes automatically generate a new
+    embedding vector for search.
 
     Args:
         requirement_id (UUID):
-        body (RequirementPatchInPatch):
+        body (UpdateRequirementRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

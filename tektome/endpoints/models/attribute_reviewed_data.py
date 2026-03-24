@@ -10,7 +10,11 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.citations_schema_out import CitationsSchemaOut
+    from ..models.attribute_citations_response import AttributeCitationsResponse
+    from ..models.bim_citations_response import BIMCitationsResponse
+    from ..models.image_citations_response import ImageCitationsResponse
+    from ..models.pdf_citations_response import PDFCitationsResponse
+    from ..models.raw_text_citations_response import RawTextCitationsResponse
 
 
 T = TypeVar("T", bound="AttributeReviewedData")
@@ -30,7 +34,8 @@ class AttributeReviewedData:
         error_message (None | str | Unset):
         type_ (None | str | Unset):
         extraction_reasoning (None | str | Unset):
-        citations (CitationsSchemaOut | None | Unset):
+        citations (list[AttributeCitationsResponse | BIMCitationsResponse | ImageCitationsResponse |
+            PDFCitationsResponse | RawTextCitationsResponse] | None | Unset):
     """
 
     id: None | Unset | UUID = UNSET
@@ -42,11 +47,24 @@ class AttributeReviewedData:
     error_message: None | str | Unset = UNSET
     type_: None | str | Unset = UNSET
     extraction_reasoning: None | str | Unset = UNSET
-    citations: CitationsSchemaOut | None | Unset = UNSET
+    citations: (
+        list[
+            AttributeCitationsResponse
+            | BIMCitationsResponse
+            | ImageCitationsResponse
+            | PDFCitationsResponse
+            | RawTextCitationsResponse
+        ]
+        | None
+        | Unset
+    ) = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.citations_schema_out import CitationsSchemaOut
+        from ..models.bim_citations_response import BIMCitationsResponse
+        from ..models.image_citations_response import ImageCitationsResponse
+        from ..models.pdf_citations_response import PDFCitationsResponse
+        from ..models.raw_text_citations_response import RawTextCitationsResponse
 
         id: None | str | Unset
         if isinstance(self.id, Unset):
@@ -100,11 +118,26 @@ class AttributeReviewedData:
         else:
             extraction_reasoning = self.extraction_reasoning
 
-        citations: dict[str, Any] | None | Unset
+        citations: list[dict[str, Any]] | None | Unset
         if isinstance(self.citations, Unset):
             citations = UNSET
-        elif isinstance(self.citations, CitationsSchemaOut):
-            citations = self.citations.to_dict()
+        elif isinstance(self.citations, list):
+            citations = []
+            for citations_type_0_item_data in self.citations:
+                citations_type_0_item: dict[str, Any]
+                if isinstance(citations_type_0_item_data, PDFCitationsResponse):
+                    citations_type_0_item = citations_type_0_item_data.to_dict()
+                elif isinstance(citations_type_0_item_data, RawTextCitationsResponse):
+                    citations_type_0_item = citations_type_0_item_data.to_dict()
+                elif isinstance(citations_type_0_item_data, BIMCitationsResponse):
+                    citations_type_0_item = citations_type_0_item_data.to_dict()
+                elif isinstance(citations_type_0_item_data, ImageCitationsResponse):
+                    citations_type_0_item = citations_type_0_item_data.to_dict()
+                else:
+                    citations_type_0_item = citations_type_0_item_data.to_dict()
+
+                citations.append(citations_type_0_item)
+
         else:
             citations = self.citations
 
@@ -136,7 +169,11 @@ class AttributeReviewedData:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.citations_schema_out import CitationsSchemaOut
+        from ..models.attribute_citations_response import AttributeCitationsResponse
+        from ..models.bim_citations_response import BIMCitationsResponse
+        from ..models.image_citations_response import ImageCitationsResponse
+        from ..models.pdf_citations_response import PDFCitationsResponse
+        from ..models.raw_text_citations_response import RawTextCitationsResponse
 
         d = dict(src_dict)
 
@@ -222,20 +259,96 @@ class AttributeReviewedData:
 
         extraction_reasoning = _parse_extraction_reasoning(d.pop("extraction_reasoning", UNSET))
 
-        def _parse_citations(data: object) -> CitationsSchemaOut | None | Unset:
+        def _parse_citations(
+            data: object,
+        ) -> (
+            list[
+                AttributeCitationsResponse
+                | BIMCitationsResponse
+                | ImageCitationsResponse
+                | PDFCitationsResponse
+                | RawTextCitationsResponse
+            ]
+            | None
+            | Unset
+        ):
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
             try:
-                if not isinstance(data, dict):
+                if not isinstance(data, list):
                     raise TypeError()
-                citations_type_0 = CitationsSchemaOut.from_dict(data)
+                citations_type_0 = []
+                _citations_type_0 = data
+                for citations_type_0_item_data in _citations_type_0:
+
+                    def _parse_citations_type_0_item(
+                        data: object,
+                    ) -> (
+                        AttributeCitationsResponse
+                        | BIMCitationsResponse
+                        | ImageCitationsResponse
+                        | PDFCitationsResponse
+                        | RawTextCitationsResponse
+                    ):
+                        try:
+                            if not isinstance(data, dict):
+                                raise TypeError()
+                            componentsschemas_citations_type_0 = PDFCitationsResponse.from_dict(data)
+
+                            return componentsschemas_citations_type_0
+                        except (TypeError, ValueError, AttributeError, KeyError):
+                            pass
+                        try:
+                            if not isinstance(data, dict):
+                                raise TypeError()
+                            componentsschemas_citations_type_1 = RawTextCitationsResponse.from_dict(data)
+
+                            return componentsschemas_citations_type_1
+                        except (TypeError, ValueError, AttributeError, KeyError):
+                            pass
+                        try:
+                            if not isinstance(data, dict):
+                                raise TypeError()
+                            componentsschemas_citations_type_2 = BIMCitationsResponse.from_dict(data)
+
+                            return componentsschemas_citations_type_2
+                        except (TypeError, ValueError, AttributeError, KeyError):
+                            pass
+                        try:
+                            if not isinstance(data, dict):
+                                raise TypeError()
+                            componentsschemas_citations_type_3 = ImageCitationsResponse.from_dict(data)
+
+                            return componentsschemas_citations_type_3
+                        except (TypeError, ValueError, AttributeError, KeyError):
+                            pass
+                        if not isinstance(data, dict):
+                            raise TypeError()
+                        componentsschemas_citations_type_4 = AttributeCitationsResponse.from_dict(data)
+
+                        return componentsschemas_citations_type_4
+
+                    citations_type_0_item = _parse_citations_type_0_item(citations_type_0_item_data)
+
+                    citations_type_0.append(citations_type_0_item)
 
                 return citations_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(CitationsSchemaOut | None | Unset, data)
+            return cast(
+                list[
+                    AttributeCitationsResponse
+                    | BIMCitationsResponse
+                    | ImageCitationsResponse
+                    | PDFCitationsResponse
+                    | RawTextCitationsResponse
+                ]
+                | None
+                | Unset,
+                data,
+            )
 
         citations = _parse_citations(d.pop("citations", UNSET))
 

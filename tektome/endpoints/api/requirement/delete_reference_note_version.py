@@ -51,15 +51,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Reference Note Version
+    """Delete a reference note version
 
-     JnQkM31I
-
-    Delete specific versions of a reference note associated to a requirement
-
-    Args:
-        request: Request object
-        path_params: path params of type ReferenceNoteVersionPath
+     Delete a specific version of a reference note. The active version cannot be deleted. Deleting
+    version 1 removes the entire reference note.
 
     Args:
         reference_note_id (UUID):
@@ -91,15 +86,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Reference Note Version
+    """Delete a reference note version
 
-     JnQkM31I
-
-    Delete specific versions of a reference note associated to a requirement
-
-    Args:
-        request: Request object
-        path_params: path params of type ReferenceNoteVersionPath
+     Delete a specific version of a reference note. The active version cannot be deleted. Deleting
+    version 1 removes the entire reference note.
 
     Args:
         reference_note_id (UUID):

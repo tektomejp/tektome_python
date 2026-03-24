@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.environment_variable_filter_in import EnvironmentVariableFilterIn
+from ...models.environment_variable_filter_request import EnvironmentVariableFilterRequest
 from ...models.environment_variable_response import EnvironmentVariableResponse
 from ...models.generic_http_error import GenericHttpError
 from ...types import Response
@@ -16,7 +16,7 @@ from ...types import Response
 def _get_kwargs(
     organization_id: UUID,
     *,
-    body: EnvironmentVariableFilterIn,
+    body: EnvironmentVariableFilterRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -159,17 +159,16 @@ def sync_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: EnvironmentVariableFilterIn,
+    body: EnvironmentVariableFilterRequest,
 ) -> Response[GenericHttpError | list[EnvironmentVariableResponse]]:
-    """Bulk Retrieve Environment Variables
+    """Bulk retrieve environment variables
 
-     9Tpfh3bb
-
-    Bulk retrieve environment variables by keys and ownership filters.
+     Retrieve multiple environment variables in a single request by specifying keys and ownership
+    filters.
 
     Args:
         organization_id (UUID):
-        body (EnvironmentVariableFilterIn): Filter schema for querying environment variables.
+        body (EnvironmentVariableFilterRequest): Filter schema for querying environment variables.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -195,17 +194,16 @@ def sync(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: EnvironmentVariableFilterIn,
+    body: EnvironmentVariableFilterRequest,
 ) -> GenericHttpError | list[EnvironmentVariableResponse] | None:
-    """Bulk Retrieve Environment Variables
+    """Bulk retrieve environment variables
 
-     9Tpfh3bb
-
-    Bulk retrieve environment variables by keys and ownership filters.
+     Retrieve multiple environment variables in a single request by specifying keys and ownership
+    filters.
 
     Args:
         organization_id (UUID):
-        body (EnvironmentVariableFilterIn): Filter schema for querying environment variables.
+        body (EnvironmentVariableFilterRequest): Filter schema for querying environment variables.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -226,17 +224,16 @@ async def asyncio_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: EnvironmentVariableFilterIn,
+    body: EnvironmentVariableFilterRequest,
 ) -> Response[GenericHttpError | list[EnvironmentVariableResponse]]:
-    """Bulk Retrieve Environment Variables
+    """Bulk retrieve environment variables
 
-     9Tpfh3bb
-
-    Bulk retrieve environment variables by keys and ownership filters.
+     Retrieve multiple environment variables in a single request by specifying keys and ownership
+    filters.
 
     Args:
         organization_id (UUID):
-        body (EnvironmentVariableFilterIn): Filter schema for querying environment variables.
+        body (EnvironmentVariableFilterRequest): Filter schema for querying environment variables.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -260,17 +257,16 @@ async def asyncio(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: EnvironmentVariableFilterIn,
+    body: EnvironmentVariableFilterRequest,
 ) -> GenericHttpError | list[EnvironmentVariableResponse] | None:
-    """Bulk Retrieve Environment Variables
+    """Bulk retrieve environment variables
 
-     9Tpfh3bb
-
-    Bulk retrieve environment variables by keys and ownership filters.
+     Retrieve multiple environment variables in a single request by specifying keys and ownership
+    filters.
 
     Args:
         organization_id (UUID):
-        body (EnvironmentVariableFilterIn): Filter schema for querying environment variables.
+        body (EnvironmentVariableFilterRequest): Filter schema for querying environment variables.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

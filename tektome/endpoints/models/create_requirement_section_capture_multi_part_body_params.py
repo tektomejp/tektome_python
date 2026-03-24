@@ -12,7 +12,7 @@ from .. import types
 from ..types import File
 
 if TYPE_CHECKING:
-    from ..models.create_capture_section_component_post_in import CreateCaptureSectionComponentPostIn
+    from ..models.create_capture_section_component_request import CreateCaptureSectionComponentRequest
 
 
 T = TypeVar("T", bound="CreateRequirementSectionCaptureMultiPartBodyParams")
@@ -23,11 +23,11 @@ class CreateRequirementSectionCaptureMultiPartBodyParams:
     """
     Attributes:
         screenshot_file (File):
-        payload (CreateCaptureSectionComponentPostIn):
+        payload (CreateCaptureSectionComponentRequest):
     """
 
     screenshot_file: File
-    payload: CreateCaptureSectionComponentPostIn
+    payload: CreateCaptureSectionComponentRequest
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,12 +60,12 @@ class CreateRequirementSectionCaptureMultiPartBodyParams:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.create_capture_section_component_post_in import CreateCaptureSectionComponentPostIn
+        from ..models.create_capture_section_component_request import CreateCaptureSectionComponentRequest
 
         d = dict(src_dict)
         screenshot_file = File(payload=BytesIO(d.pop("screenshot_file")))
 
-        payload = CreateCaptureSectionComponentPostIn.from_dict(d.pop("payload"))
+        payload = CreateCaptureSectionComponentRequest.from_dict(d.pop("payload"))
 
         create_requirement_section_capture_multi_part_body_params = cls(
             screenshot_file=screenshot_file,

@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.dataspace_resource_reorder_column_post_in import DataspaceResourceReorderColumnPostIn
+from ...models.create_dataspace_resource_reorder_column_request import CreateDataspaceResourceReorderColumnRequest
 from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
     *,
-    body: DataspaceResourceReorderColumnPostIn,
+    body: CreateDataspaceResourceReorderColumnRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,25 +56,17 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceResourceReorderColumnPostIn,
+    body: CreateDataspaceResourceReorderColumnRequest,
 ) -> Response[Any]:
-    """Patch Dataspace Resource Reorder Column
+    """Reorder a resource attribute column
 
-     x16N0f5G
-
-    Reorder a column in a dataspace resource.
-
-    Args:
-        request: The request object containing authentication and user information.
-        path_params: The path parameters containing the dataspace ID.
-        payload: The payload containing the column ID and the new index.
-
-    Returns: 204, None
+     Change the display order of an attribute column for resources within a dataspace by specifying a new
+    index position.
 
     Args:
         dataspace_id (UUID):
-        body (DataspaceResourceReorderColumnPostIn): Schema for reordering columns in a dataspace
-            project's resource.
+        body (CreateDataspaceResourceReorderColumnRequest): Schema for reordering columns in a
+            dataspace project's resource.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -100,25 +92,17 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceResourceReorderColumnPostIn,
+    body: CreateDataspaceResourceReorderColumnRequest,
 ) -> Response[Any]:
-    """Patch Dataspace Resource Reorder Column
+    """Reorder a resource attribute column
 
-     x16N0f5G
-
-    Reorder a column in a dataspace resource.
-
-    Args:
-        request: The request object containing authentication and user information.
-        path_params: The path parameters containing the dataspace ID.
-        payload: The payload containing the column ID and the new index.
-
-    Returns: 204, None
+     Change the display order of an attribute column for resources within a dataspace by specifying a new
+    index position.
 
     Args:
         dataspace_id (UUID):
-        body (DataspaceResourceReorderColumnPostIn): Schema for reordering columns in a dataspace
-            project's resource.
+        body (CreateDataspaceResourceReorderColumnRequest): Schema for reordering columns in a
+            dataspace project's resource.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

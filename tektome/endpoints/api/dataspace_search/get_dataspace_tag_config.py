@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.dataspace_search_tag_config_out import DataspaceSearchTagConfigOut
+from ...models.dataspace_search_tag_config_response import DataspaceSearchTagConfigResponse
 from ...types import Response
 
 
@@ -29,9 +29,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> DataspaceSearchTagConfigOut | None:
+) -> DataspaceSearchTagConfigResponse | None:
     if response.status_code == 200:
-        response_200 = DataspaceSearchTagConfigOut.from_dict(response.json())
+        response_200 = DataspaceSearchTagConfigResponse.from_dict(response.json())
 
         return response_200
 
@@ -43,7 +43,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[DataspaceSearchTagConfigOut]:
+) -> Response[DataspaceSearchTagConfigResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,12 +57,10 @@ def sync_detailed(
     tag_config_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[DataspaceSearchTagConfigOut]:
-    """Get Dataspace Tag Config
+) -> Response[DataspaceSearchTagConfigResponse]:
+    """Get a search tag configuration by ID
 
-     rSl3dZxK
-
-    Retrieve a tag configuration for the current dataspace.
+     Retrieve a specific search tag configuration by its ID within a dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -73,7 +71,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DataspaceSearchTagConfigOut]
+        Response[DataspaceSearchTagConfigResponse]
     """
 
     kwargs = _get_kwargs(
@@ -93,12 +91,10 @@ def sync(
     tag_config_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> DataspaceSearchTagConfigOut | None:
-    """Get Dataspace Tag Config
+) -> DataspaceSearchTagConfigResponse | None:
+    """Get a search tag configuration by ID
 
-     rSl3dZxK
-
-    Retrieve a tag configuration for the current dataspace.
+     Retrieve a specific search tag configuration by its ID within a dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -109,7 +105,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DataspaceSearchTagConfigOut
+        DataspaceSearchTagConfigResponse
     """
 
     return sync_detailed(
@@ -124,12 +120,10 @@ async def asyncio_detailed(
     tag_config_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[DataspaceSearchTagConfigOut]:
-    """Get Dataspace Tag Config
+) -> Response[DataspaceSearchTagConfigResponse]:
+    """Get a search tag configuration by ID
 
-     rSl3dZxK
-
-    Retrieve a tag configuration for the current dataspace.
+     Retrieve a specific search tag configuration by its ID within a dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -140,7 +134,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DataspaceSearchTagConfigOut]
+        Response[DataspaceSearchTagConfigResponse]
     """
 
     kwargs = _get_kwargs(
@@ -158,12 +152,10 @@ async def asyncio(
     tag_config_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> DataspaceSearchTagConfigOut | None:
-    """Get Dataspace Tag Config
+) -> DataspaceSearchTagConfigResponse | None:
+    """Get a search tag configuration by ID
 
-     rSl3dZxK
-
-    Retrieve a tag configuration for the current dataspace.
+     Retrieve a specific search tag configuration by its ID within a dataspace.
 
     Args:
         dataspace_id (UUID):
@@ -174,7 +166,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DataspaceSearchTagConfigOut
+        DataspaceSearchTagConfigResponse
     """
 
     return (
