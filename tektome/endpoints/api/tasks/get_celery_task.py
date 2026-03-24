@@ -47,16 +47,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    r"""Get Task
+    """Get background task status
 
-     Get the status and result of a task in this format
-    ```
-    {
-        status: \"PENDING\" | \"RECEIVED\" | \"STARTED\" | \"SUCCESS\" | \"FAILURE\" | \"REVOKED\" |
-    \"REJECTED\" | \"RETRY\" | \"IGNORED\",
-        result: any
-    }
-    ```
+     Retrieve the status and result of an asynchronous background task by its task ID. Returns the
+    current status (PENDING, STARTED, SUCCESS, FAILURE, etc.) and the result when available.
 
     Args:
         task_id (str):
@@ -85,16 +79,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    r"""Get Task
+    """Get background task status
 
-     Get the status and result of a task in this format
-    ```
-    {
-        status: \"PENDING\" | \"RECEIVED\" | \"STARTED\" | \"SUCCESS\" | \"FAILURE\" | \"REVOKED\" |
-    \"REJECTED\" | \"RETRY\" | \"IGNORED\",
-        result: any
-    }
-    ```
+     Retrieve the status and result of an asynchronous background task by its task ID. Returns the
+    current status (PENDING, STARTED, SUCCESS, FAILURE, etc.) and the result when available.
 
     Args:
         task_id (str):

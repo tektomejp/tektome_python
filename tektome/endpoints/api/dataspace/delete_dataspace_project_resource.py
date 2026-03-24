@@ -48,11 +48,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Dataspace Projects Resource
+    """Delete a resource from a dataspace project
 
-     5TZZsLaC
-
-    Delete resource by ID for a specific project in the current dataspace.
+     Permanently delete a resource and its version control record from a dataspace project.
 
     Args:
         resource_id (UUID):
@@ -81,11 +79,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Dataspace Projects Resource
+    """Delete a resource from a dataspace project
 
-     5TZZsLaC
-
-    Delete resource by ID for a specific project in the current dataspace.
+     Permanently delete a resource and its version control record from a dataspace project.
 
     Args:
         resource_id (UUID):

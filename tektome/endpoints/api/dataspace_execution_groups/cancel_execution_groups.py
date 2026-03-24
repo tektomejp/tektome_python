@@ -51,21 +51,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    r"""Cancel ongoing executions in an execution group
+    """Cancel ongoing executions in an execution group
 
-     s-JrLhM9
-
-    Cancel ongoing executions in an execution group.
-
-    Updates the status of all in-progress executions within the specified execution group to
-    \"cancelled\".
-    Also updates any pending approval tickets associated with these executions to \"disabled\".
-
-    Args:
-        request: The incoming HTTP request.
-        path_params: The path parameters containing the execution_group_id.
-
-    Returns: 204 No Content on successful cancellation.
+     Cancel all in-progress executions within the specified execution group. Also disables any pending
+    approval tickets associated with these executions.
 
     Args:
         dataspace_id (UUID):
@@ -97,21 +86,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    r"""Cancel ongoing executions in an execution group
+    """Cancel ongoing executions in an execution group
 
-     s-JrLhM9
-
-    Cancel ongoing executions in an execution group.
-
-    Updates the status of all in-progress executions within the specified execution group to
-    \"cancelled\".
-    Also updates any pending approval tickets associated with these executions to \"disabled\".
-
-    Args:
-        request: The incoming HTTP request.
-        path_params: The path parameters containing the execution_group_id.
-
-    Returns: 204 No Content on successful cancellation.
+     Cancel all in-progress executions within the specified execution group. Also disables any pending
+    approval tickets associated with these executions.
 
     Args:
         dataspace_id (UUID):

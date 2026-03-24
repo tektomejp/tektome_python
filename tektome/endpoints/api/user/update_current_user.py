@@ -5,14 +5,13 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.me_patch_in import MePatchIn
-from ...models.me_patch_out import MePatchOut
+from ...models.update_me_request import UpdateMeRequest
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: MePatchIn,
+    body: UpdateMeRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -29,19 +28,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> MePatchOut | None:
-    if response.status_code == 200:
-        response_200 = MePatchOut.from_dict(response.json())
-
-        return response_200
-
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[MePatchOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,29 +47,22 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: MePatchIn,
-) -> Response[MePatchOut]:
-    r"""Patch Me
+    body: UpdateMeRequest,
+) -> Response[Any]:
+    """Update current user profile
 
-     Mq2DXyAx
-    Patch current user profile
-    gender can be one of:
-    ```
-    \"m\": \"Male\",
-    \"f\": \"Female\",
-    \"n\": \"Non-binary\",
-    \"o\": \"Other\",
-    ```
+     Update the authenticated user's profile fields such as username, language, gender, and timezone
+    preferences.
 
     Args:
-        body (MePatchIn):
+        body (UpdateMeRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MePatchOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -89,66 +76,25 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    *,
-    client: AuthenticatedClient,
-    body: MePatchIn,
-) -> MePatchOut | None:
-    r"""Patch Me
-
-     Mq2DXyAx
-    Patch current user profile
-    gender can be one of:
-    ```
-    \"m\": \"Male\",
-    \"f\": \"Female\",
-    \"n\": \"Non-binary\",
-    \"o\": \"Other\",
-    ```
-
-    Args:
-        body (MePatchIn):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        MePatchOut
-    """
-
-    return sync_detailed(
-        client=client,
-        body=body,
-    ).parsed
-
-
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: MePatchIn,
-) -> Response[MePatchOut]:
-    r"""Patch Me
+    body: UpdateMeRequest,
+) -> Response[Any]:
+    """Update current user profile
 
-     Mq2DXyAx
-    Patch current user profile
-    gender can be one of:
-    ```
-    \"m\": \"Male\",
-    \"f\": \"Female\",
-    \"n\": \"Non-binary\",
-    \"o\": \"Other\",
-    ```
+     Update the authenticated user's profile fields such as username, language, gender, and timezone
+    preferences.
 
     Args:
-        body (MePatchIn):
+        body (UpdateMeRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MePatchOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -158,39 +104,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    *,
-    client: AuthenticatedClient,
-    body: MePatchIn,
-) -> MePatchOut | None:
-    r"""Patch Me
-
-     Mq2DXyAx
-    Patch current user profile
-    gender can be one of:
-    ```
-    \"m\": \"Male\",
-    \"f\": \"Female\",
-    \"n\": \"Non-binary\",
-    \"o\": \"Other\",
-    ```
-
-    Args:
-        body (MePatchIn):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        MePatchOut
-    """
-
-    return (
-        await asyncio_detailed(
-            client=client,
-            body=body,
-        )
-    ).parsed

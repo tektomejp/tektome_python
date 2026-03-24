@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.approval_ticket_patch_in_patch import ApprovalTicketPatchInPatch
+from ...models.update_approval_ticket_request import UpdateApprovalTicketRequest
 from ...types import Response
 
 
@@ -15,7 +15,7 @@ def _get_kwargs(
     dataspace_id: UUID,
     approval_id: UUID,
     *,
-    body: ApprovalTicketPatchInPatch,
+    body: UpdateApprovalTicketRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -59,25 +59,17 @@ def sync_detailed(
     approval_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ApprovalTicketPatchInPatch,
+    body: UpdateApprovalTicketRequest,
 ) -> Response[Any]:
-    """Patch Approval Ticket
+    """Update an approval ticket
 
-     ZCaSu3jK
-
-    Patch an existing approval ticket. User can approve or reject the ticket.
-
-    Args:
-        request: Request object
-        payload: Payload containing fields to update
-        path_params: Path parameters containing approval_ticket_id
-
-    Returns: 204 No Content
+     Update an existing approval ticket to approve or reject it. Approved tickets trigger further
+    processing.
 
     Args:
         dataspace_id (UUID):
         approval_id (UUID):
-        body (ApprovalTicketPatchInPatch):
+        body (UpdateApprovalTicketRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -105,25 +97,17 @@ async def asyncio_detailed(
     approval_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ApprovalTicketPatchInPatch,
+    body: UpdateApprovalTicketRequest,
 ) -> Response[Any]:
-    """Patch Approval Ticket
+    """Update an approval ticket
 
-     ZCaSu3jK
-
-    Patch an existing approval ticket. User can approve or reject the ticket.
-
-    Args:
-        request: Request object
-        payload: Payload containing fields to update
-        path_params: Path parameters containing approval_ticket_id
-
-    Returns: 204 No Content
+     Update an existing approval ticket to approve or reject it. Approved tickets trigger further
+    processing.
 
     Args:
         dataspace_id (UUID):
         approval_id (UUID):
-        body (ApprovalTicketPatchInPatch):
+        body (UpdateApprovalTicketRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

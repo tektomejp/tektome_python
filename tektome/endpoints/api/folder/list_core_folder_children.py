@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.folder_children_get_out import FolderChildrenGetOut
+from ...models.folder_children_response import FolderChildrenResponse
 from ...models.order_by import OrderBy
 from ...types import UNSET, Response, Unset
 
@@ -61,9 +61,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> FolderChildrenGetOut | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> FolderChildrenResponse | None:
     if response.status_code == 200:
-        response_200 = FolderChildrenGetOut.from_dict(response.json())
+        response_200 = FolderChildrenResponse.from_dict(response.json())
 
         return response_200
 
@@ -75,7 +75,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[FolderChildrenGetOut]:
+) -> Response[FolderChildrenResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -93,20 +93,11 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | Unset = 10,
     dataspace_id: None | Unset | UUID = UNSET,
-) -> Response[FolderChildrenGetOut]:
-    """Get Folder Children
+) -> Response[FolderChildrenResponse]:
+    """List folder children and resources
 
-     g7i4ub59
-
-    Retrieve both folders and resources in current level. Folder will appear first in alphabetical
-    order.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path[FolderPathIn] object containing folder_id
-        query_params: Query[FolderQuery] object containing pagination parameters
-
-    Returns:
+     Retrieve both subfolders and resources at the current folder level. Folders appear first in
+    alphabetical order.
 
     Args:
         folder_id (UUID):
@@ -121,7 +112,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[FolderChildrenGetOut]
+        Response[FolderChildrenResponse]
     """
 
     kwargs = _get_kwargs(
@@ -149,20 +140,11 @@ def sync(
     page: int | Unset = 1,
     page_size: int | Unset = 10,
     dataspace_id: None | Unset | UUID = UNSET,
-) -> FolderChildrenGetOut | None:
-    """Get Folder Children
+) -> FolderChildrenResponse | None:
+    """List folder children and resources
 
-     g7i4ub59
-
-    Retrieve both folders and resources in current level. Folder will appear first in alphabetical
-    order.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path[FolderPathIn] object containing folder_id
-        query_params: Query[FolderQuery] object containing pagination parameters
-
-    Returns:
+     Retrieve both subfolders and resources at the current folder level. Folders appear first in
+    alphabetical order.
 
     Args:
         folder_id (UUID):
@@ -177,7 +159,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        FolderChildrenGetOut
+        FolderChildrenResponse
     """
 
     return sync_detailed(
@@ -200,20 +182,11 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | Unset = 10,
     dataspace_id: None | Unset | UUID = UNSET,
-) -> Response[FolderChildrenGetOut]:
-    """Get Folder Children
+) -> Response[FolderChildrenResponse]:
+    """List folder children and resources
 
-     g7i4ub59
-
-    Retrieve both folders and resources in current level. Folder will appear first in alphabetical
-    order.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path[FolderPathIn] object containing folder_id
-        query_params: Query[FolderQuery] object containing pagination parameters
-
-    Returns:
+     Retrieve both subfolders and resources at the current folder level. Folders appear first in
+    alphabetical order.
 
     Args:
         folder_id (UUID):
@@ -228,7 +201,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[FolderChildrenGetOut]
+        Response[FolderChildrenResponse]
     """
 
     kwargs = _get_kwargs(
@@ -254,20 +227,11 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | Unset = 10,
     dataspace_id: None | Unset | UUID = UNSET,
-) -> FolderChildrenGetOut | None:
-    """Get Folder Children
+) -> FolderChildrenResponse | None:
+    """List folder children and resources
 
-     g7i4ub59
-
-    Retrieve both folders and resources in current level. Folder will appear first in alphabetical
-    order.
-
-    Args:
-        request: The HTTP request object.
-        path_params: Path[FolderPathIn] object containing folder_id
-        query_params: Query[FolderQuery] object containing pagination parameters
-
-    Returns:
+     Retrieve both subfolders and resources at the current folder level. Folders appear first in
+    alphabetical order.
 
     Args:
         folder_id (UUID):
@@ -282,7 +246,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        FolderChildrenGetOut
+        FolderChildrenResponse
     """
 
     return (

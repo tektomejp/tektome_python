@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.lawtalk_general_attribute_body_put_in import LawtalkGeneralAttributeBodyPutIn
+from ...models.replace_lawtalk_general_attribute_body_request import ReplaceLawtalkGeneralAttributeBodyRequest
 from ...models.update_general_lawtalk_attributes_attribute_object_types import (
     UpdateGeneralLawtalkAttributesAttributeObjectTypes,
 )
@@ -18,7 +18,7 @@ def _get_kwargs(
     object_type: UpdateGeneralLawtalkAttributesAttributeObjectTypes,
     object_id: UUID,
     *,
-    body: LawtalkGeneralAttributeBodyPutIn,
+    body: ReplaceLawtalkGeneralAttributeBodyRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -62,23 +62,17 @@ def sync_detailed(
     object_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: LawtalkGeneralAttributeBodyPutIn,
+    body: ReplaceLawtalkGeneralAttributeBodyRequest,
 ) -> Response[Any]:
-    """Put General Lawtalk Attributes
+    """Set general attributes on an entity
 
-     gL48dbrw
-
-    Set or update Lawtalk-specific attributes given lawtalk object ID as entrypoint.
-    Allows all general and system attributes.
-
-    To set an entity to be public, set the `system:is_public` boolean attribute to `true`.
-    All system attributes will be returned without system prefix. e.g `is_public` instead of
-    `system:is_public`.
+     Set or update general and system-level attributes on an entity. Supports all general and system
+    attribute types. To mark an entity as public, set the 'system:is_public' boolean attribute to true.
 
     Args:
         object_type (UpdateGeneralLawtalkAttributesAttributeObjectTypes):
         object_id (UUID):
-        body (LawtalkGeneralAttributeBodyPutIn):
+        body (ReplaceLawtalkGeneralAttributeBodyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -106,23 +100,17 @@ async def asyncio_detailed(
     object_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: LawtalkGeneralAttributeBodyPutIn,
+    body: ReplaceLawtalkGeneralAttributeBodyRequest,
 ) -> Response[Any]:
-    """Put General Lawtalk Attributes
+    """Set general attributes on an entity
 
-     gL48dbrw
-
-    Set or update Lawtalk-specific attributes given lawtalk object ID as entrypoint.
-    Allows all general and system attributes.
-
-    To set an entity to be public, set the `system:is_public` boolean attribute to `true`.
-    All system attributes will be returned without system prefix. e.g `is_public` instead of
-    `system:is_public`.
+     Set or update general and system-level attributes on an entity. Supports all general and system
+    attribute types. To mark an entity as public, set the 'system:is_public' boolean attribute to true.
 
     Args:
         object_type (UpdateGeneralLawtalkAttributesAttributeObjectTypes):
         object_id (UUID):
-        body (LawtalkGeneralAttributeBodyPutIn):
+        body (ReplaceLawtalkGeneralAttributeBodyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

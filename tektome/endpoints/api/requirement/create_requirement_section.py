@@ -56,16 +56,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ResourceSectionSchema]:
-    """Post Requirement Section
+    """Create a requirement section
 
-     Al_9UtBt
-    Create a Section object
-
-    Args:
-        request: Request object
-        path_params: path params of type CreateResourceSectionPath
-
-    Returns: 201, ResourceSectionSchema
+     Create a new section for a requirement linked to a specific resource.
 
     Args:
         requirement_id (UUID):
@@ -97,16 +90,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ResourceSectionSchema | None:
-    """Post Requirement Section
+    """Create a requirement section
 
-     Al_9UtBt
-    Create a Section object
-
-    Args:
-        request: Request object
-        path_params: path params of type CreateResourceSectionPath
-
-    Returns: 201, ResourceSectionSchema
+     Create a new section for a requirement linked to a specific resource.
 
     Args:
         requirement_id (UUID):
@@ -133,16 +119,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ResourceSectionSchema]:
-    """Post Requirement Section
+    """Create a requirement section
 
-     Al_9UtBt
-    Create a Section object
-
-    Args:
-        request: Request object
-        path_params: path params of type CreateResourceSectionPath
-
-    Returns: 201, ResourceSectionSchema
+     Create a new section for a requirement linked to a specific resource.
 
     Args:
         requirement_id (UUID):
@@ -172,16 +151,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ResourceSectionSchema | None:
-    """Post Requirement Section
+    """Create a requirement section
 
-     Al_9UtBt
-    Create a Section object
-
-    Args:
-        request: Request object
-        path_params: path params of type CreateResourceSectionPath
-
-    Returns: 201, ResourceSectionSchema
+     Create a new section for a requirement linked to a specific resource.
 
     Args:
         requirement_id (UUID):

@@ -48,13 +48,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Requirement Template Container
+    """Delete a requirement template container
 
-     B7GNMWv8
-
-    Delete a requirement template container by its ID.
-
-    Delete all associated observability records first to maintain data integrity.
+     Permanently delete a requirement template container and all its associated requirement templates and
+    tracking records.
 
     Args:
         requirement_template_container_id (UUID):
@@ -83,13 +80,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Requirement Template Container
+    """Delete a requirement template container
 
-     B7GNMWv8
-
-    Delete a requirement template container by its ID.
-
-    Delete all associated observability records first to maintain data integrity.
+     Permanently delete a requirement template container and all its associated requirement templates and
+    tracking records.
 
     Args:
         requirement_template_container_id (UUID):

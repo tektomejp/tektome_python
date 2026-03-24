@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.requirement_template_reference_note_get_out import RequirementTemplateReferenceNoteGetOut
-from ...models.requirement_template_reference_note_post_in import RequirementTemplateReferenceNotePostIn
+from ...models.create_requirement_template_reference_note_request import CreateRequirementTemplateReferenceNoteRequest
+from ...models.requirement_template_reference_note_response import RequirementTemplateReferenceNoteResponse
 from ...types import Response
 
 
 def _get_kwargs(
     requirement_template_id: UUID,
     *,
-    body: RequirementTemplateReferenceNotePostIn,
+    body: CreateRequirementTemplateReferenceNoteRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -36,9 +36,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RequirementTemplateReferenceNoteGetOut | None:
+) -> RequirementTemplateReferenceNoteResponse | None:
     if response.status_code == 201:
-        response_201 = RequirementTemplateReferenceNoteGetOut.from_dict(response.json())
+        response_201 = RequirementTemplateReferenceNoteResponse.from_dict(response.json())
 
         return response_201
 
@@ -50,7 +50,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[RequirementTemplateReferenceNoteGetOut]:
+) -> Response[RequirementTemplateReferenceNoteResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,17 +63,16 @@ def sync_detailed(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementTemplateReferenceNotePostIn,
-) -> Response[RequirementTemplateReferenceNoteGetOut]:
-    """Post Requirement Template Reference Note
+    body: CreateRequirementTemplateReferenceNoteRequest,
+) -> Response[RequirementTemplateReferenceNoteResponse]:
+    """Create a reference note template
 
-     OWvaVaLU
-
-    Create a reference note template for a requirement template.
+     Create a new reference note template associated with a requirement template. Reference note
+    templates define reusable note structures for requirements.
 
     Args:
         requirement_template_id (UUID):
-        body (RequirementTemplateReferenceNotePostIn): Serializer for Requirement Template
+        body (CreateRequirementTemplateReferenceNoteRequest): Serializer for Requirement Template
             Reference Note.
 
     Raises:
@@ -81,7 +80,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementTemplateReferenceNoteGetOut]
+        Response[RequirementTemplateReferenceNoteResponse]
     """
 
     kwargs = _get_kwargs(
@@ -100,17 +99,16 @@ def sync(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementTemplateReferenceNotePostIn,
-) -> RequirementTemplateReferenceNoteGetOut | None:
-    """Post Requirement Template Reference Note
+    body: CreateRequirementTemplateReferenceNoteRequest,
+) -> RequirementTemplateReferenceNoteResponse | None:
+    """Create a reference note template
 
-     OWvaVaLU
-
-    Create a reference note template for a requirement template.
+     Create a new reference note template associated with a requirement template. Reference note
+    templates define reusable note structures for requirements.
 
     Args:
         requirement_template_id (UUID):
-        body (RequirementTemplateReferenceNotePostIn): Serializer for Requirement Template
+        body (CreateRequirementTemplateReferenceNoteRequest): Serializer for Requirement Template
             Reference Note.
 
     Raises:
@@ -118,7 +116,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementTemplateReferenceNoteGetOut
+        RequirementTemplateReferenceNoteResponse
     """
 
     return sync_detailed(
@@ -132,17 +130,16 @@ async def asyncio_detailed(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementTemplateReferenceNotePostIn,
-) -> Response[RequirementTemplateReferenceNoteGetOut]:
-    """Post Requirement Template Reference Note
+    body: CreateRequirementTemplateReferenceNoteRequest,
+) -> Response[RequirementTemplateReferenceNoteResponse]:
+    """Create a reference note template
 
-     OWvaVaLU
-
-    Create a reference note template for a requirement template.
+     Create a new reference note template associated with a requirement template. Reference note
+    templates define reusable note structures for requirements.
 
     Args:
         requirement_template_id (UUID):
-        body (RequirementTemplateReferenceNotePostIn): Serializer for Requirement Template
+        body (CreateRequirementTemplateReferenceNoteRequest): Serializer for Requirement Template
             Reference Note.
 
     Raises:
@@ -150,7 +147,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RequirementTemplateReferenceNoteGetOut]
+        Response[RequirementTemplateReferenceNoteResponse]
     """
 
     kwargs = _get_kwargs(
@@ -167,17 +164,16 @@ async def asyncio(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: RequirementTemplateReferenceNotePostIn,
-) -> RequirementTemplateReferenceNoteGetOut | None:
-    """Post Requirement Template Reference Note
+    body: CreateRequirementTemplateReferenceNoteRequest,
+) -> RequirementTemplateReferenceNoteResponse | None:
+    """Create a reference note template
 
-     OWvaVaLU
-
-    Create a reference note template for a requirement template.
+     Create a new reference note template associated with a requirement template. Reference note
+    templates define reusable note structures for requirements.
 
     Args:
         requirement_template_id (UUID):
-        body (RequirementTemplateReferenceNotePostIn): Serializer for Requirement Template
+        body (CreateRequirementTemplateReferenceNoteRequest): Serializer for Requirement Template
             Reference Note.
 
     Raises:
@@ -185,7 +181,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RequirementTemplateReferenceNoteGetOut
+        RequirementTemplateReferenceNoteResponse
     """
 
     return (

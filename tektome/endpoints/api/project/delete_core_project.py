@@ -48,11 +48,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Project
+    """Delete a project
 
-     PCHJRMqN
-
-    Delete a core project.
+     Permanently delete a project and all its associated resources. Requires project destruction
+    permission.
 
     Args:
         project_id (UUID):
@@ -81,11 +80,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete Project
+    """Delete a project
 
-     PCHJRMqN
-
-    Delete a core project.
+     Permanently delete a project and all its associated resources. Requires project destruction
+    permission.
 
     Args:
         project_id (UUID):

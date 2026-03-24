@@ -55,24 +55,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: KeywordExtraction,
 ) -> Response[Keywords]:
-    """Extract Keywords
+    """Extract keywords from text
 
-     UOn7hBJp
-
-    Extract keywords from text using NLP techniques.
-    Currently only English and Japanese are supported.
-    The value of the return mode only affects English text.
-    Defaults to returning surface forms of keywords (i.e. as they appear in the text).
-    Japanese keywords are returned in surface form.
-    The Language Detector service is used to determine the language of the input text.
-
-    Args:
-        request: Request object
-        payload: request payload containing the text to extract from, and return mode for the keywords
-
-    Returns:
-        A response containing extracted keywords as a list of strings with no inherent order and no
-    duplicates.
+     Extract keywords from the provided text using NLP techniques. Currently supports English and
+    Japanese languages. Returns a deduplicated list of keywords.
 
     Args:
         body (KeywordExtraction): Schema for keyword extraction requests.
@@ -113,24 +99,10 @@ def sync(
     client: AuthenticatedClient,
     body: KeywordExtraction,
 ) -> Keywords | None:
-    """Extract Keywords
+    """Extract keywords from text
 
-     UOn7hBJp
-
-    Extract keywords from text using NLP techniques.
-    Currently only English and Japanese are supported.
-    The value of the return mode only affects English text.
-    Defaults to returning surface forms of keywords (i.e. as they appear in the text).
-    Japanese keywords are returned in surface form.
-    The Language Detector service is used to determine the language of the input text.
-
-    Args:
-        request: Request object
-        payload: request payload containing the text to extract from, and return mode for the keywords
-
-    Returns:
-        A response containing extracted keywords as a list of strings with no inherent order and no
-    duplicates.
+     Extract keywords from the provided text using NLP techniques. Currently supports English and
+    Japanese languages. Returns a deduplicated list of keywords.
 
     Args:
         body (KeywordExtraction): Schema for keyword extraction requests.
@@ -166,24 +138,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: KeywordExtraction,
 ) -> Response[Keywords]:
-    """Extract Keywords
+    """Extract keywords from text
 
-     UOn7hBJp
-
-    Extract keywords from text using NLP techniques.
-    Currently only English and Japanese are supported.
-    The value of the return mode only affects English text.
-    Defaults to returning surface forms of keywords (i.e. as they appear in the text).
-    Japanese keywords are returned in surface form.
-    The Language Detector service is used to determine the language of the input text.
-
-    Args:
-        request: Request object
-        payload: request payload containing the text to extract from, and return mode for the keywords
-
-    Returns:
-        A response containing extracted keywords as a list of strings with no inherent order and no
-    duplicates.
+     Extract keywords from the provided text using NLP techniques. Currently supports English and
+    Japanese languages. Returns a deduplicated list of keywords.
 
     Args:
         body (KeywordExtraction): Schema for keyword extraction requests.
@@ -222,24 +180,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: KeywordExtraction,
 ) -> Keywords | None:
-    """Extract Keywords
+    """Extract keywords from text
 
-     UOn7hBJp
-
-    Extract keywords from text using NLP techniques.
-    Currently only English and Japanese are supported.
-    The value of the return mode only affects English text.
-    Defaults to returning surface forms of keywords (i.e. as they appear in the text).
-    Japanese keywords are returned in surface form.
-    The Language Detector service is used to determine the language of the input text.
-
-    Args:
-        request: Request object
-        payload: request payload containing the text to extract from, and return mode for the keywords
-
-    Returns:
-        A response containing extracted keywords as a list of strings with no inherent order and no
-    duplicates.
+     Extract keywords from the provided text using NLP techniques. Currently supports English and
+    Japanese languages. Returns a deduplicated list of keywords.
 
     Args:
         body (KeywordExtraction): Schema for keyword extraction requests.

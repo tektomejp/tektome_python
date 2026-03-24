@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.background_task_id_out import BackgroundTaskIdOut
-from ...models.error_out import ErrorOut
+from ...models.background_task_id_response import BackgroundTaskIdResponse
+from ...models.error_response import ErrorResponse
 from ...types import Response
 
 
@@ -28,19 +28,19 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BackgroundTaskIdOut | ErrorOut | None:
+) -> BackgroundTaskIdResponse | ErrorResponse | None:
     if response.status_code == 201:
-        response_201 = BackgroundTaskIdOut.from_dict(response.json())
+        response_201 = BackgroundTaskIdResponse.from_dict(response.json())
 
         return response_201
 
     if response.status_code == 400:
-        response_400 = ErrorOut.from_dict(response.json())
+        response_400 = ErrorResponse.from_dict(response.json())
 
         return response_400
 
     if response.status_code == 429:
-        response_429 = ErrorOut.from_dict(response.json())
+        response_429 = ErrorResponse.from_dict(response.json())
 
         return response_429
 
@@ -52,7 +52,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BackgroundTaskIdOut | ErrorOut]:
+) -> Response[BackgroundTaskIdResponse | ErrorResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,13 +65,11 @@ def sync_detailed(
     resource_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[BackgroundTaskIdOut | ErrorOut]:
-    """Convert Bim Resource
+) -> Response[BackgroundTaskIdResponse | ErrorResponse]:
+    """Convert a resource to BIM format
 
-     s5dR7EsY
-
-    Convert BIM resource from a file attached to a resource.
-    Returns: resource BimTask id as task id
+     Initiate BIM conversion for an existing resource that contains a BIM-compatible file. Returns a
+    background task ID to track processing progress.
 
     Args:
         resource_id (UUID):
@@ -81,7 +79,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BackgroundTaskIdOut | ErrorOut]
+        Response[BackgroundTaskIdResponse | ErrorResponse]
     """
 
     kwargs = _get_kwargs(
@@ -99,13 +97,11 @@ def sync(
     resource_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> BackgroundTaskIdOut | ErrorOut | None:
-    """Convert Bim Resource
+) -> BackgroundTaskIdResponse | ErrorResponse | None:
+    """Convert a resource to BIM format
 
-     s5dR7EsY
-
-    Convert BIM resource from a file attached to a resource.
-    Returns: resource BimTask id as task id
+     Initiate BIM conversion for an existing resource that contains a BIM-compatible file. Returns a
+    background task ID to track processing progress.
 
     Args:
         resource_id (UUID):
@@ -115,7 +111,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BackgroundTaskIdOut | ErrorOut
+        BackgroundTaskIdResponse | ErrorResponse
     """
 
     return sync_detailed(
@@ -128,13 +124,11 @@ async def asyncio_detailed(
     resource_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[BackgroundTaskIdOut | ErrorOut]:
-    """Convert Bim Resource
+) -> Response[BackgroundTaskIdResponse | ErrorResponse]:
+    """Convert a resource to BIM format
 
-     s5dR7EsY
-
-    Convert BIM resource from a file attached to a resource.
-    Returns: resource BimTask id as task id
+     Initiate BIM conversion for an existing resource that contains a BIM-compatible file. Returns a
+    background task ID to track processing progress.
 
     Args:
         resource_id (UUID):
@@ -144,7 +138,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BackgroundTaskIdOut | ErrorOut]
+        Response[BackgroundTaskIdResponse | ErrorResponse]
     """
 
     kwargs = _get_kwargs(
@@ -160,13 +154,11 @@ async def asyncio(
     resource_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> BackgroundTaskIdOut | ErrorOut | None:
-    """Convert Bim Resource
+) -> BackgroundTaskIdResponse | ErrorResponse | None:
+    """Convert a resource to BIM format
 
-     s5dR7EsY
-
-    Convert BIM resource from a file attached to a resource.
-    Returns: resource BimTask id as task id
+     Initiate BIM conversion for an existing resource that contains a BIM-compatible file. Returns a
+    background task ID to track processing progress.
 
     Args:
         resource_id (UUID):
@@ -176,7 +168,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BackgroundTaskIdOut | ErrorOut
+        BackgroundTaskIdResponse | ErrorResponse
     """
 
     return (

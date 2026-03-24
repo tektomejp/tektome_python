@@ -7,15 +7,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.error_output_schema_out import ErrorOutputSchemaOut
-from ...models.users_schema_in import UsersSchemaIn
+from ...models.error_output_schema_response import ErrorOutputSchemaResponse
+from ...models.users_schema_request import UsersSchemaRequest
 from ...types import Response
 
 
 def _get_kwargs(
     organization_id: UUID,
     *,
-    body: UsersSchemaIn,
+    body: UsersSchemaRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -36,13 +36,13 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Any | ErrorOutputSchemaOut | None:
+) -> Any | ErrorOutputSchemaResponse | None:
     if response.status_code == 204:
         response_204 = cast(Any, None)
         return response_204
 
     if response.status_code == 400:
-        response_400 = ErrorOutputSchemaOut.from_dict(response.json())
+        response_400 = ErrorOutputSchemaResponse.from_dict(response.json())
 
         return response_400
 
@@ -54,7 +54,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[Any | ErrorOutputSchemaOut]:
+) -> Response[Any | ErrorOutputSchemaResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -67,26 +67,23 @@ def sync_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UsersSchemaIn,
-) -> Response[Any | ErrorOutputSchemaOut]:
-    """Remove Organization Member
+    body: UsersSchemaRequest,
+) -> Response[Any | ErrorOutputSchemaResponse]:
+    """Remove organization members
 
-     k3MWcA12
-
-    Remove a member from an organization.
-
-    Prevents removal of users who own dataspaces or projects in the organization.
+     Remove one or more members from an organization. Users who own dataspaces or projects must transfer
+    ownership before they can be removed.
 
     Args:
         organization_id (UUID):
-        body (UsersSchemaIn): Schema for getting user IDs
+        body (UsersSchemaRequest): Schema for getting user IDs
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ErrorOutputSchemaOut]
+        Response[Any | ErrorOutputSchemaResponse]
     """
 
     kwargs = _get_kwargs(
@@ -105,26 +102,23 @@ def sync(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UsersSchemaIn,
-) -> Any | ErrorOutputSchemaOut | None:
-    """Remove Organization Member
+    body: UsersSchemaRequest,
+) -> Any | ErrorOutputSchemaResponse | None:
+    """Remove organization members
 
-     k3MWcA12
-
-    Remove a member from an organization.
-
-    Prevents removal of users who own dataspaces or projects in the organization.
+     Remove one or more members from an organization. Users who own dataspaces or projects must transfer
+    ownership before they can be removed.
 
     Args:
         organization_id (UUID):
-        body (UsersSchemaIn): Schema for getting user IDs
+        body (UsersSchemaRequest): Schema for getting user IDs
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | ErrorOutputSchemaOut
+        Any | ErrorOutputSchemaResponse
     """
 
     return sync_detailed(
@@ -138,26 +132,23 @@ async def asyncio_detailed(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UsersSchemaIn,
-) -> Response[Any | ErrorOutputSchemaOut]:
-    """Remove Organization Member
+    body: UsersSchemaRequest,
+) -> Response[Any | ErrorOutputSchemaResponse]:
+    """Remove organization members
 
-     k3MWcA12
-
-    Remove a member from an organization.
-
-    Prevents removal of users who own dataspaces or projects in the organization.
+     Remove one or more members from an organization. Users who own dataspaces or projects must transfer
+    ownership before they can be removed.
 
     Args:
         organization_id (UUID):
-        body (UsersSchemaIn): Schema for getting user IDs
+        body (UsersSchemaRequest): Schema for getting user IDs
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ErrorOutputSchemaOut]
+        Response[Any | ErrorOutputSchemaResponse]
     """
 
     kwargs = _get_kwargs(
@@ -174,26 +165,23 @@ async def asyncio(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: UsersSchemaIn,
-) -> Any | ErrorOutputSchemaOut | None:
-    """Remove Organization Member
+    body: UsersSchemaRequest,
+) -> Any | ErrorOutputSchemaResponse | None:
+    """Remove organization members
 
-     k3MWcA12
-
-    Remove a member from an organization.
-
-    Prevents removal of users who own dataspaces or projects in the organization.
+     Remove one or more members from an organization. Users who own dataspaces or projects must transfer
+    ownership before they can be removed.
 
     Args:
         organization_id (UUID):
-        body (UsersSchemaIn): Schema for getting user IDs
+        body (UsersSchemaRequest): Schema for getting user IDs
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | ErrorOutputSchemaOut
+        Any | ErrorOutputSchemaResponse
     """
 
     return (

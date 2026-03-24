@@ -58,11 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: TargetUserInSchema,
 ) -> Response[Any]:
-    """Transfer Dataspace
+    """Transfer dataspace ownership to another user
 
-     cGhOqqbC
-
-    Transfer ownership of a dataspace to another user
+     Transfer ownership of a dataspace to the specified target user. Requires ownership transfer
+    permissions.
 
     Args:
         dataspace_id (UUID):
@@ -94,11 +93,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: TargetUserInSchema,
 ) -> Response[Any]:
-    """Transfer Dataspace
+    """Transfer dataspace ownership to another user
 
-     cGhOqqbC
-
-    Transfer ownership of a dataspace to another user
+     Transfer ownership of a dataspace to the specified target user. Requires ownership transfer
+    permissions.
 
     Args:
         dataspace_id (UUID):

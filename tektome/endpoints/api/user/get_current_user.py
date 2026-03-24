@@ -5,7 +5,6 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.me_get_out import MeGetOut
 from ...types import Response
 
 
@@ -19,19 +18,14 @@ def _get_kwargs() -> dict[str, Any]:
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> MeGetOut | None:
-    if response.status_code == 200:
-        response_200 = MeGetOut.from_dict(response.json())
-
-        return response_200
-
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[MeGetOut]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -43,19 +37,17 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[MeGetOut]:
-    """Get Me
+) -> Response[Any]:
+    """Get current user profile
 
-     9anEyGTN
-    Get current user profile & current active organization
-    TODO: post poc, rename current_organization to active_workspace
+     Retrieve the authenticated user's profile information, including their active organization.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MeGetOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs()
@@ -67,45 +59,20 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    *,
-    client: AuthenticatedClient,
-) -> MeGetOut | None:
-    """Get Me
-
-     9anEyGTN
-    Get current user profile & current active organization
-    TODO: post poc, rename current_organization to active_workspace
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        MeGetOut
-    """
-
-    return sync_detailed(
-        client=client,
-    ).parsed
-
-
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[MeGetOut]:
-    """Get Me
+) -> Response[Any]:
+    """Get current user profile
 
-     9anEyGTN
-    Get current user profile & current active organization
-    TODO: post poc, rename current_organization to active_workspace
+     Retrieve the authenticated user's profile information, including their active organization.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MeGetOut]
+        Response[Any]
     """
 
     kwargs = _get_kwargs()
@@ -113,28 +80,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    *,
-    client: AuthenticatedClient,
-) -> MeGetOut | None:
-    """Get Me
-
-     9anEyGTN
-    Get current user profile & current active organization
-    TODO: post poc, rename current_organization to active_workspace
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        MeGetOut
-    """
-
-    return (
-        await asyncio_detailed(
-            client=client,
-        )
-    ).parsed

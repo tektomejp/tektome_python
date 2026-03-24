@@ -64,11 +64,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     id_only: bool | Unset = False,
 ) -> Response[Any]:
-    """Stream Bim Elements By Project
+    """Stream BIM elements by project
 
-     uZvgf1HG
-
-    Stream BIM elements for a specific project and model.
+     Stream BIM elements for a specific project and element type. Use the id_only parameter to return
+    only element IDs.
 
     Args:
         bim_project_id (UUID):
@@ -114,11 +113,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     id_only: bool | Unset = False,
 ) -> Response[Any]:
-    """Stream Bim Elements By Project
+    """Stream BIM elements by project
 
-     uZvgf1HG
-
-    Stream BIM elements for a specific project and model.
+     Stream BIM elements for a specific project and element type. Use the id_only parameter to return
+    only element IDs.
 
     Args:
         bim_project_id (UUID):

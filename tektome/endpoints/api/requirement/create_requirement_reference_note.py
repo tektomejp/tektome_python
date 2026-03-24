@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.reference_note_post_in import ReferenceNotePostIn
+from ...models.create_reference_note_request import CreateReferenceNoteRequest
 from ...models.reference_note_schema import ReferenceNoteSchema
 from ...types import Response
 
@@ -15,7 +15,7 @@ from ...types import Response
 def _get_kwargs(
     requirement_id: UUID,
     *,
-    body: ReferenceNotePostIn,
+    body: CreateReferenceNoteRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -59,20 +59,15 @@ def sync_detailed(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ReferenceNotePostIn,
+    body: CreateReferenceNoteRequest,
 ) -> Response[ReferenceNoteSchema]:
-    """Post Reference Note
+    """Create a reference note
 
-     JnQkM31a
-
-    Create a reference note associated to a requirement
-
-    Args:
-        request: Request object
+     Create a new reference note associated with a requirement.
 
     Args:
         requirement_id (UUID):
-        body (ReferenceNotePostIn): Schema for creating a reference note.
+        body (CreateReferenceNoteRequest): Schema for creating a reference note.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -98,20 +93,15 @@ def sync(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ReferenceNotePostIn,
+    body: CreateReferenceNoteRequest,
 ) -> ReferenceNoteSchema | None:
-    """Post Reference Note
+    """Create a reference note
 
-     JnQkM31a
-
-    Create a reference note associated to a requirement
-
-    Args:
-        request: Request object
+     Create a new reference note associated with a requirement.
 
     Args:
         requirement_id (UUID):
-        body (ReferenceNotePostIn): Schema for creating a reference note.
+        body (CreateReferenceNoteRequest): Schema for creating a reference note.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -132,20 +122,15 @@ async def asyncio_detailed(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ReferenceNotePostIn,
+    body: CreateReferenceNoteRequest,
 ) -> Response[ReferenceNoteSchema]:
-    """Post Reference Note
+    """Create a reference note
 
-     JnQkM31a
-
-    Create a reference note associated to a requirement
-
-    Args:
-        request: Request object
+     Create a new reference note associated with a requirement.
 
     Args:
         requirement_id (UUID):
-        body (ReferenceNotePostIn): Schema for creating a reference note.
+        body (CreateReferenceNoteRequest): Schema for creating a reference note.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -169,20 +154,15 @@ async def asyncio(
     requirement_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: ReferenceNotePostIn,
+    body: CreateReferenceNoteRequest,
 ) -> ReferenceNoteSchema | None:
-    """Post Reference Note
+    """Create a reference note
 
-     JnQkM31a
-
-    Create a reference note associated to a requirement
-
-    Args:
-        request: Request object
+     Create a new reference note associated with a requirement.
 
     Args:
         requirement_id (UUID):
-        body (ReferenceNotePostIn): Schema for creating a reference note.
+        body (CreateReferenceNoteRequest): Schema for creating a reference note.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

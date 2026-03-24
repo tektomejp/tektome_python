@@ -5,13 +5,13 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.chat_post_in import ChatPostIn
+from ...models.create_chat_request import CreateChatRequest
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: ChatPostIn,
+    body: CreateChatRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -50,16 +50,15 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: ChatPostIn,
+    body: CreateChatRequest,
 ) -> Response[Any]:
-    """Post Chat
+    """Send a chat message
 
-     Post a chat message to a chatroom.<br>
-    If the chatroom_id is not provided, a new chatroom will be created with the user's ID.<br>
-    If the chatroom_id is provided, the chat continues from the existing chatroom.<br>
+     Send a chat message to a chatroom. If no chatroom ID is provided, a new chatroom is created. Returns
+    the chatroom ID.
 
     Args:
-        body (ChatPostIn):
+        body (CreateChatRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -83,16 +82,15 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: ChatPostIn,
+    body: CreateChatRequest,
 ) -> Response[Any]:
-    """Post Chat
+    """Send a chat message
 
-     Post a chat message to a chatroom.<br>
-    If the chatroom_id is not provided, a new chatroom will be created with the user's ID.<br>
-    If the chatroom_id is provided, the chat continues from the existing chatroom.<br>
+     Send a chat message to a chatroom. If no chatroom ID is provided, a new chatroom is created. Returns
+    the chatroom ID.
 
     Args:
-        body (ChatPostIn):
+        body (CreateChatRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
