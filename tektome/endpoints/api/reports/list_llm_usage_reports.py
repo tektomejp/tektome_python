@@ -73,7 +73,7 @@ def sync_detailed(
     """List LLM usage reports
 
      Retrieve paginated LLM usage reports for a specific organization and period type, ordered by period
-    descending.
+    descending. Always includes the current month entry even if no report has been generated yet.
 
     Args:
         organization_id (UUID):
@@ -114,7 +114,7 @@ async def asyncio_detailed(
     """List LLM usage reports
 
      Retrieve paginated LLM usage reports for a specific organization and period type, ordered by period
-    descending.
+    descending. Always includes the current month entry even if no report has been generated yet.
 
     Args:
         organization_id (UUID):

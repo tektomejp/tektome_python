@@ -9,52 +9,45 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..types import UNSET, Unset
-
 if TYPE_CHECKING:
     from ..models.user_metadata import UserMetadata
 
 
-T = TypeVar("T", bound="LLMUsageReportResponse")
+T = TypeVar("T", bound="GenerateUsageReportPostOut")
 
 
 @_attrs_define
-class LLMUsageReportResponse:
+class GenerateUsageReportPostOut:
     """
     Attributes:
-        generated_on (datetime.datetime | None):
-        tokens_used (None | str):
-        is_current_month (bool):
-        is_outdated (bool):
-        updated_by (None | UserMetadata):
+        id (UUID):
         period (datetime.datetime):
-        id (None | Unset | UUID):
+        generated_on (datetime.datetime):
+        tokens_used (str):
+        is_current_month (bool):
+        updated_by (None | UserMetadata):
     """
 
-    generated_on: datetime.datetime | None
-    tokens_used: None | str
-    is_current_month: bool
-    is_outdated: bool
-    updated_by: None | UserMetadata
+    id: UUID
     period: datetime.datetime
-    id: None | Unset | UUID = UNSET
+    generated_on: datetime.datetime
+    tokens_used: str
+    is_current_month: bool
+    updated_by: None | UserMetadata
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.user_metadata import UserMetadata
 
-        generated_on: None | str
-        if isinstance(self.generated_on, datetime.datetime):
-            generated_on = self.generated_on.isoformat()
-        else:
-            generated_on = self.generated_on
+        id = str(self.id)
 
-        tokens_used: None | str
+        period = self.period.isoformat()
+
+        generated_on = self.generated_on.isoformat()
+
         tokens_used = self.tokens_used
 
         is_current_month = self.is_current_month
-
-        is_outdated = self.is_outdated
 
         updated_by: dict[str, Any] | None
         if isinstance(self.updated_by, UserMetadata):
@@ -62,30 +55,18 @@ class LLMUsageReportResponse:
         else:
             updated_by = self.updated_by
 
-        period = self.period.isoformat()
-
-        id: None | str | Unset
-        if isinstance(self.id, Unset):
-            id = UNSET
-        elif isinstance(self.id, UUID):
-            id = str(self.id)
-        else:
-            id = self.id
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "id": id,
+                "period": period,
                 "generated_on": generated_on,
                 "tokens_used": tokens_used,
                 "is_current_month": is_current_month,
-                "is_outdated": is_outdated,
                 "updated_by": updated_by,
-                "period": period,
             }
         )
-        if id is not UNSET:
-            field_dict["id"] = id
 
         return field_dict
 
@@ -94,32 +75,15 @@ class LLMUsageReportResponse:
         from ..models.user_metadata import UserMetadata
 
         d = dict(src_dict)
+        id = UUID(d.pop("id"))
 
-        def _parse_generated_on(data: object) -> datetime.datetime | None:
-            if data is None:
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                generated_on_type_0 = isoparse(data)
+        period = isoparse(d.pop("period"))
 
-                return generated_on_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(datetime.datetime | None, data)
+        generated_on = isoparse(d.pop("generated_on"))
 
-        generated_on = _parse_generated_on(d.pop("generated_on"))
-
-        def _parse_tokens_used(data: object) -> None | str:
-            if data is None:
-                return data
-            return cast(None | str, data)
-
-        tokens_used = _parse_tokens_used(d.pop("tokens_used"))
+        tokens_used = d.pop("tokens_used")
 
         is_current_month = d.pop("is_current_month")
-
-        is_outdated = d.pop("is_outdated")
 
         def _parse_updated_by(data: object) -> None | UserMetadata:
             if data is None:
@@ -136,37 +100,17 @@ class LLMUsageReportResponse:
 
         updated_by = _parse_updated_by(d.pop("updated_by"))
 
-        period = isoparse(d.pop("period"))
-
-        def _parse_id(data: object) -> None | Unset | UUID:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                id_type_0 = UUID(data)
-
-                return id_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | Unset | UUID, data)
-
-        id = _parse_id(d.pop("id", UNSET))
-
-        llm_usage_report_response = cls(
+        generate_usage_report_post_out = cls(
+            id=id,
+            period=period,
             generated_on=generated_on,
             tokens_used=tokens_used,
             is_current_month=is_current_month,
-            is_outdated=is_outdated,
             updated_by=updated_by,
-            period=period,
-            id=id,
         )
 
-        llm_usage_report_response.additional_properties = d
-        return llm_usage_report_response
+        generate_usage_report_post_out.additional_properties = d
+        return generate_usage_report_post_out
 
     @property
     def additional_keys(self) -> list[str]:
