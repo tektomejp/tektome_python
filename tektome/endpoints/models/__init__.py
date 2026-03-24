@@ -470,6 +470,8 @@ from .gen_breadcrumbs_resource_group_response import GenBreadcrumbsResourceGroup
 from .gen_breadcrumbs_response import GenBreadcrumbsResponse
 from .generate_markdown_path_params import GenerateMarkdownPathParams
 from .generate_requirement_item_row_request import GenerateRequirementItemRowRequest
+from .generate_usage_report_post_in import GenerateUsageReportPostIn
+from .generate_usage_report_post_out import GenerateUsageReportPostOut
 from .generic_check_response import GenericCheckResponse
 from .generic_http_error import GenericHttpError
 from .generic_paginated_output import GenericPaginatedOutput
@@ -1462,6 +1464,8 @@ __all__ = (
     "GenBreadcrumbsResponse",
     "GenerateMarkdownPathParams",
     "GenerateRequirementItemRowRequest",
+    "GenerateUsageReportPostIn",
+    "GenerateUsageReportPostOut",
     "GenericCheckResponse",
     "GenericHttpError",
     "GenericPaginatedOutput",
