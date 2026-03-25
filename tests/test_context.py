@@ -14,6 +14,7 @@ class TestContextCreation:
         context = Context(
             system_user_api_key="test_api_key_12345",
             system_base_url="https://example.tektome.com",
+            system_flow_type="general",
             system_execution_id=sample_uuid,
 
         )
@@ -26,6 +27,7 @@ class TestContextCreation:
         data = {
             "system_user_api_key": "test_api_key_12345",
             "system_base_url": "https://example.tektome.com",
+            "system_flow_type": "general",
             "system_execution_id": sample_uuid_str,
         }
         context = Context(**data)
@@ -44,6 +46,7 @@ class TestContextCreation:
             context = Context(
                 system_user_api_key="key",
                 system_base_url=url_input,
+                system_flow_type="general",
                 system_execution_id=sample_uuid,
 
             )
@@ -59,7 +62,7 @@ class TestContextValidation:
             Context(
                 system_base_url="https://example.com",
                 system_execution_id=sample_uuid,
-                
+                system_flow_type="general",
             )
         assert "system_user_api_key" in str(exc_info.value)
 
@@ -69,7 +72,7 @@ class TestContextValidation:
             Context(
                 system_user_api_key="key",
                 system_execution_id=sample_uuid,
-                
+                system_flow_type="general",
             )
         assert "system_base_url" in str(exc_info.value)
 
@@ -78,6 +81,7 @@ class TestContextValidation:
         context = Context(
             system_user_api_key="key",
             system_base_url="https://example.com",
+            system_flow_type="general",
         )
         # Construction succeeds without guarded fields
         assert context.system_user_api_key == "key"
@@ -88,8 +92,8 @@ class TestContextValidation:
             Context(
                 system_user_api_key="key",
                 system_base_url="https://example.com",
+                system_flow_type="general",
                 system_execution_id="not-a-uuid",
-                
             )
 
     def test_invalid_system_base_url_format(self, sample_uuid):
@@ -104,6 +108,7 @@ class TestContextValidation:
                 Context(
                     system_user_api_key="key",
                     system_base_url=invalid_url,
+                    system_flow_type="general",
                     system_execution_id=sample_uuid,
                     
                 )
@@ -114,12 +119,14 @@ class TestContextValidation:
             Context(
                 system_user_api_key=None,
                 system_base_url="https://example.com",
+                system_flow_type="general",
             )
 
         with pytest.raises(ValidationError):
             Context(
                 system_user_api_key="key",
                 system_base_url=None,
+                system_flow_type="general",
             )
 
 
@@ -131,8 +138,8 @@ class TestContextSerialization:
         context = Context(
             system_user_api_key="test_api_key",
             system_base_url="https://example.com",
+            system_flow_type="general",
             system_execution_id=sample_uuid,
-
         )
         data = context.model_dump()
         assert data["system_user_api_key"] == "test_api_key"
@@ -144,6 +151,7 @@ class TestContextSerialization:
         context = Context(
             system_user_api_key="test_api_key",
             system_base_url="https://example.com",
+            system_flow_type="general",
             system_execution_id=sample_uuid,
             
         )
@@ -157,6 +165,7 @@ class TestContextSerialization:
         context = Context(
             system_user_api_key="test_api_key",
             system_base_url="https://example.com",
+            system_flow_type="general",
             system_execution_id=sample_uuid,
             
         )
@@ -175,12 +184,14 @@ class TestContextEquality:
         context1 = Context(
             system_user_api_key="key",
             system_base_url="https://example.com",
+            system_flow_type="general",
             system_execution_id=sample_uuid,
             
         )
         context2 = Context(
             system_user_api_key="key",
             system_base_url="https://example.com",
+            system_flow_type="general",
             system_execution_id=sample_uuid,
             
         )
@@ -191,12 +202,14 @@ class TestContextEquality:
         context1 = Context(
             system_user_api_key="key1",
             system_base_url="https://example.com",
+            system_flow_type="general",
             system_execution_id=sample_uuid,
             
         )
         context2 = Context(
             system_user_api_key="key2",
             system_base_url="https://example.com",
+            system_flow_type="general",
             system_execution_id=sample_uuid,
             
         )
@@ -207,12 +220,14 @@ class TestContextEquality:
         context1 = Context(
             system_user_api_key="key",
             system_base_url="https://example.com",
+            system_flow_type="general",
             system_execution_id=uuid.uuid4(),
             
         )
         context2 = Context(
             system_user_api_key="key",
             system_base_url="https://example.com",
+            system_flow_type="general",
             system_execution_id=uuid.uuid4(),
             
         )
@@ -227,6 +242,7 @@ class TestContextEdgeCases:
         context = Context(
             system_user_api_key="old_key",
             system_base_url="https://old.com",
+            system_flow_type="general",
             system_execution_id=sample_uuid,
             
         )
@@ -241,6 +257,7 @@ class TestContextEdgeCases:
             Context(
                 system_user_api_key="key",
                 system_base_url="https://example.com",
+                system_flow_type="general",
                 system_execution_id=sample_uuid,
                 extra_field="value",
             )
@@ -251,6 +268,7 @@ class TestContextEdgeCases:
         context = Context(
             system_user_api_key="key",
             system_base_url="https://example.com",
+            system_flow_type="general",
             system_execution_id=sample_uuid,
             
         )
@@ -273,6 +291,7 @@ class TestContextValidateCall:
             context={
                 "system_user_api_key": "key",
                 "system_base_url": "https://example.com",
+                "system_flow_type": "general",
                 "system_execution_id": sample_uuid_str,
             }
         )
@@ -292,8 +311,8 @@ class TestContextValidateCall:
         ctx = Context(
             system_user_api_key="key",
             system_base_url="https://example.com",
+            system_flow_type="general",
             system_execution_id=sample_uuid,
-
         )
         result = process_context(context=ctx)
         assert isinstance(result, Context)
@@ -313,8 +332,8 @@ class TestContextDocumentation:
         context = Context(
             system_user_api_key="key",
             system_base_url="https://example.com",
+            system_flow_type="general",
             system_execution_id=sample_uuid,
-
         )
         schema = context.model_json_schema()
         assert "system_user_api_key" in schema["properties"]
@@ -349,6 +368,7 @@ class TestContextGuardedFields:
         return Context(
             system_user_api_key="key",
             system_base_url="https://example.com",
+            system_flow_type="general",
         )
 
     @pytest.fixture
@@ -357,6 +377,7 @@ class TestContextGuardedFields:
         return Context(
             system_user_api_key="key",
             system_base_url="https://example.com",
+            system_flow_type="general",
             system_chatroom_id=sample_uuid,
             system_execution_id=sample_uuid,
             system_dataspace_id=sample_uuid,
@@ -390,6 +411,7 @@ class TestContextGuardedFields:
         context = Context(
             system_user_api_key="key",
             system_base_url="https://example.com",
+            system_flow_type="general",
             system_execution_id=sample_uuid,
         )
         # system_execution_id is set, should work

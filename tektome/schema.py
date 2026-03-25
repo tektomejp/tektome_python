@@ -2,7 +2,7 @@
 
 import ssl
 from datetime import date, datetime
-from typing import Any, ClassVar
+from typing import Any, ClassVar, Literal
 from uuid import UUID
 
 import httpx
@@ -124,6 +124,16 @@ class Context(BaseSchema):
         ...,
         description="Tektome's deployment base url ex: https://domain.tld",
     )
+    system_flow_type: Literal[
+        "general", "project_attr_extraction", "resource_attr_extraction"
+    ] = Field(
+        ...,
+        description=(
+            'The type of this flow. Possible values are "general", '
+            '"project_attr_extraction" (requires system_project_id and system_attribute_definition_ids), '
+            'and "resource_attr_extraction" (requires system_resource_id and system_attribute_definition_ids).'
+        ),
+    )
     system_chatroom_id: UUID | None = Field(
         None,
         description="The chatroom that this code is being invoked from, if applicable",
@@ -138,15 +148,24 @@ class Context(BaseSchema):
     )
     system_project_id: UUID | None = Field(
         None,
-        description="Project id used to obtain project-specific settings",
+        description=(
+            "Project id used to obtain project-specific settings, "
+            'required when system_flow_type is "project_attr_extraction"'
+        ),
     )
     system_resource_id: UUID | None = Field(
         None,
-        description="Resource id used to obtain resource-specific settings",
+        description=(
+            "Resource id used to obtain resource-specific settings, "
+            'required when system_flow_type is "resource_attr_extraction"'
+        ),
     )
     system_attribute_definition_ids: list[UUID] | None = Field(
         None,
-        description="Attribute definition ids used to obtain attribute-specific settings",
+        description=(
+            "Attribute definition ids used to obtain attribute-specific settings, "
+            'required when system_flow_type is "project_attr_extraction" or "resource_attr_extraction"'
+        ),
     )
 
     _guarded_fields: ClassVar[set[str]] = {
