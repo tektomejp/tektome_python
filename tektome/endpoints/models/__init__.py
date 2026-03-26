@@ -605,6 +605,7 @@ from .login_response import LoginResponse
 from .mark_all_read_request import MarkAllReadRequest
 from .mark_all_read_response import MarkAllReadResponse
 from .markdown_schema import MarkdownSchema
+from .me_get_gitbook_token_out import MeGetGitbookTokenOut
 from .merge_result import MergeResult
 from .merge_result_search_results_item import MergeResultSearchResultsItem
 from .multi_select_attribute_schema_request import MultiSelectAttributeSchemaRequest
@@ -1600,6 +1601,7 @@ __all__ = (
     "MarkAllReadRequest",
     "MarkAllReadResponse",
     "MarkdownSchema",
+    "MeGetGitbookTokenOut",
     "MergeResult",
     "MergeResultSearchResultsItem",
     "MultiSelectAttributeSchemaRequest",
