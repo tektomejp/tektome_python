@@ -1,47 +1,51 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-T = TypeVar("T", bound="BIMElementRequest")
+T = TypeVar("T", bound="BimProjectV2IndexStatusResponse")
 
 
 @_attrs_define
-class BIMElementRequest:
-    """
+class BimProjectV2IndexStatusResponse:
+    """Response schema for BIM project V2 index status from Elasticsearch.
+
     Attributes:
-        bim_project_id (UUID):
-        bim_element_id (None | str | Unset):
+        bim_project_id (UUID): BIM project ID
+        objects_count (int): Number of BIM objects (parent documents) indexed in Elasticsearch V2
+        views_count (int): Number of BIM views (parent documents) indexed in Elasticsearch V2
+        sheets_count (int): Number of BIM sheets (parent documents) indexed in Elasticsearch V2
     """
 
     bim_project_id: UUID
-    bim_element_id: None | str | Unset = UNSET
+    objects_count: int
+    views_count: int
+    sheets_count: int
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         bim_project_id = str(self.bim_project_id)
 
-        bim_element_id: None | str | Unset
-        if isinstance(self.bim_element_id, Unset):
-            bim_element_id = UNSET
-        else:
-            bim_element_id = self.bim_element_id
+        objects_count = self.objects_count
+
+        views_count = self.views_count
+
+        sheets_count = self.sheets_count
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "bim_project_id": bim_project_id,
+                "objects_count": objects_count,
+                "views_count": views_count,
+                "sheets_count": sheets_count,
             }
         )
-        if bim_element_id is not UNSET:
-            field_dict["bim_element_id"] = bim_element_id
 
         return field_dict
 
@@ -50,22 +54,21 @@ class BIMElementRequest:
         d = dict(src_dict)
         bim_project_id = UUID(d.pop("bim_project_id"))
 
-        def _parse_bim_element_id(data: object) -> None | str | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | str | Unset, data)
+        objects_count = d.pop("objects_count")
 
-        bim_element_id = _parse_bim_element_id(d.pop("bim_element_id", UNSET))
+        views_count = d.pop("views_count")
 
-        bim_element_request = cls(
+        sheets_count = d.pop("sheets_count")
+
+        bim_project_v2_index_status_response = cls(
             bim_project_id=bim_project_id,
-            bim_element_id=bim_element_id,
+            objects_count=objects_count,
+            views_count=views_count,
+            sheets_count=sheets_count,
         )
 
-        bim_element_request.additional_properties = d
-        return bim_element_request
+        bim_project_v2_index_status_response.additional_properties = d
+        return bim_project_v2_index_status_response
 
     @property
     def additional_keys(self) -> list[str]:

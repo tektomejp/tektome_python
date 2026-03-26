@@ -99,6 +99,7 @@ from .bim_project_path_no_validation import BimProjectPathNoValidation
 from .bim_project_path_params import BimProjectPathParams
 from .bim_project_response import BimProjectResponse
 from .bim_project_stats_response import BimProjectStatsResponse
+from .bim_project_v2_index_status_response import BimProjectV2IndexStatusResponse
 from .bim_project_v2_index_task_query import BimProjectV2IndexTaskQuery
 from .bim_project_v2_index_task_response import BimProjectV2IndexTaskResponse
 from .bim_project_v2_index_task_response_status import BimProjectV2IndexTaskResponseStatus
@@ -107,11 +108,16 @@ from .bim_query_to_keys_values_response import BimQueryToKeysValuesResponse
 from .bim_search_item_result_response import BimSearchItemResultResponse
 from .bim_search_item_result_response_file_content_type_0 import BimSearchItemResultResponseFileContentType0
 from .bim_search_result_response import BimSearchResultResponse
+from .bim_task_path_params import BimTaskPathParams
+from .bim_task_response import BimTaskResponse
+from .bim_task_response_result import BimTaskResponseResult
 from .bim_topology_search_box_post_in import BimTopologySearchBoxPostIn
 from .bim_topology_search_post_out import BimTopologySearchPostOut
 from .bim_topology_search_prism_post_in import BimTopologySearchPrismPostIn
 from .bim_topology_search_sphere_post_in import BimTopologySearchSpherePostIn
 from .bim_trim_query_item import BimTrimQueryItem
+from .bim_validate_ids_request import BimValidateIdsRequest
+from .bim_validate_ids_response import BimValidateIdsResponse
 from .bim_view_object_link_response import BimViewObjectLinkResponse
 from .bim_view_response import BimViewResponse
 from .blob_upload_complete_request import BlobUploadCompleteRequest
@@ -174,6 +180,7 @@ from .create_attribute_request_value_type_7 import CreateAttributeRequestValueTy
 from .create_bim_batch_element_request_request import CreateBimBatchElementRequestRequest
 from .create_bim_batch_trim_element_request_request import CreateBimBatchTrimElementRequestRequest
 from .create_bim_citation_request import CreateBIMCitationRequest
+from .create_bim_citation_request_resolved_element_map import CreateBIMCitationRequestResolvedElementMap
 from .create_bim_clash_check_request import CreateBimClashCheckRequest
 from .create_bim_element_bim_element_type_path import CreateBimElementBimElementTypePath
 from .create_bim_element_file_params import CreateBimElementFileParams
@@ -963,6 +970,7 @@ from .update_attribute_rawtext_citation_dataspace_entity_type import UpdateAttri
 from .update_attribute_request import UpdateAttributeRequest
 from .update_attribute_request_value_type_7 import UpdateAttributeRequestValueType7
 from .update_bim_citation_request import UpdateBIMCitationRequest
+from .update_bim_citation_request_resolved_element_map import UpdateBIMCitationRequestResolvedElementMap
 from .update_dataspace_project_attribute_request import UpdateDataspaceProjectAttributeRequest
 from .update_dataspace_project_attribute_request_attribute_metadata_type_0 import (
     UpdateDataspaceProjectAttributeRequestAttributeMetadataType0,
@@ -1018,6 +1026,7 @@ from .user_invitation_skipped_schema import UserInvitationSkippedSchema
 from .user_invitation_success_schema import UserInvitationSuccessSchema
 from .user_metadata import UserMetadata
 from .users_schema_request import UsersSchemaRequest
+from .validate_bim_element_ids_bim_element_type_v2_path import ValidateBimElementIdsBimElementTypeV2Path
 
 __all__ = (
     "ADataspacePathParams",
@@ -1119,6 +1128,7 @@ __all__ = (
     "BimProjectPathParams",
     "BimProjectResponse",
     "BimProjectStatsResponse",
+    "BimProjectV2IndexStatusResponse",
     "BimProjectV2IndexTaskQuery",
     "BimProjectV2IndexTaskResponse",
     "BimProjectV2IndexTaskResponseStatus",
@@ -1127,11 +1137,16 @@ __all__ = (
     "BimSearchItemResultResponse",
     "BimSearchItemResultResponseFileContentType0",
     "BimSearchResultResponse",
+    "BimTaskPathParams",
+    "BimTaskResponse",
+    "BimTaskResponseResult",
     "BimTopologySearchBoxPostIn",
     "BimTopologySearchPostOut",
     "BimTopologySearchPrismPostIn",
     "BimTopologySearchSpherePostIn",
     "BimTrimQueryItem",
+    "BimValidateIdsRequest",
+    "BimValidateIdsResponse",
     "BimViewObjectLinkResponse",
     "BimViewResponse",
     "BlobUploadCompleteRequest",
@@ -1192,6 +1207,7 @@ __all__ = (
     "CreateBimBatchElementRequestRequest",
     "CreateBimBatchTrimElementRequestRequest",
     "CreateBIMCitationRequest",
+    "CreateBIMCitationRequestResolvedElementMap",
     "CreateBimClashCheckRequest",
     "CreateBimElementBimElementTypePath",
     "CreateBimElementFileParams",
@@ -1915,6 +1931,7 @@ __all__ = (
     "UpdateAttributeRequest",
     "UpdateAttributeRequestValueType7",
     "UpdateBIMCitationRequest",
+    "UpdateBIMCitationRequestResolvedElementMap",
     "UpdateDataspaceProjectAttributeRequest",
     "UpdateDataspaceProjectAttributeRequestAttributeMetadataType0",
     "UpdateDataspaceProjectAttributeRequestTableAttributeConfigType0",
@@ -1960,4 +1977,5 @@ __all__ = (
     "UserInvitationSuccessSchema",
     "UserMetadata",
     "UsersSchemaRequest",
+    "ValidateBimElementIdsBimElementTypeV2Path",
 )

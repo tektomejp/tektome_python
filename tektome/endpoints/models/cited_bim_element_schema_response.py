@@ -18,13 +18,16 @@ class CitedBIMElementSchemaResponse:
     Attributes:
         bim_project (UUID): The BIM project cited as a source in the citation.
         id (None | Unset | UUID):
-        bim_object (None | str | Unset): The specific BIM object within the cited BIM project that is relevant to the
-            citation.
+        bim_object (None | str | Unset): The resolved parent BIM object. Automatically resolved from bim_element_id via
+            Elasticsearch.
+        bim_element_id (None | str | Unset): The specific BIM element ID cited (may be a child element within a
+            BimObject's JSON).
     """
 
     bim_project: UUID
     id: None | Unset | UUID = UNSET
     bim_object: None | str | Unset = UNSET
+    bim_element_id: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,6 +47,12 @@ class CitedBIMElementSchemaResponse:
         else:
             bim_object = self.bim_object
 
+        bim_element_id: None | str | Unset
+        if isinstance(self.bim_element_id, Unset):
+            bim_element_id = UNSET
+        else:
+            bim_element_id = self.bim_element_id
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -55,6 +64,8 @@ class CitedBIMElementSchemaResponse:
             field_dict["id"] = id
         if bim_object is not UNSET:
             field_dict["bim_object"] = bim_object
+        if bim_element_id is not UNSET:
+            field_dict["bim_element_id"] = bim_element_id
 
         return field_dict
 
@@ -89,10 +100,20 @@ class CitedBIMElementSchemaResponse:
 
         bim_object = _parse_bim_object(d.pop("bim_object", UNSET))
 
+        def _parse_bim_element_id(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        bim_element_id = _parse_bim_element_id(d.pop("bim_element_id", UNSET))
+
         cited_bim_element_schema_response = cls(
             bim_project=bim_project,
             id=id,
             bim_object=bim_object,
+            bim_element_id=bim_element_id,
         )
 
         cited_bim_element_schema_response.additional_properties = d
