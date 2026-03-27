@@ -12,8 +12,8 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.dataspace_project_attribute_response import DataspaceProjectAttributeResponse
-    from ..models.dataspace_resource_file_attribute_response import DataspaceResourceFileAttributeResponse
+    from ..models.search_project_attribute_config_response import SearchProjectAttributeConfigResponse
+    from ..models.search_resource_attribute_config_response import SearchResourceAttributeConfigResponse
     from ..models.user_metadata import UserMetadata
 
 
@@ -26,8 +26,8 @@ class DataspaceFuzzySearchConfigurationResponse:
     Attributes:
         created_by (UserMetadata):
         updated_by (UserMetadata):
-        excluded_project_attributes (list[DataspaceProjectAttributeResponse]):
-        excluded_resource_attributes (list[DataspaceResourceFileAttributeResponse]):
+        excluded_project_attributes (list[SearchProjectAttributeConfigResponse]):
+        excluded_resource_attributes (list[SearchResourceAttributeConfigResponse]):
         created (datetime.datetime):
         updated (datetime.datetime):
         id (None | Unset | UUID):
@@ -35,8 +35,8 @@ class DataspaceFuzzySearchConfigurationResponse:
 
     created_by: UserMetadata
     updated_by: UserMetadata
-    excluded_project_attributes: list[DataspaceProjectAttributeResponse]
-    excluded_resource_attributes: list[DataspaceResourceFileAttributeResponse]
+    excluded_project_attributes: list[SearchProjectAttributeConfigResponse]
+    excluded_resource_attributes: list[SearchResourceAttributeConfigResponse]
     created: datetime.datetime
     updated: datetime.datetime
     id: None | Unset | UUID = UNSET
@@ -88,8 +88,8 @@ class DataspaceFuzzySearchConfigurationResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.dataspace_project_attribute_response import DataspaceProjectAttributeResponse
-        from ..models.dataspace_resource_file_attribute_response import DataspaceResourceFileAttributeResponse
+        from ..models.search_project_attribute_config_response import SearchProjectAttributeConfigResponse
+        from ..models.search_resource_attribute_config_response import SearchResourceAttributeConfigResponse
         from ..models.user_metadata import UserMetadata
 
         d = dict(src_dict)
@@ -100,7 +100,7 @@ class DataspaceFuzzySearchConfigurationResponse:
         excluded_project_attributes = []
         _excluded_project_attributes = d.pop("excluded_project_attributes")
         for excluded_project_attributes_item_data in _excluded_project_attributes:
-            excluded_project_attributes_item = DataspaceProjectAttributeResponse.from_dict(
+            excluded_project_attributes_item = SearchProjectAttributeConfigResponse.from_dict(
                 excluded_project_attributes_item_data
             )
 
@@ -109,7 +109,7 @@ class DataspaceFuzzySearchConfigurationResponse:
         excluded_resource_attributes = []
         _excluded_resource_attributes = d.pop("excluded_resource_attributes")
         for excluded_resource_attributes_item_data in _excluded_resource_attributes:
-            excluded_resource_attributes_item = DataspaceResourceFileAttributeResponse.from_dict(
+            excluded_resource_attributes_item = SearchResourceAttributeConfigResponse.from_dict(
                 excluded_resource_attributes_item_data
             )
 

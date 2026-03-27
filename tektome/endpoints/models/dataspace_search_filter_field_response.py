@@ -12,11 +12,11 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.dataspace_project_attribute_schema_response import DataspaceProjectAttributeSchemaResponse
-    from ..models.dataspace_resource_file_attribute_schema_response import DataspaceResourceFileAttributeSchemaResponse
     from ..models.dataspace_search_filter_field_response_recommended_values_type_0 import (
         DataspaceSearchFilterFieldResponseRecommendedValuesType0,
     )
+    from ..models.search_project_attribute_config_response import SearchProjectAttributeConfigResponse
+    from ..models.search_resource_attribute_config_response import SearchResourceAttributeConfigResponse
     from ..models.table_column_mapping import TableColumnMapping
     from ..models.user_metadata import UserMetadata
 
@@ -31,8 +31,8 @@ class DataspaceSearchFilterFieldResponse:
     Attributes:
         created_by (UserMetadata):
         updated_by (UserMetadata):
-        project_attributes (list[DataspaceProjectAttributeSchemaResponse]):
-        resource_attributes (list[DataspaceResourceFileAttributeSchemaResponse]):
+        project_attributes (list[SearchProjectAttributeConfigResponse]):
+        resource_attributes (list[SearchResourceAttributeConfigResponse]):
         name (str):
         created (datetime.datetime):
         updated (datetime.datetime):
@@ -45,8 +45,8 @@ class DataspaceSearchFilterFieldResponse:
 
     created_by: UserMetadata
     updated_by: UserMetadata
-    project_attributes: list[DataspaceProjectAttributeSchemaResponse]
-    resource_attributes: list[DataspaceResourceFileAttributeSchemaResponse]
+    project_attributes: list[SearchProjectAttributeConfigResponse]
+    resource_attributes: list[SearchResourceAttributeConfigResponse]
     name: str
     created: datetime.datetime
     updated: datetime.datetime
@@ -145,13 +145,11 @@ class DataspaceSearchFilterFieldResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.dataspace_project_attribute_schema_response import DataspaceProjectAttributeSchemaResponse
-        from ..models.dataspace_resource_file_attribute_schema_response import (
-            DataspaceResourceFileAttributeSchemaResponse,
-        )
         from ..models.dataspace_search_filter_field_response_recommended_values_type_0 import (
             DataspaceSearchFilterFieldResponseRecommendedValuesType0,
         )
+        from ..models.search_project_attribute_config_response import SearchProjectAttributeConfigResponse
+        from ..models.search_resource_attribute_config_response import SearchResourceAttributeConfigResponse
         from ..models.table_column_mapping import TableColumnMapping
         from ..models.user_metadata import UserMetadata
 
@@ -163,16 +161,14 @@ class DataspaceSearchFilterFieldResponse:
         project_attributes = []
         _project_attributes = d.pop("project_attributes")
         for project_attributes_item_data in _project_attributes:
-            project_attributes_item = DataspaceProjectAttributeSchemaResponse.from_dict(project_attributes_item_data)
+            project_attributes_item = SearchProjectAttributeConfigResponse.from_dict(project_attributes_item_data)
 
             project_attributes.append(project_attributes_item)
 
         resource_attributes = []
         _resource_attributes = d.pop("resource_attributes")
         for resource_attributes_item_data in _resource_attributes:
-            resource_attributes_item = DataspaceResourceFileAttributeSchemaResponse.from_dict(
-                resource_attributes_item_data
-            )
+            resource_attributes_item = SearchResourceAttributeConfigResponse.from_dict(resource_attributes_item_data)
 
             resource_attributes.append(resource_attributes_item)
 
