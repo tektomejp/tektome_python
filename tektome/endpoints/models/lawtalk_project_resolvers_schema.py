@@ -13,8 +13,8 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.attribute_schema import AttributeSchema
-    from ..models.lawtalk_empty_project_attributes import LawtalkEmptyProjectAttributes
     from ..models.lawtalk_project_organization_schema import LawtalkProjectOrganizationSchema
+    from ..models.lawtalk_project_required_schema import LawtalkProjectRequiredSchema
 
 
 T = TypeVar("T", bound="LawtalkProjectResolversSchema")
@@ -25,7 +25,7 @@ class LawtalkProjectResolversSchema:
     """
     Attributes:
         lawtalk_attributes (list[AttributeSchema]):
-        core_attributes (LawtalkEmptyProjectAttributes):
+        core_attributes (LawtalkProjectRequiredSchema):
         core_project_id (UUID):
         organization (LawtalkProjectOrganizationSchema):
         created (datetime.datetime):
@@ -35,7 +35,7 @@ class LawtalkProjectResolversSchema:
     """
 
     lawtalk_attributes: list[AttributeSchema]
-    core_attributes: LawtalkEmptyProjectAttributes
+    core_attributes: LawtalkProjectRequiredSchema
     core_project_id: UUID
     organization: LawtalkProjectOrganizationSchema
     created: datetime.datetime
@@ -91,8 +91,8 @@ class LawtalkProjectResolversSchema:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.attribute_schema import AttributeSchema
-        from ..models.lawtalk_empty_project_attributes import LawtalkEmptyProjectAttributes
         from ..models.lawtalk_project_organization_schema import LawtalkProjectOrganizationSchema
+        from ..models.lawtalk_project_required_schema import LawtalkProjectRequiredSchema
 
         d = dict(src_dict)
         lawtalk_attributes = []
@@ -102,7 +102,7 @@ class LawtalkProjectResolversSchema:
 
             lawtalk_attributes.append(lawtalk_attributes_item)
 
-        core_attributes = LawtalkEmptyProjectAttributes.from_dict(d.pop("core_attributes"))
+        core_attributes = LawtalkProjectRequiredSchema.from_dict(d.pop("core_attributes"))
 
         core_project_id = UUID(d.pop("core_project_id"))
 

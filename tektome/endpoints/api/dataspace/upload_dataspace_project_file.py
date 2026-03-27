@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.appresource_resource_schema import AppresourceResourceSchema
 from ...models.error_response import ErrorResponse
-from ...models.resource_schema import ResourceSchema
 from ...models.upload_dataspace_project_file_multi_part_body_params import UploadDataspaceProjectFileMultiPartBodyParams
 from ...types import Response
 
@@ -35,9 +35,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorResponse | ResourceSchema | None:
+) -> AppresourceResourceSchema | ErrorResponse | None:
     if response.status_code == 201:
-        response_201 = ResourceSchema.from_dict(response.json())
+        response_201 = AppresourceResourceSchema.from_dict(response.json())
 
         return response_201
 
@@ -139,7 +139,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorResponse | ResourceSchema]:
+) -> Response[AppresourceResourceSchema | ErrorResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -153,7 +153,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UploadDataspaceProjectFileMultiPartBodyParams,
-) -> Response[ErrorResponse | ResourceSchema]:
+) -> Response[AppresourceResourceSchema | ErrorResponse]:
     """Upload a file to a dataspace project
 
      Upload a file to a project in the dataspace. Optionally initializes processing such as OCR or BIM
@@ -168,7 +168,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorResponse | ResourceSchema]
+        Response[AppresourceResourceSchema | ErrorResponse]
     """
 
     kwargs = _get_kwargs(
@@ -188,7 +188,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: UploadDataspaceProjectFileMultiPartBodyParams,
-) -> ErrorResponse | ResourceSchema | None:
+) -> AppresourceResourceSchema | ErrorResponse | None:
     """Upload a file to a dataspace project
 
      Upload a file to a project in the dataspace. Optionally initializes processing such as OCR or BIM
@@ -203,7 +203,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorResponse | ResourceSchema
+        AppresourceResourceSchema | ErrorResponse
     """
 
     return sync_detailed(
@@ -218,7 +218,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: UploadDataspaceProjectFileMultiPartBodyParams,
-) -> Response[ErrorResponse | ResourceSchema]:
+) -> Response[AppresourceResourceSchema | ErrorResponse]:
     """Upload a file to a dataspace project
 
      Upload a file to a project in the dataspace. Optionally initializes processing such as OCR or BIM
@@ -233,7 +233,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorResponse | ResourceSchema]
+        Response[AppresourceResourceSchema | ErrorResponse]
     """
 
     kwargs = _get_kwargs(
@@ -251,7 +251,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: UploadDataspaceProjectFileMultiPartBodyParams,
-) -> ErrorResponse | ResourceSchema | None:
+) -> AppresourceResourceSchema | ErrorResponse | None:
     """Upload a file to a dataspace project
 
      Upload a file to a project in the dataspace. Optionally initializes processing such as OCR or BIM
@@ -266,7 +266,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorResponse | ResourceSchema
+        AppresourceResourceSchema | ErrorResponse
     """
 
     return (

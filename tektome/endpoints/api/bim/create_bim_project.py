@@ -7,7 +7,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.bim_project_response import BimProjectResponse
 from ...models.create_bim_project_request import CreateBimProjectRequest
-from ...models.error_response_response import ErrorResponseResponse
+from ...models.error_response_post_out import ErrorResponsePostOut
 from ...types import Response
 
 
@@ -32,14 +32,14 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BimProjectResponse | ErrorResponseResponse | None:
+) -> BimProjectResponse | ErrorResponsePostOut | None:
     if response.status_code == 200:
         response_200 = BimProjectResponse.from_dict(response.json())
 
         return response_200
 
     if response.status_code == 404:
-        response_404 = ErrorResponseResponse.from_dict(response.json())
+        response_404 = ErrorResponsePostOut.from_dict(response.json())
 
         return response_404
 
@@ -51,7 +51,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BimProjectResponse | ErrorResponseResponse]:
+) -> Response[BimProjectResponse | ErrorResponsePostOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -64,7 +64,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: CreateBimProjectRequest,
-) -> Response[BimProjectResponse | ErrorResponseResponse]:
+) -> Response[BimProjectResponse | ErrorResponsePostOut]:
     """Create a BIM project
 
      Create a new BIM project associated with an existing resource.
@@ -77,7 +77,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimProjectResponse | ErrorResponseResponse]
+        Response[BimProjectResponse | ErrorResponsePostOut]
     """
 
     kwargs = _get_kwargs(
@@ -95,7 +95,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: CreateBimProjectRequest,
-) -> BimProjectResponse | ErrorResponseResponse | None:
+) -> BimProjectResponse | ErrorResponsePostOut | None:
     """Create a BIM project
 
      Create a new BIM project associated with an existing resource.
@@ -108,7 +108,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimProjectResponse | ErrorResponseResponse
+        BimProjectResponse | ErrorResponsePostOut
     """
 
     return sync_detailed(
@@ -121,7 +121,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: CreateBimProjectRequest,
-) -> Response[BimProjectResponse | ErrorResponseResponse]:
+) -> Response[BimProjectResponse | ErrorResponsePostOut]:
     """Create a BIM project
 
      Create a new BIM project associated with an existing resource.
@@ -134,7 +134,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimProjectResponse | ErrorResponseResponse]
+        Response[BimProjectResponse | ErrorResponsePostOut]
     """
 
     kwargs = _get_kwargs(
@@ -150,7 +150,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: CreateBimProjectRequest,
-) -> BimProjectResponse | ErrorResponseResponse | None:
+) -> BimProjectResponse | ErrorResponsePostOut | None:
     """Create a BIM project
 
      Create a new BIM project associated with an existing resource.
@@ -163,7 +163,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimProjectResponse | ErrorResponseResponse
+        BimProjectResponse | ErrorResponsePostOut
     """
 
     return (

@@ -7,6 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.lawtalk_resource_schema import LawtalkResourceSchema
 from ...models.upload_lawtalk_resource_multi_part_body_params import UploadLawtalkResourceMultiPartBodyParams
 from ...types import Response
 
@@ -31,14 +32,21 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> LawtalkResourceSchema | None:
+    if response.status_code == 201:
+        response_201 = LawtalkResourceSchema.from_dict(response.json())
+
+        return response_201
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[LawtalkResourceSchema]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -52,7 +60,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UploadLawtalkResourceMultiPartBodyParams,
-) -> Response[Any]:
+) -> Response[LawtalkResourceSchema]:
     """Upload a resource file
 
      Upload a file to a resource group and create a new resource. Supports PDF, DOCX, IFC, and other file
@@ -67,7 +75,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[LawtalkResourceSchema]
     """
 
     kwargs = _get_kwargs(
@@ -82,12 +90,12 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
     body: UploadLawtalkResourceMultiPartBodyParams,
-) -> Response[Any]:
+) -> LawtalkResourceSchema | None:
     """Upload a resource file
 
      Upload a file to a resource group and create a new resource. Supports PDF, DOCX, IFC, and other file
@@ -102,7 +110,37 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        LawtalkResourceSchema
+    """
+
+    return sync_detailed(
+        resource_group_id=resource_group_id,
+        client=client,
+        body=body,
+    ).parsed
+
+
+async def asyncio_detailed(
+    resource_group_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    body: UploadLawtalkResourceMultiPartBodyParams,
+) -> Response[LawtalkResourceSchema]:
+    """Upload a resource file
+
+     Upload a file to a resource group and create a new resource. Supports PDF, DOCX, IFC, and other file
+    types. Optionally triggers OCR extraction or BIM conversion on upload.
+
+    Args:
+        resource_group_id (UUID): Resource group ID
+        body (UploadLawtalkResourceMultiPartBodyParams):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[LawtalkResourceSchema]
     """
 
     kwargs = _get_kwargs(
@@ -113,3 +151,35 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    resource_group_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    body: UploadLawtalkResourceMultiPartBodyParams,
+) -> LawtalkResourceSchema | None:
+    """Upload a resource file
+
+     Upload a file to a resource group and create a new resource. Supports PDF, DOCX, IFC, and other file
+    types. Optionally triggers OCR extraction or BIM conversion on upload.
+
+    Args:
+        resource_group_id (UUID): Resource group ID
+        body (UploadLawtalkResourceMultiPartBodyParams):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        LawtalkResourceSchema
+    """
+
+    return (
+        await asyncio_detailed(
+            resource_group_id=resource_group_id,
+            client=client,
+            body=body,
+        )
+    ).parsed

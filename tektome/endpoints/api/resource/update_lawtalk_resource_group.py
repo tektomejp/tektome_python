@@ -7,6 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.lawtalk_resource_group_schema import LawtalkResourceGroupSchema
 from ...models.update_resource_group_request import UpdateResourceGroupRequest
 from ...types import Response
 
@@ -33,14 +34,23 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> LawtalkResourceGroupSchema | None:
+    if response.status_code == 200:
+        response_200 = LawtalkResourceGroupSchema.from_dict(response.json())
+
+        return response_200
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[LawtalkResourceGroupSchema]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,7 +64,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateResourceGroupRequest,
-) -> Response[Any]:
+) -> Response[LawtalkResourceGroupSchema]:
     """Update a resource group
 
      Update resource group attributes such as name and description.
@@ -68,7 +78,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[LawtalkResourceGroupSchema]
     """
 
     kwargs = _get_kwargs(
@@ -83,12 +93,12 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     resource_group_id: UUID,
     *,
     client: AuthenticatedClient,
     body: UpdateResourceGroupRequest,
-) -> Response[Any]:
+) -> LawtalkResourceGroupSchema | None:
     """Update a resource group
 
      Update resource group attributes such as name and description.
@@ -102,7 +112,36 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        LawtalkResourceGroupSchema
+    """
+
+    return sync_detailed(
+        resource_group_id=resource_group_id,
+        client=client,
+        body=body,
+    ).parsed
+
+
+async def asyncio_detailed(
+    resource_group_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    body: UpdateResourceGroupRequest,
+) -> Response[LawtalkResourceGroupSchema]:
+    """Update a resource group
+
+     Update resource group attributes such as name and description.
+
+    Args:
+        resource_group_id (UUID): Resource group ID
+        body (UpdateResourceGroupRequest):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[LawtalkResourceGroupSchema]
     """
 
     kwargs = _get_kwargs(
@@ -113,3 +152,34 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    resource_group_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    body: UpdateResourceGroupRequest,
+) -> LawtalkResourceGroupSchema | None:
+    """Update a resource group
+
+     Update resource group attributes such as name and description.
+
+    Args:
+        resource_group_id (UUID): Resource group ID
+        body (UpdateResourceGroupRequest):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        LawtalkResourceGroupSchema
+    """
+
+    return (
+        await asyncio_detailed(
+            resource_group_id=resource_group_id,
+            client=client,
+            body=body,
+        )
+    ).parsed

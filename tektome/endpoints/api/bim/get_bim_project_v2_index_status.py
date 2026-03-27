@@ -8,6 +8,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.bim_project_v2_index_status_response import BimProjectV2IndexStatusResponse
+from ...models.error_response_out import ErrorResponseOut
 from ...types import Response
 
 
@@ -27,11 +28,21 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BimProjectV2IndexStatusResponse | None:
+) -> BimProjectV2IndexStatusResponse | ErrorResponseOut | None:
     if response.status_code == 200:
         response_200 = BimProjectV2IndexStatusResponse.from_dict(response.json())
 
         return response_200
+
+    if response.status_code == 404:
+        response_404 = ErrorResponseOut.from_dict(response.json())
+
+        return response_404
+
+    if response.status_code == 500:
+        response_500 = ErrorResponseOut.from_dict(response.json())
+
+        return response_500
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -41,7 +52,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BimProjectV2IndexStatusResponse]:
+) -> Response[BimProjectV2IndexStatusResponse | ErrorResponseOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,7 +65,7 @@ def sync_detailed(
     bim_project_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[BimProjectV2IndexStatusResponse]:
+) -> Response[BimProjectV2IndexStatusResponse | ErrorResponseOut]:
     """Get BIM project V2 index status
 
      Query Elasticsearch V2 indices to retrieve the count of indexed BIM objects, views, and sheets for
@@ -70,7 +81,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimProjectV2IndexStatusResponse]
+        Response[BimProjectV2IndexStatusResponse | ErrorResponseOut]
     """
 
     kwargs = _get_kwargs(
@@ -88,7 +99,7 @@ def sync(
     bim_project_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> BimProjectV2IndexStatusResponse | None:
+) -> BimProjectV2IndexStatusResponse | ErrorResponseOut | None:
     """Get BIM project V2 index status
 
      Query Elasticsearch V2 indices to retrieve the count of indexed BIM objects, views, and sheets for
@@ -104,7 +115,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimProjectV2IndexStatusResponse
+        BimProjectV2IndexStatusResponse | ErrorResponseOut
     """
 
     return sync_detailed(
@@ -117,7 +128,7 @@ async def asyncio_detailed(
     bim_project_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[BimProjectV2IndexStatusResponse]:
+) -> Response[BimProjectV2IndexStatusResponse | ErrorResponseOut]:
     """Get BIM project V2 index status
 
      Query Elasticsearch V2 indices to retrieve the count of indexed BIM objects, views, and sheets for
@@ -133,7 +144,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimProjectV2IndexStatusResponse]
+        Response[BimProjectV2IndexStatusResponse | ErrorResponseOut]
     """
 
     kwargs = _get_kwargs(
@@ -149,7 +160,7 @@ async def asyncio(
     bim_project_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> BimProjectV2IndexStatusResponse | None:
+) -> BimProjectV2IndexStatusResponse | ErrorResponseOut | None:
     """Get BIM project V2 index status
 
      Query Elasticsearch V2 indices to retrieve the count of indexed BIM objects, views, and sheets for
@@ -165,7 +176,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimProjectV2IndexStatusResponse
+        BimProjectV2IndexStatusResponse | ErrorResponseOut
     """
 
     return (

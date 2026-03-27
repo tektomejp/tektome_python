@@ -6,6 +6,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.artifact_template_group_kind import ArtifactTemplateGroupKind
+from ...models.paged_artifact_template_group_get_out import PagedArtifactTemplateGroupGetOut
 from ...types import UNSET, Response, Unset
 
 
@@ -63,14 +64,23 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> PagedArtifactTemplateGroupGetOut | None:
+    if response.status_code == 200:
+        response_200 = PagedArtifactTemplateGroupGetOut.from_dict(response.json())
+
+        return response_200
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[PagedArtifactTemplateGroupGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -87,7 +97,7 @@ def sync_detailed(
     search: None | str | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[Any]:
+) -> Response[PagedArtifactTemplateGroupGetOut]:
     """List active artifact template groups
 
      Returns paginated artifact template groups available for installation. Template groups are pre-
@@ -106,7 +116,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[PagedArtifactTemplateGroupGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -124,7 +134,7 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     *,
     client: AuthenticatedClient,
     kind: ArtifactTemplateGroupKind | None | Unset = UNSET,
@@ -132,7 +142,7 @@ async def asyncio_detailed(
     search: None | str | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[Any]:
+) -> PagedArtifactTemplateGroupGetOut | None:
     """List active artifact template groups
 
      Returns paginated artifact template groups available for installation. Template groups are pre-
@@ -151,7 +161,47 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        PagedArtifactTemplateGroupGetOut
+    """
+
+    return sync_detailed(
+        client=client,
+        kind=kind,
+        is_default=is_default,
+        search=search,
+        page=page,
+        page_size=page_size,
+    ).parsed
+
+
+async def asyncio_detailed(
+    *,
+    client: AuthenticatedClient,
+    kind: ArtifactTemplateGroupKind | None | Unset = UNSET,
+    is_default: bool | None | Unset = UNSET,
+    search: None | str | Unset = UNSET,
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
+) -> Response[PagedArtifactTemplateGroupGetOut]:
+    """List active artifact template groups
+
+     Returns paginated artifact template groups available for installation. Template groups are pre-
+    defined bundles of files (skills, SDK references, starter kits) that can be installed into a
+    chatroom. Filter by kind (skill/artifact), default status, or search by name.
+
+    Args:
+        kind (ArtifactTemplateGroupKind | None | Unset):
+        is_default (bool | None | Unset):
+        search (None | str | Unset):
+        page (int | Unset):  Default: 1.
+        page_size (int | None | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[PagedArtifactTemplateGroupGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -165,3 +215,45 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    *,
+    client: AuthenticatedClient,
+    kind: ArtifactTemplateGroupKind | None | Unset = UNSET,
+    is_default: bool | None | Unset = UNSET,
+    search: None | str | Unset = UNSET,
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
+) -> PagedArtifactTemplateGroupGetOut | None:
+    """List active artifact template groups
+
+     Returns paginated artifact template groups available for installation. Template groups are pre-
+    defined bundles of files (skills, SDK references, starter kits) that can be installed into a
+    chatroom. Filter by kind (skill/artifact), default status, or search by name.
+
+    Args:
+        kind (ArtifactTemplateGroupKind | None | Unset):
+        is_default (bool | None | Unset):
+        search (None | str | Unset):
+        page (int | Unset):  Default: 1.
+        page_size (int | None | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        PagedArtifactTemplateGroupGetOut
+    """
+
+    return (
+        await asyncio_detailed(
+            client=client,
+            kind=kind,
+            is_default=is_default,
+            search=search,
+            page=page,
+            page_size=page_size,
+        )
+    ).parsed

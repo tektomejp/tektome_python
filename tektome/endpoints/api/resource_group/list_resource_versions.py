@@ -8,6 +8,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.error_response import ErrorResponse
+from ...models.paged_resource_schema_post_out import PagedResourceSchemaPostOut
 from ...types import UNSET, Response, Unset
 
 
@@ -44,7 +45,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorResponse | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorResponse | PagedResourceSchemaPostOut | None:
+    if response.status_code == 200:
+        response_200 = PagedResourceSchemaPostOut.from_dict(response.json())
+
+        return response_200
+
     if response.status_code == 400:
         response_400 = ErrorResponse.from_dict(response.json())
 
@@ -141,7 +149,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorResponse]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorResponse | PagedResourceSchemaPostOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -157,7 +167,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[ErrorResponse]:
+) -> Response[ErrorResponse | PagedResourceSchemaPostOut]:
     """List all versions of a resource
 
      Retrieve a paginated list of all versions for a resource, sorted by most recently updated.
@@ -173,7 +183,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorResponse]
+        Response[ErrorResponse | PagedResourceSchemaPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -197,7 +207,7 @@ def sync(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> ErrorResponse | None:
+) -> ErrorResponse | PagedResourceSchemaPostOut | None:
     """List all versions of a resource
 
      Retrieve a paginated list of all versions for a resource, sorted by most recently updated.
@@ -213,7 +223,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorResponse
+        ErrorResponse | PagedResourceSchemaPostOut
     """
 
     return sync_detailed(
@@ -232,7 +242,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[ErrorResponse]:
+) -> Response[ErrorResponse | PagedResourceSchemaPostOut]:
     """List all versions of a resource
 
      Retrieve a paginated list of all versions for a resource, sorted by most recently updated.
@@ -248,7 +258,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorResponse]
+        Response[ErrorResponse | PagedResourceSchemaPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -270,7 +280,7 @@ async def asyncio(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> ErrorResponse | None:
+) -> ErrorResponse | PagedResourceSchemaPostOut | None:
     """List all versions of a resource
 
      Retrieve a paginated list of all versions for a resource, sorted by most recently updated.
@@ -286,7 +296,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorResponse
+        ErrorResponse | PagedResourceSchemaPostOut
     """
 
     return (
