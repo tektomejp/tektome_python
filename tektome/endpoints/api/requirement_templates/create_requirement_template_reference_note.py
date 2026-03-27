@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_requirement_template_reference_note_request import CreateRequirementTemplateReferenceNoteRequest
+from ...models.requirement_template_reference_note_post_in import RequirementTemplateReferenceNotePostIn
 from ...models.requirement_template_reference_note_response import RequirementTemplateReferenceNoteResponse
 from ...types import Response
 
@@ -15,7 +15,7 @@ from ...types import Response
 def _get_kwargs(
     requirement_template_id: UUID,
     *,
-    body: CreateRequirementTemplateReferenceNoteRequest,
+    body: RequirementTemplateReferenceNotePostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -63,7 +63,7 @@ def sync_detailed(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateRequirementTemplateReferenceNoteRequest,
+    body: RequirementTemplateReferenceNotePostIn,
 ) -> Response[RequirementTemplateReferenceNoteResponse]:
     """Create a reference note template
 
@@ -72,7 +72,7 @@ def sync_detailed(
 
     Args:
         requirement_template_id (UUID):
-        body (CreateRequirementTemplateReferenceNoteRequest): Serializer for Requirement Template
+        body (RequirementTemplateReferenceNotePostIn): Serializer for Requirement Template
             Reference Note.
 
     Raises:
@@ -99,7 +99,7 @@ def sync(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateRequirementTemplateReferenceNoteRequest,
+    body: RequirementTemplateReferenceNotePostIn,
 ) -> RequirementTemplateReferenceNoteResponse | None:
     """Create a reference note template
 
@@ -108,7 +108,7 @@ def sync(
 
     Args:
         requirement_template_id (UUID):
-        body (CreateRequirementTemplateReferenceNoteRequest): Serializer for Requirement Template
+        body (RequirementTemplateReferenceNotePostIn): Serializer for Requirement Template
             Reference Note.
 
     Raises:
@@ -130,7 +130,7 @@ async def asyncio_detailed(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateRequirementTemplateReferenceNoteRequest,
+    body: RequirementTemplateReferenceNotePostIn,
 ) -> Response[RequirementTemplateReferenceNoteResponse]:
     """Create a reference note template
 
@@ -139,7 +139,7 @@ async def asyncio_detailed(
 
     Args:
         requirement_template_id (UUID):
-        body (CreateRequirementTemplateReferenceNoteRequest): Serializer for Requirement Template
+        body (RequirementTemplateReferenceNotePostIn): Serializer for Requirement Template
             Reference Note.
 
     Raises:
@@ -164,7 +164,7 @@ async def asyncio(
     requirement_template_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateRequirementTemplateReferenceNoteRequest,
+    body: RequirementTemplateReferenceNotePostIn,
 ) -> RequirementTemplateReferenceNoteResponse | None:
     """Create a reference note template
 
@@ -173,7 +173,7 @@ async def asyncio(
 
     Args:
         requirement_template_id (UUID):
-        body (CreateRequirementTemplateReferenceNoteRequest): Serializer for Requirement Template
+        body (RequirementTemplateReferenceNotePostIn): Serializer for Requirement Template
             Reference Note.
 
     Raises:

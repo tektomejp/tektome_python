@@ -5,9 +5,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.error_output_schema_response import ErrorOutputSchemaResponse
 from ...models.import_result import ImportResult
 from ...models.sync_storage_file_multi_part_body_params import SyncStorageFileMultiPartBodyParams
-from ...models.sync_storage_file_response import SyncStorageFileResponse
 from ...types import Response
 
 
@@ -30,7 +30,7 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ImportResult | SyncStorageFileResponse | None:
+) -> ErrorOutputSchemaResponse | ImportResult | None:
     if response.status_code == 200:
         response_200 = ImportResult.from_dict(response.json())
 
@@ -41,8 +41,13 @@ def _parse_response(
 
         return response_400
 
+    if response.status_code == 404:
+        response_404 = ErrorOutputSchemaResponse.from_dict(response.json())
+
+        return response_404
+
     if response.status_code == 500:
-        response_500 = SyncStorageFileResponse.from_dict(response.json())
+        response_500 = ErrorOutputSchemaResponse.from_dict(response.json())
 
         return response_500
 
@@ -54,7 +59,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ImportResult | SyncStorageFileResponse]:
+) -> Response[ErrorOutputSchemaResponse | ImportResult]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -67,7 +72,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: SyncStorageFileMultiPartBodyParams,
-) -> Response[ImportResult | SyncStorageFileResponse]:
+) -> Response[ErrorOutputSchemaResponse | ImportResult]:
     """Sync a single file from storage
 
      Sync a single file along with its metadata and binary content. The file is imported or updated based
@@ -81,7 +86,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ImportResult | SyncStorageFileResponse]
+        Response[ErrorOutputSchemaResponse | ImportResult]
     """
 
     kwargs = _get_kwargs(
@@ -99,7 +104,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: SyncStorageFileMultiPartBodyParams,
-) -> ImportResult | SyncStorageFileResponse | None:
+) -> ErrorOutputSchemaResponse | ImportResult | None:
     """Sync a single file from storage
 
      Sync a single file along with its metadata and binary content. The file is imported or updated based
@@ -113,7 +118,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ImportResult | SyncStorageFileResponse
+        ErrorOutputSchemaResponse | ImportResult
     """
 
     return sync_detailed(
@@ -126,7 +131,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: SyncStorageFileMultiPartBodyParams,
-) -> Response[ImportResult | SyncStorageFileResponse]:
+) -> Response[ErrorOutputSchemaResponse | ImportResult]:
     """Sync a single file from storage
 
      Sync a single file along with its metadata and binary content. The file is imported or updated based
@@ -140,7 +145,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ImportResult | SyncStorageFileResponse]
+        Response[ErrorOutputSchemaResponse | ImportResult]
     """
 
     kwargs = _get_kwargs(
@@ -156,7 +161,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: SyncStorageFileMultiPartBodyParams,
-) -> ImportResult | SyncStorageFileResponse | None:
+) -> ErrorOutputSchemaResponse | ImportResult | None:
     """Sync a single file from storage
 
      Sync a single file along with its metadata and binary content. The file is imported or updated based
@@ -170,7 +175,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ImportResult | SyncStorageFileResponse
+        ErrorOutputSchemaResponse | ImportResult
     """
 
     return (

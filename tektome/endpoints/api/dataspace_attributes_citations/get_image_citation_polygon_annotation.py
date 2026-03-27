@@ -10,6 +10,7 @@ from ...client import AuthenticatedClient, Client
 from ...models.get_image_citation_polygon_annotation_dataspace_entity_type import (
     GetImageCitationPolygonAnnotationDataspaceEntityType,
 )
+from ...models.paged_image_citation_polygon_annotation_get_out import PagedImageCitationPolygonAnnotationGetOut
 from ...types import UNSET, Response, Unset
 
 
@@ -50,14 +51,23 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> PagedImageCitationPolygonAnnotationGetOut | None:
+    if response.status_code == 200:
+        response_200 = PagedImageCitationPolygonAnnotationGetOut.from_dict(response.json())
+
+        return response_200
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[PagedImageCitationPolygonAnnotationGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -75,7 +85,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[Any]:
+) -> Response[PagedImageCitationPolygonAnnotationGetOut]:
     """Get image citation polygons
 
      Retrieve all polygon annotations for an image citation based on the image citation ID.
@@ -93,7 +103,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[PagedImageCitationPolygonAnnotationGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -112,7 +122,7 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     dataspace_id: UUID,
     attribute_category: GetImageCitationPolygonAnnotationDataspaceEntityType,
     attribute_id: UUID,
@@ -121,7 +131,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[Any]:
+) -> PagedImageCitationPolygonAnnotationGetOut | None:
     """Get image citation polygons
 
      Retrieve all polygon annotations for an image citation based on the image citation ID.
@@ -139,7 +149,48 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        PagedImageCitationPolygonAnnotationGetOut
+    """
+
+    return sync_detailed(
+        dataspace_id=dataspace_id,
+        attribute_category=attribute_category,
+        attribute_id=attribute_id,
+        image_citation_id=image_citation_id,
+        client=client,
+        page=page,
+        page_size=page_size,
+    ).parsed
+
+
+async def asyncio_detailed(
+    dataspace_id: UUID,
+    attribute_category: GetImageCitationPolygonAnnotationDataspaceEntityType,
+    attribute_id: UUID,
+    image_citation_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
+) -> Response[PagedImageCitationPolygonAnnotationGetOut]:
+    """Get image citation polygons
+
+     Retrieve all polygon annotations for an image citation based on the image citation ID.
+
+    Args:
+        dataspace_id (UUID):
+        attribute_category (GetImageCitationPolygonAnnotationDataspaceEntityType):
+        attribute_id (UUID):
+        image_citation_id (UUID):
+        page (int | Unset):  Default: 1.
+        page_size (int | None | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[PagedImageCitationPolygonAnnotationGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -154,3 +205,46 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    dataspace_id: UUID,
+    attribute_category: GetImageCitationPolygonAnnotationDataspaceEntityType,
+    attribute_id: UUID,
+    image_citation_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
+) -> PagedImageCitationPolygonAnnotationGetOut | None:
+    """Get image citation polygons
+
+     Retrieve all polygon annotations for an image citation based on the image citation ID.
+
+    Args:
+        dataspace_id (UUID):
+        attribute_category (GetImageCitationPolygonAnnotationDataspaceEntityType):
+        attribute_id (UUID):
+        image_citation_id (UUID):
+        page (int | Unset):  Default: 1.
+        page_size (int | None | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        PagedImageCitationPolygonAnnotationGetOut
+    """
+
+    return (
+        await asyncio_detailed(
+            dataspace_id=dataspace_id,
+            attribute_category=attribute_category,
+            attribute_id=attribute_id,
+            image_citation_id=image_citation_id,
+            client=client,
+            page=page,
+            page_size=page_size,
+        )
+    ).parsed

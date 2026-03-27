@@ -12,7 +12,7 @@ from ...models.bim_view_object_link_response import BimViewObjectLinkResponse
 from ...models.bim_view_response import BimViewResponse
 from ...models.create_bim_element_bim_element_type_path import CreateBimElementBimElementTypePath
 from ...models.create_bim_element_file_params import CreateBimElementFileParams
-from ...models.error_response_response import ErrorResponseResponse
+from ...models.error_response_post_out import ErrorResponsePostOut
 from ...types import Response
 
 
@@ -40,7 +40,7 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponseResponse | None:
+) -> BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponsePostOut | None:
     if response.status_code == 200:
 
         def _parse_response_200(data: object) -> BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse:
@@ -71,17 +71,17 @@ def _parse_response(
         return response_200
 
     if response.status_code == 400:
-        response_400 = ErrorResponseResponse.from_dict(response.json())
+        response_400 = ErrorResponsePostOut.from_dict(response.json())
 
         return response_400
 
     if response.status_code == 404:
-        response_404 = ErrorResponseResponse.from_dict(response.json())
+        response_404 = ErrorResponsePostOut.from_dict(response.json())
 
         return response_404
 
     if response.status_code == 501:
-        response_501 = ErrorResponseResponse.from_dict(response.json())
+        response_501 = ErrorResponsePostOut.from_dict(response.json())
 
         return response_501
 
@@ -93,7 +93,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponseResponse]:
+) -> Response[BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponsePostOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -108,7 +108,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: CreateBimElementFileParams,
-) -> Response[BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponseResponse]:
+) -> Response[BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponsePostOut]:
     """Upload BIM elements to a project
 
      Upload BIM element files (objects, views, or agnostic) to a project for processing. This is an
@@ -125,7 +125,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponseResponse]
+        Response[BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponsePostOut]
     """
 
     kwargs = _get_kwargs(
@@ -147,7 +147,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: CreateBimElementFileParams,
-) -> BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponseResponse | None:
+) -> BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponsePostOut | None:
     """Upload BIM elements to a project
 
      Upload BIM element files (objects, views, or agnostic) to a project for processing. This is an
@@ -164,7 +164,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponseResponse
+        BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponsePostOut
     """
 
     return sync_detailed(
@@ -181,7 +181,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: CreateBimElementFileParams,
-) -> Response[BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponseResponse]:
+) -> Response[BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponsePostOut]:
     """Upload BIM elements to a project
 
      Upload BIM element files (objects, views, or agnostic) to a project for processing. This is an
@@ -198,7 +198,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponseResponse]
+        Response[BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponsePostOut]
     """
 
     kwargs = _get_kwargs(
@@ -218,7 +218,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: CreateBimElementFileParams,
-) -> BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponseResponse | None:
+) -> BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponsePostOut | None:
     """Upload BIM elements to a project
 
      Upload BIM element files (objects, views, or agnostic) to a project for processing. This is an
@@ -235,7 +235,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponseResponse
+        BimObjectResponse | BimViewObjectLinkResponse | BimViewResponse | ErrorResponsePostOut
     """
 
     return (

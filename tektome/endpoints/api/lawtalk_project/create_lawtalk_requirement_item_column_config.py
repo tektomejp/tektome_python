@@ -7,9 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_project_requirement_item_column_config_request import (
-    CreateProjectRequirementItemColumnConfigRequest,
-)
+from ...models.project_requirement_item_column_config_post_in import ProjectRequirementItemColumnConfigPostIn
 from ...models.project_requirement_item_column_config_response import ProjectRequirementItemColumnConfigResponse
 from ...types import Response
 
@@ -17,7 +15,7 @@ from ...types import Response
 def _get_kwargs(
     project_id: UUID,
     *,
-    body: CreateProjectRequirementItemColumnConfigRequest,
+    body: ProjectRequirementItemColumnConfigPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -65,7 +63,7 @@ def sync_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateProjectRequirementItemColumnConfigRequest,
+    body: ProjectRequirementItemColumnConfigPostIn,
 ) -> Response[ProjectRequirementItemColumnConfigResponse]:
     """Create requirement item column config
 
@@ -74,7 +72,7 @@ def sync_detailed(
 
     Args:
         project_id (UUID):
-        body (CreateProjectRequirementItemColumnConfigRequest):
+        body (ProjectRequirementItemColumnConfigPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -100,7 +98,7 @@ def sync(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateProjectRequirementItemColumnConfigRequest,
+    body: ProjectRequirementItemColumnConfigPostIn,
 ) -> ProjectRequirementItemColumnConfigResponse | None:
     """Create requirement item column config
 
@@ -109,7 +107,7 @@ def sync(
 
     Args:
         project_id (UUID):
-        body (CreateProjectRequirementItemColumnConfigRequest):
+        body (ProjectRequirementItemColumnConfigPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -130,7 +128,7 @@ async def asyncio_detailed(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateProjectRequirementItemColumnConfigRequest,
+    body: ProjectRequirementItemColumnConfigPostIn,
 ) -> Response[ProjectRequirementItemColumnConfigResponse]:
     """Create requirement item column config
 
@@ -139,7 +137,7 @@ async def asyncio_detailed(
 
     Args:
         project_id (UUID):
-        body (CreateProjectRequirementItemColumnConfigRequest):
+        body (ProjectRequirementItemColumnConfigPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -163,7 +161,7 @@ async def asyncio(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateProjectRequirementItemColumnConfigRequest,
+    body: ProjectRequirementItemColumnConfigPostIn,
 ) -> ProjectRequirementItemColumnConfigResponse | None:
     """Create requirement item column config
 
@@ -172,7 +170,7 @@ async def asyncio(
 
     Args:
         project_id (UUID):
-        body (CreateProjectRequirementItemColumnConfigRequest):
+        body (ProjectRequirementItemColumnConfigPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

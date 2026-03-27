@@ -8,7 +8,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.operators_type_1 import OperatorsType1
+from ..models.operators import Operators
 
 T = TypeVar("T", bound="LawtalkDateAttributeSchema")
 
@@ -19,12 +19,12 @@ class LawtalkDateAttributeSchema:
     Attributes:
         name (str):
         value (datetime.date):
-        operator (None | OperatorsType1):
+        operator (None | Operators):
     """
 
     name: str
     value: datetime.date
-    operator: None | OperatorsType1
+    operator: None | Operators
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -33,7 +33,7 @@ class LawtalkDateAttributeSchema:
         value = self.value.isoformat()
 
         operator: None | str
-        if isinstance(self.operator, OperatorsType1):
+        if isinstance(self.operator, Operators):
             operator = self.operator.value
         else:
             operator = self.operator
@@ -57,18 +57,18 @@ class LawtalkDateAttributeSchema:
 
         value = isoparse(d.pop("value")).date()
 
-        def _parse_operator(data: object) -> None | OperatorsType1:
+        def _parse_operator(data: object) -> None | Operators:
             if data is None:
                 return data
             try:
                 if not isinstance(data, str):
                     raise TypeError()
-                componentsschemas_operators_type_1 = OperatorsType1(data)
+                componentsschemas_operators_type_1 = Operators(data)
 
                 return componentsschemas_operators_type_1
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | OperatorsType1, data)
+            return cast(None | Operators, data)
 
         operator = _parse_operator(d.pop("operator"))
 

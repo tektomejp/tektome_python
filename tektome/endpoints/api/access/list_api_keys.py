@@ -5,6 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.paged_get_api_key_get_out import PagedGetAPIKeyGetOut
 from ...types import UNSET, Response, Unset
 
 
@@ -42,14 +43,21 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> PagedGetAPIKeyGetOut | None:
+    if response.status_code == 200:
+        response_200 = PagedGetAPIKeyGetOut.from_dict(response.json())
+
+        return response_200
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[PagedGetAPIKeyGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,7 +73,7 @@ def sync_detailed(
     include_expired: bool | Unset = False,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[Any]:
+) -> Response[PagedGetAPIKeyGetOut]:
     """List API keys
 
      Retrieve all API keys for the authenticated user. Each API key has an expiration time set at
@@ -82,7 +90,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[PagedGetAPIKeyGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -99,14 +107,14 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     *,
     client: AuthenticatedClient,
     include_system: bool | Unset = False,
     include_expired: bool | Unset = False,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[Any]:
+) -> PagedGetAPIKeyGetOut | None:
     """List API keys
 
      Retrieve all API keys for the authenticated user. Each API key has an expiration time set at
@@ -123,7 +131,43 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        PagedGetAPIKeyGetOut
+    """
+
+    return sync_detailed(
+        client=client,
+        include_system=include_system,
+        include_expired=include_expired,
+        page=page,
+        page_size=page_size,
+    ).parsed
+
+
+async def asyncio_detailed(
+    *,
+    client: AuthenticatedClient,
+    include_system: bool | Unset = False,
+    include_expired: bool | Unset = False,
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
+) -> Response[PagedGetAPIKeyGetOut]:
+    """List API keys
+
+     Retrieve all API keys for the authenticated user. Each API key has an expiration time set at
+    creation. Supports filtering by system keys and expired keys.
+
+    Args:
+        include_system (bool | Unset):  Default: False.
+        include_expired (bool | Unset):  Default: False.
+        page (int | Unset):  Default: 1.
+        page_size (int | None | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[PagedGetAPIKeyGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -136,3 +180,41 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    *,
+    client: AuthenticatedClient,
+    include_system: bool | Unset = False,
+    include_expired: bool | Unset = False,
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
+) -> PagedGetAPIKeyGetOut | None:
+    """List API keys
+
+     Retrieve all API keys for the authenticated user. Each API key has an expiration time set at
+    creation. Supports filtering by system keys and expired keys.
+
+    Args:
+        include_system (bool | Unset):  Default: False.
+        include_expired (bool | Unset):  Default: False.
+        page (int | Unset):  Default: 1.
+        page_size (int | None | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        PagedGetAPIKeyGetOut
+    """
+
+    return (
+        await asyncio_detailed(
+            client=client,
+            include_system=include_system,
+            include_expired=include_expired,
+            page=page,
+            page_size=page_size,
+        )
+    ).parsed

@@ -8,6 +8,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.list_ttos_templates_ui_trigger_kind_choices import ListTtosTemplatesUiTriggerKindChoices
+from ...models.paged_template_out import PagedTemplateOut
 from ...models.process_type_choices import ProcessTypeChoices
 from ...types import UNSET, Response, Unset
 
@@ -87,14 +88,19 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> PagedTemplateOut | None:
+    if response.status_code == 200:
+        response_200 = PagedTemplateOut.from_dict(response.json())
+
+        return response_200
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[PagedTemplateOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -114,7 +120,7 @@ def sync_detailed(
     for_import: bool | None | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[Any]:
+) -> Response[PagedTemplateOut]:
     """List process templates
 
      Retrieve all process templates available in the specified organization. Supports filtering and
@@ -138,7 +144,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[PagedTemplateOut]
     """
 
     kwargs = _get_kwargs(
@@ -159,7 +165,7 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     organization_id: UUID,
     *,
     client: AuthenticatedClient,
@@ -170,7 +176,7 @@ async def asyncio_detailed(
     for_import: bool | None | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[Any]:
+) -> PagedTemplateOut | None:
     """List process templates
 
      Retrieve all process templates available in the specified organization. Supports filtering and
@@ -194,7 +200,58 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        PagedTemplateOut
+    """
+
+    return sync_detailed(
+        organization_id=organization_id,
+        client=client,
+        ui_trigger_name=ui_trigger_name,
+        ui_trigger_kinds=ui_trigger_kinds,
+        name=name,
+        type_=type_,
+        for_import=for_import,
+        page=page,
+        page_size=page_size,
+    ).parsed
+
+
+async def asyncio_detailed(
+    organization_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    ui_trigger_name: None | str | Unset = UNSET,
+    ui_trigger_kinds: list[ListTtosTemplatesUiTriggerKindChoices] | Unset = UNSET,
+    name: None | str | Unset = UNSET,
+    type_: None | ProcessTypeChoices | Unset = UNSET,
+    for_import: bool | None | Unset = UNSET,
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
+) -> Response[PagedTemplateOut]:
+    """List process templates
+
+     Retrieve all process templates available in the specified organization. Supports filtering and
+    pagination.
+
+    Args:
+        organization_id (UUID):
+        ui_trigger_name (None | str | Unset): Filter templates by UI trigger name.
+        ui_trigger_kinds (list[ListTtosTemplatesUiTriggerKindChoices] | Unset): Filter templates
+            by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
+        name (None | str | Unset): The name (or part of the name) of the template to search for.
+        type_ (None | ProcessTypeChoices | Unset): Filter templates by type. Possible values are
+            defined in ProcessTypeChoices.
+        for_import (bool | None | Unset): If true, only return templates that can be imported.
+            Otherwise, return all available templates, either default or imported.
+        page (int | Unset):  Default: 1.
+        page_size (int | None | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[PagedTemplateOut]
     """
 
     kwargs = _get_kwargs(
@@ -211,3 +268,56 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    organization_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    ui_trigger_name: None | str | Unset = UNSET,
+    ui_trigger_kinds: list[ListTtosTemplatesUiTriggerKindChoices] | Unset = UNSET,
+    name: None | str | Unset = UNSET,
+    type_: None | ProcessTypeChoices | Unset = UNSET,
+    for_import: bool | None | Unset = UNSET,
+    page: int | Unset = 1,
+    page_size: int | None | Unset = UNSET,
+) -> PagedTemplateOut | None:
+    """List process templates
+
+     Retrieve all process templates available in the specified organization. Supports filtering and
+    pagination.
+
+    Args:
+        organization_id (UUID):
+        ui_trigger_name (None | str | Unset): Filter templates by UI trigger name.
+        ui_trigger_kinds (list[ListTtosTemplatesUiTriggerKindChoices] | Unset): Filter templates
+            by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
+        name (None | str | Unset): The name (or part of the name) of the template to search for.
+        type_ (None | ProcessTypeChoices | Unset): Filter templates by type. Possible values are
+            defined in ProcessTypeChoices.
+        for_import (bool | None | Unset): If true, only return templates that can be imported.
+            Otherwise, return all available templates, either default or imported.
+        page (int | Unset):  Default: 1.
+        page_size (int | None | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        PagedTemplateOut
+    """
+
+    return (
+        await asyncio_detailed(
+            organization_id=organization_id,
+            client=client,
+            ui_trigger_name=ui_trigger_name,
+            ui_trigger_kinds=ui_trigger_kinds,
+            name=name,
+            type_=type_,
+            for_import=for_import,
+            page=page,
+            page_size=page_size,
+        )
+    ).parsed

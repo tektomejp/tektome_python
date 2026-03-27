@@ -6,6 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.get_celery_task_response import GetCeleryTaskResponse
 from ...types import Response
 
 
@@ -23,9 +24,11 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> GetCeleryTaskResponse | None:
     if response.status_code == 200:
-        return None
+        response_200 = GetCeleryTaskResponse.from_dict(response.json())
+
+        return response_200
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -33,7 +36,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[GetCeleryTaskResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -46,7 +51,7 @@ def sync_detailed(
     task_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Any]:
+) -> Response[GetCeleryTaskResponse]:
     """Get background task status
 
      Retrieve the status and result of an asynchronous background task by its task ID. Returns the
@@ -60,7 +65,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[GetCeleryTaskResponse]
     """
 
     kwargs = _get_kwargs(
@@ -74,11 +79,11 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     task_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Any]:
+) -> GetCeleryTaskResponse | None:
     """Get background task status
 
      Retrieve the status and result of an asynchronous background task by its task ID. Returns the
@@ -92,7 +97,34 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        GetCeleryTaskResponse
+    """
+
+    return sync_detailed(
+        task_id=task_id,
+        client=client,
+    ).parsed
+
+
+async def asyncio_detailed(
+    task_id: str,
+    *,
+    client: AuthenticatedClient,
+) -> Response[GetCeleryTaskResponse]:
+    """Get background task status
+
+     Retrieve the status and result of an asynchronous background task by its task ID. Returns the
+    current status (PENDING, STARTED, SUCCESS, FAILURE, etc.) and the result when available.
+
+    Args:
+        task_id (str):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[GetCeleryTaskResponse]
     """
 
     kwargs = _get_kwargs(
@@ -102,3 +134,32 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    task_id: str,
+    *,
+    client: AuthenticatedClient,
+) -> GetCeleryTaskResponse | None:
+    """Get background task status
+
+     Retrieve the status and result of an asynchronous background task by its task ID. Returns the
+    current status (PENDING, STARTED, SUCCESS, FAILURE, etc.) and the result when available.
+
+    Args:
+        task_id (str):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        GetCeleryTaskResponse
+    """
+
+    return (
+        await asyncio_detailed(
+            task_id=task_id,
+            client=client,
+        )
+    ).parsed

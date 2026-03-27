@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_dataspace_project_attribute_request import CreateDataspaceProjectAttributeRequest
+from ...models.dataspace_project_attribute_post_in import DataspaceProjectAttributePostIn
 from ...models.dataspace_project_attribute_response import DataspaceProjectAttributeResponse
 from ...types import Response
 
@@ -15,7 +15,7 @@ from ...types import Response
 def _get_kwargs(
     dataspace_id: UUID,
     *,
-    body: CreateDataspaceProjectAttributeRequest,
+    body: DataspaceProjectAttributePostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -63,7 +63,7 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateDataspaceProjectAttributeRequest,
+    body: DataspaceProjectAttributePostIn,
 ) -> Response[DataspaceProjectAttributeResponse]:
     """Create a project attribute column configuration
 
@@ -72,8 +72,8 @@ def sync_detailed(
 
     Args:
         dataspace_id (UUID):
-        body (CreateDataspaceProjectAttributeRequest): Schema for posting attributes to a project
-            in a dataspace.
+        body (DataspaceProjectAttributePostIn): Schema for posting attributes to a project in a
+            dataspace.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -99,7 +99,7 @@ def sync(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateDataspaceProjectAttributeRequest,
+    body: DataspaceProjectAttributePostIn,
 ) -> DataspaceProjectAttributeResponse | None:
     """Create a project attribute column configuration
 
@@ -108,8 +108,8 @@ def sync(
 
     Args:
         dataspace_id (UUID):
-        body (CreateDataspaceProjectAttributeRequest): Schema for posting attributes to a project
-            in a dataspace.
+        body (DataspaceProjectAttributePostIn): Schema for posting attributes to a project in a
+            dataspace.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -130,7 +130,7 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateDataspaceProjectAttributeRequest,
+    body: DataspaceProjectAttributePostIn,
 ) -> Response[DataspaceProjectAttributeResponse]:
     """Create a project attribute column configuration
 
@@ -139,8 +139,8 @@ async def asyncio_detailed(
 
     Args:
         dataspace_id (UUID):
-        body (CreateDataspaceProjectAttributeRequest): Schema for posting attributes to a project
-            in a dataspace.
+        body (DataspaceProjectAttributePostIn): Schema for posting attributes to a project in a
+            dataspace.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -164,7 +164,7 @@ async def asyncio(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateDataspaceProjectAttributeRequest,
+    body: DataspaceProjectAttributePostIn,
 ) -> DataspaceProjectAttributeResponse | None:
     """Create a project attribute column configuration
 
@@ -173,8 +173,8 @@ async def asyncio(
 
     Args:
         dataspace_id (UUID):
-        body (CreateDataspaceProjectAttributeRequest): Schema for posting attributes to a project
-            in a dataspace.
+        body (DataspaceProjectAttributePostIn): Schema for posting attributes to a project in a
+            dataspace.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
