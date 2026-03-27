@@ -833,6 +833,14 @@ from .search_mode import SearchMode
 from .search_payload_v4_get_request import SearchPayloadV4GetRequest
 from .search_payload_v4_response import SearchPayloadV4Response
 from .search_payload_v5_get_request import SearchPayloadV5GetRequest
+from .search_project_attribute_config_response import SearchProjectAttributeConfigResponse
+from .search_project_attribute_config_response_attribute_metadata_type_0 import (
+    SearchProjectAttributeConfigResponseAttributeMetadataType0,
+)
+from .search_resource_attribute_config_response import SearchResourceAttributeConfigResponse
+from .search_resource_attribute_config_response_attribute_metadata_type_0 import (
+    SearchResourceAttributeConfigResponseAttributeMetadataType0,
+)
 from .search_snippets_request import SearchSnippetsRequest
 from .section import Section
 from .section_paragraph_path_params import SectionParagraphPathParams
@@ -1809,6 +1817,10 @@ __all__ = (
     "SearchPayloadV4GetRequest",
     "SearchPayloadV4Response",
     "SearchPayloadV5GetRequest",
+    "SearchProjectAttributeConfigResponse",
+    "SearchProjectAttributeConfigResponseAttributeMetadataType0",
+    "SearchResourceAttributeConfigResponse",
+    "SearchResourceAttributeConfigResponseAttributeMetadataType0",
     "SearchSnippetsRequest",
     "Section",
     "SectionParagraphPathParams",
