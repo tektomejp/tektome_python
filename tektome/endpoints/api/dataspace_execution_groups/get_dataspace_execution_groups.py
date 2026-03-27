@@ -30,6 +30,7 @@ def _get_kwargs(
     start_datetime: datetime.datetime | None | Unset = UNSET,
     end_datetime: datetime.datetime | None | Unset = UNSET,
     memo: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> dict[str, Any]:
@@ -106,6 +107,13 @@ def _get_kwargs(
         json_memo = memo
     params["memo"] = json_memo
 
+    json_keyword: None | str | Unset
+    if isinstance(keyword, Unset):
+        json_keyword = UNSET
+    else:
+        json_keyword = keyword
+    params["keyword"] = json_keyword
+
     params["page"] = page
 
     json_page_size: int | None | Unset
@@ -165,6 +173,7 @@ def sync_detailed(
     start_datetime: datetime.datetime | None | Unset = UNSET,
     end_datetime: datetime.datetime | None | Unset = UNSET,
     memo: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedExecutionGroupGetOut]:
@@ -186,6 +195,7 @@ def sync_detailed(
         end_datetime (datetime.datetime | None | Unset): Filter execution groups ended on or
             before this datetime
         memo (None | str | Unset): Filter execution groups containing this memo text
+        keyword (None | str | Unset): Filter by process name or execution group ID
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
 
@@ -207,6 +217,7 @@ def sync_detailed(
         start_datetime=start_datetime,
         end_datetime=end_datetime,
         memo=memo,
+        keyword=keyword,
         page=page,
         page_size=page_size,
     )
@@ -230,6 +241,7 @@ def sync(
     start_datetime: datetime.datetime | None | Unset = UNSET,
     end_datetime: datetime.datetime | None | Unset = UNSET,
     memo: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedExecutionGroupGetOut | None:
@@ -251,6 +263,7 @@ def sync(
         end_datetime (datetime.datetime | None | Unset): Filter execution groups ended on or
             before this datetime
         memo (None | str | Unset): Filter execution groups containing this memo text
+        keyword (None | str | Unset): Filter by process name or execution group ID
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
 
@@ -273,6 +286,7 @@ def sync(
         start_datetime=start_datetime,
         end_datetime=end_datetime,
         memo=memo,
+        keyword=keyword,
         page=page,
         page_size=page_size,
     ).parsed
@@ -290,6 +304,7 @@ async def asyncio_detailed(
     start_datetime: datetime.datetime | None | Unset = UNSET,
     end_datetime: datetime.datetime | None | Unset = UNSET,
     memo: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedExecutionGroupGetOut]:
@@ -311,6 +326,7 @@ async def asyncio_detailed(
         end_datetime (datetime.datetime | None | Unset): Filter execution groups ended on or
             before this datetime
         memo (None | str | Unset): Filter execution groups containing this memo text
+        keyword (None | str | Unset): Filter by process name or execution group ID
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
 
@@ -332,6 +348,7 @@ async def asyncio_detailed(
         start_datetime=start_datetime,
         end_datetime=end_datetime,
         memo=memo,
+        keyword=keyword,
         page=page,
         page_size=page_size,
     )
@@ -353,6 +370,7 @@ async def asyncio(
     start_datetime: datetime.datetime | None | Unset = UNSET,
     end_datetime: datetime.datetime | None | Unset = UNSET,
     memo: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedExecutionGroupGetOut | None:
@@ -374,6 +392,7 @@ async def asyncio(
         end_datetime (datetime.datetime | None | Unset): Filter execution groups ended on or
             before this datetime
         memo (None | str | Unset): Filter execution groups containing this memo text
+        keyword (None | str | Unset): Filter by process name or execution group ID
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
 
@@ -397,6 +416,7 @@ async def asyncio(
             start_datetime=start_datetime,
             end_datetime=end_datetime,
             memo=memo,
+            keyword=keyword,
             page=page,
             page_size=page_size,
         )

@@ -31,6 +31,7 @@ class ExecutionQueryParams:
         start_datetime (datetime.datetime | None | Unset): Filter execution groups started on or after this datetime
         end_datetime (datetime.datetime | None | Unset): Filter execution groups ended on or before this datetime
         memo (None | str | Unset): Filter execution groups containing this memo text
+        keyword (None | str | Unset): Filter by process name or execution group ID
         execution_group_ids (list[UUID] | Unset): Execution group IDs
         target_files_ids (list[UUID] | Unset): Target core resource file IDs
         target_entity_ids (list[UUID] | Unset): Target DS entity IDs
@@ -48,6 +49,7 @@ class ExecutionQueryParams:
     start_datetime: datetime.datetime | None | Unset = UNSET
     end_datetime: datetime.datetime | None | Unset = UNSET
     memo: None | str | Unset = UNSET
+    keyword: None | str | Unset = UNSET
     execution_group_ids: list[UUID] | Unset = UNSET
     target_files_ids: list[UUID] | Unset = UNSET
     target_entity_ids: list[UUID] | Unset = UNSET
@@ -114,6 +116,12 @@ class ExecutionQueryParams:
         else:
             memo = self.memo
 
+        keyword: None | str | Unset
+        if isinstance(self.keyword, Unset):
+            keyword = UNSET
+        else:
+            keyword = self.keyword
+
         execution_group_ids: list[str] | Unset = UNSET
         if not isinstance(self.execution_group_ids, Unset):
             execution_group_ids = []
@@ -175,6 +183,8 @@ class ExecutionQueryParams:
             field_dict["end_datetime"] = end_datetime
         if memo is not UNSET:
             field_dict["memo"] = memo
+        if keyword is not UNSET:
+            field_dict["keyword"] = keyword
         if execution_group_ids is not UNSET:
             field_dict["execution_group_ids"] = execution_group_ids
         if target_files_ids is not UNSET:
@@ -281,6 +291,15 @@ class ExecutionQueryParams:
 
         memo = _parse_memo(d.pop("memo", UNSET))
 
+        def _parse_keyword(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        keyword = _parse_keyword(d.pop("keyword", UNSET))
+
         _execution_group_ids = d.pop("execution_group_ids", UNSET)
         execution_group_ids: list[UUID] | Unset = UNSET
         if _execution_group_ids is not UNSET:
@@ -344,6 +363,7 @@ class ExecutionQueryParams:
             start_datetime=start_datetime,
             end_datetime=end_datetime,
             memo=memo,
+            keyword=keyword,
             execution_group_ids=execution_group_ids,
             target_files_ids=target_files_ids,
             target_entity_ids=target_entity_ids,
