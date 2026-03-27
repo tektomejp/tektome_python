@@ -27,6 +27,7 @@ def _get_kwargs(
     start_datetime: datetime.datetime | None | Unset = UNSET,
     end_datetime: datetime.datetime | None | Unset = UNSET,
     memo: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
     execution_group_ids: list[UUID] | Unset = UNSET,
     target_files_ids: list[UUID] | Unset = UNSET,
     target_entity_ids: list[UUID] | Unset = UNSET,
@@ -108,6 +109,13 @@ def _get_kwargs(
     else:
         json_memo = memo
     params["memo"] = json_memo
+
+    json_keyword: None | str | Unset
+    if isinstance(keyword, Unset):
+        json_keyword = UNSET
+    else:
+        json_keyword = keyword
+    params["keyword"] = json_keyword
 
     json_execution_group_ids: list[str] | Unset = UNSET
     if not isinstance(execution_group_ids, Unset):
@@ -220,6 +228,7 @@ def sync_detailed(
     start_datetime: datetime.datetime | None | Unset = UNSET,
     end_datetime: datetime.datetime | None | Unset = UNSET,
     memo: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
     execution_group_ids: list[UUID] | Unset = UNSET,
     target_files_ids: list[UUID] | Unset = UNSET,
     target_entity_ids: list[UUID] | Unset = UNSET,
@@ -247,6 +256,7 @@ def sync_detailed(
         end_datetime (datetime.datetime | None | Unset): Filter execution groups ended on or
             before this datetime
         memo (None | str | Unset): Filter execution groups containing this memo text
+        keyword (None | str | Unset): Filter by process name or execution group ID
         execution_group_ids (list[UUID] | Unset): Execution group IDs
         target_files_ids (list[UUID] | Unset): Target core resource file IDs
         target_entity_ids (list[UUID] | Unset): Target DS entity IDs
@@ -277,6 +287,7 @@ def sync_detailed(
         start_datetime=start_datetime,
         end_datetime=end_datetime,
         memo=memo,
+        keyword=keyword,
         execution_group_ids=execution_group_ids,
         target_files_ids=target_files_ids,
         target_entity_ids=target_entity_ids,
@@ -306,6 +317,7 @@ def sync(
     start_datetime: datetime.datetime | None | Unset = UNSET,
     end_datetime: datetime.datetime | None | Unset = UNSET,
     memo: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
     execution_group_ids: list[UUID] | Unset = UNSET,
     target_files_ids: list[UUID] | Unset = UNSET,
     target_entity_ids: list[UUID] | Unset = UNSET,
@@ -333,6 +345,7 @@ def sync(
         end_datetime (datetime.datetime | None | Unset): Filter execution groups ended on or
             before this datetime
         memo (None | str | Unset): Filter execution groups containing this memo text
+        keyword (None | str | Unset): Filter by process name or execution group ID
         execution_group_ids (list[UUID] | Unset): Execution group IDs
         target_files_ids (list[UUID] | Unset): Target core resource file IDs
         target_entity_ids (list[UUID] | Unset): Target DS entity IDs
@@ -364,6 +377,7 @@ def sync(
         start_datetime=start_datetime,
         end_datetime=end_datetime,
         memo=memo,
+        keyword=keyword,
         execution_group_ids=execution_group_ids,
         target_files_ids=target_files_ids,
         target_entity_ids=target_entity_ids,
@@ -387,6 +401,7 @@ async def asyncio_detailed(
     start_datetime: datetime.datetime | None | Unset = UNSET,
     end_datetime: datetime.datetime | None | Unset = UNSET,
     memo: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
     execution_group_ids: list[UUID] | Unset = UNSET,
     target_files_ids: list[UUID] | Unset = UNSET,
     target_entity_ids: list[UUID] | Unset = UNSET,
@@ -414,6 +429,7 @@ async def asyncio_detailed(
         end_datetime (datetime.datetime | None | Unset): Filter execution groups ended on or
             before this datetime
         memo (None | str | Unset): Filter execution groups containing this memo text
+        keyword (None | str | Unset): Filter by process name or execution group ID
         execution_group_ids (list[UUID] | Unset): Execution group IDs
         target_files_ids (list[UUID] | Unset): Target core resource file IDs
         target_entity_ids (list[UUID] | Unset): Target DS entity IDs
@@ -444,6 +460,7 @@ async def asyncio_detailed(
         start_datetime=start_datetime,
         end_datetime=end_datetime,
         memo=memo,
+        keyword=keyword,
         execution_group_ids=execution_group_ids,
         target_files_ids=target_files_ids,
         target_entity_ids=target_entity_ids,
@@ -471,6 +488,7 @@ async def asyncio(
     start_datetime: datetime.datetime | None | Unset = UNSET,
     end_datetime: datetime.datetime | None | Unset = UNSET,
     memo: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
     execution_group_ids: list[UUID] | Unset = UNSET,
     target_files_ids: list[UUID] | Unset = UNSET,
     target_entity_ids: list[UUID] | Unset = UNSET,
@@ -498,6 +516,7 @@ async def asyncio(
         end_datetime (datetime.datetime | None | Unset): Filter execution groups ended on or
             before this datetime
         memo (None | str | Unset): Filter execution groups containing this memo text
+        keyword (None | str | Unset): Filter by process name or execution group ID
         execution_group_ids (list[UUID] | Unset): Execution group IDs
         target_files_ids (list[UUID] | Unset): Target core resource file IDs
         target_entity_ids (list[UUID] | Unset): Target DS entity IDs
@@ -530,6 +549,7 @@ async def asyncio(
             start_datetime=start_datetime,
             end_datetime=end_datetime,
             memo=memo,
+            keyword=keyword,
             execution_group_ids=execution_group_ids,
             target_files_ids=target_files_ids,
             target_entity_ids=target_entity_ids,

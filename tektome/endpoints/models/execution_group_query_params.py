@@ -30,6 +30,7 @@ class ExecutionGroupQueryParams:
         start_datetime (datetime.datetime | None | Unset): Filter execution groups started on or after this datetime
         end_datetime (datetime.datetime | None | Unset): Filter execution groups ended on or before this datetime
         memo (None | str | Unset): Filter execution groups containing this memo text
+        keyword (None | str | Unset): Filter by process name or execution group ID
     """
 
     process_types: list[ExecutionGroupQueryParamsProcessTypeChoices] | Unset = UNSET
@@ -40,6 +41,7 @@ class ExecutionGroupQueryParams:
     start_datetime: datetime.datetime | None | Unset = UNSET
     end_datetime: datetime.datetime | None | Unset = UNSET
     memo: None | str | Unset = UNSET
+    keyword: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -100,6 +102,12 @@ class ExecutionGroupQueryParams:
         else:
             memo = self.memo
 
+        keyword: None | str | Unset
+        if isinstance(self.keyword, Unset):
+            keyword = UNSET
+        else:
+            keyword = self.keyword
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -119,6 +127,8 @@ class ExecutionGroupQueryParams:
             field_dict["end_datetime"] = end_datetime
         if memo is not UNSET:
             field_dict["memo"] = memo
+        if keyword is not UNSET:
+            field_dict["keyword"] = keyword
 
         return field_dict
 
@@ -213,6 +223,15 @@ class ExecutionGroupQueryParams:
 
         memo = _parse_memo(d.pop("memo", UNSET))
 
+        def _parse_keyword(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        keyword = _parse_keyword(d.pop("keyword", UNSET))
+
         execution_group_query_params = cls(
             process_types=process_types,
             process_ids=process_ids,
@@ -222,6 +241,7 @@ class ExecutionGroupQueryParams:
             start_datetime=start_datetime,
             end_datetime=end_datetime,
             memo=memo,
+            keyword=keyword,
         )
 
         execution_group_query_params.additional_properties = d
