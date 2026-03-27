@@ -8,6 +8,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.search_lawtalk_project_ocr_v3_azure_embedding_model import SearchLawtalkProjectOcrV3AzureEmbeddingModel
+from ...models.search_lawtalk_project_ocr_v3_response import SearchLawtalkProjectOcrV3Response
 from ...types import UNSET, Response, Unset
 
 
@@ -73,9 +74,13 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> SearchLawtalkProjectOcrV3Response | None:
     if response.status_code == 200:
-        return None
+        response_200 = SearchLawtalkProjectOcrV3Response.from_dict(response.json())
+
+        return response_200
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -83,7 +88,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[SearchLawtalkProjectOcrV3Response]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -103,7 +110,7 @@ def sync_detailed(
     sort_by_pages: bool | Unset = False,
     vector_project: None | str | Unset = UNSET,
     vector_data_space: None | str | Unset = UNSET,
-) -> Response[Any]:
+) -> Response[SearchLawtalkProjectOcrV3Response]:
     """Search project resource pages (v3)
 
      Deprecated. Search extracted pages in project resources by query and/or keywords. Returns matched
@@ -127,7 +134,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[SearchLawtalkProjectOcrV3Response]
     """
 
     kwargs = _get_kwargs(
@@ -148,7 +155,7 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     project_id: UUID,
     *,
     client: AuthenticatedClient,
@@ -159,7 +166,7 @@ async def asyncio_detailed(
     sort_by_pages: bool | Unset = False,
     vector_project: None | str | Unset = UNSET,
     vector_data_space: None | str | Unset = UNSET,
-) -> Response[Any]:
+) -> SearchLawtalkProjectOcrV3Response | None:
     """Search project resource pages (v3)
 
      Deprecated. Search extracted pages in project resources by query and/or keywords. Returns matched
@@ -183,7 +190,58 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        SearchLawtalkProjectOcrV3Response
+    """
+
+    return sync_detailed(
+        project_id=project_id,
+        client=client,
+        embedding_model=embedding_model,
+        query=query,
+        keyword=keyword,
+        top_k=top_k,
+        sort_by_pages=sort_by_pages,
+        vector_project=vector_project,
+        vector_data_space=vector_data_space,
+    ).parsed
+
+
+async def asyncio_detailed(
+    project_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    embedding_model: SearchLawtalkProjectOcrV3AzureEmbeddingModel,
+    query: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
+    top_k: int | Unset = 10,
+    sort_by_pages: bool | Unset = False,
+    vector_project: None | str | Unset = UNSET,
+    vector_data_space: None | str | Unset = UNSET,
+) -> Response[SearchLawtalkProjectOcrV3Response]:
+    """Search project resource pages (v3)
+
+     Deprecated. Search extracted pages in project resources by query and/or keywords. Returns matched
+    pages grouped by resource group with text highlights.
+
+    Args:
+        project_id (UUID):
+        embedding_model (SearchLawtalkProjectOcrV3AzureEmbeddingModel): List of available
+            embedding models which compatible with litellm
+
+            the exahustive list of models can be found at https://models.litellm.ai/
+        query (None | str | Unset):
+        keyword (None | str | Unset):
+        top_k (int | Unset):  Default: 10.
+        sort_by_pages (bool | Unset):  Default: False.
+        vector_project (None | str | Unset):
+        vector_data_space (None | str | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[SearchLawtalkProjectOcrV3Response]
     """
 
     kwargs = _get_kwargs(
@@ -200,3 +258,56 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    project_id: UUID,
+    *,
+    client: AuthenticatedClient,
+    embedding_model: SearchLawtalkProjectOcrV3AzureEmbeddingModel,
+    query: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
+    top_k: int | Unset = 10,
+    sort_by_pages: bool | Unset = False,
+    vector_project: None | str | Unset = UNSET,
+    vector_data_space: None | str | Unset = UNSET,
+) -> SearchLawtalkProjectOcrV3Response | None:
+    """Search project resource pages (v3)
+
+     Deprecated. Search extracted pages in project resources by query and/or keywords. Returns matched
+    pages grouped by resource group with text highlights.
+
+    Args:
+        project_id (UUID):
+        embedding_model (SearchLawtalkProjectOcrV3AzureEmbeddingModel): List of available
+            embedding models which compatible with litellm
+
+            the exahustive list of models can be found at https://models.litellm.ai/
+        query (None | str | Unset):
+        keyword (None | str | Unset):
+        top_k (int | Unset):  Default: 10.
+        sort_by_pages (bool | Unset):  Default: False.
+        vector_project (None | str | Unset):
+        vector_data_space (None | str | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        SearchLawtalkProjectOcrV3Response
+    """
+
+    return (
+        await asyncio_detailed(
+            project_id=project_id,
+            client=client,
+            embedding_model=embedding_model,
+            query=query,
+            keyword=keyword,
+            top_k=top_k,
+            sort_by_pages=sort_by_pages,
+            vector_project=vector_project,
+            vector_data_space=vector_data_space,
+        )
+    ).parsed

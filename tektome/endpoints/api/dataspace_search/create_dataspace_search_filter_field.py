@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.dataspace_search_filter_field_request import DataspaceSearchFilterFieldRequest
+from ...models.dataspace_search_filter_field_in import DataspaceSearchFilterFieldIn
 from ...models.dataspace_search_filter_field_response import DataspaceSearchFilterFieldResponse
 from ...models.error_response import ErrorResponse
 from ...types import Response
@@ -17,7 +17,7 @@ def _get_kwargs(
     dataspace_id: UUID,
     filter_id: UUID,
     *,
-    body: DataspaceSearchFilterFieldRequest,
+    body: DataspaceSearchFilterFieldIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -157,7 +157,7 @@ def sync_detailed(
     filter_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceSearchFilterFieldRequest,
+    body: DataspaceSearchFilterFieldIn,
 ) -> Response[DataspaceSearchFilterFieldResponse | ErrorResponse]:
     """Add a field to a search filter
 
@@ -167,7 +167,7 @@ def sync_detailed(
     Args:
         dataspace_id (UUID):
         filter_id (UUID):
-        body (DataspaceSearchFilterFieldRequest): Input schema for DataspaceSearchFilterField
+        body (DataspaceSearchFilterFieldIn): Input schema for DataspaceSearchFilterField
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -195,7 +195,7 @@ def sync(
     filter_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceSearchFilterFieldRequest,
+    body: DataspaceSearchFilterFieldIn,
 ) -> DataspaceSearchFilterFieldResponse | ErrorResponse | None:
     """Add a field to a search filter
 
@@ -205,7 +205,7 @@ def sync(
     Args:
         dataspace_id (UUID):
         filter_id (UUID):
-        body (DataspaceSearchFilterFieldRequest): Input schema for DataspaceSearchFilterField
+        body (DataspaceSearchFilterFieldIn): Input schema for DataspaceSearchFilterField
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -228,7 +228,7 @@ async def asyncio_detailed(
     filter_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceSearchFilterFieldRequest,
+    body: DataspaceSearchFilterFieldIn,
 ) -> Response[DataspaceSearchFilterFieldResponse | ErrorResponse]:
     """Add a field to a search filter
 
@@ -238,7 +238,7 @@ async def asyncio_detailed(
     Args:
         dataspace_id (UUID):
         filter_id (UUID):
-        body (DataspaceSearchFilterFieldRequest): Input schema for DataspaceSearchFilterField
+        body (DataspaceSearchFilterFieldIn): Input schema for DataspaceSearchFilterField
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -264,7 +264,7 @@ async def asyncio(
     filter_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceSearchFilterFieldRequest,
+    body: DataspaceSearchFilterFieldIn,
 ) -> DataspaceSearchFilterFieldResponse | ErrorResponse | None:
     """Add a field to a search filter
 
@@ -274,7 +274,7 @@ async def asyncio(
     Args:
         dataspace_id (UUID):
         filter_id (UUID):
-        body (DataspaceSearchFilterFieldRequest): Input schema for DataspaceSearchFilterField
+        body (DataspaceSearchFilterFieldIn): Input schema for DataspaceSearchFilterField
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

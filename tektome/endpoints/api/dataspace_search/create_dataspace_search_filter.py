@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.dataspace_search_filter_configuration_request import DataspaceSearchFilterConfigurationRequest
+from ...models.dataspace_search_filter_configuration_in import DataspaceSearchFilterConfigurationIn
 from ...models.dataspace_search_filter_configuration_response import DataspaceSearchFilterConfigurationResponse
 from ...models.error_response import ErrorResponse
 from ...types import Response
@@ -16,7 +16,7 @@ from ...types import Response
 def _get_kwargs(
     dataspace_id: UUID,
     *,
-    body: DataspaceSearchFilterConfigurationRequest,
+    body: DataspaceSearchFilterConfigurationIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -154,7 +154,7 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceSearchFilterConfigurationRequest,
+    body: DataspaceSearchFilterConfigurationIn,
 ) -> Response[DataspaceSearchFilterConfigurationResponse | ErrorResponse]:
     """Create a search filter
 
@@ -163,7 +163,7 @@ def sync_detailed(
 
     Args:
         dataspace_id (UUID):
-        body (DataspaceSearchFilterConfigurationRequest): Input schema for
+        body (DataspaceSearchFilterConfigurationIn): Input schema for
             DataspaceSearchFilterConfiguration
 
     Raises:
@@ -190,7 +190,7 @@ def sync(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceSearchFilterConfigurationRequest,
+    body: DataspaceSearchFilterConfigurationIn,
 ) -> DataspaceSearchFilterConfigurationResponse | ErrorResponse | None:
     """Create a search filter
 
@@ -199,7 +199,7 @@ def sync(
 
     Args:
         dataspace_id (UUID):
-        body (DataspaceSearchFilterConfigurationRequest): Input schema for
+        body (DataspaceSearchFilterConfigurationIn): Input schema for
             DataspaceSearchFilterConfiguration
 
     Raises:
@@ -221,7 +221,7 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceSearchFilterConfigurationRequest,
+    body: DataspaceSearchFilterConfigurationIn,
 ) -> Response[DataspaceSearchFilterConfigurationResponse | ErrorResponse]:
     """Create a search filter
 
@@ -230,7 +230,7 @@ async def asyncio_detailed(
 
     Args:
         dataspace_id (UUID):
-        body (DataspaceSearchFilterConfigurationRequest): Input schema for
+        body (DataspaceSearchFilterConfigurationIn): Input schema for
             DataspaceSearchFilterConfiguration
 
     Raises:
@@ -255,7 +255,7 @@ async def asyncio(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: DataspaceSearchFilterConfigurationRequest,
+    body: DataspaceSearchFilterConfigurationIn,
 ) -> DataspaceSearchFilterConfigurationResponse | ErrorResponse | None:
     """Create a search filter
 
@@ -264,7 +264,7 @@ async def asyncio(
 
     Args:
         dataspace_id (UUID):
-        body (DataspaceSearchFilterConfigurationRequest): Input schema for
+        body (DataspaceSearchFilterConfigurationIn): Input schema for
             DataspaceSearchFilterConfiguration
 
     Raises:

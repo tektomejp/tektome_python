@@ -74,7 +74,8 @@ def sync_detailed(
     """Stream BIM key-value search results
 
      Search BIM elements by key-value pairs and stream matching element IDs as NDJSON. Supports BIM
-    objects, views, and sheets with a maximum of 150,000 results.
+    objects, views, and sheets with a maximum of 150,000 results. Only IDs are returned: use the
+    stream_batch_bim_elements endpoint to retrieve full BIM-element data
 
     Args:
         bim_element (StreamBimElementKeyValueSearchBimElementTypeV2Path): An enumeration
@@ -130,7 +131,8 @@ async def asyncio_detailed(
     """Stream BIM key-value search results
 
      Search BIM elements by key-value pairs and stream matching element IDs as NDJSON. Supports BIM
-    objects, views, and sheets with a maximum of 150,000 results.
+    objects, views, and sheets with a maximum of 150,000 results. Only IDs are returned: use the
+    stream_batch_bim_elements endpoint to retrieve full BIM-element data
 
     Args:
         bim_element (StreamBimElementKeyValueSearchBimElementTypeV2Path): An enumeration

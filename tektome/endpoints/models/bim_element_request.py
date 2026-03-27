@@ -17,21 +17,21 @@ class BIMElementRequest:
     """
     Attributes:
         bim_project_id (UUID):
-        bim_object_id (None | str | Unset):
+        bim_element_id (None | str | Unset):
     """
 
     bim_project_id: UUID
-    bim_object_id: None | str | Unset = UNSET
+    bim_element_id: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         bim_project_id = str(self.bim_project_id)
 
-        bim_object_id: None | str | Unset
-        if isinstance(self.bim_object_id, Unset):
-            bim_object_id = UNSET
+        bim_element_id: None | str | Unset
+        if isinstance(self.bim_element_id, Unset):
+            bim_element_id = UNSET
         else:
-            bim_object_id = self.bim_object_id
+            bim_element_id = self.bim_element_id
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -40,8 +40,8 @@ class BIMElementRequest:
                 "bim_project_id": bim_project_id,
             }
         )
-        if bim_object_id is not UNSET:
-            field_dict["bim_object_id"] = bim_object_id
+        if bim_element_id is not UNSET:
+            field_dict["bim_element_id"] = bim_element_id
 
         return field_dict
 
@@ -50,18 +50,18 @@ class BIMElementRequest:
         d = dict(src_dict)
         bim_project_id = UUID(d.pop("bim_project_id"))
 
-        def _parse_bim_object_id(data: object) -> None | str | Unset:
+        def _parse_bim_element_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
             return cast(None | str | Unset, data)
 
-        bim_object_id = _parse_bim_object_id(d.pop("bim_object_id", UNSET))
+        bim_element_id = _parse_bim_element_id(d.pop("bim_element_id", UNSET))
 
         bim_element_request = cls(
             bim_project_id=bim_project_id,
-            bim_object_id=bim_object_id,
+            bim_element_id=bim_element_id,
         )
 
         bim_element_request.additional_properties = d

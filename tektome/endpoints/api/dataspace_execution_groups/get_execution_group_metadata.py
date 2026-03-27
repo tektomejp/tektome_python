@@ -7,6 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.execution_group_processes_metadata_response import ExecutionGroupProcessesMetadataResponse
 from ...types import Response
 
 
@@ -26,14 +27,23 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ExecutionGroupProcessesMetadataResponse | None:
+    if response.status_code == 200:
+        response_200 = ExecutionGroupProcessesMetadataResponse.from_dict(response.json())
+
+        return response_200
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ExecutionGroupProcessesMetadataResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -47,7 +57,7 @@ def sync_detailed(
     execution_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[Any]:
+) -> Response[ExecutionGroupProcessesMetadataResponse]:
     """Get execution group process metadata
 
      Retrieve metadata about the processes within a specific execution group.
@@ -61,7 +71,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[ExecutionGroupProcessesMetadataResponse]
     """
 
     kwargs = _get_kwargs(
@@ -76,12 +86,12 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     dataspace_id: UUID,
     execution_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[Any]:
+) -> ExecutionGroupProcessesMetadataResponse | None:
     """Get execution group process metadata
 
      Retrieve metadata about the processes within a specific execution group.
@@ -95,7 +105,36 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        ExecutionGroupProcessesMetadataResponse
+    """
+
+    return sync_detailed(
+        dataspace_id=dataspace_id,
+        execution_group_id=execution_group_id,
+        client=client,
+    ).parsed
+
+
+async def asyncio_detailed(
+    dataspace_id: UUID,
+    execution_group_id: UUID,
+    *,
+    client: AuthenticatedClient,
+) -> Response[ExecutionGroupProcessesMetadataResponse]:
+    """Get execution group process metadata
+
+     Retrieve metadata about the processes within a specific execution group.
+
+    Args:
+        dataspace_id (UUID):
+        execution_group_id (UUID): The UUID of the execution group
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[ExecutionGroupProcessesMetadataResponse]
     """
 
     kwargs = _get_kwargs(
@@ -106,3 +145,34 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    dataspace_id: UUID,
+    execution_group_id: UUID,
+    *,
+    client: AuthenticatedClient,
+) -> ExecutionGroupProcessesMetadataResponse | None:
+    """Get execution group process metadata
+
+     Retrieve metadata about the processes within a specific execution group.
+
+    Args:
+        dataspace_id (UUID):
+        execution_group_id (UUID): The UUID of the execution group
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        ExecutionGroupProcessesMetadataResponse
+    """
+
+    return (
+        await asyncio_detailed(
+            dataspace_id=dataspace_id,
+            execution_group_id=execution_group_id,
+            client=client,
+        )
+    ).parsed

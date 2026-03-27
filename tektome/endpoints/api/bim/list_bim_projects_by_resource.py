@@ -7,6 +7,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.bim_project_stats_response import BimProjectStatsResponse
+from ...models.error_response_out import ErrorResponseOut
 from ...types import UNSET, Response, Unset
 
 
@@ -39,7 +40,7 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> list[BimProjectStatsResponse] | None:
+) -> ErrorResponseOut | list[BimProjectStatsResponse] | None:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
@@ -50,6 +51,26 @@ def _parse_response(
 
         return response_200
 
+    if response.status_code == 400:
+        response_400 = ErrorResponseOut.from_dict(response.json())
+
+        return response_400
+
+    if response.status_code == 403:
+        response_403 = ErrorResponseOut.from_dict(response.json())
+
+        return response_403
+
+    if response.status_code == 404:
+        response_404 = ErrorResponseOut.from_dict(response.json())
+
+        return response_404
+
+    if response.status_code == 500:
+        response_500 = ErrorResponseOut.from_dict(response.json())
+
+        return response_500
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -58,7 +79,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[list[BimProjectStatsResponse]]:
+) -> Response[ErrorResponseOut | list[BimProjectStatsResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -73,7 +94,7 @@ def sync_detailed(
     page: int | Unset = 1,
     page_size: int | Unset = 100,
     resource_id: UUID,
-) -> Response[list[BimProjectStatsResponse]]:
+) -> Response[ErrorResponseOut | list[BimProjectStatsResponse]]:
     """List BIM projects for a resource
 
      Retrieve paginated BIM projects linked to a specific resource, ordered by most recently updated.Each
@@ -89,7 +110,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list[BimProjectStatsResponse]]
+        Response[ErrorResponseOut | list[BimProjectStatsResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -111,7 +132,7 @@ def sync(
     page: int | Unset = 1,
     page_size: int | Unset = 100,
     resource_id: UUID,
-) -> list[BimProjectStatsResponse] | None:
+) -> ErrorResponseOut | list[BimProjectStatsResponse] | None:
     """List BIM projects for a resource
 
      Retrieve paginated BIM projects linked to a specific resource, ordered by most recently updated.Each
@@ -127,7 +148,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list[BimProjectStatsResponse]
+        ErrorResponseOut | list[BimProjectStatsResponse]
     """
 
     return sync_detailed(
@@ -144,7 +165,7 @@ async def asyncio_detailed(
     page: int | Unset = 1,
     page_size: int | Unset = 100,
     resource_id: UUID,
-) -> Response[list[BimProjectStatsResponse]]:
+) -> Response[ErrorResponseOut | list[BimProjectStatsResponse]]:
     """List BIM projects for a resource
 
      Retrieve paginated BIM projects linked to a specific resource, ordered by most recently updated.Each
@@ -160,7 +181,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list[BimProjectStatsResponse]]
+        Response[ErrorResponseOut | list[BimProjectStatsResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -180,7 +201,7 @@ async def asyncio(
     page: int | Unset = 1,
     page_size: int | Unset = 100,
     resource_id: UUID,
-) -> list[BimProjectStatsResponse] | None:
+) -> ErrorResponseOut | list[BimProjectStatsResponse] | None:
     """List BIM projects for a resource
 
      Retrieve paginated BIM projects linked to a specific resource, ordered by most recently updated.Each
@@ -196,7 +217,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list[BimProjectStatsResponse]
+        ErrorResponseOut | list[BimProjectStatsResponse]
     """
 
     return (

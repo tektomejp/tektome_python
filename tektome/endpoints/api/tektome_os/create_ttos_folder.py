@@ -9,7 +9,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.create_ttos_folder_request import CreateTtosFolderRequest
 from ...models.generic_http_error import GenericHttpError
-from ...models.ttos_folder_response import TtosFolderResponse
+from ...models.ttos_folder_post_out import TtosFolderPostOut
 from ...types import Response
 
 
@@ -37,9 +37,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> GenericHttpError | TtosFolderResponse | None:
+) -> GenericHttpError | TtosFolderPostOut | None:
     if response.status_code == 201:
-        response_201 = TtosFolderResponse.from_dict(response.json())
+        response_201 = TtosFolderPostOut.from_dict(response.json())
 
         return response_201
 
@@ -141,7 +141,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[GenericHttpError | TtosFolderResponse]:
+) -> Response[GenericHttpError | TtosFolderPostOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -155,7 +155,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: CreateTtosFolderRequest,
-) -> Response[GenericHttpError | TtosFolderResponse]:
+) -> Response[GenericHttpError | TtosFolderPostOut]:
     """Create a folder
 
      Create a new folder in a chatroom at the specified path.
@@ -169,7 +169,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GenericHttpError | TtosFolderResponse]
+        Response[GenericHttpError | TtosFolderPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -189,7 +189,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: CreateTtosFolderRequest,
-) -> GenericHttpError | TtosFolderResponse | None:
+) -> GenericHttpError | TtosFolderPostOut | None:
     """Create a folder
 
      Create a new folder in a chatroom at the specified path.
@@ -203,7 +203,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GenericHttpError | TtosFolderResponse
+        GenericHttpError | TtosFolderPostOut
     """
 
     return sync_detailed(
@@ -218,7 +218,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: CreateTtosFolderRequest,
-) -> Response[GenericHttpError | TtosFolderResponse]:
+) -> Response[GenericHttpError | TtosFolderPostOut]:
     """Create a folder
 
      Create a new folder in a chatroom at the specified path.
@@ -232,7 +232,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GenericHttpError | TtosFolderResponse]
+        Response[GenericHttpError | TtosFolderPostOut]
     """
 
     kwargs = _get_kwargs(
@@ -250,7 +250,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: CreateTtosFolderRequest,
-) -> GenericHttpError | TtosFolderResponse | None:
+) -> GenericHttpError | TtosFolderPostOut | None:
     """Create a folder
 
      Create a new folder in a chatroom at the specified path.
@@ -264,7 +264,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GenericHttpError | TtosFolderResponse
+        GenericHttpError | TtosFolderPostOut
     """
 
     return (

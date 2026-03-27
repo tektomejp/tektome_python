@@ -7,6 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.execution_group_filter_response import ExecutionGroupFilterResponse
 from ...types import Response
 
 
@@ -26,14 +27,23 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ExecutionGroupFilterResponse | None:
+    if response.status_code == 200:
+        response_200 = ExecutionGroupFilterResponse.from_dict(response.json())
+
+        return response_200
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ExecutionGroupFilterResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -47,7 +57,7 @@ def sync_detailed(
     execution_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[Any]:
+) -> Response[ExecutionGroupFilterResponse]:
     """Get execution group filter options
 
      Retrieve available filter options for a specific execution group. Returns distinct values for
@@ -62,7 +72,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[ExecutionGroupFilterResponse]
     """
 
     kwargs = _get_kwargs(
@@ -77,12 +87,12 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     dataspace_id: UUID,
     execution_group_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[Any]:
+) -> ExecutionGroupFilterResponse | None:
     """Get execution group filter options
 
      Retrieve available filter options for a specific execution group. Returns distinct values for
@@ -97,7 +107,37 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        ExecutionGroupFilterResponse
+    """
+
+    return sync_detailed(
+        dataspace_id=dataspace_id,
+        execution_group_id=execution_group_id,
+        client=client,
+    ).parsed
+
+
+async def asyncio_detailed(
+    dataspace_id: UUID,
+    execution_group_id: UUID,
+    *,
+    client: AuthenticatedClient,
+) -> Response[ExecutionGroupFilterResponse]:
+    """Get execution group filter options
+
+     Retrieve available filter options for a specific execution group. Returns distinct values for
+    processes, process types, target files, target entities, and extracted attributes.
+
+    Args:
+        dataspace_id (UUID):
+        execution_group_id (UUID): The UUID of the execution group
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[ExecutionGroupFilterResponse]
     """
 
     kwargs = _get_kwargs(
@@ -108,3 +148,35 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    dataspace_id: UUID,
+    execution_group_id: UUID,
+    *,
+    client: AuthenticatedClient,
+) -> ExecutionGroupFilterResponse | None:
+    """Get execution group filter options
+
+     Retrieve available filter options for a specific execution group. Returns distinct values for
+    processes, process types, target files, target entities, and extracted attributes.
+
+    Args:
+        dataspace_id (UUID):
+        execution_group_id (UUID): The UUID of the execution group
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        ExecutionGroupFilterResponse
+    """
+
+    return (
+        await asyncio_detailed(
+            dataspace_id=dataspace_id,
+            execution_group_id=execution_group_id,
+            client=client,
+        )
+    ).parsed

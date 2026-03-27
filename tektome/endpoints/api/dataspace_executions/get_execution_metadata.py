@@ -7,6 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.execution_response import ExecutionResponse
 from ...types import Response
 
 
@@ -26,14 +27,19 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ExecutionResponse | None:
+    if response.status_code == 200:
+        response_200 = ExecutionResponse.from_dict(response.json())
+
+        return response_200
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ExecutionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -47,7 +53,7 @@ def sync_detailed(
     execution_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[Any]:
+) -> Response[ExecutionResponse]:
     """Get execution metadata
 
      Retrieve detailed metadata for a specific execution by its ID, including status and processing
@@ -62,7 +68,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[ExecutionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -77,12 +83,12 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     dataspace_id: UUID,
     execution_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[Any]:
+) -> ExecutionResponse | None:
     """Get execution metadata
 
      Retrieve detailed metadata for a specific execution by its ID, including status and processing
@@ -97,7 +103,37 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        ExecutionResponse
+    """
+
+    return sync_detailed(
+        dataspace_id=dataspace_id,
+        execution_id=execution_id,
+        client=client,
+    ).parsed
+
+
+async def asyncio_detailed(
+    dataspace_id: UUID,
+    execution_id: UUID,
+    *,
+    client: AuthenticatedClient,
+) -> Response[ExecutionResponse]:
+    """Get execution metadata
+
+     Retrieve detailed metadata for a specific execution by its ID, including status and processing
+    details.
+
+    Args:
+        dataspace_id (UUID):
+        execution_id (UUID): The UUID of the execution to cancel
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[ExecutionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -108,3 +144,35 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    dataspace_id: UUID,
+    execution_id: UUID,
+    *,
+    client: AuthenticatedClient,
+) -> ExecutionResponse | None:
+    """Get execution metadata
+
+     Retrieve detailed metadata for a specific execution by its ID, including status and processing
+    details.
+
+    Args:
+        dataspace_id (UUID):
+        execution_id (UUID): The UUID of the execution to cancel
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        ExecutionResponse
+    """
+
+    return (
+        await asyncio_detailed(
+            dataspace_id=dataspace_id,
+            execution_id=execution_id,
+            client=client,
+        )
+    ).parsed

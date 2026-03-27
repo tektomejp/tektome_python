@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.bim_element_request import BIMElementRequest
+    from ..models.update_bim_citation_request_resolved_element_map import UpdateBIMCitationRequestResolvedElementMap
 
 
 T = TypeVar("T", bound="UpdateBIMCitationRequest")
@@ -17,16 +18,20 @@ T = TypeVar("T", bound="UpdateBIMCitationRequest")
 
 @_attrs_define
 class UpdateBIMCitationRequest:
-    """
+    """BIM citation patch input schema.
+
     Attributes:
         title (None | str | Unset):
         keywords (list[str] | None | Unset):
-        bim_elements (list[BIMElementRequest] | None | Unset):
+        bim_elements (list[BIMElementRequest] | None | Unset): List of BIM project/element pairs. Replaces all existing
+            elements when provided.
+        resolved_element_map (UpdateBIMCitationRequestResolvedElementMap | Unset):
     """
 
     title: None | str | Unset = UNSET
     keywords: list[str] | None | Unset = UNSET
     bim_elements: list[BIMElementRequest] | None | Unset = UNSET
+    resolved_element_map: UpdateBIMCitationRequestResolvedElementMap | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -57,6 +62,10 @@ class UpdateBIMCitationRequest:
         else:
             bim_elements = self.bim_elements
 
+        resolved_element_map: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.resolved_element_map, Unset):
+            resolved_element_map = self.resolved_element_map.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -66,12 +75,15 @@ class UpdateBIMCitationRequest:
             field_dict["keywords"] = keywords
         if bim_elements is not UNSET:
             field_dict["bim_elements"] = bim_elements
+        if resolved_element_map is not UNSET:
+            field_dict["resolved_element_map"] = resolved_element_map
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.bim_element_request import BIMElementRequest
+        from ..models.update_bim_citation_request_resolved_element_map import UpdateBIMCitationRequestResolvedElementMap
 
         d = dict(src_dict)
 
@@ -123,10 +135,18 @@ class UpdateBIMCitationRequest:
 
         bim_elements = _parse_bim_elements(d.pop("bim_elements", UNSET))
 
+        _resolved_element_map = d.pop("resolved_element_map", UNSET)
+        resolved_element_map: UpdateBIMCitationRequestResolvedElementMap | Unset
+        if isinstance(_resolved_element_map, Unset):
+            resolved_element_map = UNSET
+        else:
+            resolved_element_map = UpdateBIMCitationRequestResolvedElementMap.from_dict(_resolved_element_map)
+
         update_bim_citation_request = cls(
             title=title,
             keywords=keywords,
             bim_elements=bim_elements,
+            resolved_element_map=resolved_element_map,
         )
 
         update_bim_citation_request.additional_properties = d

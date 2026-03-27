@@ -12,6 +12,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.bim_element_request import BIMElementRequest
+    from ..models.create_bim_citation_request_resolved_element_map import CreateBIMCitationRequestResolvedElementMap
 
 
 T = TypeVar("T", bound="CreateBIMCitationRequest")
@@ -30,6 +31,7 @@ class CreateBIMCitationRequest:
         bim_resource_id (UUID): ID of the cited BIM resource.
         bim_elements (list[BIMElementRequest]): List of BIM project/object pairs cited as sources.
         keywords (list[str] | Unset):
+        resolved_element_map (CreateBIMCitationRequestResolvedElementMap | Unset):
     """
 
     title: str
@@ -37,6 +39,7 @@ class CreateBIMCitationRequest:
     bim_resource_id: UUID
     bim_elements: list[BIMElementRequest]
     keywords: list[str] | Unset = UNSET
+    resolved_element_map: CreateBIMCitationRequestResolvedElementMap | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -55,6 +58,10 @@ class CreateBIMCitationRequest:
         if not isinstance(self.keywords, Unset):
             keywords = self.keywords
 
+        resolved_element_map: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.resolved_element_map, Unset):
+            resolved_element_map = self.resolved_element_map.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -67,12 +74,15 @@ class CreateBIMCitationRequest:
         )
         if keywords is not UNSET:
             field_dict["keywords"] = keywords
+        if resolved_element_map is not UNSET:
+            field_dict["resolved_element_map"] = resolved_element_map
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.bim_element_request import BIMElementRequest
+        from ..models.create_bim_citation_request_resolved_element_map import CreateBIMCitationRequestResolvedElementMap
 
         d = dict(src_dict)
         title = d.pop("title")
@@ -90,12 +100,20 @@ class CreateBIMCitationRequest:
 
         keywords = cast(list[str], d.pop("keywords", UNSET))
 
+        _resolved_element_map = d.pop("resolved_element_map", UNSET)
+        resolved_element_map: CreateBIMCitationRequestResolvedElementMap | Unset
+        if isinstance(_resolved_element_map, Unset):
+            resolved_element_map = UNSET
+        else:
+            resolved_element_map = CreateBIMCitationRequestResolvedElementMap.from_dict(_resolved_element_map)
+
         create_bim_citation_request = cls(
             title=title,
             attribute_type=attribute_type,
             bim_resource_id=bim_resource_id,
             bim_elements=bim_elements,
             keywords=keywords,
+            resolved_element_map=resolved_element_map,
         )
 
         create_bim_citation_request.additional_properties = d

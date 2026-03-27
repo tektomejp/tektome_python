@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_process_request import CreateProcessRequest
+from ...models.process_post_in import ProcessPostIn
 from ...models.process_response import ProcessResponse
 from ...types import Response
 
@@ -15,7 +15,7 @@ from ...types import Response
 def _get_kwargs(
     dataspace_id: UUID,
     *,
-    body: CreateProcessRequest,
+    body: ProcessPostIn,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -59,7 +59,7 @@ def sync_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateProcessRequest,
+    body: ProcessPostIn,
 ) -> Response[ProcessResponse]:
     """Create a process in a dataspace
 
@@ -67,7 +67,7 @@ def sync_detailed(
 
     Args:
         dataspace_id (UUID):
-        body (CreateProcessRequest):
+        body (ProcessPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -93,7 +93,7 @@ def sync(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateProcessRequest,
+    body: ProcessPostIn,
 ) -> ProcessResponse | None:
     """Create a process in a dataspace
 
@@ -101,7 +101,7 @@ def sync(
 
     Args:
         dataspace_id (UUID):
-        body (CreateProcessRequest):
+        body (ProcessPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -122,7 +122,7 @@ async def asyncio_detailed(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateProcessRequest,
+    body: ProcessPostIn,
 ) -> Response[ProcessResponse]:
     """Create a process in a dataspace
 
@@ -130,7 +130,7 @@ async def asyncio_detailed(
 
     Args:
         dataspace_id (UUID):
-        body (CreateProcessRequest):
+        body (ProcessPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -154,7 +154,7 @@ async def asyncio(
     dataspace_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: CreateProcessRequest,
+    body: ProcessPostIn,
 ) -> ProcessResponse | None:
     """Create a process in a dataspace
 
@@ -162,7 +162,7 @@ async def asyncio(
 
     Args:
         dataspace_id (UUID):
-        body (CreateProcessRequest):
+        body (ProcessPostIn):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

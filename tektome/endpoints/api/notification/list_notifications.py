@@ -7,6 +7,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.generic_http_error import GenericHttpError
+from ...models.paged_notification_get_out import PagedNotificationGetOut
 from ...types import UNSET, Response, Unset
 
 
@@ -74,7 +75,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> GenericHttpError | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> GenericHttpError | PagedNotificationGetOut | None:
+    if response.status_code == 200:
+        response_200 = PagedNotificationGetOut.from_dict(response.json())
+
+        return response_200
+
     if response.status_code == 400:
         response_400 = GenericHttpError.from_dict(response.json())
 
@@ -171,7 +179,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[GenericHttpError]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[GenericHttpError | PagedNotificationGetOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -189,7 +199,7 @@ def sync_detailed(
     type_: None | str | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[GenericHttpError]:
+) -> Response[GenericHttpError | PagedNotificationGetOut]:
     """List notifications for the current user, allow filtering by organization, dataspace, status, and
     type
 
@@ -213,7 +223,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GenericHttpError]
+        Response[GenericHttpError | PagedNotificationGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -241,7 +251,7 @@ def sync(
     type_: None | str | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> GenericHttpError | None:
+) -> GenericHttpError | PagedNotificationGetOut | None:
     """List notifications for the current user, allow filtering by organization, dataspace, status, and
     type
 
@@ -265,7 +275,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GenericHttpError
+        GenericHttpError | PagedNotificationGetOut
     """
 
     return sync_detailed(
@@ -288,7 +298,7 @@ async def asyncio_detailed(
     type_: None | str | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> Response[GenericHttpError]:
+) -> Response[GenericHttpError | PagedNotificationGetOut]:
     """List notifications for the current user, allow filtering by organization, dataspace, status, and
     type
 
@@ -312,7 +322,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GenericHttpError]
+        Response[GenericHttpError | PagedNotificationGetOut]
     """
 
     kwargs = _get_kwargs(
@@ -338,7 +348,7 @@ async def asyncio(
     type_: None | str | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
-) -> GenericHttpError | None:
+) -> GenericHttpError | PagedNotificationGetOut | None:
     """List notifications for the current user, allow filtering by organization, dataspace, status, and
     type
 
@@ -362,7 +372,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GenericHttpError
+        GenericHttpError | PagedNotificationGetOut
     """
 
     return (
