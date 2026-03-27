@@ -63,3 +63,12 @@ tektome/
 - Python 3.13+ required
 - Schema validation uses Pydantic v2
 - Kind field values must match exactly: "resource", "resource[]", "project", "project[]", "attribute_definition[]", "date", "datetime"
+
+
+## Skills and examples
+
+The project contains documentation and example code that allows agents to understand how to use the SDK effectively. Key files include:
+- `SKILL.md` - Overview of SDK architecture, usage patterns, and examples for making API calls
+- `references/` - Markdown files detailing specific Tektome concepts and how to use the SDK for common tasks (e.g. attribute extraction, citation creation)
+
+When changes are made to the SDK, ensure that relevant sections of `SKILL.md` and any affected reference files are updated to reflect new usage patterns or API changes. This will help maintain the usefulness of these resources for agents working with the Tektome Python SDK.

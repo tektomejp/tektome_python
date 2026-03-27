@@ -36,9 +36,9 @@ A Section is required as the context container for extraction. Create one with t
 
 ```python
 from tektome.endpoints.api.section import create_core_section
-from tektome.endpoints.models.section_creation_post_in import SectionCreationPostIn
+from tektome.endpoints.models.create_section_creation_request import CreateSectionCreationRequest
 
-section_body = SectionCreationPostIn(
+section_body = CreateSectionCreationRequest(
     project_id=project_uuid,   # project the resource belongs to — required
     page_ids=page_ids,         # all page IDs from step 1
 )
@@ -61,12 +61,12 @@ section_id = section_response.parsed.id
 
 ```python
 from tektome.endpoints.api.extraction import create_attribute_extraction
-from tektome.endpoints.models.extraction_post_in import ExtractionPostIn
+from tektome.endpoints.models.create_extraction_request import CreateExtractionRequest
 from tektome.endpoints.models.attribute import Attribute
 from tektome.endpoints.models.attribute_type import AttributeType
 from tektome.endpoints.models.recipeschoices import RECIPESCHOICES
 
-body = ExtractionPostIn(
+body = CreateExtractionRequest(
     section_id=section_id,
     recipe=RECIPESCHOICES.V1,                     # see Recipes below
     attributes=[
@@ -86,12 +86,11 @@ extraction_response = create_attribute_extraction.sync_detailed(client=client, b
 
 ### Recipes
 
-Only two recipes are valid for attribute extraction:
+Only one recipe is valid for attribute extraction:
 
 | Recipe | Use when |
 |---|---|
-| `RECIPESCHOICES.V1` (`"v1"`) | Standard text-based extraction — use for most attributes |
-| `RECIPESCHOICES.TABLE_V1` (`"table_v1"`) | Extracting values from tables |
+| `RECIPESCHOICES.V1` (`"v1"`) | Standard extraction — use for all attributes |
 
 All other `RECIPESCHOICES` values (`deep-research-*`, `auto-capture-*`, `tektome-os-v1`) are for other functions and **will fail** if used for attribute extraction.
 
@@ -106,17 +105,20 @@ All other `RECIPESCHOICES` values (`deep-research-*`, `auto-capture-*`, `tektome
 
 ```python
 class AttributeType(str, Enum):
-    STRING_ATTRIBUTES    = "string_attributes"
-    INTEGER_ATTRIBUTES   = "integer_attributes"
-    FLOAT_ATTRIBUTES     = "float_attributes"
-    BOOLEAN_ATTRIBUTES   = "boolean_attributes"
-    DATE_ATTRIBUTES      = "date_attributes"
-    DATETIME_ATTRIBUTES  = "datetime_attributes"
-    TIME_ATTRIBUTES      = "time_attributes"
-    COORDINATE_ATTRIBUTES = "coordinate_attributes"
-    POLYGON_ATTRIBUTES   = "polygon_attributes"
-    TABLE_ATTRIBUTES     = "table_attributes"
-    JSON_ATTRIBUTES      = "json_attributes"
+    BOOLEAN_ATTRIBUTES     = "boolean_attributes"
+    COORDINATE_ATTRIBUTES  = "coordinate_attributes"
+    DATETIME_ATTRIBUTES    = "datetime_attributes"
+    DATE_ATTRIBUTES        = "date_attributes"
+    FLOAT_ATTRIBUTES       = "float_attributes"
+    INTEGER_ATTRIBUTES     = "integer_attributes"
+    JSON_ATTRIBUTES        = "json_attributes"
+    LIST_OBJECT_ATTRIBUTES = "list_object_attributes"
+    MULTI_SELECT_ATTRIBUTES  = "multi_select_attributes"
+    POLYGON_ATTRIBUTES     = "polygon_attributes"
+    SINGLE_SELECT_ATTRIBUTES = "single_select_attributes"
+    STRING_ATTRIBUTES      = "string_attributes"
+    TABLE_ATTRIBUTES       = "table_attributes"
+    TIME_ATTRIBUTES        = "time_attributes"
 ```
 
 ### Extracting multiple attributes

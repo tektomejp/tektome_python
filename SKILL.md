@@ -73,6 +73,7 @@ from tektome.endpoints.api.dataspace import list_dataspaces
 ctx = Context(
     system_user_api_key="sk-...",
     system_base_url="https://your-tektome-instance.example.com",
+    system_flow_type="general",
 )
 
 with ctx.client() as client:
@@ -179,4 +180,7 @@ with ctx.client(raise_on_unexpected_status=False) as client:
 
 ## References
 
-The `/references` directory contains markdown files detailing specific Tektome concepts, like "attribute extraction", "citation creation", etc. Use these to help understand how to use the SDK for common tasks.
+The `references` directory contains markdown files detailing specific Tektome concepts, like "attribute extraction", "citation creation", etc. Use these to help understand how to use the SDK for common tasks.
+The following references are available:
+- [Attribute Extraction](references/ATTRIBUTE_EXTRACTION.md) -- how to use the SDK to run agentic attribute extraction flows, and how to interpret the results
+- [Manual Attributes and Citation Creation](references/MANUAL_ATTRIBUTES_AND_CITATIONS.md) -- how to use the SDK to create manually create attributes and citations to resources, and best practices for doing so
