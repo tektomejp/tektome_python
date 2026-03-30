@@ -123,6 +123,7 @@ from .bim_topology_search_sphere_post_in import BimTopologySearchSpherePostIn
 from .bim_trim_query_item import BimTrimQueryItem
 from .bim_validate_ids_request import BimValidateIdsRequest
 from .bim_validate_ids_response import BimValidateIdsResponse
+from .bim_value_expression_search_post_in import BimValueExpressionSearchPostIn
 from .bim_view_object_link_response import BimViewObjectLinkResponse
 from .bim_view_response import BimViewResponse
 from .blob_upload_complete_request import BlobUploadCompleteRequest
@@ -1277,6 +1278,7 @@ __all__ = (
     "BimTrimQueryItem",
     "BimValidateIdsRequest",
     "BimValidateIdsResponse",
+    "BimValueExpressionSearchPostIn",
     "BimViewObjectLinkResponse",
     "BimViewResponse",
     "BlobUploadCompleteRequest",
