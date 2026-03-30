@@ -25,7 +25,7 @@ class CreateRunArtifactRequest:
         result_artifact_path (None | str | Unset): The path of the artifact to create for the result (e.g.,
             'result.json').
         body (CreateRunArtifactRequestBodyType0 | None | Unset): The body to pass to the artifact when running it. This
-            is the input data in Windmill flow/Script
+            is the input data for the flow/script.
     """
 
     result_artifact_id: None | Unset | UUID = UNSET
