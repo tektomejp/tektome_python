@@ -6,11 +6,11 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ExecutionResponseExecutionRunArgs")
+T = TypeVar("T", bound="ExecutionMetadataResponseExecutionRunArgs")
 
 
 @_attrs_define
-class ExecutionResponseExecutionRunArgs:
+class ExecutionMetadataResponseExecutionRunArgs:
     """ """
 
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -25,10 +25,10 @@ class ExecutionResponseExecutionRunArgs:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        execution_response_execution_run_args = cls()
+        execution_metadata_response_execution_run_args = cls()
 
-        execution_response_execution_run_args.additional_properties = d
-        return execution_response_execution_run_args
+        execution_metadata_response_execution_run_args.additional_properties = d
+        return execution_metadata_response_execution_run_args
 
     @property
     def additional_keys(self) -> list[str]:

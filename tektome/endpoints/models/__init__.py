@@ -457,6 +457,8 @@ from .execution_group_query_params_process_type_choices import ExecutionGroupQue
 from .execution_group_response import ExecutionGroupResponse
 from .execution_group_status import ExecutionGroupStatus
 from .execution_groups_path_params import ExecutionGroupsPathParams
+from .execution_metadata_response import ExecutionMetadataResponse
+from .execution_metadata_response_execution_run_args import ExecutionMetadataResponseExecutionRunArgs
 from .execution_path_params import ExecutionPathParams
 from .execution_process_response import ExecutionProcessResponse
 from .execution_process_types import ExecutionProcessTypes
@@ -466,7 +468,6 @@ from .execution_query_params_execution_review_status import ExecutionQueryParams
 from .execution_query_params_execution_status import ExecutionQueryParamsExecutionStatus
 from .execution_query_params_process_type_choices import ExecutionQueryParamsProcessTypeChoices
 from .execution_response import ExecutionResponse
-from .execution_response_execution_run_args import ExecutionResponseExecutionRunArgs
 from .execution_review_status import ExecutionReviewStatus
 from .execution_status import ExecutionStatus
 from .execution_status_details import ExecutionStatusDetails
@@ -1584,6 +1585,8 @@ __all__ = (
     "ExecutionGroupResponse",
     "ExecutionGroupsPathParams",
     "ExecutionGroupStatus",
+    "ExecutionMetadataResponse",
+    "ExecutionMetadataResponseExecutionRunArgs",
     "ExecutionPathParams",
     "ExecutionProcessResponse",
     "ExecutionProcessTypes",
@@ -1593,7 +1596,6 @@ __all__ = (
     "ExecutionQueryParamsExecutionStatus",
     "ExecutionQueryParamsProcessTypeChoices",
     "ExecutionResponse",
-    "ExecutionResponseExecutionRunArgs",
     "ExecutionReviewStatus",
     "ExecutionsPathParams",
     "ExecutionsResponse",

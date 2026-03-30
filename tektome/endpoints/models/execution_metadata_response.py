@@ -12,59 +12,67 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.execution_process_response import ExecutionProcessResponse
-    from ..models.executions_review_status_details import ExecutionsReviewStatusDetails
-    from ..models.user_metadata import UserMetadata
+    from ..models.execute_process_details import ExecuteProcessDetails
+    from ..models.execute_process_ui_trigger_details import ExecuteProcessUITriggerDetails
+    from ..models.execution_metadata_response_execution_run_args import ExecutionMetadataResponseExecutionRunArgs
 
 
-T = TypeVar("T", bound="ExecutionResponse")
+T = TypeVar("T", bound="ExecutionMetadataResponse")
 
 
 @_attrs_define
-class ExecutionResponse:
-    """Serializer for Execution details
+class ExecutionMetadataResponse:
+    """Serializer for Execution metadata details
 
     Attributes:
-        review_status (ExecutionsReviewStatusDetails): Details about execution review statuses within an execution group
-        approvals_count (int):
-        process_details (ExecutionProcessResponse): Process details within an execution group
-        launched_by (UserMetadata):
+        execution_run_args (ExecutionMetadataResponseExecutionRunArgs):
+        process_details (ExecuteProcessDetails): Validation schema for UI trigger details in individual process
+            execution payload
+        auto_approved_output (bool):
         created (datetime.datetime):
         updated (datetime.datetime):
-        reviewed_by_names (list[str] | Unset):
+        ui_trigger_details (list[ExecuteProcessUITriggerDetails] | Unset):
+        memo (None | str | Unset): Memo for the execution group
         id (None | Unset | UUID):
         start_time (datetime.datetime | None | Unset):
         end_time (datetime.datetime | None | Unset):
     """
 
-    review_status: ExecutionsReviewStatusDetails
-    approvals_count: int
-    process_details: ExecutionProcessResponse
-    launched_by: UserMetadata
+    execution_run_args: ExecutionMetadataResponseExecutionRunArgs
+    process_details: ExecuteProcessDetails
+    auto_approved_output: bool
     created: datetime.datetime
     updated: datetime.datetime
-    reviewed_by_names: list[str] | Unset = UNSET
+    ui_trigger_details: list[ExecuteProcessUITriggerDetails] | Unset = UNSET
+    memo: None | str | Unset = UNSET
     id: None | Unset | UUID = UNSET
     start_time: datetime.datetime | None | Unset = UNSET
     end_time: datetime.datetime | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        review_status = self.review_status.to_dict()
-
-        approvals_count = self.approvals_count
+        execution_run_args = self.execution_run_args.to_dict()
 
         process_details = self.process_details.to_dict()
 
-        launched_by = self.launched_by.to_dict()
+        auto_approved_output = self.auto_approved_output
 
         created = self.created.isoformat()
 
         updated = self.updated.isoformat()
 
-        reviewed_by_names: list[str] | Unset = UNSET
-        if not isinstance(self.reviewed_by_names, Unset):
-            reviewed_by_names = self.reviewed_by_names
+        ui_trigger_details: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.ui_trigger_details, Unset):
+            ui_trigger_details = []
+            for ui_trigger_details_item_data in self.ui_trigger_details:
+                ui_trigger_details_item = ui_trigger_details_item_data.to_dict()
+                ui_trigger_details.append(ui_trigger_details_item)
+
+        memo: None | str | Unset
+        if isinstance(self.memo, Unset):
+            memo = UNSET
+        else:
+            memo = self.memo
 
         id: None | str | Unset
         if isinstance(self.id, Unset):
@@ -94,16 +102,17 @@ class ExecutionResponse:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "review_status": review_status,
-                "approvals_count": approvals_count,
+                "execution_run_args": execution_run_args,
                 "process_details": process_details,
-                "launched_by": launched_by,
+                "auto_approved_output": auto_approved_output,
                 "created": created,
                 "updated": updated,
             }
         )
-        if reviewed_by_names is not UNSET:
-            field_dict["reviewed_by_names"] = reviewed_by_names
+        if ui_trigger_details is not UNSET:
+            field_dict["ui_trigger_details"] = ui_trigger_details
+        if memo is not UNSET:
+            field_dict["memo"] = memo
         if id is not UNSET:
             field_dict["id"] = id
         if start_time is not UNSET:
@@ -115,24 +124,38 @@ class ExecutionResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.execution_process_response import ExecutionProcessResponse
-        from ..models.executions_review_status_details import ExecutionsReviewStatusDetails
-        from ..models.user_metadata import UserMetadata
+        from ..models.execute_process_details import ExecuteProcessDetails
+        from ..models.execute_process_ui_trigger_details import ExecuteProcessUITriggerDetails
+        from ..models.execution_metadata_response_execution_run_args import ExecutionMetadataResponseExecutionRunArgs
 
         d = dict(src_dict)
-        review_status = ExecutionsReviewStatusDetails.from_dict(d.pop("review_status"))
+        execution_run_args = ExecutionMetadataResponseExecutionRunArgs.from_dict(d.pop("execution_run_args"))
 
-        approvals_count = d.pop("approvals_count")
+        process_details = ExecuteProcessDetails.from_dict(d.pop("process_details"))
 
-        process_details = ExecutionProcessResponse.from_dict(d.pop("process_details"))
-
-        launched_by = UserMetadata.from_dict(d.pop("launched_by"))
+        auto_approved_output = d.pop("auto_approved_output")
 
         created = isoparse(d.pop("created"))
 
         updated = isoparse(d.pop("updated"))
 
-        reviewed_by_names = cast(list[str], d.pop("reviewed_by_names", UNSET))
+        _ui_trigger_details = d.pop("ui_trigger_details", UNSET)
+        ui_trigger_details: list[ExecuteProcessUITriggerDetails] | Unset = UNSET
+        if _ui_trigger_details is not UNSET:
+            ui_trigger_details = []
+            for ui_trigger_details_item_data in _ui_trigger_details:
+                ui_trigger_details_item = ExecuteProcessUITriggerDetails.from_dict(ui_trigger_details_item_data)
+
+                ui_trigger_details.append(ui_trigger_details_item)
+
+        def _parse_memo(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        memo = _parse_memo(d.pop("memo", UNSET))
 
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -185,21 +208,21 @@ class ExecutionResponse:
 
         end_time = _parse_end_time(d.pop("end_time", UNSET))
 
-        execution_response = cls(
-            review_status=review_status,
-            approvals_count=approvals_count,
+        execution_metadata_response = cls(
+            execution_run_args=execution_run_args,
             process_details=process_details,
-            launched_by=launched_by,
+            auto_approved_output=auto_approved_output,
             created=created,
             updated=updated,
-            reviewed_by_names=reviewed_by_names,
+            ui_trigger_details=ui_trigger_details,
+            memo=memo,
             id=id,
             start_time=start_time,
             end_time=end_time,
         )
 
-        execution_response.additional_properties = d
-        return execution_response
+        execution_metadata_response.additional_properties = d
+        return execution_metadata_response
 
     @property
     def additional_keys(self) -> list[str]:
