@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.execution_metadata_response import ExecutionMetadataResponse
+from ...models.execution_response import ExecutionResponse
 from ...types import Response
 
 
@@ -18,7 +18,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/api/core/dataspaces/{dataspace_id}/executions/{execution_id}/metadata/".format(
+        "url": "/api/core/dataspaces/{dataspace_id}/executions/{execution_id}/".format(
             dataspace_id=quote(str(dataspace_id), safe=""),
             execution_id=quote(str(execution_id), safe=""),
         ),
@@ -27,11 +27,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ExecutionMetadataResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ExecutionResponse | None:
     if response.status_code == 200:
-        response_200 = ExecutionMetadataResponse.from_dict(response.json())
+        response_200 = ExecutionResponse.from_dict(response.json())
 
         return response_200
 
@@ -41,9 +39,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ExecutionMetadataResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ExecutionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,11 +53,10 @@ def sync_detailed(
     execution_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ExecutionMetadataResponse]:
-    """Get execution metadata
+) -> Response[ExecutionResponse]:
+    """Get execution details
 
-     Retrieve detailed metadata for a specific execution by its ID, including status and processing
-    details.
+     Retrieve details of a specific execution by its ID, including status and processing details.
 
     Args:
         dataspace_id (UUID):
@@ -72,7 +67,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ExecutionMetadataResponse]
+        Response[ExecutionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -92,11 +87,10 @@ def sync(
     execution_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> ExecutionMetadataResponse | None:
-    """Get execution metadata
+) -> ExecutionResponse | None:
+    """Get execution details
 
-     Retrieve detailed metadata for a specific execution by its ID, including status and processing
-    details.
+     Retrieve details of a specific execution by its ID, including status and processing details.
 
     Args:
         dataspace_id (UUID):
@@ -107,7 +101,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ExecutionMetadataResponse
+        ExecutionResponse
     """
 
     return sync_detailed(
@@ -122,11 +116,10 @@ async def asyncio_detailed(
     execution_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ExecutionMetadataResponse]:
-    """Get execution metadata
+) -> Response[ExecutionResponse]:
+    """Get execution details
 
-     Retrieve detailed metadata for a specific execution by its ID, including status and processing
-    details.
+     Retrieve details of a specific execution by its ID, including status and processing details.
 
     Args:
         dataspace_id (UUID):
@@ -137,7 +130,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ExecutionMetadataResponse]
+        Response[ExecutionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -155,11 +148,10 @@ async def asyncio(
     execution_id: UUID,
     *,
     client: AuthenticatedClient,
-) -> ExecutionMetadataResponse | None:
-    """Get execution metadata
+) -> ExecutionResponse | None:
+    """Get execution details
 
-     Retrieve detailed metadata for a specific execution by its ID, including status and processing
-    details.
+     Retrieve details of a specific execution by its ID, including status and processing details.
 
     Args:
         dataspace_id (UUID):
@@ -170,7 +162,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ExecutionMetadataResponse
+        ExecutionResponse
     """
 
     return (
