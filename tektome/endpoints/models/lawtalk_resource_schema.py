@@ -29,6 +29,7 @@ class LawtalkResourceSchema:
         core_attributes (LawtalkResourceRequiredSchema):
         created_by (UserMetadata):
         updated_by (UserMetadata):
+        core_resource_id (UUID):
         created (datetime.datetime):
         updated (datetime.datetime):
         initialization_status (None | str | Unset):
@@ -42,6 +43,7 @@ class LawtalkResourceSchema:
     core_attributes: LawtalkResourceRequiredSchema
     created_by: UserMetadata
     updated_by: UserMetadata
+    core_resource_id: UUID
     created: datetime.datetime
     updated: datetime.datetime
     initialization_status: None | str | Unset = UNSET
@@ -63,6 +65,8 @@ class LawtalkResourceSchema:
         created_by = self.created_by.to_dict()
 
         updated_by = self.updated_by.to_dict()
+
+        core_resource_id = str(self.core_resource_id)
 
         created = self.created.isoformat()
 
@@ -105,6 +109,7 @@ class LawtalkResourceSchema:
                 "core_attributes": core_attributes,
                 "created_by": created_by,
                 "updated_by": updated_by,
+                "core_resource_id": core_resource_id,
                 "created": created,
                 "updated": updated,
             }
@@ -141,6 +146,8 @@ class LawtalkResourceSchema:
         created_by = UserMetadata.from_dict(d.pop("created_by"))
 
         updated_by = UserMetadata.from_dict(d.pop("updated_by"))
+
+        core_resource_id = UUID(d.pop("core_resource_id"))
 
         created = isoparse(d.pop("created"))
 
@@ -204,6 +211,7 @@ class LawtalkResourceSchema:
             core_attributes=core_attributes,
             created_by=created_by,
             updated_by=updated_by,
+            core_resource_id=core_resource_id,
             created=created,
             updated=updated,
             initialization_status=initialization_status,

@@ -262,6 +262,7 @@ from .create_requirement_template_request import CreateRequirementTemplateReques
 from .create_resource_group_request import CreateResourceGroupRequest
 from .create_resource_section_path_params import CreateResourceSectionPathParams
 from .create_resource_vc_schema_request import CreateResourceVCSchemaRequest
+from .create_resource_with_path_multi_part_body_params import CreateResourceWithPathMultiPartBodyParams
 from .create_resource_with_version_control_file_params import CreateResourceWithVersionControlFileParams
 from .create_retrieve_bim_objects_in_view_request import CreateRetrieveBimObjectsInViewRequest
 from .create_retrieve_bim_sheet_request import CreateRetrieveBimSheetRequest
@@ -720,6 +721,7 @@ from .paged_requirement_research_template_get_out import PagedRequirementResearc
 from .paged_requirement_research_templates_get_out import PagedRequirementResearchTemplatesGetOut
 from .paged_requirement_template_reference_note_get_out import PagedRequirementTemplateReferenceNoteGetOut
 from .paged_requirements_list_get_out import PagedRequirementsListGetOut
+from .paged_resource_glob_out import PagedResourceGlobOut
 from .paged_resource_group_schema import PagedResourceGroupSchema
 from .paged_resource_groups_get_out import PagedResourceGroupsGetOut
 from .paged_resource_metadata_out import PagedResourceMetadataOut
@@ -881,9 +883,21 @@ from .resource_children import ResourceChildren
 from .resource_counts_post_in import ResourceCountsPostIn
 from .resource_counts_post_out import ResourceCountsPostOut
 from .resource_create_from_signed_url_request import ResourceCreateFromSignedUrlRequest
+from .resource_create_out import ResourceCreateOut
+from .resource_create_path import ResourceCreatePath
+from .resource_delete_in import ResourceDeleteIn
+from .resource_delete_out import ResourceDeleteOut
+from .resource_delete_path import ResourceDeletePath
 from .resource_folder_children_schema import ResourceFolderChildrenSchema
+from .resource_folder_post_in import ResourceFolderPostIn
+from .resource_folder_post_out import ResourceFolderPostOut
+from .resource_folder_post_path import ResourceFolderPostPath
 from .resource_get_many_schema_response import ResourceGetManySchemaResponse
 from .resource_get_many_schema_response_items import ResourceGetManySchemaResponseItems
+from .resource_glob_in import ResourceGlobIn
+from .resource_glob_out import ResourceGlobOut
+from .resource_glob_out_initialization_status_type_0 import ResourceGlobOutInitializationStatusType0
+from .resource_glob_path import ResourceGlobPath
 from .resource_group import ResourceGroup
 from .resource_group_check_delete_query import ResourceGroupCheckDeleteQuery
 from .resource_group_get_path_params import ResourceGroupGetPathParams
@@ -895,11 +909,17 @@ from .resource_ifc_bim_project_creation_response import ResourceIfcBimProjectCre
 from .resource_making_task_schema import ResourceMakingTaskSchema
 from .resource_metadata_required_schema import ResourceMetadataRequiredSchema
 from .resource_metadata_response import ResourceMetadataResponse
+from .resource_move_in import ResourceMoveIn
+from .resource_move_out import ResourceMoveOut
+from .resource_move_path import ResourceMovePath
 from .resource_ocr_schema_get_response import ResourceOCRSchemaGetResponse
 from .resource_ocr_schema_get_response_latest_task_result_type_0 import (
     ResourceOCRSchemaGetResponseLatestTaskResultType0,
 )
 from .resource_ocr_schema_post_response import ResourceOCRSchemaPostResponse
+from .resource_patch_path_in import ResourcePatchPathIn
+from .resource_patch_path_out import ResourcePatchPathOut
+from .resource_patch_path_path import ResourcePatchPathPath
 from .resource_path_params import ResourcePathParams
 from .resource_required_schema import ResourceRequiredSchema
 from .resource_schema_request import ResourceSchemaRequest
@@ -1153,8 +1173,10 @@ from .upsert_system_attributes_attribute_object_types import UpsertSystemAttribu
 from .user_invitation_skipped_schema import UserInvitationSkippedSchema
 from .user_invitation_success_schema import UserInvitationSuccessSchema
 from .user_metadata import UserMetadata
+from .user_out import UserOut
 from .users_schema_request import UsersSchemaRequest
 from .validate_bim_element_ids_bim_element_type_v2_path import ValidateBimElementIdsBimElementTypeV2Path
+from .wrap_core_resource_post_in import WrapCoreResourcePostIn
 
 __all__ = (
     "ABimProjectElementTypePath",
@@ -1413,6 +1435,7 @@ __all__ = (
     "CreateResourceGroupRequest",
     "CreateResourceSectionPathParams",
     "CreateResourceVCSchemaRequest",
+    "CreateResourceWithPathMultiPartBodyParams",
     "CreateResourceWithVersionControlFileParams",
     "CreateRetrieveBimObjectsInViewRequest",
     "CreateRetrieveBimSheetRequest",
@@ -1838,6 +1861,7 @@ __all__ = (
     "PagedRequirementResearchTemplatesGetOut",
     "PagedRequirementsListGetOut",
     "PagedRequirementTemplateReferenceNoteGetOut",
+    "PagedResourceGlobOut",
     "PagedResourceGroupSchema",
     "PagedResourceGroupsGetOut",
     "PagedResourceMetadataOut",
@@ -1982,9 +2006,21 @@ __all__ = (
     "ResourceCountsPostIn",
     "ResourceCountsPostOut",
     "ResourceCreateFromSignedUrlRequest",
+    "ResourceCreateOut",
+    "ResourceCreatePath",
+    "ResourceDeleteIn",
+    "ResourceDeleteOut",
+    "ResourceDeletePath",
     "ResourceFolderChildrenSchema",
+    "ResourceFolderPostIn",
+    "ResourceFolderPostOut",
+    "ResourceFolderPostPath",
     "ResourceGetManySchemaResponse",
     "ResourceGetManySchemaResponseItems",
+    "ResourceGlobIn",
+    "ResourceGlobOut",
+    "ResourceGlobOutInitializationStatusType0",
+    "ResourceGlobPath",
     "ResourceGroup",
     "ResourceGroupCheckDeleteQuery",
     "ResourceGroupGetPathParams",
@@ -1996,9 +2032,15 @@ __all__ = (
     "ResourceMakingTaskSchema",
     "ResourceMetadataRequiredSchema",
     "ResourceMetadataResponse",
+    "ResourceMoveIn",
+    "ResourceMoveOut",
+    "ResourceMovePath",
     "ResourceOCRSchemaGetResponse",
     "ResourceOCRSchemaGetResponseLatestTaskResultType0",
     "ResourceOCRSchemaPostResponse",
+    "ResourcePatchPathIn",
+    "ResourcePatchPathOut",
+    "ResourcePatchPathPath",
     "ResourcePathParams",
     "ResourceRequiredSchema",
     "ResourceSchemaRequest",
@@ -2224,6 +2266,8 @@ __all__ = (
     "UserInvitationSkippedSchema",
     "UserInvitationSuccessSchema",
     "UserMetadata",
+    "UserOut",
     "UsersSchemaRequest",
     "ValidateBimElementIdsBimElementTypeV2Path",
+    "WrapCoreResourcePostIn",
 )
