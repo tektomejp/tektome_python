@@ -22,12 +22,15 @@ class CitedBIMElementSchemaResponse:
             Elasticsearch.
         bim_element_id (None | str | Unset): The specific BIM element ID cited (may be a child element within a
             BimObject's JSON).
+        highlight_color (None | str | Unset): Hex color for highlighting this element (e.g. #FF0000). Falls back to
+            frontend default when null.
     """
 
     bim_project: UUID
     id: None | Unset | UUID = UNSET
     bim_object: None | str | Unset = UNSET
     bim_element_id: None | str | Unset = UNSET
+    highlight_color: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -53,6 +56,12 @@ class CitedBIMElementSchemaResponse:
         else:
             bim_element_id = self.bim_element_id
 
+        highlight_color: None | str | Unset
+        if isinstance(self.highlight_color, Unset):
+            highlight_color = UNSET
+        else:
+            highlight_color = self.highlight_color
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -66,6 +75,8 @@ class CitedBIMElementSchemaResponse:
             field_dict["bim_object"] = bim_object
         if bim_element_id is not UNSET:
             field_dict["bim_element_id"] = bim_element_id
+        if highlight_color is not UNSET:
+            field_dict["highlight_color"] = highlight_color
 
         return field_dict
 
@@ -109,11 +120,21 @@ class CitedBIMElementSchemaResponse:
 
         bim_element_id = _parse_bim_element_id(d.pop("bim_element_id", UNSET))
 
+        def _parse_highlight_color(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        highlight_color = _parse_highlight_color(d.pop("highlight_color", UNSET))
+
         cited_bim_element_schema_response = cls(
             bim_project=bim_project,
             id=id,
             bim_object=bim_object,
             bim_element_id=bim_element_id,
+            highlight_color=highlight_color,
         )
 
         cited_bim_element_schema_response.additional_properties = d

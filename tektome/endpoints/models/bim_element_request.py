@@ -18,10 +18,12 @@ class BIMElementRequest:
     Attributes:
         bim_project_id (UUID):
         bim_element_id (None | str | Unset):
+        highlight_color (None | str | Unset):
     """
 
     bim_project_id: UUID
     bim_element_id: None | str | Unset = UNSET
+    highlight_color: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -33,6 +35,12 @@ class BIMElementRequest:
         else:
             bim_element_id = self.bim_element_id
 
+        highlight_color: None | str | Unset
+        if isinstance(self.highlight_color, Unset):
+            highlight_color = UNSET
+        else:
+            highlight_color = self.highlight_color
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -42,6 +50,8 @@ class BIMElementRequest:
         )
         if bim_element_id is not UNSET:
             field_dict["bim_element_id"] = bim_element_id
+        if highlight_color is not UNSET:
+            field_dict["highlight_color"] = highlight_color
 
         return field_dict
 
@@ -59,9 +69,19 @@ class BIMElementRequest:
 
         bim_element_id = _parse_bim_element_id(d.pop("bim_element_id", UNSET))
 
+        def _parse_highlight_color(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        highlight_color = _parse_highlight_color(d.pop("highlight_color", UNSET))
+
         bim_element_request = cls(
             bim_project_id=bim_project_id,
             bim_element_id=bim_element_id,
+            highlight_color=highlight_color,
         )
 
         bim_element_request.additional_properties = d
