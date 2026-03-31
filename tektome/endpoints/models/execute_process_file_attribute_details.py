@@ -1,11 +1,14 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..models.process_type_choices import ProcessTypeChoices
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="ExecuteProcessFileAttributeDetails")
 
@@ -18,11 +21,13 @@ class ExecuteProcessFileAttributeDetails:
         id (UUID):
         name (str):
         label (str):
+        type_ (None | ProcessTypeChoices | Unset):
     """
 
     id: UUID
     name: str
     label: str
+    type_: None | ProcessTypeChoices | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -31,6 +36,14 @@ class ExecuteProcessFileAttributeDetails:
         name = self.name
 
         label = self.label
+
+        type_: None | str | Unset
+        if isinstance(self.type_, Unset):
+            type_ = UNSET
+        elif isinstance(self.type_, ProcessTypeChoices):
+            type_ = self.type_.value
+        else:
+            type_ = self.type_
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -41,6 +54,8 @@ class ExecuteProcessFileAttributeDetails:
                 "label": label,
             }
         )
+        if type_ is not UNSET:
+            field_dict["type"] = type_
 
         return field_dict
 
@@ -53,10 +68,28 @@ class ExecuteProcessFileAttributeDetails:
 
         label = d.pop("label")
 
+        def _parse_type_(data: object) -> None | ProcessTypeChoices | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                type_type_0 = ProcessTypeChoices(data)
+
+                return type_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | ProcessTypeChoices | Unset, data)
+
+        type_ = _parse_type_(d.pop("type", UNSET))
+
         execute_process_file_attribute_details = cls(
             id=id,
             name=name,
             label=label,
+            type_=type_,
         )
 
         execute_process_file_attribute_details.additional_properties = d
