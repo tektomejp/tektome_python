@@ -470,6 +470,7 @@ from .execution_query_params_process_type_choices import ExecutionQueryParamsPro
 from .execution_response import ExecutionResponse
 from .execution_review_status import ExecutionReviewStatus
 from .execution_status import ExecutionStatus
+from .execution_status_count_details import ExecutionStatusCountDetails
 from .execution_status_details import ExecutionStatusDetails
 from .executions_path_params import ExecutionsPathParams
 from .executions_response import ExecutionsResponse
@@ -1602,6 +1603,7 @@ __all__ = (
     "ExecutionsResponseMetadata",
     "ExecutionsReviewStatusDetails",
     "ExecutionStatus",
+    "ExecutionStatusCountDetails",
     "ExecutionStatusDetails",
     "ExportCSVReportQuery",
     "ExportUsageReportsPeriodTypes",
