@@ -41,6 +41,7 @@ class DataspaceResourceFileAttributeSchemaResponse:
         description (None | str | Unset):  Default: ''.
         enabled (bool | Unset):  Default: True.
         hidden (bool | Unset):  Default: False.
+        creation_method (str | Unset):  Default: 'manual'.
     """
 
     created_by: UserMetadata
@@ -57,6 +58,7 @@ class DataspaceResourceFileAttributeSchemaResponse:
     description: None | str | Unset = ""
     enabled: bool | Unset = True
     hidden: bool | Unset = False
+    creation_method: str | Unset = "manual"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -115,6 +117,8 @@ class DataspaceResourceFileAttributeSchemaResponse:
 
         hidden = self.hidden
 
+        creation_method = self.creation_method
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -142,6 +146,8 @@ class DataspaceResourceFileAttributeSchemaResponse:
             field_dict["enabled"] = enabled
         if hidden is not UNSET:
             field_dict["hidden"] = hidden
+        if creation_method is not UNSET:
+            field_dict["creation_method"] = creation_method
 
         return field_dict
 
@@ -238,6 +244,8 @@ class DataspaceResourceFileAttributeSchemaResponse:
 
         hidden = d.pop("hidden", UNSET)
 
+        creation_method = d.pop("creation_method", UNSET)
+
         dataspace_resource_file_attribute_schema_response = cls(
             created_by=created_by,
             updated_by=updated_by,
@@ -253,6 +261,7 @@ class DataspaceResourceFileAttributeSchemaResponse:
             description=description,
             enabled=enabled,
             hidden=hidden,
+            creation_method=creation_method,
         )
 
         dataspace_resource_file_attribute_schema_response.additional_properties = d
