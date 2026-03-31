@@ -18,15 +18,19 @@ class BlobUploadCompleteResponse:
 
     Attributes:
         resource_id (UUID): Resource ID
+        rvc_id (UUID): ResourceVersionControl ID
         bim_project_id (None | Unset | UUID): BIM Project ID
     """
 
     resource_id: UUID
+    rvc_id: UUID
     bim_project_id: None | Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         resource_id = str(self.resource_id)
+
+        rvc_id = str(self.rvc_id)
 
         bim_project_id: None | str | Unset
         if isinstance(self.bim_project_id, Unset):
@@ -41,6 +45,7 @@ class BlobUploadCompleteResponse:
         field_dict.update(
             {
                 "resource_id": resource_id,
+                "rvc_id": rvc_id,
             }
         )
         if bim_project_id is not UNSET:
@@ -52,6 +57,8 @@ class BlobUploadCompleteResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         resource_id = UUID(d.pop("resource_id"))
+
+        rvc_id = UUID(d.pop("rvc_id"))
 
         def _parse_bim_project_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -72,6 +79,7 @@ class BlobUploadCompleteResponse:
 
         blob_upload_complete_response = cls(
             resource_id=resource_id,
+            rvc_id=rvc_id,
             bim_project_id=bim_project_id,
         )
 
