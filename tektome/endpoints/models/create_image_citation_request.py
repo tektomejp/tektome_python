@@ -25,6 +25,7 @@ class CreateImageCitationRequest:
                 If you need to add a new attribute type, add a new enum value with a unique name.
         bounding_geometry (list[list[list[float]]]): List of coordinates defining the polygon within the image only.
         image_resource_id (UUID): ID of the cited image resource.
+        overlay_html (None | str | Unset):
         keywords (list[str] | Unset):
     """
 
@@ -32,6 +33,7 @@ class CreateImageCitationRequest:
     attribute_type: AttributeType
     bounding_geometry: list[list[list[float]]]
     image_resource_id: UUID
+    overlay_html: None | str | Unset = UNSET
     keywords: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -56,6 +58,12 @@ class CreateImageCitationRequest:
 
         image_resource_id = str(self.image_resource_id)
 
+        overlay_html: None | str | Unset
+        if isinstance(self.overlay_html, Unset):
+            overlay_html = UNSET
+        else:
+            overlay_html = self.overlay_html
+
         keywords: list[str] | Unset = UNSET
         if not isinstance(self.keywords, Unset):
             keywords = self.keywords
@@ -70,6 +78,8 @@ class CreateImageCitationRequest:
                 "image_resource_id": image_resource_id,
             }
         )
+        if overlay_html is not UNSET:
+            field_dict["overlay_html"] = overlay_html
         if keywords is not UNSET:
             field_dict["keywords"] = keywords
 
@@ -107,6 +117,15 @@ class CreateImageCitationRequest:
 
         image_resource_id = UUID(d.pop("image_resource_id"))
 
+        def _parse_overlay_html(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        overlay_html = _parse_overlay_html(d.pop("overlay_html", UNSET))
+
         keywords = cast(list[str], d.pop("keywords", UNSET))
 
         create_image_citation_request = cls(
@@ -114,6 +133,7 @@ class CreateImageCitationRequest:
             attribute_type=attribute_type,
             bounding_geometry=bounding_geometry,
             image_resource_id=image_resource_id,
+            overlay_html=overlay_html,
             keywords=keywords,
         )
 

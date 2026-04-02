@@ -23,6 +23,7 @@ class UpdateBIMCitationRequest:
     Attributes:
         title (None | str | Unset):
         keywords (list[str] | None | Unset):
+        overlay_html (None | str | Unset):
         bim_elements (list[BIMElementRequest] | None | Unset): List of BIM project/element pairs. Replaces all existing
             elements when provided.
         resolved_element_map (UpdateBIMCitationRequestResolvedElementMap | Unset):
@@ -30,6 +31,7 @@ class UpdateBIMCitationRequest:
 
     title: None | str | Unset = UNSET
     keywords: list[str] | None | Unset = UNSET
+    overlay_html: None | str | Unset = UNSET
     bim_elements: list[BIMElementRequest] | None | Unset = UNSET
     resolved_element_map: UpdateBIMCitationRequestResolvedElementMap | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -49,6 +51,12 @@ class UpdateBIMCitationRequest:
 
         else:
             keywords = self.keywords
+
+        overlay_html: None | str | Unset
+        if isinstance(self.overlay_html, Unset):
+            overlay_html = UNSET
+        else:
+            overlay_html = self.overlay_html
 
         bim_elements: list[dict[str, Any]] | None | Unset
         if isinstance(self.bim_elements, Unset):
@@ -73,6 +81,8 @@ class UpdateBIMCitationRequest:
             field_dict["title"] = title
         if keywords is not UNSET:
             field_dict["keywords"] = keywords
+        if overlay_html is not UNSET:
+            field_dict["overlay_html"] = overlay_html
         if bim_elements is not UNSET:
             field_dict["bim_elements"] = bim_elements
         if resolved_element_map is not UNSET:
@@ -113,6 +123,15 @@ class UpdateBIMCitationRequest:
 
         keywords = _parse_keywords(d.pop("keywords", UNSET))
 
+        def _parse_overlay_html(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        overlay_html = _parse_overlay_html(d.pop("overlay_html", UNSET))
+
         def _parse_bim_elements(data: object) -> list[BIMElementRequest] | None | Unset:
             if data is None:
                 return data
@@ -145,6 +164,7 @@ class UpdateBIMCitationRequest:
         update_bim_citation_request = cls(
             title=title,
             keywords=keywords,
+            overlay_html=overlay_html,
             bim_elements=bim_elements,
             resolved_element_map=resolved_element_map,
         )

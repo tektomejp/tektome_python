@@ -30,6 +30,7 @@ class CreateBIMCitationRequest:
                 If you need to add a new attribute type, add a new enum value with a unique name.
         bim_resource_id (UUID): ID of the cited BIM resource.
         bim_elements (list[BIMElementRequest]): List of BIM project/object pairs cited as sources.
+        overlay_html (None | str | Unset):
         keywords (list[str] | Unset):
         resolved_element_map (CreateBIMCitationRequestResolvedElementMap | Unset):
     """
@@ -38,6 +39,7 @@ class CreateBIMCitationRequest:
     attribute_type: AttributeType
     bim_resource_id: UUID
     bim_elements: list[BIMElementRequest]
+    overlay_html: None | str | Unset = UNSET
     keywords: list[str] | Unset = UNSET
     resolved_element_map: CreateBIMCitationRequestResolvedElementMap | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -53,6 +55,12 @@ class CreateBIMCitationRequest:
         for bim_elements_item_data in self.bim_elements:
             bim_elements_item = bim_elements_item_data.to_dict()
             bim_elements.append(bim_elements_item)
+
+        overlay_html: None | str | Unset
+        if isinstance(self.overlay_html, Unset):
+            overlay_html = UNSET
+        else:
+            overlay_html = self.overlay_html
 
         keywords: list[str] | Unset = UNSET
         if not isinstance(self.keywords, Unset):
@@ -72,6 +80,8 @@ class CreateBIMCitationRequest:
                 "bim_elements": bim_elements,
             }
         )
+        if overlay_html is not UNSET:
+            field_dict["overlay_html"] = overlay_html
         if keywords is not UNSET:
             field_dict["keywords"] = keywords
         if resolved_element_map is not UNSET:
@@ -98,6 +108,15 @@ class CreateBIMCitationRequest:
 
             bim_elements.append(bim_elements_item)
 
+        def _parse_overlay_html(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        overlay_html = _parse_overlay_html(d.pop("overlay_html", UNSET))
+
         keywords = cast(list[str], d.pop("keywords", UNSET))
 
         _resolved_element_map = d.pop("resolved_element_map", UNSET)
@@ -112,6 +131,7 @@ class CreateBIMCitationRequest:
             attribute_type=attribute_type,
             bim_resource_id=bim_resource_id,
             bim_elements=bim_elements,
+            overlay_html=overlay_html,
             keywords=keywords,
             resolved_element_map=resolved_element_map,
         )
