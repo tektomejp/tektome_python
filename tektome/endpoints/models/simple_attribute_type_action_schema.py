@@ -15,6 +15,10 @@ if TYPE_CHECKING:
     from ..models.simple_attribute_type_action_schema_date_before import SimpleAttributeTypeActionSchemaDateBefore
     from ..models.simple_attribute_type_action_schema_date_between import SimpleAttributeTypeActionSchemaDateBetween
     from ..models.simple_attribute_type_action_schema_date_equals import SimpleAttributeTypeActionSchemaDateEquals
+    from ..models.simple_attribute_type_action_schema_date_is_empty import SimpleAttributeTypeActionSchemaDateIsEmpty
+    from ..models.simple_attribute_type_action_schema_date_is_not_empty import (
+        SimpleAttributeTypeActionSchemaDateIsNotEmpty,
+    )
     from ..models.simple_attribute_type_action_schema_date_not_equals import (
         SimpleAttributeTypeActionSchemaDateNotEquals,
     )
@@ -33,6 +37,12 @@ if TYPE_CHECKING:
     )
     from ..models.simple_attribute_type_action_schema_datetime_equals import (
         SimpleAttributeTypeActionSchemaDatetimeEquals,
+    )
+    from ..models.simple_attribute_type_action_schema_datetime_is_empty import (
+        SimpleAttributeTypeActionSchemaDatetimeIsEmpty,
+    )
+    from ..models.simple_attribute_type_action_schema_datetime_is_not_empty import (
+        SimpleAttributeTypeActionSchemaDatetimeIsNotEmpty,
     )
     from ..models.simple_attribute_type_action_schema_datetime_not_equals import (
         SimpleAttributeTypeActionSchemaDatetimeNotEquals,
@@ -82,6 +92,9 @@ if TYPE_CHECKING:
     from ..models.simple_attribute_type_action_schema_string_contains import (
         SimpleAttributeTypeActionSchemaStringContains,
     )
+    from ..models.simple_attribute_type_action_schema_string_ends_with import (
+        SimpleAttributeTypeActionSchemaStringEndsWith,
+    )
     from ..models.simple_attribute_type_action_schema_string_exact import SimpleAttributeTypeActionSchemaStringExact
     from ..models.simple_attribute_type_action_schema_string_excludes import (
         SimpleAttributeTypeActionSchemaStringExcludes,
@@ -89,8 +102,20 @@ if TYPE_CHECKING:
     from ..models.simple_attribute_type_action_schema_string_includes import (
         SimpleAttributeTypeActionSchemaStringIncludes,
     )
+    from ..models.simple_attribute_type_action_schema_string_is_empty import (
+        SimpleAttributeTypeActionSchemaStringIsEmpty,
+    )
+    from ..models.simple_attribute_type_action_schema_string_is_not_empty import (
+        SimpleAttributeTypeActionSchemaStringIsNotEmpty,
+    )
     from ..models.simple_attribute_type_action_schema_string_not_contains import (
         SimpleAttributeTypeActionSchemaStringNotContains,
+    )
+    from ..models.simple_attribute_type_action_schema_string_not_equals import (
+        SimpleAttributeTypeActionSchemaStringNotEquals,
+    )
+    from ..models.simple_attribute_type_action_schema_string_starts_with import (
+        SimpleAttributeTypeActionSchemaStringStartsWith,
     )
     from ..models.simple_attribute_type_action_schema_table_cell_matches import (
         SimpleAttributeTypeActionSchemaTableCellMatches,
@@ -102,6 +127,10 @@ if TYPE_CHECKING:
     from ..models.simple_attribute_type_action_schema_time_before import SimpleAttributeTypeActionSchemaTimeBefore
     from ..models.simple_attribute_type_action_schema_time_between import SimpleAttributeTypeActionSchemaTimeBetween
     from ..models.simple_attribute_type_action_schema_time_equals import SimpleAttributeTypeActionSchemaTimeEquals
+    from ..models.simple_attribute_type_action_schema_time_is_empty import SimpleAttributeTypeActionSchemaTimeIsEmpty
+    from ..models.simple_attribute_type_action_schema_time_is_not_empty import (
+        SimpleAttributeTypeActionSchemaTimeIsNotEmpty,
+    )
     from ..models.simple_attribute_type_action_schema_time_not_equals import (
         SimpleAttributeTypeActionSchemaTimeNotEquals,
     )
@@ -120,10 +149,13 @@ T = TypeVar("T", bound="SimpleAttributeTypeActionSchema")
 class SimpleAttributeTypeActionSchema:
     """
     Attributes:
-        string (list[SimpleAttributeTypeActionSchemaStringContains | SimpleAttributeTypeActionSchemaStringExact |
-            SimpleAttributeTypeActionSchemaStringExcludes | SimpleAttributeTypeActionSchemaStringIncludes |
-            SimpleAttributeTypeActionSchemaStringNotContains]): Action and value type for attribute type 'string'. Valid
-            actions: contains, exact, excludes, includes, not_contains. Value type: string.
+        string (list[SimpleAttributeTypeActionSchemaStringContains | SimpleAttributeTypeActionSchemaStringEndsWith |
+            SimpleAttributeTypeActionSchemaStringExact | SimpleAttributeTypeActionSchemaStringExcludes |
+            SimpleAttributeTypeActionSchemaStringIncludes | SimpleAttributeTypeActionSchemaStringIsEmpty |
+            SimpleAttributeTypeActionSchemaStringIsNotEmpty | SimpleAttributeTypeActionSchemaStringNotContains |
+            SimpleAttributeTypeActionSchemaStringNotEquals | SimpleAttributeTypeActionSchemaStringStartsWith]): Action and
+            value type for attribute type 'string'. Valid actions: contains, ends_with, exact, excludes, includes, is_empty,
+            is_not_empty, not_contains, not_equals, starts_with. Value type: string.
         integer (list[SimpleAttributeTypeActionSchemaIntegerBetween | SimpleAttributeTypeActionSchemaIntegerEquals |
             SimpleAttributeTypeActionSchemaIntegerGreaterThan | SimpleAttributeTypeActionSchemaIntegerGreaterThanOrEqualTo |
             SimpleAttributeTypeActionSchemaIntegerLessThan | SimpleAttributeTypeActionSchemaIntegerLessThanOrEqualTo |
@@ -140,22 +172,25 @@ class SimpleAttributeTypeActionSchema:
             Action and value type for attribute type 'boolean'. Valid actions: equals, not_equals. Value type: boolean.
         date (list[SimpleAttributeTypeActionSchemaDateAfter | SimpleAttributeTypeActionSchemaDateBefore |
             SimpleAttributeTypeActionSchemaDateBetween | SimpleAttributeTypeActionSchemaDateEquals |
+            SimpleAttributeTypeActionSchemaDateIsEmpty | SimpleAttributeTypeActionSchemaDateIsNotEmpty |
             SimpleAttributeTypeActionSchemaDateNotEquals | SimpleAttributeTypeActionSchemaDateOnOrAfter |
             SimpleAttributeTypeActionSchemaDateOnOrBefore]): Action and value type for attribute type 'date'. Valid actions:
-            after, before, between, equals, not_equals, on_or_after, on_or_before. Value type: date, tuple[date, date] if
-            action is between.
+            after, before, between, equals, is_empty, is_not_empty, not_equals, on_or_after, on_or_before. Value type: date,
+            tuple[date, date] if action is between.
         datetime_ (list[SimpleAttributeTypeActionSchemaDatetimeAfter | SimpleAttributeTypeActionSchemaDatetimeBefore |
             SimpleAttributeTypeActionSchemaDatetimeBetween | SimpleAttributeTypeActionSchemaDatetimeEquals |
+            SimpleAttributeTypeActionSchemaDatetimeIsEmpty | SimpleAttributeTypeActionSchemaDatetimeIsNotEmpty |
             SimpleAttributeTypeActionSchemaDatetimeNotEquals | SimpleAttributeTypeActionSchemaDatetimeOnOrAfter |
             SimpleAttributeTypeActionSchemaDatetimeOnOrBefore]): Action and value type for attribute type 'datetime'. Valid
-            actions: after, before, between, equals, not_equals, on_or_after, on_or_before. Value type: datetime,
-            tuple[datetime, datetime] if action is between.
+            actions: after, before, between, equals, is_empty, is_not_empty, not_equals, on_or_after, on_or_before. Value
+            type: datetime, tuple[datetime, datetime] if action is between.
         time (list[SimpleAttributeTypeActionSchemaTimeAfter | SimpleAttributeTypeActionSchemaTimeBefore |
             SimpleAttributeTypeActionSchemaTimeBetween | SimpleAttributeTypeActionSchemaTimeEquals |
+            SimpleAttributeTypeActionSchemaTimeIsEmpty | SimpleAttributeTypeActionSchemaTimeIsNotEmpty |
             SimpleAttributeTypeActionSchemaTimeNotEquals | SimpleAttributeTypeActionSchemaTimeOnOrAfter |
             SimpleAttributeTypeActionSchemaTimeOnOrBefore]): Action and value type for attribute type 'time'. Valid actions:
-            after, before, between, equals, not_equals, on_or_after, on_or_before. Value type: time, tuple[time, time] if
-            action is between.
+            after, before, between, equals, is_empty, is_not_empty, not_equals, on_or_after, on_or_before. Value type: time,
+            tuple[time, time] if action is between.
         table (list[SimpleAttributeTypeActionSchemaTableCellMatches |
             SimpleAttributeTypeActionSchemaTableColumnContains]): Action and value type for attribute type 'table'. Valid
             actions: cell_matches, column_contains. Value type: dict with keys column, row, or cell and value type based on
@@ -164,10 +199,15 @@ class SimpleAttributeTypeActionSchema:
 
     string: list[
         SimpleAttributeTypeActionSchemaStringContains
+        | SimpleAttributeTypeActionSchemaStringEndsWith
         | SimpleAttributeTypeActionSchemaStringExact
         | SimpleAttributeTypeActionSchemaStringExcludes
         | SimpleAttributeTypeActionSchemaStringIncludes
+        | SimpleAttributeTypeActionSchemaStringIsEmpty
+        | SimpleAttributeTypeActionSchemaStringIsNotEmpty
         | SimpleAttributeTypeActionSchemaStringNotContains
+        | SimpleAttributeTypeActionSchemaStringNotEquals
+        | SimpleAttributeTypeActionSchemaStringStartsWith
     ]
     integer: list[
         SimpleAttributeTypeActionSchemaIntegerBetween
@@ -193,6 +233,8 @@ class SimpleAttributeTypeActionSchema:
         | SimpleAttributeTypeActionSchemaDateBefore
         | SimpleAttributeTypeActionSchemaDateBetween
         | SimpleAttributeTypeActionSchemaDateEquals
+        | SimpleAttributeTypeActionSchemaDateIsEmpty
+        | SimpleAttributeTypeActionSchemaDateIsNotEmpty
         | SimpleAttributeTypeActionSchemaDateNotEquals
         | SimpleAttributeTypeActionSchemaDateOnOrAfter
         | SimpleAttributeTypeActionSchemaDateOnOrBefore
@@ -202,6 +244,8 @@ class SimpleAttributeTypeActionSchema:
         | SimpleAttributeTypeActionSchemaDatetimeBefore
         | SimpleAttributeTypeActionSchemaDatetimeBetween
         | SimpleAttributeTypeActionSchemaDatetimeEquals
+        | SimpleAttributeTypeActionSchemaDatetimeIsEmpty
+        | SimpleAttributeTypeActionSchemaDatetimeIsNotEmpty
         | SimpleAttributeTypeActionSchemaDatetimeNotEquals
         | SimpleAttributeTypeActionSchemaDatetimeOnOrAfter
         | SimpleAttributeTypeActionSchemaDatetimeOnOrBefore
@@ -211,6 +255,8 @@ class SimpleAttributeTypeActionSchema:
         | SimpleAttributeTypeActionSchemaTimeBefore
         | SimpleAttributeTypeActionSchemaTimeBetween
         | SimpleAttributeTypeActionSchemaTimeEquals
+        | SimpleAttributeTypeActionSchemaTimeIsEmpty
+        | SimpleAttributeTypeActionSchemaTimeIsNotEmpty
         | SimpleAttributeTypeActionSchemaTimeNotEquals
         | SimpleAttributeTypeActionSchemaTimeOnOrAfter
         | SimpleAttributeTypeActionSchemaTimeOnOrBefore
@@ -226,6 +272,12 @@ class SimpleAttributeTypeActionSchema:
         from ..models.simple_attribute_type_action_schema_date_before import SimpleAttributeTypeActionSchemaDateBefore
         from ..models.simple_attribute_type_action_schema_date_between import SimpleAttributeTypeActionSchemaDateBetween
         from ..models.simple_attribute_type_action_schema_date_equals import SimpleAttributeTypeActionSchemaDateEquals
+        from ..models.simple_attribute_type_action_schema_date_is_empty import (
+            SimpleAttributeTypeActionSchemaDateIsEmpty,
+        )
+        from ..models.simple_attribute_type_action_schema_date_is_not_empty import (
+            SimpleAttributeTypeActionSchemaDateIsNotEmpty,
+        )
         from ..models.simple_attribute_type_action_schema_date_not_equals import (
             SimpleAttributeTypeActionSchemaDateNotEquals,
         )
@@ -243,6 +295,12 @@ class SimpleAttributeTypeActionSchema:
         )
         from ..models.simple_attribute_type_action_schema_datetime_equals import (
             SimpleAttributeTypeActionSchemaDatetimeEquals,
+        )
+        from ..models.simple_attribute_type_action_schema_datetime_is_empty import (
+            SimpleAttributeTypeActionSchemaDatetimeIsEmpty,
+        )
+        from ..models.simple_attribute_type_action_schema_datetime_is_not_empty import (
+            SimpleAttributeTypeActionSchemaDatetimeIsNotEmpty,
         )
         from ..models.simple_attribute_type_action_schema_datetime_not_equals import (
             SimpleAttributeTypeActionSchemaDatetimeNotEquals,
@@ -287,12 +345,27 @@ class SimpleAttributeTypeActionSchema:
         from ..models.simple_attribute_type_action_schema_string_contains import (
             SimpleAttributeTypeActionSchemaStringContains,
         )
+        from ..models.simple_attribute_type_action_schema_string_ends_with import (
+            SimpleAttributeTypeActionSchemaStringEndsWith,
+        )
         from ..models.simple_attribute_type_action_schema_string_exact import SimpleAttributeTypeActionSchemaStringExact
         from ..models.simple_attribute_type_action_schema_string_excludes import (
             SimpleAttributeTypeActionSchemaStringExcludes,
         )
         from ..models.simple_attribute_type_action_schema_string_includes import (
             SimpleAttributeTypeActionSchemaStringIncludes,
+        )
+        from ..models.simple_attribute_type_action_schema_string_is_empty import (
+            SimpleAttributeTypeActionSchemaStringIsEmpty,
+        )
+        from ..models.simple_attribute_type_action_schema_string_is_not_empty import (
+            SimpleAttributeTypeActionSchemaStringIsNotEmpty,
+        )
+        from ..models.simple_attribute_type_action_schema_string_not_contains import (
+            SimpleAttributeTypeActionSchemaStringNotContains,
+        )
+        from ..models.simple_attribute_type_action_schema_string_not_equals import (
+            SimpleAttributeTypeActionSchemaStringNotEquals,
         )
         from ..models.simple_attribute_type_action_schema_table_cell_matches import (
             SimpleAttributeTypeActionSchemaTableCellMatches,
@@ -301,6 +374,12 @@ class SimpleAttributeTypeActionSchema:
         from ..models.simple_attribute_type_action_schema_time_before import SimpleAttributeTypeActionSchemaTimeBefore
         from ..models.simple_attribute_type_action_schema_time_between import SimpleAttributeTypeActionSchemaTimeBetween
         from ..models.simple_attribute_type_action_schema_time_equals import SimpleAttributeTypeActionSchemaTimeEquals
+        from ..models.simple_attribute_type_action_schema_time_is_empty import (
+            SimpleAttributeTypeActionSchemaTimeIsEmpty,
+        )
+        from ..models.simple_attribute_type_action_schema_time_is_not_empty import (
+            SimpleAttributeTypeActionSchemaTimeIsNotEmpty,
+        )
         from ..models.simple_attribute_type_action_schema_time_not_equals import (
             SimpleAttributeTypeActionSchemaTimeNotEquals,
         )
@@ -313,11 +392,21 @@ class SimpleAttributeTypeActionSchema:
             string_item: dict[str, Any]
             if isinstance(string_item_data, SimpleAttributeTypeActionSchemaStringContains):
                 string_item = string_item_data.to_dict()
+            elif isinstance(string_item_data, SimpleAttributeTypeActionSchemaStringEndsWith):
+                string_item = string_item_data.to_dict()
             elif isinstance(string_item_data, SimpleAttributeTypeActionSchemaStringExact):
                 string_item = string_item_data.to_dict()
             elif isinstance(string_item_data, SimpleAttributeTypeActionSchemaStringExcludes):
                 string_item = string_item_data.to_dict()
             elif isinstance(string_item_data, SimpleAttributeTypeActionSchemaStringIncludes):
+                string_item = string_item_data.to_dict()
+            elif isinstance(string_item_data, SimpleAttributeTypeActionSchemaStringIsEmpty):
+                string_item = string_item_data.to_dict()
+            elif isinstance(string_item_data, SimpleAttributeTypeActionSchemaStringIsNotEmpty):
+                string_item = string_item_data.to_dict()
+            elif isinstance(string_item_data, SimpleAttributeTypeActionSchemaStringNotContains):
+                string_item = string_item_data.to_dict()
+            elif isinstance(string_item_data, SimpleAttributeTypeActionSchemaStringNotEquals):
                 string_item = string_item_data.to_dict()
             else:
                 string_item = string_item_data.to_dict()
@@ -385,6 +474,10 @@ class SimpleAttributeTypeActionSchema:
                 date_item = date_item_data.to_dict()
             elif isinstance(date_item_data, SimpleAttributeTypeActionSchemaDateEquals):
                 date_item = date_item_data.to_dict()
+            elif isinstance(date_item_data, SimpleAttributeTypeActionSchemaDateIsEmpty):
+                date_item = date_item_data.to_dict()
+            elif isinstance(date_item_data, SimpleAttributeTypeActionSchemaDateIsNotEmpty):
+                date_item = date_item_data.to_dict()
             elif isinstance(date_item_data, SimpleAttributeTypeActionSchemaDateNotEquals):
                 date_item = date_item_data.to_dict()
             elif isinstance(date_item_data, SimpleAttributeTypeActionSchemaDateOnOrAfter):
@@ -405,6 +498,10 @@ class SimpleAttributeTypeActionSchema:
                 datetime_item = datetime_item_data.to_dict()
             elif isinstance(datetime_item_data, SimpleAttributeTypeActionSchemaDatetimeEquals):
                 datetime_item = datetime_item_data.to_dict()
+            elif isinstance(datetime_item_data, SimpleAttributeTypeActionSchemaDatetimeIsEmpty):
+                datetime_item = datetime_item_data.to_dict()
+            elif isinstance(datetime_item_data, SimpleAttributeTypeActionSchemaDatetimeIsNotEmpty):
+                datetime_item = datetime_item_data.to_dict()
             elif isinstance(datetime_item_data, SimpleAttributeTypeActionSchemaDatetimeNotEquals):
                 datetime_item = datetime_item_data.to_dict()
             elif isinstance(datetime_item_data, SimpleAttributeTypeActionSchemaDatetimeOnOrAfter):
@@ -424,6 +521,10 @@ class SimpleAttributeTypeActionSchema:
             elif isinstance(time_item_data, SimpleAttributeTypeActionSchemaTimeBetween):
                 time_item = time_item_data.to_dict()
             elif isinstance(time_item_data, SimpleAttributeTypeActionSchemaTimeEquals):
+                time_item = time_item_data.to_dict()
+            elif isinstance(time_item_data, SimpleAttributeTypeActionSchemaTimeIsEmpty):
+                time_item = time_item_data.to_dict()
+            elif isinstance(time_item_data, SimpleAttributeTypeActionSchemaTimeIsNotEmpty):
                 time_item = time_item_data.to_dict()
             elif isinstance(time_item_data, SimpleAttributeTypeActionSchemaTimeNotEquals):
                 time_item = time_item_data.to_dict()
@@ -473,6 +574,12 @@ class SimpleAttributeTypeActionSchema:
         from ..models.simple_attribute_type_action_schema_date_before import SimpleAttributeTypeActionSchemaDateBefore
         from ..models.simple_attribute_type_action_schema_date_between import SimpleAttributeTypeActionSchemaDateBetween
         from ..models.simple_attribute_type_action_schema_date_equals import SimpleAttributeTypeActionSchemaDateEquals
+        from ..models.simple_attribute_type_action_schema_date_is_empty import (
+            SimpleAttributeTypeActionSchemaDateIsEmpty,
+        )
+        from ..models.simple_attribute_type_action_schema_date_is_not_empty import (
+            SimpleAttributeTypeActionSchemaDateIsNotEmpty,
+        )
         from ..models.simple_attribute_type_action_schema_date_not_equals import (
             SimpleAttributeTypeActionSchemaDateNotEquals,
         )
@@ -493,6 +600,12 @@ class SimpleAttributeTypeActionSchema:
         )
         from ..models.simple_attribute_type_action_schema_datetime_equals import (
             SimpleAttributeTypeActionSchemaDatetimeEquals,
+        )
+        from ..models.simple_attribute_type_action_schema_datetime_is_empty import (
+            SimpleAttributeTypeActionSchemaDatetimeIsEmpty,
+        )
+        from ..models.simple_attribute_type_action_schema_datetime_is_not_empty import (
+            SimpleAttributeTypeActionSchemaDatetimeIsNotEmpty,
         )
         from ..models.simple_attribute_type_action_schema_datetime_not_equals import (
             SimpleAttributeTypeActionSchemaDatetimeNotEquals,
@@ -546,6 +659,9 @@ class SimpleAttributeTypeActionSchema:
         from ..models.simple_attribute_type_action_schema_string_contains import (
             SimpleAttributeTypeActionSchemaStringContains,
         )
+        from ..models.simple_attribute_type_action_schema_string_ends_with import (
+            SimpleAttributeTypeActionSchemaStringEndsWith,
+        )
         from ..models.simple_attribute_type_action_schema_string_exact import SimpleAttributeTypeActionSchemaStringExact
         from ..models.simple_attribute_type_action_schema_string_excludes import (
             SimpleAttributeTypeActionSchemaStringExcludes,
@@ -553,8 +669,20 @@ class SimpleAttributeTypeActionSchema:
         from ..models.simple_attribute_type_action_schema_string_includes import (
             SimpleAttributeTypeActionSchemaStringIncludes,
         )
+        from ..models.simple_attribute_type_action_schema_string_is_empty import (
+            SimpleAttributeTypeActionSchemaStringIsEmpty,
+        )
+        from ..models.simple_attribute_type_action_schema_string_is_not_empty import (
+            SimpleAttributeTypeActionSchemaStringIsNotEmpty,
+        )
         from ..models.simple_attribute_type_action_schema_string_not_contains import (
             SimpleAttributeTypeActionSchemaStringNotContains,
+        )
+        from ..models.simple_attribute_type_action_schema_string_not_equals import (
+            SimpleAttributeTypeActionSchemaStringNotEquals,
+        )
+        from ..models.simple_attribute_type_action_schema_string_starts_with import (
+            SimpleAttributeTypeActionSchemaStringStartsWith,
         )
         from ..models.simple_attribute_type_action_schema_table_cell_matches import (
             SimpleAttributeTypeActionSchemaTableCellMatches,
@@ -566,6 +694,12 @@ class SimpleAttributeTypeActionSchema:
         from ..models.simple_attribute_type_action_schema_time_before import SimpleAttributeTypeActionSchemaTimeBefore
         from ..models.simple_attribute_type_action_schema_time_between import SimpleAttributeTypeActionSchemaTimeBetween
         from ..models.simple_attribute_type_action_schema_time_equals import SimpleAttributeTypeActionSchemaTimeEquals
+        from ..models.simple_attribute_type_action_schema_time_is_empty import (
+            SimpleAttributeTypeActionSchemaTimeIsEmpty,
+        )
+        from ..models.simple_attribute_type_action_schema_time_is_not_empty import (
+            SimpleAttributeTypeActionSchemaTimeIsNotEmpty,
+        )
         from ..models.simple_attribute_type_action_schema_time_not_equals import (
             SimpleAttributeTypeActionSchemaTimeNotEquals,
         )
@@ -585,10 +719,15 @@ class SimpleAttributeTypeActionSchema:
                 data: object,
             ) -> (
                 SimpleAttributeTypeActionSchemaStringContains
+                | SimpleAttributeTypeActionSchemaStringEndsWith
                 | SimpleAttributeTypeActionSchemaStringExact
                 | SimpleAttributeTypeActionSchemaStringExcludes
                 | SimpleAttributeTypeActionSchemaStringIncludes
+                | SimpleAttributeTypeActionSchemaStringIsEmpty
+                | SimpleAttributeTypeActionSchemaStringIsNotEmpty
                 | SimpleAttributeTypeActionSchemaStringNotContains
+                | SimpleAttributeTypeActionSchemaStringNotEquals
+                | SimpleAttributeTypeActionSchemaStringStartsWith
             ):
                 try:
                     if not isinstance(data, dict):
@@ -601,7 +740,7 @@ class SimpleAttributeTypeActionSchema:
                 try:
                     if not isinstance(data, dict):
                         raise TypeError()
-                    string_item_type_1 = SimpleAttributeTypeActionSchemaStringExact.from_dict(data)
+                    string_item_type_1 = SimpleAttributeTypeActionSchemaStringEndsWith.from_dict(data)
 
                     return string_item_type_1
                 except (TypeError, ValueError, AttributeError, KeyError):
@@ -609,7 +748,7 @@ class SimpleAttributeTypeActionSchema:
                 try:
                     if not isinstance(data, dict):
                         raise TypeError()
-                    string_item_type_2 = SimpleAttributeTypeActionSchemaStringExcludes.from_dict(data)
+                    string_item_type_2 = SimpleAttributeTypeActionSchemaStringExact.from_dict(data)
 
                     return string_item_type_2
                 except (TypeError, ValueError, AttributeError, KeyError):
@@ -617,16 +756,56 @@ class SimpleAttributeTypeActionSchema:
                 try:
                     if not isinstance(data, dict):
                         raise TypeError()
-                    string_item_type_3 = SimpleAttributeTypeActionSchemaStringIncludes.from_dict(data)
+                    string_item_type_3 = SimpleAttributeTypeActionSchemaStringExcludes.from_dict(data)
 
                     return string_item_type_3
                 except (TypeError, ValueError, AttributeError, KeyError):
                     pass
+                try:
+                    if not isinstance(data, dict):
+                        raise TypeError()
+                    string_item_type_4 = SimpleAttributeTypeActionSchemaStringIncludes.from_dict(data)
+
+                    return string_item_type_4
+                except (TypeError, ValueError, AttributeError, KeyError):
+                    pass
+                try:
+                    if not isinstance(data, dict):
+                        raise TypeError()
+                    string_item_type_5 = SimpleAttributeTypeActionSchemaStringIsEmpty.from_dict(data)
+
+                    return string_item_type_5
+                except (TypeError, ValueError, AttributeError, KeyError):
+                    pass
+                try:
+                    if not isinstance(data, dict):
+                        raise TypeError()
+                    string_item_type_6 = SimpleAttributeTypeActionSchemaStringIsNotEmpty.from_dict(data)
+
+                    return string_item_type_6
+                except (TypeError, ValueError, AttributeError, KeyError):
+                    pass
+                try:
+                    if not isinstance(data, dict):
+                        raise TypeError()
+                    string_item_type_7 = SimpleAttributeTypeActionSchemaStringNotContains.from_dict(data)
+
+                    return string_item_type_7
+                except (TypeError, ValueError, AttributeError, KeyError):
+                    pass
+                try:
+                    if not isinstance(data, dict):
+                        raise TypeError()
+                    string_item_type_8 = SimpleAttributeTypeActionSchemaStringNotEquals.from_dict(data)
+
+                    return string_item_type_8
+                except (TypeError, ValueError, AttributeError, KeyError):
+                    pass
                 if not isinstance(data, dict):
                     raise TypeError()
-                string_item_type_4 = SimpleAttributeTypeActionSchemaStringNotContains.from_dict(data)
+                string_item_type_9 = SimpleAttributeTypeActionSchemaStringStartsWith.from_dict(data)
 
-                return string_item_type_4
+                return string_item_type_9
 
             string_item = _parse_string_item(string_item_data)
 
@@ -814,6 +993,8 @@ class SimpleAttributeTypeActionSchema:
                 | SimpleAttributeTypeActionSchemaDateBefore
                 | SimpleAttributeTypeActionSchemaDateBetween
                 | SimpleAttributeTypeActionSchemaDateEquals
+                | SimpleAttributeTypeActionSchemaDateIsEmpty
+                | SimpleAttributeTypeActionSchemaDateIsNotEmpty
                 | SimpleAttributeTypeActionSchemaDateNotEquals
                 | SimpleAttributeTypeActionSchemaDateOnOrAfter
                 | SimpleAttributeTypeActionSchemaDateOnOrBefore
@@ -853,7 +1034,7 @@ class SimpleAttributeTypeActionSchema:
                 try:
                     if not isinstance(data, dict):
                         raise TypeError()
-                    date_item_type_4 = SimpleAttributeTypeActionSchemaDateNotEquals.from_dict(data)
+                    date_item_type_4 = SimpleAttributeTypeActionSchemaDateIsEmpty.from_dict(data)
 
                     return date_item_type_4
                 except (TypeError, ValueError, AttributeError, KeyError):
@@ -861,16 +1042,32 @@ class SimpleAttributeTypeActionSchema:
                 try:
                     if not isinstance(data, dict):
                         raise TypeError()
-                    date_item_type_5 = SimpleAttributeTypeActionSchemaDateOnOrAfter.from_dict(data)
+                    date_item_type_5 = SimpleAttributeTypeActionSchemaDateIsNotEmpty.from_dict(data)
 
                     return date_item_type_5
                 except (TypeError, ValueError, AttributeError, KeyError):
                     pass
+                try:
+                    if not isinstance(data, dict):
+                        raise TypeError()
+                    date_item_type_6 = SimpleAttributeTypeActionSchemaDateNotEquals.from_dict(data)
+
+                    return date_item_type_6
+                except (TypeError, ValueError, AttributeError, KeyError):
+                    pass
+                try:
+                    if not isinstance(data, dict):
+                        raise TypeError()
+                    date_item_type_7 = SimpleAttributeTypeActionSchemaDateOnOrAfter.from_dict(data)
+
+                    return date_item_type_7
+                except (TypeError, ValueError, AttributeError, KeyError):
+                    pass
                 if not isinstance(data, dict):
                     raise TypeError()
-                date_item_type_6 = SimpleAttributeTypeActionSchemaDateOnOrBefore.from_dict(data)
+                date_item_type_8 = SimpleAttributeTypeActionSchemaDateOnOrBefore.from_dict(data)
 
-                return date_item_type_6
+                return date_item_type_8
 
             date_item = _parse_date_item(date_item_data)
 
@@ -887,6 +1084,8 @@ class SimpleAttributeTypeActionSchema:
                 | SimpleAttributeTypeActionSchemaDatetimeBefore
                 | SimpleAttributeTypeActionSchemaDatetimeBetween
                 | SimpleAttributeTypeActionSchemaDatetimeEquals
+                | SimpleAttributeTypeActionSchemaDatetimeIsEmpty
+                | SimpleAttributeTypeActionSchemaDatetimeIsNotEmpty
                 | SimpleAttributeTypeActionSchemaDatetimeNotEquals
                 | SimpleAttributeTypeActionSchemaDatetimeOnOrAfter
                 | SimpleAttributeTypeActionSchemaDatetimeOnOrBefore
@@ -926,7 +1125,7 @@ class SimpleAttributeTypeActionSchema:
                 try:
                     if not isinstance(data, dict):
                         raise TypeError()
-                    datetime_item_type_4 = SimpleAttributeTypeActionSchemaDatetimeNotEquals.from_dict(data)
+                    datetime_item_type_4 = SimpleAttributeTypeActionSchemaDatetimeIsEmpty.from_dict(data)
 
                     return datetime_item_type_4
                 except (TypeError, ValueError, AttributeError, KeyError):
@@ -934,16 +1133,32 @@ class SimpleAttributeTypeActionSchema:
                 try:
                     if not isinstance(data, dict):
                         raise TypeError()
-                    datetime_item_type_5 = SimpleAttributeTypeActionSchemaDatetimeOnOrAfter.from_dict(data)
+                    datetime_item_type_5 = SimpleAttributeTypeActionSchemaDatetimeIsNotEmpty.from_dict(data)
 
                     return datetime_item_type_5
                 except (TypeError, ValueError, AttributeError, KeyError):
                     pass
+                try:
+                    if not isinstance(data, dict):
+                        raise TypeError()
+                    datetime_item_type_6 = SimpleAttributeTypeActionSchemaDatetimeNotEquals.from_dict(data)
+
+                    return datetime_item_type_6
+                except (TypeError, ValueError, AttributeError, KeyError):
+                    pass
+                try:
+                    if not isinstance(data, dict):
+                        raise TypeError()
+                    datetime_item_type_7 = SimpleAttributeTypeActionSchemaDatetimeOnOrAfter.from_dict(data)
+
+                    return datetime_item_type_7
+                except (TypeError, ValueError, AttributeError, KeyError):
+                    pass
                 if not isinstance(data, dict):
                     raise TypeError()
-                datetime_item_type_6 = SimpleAttributeTypeActionSchemaDatetimeOnOrBefore.from_dict(data)
+                datetime_item_type_8 = SimpleAttributeTypeActionSchemaDatetimeOnOrBefore.from_dict(data)
 
-                return datetime_item_type_6
+                return datetime_item_type_8
 
             datetime_item = _parse_datetime_item(datetime_item_data)
 
@@ -960,6 +1175,8 @@ class SimpleAttributeTypeActionSchema:
                 | SimpleAttributeTypeActionSchemaTimeBefore
                 | SimpleAttributeTypeActionSchemaTimeBetween
                 | SimpleAttributeTypeActionSchemaTimeEquals
+                | SimpleAttributeTypeActionSchemaTimeIsEmpty
+                | SimpleAttributeTypeActionSchemaTimeIsNotEmpty
                 | SimpleAttributeTypeActionSchemaTimeNotEquals
                 | SimpleAttributeTypeActionSchemaTimeOnOrAfter
                 | SimpleAttributeTypeActionSchemaTimeOnOrBefore
@@ -999,7 +1216,7 @@ class SimpleAttributeTypeActionSchema:
                 try:
                     if not isinstance(data, dict):
                         raise TypeError()
-                    time_item_type_4 = SimpleAttributeTypeActionSchemaTimeNotEquals.from_dict(data)
+                    time_item_type_4 = SimpleAttributeTypeActionSchemaTimeIsEmpty.from_dict(data)
 
                     return time_item_type_4
                 except (TypeError, ValueError, AttributeError, KeyError):
@@ -1007,16 +1224,32 @@ class SimpleAttributeTypeActionSchema:
                 try:
                     if not isinstance(data, dict):
                         raise TypeError()
-                    time_item_type_5 = SimpleAttributeTypeActionSchemaTimeOnOrAfter.from_dict(data)
+                    time_item_type_5 = SimpleAttributeTypeActionSchemaTimeIsNotEmpty.from_dict(data)
 
                     return time_item_type_5
                 except (TypeError, ValueError, AttributeError, KeyError):
                     pass
+                try:
+                    if not isinstance(data, dict):
+                        raise TypeError()
+                    time_item_type_6 = SimpleAttributeTypeActionSchemaTimeNotEquals.from_dict(data)
+
+                    return time_item_type_6
+                except (TypeError, ValueError, AttributeError, KeyError):
+                    pass
+                try:
+                    if not isinstance(data, dict):
+                        raise TypeError()
+                    time_item_type_7 = SimpleAttributeTypeActionSchemaTimeOnOrAfter.from_dict(data)
+
+                    return time_item_type_7
+                except (TypeError, ValueError, AttributeError, KeyError):
+                    pass
                 if not isinstance(data, dict):
                     raise TypeError()
-                time_item_type_6 = SimpleAttributeTypeActionSchemaTimeOnOrBefore.from_dict(data)
+                time_item_type_8 = SimpleAttributeTypeActionSchemaTimeOnOrBefore.from_dict(data)
 
-                return time_item_type_6
+                return time_item_type_8
 
             time_item = _parse_time_item(time_item_data)
 

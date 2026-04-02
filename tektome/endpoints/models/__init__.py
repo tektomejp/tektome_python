@@ -982,6 +982,8 @@ from .simple_attribute_type_action_schema_date_after import SimpleAttributeTypeA
 from .simple_attribute_type_action_schema_date_before import SimpleAttributeTypeActionSchemaDateBefore
 from .simple_attribute_type_action_schema_date_between import SimpleAttributeTypeActionSchemaDateBetween
 from .simple_attribute_type_action_schema_date_equals import SimpleAttributeTypeActionSchemaDateEquals
+from .simple_attribute_type_action_schema_date_is_empty import SimpleAttributeTypeActionSchemaDateIsEmpty
+from .simple_attribute_type_action_schema_date_is_not_empty import SimpleAttributeTypeActionSchemaDateIsNotEmpty
 from .simple_attribute_type_action_schema_date_not_equals import SimpleAttributeTypeActionSchemaDateNotEquals
 from .simple_attribute_type_action_schema_date_on_or_after import SimpleAttributeTypeActionSchemaDateOnOrAfter
 from .simple_attribute_type_action_schema_date_on_or_before import SimpleAttributeTypeActionSchemaDateOnOrBefore
@@ -989,6 +991,8 @@ from .simple_attribute_type_action_schema_datetime_after import SimpleAttributeT
 from .simple_attribute_type_action_schema_datetime_before import SimpleAttributeTypeActionSchemaDatetimeBefore
 from .simple_attribute_type_action_schema_datetime_between import SimpleAttributeTypeActionSchemaDatetimeBetween
 from .simple_attribute_type_action_schema_datetime_equals import SimpleAttributeTypeActionSchemaDatetimeEquals
+from .simple_attribute_type_action_schema_datetime_is_empty import SimpleAttributeTypeActionSchemaDatetimeIsEmpty
+from .simple_attribute_type_action_schema_datetime_is_not_empty import SimpleAttributeTypeActionSchemaDatetimeIsNotEmpty
 from .simple_attribute_type_action_schema_datetime_not_equals import SimpleAttributeTypeActionSchemaDatetimeNotEquals
 from .simple_attribute_type_action_schema_datetime_on_or_after import SimpleAttributeTypeActionSchemaDatetimeOnOrAfter
 from .simple_attribute_type_action_schema_datetime_on_or_before import SimpleAttributeTypeActionSchemaDatetimeOnOrBefore
@@ -1015,10 +1019,15 @@ from .simple_attribute_type_action_schema_integer_less_than_or_equal_to import (
 )
 from .simple_attribute_type_action_schema_integer_not_equals import SimpleAttributeTypeActionSchemaIntegerNotEquals
 from .simple_attribute_type_action_schema_string_contains import SimpleAttributeTypeActionSchemaStringContains
+from .simple_attribute_type_action_schema_string_ends_with import SimpleAttributeTypeActionSchemaStringEndsWith
 from .simple_attribute_type_action_schema_string_exact import SimpleAttributeTypeActionSchemaStringExact
 from .simple_attribute_type_action_schema_string_excludes import SimpleAttributeTypeActionSchemaStringExcludes
 from .simple_attribute_type_action_schema_string_includes import SimpleAttributeTypeActionSchemaStringIncludes
+from .simple_attribute_type_action_schema_string_is_empty import SimpleAttributeTypeActionSchemaStringIsEmpty
+from .simple_attribute_type_action_schema_string_is_not_empty import SimpleAttributeTypeActionSchemaStringIsNotEmpty
 from .simple_attribute_type_action_schema_string_not_contains import SimpleAttributeTypeActionSchemaStringNotContains
+from .simple_attribute_type_action_schema_string_not_equals import SimpleAttributeTypeActionSchemaStringNotEquals
+from .simple_attribute_type_action_schema_string_starts_with import SimpleAttributeTypeActionSchemaStringStartsWith
 from .simple_attribute_type_action_schema_table_cell_matches import SimpleAttributeTypeActionSchemaTableCellMatches
 from .simple_attribute_type_action_schema_table_column_contains import (
     SimpleAttributeTypeActionSchemaTableColumnContains,
@@ -1027,6 +1036,8 @@ from .simple_attribute_type_action_schema_time_after import SimpleAttributeTypeA
 from .simple_attribute_type_action_schema_time_before import SimpleAttributeTypeActionSchemaTimeBefore
 from .simple_attribute_type_action_schema_time_between import SimpleAttributeTypeActionSchemaTimeBetween
 from .simple_attribute_type_action_schema_time_equals import SimpleAttributeTypeActionSchemaTimeEquals
+from .simple_attribute_type_action_schema_time_is_empty import SimpleAttributeTypeActionSchemaTimeIsEmpty
+from .simple_attribute_type_action_schema_time_is_not_empty import SimpleAttributeTypeActionSchemaTimeIsNotEmpty
 from .simple_attribute_type_action_schema_time_not_equals import SimpleAttributeTypeActionSchemaTimeNotEquals
 from .simple_attribute_type_action_schema_time_on_or_after import SimpleAttributeTypeActionSchemaTimeOnOrAfter
 from .simple_attribute_type_action_schema_time_on_or_before import SimpleAttributeTypeActionSchemaTimeOnOrBefore
@@ -2099,6 +2110,8 @@ __all__ = (
     "SimpleAttributeTypeActionSchemaDateBefore",
     "SimpleAttributeTypeActionSchemaDateBetween",
     "SimpleAttributeTypeActionSchemaDateEquals",
+    "SimpleAttributeTypeActionSchemaDateIsEmpty",
+    "SimpleAttributeTypeActionSchemaDateIsNotEmpty",
     "SimpleAttributeTypeActionSchemaDateNotEquals",
     "SimpleAttributeTypeActionSchemaDateOnOrAfter",
     "SimpleAttributeTypeActionSchemaDateOnOrBefore",
@@ -2106,6 +2119,8 @@ __all__ = (
     "SimpleAttributeTypeActionSchemaDatetimeBefore",
     "SimpleAttributeTypeActionSchemaDatetimeBetween",
     "SimpleAttributeTypeActionSchemaDatetimeEquals",
+    "SimpleAttributeTypeActionSchemaDatetimeIsEmpty",
+    "SimpleAttributeTypeActionSchemaDatetimeIsNotEmpty",
     "SimpleAttributeTypeActionSchemaDatetimeNotEquals",
     "SimpleAttributeTypeActionSchemaDatetimeOnOrAfter",
     "SimpleAttributeTypeActionSchemaDatetimeOnOrBefore",
@@ -2124,16 +2139,23 @@ __all__ = (
     "SimpleAttributeTypeActionSchemaIntegerLessThanOrEqualTo",
     "SimpleAttributeTypeActionSchemaIntegerNotEquals",
     "SimpleAttributeTypeActionSchemaStringContains",
+    "SimpleAttributeTypeActionSchemaStringEndsWith",
     "SimpleAttributeTypeActionSchemaStringExact",
     "SimpleAttributeTypeActionSchemaStringExcludes",
     "SimpleAttributeTypeActionSchemaStringIncludes",
+    "SimpleAttributeTypeActionSchemaStringIsEmpty",
+    "SimpleAttributeTypeActionSchemaStringIsNotEmpty",
     "SimpleAttributeTypeActionSchemaStringNotContains",
+    "SimpleAttributeTypeActionSchemaStringNotEquals",
+    "SimpleAttributeTypeActionSchemaStringStartsWith",
     "SimpleAttributeTypeActionSchemaTableCellMatches",
     "SimpleAttributeTypeActionSchemaTableColumnContains",
     "SimpleAttributeTypeActionSchemaTimeAfter",
     "SimpleAttributeTypeActionSchemaTimeBefore",
     "SimpleAttributeTypeActionSchemaTimeBetween",
     "SimpleAttributeTypeActionSchemaTimeEquals",
+    "SimpleAttributeTypeActionSchemaTimeIsEmpty",
+    "SimpleAttributeTypeActionSchemaTimeIsNotEmpty",
     "SimpleAttributeTypeActionSchemaTimeNotEquals",
     "SimpleAttributeTypeActionSchemaTimeOnOrAfter",
     "SimpleAttributeTypeActionSchemaTimeOnOrBefore",
