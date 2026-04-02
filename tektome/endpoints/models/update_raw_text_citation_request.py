@@ -17,10 +17,12 @@ class UpdateRawTextCitationRequest:
     Attributes:
         title (None | str | Unset):
         keywords (list[str] | None | Unset):
+        overlay_html (None | str | Unset):
     """
 
     title: None | str | Unset = UNSET
     keywords: list[str] | None | Unset = UNSET
+    overlay_html: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -39,6 +41,12 @@ class UpdateRawTextCitationRequest:
         else:
             keywords = self.keywords
 
+        overlay_html: None | str | Unset
+        if isinstance(self.overlay_html, Unset):
+            overlay_html = UNSET
+        else:
+            overlay_html = self.overlay_html
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -46,6 +54,8 @@ class UpdateRawTextCitationRequest:
             field_dict["title"] = title
         if keywords is not UNSET:
             field_dict["keywords"] = keywords
+        if overlay_html is not UNSET:
+            field_dict["overlay_html"] = overlay_html
 
         return field_dict
 
@@ -79,9 +89,19 @@ class UpdateRawTextCitationRequest:
 
         keywords = _parse_keywords(d.pop("keywords", UNSET))
 
+        def _parse_overlay_html(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        overlay_html = _parse_overlay_html(d.pop("overlay_html", UNSET))
+
         update_raw_text_citation_request = cls(
             title=title,
             keywords=keywords,
+            overlay_html=overlay_html,
         )
 
         update_raw_text_citation_request.additional_properties = d

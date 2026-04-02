@@ -28,6 +28,7 @@ class CreatePDFCitationRequest:
                 Do not change the values of this enum, as they are used in the database.
                 If you need to add a new attribute type, add a new enum value with a unique name.
         resource_id (UUID): ID of the cited PDF resource.
+        overlay_html (None | str | Unset):
         polygons (list[PDFPolygonSchemaRequest] | Unset): The list of polygons associated with the PDF citation.
         keywords (list[str] | Unset):
     """
@@ -35,6 +36,7 @@ class CreatePDFCitationRequest:
     title: str
     attribute_type: AttributeType
     resource_id: UUID
+    overlay_html: None | str | Unset = UNSET
     polygons: list[PDFPolygonSchemaRequest] | Unset = UNSET
     keywords: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -45,6 +47,12 @@ class CreatePDFCitationRequest:
         attribute_type = self.attribute_type.value
 
         resource_id = str(self.resource_id)
+
+        overlay_html: None | str | Unset
+        if isinstance(self.overlay_html, Unset):
+            overlay_html = UNSET
+        else:
+            overlay_html = self.overlay_html
 
         polygons: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.polygons, Unset):
@@ -66,6 +74,8 @@ class CreatePDFCitationRequest:
                 "resource_id": resource_id,
             }
         )
+        if overlay_html is not UNSET:
+            field_dict["overlay_html"] = overlay_html
         if polygons is not UNSET:
             field_dict["polygons"] = polygons
         if keywords is not UNSET:
@@ -84,6 +94,15 @@ class CreatePDFCitationRequest:
 
         resource_id = UUID(d.pop("resource_id"))
 
+        def _parse_overlay_html(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        overlay_html = _parse_overlay_html(d.pop("overlay_html", UNSET))
+
         _polygons = d.pop("polygons", UNSET)
         polygons: list[PDFPolygonSchemaRequest] | Unset = UNSET
         if _polygons is not UNSET:
@@ -99,6 +118,7 @@ class CreatePDFCitationRequest:
             title=title,
             attribute_type=attribute_type,
             resource_id=resource_id,
+            overlay_html=overlay_html,
             polygons=polygons,
             keywords=keywords,
         )

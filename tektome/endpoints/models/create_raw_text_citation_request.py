@@ -25,12 +25,14 @@ class CreateRawTextCitationRequest:
                 Do not change the values of this enum, as they are used in the database.
                 If you need to add a new attribute type, add a new enum value with a unique name.
         resource_id (UUID): ID of the cited RawText resource.
+        overlay_html (None | str | Unset):
         keywords (list[str] | Unset):
     """
 
     title: str
     attribute_type: AttributeType
     resource_id: UUID
+    overlay_html: None | str | Unset = UNSET
     keywords: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -40,6 +42,12 @@ class CreateRawTextCitationRequest:
         attribute_type = self.attribute_type.value
 
         resource_id = str(self.resource_id)
+
+        overlay_html: None | str | Unset
+        if isinstance(self.overlay_html, Unset):
+            overlay_html = UNSET
+        else:
+            overlay_html = self.overlay_html
 
         keywords: list[str] | Unset = UNSET
         if not isinstance(self.keywords, Unset):
@@ -54,6 +62,8 @@ class CreateRawTextCitationRequest:
                 "resource_id": resource_id,
             }
         )
+        if overlay_html is not UNSET:
+            field_dict["overlay_html"] = overlay_html
         if keywords is not UNSET:
             field_dict["keywords"] = keywords
 
@@ -68,12 +78,22 @@ class CreateRawTextCitationRequest:
 
         resource_id = UUID(d.pop("resource_id"))
 
+        def _parse_overlay_html(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        overlay_html = _parse_overlay_html(d.pop("overlay_html", UNSET))
+
         keywords = cast(list[str], d.pop("keywords", UNSET))
 
         create_raw_text_citation_request = cls(
             title=title,
             attribute_type=attribute_type,
             resource_id=resource_id,
+            overlay_html=overlay_html,
             keywords=keywords,
         )
 

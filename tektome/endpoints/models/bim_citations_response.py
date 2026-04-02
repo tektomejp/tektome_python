@@ -33,6 +33,8 @@ class BIMCitationsResponse:
         keywords (list[str] | Unset):
         id (None | Unset | UUID):
         title (str | Unset):  Default: ''.
+        overlay_html (None | str | Unset): Custom HTML content rendered as an overlay panel on the viewer (e.g. floating
+            info panel on BIM/PDF viewer). Limited to 1MB in size. Note that this is unsanitized data.
     """
 
     created_by: UserMetadata
@@ -45,6 +47,7 @@ class BIMCitationsResponse:
     keywords: list[str] | Unset = UNSET
     id: None | Unset | UUID = UNSET
     title: str | Unset = ""
+    overlay_html: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -79,6 +82,12 @@ class BIMCitationsResponse:
 
         title = self.title
 
+        overlay_html: None | str | Unset
+        if isinstance(self.overlay_html, Unset):
+            overlay_html = UNSET
+        else:
+            overlay_html = self.overlay_html
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -99,6 +108,8 @@ class BIMCitationsResponse:
             field_dict["id"] = id
         if title is not UNSET:
             field_dict["title"] = title
+        if overlay_html is not UNSET:
+            field_dict["overlay_html"] = overlay_html
 
         return field_dict
 
@@ -150,6 +161,15 @@ class BIMCitationsResponse:
 
         title = d.pop("title", UNSET)
 
+        def _parse_overlay_html(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        overlay_html = _parse_overlay_html(d.pop("overlay_html", UNSET))
+
         bim_citations_response = cls(
             created_by=created_by,
             updated_by=updated_by,
@@ -161,6 +181,7 @@ class BIMCitationsResponse:
             keywords=keywords,
             id=id,
             title=title,
+            overlay_html=overlay_html,
         )
 
         bim_citations_response.additional_properties = d
