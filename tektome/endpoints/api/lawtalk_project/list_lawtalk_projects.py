@@ -74,8 +74,8 @@ def sync_detailed(
 ) -> Response[PagedLawtalkProjectSchemaGetOut]:
     """List projects
 
-     Retrieve a paginated list of projects for the authenticated user. Supports filtering by recently
-    accessed projects.
+     Retrieve a paginated list of projects in the authenticated user's current organization that the user
+    can access. Supports filtering by recently accessed projects.
 
     Args:
         recent (bool | Unset):  Default: False.
@@ -112,8 +112,8 @@ def sync(
 ) -> PagedLawtalkProjectSchemaGetOut | None:
     """List projects
 
-     Retrieve a paginated list of projects for the authenticated user. Supports filtering by recently
-    accessed projects.
+     Retrieve a paginated list of projects in the authenticated user's current organization that the user
+    can access. Supports filtering by recently accessed projects.
 
     Args:
         recent (bool | Unset):  Default: False.
@@ -145,8 +145,8 @@ async def asyncio_detailed(
 ) -> Response[PagedLawtalkProjectSchemaGetOut]:
     """List projects
 
-     Retrieve a paginated list of projects for the authenticated user. Supports filtering by recently
-    accessed projects.
+     Retrieve a paginated list of projects in the authenticated user's current organization that the user
+    can access. Supports filtering by recently accessed projects.
 
     Args:
         recent (bool | Unset):  Default: False.
@@ -181,8 +181,8 @@ async def asyncio(
 ) -> PagedLawtalkProjectSchemaGetOut | None:
     """List projects
 
-     Retrieve a paginated list of projects for the authenticated user. Supports filtering by recently
-    accessed projects.
+     Retrieve a paginated list of projects in the authenticated user's current organization that the user
+    can access. Supports filtering by recently accessed projects.
 
     Args:
         recent (bool | Unset):  Default: False.
