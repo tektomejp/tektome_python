@@ -20,7 +20,7 @@ def _get_kwargs(
     *,
     ui_trigger_name: None | str | Unset = UNSET,
     ui_trigger_kinds: list[ListActiveDataspaceTemplatesUiTriggerKindChoices] | Unset = UNSET,
-    name: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
     type_: None | ProcessTypeChoices | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
@@ -44,12 +44,12 @@ def _get_kwargs(
 
     params["ui_trigger_kinds"] = json_ui_trigger_kinds
 
-    json_name: None | str | Unset
-    if isinstance(name, Unset):
-        json_name = UNSET
+    json_keyword: None | str | Unset
+    if isinstance(keyword, Unset):
+        json_keyword = UNSET
     else:
-        json_name = name
-    params["name"] = json_name
+        json_keyword = keyword
+    params["keyword"] = json_keyword
 
     json_type_: None | str | Unset
     if isinstance(type_, Unset):
@@ -109,7 +109,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     ui_trigger_name: None | str | Unset = UNSET,
     ui_trigger_kinds: list[ListActiveDataspaceTemplatesUiTriggerKindChoices] | Unset = UNSET,
-    name: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
     type_: None | ProcessTypeChoices | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
@@ -124,7 +124,8 @@ def sync_detailed(
         ui_trigger_name (None | str | Unset): Filter templates by UI trigger name.
         ui_trigger_kinds (list[ListActiveDataspaceTemplatesUiTriggerKindChoices] | Unset): Filter
             templates by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
-        name (None | str | Unset): The name (or part of the name) of the template to search for.
+        keyword (None | str | Unset): Search for templates by keyword (searches in name and
+            description).
         type_ (None | ProcessTypeChoices | Unset): Filter templates by type. Possible values are
             defined in ProcessTypeChoices.
         page (int | Unset):  Default: 1.
@@ -142,7 +143,7 @@ def sync_detailed(
         dataspace_id=dataspace_id,
         ui_trigger_name=ui_trigger_name,
         ui_trigger_kinds=ui_trigger_kinds,
-        name=name,
+        keyword=keyword,
         type_=type_,
         page=page,
         page_size=page_size,
@@ -161,7 +162,7 @@ def sync(
     client: AuthenticatedClient,
     ui_trigger_name: None | str | Unset = UNSET,
     ui_trigger_kinds: list[ListActiveDataspaceTemplatesUiTriggerKindChoices] | Unset = UNSET,
-    name: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
     type_: None | ProcessTypeChoices | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
@@ -176,7 +177,8 @@ def sync(
         ui_trigger_name (None | str | Unset): Filter templates by UI trigger name.
         ui_trigger_kinds (list[ListActiveDataspaceTemplatesUiTriggerKindChoices] | Unset): Filter
             templates by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
-        name (None | str | Unset): The name (or part of the name) of the template to search for.
+        keyword (None | str | Unset): Search for templates by keyword (searches in name and
+            description).
         type_ (None | ProcessTypeChoices | Unset): Filter templates by type. Possible values are
             defined in ProcessTypeChoices.
         page (int | Unset):  Default: 1.
@@ -195,7 +197,7 @@ def sync(
         client=client,
         ui_trigger_name=ui_trigger_name,
         ui_trigger_kinds=ui_trigger_kinds,
-        name=name,
+        keyword=keyword,
         type_=type_,
         page=page,
         page_size=page_size,
@@ -208,7 +210,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     ui_trigger_name: None | str | Unset = UNSET,
     ui_trigger_kinds: list[ListActiveDataspaceTemplatesUiTriggerKindChoices] | Unset = UNSET,
-    name: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
     type_: None | ProcessTypeChoices | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
@@ -223,7 +225,8 @@ async def asyncio_detailed(
         ui_trigger_name (None | str | Unset): Filter templates by UI trigger name.
         ui_trigger_kinds (list[ListActiveDataspaceTemplatesUiTriggerKindChoices] | Unset): Filter
             templates by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
-        name (None | str | Unset): The name (or part of the name) of the template to search for.
+        keyword (None | str | Unset): Search for templates by keyword (searches in name and
+            description).
         type_ (None | ProcessTypeChoices | Unset): Filter templates by type. Possible values are
             defined in ProcessTypeChoices.
         page (int | Unset):  Default: 1.
@@ -241,7 +244,7 @@ async def asyncio_detailed(
         dataspace_id=dataspace_id,
         ui_trigger_name=ui_trigger_name,
         ui_trigger_kinds=ui_trigger_kinds,
-        name=name,
+        keyword=keyword,
         type_=type_,
         page=page,
         page_size=page_size,
@@ -258,7 +261,7 @@ async def asyncio(
     client: AuthenticatedClient,
     ui_trigger_name: None | str | Unset = UNSET,
     ui_trigger_kinds: list[ListActiveDataspaceTemplatesUiTriggerKindChoices] | Unset = UNSET,
-    name: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
     type_: None | ProcessTypeChoices | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
@@ -273,7 +276,8 @@ async def asyncio(
         ui_trigger_name (None | str | Unset): Filter templates by UI trigger name.
         ui_trigger_kinds (list[ListActiveDataspaceTemplatesUiTriggerKindChoices] | Unset): Filter
             templates by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
-        name (None | str | Unset): The name (or part of the name) of the template to search for.
+        keyword (None | str | Unset): Search for templates by keyword (searches in name and
+            description).
         type_ (None | ProcessTypeChoices | Unset): Filter templates by type. Possible values are
             defined in ProcessTypeChoices.
         page (int | Unset):  Default: 1.
@@ -293,7 +297,7 @@ async def asyncio(
             client=client,
             ui_trigger_name=ui_trigger_name,
             ui_trigger_kinds=ui_trigger_kinds,
-            name=name,
+            keyword=keyword,
             type_=type_,
             page=page,
             page_size=page_size,

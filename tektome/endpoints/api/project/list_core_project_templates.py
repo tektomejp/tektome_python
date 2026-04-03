@@ -18,7 +18,7 @@ def _get_kwargs(
     *,
     ui_trigger_name: None | str | Unset = UNSET,
     ui_trigger_kinds: list[ListCoreProjectTemplatesUiTriggerKindChoices] | Unset = UNSET,
-    name: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
     type_: None | ProcessTypeChoices | Unset = UNSET,
     for_import: bool | None | Unset = UNSET,
     page: int | Unset = 1,
@@ -43,12 +43,12 @@ def _get_kwargs(
 
     params["ui_trigger_kinds"] = json_ui_trigger_kinds
 
-    json_name: None | str | Unset
-    if isinstance(name, Unset):
-        json_name = UNSET
+    json_keyword: None | str | Unset
+    if isinstance(keyword, Unset):
+        json_keyword = UNSET
     else:
-        json_name = name
-    params["name"] = json_name
+        json_keyword = keyword
+    params["keyword"] = json_keyword
 
     json_type_: None | str | Unset
     if isinstance(type_, Unset):
@@ -115,7 +115,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     ui_trigger_name: None | str | Unset = UNSET,
     ui_trigger_kinds: list[ListCoreProjectTemplatesUiTriggerKindChoices] | Unset = UNSET,
-    name: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
     type_: None | ProcessTypeChoices | Unset = UNSET,
     for_import: bool | None | Unset = UNSET,
     page: int | Unset = 1,
@@ -131,7 +131,8 @@ def sync_detailed(
         ui_trigger_name (None | str | Unset): Filter templates by UI trigger name.
         ui_trigger_kinds (list[ListCoreProjectTemplatesUiTriggerKindChoices] | Unset): Filter
             templates by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
-        name (None | str | Unset): The name (or part of the name) of the template to search for.
+        keyword (None | str | Unset): Search for templates by keyword (searches in name and
+            description).
         type_ (None | ProcessTypeChoices | Unset): Filter templates by type. Possible values are
             defined in ProcessTypeChoices.
         for_import (bool | None | Unset): If true, only return templates that can be imported.
@@ -151,7 +152,7 @@ def sync_detailed(
         project_id=project_id,
         ui_trigger_name=ui_trigger_name,
         ui_trigger_kinds=ui_trigger_kinds,
-        name=name,
+        keyword=keyword,
         type_=type_,
         for_import=for_import,
         page=page,
@@ -171,7 +172,7 @@ def sync(
     client: AuthenticatedClient,
     ui_trigger_name: None | str | Unset = UNSET,
     ui_trigger_kinds: list[ListCoreProjectTemplatesUiTriggerKindChoices] | Unset = UNSET,
-    name: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
     type_: None | ProcessTypeChoices | Unset = UNSET,
     for_import: bool | None | Unset = UNSET,
     page: int | Unset = 1,
@@ -187,7 +188,8 @@ def sync(
         ui_trigger_name (None | str | Unset): Filter templates by UI trigger name.
         ui_trigger_kinds (list[ListCoreProjectTemplatesUiTriggerKindChoices] | Unset): Filter
             templates by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
-        name (None | str | Unset): The name (or part of the name) of the template to search for.
+        keyword (None | str | Unset): Search for templates by keyword (searches in name and
+            description).
         type_ (None | ProcessTypeChoices | Unset): Filter templates by type. Possible values are
             defined in ProcessTypeChoices.
         for_import (bool | None | Unset): If true, only return templates that can be imported.
@@ -208,7 +210,7 @@ def sync(
         client=client,
         ui_trigger_name=ui_trigger_name,
         ui_trigger_kinds=ui_trigger_kinds,
-        name=name,
+        keyword=keyword,
         type_=type_,
         for_import=for_import,
         page=page,
@@ -222,7 +224,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     ui_trigger_name: None | str | Unset = UNSET,
     ui_trigger_kinds: list[ListCoreProjectTemplatesUiTriggerKindChoices] | Unset = UNSET,
-    name: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
     type_: None | ProcessTypeChoices | Unset = UNSET,
     for_import: bool | None | Unset = UNSET,
     page: int | Unset = 1,
@@ -238,7 +240,8 @@ async def asyncio_detailed(
         ui_trigger_name (None | str | Unset): Filter templates by UI trigger name.
         ui_trigger_kinds (list[ListCoreProjectTemplatesUiTriggerKindChoices] | Unset): Filter
             templates by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
-        name (None | str | Unset): The name (or part of the name) of the template to search for.
+        keyword (None | str | Unset): Search for templates by keyword (searches in name and
+            description).
         type_ (None | ProcessTypeChoices | Unset): Filter templates by type. Possible values are
             defined in ProcessTypeChoices.
         for_import (bool | None | Unset): If true, only return templates that can be imported.
@@ -258,7 +261,7 @@ async def asyncio_detailed(
         project_id=project_id,
         ui_trigger_name=ui_trigger_name,
         ui_trigger_kinds=ui_trigger_kinds,
-        name=name,
+        keyword=keyword,
         type_=type_,
         for_import=for_import,
         page=page,
@@ -276,7 +279,7 @@ async def asyncio(
     client: AuthenticatedClient,
     ui_trigger_name: None | str | Unset = UNSET,
     ui_trigger_kinds: list[ListCoreProjectTemplatesUiTriggerKindChoices] | Unset = UNSET,
-    name: None | str | Unset = UNSET,
+    keyword: None | str | Unset = UNSET,
     type_: None | ProcessTypeChoices | Unset = UNSET,
     for_import: bool | None | Unset = UNSET,
     page: int | Unset = 1,
@@ -292,7 +295,8 @@ async def asyncio(
         ui_trigger_name (None | str | Unset): Filter templates by UI trigger name.
         ui_trigger_kinds (list[ListCoreProjectTemplatesUiTriggerKindChoices] | Unset): Filter
             templates by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
-        name (None | str | Unset): The name (or part of the name) of the template to search for.
+        keyword (None | str | Unset): Search for templates by keyword (searches in name and
+            description).
         type_ (None | ProcessTypeChoices | Unset): Filter templates by type. Possible values are
             defined in ProcessTypeChoices.
         for_import (bool | None | Unset): If true, only return templates that can be imported.
@@ -314,7 +318,7 @@ async def asyncio(
             client=client,
             ui_trigger_name=ui_trigger_name,
             ui_trigger_kinds=ui_trigger_kinds,
-            name=name,
+            keyword=keyword,
             type_=type_,
             for_import=for_import,
             page=page,

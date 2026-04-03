@@ -20,14 +20,14 @@ class TemplateFilterRequest:
         ui_trigger_name (None | str | Unset): Filter templates by UI trigger name.
         ui_trigger_kinds (list[TemplateFilterRequestUiTriggerKindChoices] | Unset): Filter templates by UI trigger kind.
             Possible values are defined in UiTriggerKindChoices.
-        name (None | str | Unset): The name (or part of the name) of the template to search for.
+        keyword (None | str | Unset): Search for templates by keyword (searches in name and description).
         type_ (None | ProcessTypeChoices | Unset): Filter templates by type. Possible values are defined in
             ProcessTypeChoices.
     """
 
     ui_trigger_name: None | str | Unset = UNSET
     ui_trigger_kinds: list[TemplateFilterRequestUiTriggerKindChoices] | Unset = UNSET
-    name: None | str | Unset = UNSET
+    keyword: None | str | Unset = UNSET
     type_: None | ProcessTypeChoices | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -45,11 +45,11 @@ class TemplateFilterRequest:
                 ui_trigger_kinds_item = ui_trigger_kinds_item_data.value
                 ui_trigger_kinds.append(ui_trigger_kinds_item)
 
-        name: None | str | Unset
-        if isinstance(self.name, Unset):
-            name = UNSET
+        keyword: None | str | Unset
+        if isinstance(self.keyword, Unset):
+            keyword = UNSET
         else:
-            name = self.name
+            keyword = self.keyword
 
         type_: None | str | Unset
         if isinstance(self.type_, Unset):
@@ -66,8 +66,8 @@ class TemplateFilterRequest:
             field_dict["ui_trigger_name"] = ui_trigger_name
         if ui_trigger_kinds is not UNSET:
             field_dict["ui_trigger_kinds"] = ui_trigger_kinds
-        if name is not UNSET:
-            field_dict["name"] = name
+        if keyword is not UNSET:
+            field_dict["keyword"] = keyword
         if type_ is not UNSET:
             field_dict["type"] = type_
 
@@ -95,14 +95,14 @@ class TemplateFilterRequest:
 
                 ui_trigger_kinds.append(ui_trigger_kinds_item)
 
-        def _parse_name(data: object) -> None | str | Unset:
+        def _parse_keyword(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
             return cast(None | str | Unset, data)
 
-        name = _parse_name(d.pop("name", UNSET))
+        keyword = _parse_keyword(d.pop("keyword", UNSET))
 
         def _parse_type_(data: object) -> None | ProcessTypeChoices | Unset:
             if data is None:
@@ -124,7 +124,7 @@ class TemplateFilterRequest:
         template_filter_request = cls(
             ui_trigger_name=ui_trigger_name,
             ui_trigger_kinds=ui_trigger_kinds,
-            name=name,
+            keyword=keyword,
             type_=type_,
         )
 
