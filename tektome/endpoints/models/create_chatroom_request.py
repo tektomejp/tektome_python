@@ -6,6 +6,8 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 T = TypeVar("T", bound="CreateChatroomRequest")
 
 
@@ -14,11 +16,11 @@ class CreateChatroomRequest:
     """
     Attributes:
         name (str): Name of the chatroom
-        description (str): Description of the chatroom
+        description (str | Unset): Description of the chatroom Default: ''.
     """
 
     name: str
-    description: str
+    description: str | Unset = ""
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -31,9 +33,10 @@ class CreateChatroomRequest:
         field_dict.update(
             {
                 "name": name,
-                "description": description,
             }
         )
+        if description is not UNSET:
+            field_dict["description"] = description
 
         return field_dict
 
@@ -42,7 +45,7 @@ class CreateChatroomRequest:
         d = dict(src_dict)
         name = d.pop("name")
 
-        description = d.pop("description")
+        description = d.pop("description", UNSET)
 
         create_chatroom_request = cls(
             name=name,
