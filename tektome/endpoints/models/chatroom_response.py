@@ -31,6 +31,7 @@ class ChatroomResponse:
         description (str | Unset):  Default: ''.
         status (str | Unset):  Default: 'idle'.
         current_operations (ChatroomResponseCurrentOperations | Unset):
+        pending_template_installs (int | Unset):  Default: 0.
     """
 
     created: datetime.datetime
@@ -42,6 +43,7 @@ class ChatroomResponse:
     description: str | Unset = ""
     status: str | Unset = "idle"
     current_operations: ChatroomResponseCurrentOperations | Unset = UNSET
+    pending_template_installs: int | Unset = 0
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -77,6 +79,8 @@ class ChatroomResponse:
         if not isinstance(self.current_operations, Unset):
             current_operations = self.current_operations.to_dict()
 
+        pending_template_installs = self.pending_template_installs
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -98,6 +102,8 @@ class ChatroomResponse:
             field_dict["status"] = status
         if current_operations is not UNSET:
             field_dict["current_operations"] = current_operations
+        if pending_template_installs is not UNSET:
+            field_dict["pending_template_installs"] = pending_template_installs
 
         return field_dict
 
@@ -159,6 +165,8 @@ class ChatroomResponse:
         else:
             current_operations = ChatroomResponseCurrentOperations.from_dict(_current_operations)
 
+        pending_template_installs = d.pop("pending_template_installs", UNSET)
+
         chatroom_response = cls(
             created=created,
             updated=updated,
@@ -169,6 +177,7 @@ class ChatroomResponse:
             description=description,
             status=status,
             current_operations=current_operations,
+            pending_template_installs=pending_template_installs,
         )
 
         chatroom_response.additional_properties = d
