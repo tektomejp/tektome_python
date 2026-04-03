@@ -50,10 +50,6 @@ from .artifact_template_group_kind import ArtifactTemplateGroupKind
 from .artifact_template_group_query import ArtifactTemplateGroupQuery
 from .artifact_template_group_response import ArtifactTemplateGroupResponse
 from .assigned_role_schema_response import AssignedRoleSchemaResponse
-from .assistants import Assistants
-from .assistants_callback_payload import AssistantsCallbackPayload
-from .assistants_output import AssistantsOutput
-from .assistants_output_log import AssistantsOutputLog
 from .async_generate_markdown_path_params import AsyncGenerateMarkdownPathParams
 from .attribute import Attribute
 from .attribute_candidate_payload import AttributeCandidatePayload
@@ -140,10 +136,6 @@ from .candidate_item import CandidateItem
 from .candidate_item_kind import CandidateItemKind
 from .candidate_select_post_in import CandidateSelectPostIn
 from .candidate_select_status import CandidateSelectStatus
-from .chat import Chat
-from .chat_chunks_type_0_item import ChatChunksType0Item
-from .chat_output import ChatOutput
-from .chat_output_log import ChatOutputLog
 from .chatroom_delete_path_params import ChatroomDeletePathParams
 from .chatroom_id_post_path_params import ChatroomIdPostPathParams
 from .chatroom_response import ChatroomResponse
@@ -275,7 +267,6 @@ from .create_simulate_task_request import CreateSimulateTaskRequest
 from .create_ttos_folder_request import CreateTtosFolderRequest
 from .create_verify_otp_request import CreateVerifyOTPRequest
 from .current_organization_schema import CurrentOrganizationSchema
-from .data_type_enum import DataTypeEnum
 from .dataspace_attribute_category_attribute_path_params import DataspaceAttributeCategoryAttributePathParams
 from .dataspace_attribute_category_path_params import DataspaceAttributeCategoryPathParams
 from .dataspace_counts_get_out import DataspaceCountsGetOut
@@ -399,25 +390,7 @@ from .delete_resource_group_query import DeleteResourceGroupQuery
 from .delete_resource_section_path_params import DeleteResourceSectionPathParams
 from .delete_system_attribute_attribute_object_types import DeleteSystemAttributeAttributeObjectTypes
 from .delete_system_attribute_query_request import DeleteSystemAttributeQueryRequest
-from .document import Document
-from .document_async_extraction_task_result import DocumentAsyncExtractionTaskResult
-from .document_async_extraction_task_submission import DocumentAsyncExtractionTaskSubmission
-from .document_callback_payload import DocumentCallbackPayload
-from .document_delete import DocumentDelete
-from .document_extracted_content_type_0 import DocumentExtractedContentType0
-from .document_extraction import DocumentExtraction
-from .document_extraction_callback_payload import DocumentExtractionCallbackPayload
-from .document_extraction_status import DocumentExtractionStatus
-from .document_extractor_enum import DocumentExtractorEnum
-from .document_log import DocumentLog
-from .document_project_update import DocumentProjectUpdate
-from .document_search import DocumentSearch
-from .document_search_type import DocumentSearchType
-from .document_source_enum import DocumentSourceEnum
-from .documents import Documents
-from .documents_positional_text_item import DocumentsPositionalTextItem
 from .duplicate_strategy import DuplicateStrategy
-from .embedding_model_enum import EmbeddingModelEnum
 from .entity_attributes_extracted_filter_options import EntityAttributesExtractedFilterOptions
 from .entity_search_result_hit_attribute import EntitySearchResultHitAttribute
 from .entity_tracker_data_request import EntityTrackerDataRequest
@@ -480,20 +453,13 @@ from .executions_review_status_details import ExecutionsReviewStatusDetails
 from .export_csv_report_query import ExportCSVReportQuery
 from .export_usage_reports_period_types import ExportUsageReportsPeriodTypes
 from .field_condition_input import FieldConditionInput
-from .file_attribute import FileAttribute
-from .file_attribute_delete import FileAttributeDelete
 from .file_attribute_type_enum import FileAttributeTypeEnum
-from .file_attribute_update import FileAttributeUpdate
 from .file_attributes_extracted_filter_options import FileAttributesExtractedFilterOptions
-from .file_attributes_extraction import FileAttributesExtraction
-from .file_attributes_search import FileAttributesSearch
 from .file_data_snapshot import FileDataSnapshot
 from .file_data_snapshot_state import FileDataSnapshotState
 from .file_input_payload import FileInputPayload
 from .file_move_patch_schema_request import FileMovePatchSchemaRequest
 from .file_reviewed_data import FileReviewedData
-from .file_table_attribute import FileTableAttribute
-from .file_table_attribute_extraction import FileTableAttributeExtraction
 from .file_upload_candidate_payload import FileUploadCandidatePayload
 from .float_attribute_schema_request import FloatAttributeSchemaRequest
 from .float_attribute_schema_response import FloatAttributeSchemaResponse
@@ -596,7 +562,6 @@ from .keyword_extraction import KeywordExtraction
 from .keyword_extraction_return_mode import KeywordExtractionReturnMode
 from .keywords import Keywords
 from .language_scheme import LanguageScheme
-from .large_language_model_enum import LargeLanguageModelEnum
 from .law_talk_resource_group_response import LawTalkResourceGroupResponse
 from .lawtalk_bool_attribute_schema import LawtalkBoolAttributeSchema
 from .lawtalk_coordinate_attribute_schema import LawtalkCoordinateAttributeSchema
@@ -643,9 +608,6 @@ from .list_llm_usage_reports_period_types import ListLlmUsageReportsPeriodTypes
 from .list_requirement_reference_notes_sort import ListRequirementReferenceNotesSort
 from .list_ttos_templates_ui_trigger_kind_choices import ListTtosTemplatesUiTriggerKindChoices
 from .llm_parser_response import LlmParserResponse
-from .llm_search import LLMSearch
-from .llm_search_input_shape import LLMSearchInputShape
-from .llm_search_project_attributes import LLMSearchProjectAttributes
 from .llm_usage_report_query import LLMUsageReportQuery
 from .llm_usage_report_response import LLMUsageReportResponse
 from .login_providers import LoginProviders
@@ -656,8 +618,6 @@ from .markdown_schema import MarkdownSchema
 from .me_get_gitbook_token_out import MeGetGitbookTokenOut
 from .me_get_out_without_organization import MeGetOutWithoutOrganization
 from .me_response import MeResponse
-from .merge_result import MergeResult
-from .merge_result_search_results_item import MergeResultSearchResultsItem
 from .multi_select_attribute_schema_request import MultiSelectAttributeSchemaRequest
 from .multi_select_attribute_schema_response import MultiSelectAttributeSchemaResponse
 from .multi_select_attribute_schema_response_value_type_0 import MultiSelectAttributeSchemaResponseValueType0
@@ -1097,17 +1057,6 @@ from .time_attribute_schema_response import TimeAttributeSchemaResponse
 from .total_objects_count import TotalObjectsCount
 from .transaction_types import TransactionTypes
 from .transform import Transform
-from .ttbe_delete_document_response import TtbeDeleteDocumentResponse
-from .ttbe_delete_file_attribute_response import TtbeDeleteFileAttributeResponse
-from .ttbe_extract_file_attributes_response import TtbeExtractFileAttributesResponse
-from .ttbe_extract_file_table_attributes_response import TtbeExtractFileTableAttributesResponse
-from .ttbe_healthcheck_response import TtbeHealthcheckResponse
-from .ttbe_llm_search_groups_response import TtbeLlmSearchGroupsResponse
-from .ttbe_merge_document_search_response import TtbeMergeDocumentSearchResponse
-from .ttbe_search_documents_response import TtbeSearchDocumentsResponse
-from .ttbe_search_file_attributes_response import TtbeSearchFileAttributesResponse
-from .ttbe_update_document_response import TtbeUpdateDocumentResponse
-from .ttbe_update_file_attribute_response import TtbeUpdateFileAttributeResponse
 from .ttos_folder_copy_response import TtosFolderCopyResponse
 from .ttos_folder_delete_out import TtosFolderDeleteOut
 from .ttos_folder_delete_path_params import TtosFolderDeletePathParams
@@ -1240,10 +1189,6 @@ __all__ = (
     "ArtifactTemplateGroupResponse",
     "ASimulateLongCallResponse",
     "AssignedRoleSchemaResponse",
-    "Assistants",
-    "AssistantsCallbackPayload",
-    "AssistantsOutput",
-    "AssistantsOutputLog",
     "AsyncGenerateMarkdownPathParams",
     "Attribute",
     "AttributeCandidatePayload",
@@ -1330,10 +1275,6 @@ __all__ = (
     "CandidateItemKind",
     "CandidateSelectPostIn",
     "CandidateSelectStatus",
-    "Chat",
-    "ChatChunksType0Item",
-    "ChatOutput",
-    "ChatOutputLog",
     "ChatroomDeletePathParams",
     "ChatroomIdPostPathParams",
     "ChatroomResponse",
@@ -1534,7 +1475,6 @@ __all__ = (
     "DataspaceTagConfigPathParams",
     "DataspaceTemplateImportRequest",
     "DataspaceTemplatePathParams",
-    "DataTypeEnum",
     "DateAttributeSchemaRequest",
     "DateAttributeSchemaResponse",
     "DateTimeAttributeSchemaRequest",
@@ -1561,25 +1501,7 @@ __all__ = (
     "DeleteResourceSectionPathParams",
     "DeleteSystemAttributeAttributeObjectTypes",
     "DeleteSystemAttributeQueryRequest",
-    "Document",
-    "DocumentAsyncExtractionTaskResult",
-    "DocumentAsyncExtractionTaskSubmission",
-    "DocumentCallbackPayload",
-    "DocumentDelete",
-    "DocumentExtractedContentType0",
-    "DocumentExtraction",
-    "DocumentExtractionCallbackPayload",
-    "DocumentExtractionStatus",
-    "DocumentExtractorEnum",
-    "DocumentLog",
-    "DocumentProjectUpdate",
-    "Documents",
-    "DocumentSearch",
-    "DocumentSearchType",
-    "DocumentSourceEnum",
-    "DocumentsPositionalTextItem",
     "DuplicateStrategy",
-    "EmbeddingModelEnum",
     "EntityAttributesExtractedFilterOptions",
     "EntitySearchResultHitAttribute",
     "EntityTrackerDataRequest",
@@ -1642,20 +1564,13 @@ __all__ = (
     "ExportCSVReportQuery",
     "ExportUsageReportsPeriodTypes",
     "FieldConditionInput",
-    "FileAttribute",
-    "FileAttributeDelete",
     "FileAttributesExtractedFilterOptions",
-    "FileAttributesExtraction",
-    "FileAttributesSearch",
     "FileAttributeTypeEnum",
-    "FileAttributeUpdate",
     "FileDataSnapshot",
     "FileDataSnapshotState",
     "FileInputPayload",
     "FileMovePatchSchemaRequest",
     "FileReviewedData",
-    "FileTableAttribute",
-    "FileTableAttributeExtraction",
     "FileUploadCandidatePayload",
     "FloatAttributeSchemaRequest",
     "FloatAttributeSchemaResponse",
@@ -1752,7 +1667,6 @@ __all__ = (
     "KeywordExtractionReturnMode",
     "Keywords",
     "LanguageScheme",
-    "LargeLanguageModelEnum",
     "LawtalkBoolAttributeSchema",
     "LawtalkCoordinateAttributeSchema",
     "LawtalkDateAttributeSchema",
@@ -1797,9 +1711,6 @@ __all__ = (
     "ListRequirementReferenceNotesSort",
     "ListTtosTemplatesUiTriggerKindChoices",
     "LlmParserResponse",
-    "LLMSearch",
-    "LLMSearchInputShape",
-    "LLMSearchProjectAttributes",
     "LLMUsageReportQuery",
     "LLMUsageReportResponse",
     "LoginProviders",
@@ -1810,8 +1721,6 @@ __all__ = (
     "MeGetGitbookTokenOut",
     "MeGetOutWithoutOrganization",
     "MeResponse",
-    "MergeResult",
-    "MergeResultSearchResultsItem",
     "MultiSelectAttributeSchemaRequest",
     "MultiSelectAttributeSchemaResponse",
     "MultiSelectAttributeSchemaResponseValueType0",
@@ -2211,17 +2120,6 @@ __all__ = (
     "TotalObjectsCount",
     "TransactionTypes",
     "Transform",
-    "TtbeDeleteDocumentResponse",
-    "TtbeDeleteFileAttributeResponse",
-    "TtbeExtractFileAttributesResponse",
-    "TtbeExtractFileTableAttributesResponse",
-    "TtbeHealthcheckResponse",
-    "TtbeLlmSearchGroupsResponse",
-    "TtbeMergeDocumentSearchResponse",
-    "TtbeSearchDocumentsResponse",
-    "TtbeSearchFileAttributesResponse",
-    "TtbeUpdateDocumentResponse",
-    "TtbeUpdateFileAttributeResponse",
     "TtosFolderCopyResponse",
     "TtosFolderDeleteOut",
     "TtosFolderDeletePathParams",
