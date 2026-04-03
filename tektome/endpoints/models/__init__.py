@@ -75,6 +75,7 @@ from .background_task_id_response import BackgroundTaskIdResponse
 from .background_task_status_response import BackgroundTaskStatusResponse
 from .base_annotated_polygon_schema_response import BaseAnnotatedPolygonSchemaResponse
 from .base_resource_path_request import BaseResourcePathRequest
+from .bim_async_task_response import BimAsyncTaskResponse
 from .bim_citation_path_params import BIMCitationPathParams
 from .bim_citation_schema_response import BIMCitationSchemaResponse
 from .bim_citations_response import BIMCitationsResponse
@@ -92,6 +93,7 @@ from .bim_key_value_stats_response_num_bucket_stats import BimKeyValueStatsRespo
 from .bim_key_value_stats_response_text_bucket_stats import BimKeyValueStatsResponseTextBucketStats
 from .bim_object_3d_item_response import BimObject3DItemResponse
 from .bim_object_3d_response_response import BimObject3DResponseResponse
+from .bim_object_from_json_response import BimObjectFromJsonResponse
 from .bim_object_response import BimObjectResponse
 from .bim_project_element_id_type_path_params import BimProjectElementIdTypePathParams
 from .bim_project_element_type_path_params import BimProjectElementTypePathParams
@@ -184,6 +186,7 @@ from .create_bim_citation_request_resolved_element_map import CreateBIMCitationR
 from .create_bim_clash_check_request import CreateBimClashCheckRequest
 from .create_bim_element_bim_element_type_path import CreateBimElementBimElementTypePath
 from .create_bim_element_file_params import CreateBimElementFileParams
+from .create_bim_object_from_json_file_params import CreateBimObjectFromJsonFileParams
 from .create_bim_project_request import CreateBimProjectRequest
 from .create_bim_resource_file_params import CreateBimResourceFileParams
 from .create_bim_search_detail_request import CreateBimSearchDetailRequest
@@ -500,6 +503,7 @@ from .get_batch_bim_elements_bim_element_type_path import GetBatchBimElementsBim
 from .get_batch_bim_elements_response_200_item import GetBatchBimElementsResponse200Item
 from .get_bim_element_bim_element_type_path import GetBimElementBimElementTypePath
 from .get_bim_element_response import GetBimElementResponse
+from .get_bim_speckle_template_response import GetBimSpeckleTemplateResponse
 from .get_capture_section_component_path_params import GetCaptureSectionComponentPathParams
 from .get_capture_section_component_query import GetCaptureSectionComponentQuery
 from .get_celery_task_response import GetCeleryTaskResponse
@@ -1214,6 +1218,7 @@ __all__ = (
     "BackgroundTaskStatusResponse",
     "BaseAnnotatedPolygonSchemaResponse",
     "BaseResourcePathRequest",
+    "BimAsyncTaskResponse",
     "BIMCitationPathParams",
     "BIMCitationSchemaResponse",
     "BIMCitationsResponse",
@@ -1231,6 +1236,7 @@ __all__ = (
     "BimKeyValueStatsResponseTextBucketStats",
     "BimObject3DItemResponse",
     "BimObject3DResponseResponse",
+    "BimObjectFromJsonResponse",
     "BimObjectResponse",
     "BimProjectElementIdTypePathParams",
     "BimProjectElementTypePathParams",
@@ -1321,6 +1327,7 @@ __all__ = (
     "CreateBimClashCheckRequest",
     "CreateBimElementBimElementTypePath",
     "CreateBimElementFileParams",
+    "CreateBimObjectFromJsonFileParams",
     "CreateBimProjectRequest",
     "CreateBimResourceFileParams",
     "CreateBimSearchDetailRequest",
@@ -1611,6 +1618,7 @@ __all__ = (
     "GetBatchBimElementsResponse200Item",
     "GetBimElementBimElementTypePath",
     "GetBimElementResponse",
+    "GetBimSpeckleTemplateResponse",
     "GetCaptureSectionComponentPathParams",
     "GetCaptureSectionComponentQuery",
     "GetCeleryTaskResponse",
