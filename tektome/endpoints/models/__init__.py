@@ -700,6 +700,7 @@ from .paginated_response_requirement_template_container_get_out import (
 from .paginated_response_requirement_template_get_out import PaginatedResponseRequirementTemplateGetOut
 from .parsed_tektome_response_entry import ParsedTektomeResponseEntry
 from .parsed_tektome_response_entry_resource_text_highlights import ParsedTektomeResponseEntryResourceTextHighlights
+from .patch_api_key_request import PatchAPIKeyRequest
 from .patch_general_dataspace_attribute_dataspace_entity_type import PatchGeneralDataspaceAttributeDataspaceEntityType
 from .payment_record_out_base import PaymentRecordOutBase
 from .payment_record_patch_path_params import PaymentRecordPatchPathParams
@@ -1803,6 +1804,7 @@ __all__ = (
     "PaginatedResponseRequirementTemplateGetOut",
     "ParsedTektomeResponseEntry",
     "ParsedTektomeResponseEntryResourceTextHighlights",
+    "PatchAPIKeyRequest",
     "PatchGeneralDataspaceAttributeDataspaceEntityType",
     "PaymentRecordOutBase",
     "PaymentRecordPatchPathParams",
