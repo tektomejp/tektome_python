@@ -19,6 +19,7 @@ from .appresource_resource_schema import AppresourceResourceSchema
 from .approval_candidate_select_path_params import ApprovalCandidateSelectPathParams
 from .approval_candidates_path_params import ApprovalCandidatesPathParams
 from .approval_category_types import ApprovalCategoryTypes
+from .approval_detail_path_params import ApprovalDetailPathParams
 from .approval_entry_schema import ApprovalEntrySchema
 from .approval_path_params import ApprovalPathParams
 from .approval_status import ApprovalStatus
@@ -1160,6 +1161,7 @@ __all__ = (
     "ApprovalCandidateSelectPathParams",
     "ApprovalCandidatesPathParams",
     "ApprovalCategoryTypes",
+    "ApprovalDetailPathParams",
     "ApprovalEntrySchema",
     "ApprovalPathParams",
     "ApprovalStatus",

@@ -8,6 +8,7 @@ class ExecutionQueryParamsExecutionStatus(str, Enum):
     FAILED = "failed"
     IN_PROGRESS = "in_progress"
     PENDING = "pending"
+    WAITING_APPROVAL = "waiting_approval"
 
     def __str__(self) -> str:
         return str(self.value)
