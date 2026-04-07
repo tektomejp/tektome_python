@@ -6,7 +6,7 @@ class FileAttributeTypeEnum(str, Enum):
     DATE = "date"
     DATETIME = "datetime"
     FLOAT = "float"
-    INT = "int"
+    INTEGER = "int"
     JSON = "json"
     STRING = "string"
     TIME = "time"

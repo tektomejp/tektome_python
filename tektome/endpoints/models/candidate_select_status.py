@@ -2,7 +2,7 @@ from enum import Enum
 
 
 class CandidateSelectStatus(str, Enum):
-    SELECTED = "Selected"
+    SELECT = "Selected"
     UNSELECTED = "Unselected"
 
     def __str__(self) -> str:
