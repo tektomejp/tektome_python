@@ -7,6 +7,7 @@ class GetDataspaceExecutionGroupsExecutionGroupStatus(str, Enum):
     FAILED = "failed"
     INITIALIZING = "initializing"
     RUNNING = "running"
+    WAITING_APPROVAL = "waiting_approval"
 
     def __str__(self) -> str:
         return str(self.value)

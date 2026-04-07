@@ -17,6 +17,7 @@ class ExecutionStatusCountDetails:
 
     Attributes:
         pending_count (int | Unset):  Default: 0.
+        waiting_approval_count (int | Unset):  Default: 0.
         in_progress_count (int | Unset):  Default: 0.
         completed_count (int | Unset):  Default: 0.
         failed_count (int | Unset):  Default: 0.
@@ -25,6 +26,7 @@ class ExecutionStatusCountDetails:
     """
 
     pending_count: int | Unset = 0
+    waiting_approval_count: int | Unset = 0
     in_progress_count: int | Unset = 0
     completed_count: int | Unset = 0
     failed_count: int | Unset = 0
@@ -34,6 +36,8 @@ class ExecutionStatusCountDetails:
 
     def to_dict(self) -> dict[str, Any]:
         pending_count = self.pending_count
+
+        waiting_approval_count = self.waiting_approval_count
 
         in_progress_count = self.in_progress_count
 
@@ -50,6 +54,8 @@ class ExecutionStatusCountDetails:
         field_dict.update({})
         if pending_count is not UNSET:
             field_dict["pending_count"] = pending_count
+        if waiting_approval_count is not UNSET:
+            field_dict["waiting_approval_count"] = waiting_approval_count
         if in_progress_count is not UNSET:
             field_dict["in_progress_count"] = in_progress_count
         if completed_count is not UNSET:
@@ -68,6 +74,8 @@ class ExecutionStatusCountDetails:
         d = dict(src_dict)
         pending_count = d.pop("pending_count", UNSET)
 
+        waiting_approval_count = d.pop("waiting_approval_count", UNSET)
+
         in_progress_count = d.pop("in_progress_count", UNSET)
 
         completed_count = d.pop("completed_count", UNSET)
@@ -80,6 +88,7 @@ class ExecutionStatusCountDetails:
 
         execution_status_count_details = cls(
             pending_count=pending_count,
+            waiting_approval_count=waiting_approval_count,
             in_progress_count=in_progress_count,
             completed_count=completed_count,
             failed_count=failed_count,

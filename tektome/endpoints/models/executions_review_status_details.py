@@ -1,12 +1,13 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.execution_review_status import ExecutionReviewStatus
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="ExecutionsReviewStatusDetails")
 
@@ -20,14 +21,14 @@ class ExecutionsReviewStatusDetails:
         reviewed_count (int):
         not_required_count (int):
         rejected_count (int):
-        status (ExecutionReviewStatus):
+        status (ExecutionReviewStatus | None | Unset):
     """
 
     pending_count: int
     reviewed_count: int
     not_required_count: int
     rejected_count: int
-    status: ExecutionReviewStatus
+    status: ExecutionReviewStatus | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -39,7 +40,13 @@ class ExecutionsReviewStatusDetails:
 
         rejected_count = self.rejected_count
 
-        status = self.status.value
+        status: None | str | Unset
+        if isinstance(self.status, Unset):
+            status = UNSET
+        elif isinstance(self.status, ExecutionReviewStatus):
+            status = self.status.value
+        else:
+            status = self.status
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -49,9 +56,10 @@ class ExecutionsReviewStatusDetails:
                 "reviewed_count": reviewed_count,
                 "not_required_count": not_required_count,
                 "rejected_count": rejected_count,
-                "status": status,
             }
         )
+        if status is not UNSET:
+            field_dict["status"] = status
 
         return field_dict
 
@@ -66,7 +74,22 @@ class ExecutionsReviewStatusDetails:
 
         rejected_count = d.pop("rejected_count")
 
-        status = ExecutionReviewStatus(d.pop("status"))
+        def _parse_status(data: object) -> ExecutionReviewStatus | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                status_type_0 = ExecutionReviewStatus(data)
+
+                return status_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(ExecutionReviewStatus | None | Unset, data)
+
+        status = _parse_status(d.pop("status", UNSET))
 
         executions_review_status_details = cls(
             pending_count=pending_count,
