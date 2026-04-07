@@ -7,12 +7,36 @@ This document explains how to manually create typed attributes on a resource or 
 ## Overview
 
 ```
-declare attribute config → create attribute → get attribute_id → create citation(s)
+Primitive attributes:
+  Step 0: declare config → Step 1: create attribute → get attribute_id → Step 2: create citation(s)
+
+Table attributes:
+  Step 0: declare config → Step 1b: create empty table instance → Step 1c: upsert cells → get attribute_id → Step 2: create citation(s)
 ```
 
 Attributes store typed values (float, string, boolean, etc.) on a resource or project within a dataspace. Citations link an attribute's value back to the source evidence — a PDF page region, an image bounding box, a BIM element, raw text, or another attribute.
 
 **Attribute configs must be declared before writing attribute data.** A config registers the attribute name, type, and (for tables) column schema on the dataspace. Attempting to write an attribute that has no config will fail.
+
+### Attribute scopes — resource vs project
+
+There are two scopes for attributes, and choosing the right one depends on what the attribute describes:
+
+| Scope | Also called | What it describes | `attribute_category` | `entity_id` | Config endpoint |
+|---|---|---|---|---|---|
+| **Resource attribute** | File attribute | A value derived from or about a **single resource** (e.g. a PDF's page count, a wall thickness extracted from one document) | `RESOURCE` | The resource UUID | `create_dataspace_resource_attribute_config` |
+| **Project attribute** | Project-level attribute | A value that spans or aggregates across **multiple resources** within a project (e.g. a compliance summary across all specs, a consolidated BIM element table) | `PROJECT` | The project UUID | `create_dataspace_project_attribute_config` |
+
+**When to use which:**
+- If the attribute's value comes from a single file or describes a property of that file → **resource attribute**
+- If the attribute's value is derived from multiple files, aggregates data across resources, or describes a property of the project as a whole → **project attribute**
+
+The API mechanics are identical for both scopes — same endpoints, same models. The only differences are:
+1. `attribute_category` parameter: `RESOURCE` or `PROJECT`
+2. `entity_id`: pass the resource UUID or project UUID respectively
+3. Config endpoint: `create_dataspace_resource_attribute_config` vs `create_dataspace_project_attribute_config`
+
+All examples in this document use resource attributes. To use project attributes instead, swap these three values.
 
 ---
 
@@ -81,6 +105,8 @@ from tektome.endpoints.models.post_general_dataspace_attribute_dataspace_entity_
     PostGeneralDataspaceAttributeDataspaceEntityType,
 )
 
+from tektome.endpoints.models.attribute_extraction_status_choices import AttributeExtractionStatusChoices
+
 attr = post_general_dataspace_attribute.sync(
     dataspace_id=dataspace_uuid,
     attribute_category=PostGeneralDataspaceAttributeDataspaceEntityType.RESOURCE,
@@ -89,6 +115,8 @@ attr = post_general_dataspace_attribute.sync(
         name="wall_thickness",
         value=0.3,
         type_=AttributeType.FLOAT_ATTRIBUTES,
+        entity_id=resource_uuid,                                       # REQUIRED — links attribute to entity
+        extraction_status=AttributeExtractionStatusChoices.COMPLETED,   # REQUIRED — default PENDING_APPROVAL is invisible
     ),
 )
 
@@ -139,13 +167,79 @@ Each citation type has its own enum for this (`CreateAttributePdfCitationDataspa
 
 ## Table attributes
 
-Table attributes require a config to be declared first (Step 0) with the column schema in `attribute_metadata`. Once the config exists, write data directly via `upsert_dataspace_table_attributes`.
+Table attributes require a **three-step process**: declare the config (Step 0), create the attribute instance on the resource (Step 1b), then populate the table cells (Step 1c).
 
-> **Do NOT call `post_general_dataspace_attribute` for table attributes — before or after upsert.** These endpoints operate on different underlying attribute representations. Calling it before the upsert creates a conflicting empty attribute instance. Calling it after (even with `value=[]`) overwrites the populated table with an empty `[]`, destroying your rows. To get the attribute ID for citations, read it from `get_dataspace_project_resource` instead — see "Getting the `attribute_id`" below.
+> **Why three steps?** The upsert endpoint (`upsert_dataspace_table_attributes`) requires an existing `TableAttribute` ID in the URL path. It **cannot** create a new attribute — it returns 404 if the attribute doesn't exist. You must create the empty attribute instance first.
 
-### Write the table data
+### Step 1b — Create the empty table attribute instance
 
-`upsert_dataspace_table_attributes` replaces the **entire table** in one call. Send a flat list of `TableCellUpdate` objects — one per cell — using `row_index` and `column` to address each cell. This implicitly defines the table's rows and columns.
+Use `post_general_dataspace_attribute` to create the `TableAttribute` record and link it to the resource. The `value` must be a dict matching the `Table` schema — **not** a list.
+
+> **Critical: you MUST pass `extraction_status=AttributeExtractionStatusChoices.COMPLETED`.** The default is `PENDING_APPROVAL`, which has two effects: (1) the attribute is **not linked** to the resource via the M2M relation, and (2) it is **filtered out** of `core_attributes_metadata` when reading the resource back. The attribute will exist in the database but be invisible and unusable.
+
+```python
+from tektome.endpoints.api.dataspace import post_general_dataspace_attribute
+from tektome.endpoints.models.create_attribute_request import CreateAttributeRequest
+from tektome.endpoints.models.create_attribute_request_value_type_7 import CreateAttributeRequestValueType7
+from tektome.endpoints.models.attribute_type import AttributeType
+from tektome.endpoints.models.attribute_extraction_status_choices import AttributeExtractionStatusChoices
+from tektome.endpoints.models.post_general_dataspace_attribute_dataspace_entity_type import (
+    PostGeneralDataspaceAttributeDataspaceEntityType,
+)
+
+# Build the initial empty table value — must be a dict with "rows" and "columns"
+# Columns must match those declared in attribute_metadata during config creation (Step 0)
+columns = [
+    {"name": "element_id", "type": "string"},
+    {"name": "type",       "type": "string"},
+    {"name": "thickness",  "type": "float"},
+]
+table_value = CreateAttributeRequestValueType7()
+table_value.additional_properties = {
+    "rows": [],
+    "columns": columns,
+}
+
+attr_resp = post_general_dataspace_attribute.sync_detailed(
+    dataspace_id=dataspace_uuid,
+    attribute_category=PostGeneralDataspaceAttributeDataspaceEntityType.RESOURCE,
+    client=client,
+    body=CreateAttributeRequest(
+        name=attr_name,                # attribute_name from config (Step 0) — NOT the label
+        value=table_value,
+        type_=AttributeType.TABLE_ATTRIBUTES,
+        entity_id=resource_uuid,
+        extraction_status=AttributeExtractionStatusChoices.COMPLETED,  # REQUIRED
+    ),
+)
+if attr_resp.status_code.value == 201:
+    attr_data = json.loads(attr_resp.content.decode())
+    attribute_id = UUID(attr_data["id"])
+elif attr_resp.status_code.value == 409:
+    # Attribute already exists — read its ID from resource metadata
+    res_resp = get_dataspace_project_resource.sync_detailed(
+        resource_id=resource_uuid, client=client,
+    )
+    res_data = json.loads(res_resp.content.decode())
+    attribute_id = UUID(res_data["core_attributes_metadata"][attr_name]["id"])
+else:
+    raise RuntimeError(
+        f"post_general_dataspace_attribute failed: {attr_resp.status_code.value} "
+        f"{attr_resp.content.decode()}"
+    )
+```
+
+**Value shape rules:**
+- `value` must be a dict with `"rows"` and `"columns"` keys — **not** a list like `[]`
+- `"columns"` must have at least one entry and match the config's `attribute_metadata.columns`
+- `"rows"` can be `[]` for an empty table
+- Passing `value=[]` or `value="placeholder"` causes a **500 ValidationError** on the server
+
+**Idempotency:** The endpoint returns **409** if a `COMPLETED` attribute with the same name already exists on the resource. Handle this by reading the existing attribute ID from resource metadata (shown above).
+
+### Step 1c — Populate the table cells
+
+Now that the attribute instance exists, use `upsert_dataspace_table_attributes` to write cell data. This replaces the **entire table** in one call. Send a flat list of `TableCellUpdate` objects — one per cell — using `row_index` and `column` to address each cell.
 
 ```python
 from tektome.endpoints.api.dataspace import upsert_dataspace_table_attributes
@@ -176,7 +270,7 @@ else:
 upsert_resp = upsert_dataspace_table_attributes.sync_detailed(
     dataspace_id=dataspace_uuid,
     attribute_category=UpsertDataspaceTableAttributesDataspaceEntityType.RESOURCE,
-    attribute_id=attribute_id,    # attribute CONFIG ID — from config response or resource metadata
+    attribute_id=attribute_id,    # attribute INSTANCE ID from Step 1b — NOT the config ID
     client=client,
     body=body,
 )
@@ -189,7 +283,7 @@ if upsert_resp.status_code.value != 204:
 > **Do NOT pass `version=None`.** `None` serializes as `"version": null` in the JSON body, which the server interprets as a version mismatch and returns **409 Table has been modified**.
 
 The `version` field uses `UNSET` semantics (see "UNSET vs None" below):
-- **New table (first write):** leave `version` as the default `UNSET` — it is omitted from the request body entirely.
+- **New table (first write after Step 1b):** leave `version` as the default `UNSET` — it is omitted from the request body entirely.
 - **Existing table (re-run/update):** read the current version from the resource metadata and pass it explicitly.
 
 ```python
@@ -213,11 +307,9 @@ else:
     body = UpdateDataspaceTableAttributeRequest(cells=cells)  # UNSET — omitted
 ```
 
-### Getting the `attribute_id` for a table attribute (needed for citations)
+### Getting the `attribute_id` for citations
 
-> **Do NOT use `post_general_dataspace_attribute(value=[])` to retrieve the attribute ID.** Even when called *after* `upsert_dataspace_table_attributes`, this call overwrites the populated table with an empty `[]` instance in the database. The table appears empty despite a successful upsert.
-
-After upserting, read the attribute ID back from the resource metadata:
+The `attribute_id` is returned in the Step 1b response (201 → parse `id` from body). If you already created the attribute in a previous run, read it from resource metadata:
 
 ```python
 from tektome.endpoints.api.dataspace import get_dataspace_project_resource
@@ -247,8 +339,6 @@ The resource response structure is:
 }
 ```
 
-You can combine the version-read and attribute-ID-read steps: read the resource once **before** the upsert (to get the version), then read it again **after** (to get the attribute ID). Or, if you know the table is new, skip the pre-read and do a single read after.
-
 ### Table behaviour
 
 - **Full replace**: every call to `upsert_dataspace_table_attributes` replaces the entire table. To add a row to an existing table, read the current data first, append to it, and send the complete set.
@@ -256,6 +346,7 @@ You can combine the version-read and attribute-ID-read steps: read the resource 
 - **Sparse cells**: rows that are missing a column get `None` for that column.
 - **`version`**: used for optimistic concurrency control. Pass the version number from `core_attributes_metadata.<name>.value.version` when updating an existing table. Leave as `UNSET` (the default) for a first write — do **not** pass `None`, which serializes as `null` and causes a 409.
 - **`insert_dataspace_table_attribute_row`**: inserts a blank row at a given `row_index`, shifting existing rows down. Use this when you need to splice a row into the middle of an existing table rather than replacing everything.
+- **Do NOT call `post_general_dataspace_attribute` again after Step 1b.** A second call with `extraction_status=COMPLETED` returns 409. A call with a different status or value creates a new, disconnected attribute record and can overwrite the M2M link, destroying your table data.
 
 ### Config idempotency
 
@@ -502,7 +593,10 @@ create_attribute_attribute_citation.sync(
 | Declare config before writing | Both primitive and table attributes require a config registered on the dataspace first |
 | Table config needs column schema | Pass `attribute_metadata` with a `columns` list when declaring a table config |
 | `attribute_type` in config is a plain string | Use `"float_attributes"`, `"table_attributes"` etc. — not the `AttributeType` enum |
-| Use `post_general_dataspace_attribute` to get `attribute_id` | Returns `AttributeResponse` with `id` — needed for citations |
+| Table attributes need Step 1b before upsert | `upsert_dataspace_table_attributes` returns 404 if the attribute instance doesn't exist — you must create it first with `post_general_dataspace_attribute` |
+| Table `value` must be a dict, not a list | Pass `{"rows": [], "columns": [...]}` — not `[]` or `"placeholder"` |
+| Table creation requires `extraction_status=COMPLETED` | Default `PENDING_APPROVAL` prevents M2M linking and hides the attribute from `core_attributes_metadata` |
+| Use `post_general_dataspace_attribute` to get `attribute_id` | Returns `AttributeResponse` with `id` — needed for citations. For table attributes, the ID is returned in the Step 1b response |
 | `attribute_type` in citation body | Must match the type of the attribute you're citing |
 | `attribute_category` | `RESOURCE` or `PROJECT` — matches where the attribute lives |
 | `dataspace_id` required | All citation endpoints operate within a dataspace context |
@@ -513,7 +607,7 @@ create_attribute_attribute_citation.sync(
 | Image `bounding_geometry` is required | Must always be provided for image citations |
 | PDF `polygons` is optional | Can be omitted if you only need to cite the resource without a specific region |
 | Citations attach to the attribute, not individual rows | For table attributes, all citations link to the table attribute UUID as a whole |
-| Get table `attribute_id` from resource metadata | After `upsert_dataspace_table_attributes`, read `get_dataspace_project_resource` → `core_attributes_metadata.<name>.id` — never use `post_general_dataspace_attribute` for this |
+| Get table `attribute_id` from Step 1b or resource metadata | Step 1b returns the ID in the 201 response. For re-runs (409), read `get_dataspace_project_resource` → `core_attributes_metadata.<name>.id` |
 | `version` for tables: `UNSET` for new, integer for updates | `version=None` serializes as `null` → 409. Read from `core_attributes_metadata.<name>.value.version` |
 
 ---
@@ -522,7 +616,12 @@ create_attribute_attribute_citation.sync(
 
 | Mistake | Symptom | Fix |
 |---|---|---|
-| Calling `post_general_dataspace_attribute(value=[])` for a table at all — before or after upsert | Table attribute value reads back as `[]`; citations reference empty attribute | Never call `post_general_dataspace_attribute` for table attributes. Get the attribute ID from `get_dataspace_project_resource` → `core_attributes_metadata.<name>.id` |
+| Passing `value=[]` or `value="placeholder"` in Step 1b | **500 ValidationError** — server calls `Table.model_validate()` which expects a dict | Pass `value={"rows": [], "columns": [...]}` with columns matching the config |
+| Omitting `extraction_status=COMPLETED` in Step 1b | Attribute is created but invisible — not linked to the resource, not in `core_attributes_metadata` | Always pass `extraction_status=AttributeExtractionStatusChoices.COMPLETED` |
+| Omitting `entity_id` in Step 1b | Attribute is created but not linked to any resource/project | Always pass `entity_id=resource_uuid` (or project UUID) |
+| Calling `post_general_dataspace_attribute` a second time after Step 1b | **409** if same status, or creates a disconnected duplicate that can overwrite table data | Call it once. Handle 409 by reading the existing ID from resource metadata |
+| Skipping Step 1b and calling `upsert_dataspace_table_attributes` directly | **404 Attribute not found** — the upsert endpoint cannot create attributes | Always create the attribute instance first (Step 1b) before upserting cells |
+| Using the config ID as `attribute_id` in the upsert | **404 Attribute not found** — config IDs and attribute instance IDs are different models | Use the attribute instance ID from the Step 1b response or from `core_attributes_metadata` |
 | Passing `version=None` to `upsert_dataspace_table_attributes` | Server returns **409 Table has been modified** | Leave `version` as `UNSET` (default) for a new table; pass the integer version for updates |
 | Passing the document `resource_id` as `bim_resource_id` in a BIM citation | Server returns 400/404; no citations created | `bim_resource_id` must be the BIM resource (IFC file) UUID — always a separate parameter |
 | Using `sync()` instead of `sync_detailed()` for citations | Script reports success but no citations exist | Use `sync_detailed()` and check `resp.status_code.value == 201` |
