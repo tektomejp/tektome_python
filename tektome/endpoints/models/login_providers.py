@@ -2,8 +2,8 @@ from enum import Enum
 
 
 class LoginProviders(str, Enum):
+    AZURE = "microsoft-entra-id"
     GOOGLE = "google"
-    MICROSOFT_ENTRA_ID = "microsoft-entra-id"
 
     def __str__(self) -> str:
         return str(self.value)
