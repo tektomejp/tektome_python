@@ -25,6 +25,7 @@ class ExecutionApprovalsQueryParams:
 
     Attributes:
         execution_id (None | Unset | UUID):
+        keyword (None | str | Unset): Filter by process name, execution group ID, execution ID, or approval ticket ID
         status (list[ExecutionApprovalsQueryParamsApprovalStatus] | Unset): Approval status to filter executions
         process_types (list[ExecutionApprovalsQueryParamsProcessTypeChoices] | Unset): Process types
         process_ids (list[UUID] | Unset): Process IDs
@@ -39,6 +40,7 @@ class ExecutionApprovalsQueryParams:
     """
 
     execution_id: None | Unset | UUID = UNSET
+    keyword: None | str | Unset = UNSET
     status: list[ExecutionApprovalsQueryParamsApprovalStatus] | Unset = UNSET
     process_types: list[ExecutionApprovalsQueryParamsProcessTypeChoices] | Unset = UNSET
     process_ids: list[UUID] | Unset = UNSET
@@ -58,6 +60,12 @@ class ExecutionApprovalsQueryParams:
             execution_id = str(self.execution_id)
         else:
             execution_id = self.execution_id
+
+        keyword: None | str | Unset
+        if isinstance(self.keyword, Unset):
+            keyword = UNSET
+        else:
+            keyword = self.keyword
 
         status: list[str] | Unset = UNSET
         if not isinstance(self.status, Unset):
@@ -127,6 +135,8 @@ class ExecutionApprovalsQueryParams:
         field_dict.update({})
         if execution_id is not UNSET:
             field_dict["execution_id"] = execution_id
+        if keyword is not UNSET:
+            field_dict["keyword"] = keyword
         if status is not UNSET:
             field_dict["status"] = status
         if process_types is not UNSET:
@@ -168,6 +178,15 @@ class ExecutionApprovalsQueryParams:
             return cast(None | Unset | UUID, data)
 
         execution_id = _parse_execution_id(d.pop("execution_id", UNSET))
+
+        def _parse_keyword(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        keyword = _parse_keyword(d.pop("keyword", UNSET))
 
         _status = d.pop("status", UNSET)
         status: list[ExecutionApprovalsQueryParamsApprovalStatus] | Unset = UNSET
@@ -252,6 +271,7 @@ class ExecutionApprovalsQueryParams:
 
         execution_approvals_query_params = cls(
             execution_id=execution_id,
+            keyword=keyword,
             status=status,
             process_types=process_types,
             process_ids=process_ids,

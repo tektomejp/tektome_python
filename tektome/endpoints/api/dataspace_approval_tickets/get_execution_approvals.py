@@ -18,6 +18,7 @@ def _get_kwargs(
     dataspace_id: UUID,
     *,
     execution_id: None | Unset | UUID = UNSET,
+    keyword: None | str | Unset = UNSET,
     status: list[GetExecutionApprovalsApprovalStatus] | Unset = UNSET,
     process_types: list[GetExecutionApprovalsProcessTypeChoices] | Unset = UNSET,
     process_ids: list[UUID] | Unset = UNSET,
@@ -41,6 +42,13 @@ def _get_kwargs(
     else:
         json_execution_id = execution_id
     params["execution_id"] = json_execution_id
+
+    json_keyword: None | str | Unset
+    if isinstance(keyword, Unset):
+        json_keyword = UNSET
+    else:
+        json_keyword = keyword
+    params["keyword"] = json_keyword
 
     json_status: list[str] | Unset = UNSET
     if not isinstance(status, Unset):
@@ -175,6 +183,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     execution_id: None | Unset | UUID = UNSET,
+    keyword: None | str | Unset = UNSET,
     status: list[GetExecutionApprovalsApprovalStatus] | Unset = UNSET,
     process_types: list[GetExecutionApprovalsProcessTypeChoices] | Unset = UNSET,
     process_ids: list[UUID] | Unset = UNSET,
@@ -195,6 +204,8 @@ def sync_detailed(
     Args:
         dataspace_id (UUID):
         execution_id (None | Unset | UUID):
+        keyword (None | str | Unset): Filter by process name, execution group ID, execution ID, or
+            approval ticket ID
         status (list[GetExecutionApprovalsApprovalStatus] | Unset): Approval status to filter
             executions
         process_types (list[GetExecutionApprovalsProcessTypeChoices] | Unset): Process types
@@ -222,6 +233,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         dataspace_id=dataspace_id,
         execution_id=execution_id,
+        keyword=keyword,
         status=status,
         process_types=process_types,
         process_ids=process_ids,
@@ -247,6 +259,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     execution_id: None | Unset | UUID = UNSET,
+    keyword: None | str | Unset = UNSET,
     status: list[GetExecutionApprovalsApprovalStatus] | Unset = UNSET,
     process_types: list[GetExecutionApprovalsProcessTypeChoices] | Unset = UNSET,
     process_ids: list[UUID] | Unset = UNSET,
@@ -267,6 +280,8 @@ def sync(
     Args:
         dataspace_id (UUID):
         execution_id (None | Unset | UUID):
+        keyword (None | str | Unset): Filter by process name, execution group ID, execution ID, or
+            approval ticket ID
         status (list[GetExecutionApprovalsApprovalStatus] | Unset): Approval status to filter
             executions
         process_types (list[GetExecutionApprovalsProcessTypeChoices] | Unset): Process types
@@ -295,6 +310,7 @@ def sync(
         dataspace_id=dataspace_id,
         client=client,
         execution_id=execution_id,
+        keyword=keyword,
         status=status,
         process_types=process_types,
         process_ids=process_ids,
@@ -314,6 +330,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     execution_id: None | Unset | UUID = UNSET,
+    keyword: None | str | Unset = UNSET,
     status: list[GetExecutionApprovalsApprovalStatus] | Unset = UNSET,
     process_types: list[GetExecutionApprovalsProcessTypeChoices] | Unset = UNSET,
     process_ids: list[UUID] | Unset = UNSET,
@@ -334,6 +351,8 @@ async def asyncio_detailed(
     Args:
         dataspace_id (UUID):
         execution_id (None | Unset | UUID):
+        keyword (None | str | Unset): Filter by process name, execution group ID, execution ID, or
+            approval ticket ID
         status (list[GetExecutionApprovalsApprovalStatus] | Unset): Approval status to filter
             executions
         process_types (list[GetExecutionApprovalsProcessTypeChoices] | Unset): Process types
@@ -361,6 +380,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         dataspace_id=dataspace_id,
         execution_id=execution_id,
+        keyword=keyword,
         status=status,
         process_types=process_types,
         process_ids=process_ids,
@@ -384,6 +404,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     execution_id: None | Unset | UUID = UNSET,
+    keyword: None | str | Unset = UNSET,
     status: list[GetExecutionApprovalsApprovalStatus] | Unset = UNSET,
     process_types: list[GetExecutionApprovalsProcessTypeChoices] | Unset = UNSET,
     process_ids: list[UUID] | Unset = UNSET,
@@ -404,6 +425,8 @@ async def asyncio(
     Args:
         dataspace_id (UUID):
         execution_id (None | Unset | UUID):
+        keyword (None | str | Unset): Filter by process name, execution group ID, execution ID, or
+            approval ticket ID
         status (list[GetExecutionApprovalsApprovalStatus] | Unset): Approval status to filter
             executions
         process_types (list[GetExecutionApprovalsProcessTypeChoices] | Unset): Process types
@@ -433,6 +456,7 @@ async def asyncio(
             dataspace_id=dataspace_id,
             client=client,
             execution_id=execution_id,
+            keyword=keyword,
             status=status,
             process_types=process_types,
             process_ids=process_ids,
