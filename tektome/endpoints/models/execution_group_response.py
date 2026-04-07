@@ -13,6 +13,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.execution_process_response import ExecutionProcessResponse
+    from ..models.execution_status_count_details import ExecutionStatusCountDetails
     from ..models.execution_status_details import ExecutionStatusDetails
     from ..models.executions_review_status_details import ExecutionsReviewStatusDetails
     from ..models.user_metadata import UserMetadata
@@ -32,6 +33,7 @@ class ExecutionGroupResponse:
         executions_count (int):
         processes_details (list[ExecutionProcessResponse]):
         status_details (ExecutionStatusDetails): Details about execution statuses within an execution group
+        execution_status_details (ExecutionStatusCountDetails): Counts of executions by status within an execution group
         review_status (ExecutionsReviewStatusDetails): Details about execution review statuses within an execution group
         created (datetime.datetime):
         updated (datetime.datetime):
@@ -51,6 +53,7 @@ class ExecutionGroupResponse:
     executions_count: int
     processes_details: list[ExecutionProcessResponse]
     status_details: ExecutionStatusDetails
+    execution_status_details: ExecutionStatusCountDetails
     review_status: ExecutionsReviewStatusDetails
     created: datetime.datetime
     updated: datetime.datetime
@@ -77,6 +80,8 @@ class ExecutionGroupResponse:
             processes_details.append(processes_details_item)
 
         status_details = self.status_details.to_dict()
+
+        execution_status_details = self.execution_status_details.to_dict()
 
         review_status = self.review_status.to_dict()
 
@@ -128,6 +133,7 @@ class ExecutionGroupResponse:
                 "executions_count": executions_count,
                 "processes_details": processes_details,
                 "status_details": status_details,
+                "execution_status_details": execution_status_details,
                 "review_status": review_status,
                 "created": created,
                 "updated": updated,
@@ -151,6 +157,7 @@ class ExecutionGroupResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.execution_process_response import ExecutionProcessResponse
+        from ..models.execution_status_count_details import ExecutionStatusCountDetails
         from ..models.execution_status_details import ExecutionStatusDetails
         from ..models.executions_review_status_details import ExecutionsReviewStatusDetails
         from ..models.user_metadata import UserMetadata
@@ -172,6 +179,8 @@ class ExecutionGroupResponse:
             processes_details.append(processes_details_item)
 
         status_details = ExecutionStatusDetails.from_dict(d.pop("status_details"))
+
+        execution_status_details = ExecutionStatusCountDetails.from_dict(d.pop("execution_status_details"))
 
         review_status = ExecutionsReviewStatusDetails.from_dict(d.pop("review_status"))
 
@@ -250,6 +259,7 @@ class ExecutionGroupResponse:
             executions_count=executions_count,
             processes_details=processes_details,
             status_details=status_details,
+            execution_status_details=execution_status_details,
             review_status=review_status,
             created=created,
             updated=updated,
