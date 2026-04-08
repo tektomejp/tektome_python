@@ -76,6 +76,7 @@ from .background_task_id_response import BackgroundTaskIdResponse
 from .background_task_status_response import BackgroundTaskStatusResponse
 from .base_annotated_polygon_schema_response import BaseAnnotatedPolygonSchemaResponse
 from .base_resource_path_request import BaseResourcePathRequest
+from .bim_annotation_request import BIMAnnotationRequest
 from .bim_async_task_response import BimAsyncTaskResponse
 from .bim_citation_path_params import BIMCitationPathParams
 from .bim_citation_schema_response import BIMCitationSchemaResponse
@@ -154,6 +155,7 @@ from .citations_query_request import CitationsQueryRequest
 from .citations_query_request_order_by import CitationsQueryRequestOrderBy
 from .citations_sort_keys import CitationsSortKeys
 from .cited_annotated_polygon_path_params import CitedAnnotatedPolygonPathParams
+from .cited_bim_annotation_schema_response import CitedBIMAnnotationSchemaResponse
 from .cited_bim_element_schema_response import CitedBIMElementSchemaResponse
 from .component_schema_path_request import ComponentSchemaPathRequest
 from .convert_ifc_to_bim_elements_file_params import ConvertIfcToBimElementsFileParams
@@ -1221,6 +1223,7 @@ __all__ = (
     "BackgroundTaskStatusResponse",
     "BaseAnnotatedPolygonSchemaResponse",
     "BaseResourcePathRequest",
+    "BIMAnnotationRequest",
     "BimAsyncTaskResponse",
     "BIMCitationPathParams",
     "BIMCitationSchemaResponse",
@@ -1299,6 +1302,7 @@ __all__ = (
     "CitationsQueryRequestOrderBy",
     "CitationsSortKeys",
     "CitedAnnotatedPolygonPathParams",
+    "CitedBIMAnnotationSchemaResponse",
     "CitedBIMElementSchemaResponse",
     "ComponentSchemaPathRequest",
     "ConvertIfcToBimElementsFileParams",

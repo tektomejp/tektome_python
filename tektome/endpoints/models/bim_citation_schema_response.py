@@ -12,6 +12,7 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.cited_bim_annotation_schema_response import CitedBIMAnnotationSchemaResponse
     from ..models.cited_bim_element_schema_response import CitedBIMElementSchemaResponse
     from ..models.user_metadata import UserMetadata
 
@@ -26,6 +27,7 @@ class BIMCitationSchemaResponse:
         created_by (UserMetadata):
         updated_by (UserMetadata):
         cited_bim_elements (list[CitedBIMElementSchemaResponse]):
+        cited_bim_annotations (list[CitedBIMAnnotationSchemaResponse]):
         created (datetime.datetime):
         updated (datetime.datetime):
         resource (UUID): This is the cited BIM Resource
@@ -40,6 +42,7 @@ class BIMCitationSchemaResponse:
     created_by: UserMetadata
     updated_by: UserMetadata
     cited_bim_elements: list[CitedBIMElementSchemaResponse]
+    cited_bim_annotations: list[CitedBIMAnnotationSchemaResponse]
     created: datetime.datetime
     updated: datetime.datetime
     resource: UUID
@@ -59,6 +62,11 @@ class BIMCitationSchemaResponse:
         for cited_bim_elements_item_data in self.cited_bim_elements:
             cited_bim_elements_item = cited_bim_elements_item_data.to_dict()
             cited_bim_elements.append(cited_bim_elements_item)
+
+        cited_bim_annotations = []
+        for cited_bim_annotations_item_data in self.cited_bim_annotations:
+            cited_bim_annotations_item = cited_bim_annotations_item_data.to_dict()
+            cited_bim_annotations.append(cited_bim_annotations_item)
 
         created = self.created.isoformat()
 
@@ -95,6 +103,7 @@ class BIMCitationSchemaResponse:
                 "created_by": created_by,
                 "updated_by": updated_by,
                 "cited_bim_elements": cited_bim_elements,
+                "cited_bim_annotations": cited_bim_annotations,
                 "created": created,
                 "updated": updated,
                 "resource": resource,
@@ -115,6 +124,7 @@ class BIMCitationSchemaResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.cited_bim_annotation_schema_response import CitedBIMAnnotationSchemaResponse
         from ..models.cited_bim_element_schema_response import CitedBIMElementSchemaResponse
         from ..models.user_metadata import UserMetadata
 
@@ -129,6 +139,13 @@ class BIMCitationSchemaResponse:
             cited_bim_elements_item = CitedBIMElementSchemaResponse.from_dict(cited_bim_elements_item_data)
 
             cited_bim_elements.append(cited_bim_elements_item)
+
+        cited_bim_annotations = []
+        _cited_bim_annotations = d.pop("cited_bim_annotations")
+        for cited_bim_annotations_item_data in _cited_bim_annotations:
+            cited_bim_annotations_item = CitedBIMAnnotationSchemaResponse.from_dict(cited_bim_annotations_item_data)
+
+            cited_bim_annotations.append(cited_bim_annotations_item)
 
         created = isoparse(d.pop("created"))
 
@@ -174,6 +191,7 @@ class BIMCitationSchemaResponse:
             created_by=created_by,
             updated_by=updated_by,
             cited_bim_elements=cited_bim_elements,
+            cited_bim_annotations=cited_bim_annotations,
             created=created,
             updated=updated,
             resource=resource,
