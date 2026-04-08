@@ -11,6 +11,7 @@ from ..models.attribute_type import AttributeType
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.bim_annotation_request import BIMAnnotationRequest
     from ..models.bim_element_request import BIMElementRequest
     from ..models.create_bim_citation_request_resolved_element_map import CreateBIMCitationRequestResolvedElementMap
 
@@ -32,6 +33,8 @@ class CreateBIMCitationRequest:
         bim_elements (list[BIMElementRequest]): List of BIM project/object pairs cited as sources.
         overlay_html (None | str | Unset):
         keywords (list[str] | Unset):
+        bim_annotations (list[BIMAnnotationRequest] | Unset): List of standalone BIM objects to annotate on this
+            citation.
         resolved_element_map (CreateBIMCitationRequestResolvedElementMap | Unset):
     """
 
@@ -41,6 +44,7 @@ class CreateBIMCitationRequest:
     bim_elements: list[BIMElementRequest]
     overlay_html: None | str | Unset = UNSET
     keywords: list[str] | Unset = UNSET
+    bim_annotations: list[BIMAnnotationRequest] | Unset = UNSET
     resolved_element_map: CreateBIMCitationRequestResolvedElementMap | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -66,6 +70,13 @@ class CreateBIMCitationRequest:
         if not isinstance(self.keywords, Unset):
             keywords = self.keywords
 
+        bim_annotations: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.bim_annotations, Unset):
+            bim_annotations = []
+            for bim_annotations_item_data in self.bim_annotations:
+                bim_annotations_item = bim_annotations_item_data.to_dict()
+                bim_annotations.append(bim_annotations_item)
+
         resolved_element_map: dict[str, Any] | Unset = UNSET
         if not isinstance(self.resolved_element_map, Unset):
             resolved_element_map = self.resolved_element_map.to_dict()
@@ -84,6 +95,8 @@ class CreateBIMCitationRequest:
             field_dict["overlay_html"] = overlay_html
         if keywords is not UNSET:
             field_dict["keywords"] = keywords
+        if bim_annotations is not UNSET:
+            field_dict["bim_annotations"] = bim_annotations
         if resolved_element_map is not UNSET:
             field_dict["resolved_element_map"] = resolved_element_map
 
@@ -91,6 +104,7 @@ class CreateBIMCitationRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.bim_annotation_request import BIMAnnotationRequest
         from ..models.bim_element_request import BIMElementRequest
         from ..models.create_bim_citation_request_resolved_element_map import CreateBIMCitationRequestResolvedElementMap
 
@@ -119,6 +133,15 @@ class CreateBIMCitationRequest:
 
         keywords = cast(list[str], d.pop("keywords", UNSET))
 
+        _bim_annotations = d.pop("bim_annotations", UNSET)
+        bim_annotations: list[BIMAnnotationRequest] | Unset = UNSET
+        if _bim_annotations is not UNSET:
+            bim_annotations = []
+            for bim_annotations_item_data in _bim_annotations:
+                bim_annotations_item = BIMAnnotationRequest.from_dict(bim_annotations_item_data)
+
+                bim_annotations.append(bim_annotations_item)
+
         _resolved_element_map = d.pop("resolved_element_map", UNSET)
         resolved_element_map: CreateBIMCitationRequestResolvedElementMap | Unset
         if isinstance(_resolved_element_map, Unset):
@@ -133,6 +156,7 @@ class CreateBIMCitationRequest:
             bim_elements=bim_elements,
             overlay_html=overlay_html,
             keywords=keywords,
+            bim_annotations=bim_annotations,
             resolved_element_map=resolved_element_map,
         )
 

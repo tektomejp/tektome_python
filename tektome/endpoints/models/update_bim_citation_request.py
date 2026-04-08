@@ -9,6 +9,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.bim_annotation_request import BIMAnnotationRequest
     from ..models.bim_element_request import BIMElementRequest
     from ..models.update_bim_citation_request_resolved_element_map import UpdateBIMCitationRequestResolvedElementMap
 
@@ -26,6 +27,8 @@ class UpdateBIMCitationRequest:
         overlay_html (None | str | Unset):
         bim_elements (list[BIMElementRequest] | None | Unset): List of BIM project/element pairs. Replaces all existing
             elements when provided.
+        bim_annotations (list[BIMAnnotationRequest] | None | Unset): List of standalone BIM objects. Replaces all
+            existing annotations when provided.
         resolved_element_map (UpdateBIMCitationRequestResolvedElementMap | Unset):
     """
 
@@ -33,6 +36,7 @@ class UpdateBIMCitationRequest:
     keywords: list[str] | None | Unset = UNSET
     overlay_html: None | str | Unset = UNSET
     bim_elements: list[BIMElementRequest] | None | Unset = UNSET
+    bim_annotations: list[BIMAnnotationRequest] | None | Unset = UNSET
     resolved_element_map: UpdateBIMCitationRequestResolvedElementMap | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -70,6 +74,18 @@ class UpdateBIMCitationRequest:
         else:
             bim_elements = self.bim_elements
 
+        bim_annotations: list[dict[str, Any]] | None | Unset
+        if isinstance(self.bim_annotations, Unset):
+            bim_annotations = UNSET
+        elif isinstance(self.bim_annotations, list):
+            bim_annotations = []
+            for bim_annotations_type_0_item_data in self.bim_annotations:
+                bim_annotations_type_0_item = bim_annotations_type_0_item_data.to_dict()
+                bim_annotations.append(bim_annotations_type_0_item)
+
+        else:
+            bim_annotations = self.bim_annotations
+
         resolved_element_map: dict[str, Any] | Unset = UNSET
         if not isinstance(self.resolved_element_map, Unset):
             resolved_element_map = self.resolved_element_map.to_dict()
@@ -85,6 +101,8 @@ class UpdateBIMCitationRequest:
             field_dict["overlay_html"] = overlay_html
         if bim_elements is not UNSET:
             field_dict["bim_elements"] = bim_elements
+        if bim_annotations is not UNSET:
+            field_dict["bim_annotations"] = bim_annotations
         if resolved_element_map is not UNSET:
             field_dict["resolved_element_map"] = resolved_element_map
 
@@ -92,6 +110,7 @@ class UpdateBIMCitationRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.bim_annotation_request import BIMAnnotationRequest
         from ..models.bim_element_request import BIMElementRequest
         from ..models.update_bim_citation_request_resolved_element_map import UpdateBIMCitationRequestResolvedElementMap
 
@@ -154,6 +173,28 @@ class UpdateBIMCitationRequest:
 
         bim_elements = _parse_bim_elements(d.pop("bim_elements", UNSET))
 
+        def _parse_bim_annotations(data: object) -> list[BIMAnnotationRequest] | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                bim_annotations_type_0 = []
+                _bim_annotations_type_0 = data
+                for bim_annotations_type_0_item_data in _bim_annotations_type_0:
+                    bim_annotations_type_0_item = BIMAnnotationRequest.from_dict(bim_annotations_type_0_item_data)
+
+                    bim_annotations_type_0.append(bim_annotations_type_0_item)
+
+                return bim_annotations_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(list[BIMAnnotationRequest] | None | Unset, data)
+
+        bim_annotations = _parse_bim_annotations(d.pop("bim_annotations", UNSET))
+
         _resolved_element_map = d.pop("resolved_element_map", UNSET)
         resolved_element_map: UpdateBIMCitationRequestResolvedElementMap | Unset
         if isinstance(_resolved_element_map, Unset):
@@ -166,6 +207,7 @@ class UpdateBIMCitationRequest:
             keywords=keywords,
             overlay_html=overlay_html,
             bim_elements=bim_elements,
+            bim_annotations=bim_annotations,
             resolved_element_map=resolved_element_map,
         )
 
