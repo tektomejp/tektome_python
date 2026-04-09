@@ -18,30 +18,34 @@ class CreateRawTextCitationRequest:
     """Raw text citation input schema.
 
     Attributes:
-        title (str):
         attribute_type (AttributeType): StrEnum for all available attribute types
 
             .. warning::
                 Do not change the values of this enum, as they are used in the database.
                 If you need to add a new attribute type, add a new enum value with a unique name.
         resource_id (UUID): ID of the cited RawText resource.
+        title (None | str | Unset):
         overlay_html (None | str | Unset):
         keywords (list[str] | Unset):
     """
 
-    title: str
     attribute_type: AttributeType
     resource_id: UUID
+    title: None | str | Unset = UNSET
     overlay_html: None | str | Unset = UNSET
     keywords: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        title = self.title
-
         attribute_type = self.attribute_type.value
 
         resource_id = str(self.resource_id)
+
+        title: None | str | Unset
+        if isinstance(self.title, Unset):
+            title = UNSET
+        else:
+            title = self.title
 
         overlay_html: None | str | Unset
         if isinstance(self.overlay_html, Unset):
@@ -57,11 +61,12 @@ class CreateRawTextCitationRequest:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "title": title,
                 "attribute_type": attribute_type,
                 "resource_id": resource_id,
             }
         )
+        if title is not UNSET:
+            field_dict["title"] = title
         if overlay_html is not UNSET:
             field_dict["overlay_html"] = overlay_html
         if keywords is not UNSET:
@@ -72,11 +77,18 @@ class CreateRawTextCitationRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        title = d.pop("title")
-
         attribute_type = AttributeType(d.pop("attribute_type"))
 
         resource_id = UUID(d.pop("resource_id"))
+
+        def _parse_title(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        title = _parse_title(d.pop("title", UNSET))
 
         def _parse_overlay_html(data: object) -> None | str | Unset:
             if data is None:
@@ -90,9 +102,9 @@ class CreateRawTextCitationRequest:
         keywords = cast(list[str], d.pop("keywords", UNSET))
 
         create_raw_text_citation_request = cls(
-            title=title,
             attribute_type=attribute_type,
             resource_id=resource_id,
+            title=title,
             overlay_html=overlay_html,
             keywords=keywords,
         )
