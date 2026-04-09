@@ -1086,7 +1086,7 @@ from .update_attribute_rawtext_citation_dataspace_entity_type import UpdateAttri
 from .update_attribute_request import UpdateAttributeRequest
 from .update_attribute_request_value_type_7 import UpdateAttributeRequestValueType7
 from .update_bim_citation_request import UpdateBIMCitationRequest
-from .update_bim_citation_request_resolved_element_map import UpdateBIMCitationRequestResolvedElementMap
+from .update_bim_citation_request_resolved_element_map_type_0 import UpdateBIMCitationRequestResolvedElementMapType0
 from .update_dataspace_project_attribute_request import UpdateDataspaceProjectAttributeRequest
 from .update_dataspace_project_attribute_request_attribute_metadata_type_0 import (
     UpdateDataspaceProjectAttributeRequestAttributeMetadataType0,
@@ -2157,7 +2157,7 @@ __all__ = (
     "UpdateAttributeRequest",
     "UpdateAttributeRequestValueType7",
     "UpdateBIMCitationRequest",
-    "UpdateBIMCitationRequestResolvedElementMap",
+    "UpdateBIMCitationRequestResolvedElementMapType0",
     "UpdateDataspaceProjectAttributeRequest",
     "UpdateDataspaceProjectAttributeRequestAttributeMetadataType0",
     "UpdateDataspaceProjectAttributeRequestTableAttributeConfigType0",

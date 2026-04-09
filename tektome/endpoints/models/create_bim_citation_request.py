@@ -23,7 +23,6 @@ T = TypeVar("T", bound="CreateBIMCitationRequest")
 class CreateBIMCitationRequest:
     """
     Attributes:
-        title (str):
         attribute_type (AttributeType): StrEnum for all available attribute types
 
             .. warning::
@@ -31,6 +30,7 @@ class CreateBIMCitationRequest:
                 If you need to add a new attribute type, add a new enum value with a unique name.
         bim_resource_id (UUID): ID of the cited BIM resource.
         bim_elements (list[BIMElementRequest]): List of BIM project/object pairs cited as sources.
+        title (None | str | Unset):
         overlay_html (None | str | Unset):
         keywords (list[str] | Unset):
         bim_annotations (list[BIMAnnotationRequest] | Unset): List of standalone BIM objects to annotate on this
@@ -38,10 +38,10 @@ class CreateBIMCitationRequest:
         resolved_element_map (CreateBIMCitationRequestResolvedElementMap | Unset):
     """
 
-    title: str
     attribute_type: AttributeType
     bim_resource_id: UUID
     bim_elements: list[BIMElementRequest]
+    title: None | str | Unset = UNSET
     overlay_html: None | str | Unset = UNSET
     keywords: list[str] | Unset = UNSET
     bim_annotations: list[BIMAnnotationRequest] | Unset = UNSET
@@ -49,8 +49,6 @@ class CreateBIMCitationRequest:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        title = self.title
-
         attribute_type = self.attribute_type.value
 
         bim_resource_id = str(self.bim_resource_id)
@@ -59,6 +57,12 @@ class CreateBIMCitationRequest:
         for bim_elements_item_data in self.bim_elements:
             bim_elements_item = bim_elements_item_data.to_dict()
             bim_elements.append(bim_elements_item)
+
+        title: None | str | Unset
+        if isinstance(self.title, Unset):
+            title = UNSET
+        else:
+            title = self.title
 
         overlay_html: None | str | Unset
         if isinstance(self.overlay_html, Unset):
@@ -85,12 +89,13 @@ class CreateBIMCitationRequest:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "title": title,
                 "attribute_type": attribute_type,
                 "bim_resource_id": bim_resource_id,
                 "bim_elements": bim_elements,
             }
         )
+        if title is not UNSET:
+            field_dict["title"] = title
         if overlay_html is not UNSET:
             field_dict["overlay_html"] = overlay_html
         if keywords is not UNSET:
@@ -109,8 +114,6 @@ class CreateBIMCitationRequest:
         from ..models.create_bim_citation_request_resolved_element_map import CreateBIMCitationRequestResolvedElementMap
 
         d = dict(src_dict)
-        title = d.pop("title")
-
         attribute_type = AttributeType(d.pop("attribute_type"))
 
         bim_resource_id = UUID(d.pop("bim_resource_id"))
@@ -121,6 +124,15 @@ class CreateBIMCitationRequest:
             bim_elements_item = BIMElementRequest.from_dict(bim_elements_item_data)
 
             bim_elements.append(bim_elements_item)
+
+        def _parse_title(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        title = _parse_title(d.pop("title", UNSET))
 
         def _parse_overlay_html(data: object) -> None | str | Unset:
             if data is None:
@@ -150,10 +162,10 @@ class CreateBIMCitationRequest:
             resolved_element_map = CreateBIMCitationRequestResolvedElementMap.from_dict(_resolved_element_map)
 
         create_bim_citation_request = cls(
-            title=title,
             attribute_type=attribute_type,
             bim_resource_id=bim_resource_id,
             bim_elements=bim_elements,
+            title=title,
             overlay_html=overlay_html,
             keywords=keywords,
             bim_annotations=bim_annotations,

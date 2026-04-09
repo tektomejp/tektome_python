@@ -84,7 +84,7 @@ def sync_detailed(
         attribute_category (UpdateAttributeBimCitationDataspaceEntityType):
         attribute_id (UUID):
         bim_citation_id (UUID):
-        body (UpdateBIMCitationRequest): BIM citation patch input schema.
+        body (UpdateBIMCitationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -127,7 +127,7 @@ def sync(
         attribute_category (UpdateAttributeBimCitationDataspaceEntityType):
         attribute_id (UUID):
         bim_citation_id (UUID):
-        body (UpdateBIMCitationRequest): BIM citation patch input schema.
+        body (UpdateBIMCitationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -165,7 +165,7 @@ async def asyncio_detailed(
         attribute_category (UpdateAttributeBimCitationDataspaceEntityType):
         attribute_id (UUID):
         bim_citation_id (UUID):
-        body (UpdateBIMCitationRequest): BIM citation patch input schema.
+        body (UpdateBIMCitationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -206,7 +206,7 @@ async def asyncio(
         attribute_category (UpdateAttributeBimCitationDataspaceEntityType):
         attribute_id (UUID):
         bim_citation_id (UUID):
-        body (UpdateBIMCitationRequest): BIM citation patch input schema.
+        body (UpdateBIMCitationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

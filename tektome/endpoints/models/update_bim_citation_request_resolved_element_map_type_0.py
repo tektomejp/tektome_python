@@ -6,11 +6,11 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="UpdateBIMCitationRequestResolvedElementMap")
+T = TypeVar("T", bound="UpdateBIMCitationRequestResolvedElementMapType0")
 
 
 @_attrs_define
-class UpdateBIMCitationRequestResolvedElementMap:
+class UpdateBIMCitationRequestResolvedElementMapType0:
     """ """
 
     additional_properties: dict[str, str] = _attrs_field(init=False, factory=dict)
@@ -25,10 +25,10 @@ class UpdateBIMCitationRequestResolvedElementMap:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        update_bim_citation_request_resolved_element_map = cls()
+        update_bim_citation_request_resolved_element_map_type_0 = cls()
 
-        update_bim_citation_request_resolved_element_map.additional_properties = d
-        return update_bim_citation_request_resolved_element_map
+        update_bim_citation_request_resolved_element_map_type_0.additional_properties = d
+        return update_bim_citation_request_resolved_element_map_type_0
 
     @property
     def additional_keys(self) -> list[str]:

@@ -11,7 +11,9 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.bim_annotation_request import BIMAnnotationRequest
     from ..models.bim_element_request import BIMElementRequest
-    from ..models.update_bim_citation_request_resolved_element_map import UpdateBIMCitationRequestResolvedElementMap
+    from ..models.update_bim_citation_request_resolved_element_map_type_0 import (
+        UpdateBIMCitationRequestResolvedElementMapType0,
+    )
 
 
 T = TypeVar("T", bound="UpdateBIMCitationRequest")
@@ -19,8 +21,7 @@ T = TypeVar("T", bound="UpdateBIMCitationRequest")
 
 @_attrs_define
 class UpdateBIMCitationRequest:
-    """BIM citation patch input schema.
-
+    """
     Attributes:
         title (None | str | Unset):
         keywords (list[str] | None | Unset):
@@ -29,7 +30,7 @@ class UpdateBIMCitationRequest:
             elements when provided.
         bim_annotations (list[BIMAnnotationRequest] | None | Unset): List of standalone BIM objects. Replaces all
             existing annotations when provided.
-        resolved_element_map (UpdateBIMCitationRequestResolvedElementMap | Unset):
+        resolved_element_map (None | Unset | UpdateBIMCitationRequestResolvedElementMapType0):
     """
 
     title: None | str | Unset = UNSET
@@ -37,10 +38,14 @@ class UpdateBIMCitationRequest:
     overlay_html: None | str | Unset = UNSET
     bim_elements: list[BIMElementRequest] | None | Unset = UNSET
     bim_annotations: list[BIMAnnotationRequest] | None | Unset = UNSET
-    resolved_element_map: UpdateBIMCitationRequestResolvedElementMap | Unset = UNSET
+    resolved_element_map: None | Unset | UpdateBIMCitationRequestResolvedElementMapType0 = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.update_bim_citation_request_resolved_element_map_type_0 import (
+            UpdateBIMCitationRequestResolvedElementMapType0,
+        )
+
         title: None | str | Unset
         if isinstance(self.title, Unset):
             title = UNSET
@@ -86,9 +91,13 @@ class UpdateBIMCitationRequest:
         else:
             bim_annotations = self.bim_annotations
 
-        resolved_element_map: dict[str, Any] | Unset = UNSET
-        if not isinstance(self.resolved_element_map, Unset):
+        resolved_element_map: dict[str, Any] | None | Unset
+        if isinstance(self.resolved_element_map, Unset):
+            resolved_element_map = UNSET
+        elif isinstance(self.resolved_element_map, UpdateBIMCitationRequestResolvedElementMapType0):
             resolved_element_map = self.resolved_element_map.to_dict()
+        else:
+            resolved_element_map = self.resolved_element_map
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -112,7 +121,9 @@ class UpdateBIMCitationRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.bim_annotation_request import BIMAnnotationRequest
         from ..models.bim_element_request import BIMElementRequest
-        from ..models.update_bim_citation_request_resolved_element_map import UpdateBIMCitationRequestResolvedElementMap
+        from ..models.update_bim_citation_request_resolved_element_map_type_0 import (
+            UpdateBIMCitationRequestResolvedElementMapType0,
+        )
 
         d = dict(src_dict)
 
@@ -195,12 +206,22 @@ class UpdateBIMCitationRequest:
 
         bim_annotations = _parse_bim_annotations(d.pop("bim_annotations", UNSET))
 
-        _resolved_element_map = d.pop("resolved_element_map", UNSET)
-        resolved_element_map: UpdateBIMCitationRequestResolvedElementMap | Unset
-        if isinstance(_resolved_element_map, Unset):
-            resolved_element_map = UNSET
-        else:
-            resolved_element_map = UpdateBIMCitationRequestResolvedElementMap.from_dict(_resolved_element_map)
+        def _parse_resolved_element_map(data: object) -> None | Unset | UpdateBIMCitationRequestResolvedElementMapType0:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                resolved_element_map_type_0 = UpdateBIMCitationRequestResolvedElementMapType0.from_dict(data)
+
+                return resolved_element_map_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | Unset | UpdateBIMCitationRequestResolvedElementMapType0, data)
+
+        resolved_element_map = _parse_resolved_element_map(d.pop("resolved_element_map", UNSET))
 
         update_bim_citation_request = cls(
             title=title,
