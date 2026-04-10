@@ -1,5 +1,6 @@
 # pyright: reportCallIssue=false
 """Test suite for Context class."""
+
 import uuid
 import pytest
 from pydantic import ValidationError
@@ -16,10 +17,9 @@ class TestContextCreation:
             system_base_url="https://example.tektome.com",
             system_flow_type="general",
             system_execution_id=sample_uuid,
-
         )
         assert context.system_user_api_key == "test_api_key_12345"
-        assert str(context.system_base_url) == "https://example.tektome.com/"
+        assert context.system_base_url == "https://example.tektome.com/"
         assert context.system_execution_id == sample_uuid
 
     def test_create_context_from_dict(self, sample_uuid_str):
@@ -32,7 +32,7 @@ class TestContextCreation:
         }
         context = Context(**data)
         assert context.system_user_api_key == "test_api_key_12345"
-        assert str(context.system_base_url) == "https://example.tektome.com/"
+        assert context.system_base_url == "https://example.tektome.com/"
         assert str(context.system_execution_id) == sample_uuid_str
 
     def test_create_context_with_different_system_base_urls(self, sample_uuid):
@@ -48,9 +48,8 @@ class TestContextCreation:
                 system_base_url=url_input,
                 system_flow_type="general",
                 system_execution_id=sample_uuid,
-
             )
-            assert str(context.system_base_url) == url_expected
+            assert context.system_base_url == url_expected
 
 
 class TestContextValidation:
@@ -110,7 +109,6 @@ class TestContextValidation:
                     system_base_url=invalid_url,
                     system_flow_type="general",
                     system_execution_id=sample_uuid,
-                    
                 )
 
     def test_none_values_not_allowed_for_required_fields(self, sample_uuid):
@@ -143,7 +141,7 @@ class TestContextSerialization:
         )
         data = context.model_dump()
         assert data["system_user_api_key"] == "test_api_key"
-        assert str(data["system_base_url"]) == "https://example.com/"
+        assert data["system_base_url"] == "https://example.com/"
         assert data["system_execution_id"] == sample_uuid
 
     def test_model_dump_json(self, sample_uuid):
@@ -153,7 +151,6 @@ class TestContextSerialization:
             system_base_url="https://example.com",
             system_flow_type="general",
             system_execution_id=sample_uuid,
-            
         )
         json_str = context.model_dump_json()
         assert "test_api_key" in json_str
@@ -167,7 +164,6 @@ class TestContextSerialization:
             system_base_url="https://example.com",
             system_flow_type="general",
             system_execution_id=sample_uuid,
-            
         )
         data = context.model_dump(mode="json")
         assert isinstance(data["system_user_api_key"], str)
@@ -186,14 +182,12 @@ class TestContextEquality:
             system_base_url="https://example.com",
             system_flow_type="general",
             system_execution_id=sample_uuid,
-            
         )
         context2 = Context(
             system_user_api_key="key",
             system_base_url="https://example.com",
             system_flow_type="general",
             system_execution_id=sample_uuid,
-            
         )
         assert context1 == context2
 
@@ -204,14 +198,12 @@ class TestContextEquality:
             system_base_url="https://example.com",
             system_flow_type="general",
             system_execution_id=sample_uuid,
-            
         )
         context2 = Context(
             system_user_api_key="key2",
             system_base_url="https://example.com",
             system_flow_type="general",
             system_execution_id=sample_uuid,
-            
         )
         assert context1 != context2
 
@@ -222,14 +214,12 @@ class TestContextEquality:
             system_base_url="https://example.com",
             system_flow_type="general",
             system_execution_id=uuid.uuid4(),
-            
         )
         context2 = Context(
             system_user_api_key="key",
             system_base_url="https://example.com",
             system_flow_type="general",
             system_execution_id=uuid.uuid4(),
-            
         )
         assert context1 != context2
 
@@ -244,7 +234,6 @@ class TestContextEdgeCases:
             system_base_url="https://old.com",
             system_flow_type="general",
             system_execution_id=sample_uuid,
-            
         )
         # In Pydantic v2, models are mutable by default unless configured otherwise
         context.system_user_api_key = "new_key"
@@ -270,7 +259,6 @@ class TestContextEdgeCases:
             system_base_url="https://example.com",
             system_flow_type="general",
             system_execution_id=sample_uuid,
-            
         )
         assert isinstance(context.system_execution_id, uuid.UUID)
         assert context.system_execution_id == sample_uuid
@@ -297,7 +285,7 @@ class TestContextValidateCall:
         )
         assert isinstance(result, Context)
         assert result.system_user_api_key == "key"
-        assert str(result.system_base_url) == "https://example.com/"
+        assert result.system_base_url == "https://example.com/"
         assert str(result.system_execution_id) == sample_uuid_str
 
     def test_validate_call_with_context_instance(self, sample_uuid):
@@ -343,7 +331,10 @@ class TestContextDocumentation:
     def test_system_user_api_key_description(self):
         """Test that system_user_api_key has the correct description."""
         schema = Context.model_json_schema()
-        assert "Authorization" in schema["properties"]["system_user_api_key"]["description"]
+        assert (
+            "Authorization"
+            in schema["properties"]["system_user_api_key"]["description"]
+        )
         assert "Bearer" in schema["properties"]["system_user_api_key"]["description"]
 
     def test_system_base_url_description(self):
@@ -355,7 +346,8 @@ class TestContextDocumentation:
         """Test that system_execution_id has the correct description."""
         schema = Context.model_json_schema()
         assert (
-            "extraction context" in schema["properties"]["system_execution_id"]["description"]
+            "extraction context"
+            in schema["properties"]["system_execution_id"]["description"]
         )
 
 
@@ -387,7 +379,13 @@ class TestContextGuardedFields:
 
     def test_guarded_fields_raise_when_none(self, minimal_context):
         """Test that accessing guarded fields raises AttributeError when None."""
-        guarded_fields = ["system_chatroom_id", "system_execution_id", "system_dataspace_id", "system_project_id", "system_resource_id"]
+        guarded_fields = [
+            "system_chatroom_id",
+            "system_execution_id",
+            "system_dataspace_id",
+            "system_project_id",
+            "system_resource_id",
+        ]
         for field in guarded_fields:
             with pytest.raises(AttributeError) as exc_info:
                 getattr(minimal_context, field)
@@ -404,7 +402,7 @@ class TestContextGuardedFields:
     def test_non_guarded_fields_work_normally(self, minimal_context):
         """Test that non-guarded fields are accessible without error."""
         assert minimal_context.system_user_api_key == "key"
-        assert str(minimal_context.system_base_url) == "https://example.com/"
+        assert minimal_context.system_base_url == "https://example.com/"
 
     def test_guarded_fields_can_be_set_individually(self, sample_uuid):
         """Test that guarded fields can be set individually."""

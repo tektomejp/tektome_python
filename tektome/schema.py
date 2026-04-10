@@ -6,7 +6,14 @@ from typing import Any, ClassVar, Literal
 from uuid import UUID
 
 import httpx
-from pydantic import BaseModel, ConfigDict, Field, field_validator, AnyHttpUrl
+from pydantic import (
+    AnyHttpUrl,
+    BaseModel,
+    ConfigDict,
+    Field,
+    TypeAdapter,
+    field_validator,
+)
 
 from tektome.endpoints.client import AuthenticatedClient
 
@@ -102,6 +109,9 @@ class AttributeDefinitions(BaseSchema):
         return v
 
 
+_url_adapter = TypeAdapter(AnyHttpUrl)
+
+
 class Context(BaseSchema):
     """
     Represents context configuration automatically inserted by the system.
@@ -120,10 +130,17 @@ class Context(BaseSchema):
         ...,
         description='User\'s API key. Include as "Authorization": Bearer <key> in the header to authenticate as the current user.',
     )
-    system_base_url: AnyHttpUrl = Field(
+    system_base_url: str = Field(
         ...,
         description="Tektome's deployment base url ex: https://domain.tld",
     )
+
+    @field_validator("system_base_url", mode="before")
+    @classmethod
+    def _validate_and_coerce_base_url(cls, v):
+        """Validate URL format via AnyHttpUrl but store as str for httpx compatibility."""
+        return str(_url_adapter.validate_python(v))
+
     system_flow_type: Literal[
         "general", "project_attr_extraction", "resource_attr_extraction"
     ] = Field(
@@ -208,7 +225,7 @@ class Context(BaseSchema):
             raise_on_unexpected_status: Whether to raise on undocumented status codes.
         """
         return AuthenticatedClient(
-            base_url=str(self.system_base_url),
+            base_url=self.system_base_url,
             token=self.system_user_api_key,
             cookies=cookies or {},
             headers=headers or {},
