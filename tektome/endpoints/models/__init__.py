@@ -343,14 +343,18 @@ from .dataspace_search_filter_field_response_recommended_values_type_0 import (
     DataspaceSearchFilterFieldResponseRecommendedValuesType0,
 )
 from .dataspace_search_filter_path_params import DataspaceSearchFilterPathParams
+from .dataspace_search_request_filters import DataspaceSearchRequestFilters
 from .dataspace_search_request_path_params import DataspaceSearchRequestPathParams
+from .dataspace_search_request_query import DataspaceSearchRequestQuery
 from .dataspace_search_request_response import DataspaceSearchRequestResponse
+from .dataspace_search_request_response_data_snapshot_type_0 import DataspaceSearchRequestResponseDataSnapshotType0
 from .dataspace_search_request_response_highlight_keywords_type_0 import (
     DataspaceSearchRequestResponseHighlightKeywordsType0,
 )
 from .dataspace_search_request_schema import DataspaceSearchRequestSchema
 from .dataspace_search_result_response import DataspaceSearchResultResponse
 from .dataspace_search_schema import DataspaceSearchSchema
+from .dataspace_search_sync_path import DataspaceSearchSyncPath
 from .dataspace_search_tag_config_patch_default_filter_request import DataspaceSearchTagConfigPatchDefaultFilterRequest
 from .dataspace_search_tag_config_patch_default_search_conditions_request import (
     DataspaceSearchTagConfigPatchDefaultSearchConditionsRequest,
@@ -664,6 +668,7 @@ from .paged_dataspace_project_attribute_post_out import PagedDataspaceProjectAtt
 from .paged_dataspace_project_resources_get_out import PagedDataspaceProjectResourcesGetOut
 from .paged_dataspace_projects_get_out import PagedDataspaceProjectsGetOut
 from .paged_dataspace_resource_file_attribute_post_out import PagedDataspaceResourceFileAttributePostOut
+from .paged_dataspace_search_request_get_out import PagedDataspaceSearchRequestGetOut
 from .paged_execution_approvals_get_out import PagedExecutionApprovalsGetOut
 from .paged_execution_group_get_out import PagedExecutionGroupGetOut
 from .paged_executions_get_out import PagedExecutionsGetOut
@@ -1471,12 +1476,16 @@ __all__ = (
     "DataspaceSearchFilterFieldResponse",
     "DataspaceSearchFilterFieldResponseRecommendedValuesType0",
     "DataspaceSearchFilterPathParams",
+    "DataspaceSearchRequestFilters",
     "DataspaceSearchRequestPathParams",
+    "DataspaceSearchRequestQuery",
     "DataspaceSearchRequestResponse",
+    "DataspaceSearchRequestResponseDataSnapshotType0",
     "DataspaceSearchRequestResponseHighlightKeywordsType0",
     "DataspaceSearchRequestSchema",
     "DataspaceSearchResultResponse",
     "DataspaceSearchSchema",
+    "DataspaceSearchSyncPath",
     "DataspaceSearchTagConfigPatchDefaultFilterRequest",
     "DataspaceSearchTagConfigPatchDefaultSearchConditionsRequest",
     "DataspaceSearchTagConfigPatchFilterRequest",
@@ -1773,6 +1782,7 @@ __all__ = (
     "PagedDataspaceProjectResourcesGetOut",
     "PagedDataspaceProjectsGetOut",
     "PagedDataspaceResourceFileAttributePostOut",
+    "PagedDataspaceSearchRequestGetOut",
     "PagedExecutionApprovalsGetOut",
     "PagedExecutionGroupGetOut",
     "PagedExecutionsGetOut",
