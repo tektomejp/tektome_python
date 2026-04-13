@@ -8,7 +8,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.deep_research_models_type import DeepResearchModelsType
-from ..models.recipeschoices import RECIPESCHOICES
+from ..models.recipe_choices import RecipeChoices
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="CreateDeepResearchChatRequest")
@@ -20,7 +20,7 @@ class CreateDeepResearchChatRequest:
 
     Attributes:
         prompt (str): User's message to the chat
-        recipe (RECIPESCHOICES):
+        recipe (RecipeChoices): Supported recipe choices for agent configuration.
         requirement_id (UUID):
         model (DeepResearchModelsType):
         resource_ids (list[UUID]): List of lawtalk Resource IDs to use for research
@@ -44,7 +44,7 @@ class CreateDeepResearchChatRequest:
     """
 
     prompt: str
-    recipe: RECIPESCHOICES
+    recipe: RecipeChoices
     requirement_id: UUID
     model: DeepResearchModelsType
     resource_ids: list[UUID]
@@ -152,7 +152,7 @@ class CreateDeepResearchChatRequest:
         d = dict(src_dict)
         prompt = d.pop("prompt")
 
-        recipe = RECIPESCHOICES(d.pop("recipe"))
+        recipe = RecipeChoices(d.pop("recipe"))
 
         requirement_id = UUID(d.pop("requirement_id"))
 
