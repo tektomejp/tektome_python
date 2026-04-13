@@ -99,7 +99,8 @@ def sync_detailed(
     """List most used processes
 
      Retrieve the top N most frequently used processes by the authenticated user within a dataspace.
-    Optionally filter by process type.
+    Optionally filter by process type or UI trigger kind. If the user has no usage history, returns the
+    top 5 processes alphabetically, applying the same filters.
 
     Args:
         dataspace_id (UUID):
@@ -145,7 +146,8 @@ def sync(
     """List most used processes
 
      Retrieve the top N most frequently used processes by the authenticated user within a dataspace.
-    Optionally filter by process type.
+    Optionally filter by process type or UI trigger kind. If the user has no usage history, returns the
+    top 5 processes alphabetically, applying the same filters.
 
     Args:
         dataspace_id (UUID):
@@ -186,7 +188,8 @@ async def asyncio_detailed(
     """List most used processes
 
      Retrieve the top N most frequently used processes by the authenticated user within a dataspace.
-    Optionally filter by process type.
+    Optionally filter by process type or UI trigger kind. If the user has no usage history, returns the
+    top 5 processes alphabetically, applying the same filters.
 
     Args:
         dataspace_id (UUID):
@@ -230,7 +233,8 @@ async def asyncio(
     """List most used processes
 
      Retrieve the top N most frequently used processes by the authenticated user within a dataspace.
-    Optionally filter by process type.
+    Optionally filter by process type or UI trigger kind. If the user has no usage history, returns the
+    top 5 processes alphabetically, applying the same filters.
 
     Args:
         dataspace_id (UUID):
