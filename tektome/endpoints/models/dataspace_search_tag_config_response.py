@@ -32,7 +32,6 @@ class DataspaceSearchTagConfigResponse:
         name (str):
         created (datetime.datetime):
         updated (datetime.datetime):
-        filters (list[DataspaceSearchFilterConfigurationResponse] | Unset):
         default_grouping_option (None | str | Unset):
         default_grouping_attribute (None | SearchProjectAttributeConfigResponse | SearchResourceAttributeConfigResponse
             | Unset):
@@ -43,6 +42,7 @@ class DataspaceSearchTagConfigResponse:
         description (None | str | Unset):
         is_active (bool | Unset):  Default: False.
         default_filter (None | Unset | UUID):
+        filters (list[DataspaceSearchFilterConfigurationResponse] | Unset):
     """
 
     created_by: UserMetadata
@@ -50,7 +50,6 @@ class DataspaceSearchTagConfigResponse:
     name: str
     created: datetime.datetime
     updated: datetime.datetime
-    filters: list[DataspaceSearchFilterConfigurationResponse] | Unset = UNSET
     default_grouping_option: None | str | Unset = UNSET
     default_grouping_attribute: (
         None | SearchProjectAttributeConfigResponse | SearchResourceAttributeConfigResponse | Unset
@@ -62,6 +61,7 @@ class DataspaceSearchTagConfigResponse:
     description: None | str | Unset = UNSET
     is_active: bool | Unset = False
     default_filter: None | Unset | UUID = UNSET
+    filters: list[DataspaceSearchFilterConfigurationResponse] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -77,13 +77,6 @@ class DataspaceSearchTagConfigResponse:
         created = self.created.isoformat()
 
         updated = self.updated.isoformat()
-
-        filters: list[dict[str, Any]] | Unset = UNSET
-        if not isinstance(self.filters, Unset):
-            filters = []
-            for filters_item_data in self.filters:
-                filters_item = filters_item_data.to_dict()
-                filters.append(filters_item)
 
         default_grouping_option: None | str | Unset
         if isinstance(self.default_grouping_option, Unset):
@@ -146,6 +139,13 @@ class DataspaceSearchTagConfigResponse:
         else:
             default_filter = self.default_filter
 
+        filters: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.filters, Unset):
+            filters = []
+            for filters_item_data in self.filters:
+                filters_item = filters_item_data.to_dict()
+                filters.append(filters_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -157,8 +157,6 @@ class DataspaceSearchTagConfigResponse:
                 "updated": updated,
             }
         )
-        if filters is not UNSET:
-            field_dict["filters"] = filters
         if default_grouping_option is not UNSET:
             field_dict["default_grouping_option"] = default_grouping_option
         if default_grouping_attribute is not UNSET:
@@ -177,6 +175,8 @@ class DataspaceSearchTagConfigResponse:
             field_dict["is_active"] = is_active
         if default_filter is not UNSET:
             field_dict["default_filter"] = default_filter
+        if filters is not UNSET:
+            field_dict["filters"] = filters
 
         return field_dict
 
@@ -198,15 +198,6 @@ class DataspaceSearchTagConfigResponse:
         created = isoparse(d.pop("created"))
 
         updated = isoparse(d.pop("updated"))
-
-        _filters = d.pop("filters", UNSET)
-        filters: list[DataspaceSearchFilterConfigurationResponse] | Unset = UNSET
-        if _filters is not UNSET:
-            filters = []
-            for filters_item_data in _filters:
-                filters_item = DataspaceSearchFilterConfigurationResponse.from_dict(filters_item_data)
-
-                filters.append(filters_item)
 
         def _parse_default_grouping_option(data: object) -> None | str | Unset:
             if data is None:
@@ -324,13 +315,21 @@ class DataspaceSearchTagConfigResponse:
 
         default_filter = _parse_default_filter(d.pop("default_filter", UNSET))
 
+        _filters = d.pop("filters", UNSET)
+        filters: list[DataspaceSearchFilterConfigurationResponse] | Unset = UNSET
+        if _filters is not UNSET:
+            filters = []
+            for filters_item_data in _filters:
+                filters_item = DataspaceSearchFilterConfigurationResponse.from_dict(filters_item_data)
+
+                filters.append(filters_item)
+
         dataspace_search_tag_config_response = cls(
             created_by=created_by,
             updated_by=updated_by,
             name=name,
             created=created,
             updated=updated,
-            filters=filters,
             default_grouping_option=default_grouping_option,
             default_grouping_attribute=default_grouping_attribute,
             table_grouping_project_option=table_grouping_project_option,
@@ -340,6 +339,7 @@ class DataspaceSearchTagConfigResponse:
             description=description,
             is_active=is_active,
             default_filter=default_filter,
+            filters=filters,
         )
 
         dataspace_search_tag_config_response.additional_properties = d
