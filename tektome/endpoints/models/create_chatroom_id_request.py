@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, Literal, TypeVar, cast
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..models.recipe_choices import RecipeChoices
 
 T = TypeVar("T", bound="CreateChatroomIdRequest")
 
@@ -13,16 +15,16 @@ T = TypeVar("T", bound="CreateChatroomIdRequest")
 class CreateChatroomIdRequest:
     """
     Attributes:
-        recipe (Literal['tektome-os-v1']):
+        recipe (RecipeChoices): Supported recipe choices for agent configuration.
         prompt (str): User's message to the LLM agent
     """
 
-    recipe: Literal["tektome-os-v1"]
+    recipe: RecipeChoices
     prompt: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        recipe = self.recipe
+        recipe = self.recipe.value
 
         prompt = self.prompt
 
@@ -40,9 +42,7 @@ class CreateChatroomIdRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        recipe = cast(Literal["tektome-os-v1"], d.pop("recipe"))
-        if recipe != "tektome-os-v1":
-            raise ValueError(f"recipe must match const 'tektome-os-v1', got '{recipe}'")
+        recipe = RecipeChoices(d.pop("recipe"))
 
         prompt = d.pop("prompt")
 

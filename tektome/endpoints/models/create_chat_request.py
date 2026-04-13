@@ -7,7 +7,7 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.recipeschoices import RECIPESCHOICES
+from ..models.recipe_choices import RecipeChoices
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="CreateChatRequest")
@@ -18,12 +18,12 @@ class CreateChatRequest:
     """
     Attributes:
         prompt (str): User's message to the chat
-        recipe (RECIPESCHOICES):
+        recipe (RecipeChoices): Supported recipe choices for agent configuration.
         chatroom_id (None | Unset | UUID):
     """
 
     prompt: str
-    recipe: RECIPESCHOICES
+    recipe: RecipeChoices
     chatroom_id: None | Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -58,7 +58,7 @@ class CreateChatRequest:
         d = dict(src_dict)
         prompt = d.pop("prompt")
 
-        recipe = RECIPESCHOICES(d.pop("recipe"))
+        recipe = RecipeChoices(d.pop("recipe"))
 
         def _parse_chatroom_id(data: object) -> None | Unset | UUID:
             if data is None:

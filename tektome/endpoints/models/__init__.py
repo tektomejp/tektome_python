@@ -768,6 +768,7 @@ from .queue_length_status_response import QueueLengthStatusResponse
 from .raw_text_citation_path_params import RawTextCitationPathParams
 from .raw_text_citation_schema_response import RawTextCitationSchemaResponse
 from .raw_text_citations_response import RawTextCitationsResponse
+from .recipe_choices import RecipeChoices
 from .recipeschoices import RECIPESCHOICES
 from .recommend_resource_group_response import RecommendResourceGroupResponse
 from .recommend_resource_group_response_parsed_location import RecommendResourceGroupResponseParsedLocation
@@ -1871,6 +1872,7 @@ __all__ = (
     "RawTextCitationPathParams",
     "RawTextCitationSchemaResponse",
     "RawTextCitationsResponse",
+    "RecipeChoices",
     "RECIPESCHOICES",
     "RecommendResourceGroupResponse",
     "RecommendResourceGroupResponseParsedLocation",
