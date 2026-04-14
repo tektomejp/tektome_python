@@ -15,11 +15,7 @@ T = TypeVar("T", bound="CreateImageCitationPolygonAnnotationRequest")
 class CreateImageCitationPolygonAnnotationRequest:
     """
     Attributes:
-        attribute_type (AttributeType): StrEnum for all available attribute types
-
-            .. warning::
-                Do not change the values of this enum, as they are used in the database.
-                If you need to add a new attribute type, add a new enum value with a unique name.
+        attribute_type (AttributeType): Enumeration of supported attribute types.
         bounding_geometry (list[list[float]]): List of coordinates defining the polygon. Each coordinate is a tuple of
             two floats (x, y).
     """
