@@ -7,7 +7,7 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.deep_research_models_type import DeepResearchModelsType
+from ..models.deep_research_models import DeepResearchModels
 from ..models.recipe_choices import RecipeChoices
 from ..types import UNSET, Unset
 
@@ -22,7 +22,10 @@ class CreateDeepResearchChatRequest:
         prompt (str): User's message to the chat
         recipe (RecipeChoices): Supported recipe choices for agent configuration.
         requirement_id (UUID):
-        model (DeepResearchModelsType):
+        model (DeepResearchModels): Enum representing different AI models used for deep research.
+
+            Values can be updated without database migrations; validation is enforced
+            via validate_deep_research_model and model/serializer validators.
         resource_ids (list[UUID]): List of lawtalk Resource IDs to use for research
         chatroom_id (None | Unset | UUID):
         enable_web_search (bool | Unset): Enable web search for the deep research Default: False.
@@ -46,7 +49,7 @@ class CreateDeepResearchChatRequest:
     prompt: str
     recipe: RecipeChoices
     requirement_id: UUID
-    model: DeepResearchModelsType
+    model: DeepResearchModels
     resource_ids: list[UUID]
     chatroom_id: None | Unset | UUID = UNSET
     enable_web_search: bool | Unset = False
@@ -156,7 +159,7 @@ class CreateDeepResearchChatRequest:
 
         requirement_id = UUID(d.pop("requirement_id"))
 
-        model = DeepResearchModelsType(d.pop("model"))
+        model = DeepResearchModels(d.pop("model"))
 
         resource_ids = []
         _resource_ids = d.pop("resource_ids")

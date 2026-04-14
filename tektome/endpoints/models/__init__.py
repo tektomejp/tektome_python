@@ -374,7 +374,7 @@ from .date_attribute_schema_request import DateAttributeSchemaRequest
 from .date_attribute_schema_response import DateAttributeSchemaResponse
 from .date_time_attribute_schema_request import DateTimeAttributeSchemaRequest
 from .date_time_attribute_schema_response import DateTimeAttributeSchemaResponse
-from .deep_research_models_type import DeepResearchModelsType
+from .deep_research_models import DeepResearchModels
 from .default_search_condition_schema import DefaultSearchConditionSchema
 from .delete_attribute_attribute_citation_dataspace_entity_type import (
     DeleteAttributeAttributeCitationDataspaceEntityType,
@@ -1505,7 +1505,7 @@ __all__ = (
     "DateAttributeSchemaResponse",
     "DateTimeAttributeSchemaRequest",
     "DateTimeAttributeSchemaResponse",
-    "DeepResearchModelsType",
+    "DeepResearchModels",
     "DefaultSearchConditionSchema",
     "DeleteAttributeAttributeCitationDataspaceEntityType",
     "DeleteAttributeBimCitationDataspaceEntityType",

@@ -7,6 +7,7 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.deep_research_models import DeepResearchModels
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="UpdateReferenceNoteVersionRequest")
@@ -21,7 +22,7 @@ class UpdateReferenceNoteVersionRequest:
         is_active (bool | None | Unset):
         requirement_title (None | str | Unset):
         requirement_prompt (None | str | Unset):
-        ai_model (None | str | Unset):
+        ai_model (DeepResearchModels | None | Unset):
         enable_web_search (bool | None | Unset):
     """
 
@@ -30,7 +31,7 @@ class UpdateReferenceNoteVersionRequest:
     is_active: bool | None | Unset = UNSET
     requirement_title: None | str | Unset = UNSET
     requirement_prompt: None | str | Unset = UNSET
-    ai_model: None | str | Unset = UNSET
+    ai_model: DeepResearchModels | None | Unset = UNSET
     enable_web_search: bool | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -74,6 +75,8 @@ class UpdateReferenceNoteVersionRequest:
         ai_model: None | str | Unset
         if isinstance(self.ai_model, Unset):
             ai_model = UNSET
+        elif isinstance(self.ai_model, DeepResearchModels):
+            ai_model = self.ai_model.value
         else:
             ai_model = self.ai_model
 
@@ -165,12 +168,20 @@ class UpdateReferenceNoteVersionRequest:
 
         requirement_prompt = _parse_requirement_prompt(d.pop("requirement_prompt", UNSET))
 
-        def _parse_ai_model(data: object) -> None | str | Unset:
+        def _parse_ai_model(data: object) -> DeepResearchModels | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                ai_model_type_0 = DeepResearchModels(data)
+
+                return ai_model_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(DeepResearchModels | None | Unset, data)
 
         ai_model = _parse_ai_model(d.pop("ai_model", UNSET))
 
