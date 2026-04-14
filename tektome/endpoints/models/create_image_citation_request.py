@@ -17,11 +17,7 @@ T = TypeVar("T", bound="CreateImageCitationRequest")
 class CreateImageCitationRequest:
     """
     Attributes:
-        attribute_type (AttributeType): StrEnum for all available attribute types
-
-            .. warning::
-                Do not change the values of this enum, as they are used in the database.
-                If you need to add a new attribute type, add a new enum value with a unique name.
+        attribute_type (AttributeType): Enumeration of supported attribute types.
         bounding_geometry (list[list[list[float]]]): List of coordinates defining the polygon within the image only.
         image_resource_id (UUID): ID of the cited image resource.
         title (None | str | Unset):

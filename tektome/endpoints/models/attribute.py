@@ -25,11 +25,7 @@ class Attribute:
     Attributes:
         name (str): Attribute name
         prompt (str): Prompt explaining what the attribute is
-        kind (AttributeType): StrEnum for all available attribute types
-
-            .. warning::
-                Do not change the values of this enum, as they are used in the database.
-                If you need to add a new attribute type, add a new enum value with a unique name.
+        kind (AttributeType): Enumeration of supported attribute types.
         id (UUID | Unset):
         table_column_prompts (list[TableColumn] | Unset): Prompts for table columns, if the attribute is a table
         json_field_prompts (list[JsonField] | Unset): Prompts for json fields, if the attribute is a json

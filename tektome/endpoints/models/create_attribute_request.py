@@ -28,11 +28,7 @@ class CreateAttributeRequest:
         name (str):
         value (bool | CreateAttributeRequestValueType7 | datetime.date | datetime.datetime | float | int | list[Any] |
             str):
-        type_ (AttributeType): StrEnum for all available attribute types
-
-            .. warning::
-                Do not change the values of this enum, as they are used in the database.
-                If you need to add a new attribute type, add a new enum value with a unique name.
+        type_ (AttributeType): Enumeration of supported attribute types.
         is_locked (bool | Unset):  Default: False.
         entity_id (None | Unset | UUID):
         extraction_status (AttributeExtractionStatusChoices | Unset):  Default:

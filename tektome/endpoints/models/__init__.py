@@ -477,7 +477,6 @@ from .folder_children_query import FolderChildrenQuery
 from .folder_children_response import FolderChildrenResponse
 from .folder_delete_query import FolderDeleteQuery
 from .folder_get_out import FolderGetOut
-from .folder_import_request import FolderImportRequest
 from .folder_level_children import FolderLevelChildren
 from .folder_level_metadata import FolderLevelMetadata
 from .folder_metadata_response import FolderMetadataResponse
@@ -545,10 +544,7 @@ from .image_citation_path_params import ImageCitationPathParams
 from .image_citation_polygon_annotation_response import ImageCitationPolygonAnnotationResponse
 from .image_citation_schema_response import ImageCitationSchemaResponse
 from .image_citations_response import ImageCitationsResponse
-from .import_folder import ImportFolder
 from .import_resource_group_request import ImportResourceGroupRequest
-from .import_result import ImportResult
-from .import_result_failed import ImportResultFailed
 from .import_zip_artifacts_post_path_params import ImportZipArtifactsPostPathParams
 from .import_zip_artifacts_request import ImportZipArtifactsRequest
 from .import_zip_ttos_artifacts_response import ImportZipTtosArtifactsResponse
@@ -1034,7 +1030,6 @@ from .stream_trim_batch_bim_elements_bim_element_type_path import StreamTrimBatc
 from .string_attribute_schema_request import StringAttributeSchemaRequest
 from .string_attribute_schema_response import StringAttributeSchemaResponse
 from .supported_dr_model import SupportedDRModel
-from .sync_storage_file_multi_part_body_params import SyncStorageFileMultiPartBodyParams
 from .table_attribute_schema_response import TableAttributeSchemaResponse
 from .table_attribute_schema_response_value_type_0 import TableAttributeSchemaResponseValueType0
 from .table_cell_update import TableCellUpdate
@@ -1604,7 +1599,6 @@ __all__ = (
     "FolderChildrenResponse",
     "FolderDeleteQuery",
     "FolderGetOut",
-    "FolderImportRequest",
     "FolderLevelChildren",
     "FolderLevelMetadata",
     "FolderMetadataResponse",
@@ -1668,10 +1662,7 @@ __all__ = (
     "ImageCitationPolygonAnnotationResponse",
     "ImageCitationSchemaResponse",
     "ImageCitationsResponse",
-    "ImportFolder",
     "ImportResourceGroupRequest",
-    "ImportResult",
-    "ImportResultFailed",
     "ImportZipArtifactsPostPathParams",
     "ImportZipArtifactsRequest",
     "ImportZipTtosArtifactsResponse",
@@ -2115,7 +2106,6 @@ __all__ = (
     "StringAttributeSchemaRequest",
     "StringAttributeSchemaResponse",
     "SupportedDRModel",
-    "SyncStorageFileMultiPartBodyParams",
     "TableAttributeSchemaResponse",
     "TableAttributeSchemaResponseValueType0",
     "TableCellUpdate",
