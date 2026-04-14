@@ -17,10 +17,12 @@ class DataspaceProcessDetail:
     Attributes:
         id (UUID):
         name (str):
+        is_active (bool):
     """
 
     id: UUID
     name: str
+    is_active: bool
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -28,12 +30,15 @@ class DataspaceProcessDetail:
 
         name = self.name
 
+        is_active = self.is_active
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "id": id,
                 "name": name,
+                "is_active": is_active,
             }
         )
 
@@ -46,9 +51,12 @@ class DataspaceProcessDetail:
 
         name = d.pop("name")
 
+        is_active = d.pop("is_active")
+
         dataspace_process_detail = cls(
             id=id,
             name=name,
+            is_active=is_active,
         )
 
         dataspace_process_detail.additional_properties = d
