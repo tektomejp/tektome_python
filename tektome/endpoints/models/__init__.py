@@ -902,6 +902,8 @@ from .resource_section_schema import ResourceSectionSchema
 from .resource_upload_schema import ResourceUploadSchema
 from .resource_vc_schema_path_request import ResourceVCSchemaPathRequest
 from .resource_vc_with_version_schema_path_request import ResourceVCWithVersionSchemaPathRequest
+from .restore_tektome_python_sdk_post_out import RestoreTektomePythonSdkPostOut
+from .restore_tektome_python_sdk_post_path_params import RestoreTektomePythonSdkPostPathParams
 from .retrieve_bim_objects_in_view_response import RetrieveBimObjectsInViewResponse
 from .retrieve_bim_objects_in_view_response_data_type_1_item import RetrieveBimObjectsInViewResponseDataType1Item
 from .retrieve_bim_sheet_response import RetrieveBimSheetResponse
@@ -1997,6 +1999,8 @@ __all__ = (
     "ResourceUploadSchema",
     "ResourceVCSchemaPathRequest",
     "ResourceVCWithVersionSchemaPathRequest",
+    "RestoreTektomePythonSdkPostOut",
+    "RestoreTektomePythonSdkPostPathParams",
     "RetrieveBimObjectsInViewResponse",
     "RetrieveBimObjectsInViewResponseDataType1Item",
     "RetrieveBimSheetResponse",
