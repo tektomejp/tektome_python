@@ -731,6 +731,8 @@ from .post_pdf_citation_path_params import PostPDFCitationPathParams
 from .post_pdf_citation_polygon_annotation_dataspace_entity_type import (
     PostPdfCitationPolygonAnnotationDataspaceEntityType,
 )
+from .process_chatroom_response import ProcessChatroomResponse
+from .process_chatroom_response_current_operations import ProcessChatroomResponseCurrentOperations
 from .process_filter_options import ProcessFilterOptions
 from .process_filter_request import ProcessFilterRequest
 from .process_filter_request_ui_trigger_kind_choices import ProcessFilterRequestUiTriggerKindChoices
@@ -1837,6 +1839,8 @@ __all__ = (
     "PostImageCitationPolygonAnnotationDataspaceEntityType",
     "PostPDFCitationPathParams",
     "PostPdfCitationPolygonAnnotationDataspaceEntityType",
+    "ProcessChatroomResponse",
+    "ProcessChatroomResponseCurrentOperations",
     "ProcessFilterOptions",
     "ProcessFilterRequest",
     "ProcessFilterRequestUiTriggerKindChoices",

@@ -12,15 +12,16 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.chatroom_response_current_operations import ChatroomResponseCurrentOperations
+    from ..models.process_chatroom_response_current_operations import ProcessChatroomResponseCurrentOperations
 
 
-T = TypeVar("T", bound="ChatroomResponse")
+T = TypeVar("T", bound="ProcessChatroomResponse")
 
 
 @_attrs_define
-class ChatroomResponse:
-    """
+class ProcessChatroomResponse:
+    """Response schema for a chatroom created from a process.
+
     Attributes:
         created (datetime.datetime):
         updated (datetime.datetime):
@@ -32,7 +33,7 @@ class ChatroomResponse:
         name (str | Unset):  Default: ''.
         description (str | Unset):  Default: ''.
         status (str | Unset):  Default: 'idle'.
-        current_operations (ChatroomResponseCurrentOperations | Unset):
+        current_operations (ProcessChatroomResponseCurrentOperations | Unset):
         pending_template_installs (int | Unset):  Default: 0.
     """
 
@@ -46,7 +47,7 @@ class ChatroomResponse:
     name: str | Unset = ""
     description: str | Unset = ""
     status: str | Unset = "idle"
-    current_operations: ChatroomResponseCurrentOperations | Unset = UNSET
+    current_operations: ProcessChatroomResponseCurrentOperations | Unset = UNSET
     pending_template_installs: int | Unset = 0
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -127,7 +128,7 @@ class ChatroomResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.chatroom_response_current_operations import ChatroomResponseCurrentOperations
+        from ..models.process_chatroom_response_current_operations import ProcessChatroomResponseCurrentOperations
 
         d = dict(src_dict)
         created = isoparse(d.pop("created"))
@@ -196,15 +197,15 @@ class ChatroomResponse:
         status = d.pop("status", UNSET)
 
         _current_operations = d.pop("current_operations", UNSET)
-        current_operations: ChatroomResponseCurrentOperations | Unset
+        current_operations: ProcessChatroomResponseCurrentOperations | Unset
         if isinstance(_current_operations, Unset):
             current_operations = UNSET
         else:
-            current_operations = ChatroomResponseCurrentOperations.from_dict(_current_operations)
+            current_operations = ProcessChatroomResponseCurrentOperations.from_dict(_current_operations)
 
         pending_template_installs = d.pop("pending_template_installs", UNSET)
 
-        chatroom_response = cls(
+        process_chatroom_response = cls(
             created=created,
             updated=updated,
             user=user,
@@ -219,8 +220,8 @@ class ChatroomResponse:
             pending_template_installs=pending_template_installs,
         )
 
-        chatroom_response.additional_properties = d
-        return chatroom_response
+        process_chatroom_response.additional_properties = d
+        return process_chatroom_response
 
     @property
     def additional_keys(self) -> list[str]:
