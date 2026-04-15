@@ -144,7 +144,8 @@ def sync_detailed(
 ) -> Response[Any | GenericHttpError]:
     """Delete an artifact
 
-     Permanently delete an artifact by its ID. Read-only artifacts cannot be deleted.
+     Permanently delete an artifact by its ID. Read-only artifacts and main.openflow.json cannot be
+    deleted.
 
     Args:
         artifact_id (UUID):
@@ -175,7 +176,8 @@ def sync(
 ) -> Any | GenericHttpError | None:
     """Delete an artifact
 
-     Permanently delete an artifact by its ID. Read-only artifacts cannot be deleted.
+     Permanently delete an artifact by its ID. Read-only artifacts and main.openflow.json cannot be
+    deleted.
 
     Args:
         artifact_id (UUID):
@@ -201,7 +203,8 @@ async def asyncio_detailed(
 ) -> Response[Any | GenericHttpError]:
     """Delete an artifact
 
-     Permanently delete an artifact by its ID. Read-only artifacts cannot be deleted.
+     Permanently delete an artifact by its ID. Read-only artifacts and main.openflow.json cannot be
+    deleted.
 
     Args:
         artifact_id (UUID):
@@ -230,7 +233,8 @@ async def asyncio(
 ) -> Any | GenericHttpError | None:
     """Delete an artifact
 
-     Permanently delete an artifact by its ID. Read-only artifacts cannot be deleted.
+     Permanently delete an artifact by its ID. Read-only artifacts and main.openflow.json cannot be
+    deleted.
 
     Args:
         artifact_id (UUID):
