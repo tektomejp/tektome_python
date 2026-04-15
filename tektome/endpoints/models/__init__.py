@@ -614,9 +614,18 @@ from .list_dataspace_templates_ui_trigger_kind_choices import ListDataspaceTempl
 from .list_llm_usage_reports_period_types import ListLlmUsageReportsPeriodTypes
 from .list_requirement_reference_notes_sort import ListRequirementReferenceNotesSort
 from .list_ttos_templates_ui_trigger_kind_choices import ListTtosTemplatesUiTriggerKindChoices
+from .llm_messages_request import LLMMessagesRequest
+from .llm_messages_request_messages_item import LLMMessagesRequestMessagesItem
+from .llm_messages_request_metadata_type_0 import LLMMessagesRequestMetadataType0
+from .llm_messages_request_system_type_1_item import LLMMessagesRequestSystemType1Item
+from .llm_messages_request_tool_choice_type_0 import LLMMessagesRequestToolChoiceType0
+from .llm_messages_request_tools_type_0_item import LLMMessagesRequestToolsType0Item
+from .llm_messages_response import LLMMessagesResponse
+from .llm_messages_response_content_item import LLMMessagesResponseContentItem
 from .llm_parser_response import LlmParserResponse
 from .llm_usage_report_query import LLMUsageReportQuery
 from .llm_usage_report_response import LLMUsageReportResponse
+from .llm_usage_response import LLMUsageResponse
 from .login_providers import LoginProviders
 from .login_response import LoginResponse
 from .mark_all_read_request import MarkAllReadRequest
@@ -625,6 +634,7 @@ from .markdown_schema import MarkdownSchema
 from .me_get_gitbook_token_out import MeGetGitbookTokenOut
 from .me_get_out_without_organization import MeGetOutWithoutOrganization
 from .me_response import MeResponse
+from .model_tier import ModelTier
 from .multi_select_attribute_schema_request import MultiSelectAttributeSchemaRequest
 from .multi_select_attribute_schema_response import MultiSelectAttributeSchemaResponse
 from .multi_select_attribute_schema_response_value_type_0 import MultiSelectAttributeSchemaResponseValueType0
@@ -1730,9 +1740,18 @@ __all__ = (
     "ListLlmUsageReportsPeriodTypes",
     "ListRequirementReferenceNotesSort",
     "ListTtosTemplatesUiTriggerKindChoices",
+    "LLMMessagesRequest",
+    "LLMMessagesRequestMessagesItem",
+    "LLMMessagesRequestMetadataType0",
+    "LLMMessagesRequestSystemType1Item",
+    "LLMMessagesRequestToolChoiceType0",
+    "LLMMessagesRequestToolsType0Item",
+    "LLMMessagesResponse",
+    "LLMMessagesResponseContentItem",
     "LlmParserResponse",
     "LLMUsageReportQuery",
     "LLMUsageReportResponse",
+    "LLMUsageResponse",
     "LoginProviders",
     "LoginResponse",
     "MarkAllReadRequest",
@@ -1741,6 +1760,7 @@ __all__ = (
     "MeGetGitbookTokenOut",
     "MeGetOutWithoutOrganization",
     "MeResponse",
+    "ModelTier",
     "MultiSelectAttributeSchemaRequest",
     "MultiSelectAttributeSchemaResponse",
     "MultiSelectAttributeSchemaResponseValueType0",
