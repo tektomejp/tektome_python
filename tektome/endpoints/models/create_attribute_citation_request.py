@@ -17,8 +17,16 @@ T = TypeVar("T", bound="CreateAttributeCitationRequest")
 class CreateAttributeCitationRequest:
     """
     Attributes:
-        attribute_type (AttributeType): Enumeration of supported attribute types.
-        cited_attribute_type (AttributeType): Enumeration of supported attribute types.
+        attribute_type (AttributeType): StrEnum for all available attribute types
+
+            .. warning::
+                Do not change the values of this enum, as they are used in the database.
+                If you need to add a new attribute type, add a new enum value with a unique name.
+        cited_attribute_type (AttributeType): StrEnum for all available attribute types
+
+            .. warning::
+                Do not change the values of this enum, as they are used in the database.
+                If you need to add a new attribute type, add a new enum value with a unique name.
         cited_attribute_id (UUID):
         title (None | str | Unset):
         overlay_html (None | str | Unset):
