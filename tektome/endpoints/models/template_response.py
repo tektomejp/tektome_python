@@ -46,6 +46,7 @@ class TemplateResponse:
         type_ (str | Unset):  Default: 'general'.
         ui_trigger_name (None | str | Unset):
         ui_trigger_kind (None | str | Unset):
+        sha (None | str | Unset): Git blob SHA from the source repository, used for sync deduplication Default: ''.
     """
 
     created_by: None | UserMetadata
@@ -70,6 +71,7 @@ class TemplateResponse:
     type_: str | Unset = "general"
     ui_trigger_name: None | str | Unset = UNSET
     ui_trigger_kind: None | str | Unset = UNSET
+    sha: None | str | Unset = ""
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -162,6 +164,12 @@ class TemplateResponse:
         else:
             ui_trigger_kind = self.ui_trigger_kind
 
+        sha: None | str | Unset
+        if isinstance(self.sha, Unset):
+            sha = UNSET
+        else:
+            sha = self.sha
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -204,6 +212,8 @@ class TemplateResponse:
             field_dict["ui_trigger_name"] = ui_trigger_name
         if ui_trigger_kind is not UNSET:
             field_dict["ui_trigger_kind"] = ui_trigger_kind
+        if sha is not UNSET:
+            field_dict["sha"] = sha
 
         return field_dict
 
@@ -361,6 +371,15 @@ class TemplateResponse:
 
         ui_trigger_kind = _parse_ui_trigger_kind(d.pop("ui_trigger_kind", UNSET))
 
+        def _parse_sha(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        sha = _parse_sha(d.pop("sha", UNSET))
+
         template_response = cls(
             created_by=created_by,
             updated_by=updated_by,
@@ -384,6 +403,7 @@ class TemplateResponse:
             type_=type_,
             ui_trigger_name=ui_trigger_name,
             ui_trigger_kind=ui_trigger_kind,
+            sha=sha,
         )
 
         template_response.additional_properties = d
