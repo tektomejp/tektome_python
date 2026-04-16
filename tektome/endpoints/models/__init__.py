@@ -539,6 +539,7 @@ from .get_pdf_citation_polygon_annotation_dataspace_entity_type import (
 from .get_requirement_items_response_200_type_1 import GetRequirementItemsResponse200Type1
 from .get_supported_dr_models_response import GetSupportedDRModelsResponse
 from .get_ttos_job_response import GetTtosJobResponse
+from .git_hub_webhook_response import GitHubWebhookResponse
 from .image_citation_annotated_polygon_path_params import ImageCitationAnnotatedPolygonPathParams
 from .image_citation_path_params import ImageCitationPathParams
 from .image_citation_polygon_annotation_response import ImageCitationPolygonAnnotationResponse
@@ -1669,6 +1670,7 @@ __all__ = (
     "GetRequirementItemsResponse200Type1",
     "GetSupportedDRModelsResponse",
     "GetTtosJobResponse",
+    "GitHubWebhookResponse",
     "ImageCitationAnnotatedPolygonPathParams",
     "ImageCitationPathParams",
     "ImageCitationPolygonAnnotationResponse",
