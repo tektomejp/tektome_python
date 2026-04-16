@@ -94,17 +94,17 @@ class ApprovalTicketCandidateOut:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                serialized_review_data_type_0 = AttributeDataSnapshot.from_dict(data)
+                serialized_review_data_type_0_type_0 = AttributeDataSnapshot.from_dict(data)
 
-                return serialized_review_data_type_0
+                return serialized_review_data_type_0_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                serialized_review_data_type_1 = FileDataSnapshot.from_dict(data)
+                serialized_review_data_type_0_type_1 = FileDataSnapshot.from_dict(data)
 
-                return serialized_review_data_type_1
+                return serialized_review_data_type_0_type_1
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             return cast(AttributeDataSnapshot | FileDataSnapshot | None | Unset, data)
