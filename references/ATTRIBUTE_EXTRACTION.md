@@ -9,7 +9,7 @@ This document explains how to run LLM-based attribute extraction on a PDF resour
 Attribute extraction runs an LLM over a PDF resource to answer a question and return a typed value plus reasoning. The full flow is:
 
 ```
-list pages → create section → submit extraction → poll for result
+list pages → create section → submit extraction → poll for result → upload value to dataspace → create citation → create approval ticket
 ```
 
 ---
@@ -205,6 +205,114 @@ print(result.reasoning) # the LLM's reasoning
 | `pending_approval` | Only occurs when `for_approval=True` — result awaits human approval before finalising |
 
 `completed_not_found` is easy to conflate with failure. It means the LLM ran successfully but determined the document does not contain the requested information.
+
+---
+
+## Step 6 — Upload extracted value to dataspace
+
+The extraction result from Step 5 is temporary. To persist the value on the resource, create a dataspace attribute with `post_general_dataspace_attribute`.
+
+```python
+from tektome.endpoints.api.dataspace import post_general_dataspace_attribute
+from tektome.endpoints.models.create_attribute_request import CreateAttributeRequest
+from tektome.endpoints.models.post_general_dataspace_attribute_dataspace_entity_type import (
+    PostGeneralDataspaceAttributeDataspaceEntityType,
+)
+
+response = post_general_dataspace_attribute.sync_detailed(
+    attribute_category=PostGeneralDataspaceAttributeDataspaceEntityType.RESOURCE,
+    client=client,
+    dataspace_id=context.system_dataspace_id,
+    body=CreateAttributeRequest(
+        name=attribute_name,
+        type_=AttributeType.STRING_ATTRIBUTES,
+        value=result.value,
+        entity_id=context.system_resource_id,
+    ),
+)
+
+dataspace_attribute_id = response.parsed.id   # needed for citation and approval
+```
+
+---
+
+## Step 7 — Create a citation
+
+Link the dataspace attribute back to the source PDF resource.
+
+```python
+from tektome.endpoints.api.dataspace_attributes_citations import create_attribute_pdf_citation
+from tektome.endpoints.models.create_pdf_citation_request import CreatePDFCitationRequest
+from tektome.endpoints.models.create_attribute_pdf_citation_dataspace_entity_type import (
+    CreateAttributePdfCitationDataspaceEntityType,
+)
+
+response = create_attribute_pdf_citation.sync_detailed(
+    dataspace_id=context.system_dataspace_id,
+    attribute_category=CreateAttributePdfCitationDataspaceEntityType.RESOURCE,
+    attribute_id=dataspace_attribute_id,    # from Step 6
+    client=client,
+    body=CreatePDFCitationRequest(
+        title=result.reasoning[:32] if result.reasoning else "Extraction",
+        attribute_type=AttributeType.STRING_ATTRIBUTES,   # must match the attribute's type
+        resource_id=context.system_resource_id,
+    ),
+)
+# response.status_code should be 201
+```
+
+`title` is limited to **32 characters**. For other citation types (image, BIM, raw text, attribute-to-attribute), see [MANUAL_ATTRIBUTES_AND_CITATIONS.md](MANUAL_ATTRIBUTES_AND_CITATIONS.md).
+
+---
+
+## Step 8 — Create an approval ticket
+
+Submit the dataspace attribute for approval. Fetch the attribute first to resolve its server-side type for `CandidateItemKind`.
+
+```python
+from tektome.endpoints.api.dataspace import get_general_dataspace_attribute
+from tektome.endpoints.api.dataspace_approval_tickets import (
+    create_execution_approval_ticket_with_candidates,
+)
+from tektome.endpoints.models import (
+    ApprovalCategoryTypes,
+    AttributeCandidatePayload,
+    CandidateItem,
+    CandidateItemKind,
+    CreateApprovalTicketRequest,
+    CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams,
+    GetGeneralDataspaceAttributeDataspaceEntityType,
+)
+
+attr_response = get_general_dataspace_attribute.sync_detailed(
+    dataspace_id=context.system_dataspace_id,
+    attribute_category=GetGeneralDataspaceAttributeDataspaceEntityType.RESOURCE,
+    attribute_id=dataspace_attribute_id,
+    client=client,
+)
+kind = CandidateItemKind(attr_response.parsed.type_)
+
+ticket_response = create_execution_approval_ticket_with_candidates.sync_detailed(
+    client=client,
+    dataspace_id=context.system_dataspace_id,
+    execution_id=context.system_execution_id,
+    body=CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams(
+        payload=CreateApprovalTicketRequest(
+            category=ApprovalCategoryTypes.ATTRIBUTE_UPDATE,
+            candidates=[
+                CandidateItem(
+                    data=AttributeCandidatePayload(
+                        attribute_id=dataspace_attribute_id,
+                        resource_id=context.system_resource_id,
+                    ),
+                    kind=kind,
+                )
+            ],
+        )
+    ),
+)
+# ticket_response.status_code should be 201
+```
 
 ---
 
