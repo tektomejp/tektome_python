@@ -37,6 +37,7 @@ class CreateExtractionRequest:
     include_pdf_pages_as_images: bool | Unset = False
     for_approval: bool | Unset = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    execution_id: str | None = None
 
     def to_dict(self) -> dict[str, Any]:
         section_id = str(self.section_id)
@@ -68,6 +69,8 @@ class CreateExtractionRequest:
             field_dict["include_pdf_pages_as_images"] = include_pdf_pages_as_images
         if for_approval is not UNSET:
             field_dict["for_approval"] = for_approval
+        if self.execution_id is not None:
+            field_dict["execution_id"] = self.execution_id
 
         return field_dict
 
