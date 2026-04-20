@@ -56,6 +56,7 @@ from .attribute import Attribute
 from .attribute_candidate_payload import AttributeCandidatePayload
 from .attribute_citation_path_params import AttributeCitationPathParams
 from .attribute_citations_response import AttributeCitationsResponse
+from .attribute_context_response import AttributeContextResponse
 from .attribute_data_snapshot import AttributeDataSnapshot
 from .attribute_data_snapshot_state import AttributeDataSnapshotState
 from .attribute_extraction_response import AttributeExtractionResponse
@@ -1221,6 +1222,7 @@ __all__ = (
     "AttributeCandidatePayload",
     "AttributeCitationPathParams",
     "AttributeCitationsResponse",
+    "AttributeContextResponse",
     "AttributeDataSnapshot",
     "AttributeDataSnapshotState",
     "AttributeExtractionResponse",
