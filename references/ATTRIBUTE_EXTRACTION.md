@@ -9,8 +9,10 @@ This document explains how to run LLM-based attribute extraction on a PDF resour
 Attribute extraction runs an LLM over a PDF resource to answer a question and return a typed value plus reasoning. The full flow is:
 
 ```
-list pages → create section → submit extraction → poll for result → upload value to dataspace → create citation → create approval ticket
+list pages → create section → submit extraction (for_approval=True) → poll for result → create approval ticket
 ```
+
+The attribute `name` passed to the extraction must match an existing attribute config in the dataspace. When it does, the extraction automatically persists the value and citations to the dataspace — no separate upload or citation step is needed.
 
 ---
 
@@ -78,6 +80,7 @@ body = CreateExtractionRequest(
     ],
     enduser_prompt="What is the total contract value?",
     include_pdf_pages_as_images=True,             # recommended for PDFs
+    for_approval=True,                            # required for Step 6 — see below
 )
 
 extraction_response = create_attribute_extraction.sync_detailed(client=client, body=body)
@@ -182,6 +185,7 @@ TERMINAL = {
     AttributeExtractionStatusChoices.COMPLETED_NOT_FOUND,
     AttributeExtractionStatusChoices.FAILED,
     AttributeExtractionStatusChoices.CANCELLED,
+    AttributeExtractionStatusChoices.PENDING_APPROVAL,   # expected when for_approval=True
 }
 
 while True:
@@ -208,66 +212,11 @@ print(result.reasoning) # the LLM's reasoning
 
 ---
 
-## Step 6 — Upload extracted value to dataspace
+## Step 6 — Create an approval ticket
 
-The extraction result from Step 5 is temporary. To persist the value on the resource, create a dataspace attribute with `post_general_dataspace_attribute`.
+Submit the extracted attribute for approval. Use the `attribute_id` from Step 4 directly — when the attribute name matches an existing dataspace attribute config, the extraction already persisted the value and citations to the dataspace, so no separate upload or citation step is needed.
 
-```python
-from tektome.endpoints.api.dataspace import post_general_dataspace_attribute
-from tektome.endpoints.models.create_attribute_request import CreateAttributeRequest
-from tektome.endpoints.models.post_general_dataspace_attribute_dataspace_entity_type import (
-    PostGeneralDataspaceAttributeDataspaceEntityType,
-)
-
-response = post_general_dataspace_attribute.sync_detailed(
-    attribute_category=PostGeneralDataspaceAttributeDataspaceEntityType.RESOURCE,
-    client=client,
-    dataspace_id=context.system_dataspace_id,
-    body=CreateAttributeRequest(
-        name=attribute_name,
-        type_=AttributeType.STRING_ATTRIBUTES,
-        value=result.value,
-        entity_id=context.system_resource_id,
-    ),
-)
-
-dataspace_attribute_id = response.parsed.id   # needed for citation and approval
-```
-
----
-
-## Step 7 — Create a citation
-
-Link the dataspace attribute back to the source PDF resource.
-
-```python
-from tektome.endpoints.api.dataspace_attributes_citations import create_attribute_pdf_citation
-from tektome.endpoints.models.create_pdf_citation_request import CreatePDFCitationRequest
-from tektome.endpoints.models.create_attribute_pdf_citation_dataspace_entity_type import (
-    CreateAttributePdfCitationDataspaceEntityType,
-)
-
-response = create_attribute_pdf_citation.sync_detailed(
-    dataspace_id=context.system_dataspace_id,
-    attribute_category=CreateAttributePdfCitationDataspaceEntityType.RESOURCE,
-    attribute_id=dataspace_attribute_id,    # from Step 6
-    client=client,
-    body=CreatePDFCitationRequest(
-        title=result.reasoning[:32] if result.reasoning else "Extraction",
-        attribute_type=AttributeType.STRING_ATTRIBUTES,   # must match the attribute's type
-        resource_id=context.system_resource_id,
-    ),
-)
-# response.status_code should be 201
-```
-
-`title` is limited to **32 characters**. For other citation types (image, BIM, raw text, attribute-to-attribute), see [MANUAL_ATTRIBUTES_AND_CITATIONS.md](MANUAL_ATTRIBUTES_AND_CITATIONS.md).
-
----
-
-## Step 8 — Create an approval ticket
-
-Submit the dataspace attribute for approval. Fetch the attribute first to resolve its server-side type for `CandidateItemKind`.
+Fetch the attribute first to resolve its server-side type for `CandidateItemKind`.
 
 ```python
 from tektome.endpoints.api.dataspace import get_general_dataspace_attribute
@@ -287,7 +236,7 @@ from tektome.endpoints.models import (
 attr_response = get_general_dataspace_attribute.sync_detailed(
     dataspace_id=context.system_dataspace_id,
     attribute_category=GetGeneralDataspaceAttributeDataspaceEntityType.RESOURCE,
-    attribute_id=dataspace_attribute_id,
+    attribute_id=attribute_id,     # from Step 4
     client=client,
 )
 kind = CandidateItemKind(attr_response.parsed.type_)
@@ -302,7 +251,7 @@ ticket_response = create_execution_approval_ticket_with_candidates.sync_detailed
             candidates=[
                 CandidateItem(
                     data=AttributeCandidatePayload(
-                        attribute_id=dataspace_attribute_id,
+                        attribute_id=attribute_id,
                         resource_id=context.system_resource_id,
                     ),
                     kind=kind,
@@ -313,6 +262,10 @@ ticket_response = create_execution_approval_ticket_with_candidates.sync_detailed
 )
 # ticket_response.status_code should be 201
 ```
+
+The attribute must have `extraction_status=PENDING_APPROVAL`, which requires `for_approval=True` in Step 3.
+
+For project flows, use `GetGeneralDataspaceAttributeDataspaceEntityType.PROJECT` and pass `project_id=context.system_project_id` instead of `resource_id` in `AttributeCandidatePayload`.
 
 ---
 
