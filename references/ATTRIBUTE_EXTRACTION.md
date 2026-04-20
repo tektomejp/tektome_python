@@ -9,8 +9,10 @@ This document explains how to run LLM-based attribute extraction on a PDF resour
 Attribute extraction runs an LLM over a PDF resource to answer a question and return a typed value plus reasoning. The full flow is:
 
 ```
-list pages → create section → submit extraction → poll for result
+list pages → create section → submit extraction (for_approval=True) → poll for result → create approval ticket
 ```
+
+The attribute `name` passed to the extraction must match an existing attribute config in the dataspace. When it does, the extraction automatically persists the value and citations to the dataspace — no separate upload or citation step is needed.
 
 ---
 
@@ -78,6 +80,7 @@ body = CreateExtractionRequest(
     ],
     enduser_prompt="What is the total contract value?",
     include_pdf_pages_as_images=True,             # recommended for PDFs
+    for_approval=True,                            # required for Step 6 — see below
 )
 
 extraction_response = create_attribute_extraction.sync_detailed(client=client, body=body)
@@ -182,6 +185,7 @@ TERMINAL = {
     AttributeExtractionStatusChoices.COMPLETED_NOT_FOUND,
     AttributeExtractionStatusChoices.FAILED,
     AttributeExtractionStatusChoices.CANCELLED,
+    AttributeExtractionStatusChoices.PENDING_APPROVAL,   # expected when for_approval=True
 }
 
 while True:
@@ -205,6 +209,63 @@ print(result.reasoning) # the LLM's reasoning
 | `pending_approval` | Only occurs when `for_approval=True` — result awaits human approval before finalising |
 
 `completed_not_found` is easy to conflate with failure. It means the LLM ran successfully but determined the document does not contain the requested information.
+
+---
+
+## Step 6 — Create an approval ticket
+
+Submit the extracted attribute for approval. Use the `attribute_id` from Step 4 directly — when the attribute name matches an existing dataspace attribute config, the extraction already persisted the value and citations to the dataspace, so no separate upload or citation step is needed.
+
+Fetch the attribute first to resolve its server-side type for `CandidateItemKind`.
+
+```python
+from tektome.endpoints.api.dataspace import get_general_dataspace_attribute
+from tektome.endpoints.api.dataspace_approval_tickets import (
+    create_execution_approval_ticket_with_candidates,
+)
+from tektome.endpoints.models import (
+    ApprovalCategoryTypes,
+    AttributeCandidatePayload,
+    CandidateItem,
+    CandidateItemKind,
+    CreateApprovalTicketRequest,
+    CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams,
+    GetGeneralDataspaceAttributeDataspaceEntityType,
+)
+
+attr_response = get_general_dataspace_attribute.sync_detailed(
+    dataspace_id=context.system_dataspace_id,
+    attribute_category=GetGeneralDataspaceAttributeDataspaceEntityType.RESOURCE,
+    attribute_id=attribute_id,     # from Step 4
+    client=client,
+)
+kind = CandidateItemKind(attr_response.parsed.type_)
+
+ticket_response = create_execution_approval_ticket_with_candidates.sync_detailed(
+    client=client,
+    dataspace_id=context.system_dataspace_id,
+    execution_id=context.system_execution_id,
+    body=CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams(
+        payload=CreateApprovalTicketRequest(
+            category=ApprovalCategoryTypes.ATTRIBUTE_UPDATE,
+            candidates=[
+                CandidateItem(
+                    data=AttributeCandidatePayload(
+                        attribute_id=attribute_id,
+                        resource_id=context.system_resource_id,
+                    ),
+                    kind=kind,
+                )
+            ],
+        )
+    ),
+)
+# ticket_response.status_code should be 201
+```
+
+The attribute must have `extraction_status=PENDING_APPROVAL`, which requires `for_approval=True` in Step 3.
+
+For project flows, use `GetGeneralDataspaceAttributeDataspaceEntityType.PROJECT` and pass `project_id=context.system_project_id` instead of `resource_id` in `AttributeCandidatePayload`.
 
 ---
 
