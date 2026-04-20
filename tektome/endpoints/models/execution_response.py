@@ -13,6 +13,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.execution_process_response import ExecutionProcessResponse
+    from ..models.execution_response_result import ExecutionResponseResult
     from ..models.executions_review_status_details import ExecutionsReviewStatusDetails
     from ..models.user_metadata import UserMetadata
 
@@ -39,6 +40,7 @@ class ExecutionResponse:
         requested_approval_count (int | Unset): Total number of approval steps for this execution that the user/agent
             has been requested to review Default: 0.
         status (str | Unset): The status of the execution (e.g., pending, completed, failed) Default: 'pending'.
+        result (ExecutionResponseResult | Unset): The results of the execution
     """
 
     review_status: ExecutionsReviewStatusDetails
@@ -54,6 +56,7 @@ class ExecutionResponse:
     is_system_generated: bool | Unset = False
     requested_approval_count: int | Unset = 0
     status: str | Unset = "pending"
+    result: ExecutionResponseResult | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -103,6 +106,10 @@ class ExecutionResponse:
 
         status = self.status
 
+        result: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.result, Unset):
+            result = self.result.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -129,12 +136,15 @@ class ExecutionResponse:
             field_dict["requested_approval_count"] = requested_approval_count
         if status is not UNSET:
             field_dict["status"] = status
+        if result is not UNSET:
+            field_dict["result"] = result
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.execution_process_response import ExecutionProcessResponse
+        from ..models.execution_response_result import ExecutionResponseResult
         from ..models.executions_review_status_details import ExecutionsReviewStatusDetails
         from ..models.user_metadata import UserMetadata
 
@@ -210,6 +220,13 @@ class ExecutionResponse:
 
         status = d.pop("status", UNSET)
 
+        _result = d.pop("result", UNSET)
+        result: ExecutionResponseResult | Unset
+        if isinstance(_result, Unset):
+            result = UNSET
+        else:
+            result = ExecutionResponseResult.from_dict(_result)
+
         execution_response = cls(
             review_status=review_status,
             approvals_count=approvals_count,
@@ -224,6 +241,7 @@ class ExecutionResponse:
             is_system_generated=is_system_generated,
             requested_approval_count=requested_approval_count,
             status=status,
+            result=result,
         )
 
         execution_response.additional_properties = d
