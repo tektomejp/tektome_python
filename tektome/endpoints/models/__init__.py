@@ -204,6 +204,7 @@ from .create_chat_deep_research_response import CreateChatDeepResearchResponse
 from .create_chat_message_response import CreateChatMessageResponse
 from .create_chat_request import CreateChatRequest
 from .create_chatroom_id_request import CreateChatroomIdRequest
+from .create_chatroom_id_request_user_context_type_0 import CreateChatroomIdRequestUserContextType0
 from .create_chatroom_request import CreateChatroomRequest
 from .create_core_project_request import CreateCoreProjectRequest
 from .create_dataspace_project_reorder_column_request import CreateDataspaceProjectReorderColumnRequest
@@ -1365,6 +1366,7 @@ __all__ = (
     "CreateChatMessageResponse",
     "CreateChatRequest",
     "CreateChatroomIdRequest",
+    "CreateChatroomIdRequestUserContextType0",
     "CreateChatroomRequest",
     "CreateCoreProjectRequest",
     "CreateDataspaceProjectReorderColumnRequest",
