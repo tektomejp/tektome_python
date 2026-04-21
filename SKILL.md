@@ -121,6 +121,7 @@ All schemas use `extra="forbid"` - unexpected fields raise validation errors.
 ```python
 ctx.system_user_api_key   # str - Bearer token for API auth
 ctx.system_base_url       # AnyHttpUrl - deployment base URL
+ctx.system_flow_type      # Literal["general", "project_attr_extraction", "resource_attr_extraction"]
 ```
 
 **Guarded fields** (raise `AttributeError` if not available in current execution context):
@@ -133,6 +134,16 @@ ctx.system_project_id               # UUID | None
 ctx.system_resource_id              # UUID | None
 ctx.system_attribute_definition_ids # list[UUID] | None
 ```
+
+### Flow types and attribute definition IDs
+
+| `system_flow_type` | Guaranteed context fields | Description |
+|---|---|---|
+| `"general"` | None beyond auth | General-purpose flow — no attribute or entity context is injected |
+| `"resource_attr_extraction"` | `system_resource_id`, `system_attribute_definition_ids` | The platform pre-creates attribute instances on the resource and passes their config IDs. The flow should populate their values and submit approval tickets. |
+| `"project_attr_extraction"` | `system_project_id`, `system_attribute_definition_ids` | Same as above, but attributes are scoped to a project rather than a single resource. |
+
+When `system_flow_type` is `resource_attr_extraction` or `project_attr_extraction`, the flow can expect `system_attribute_definition_ids` to be a non-empty list of attribute config UUIDs. These identify which attribute configs to look up on the dataspace (via `list_dataspace_resource_attribute_configs` or `list_dataspace_project_attribute_configs`) to obtain the `attribute_name`, `attribute_type`, and column schema. The corresponding attribute instances are already created on the target entity and can be found via `core_attributes_metadata` on the resource/project response.
 
 Use `ctx.client()` to get an `AuthenticatedClient` pre-configured with credentials.
 
