@@ -8,15 +8,40 @@ This document explains how to manually create typed attributes on a resource or 
 
 ```
 Primitive attributes:
-  Step 0: declare config → Step 1: create attribute → get attribute_id → Step 2: create citation(s)
+  Step 0: declare config → Step 1: create attribute → get attribute_id → Step 2: create citation(s) → Step 3: submit approval ticket
 
 Table attributes:
-  Step 0: declare config → Step 1b: create empty table instance → Step 1c: upsert cells → get attribute_id → Step 2: create citation(s)
+  Step 0: declare config → Step 1b: create empty table instance → Step 1c: upsert cells → get attribute_id → Step 2: create citation(s) → Step 3: submit approval ticket
 ```
 
 Attributes store typed values (float, string, boolean, etc.) on a resource or project within a dataspace. Citations link an attribute's value back to the source evidence — a PDF page region, an image bounding box, a BIM element, raw text, or another attribute.
 
 **Attribute configs must be declared before writing attribute data.** A config registers the attribute name, type, and (for tables) column schema on the dataspace. Attempting to write an attribute that has no config will fail.
+
+### Approval tickets, not direct completion
+
+Agents running inside a Tektome process execution **must not** finalise attributes themselves by setting `extraction_status="completed"`. Instead, create attributes and citations in their default `pending_approval` state, then submit an **approval ticket** referencing those candidates so a human can review and approve the work. Approval is what promotes `pending_approval` → `completed` and links the attribute to its resource/project.
+
+Consequences of this approach:
+
+- While the ticket is `pending`, the attribute is **not** exposed via `core_attributes_metadata` on the resource response, and `get_dataspace_project_resource` will not surface it. This is expected.
+- Pending candidates are still discoverable — use the approval-ticket endpoints (`get_execution_approvals`, `get_approval_ticket_details`, `get_approval_candidates`) to list and inspect them.
+- Do not pass `extraction_status=AttributeExtractionStatusChoices.COMPLETED` from an agent. Leave the field at its default so the attribute is created as `pending_approval` and flows through the approval pipeline.
+
+### Flow types and pre-created attributes
+
+When a process execution uses `system_flow_type` of `resource_attr_extraction` or `project_attr_extraction`, the platform **pre-creates** the attribute config and instance before the flow runs, and injects the config IDs via `ctx.system_attribute_definition_ids`. In this mode the agent does not need to create configs or attribute instances — it should:
+
+1. Look up the config by matching `system_attribute_definition_ids[0]` against `list_dataspace_resource_attribute_configs` (or the project equivalent) to get `attribute_name`, `attribute_type`, and column schema.
+2. Read the existing attribute instance ID from `core_attributes_metadata` on the resource/project response.
+3. Populate the value (e.g. upsert table cells) and attach citations.
+4. Submit an approval ticket referencing the attribute as a candidate.
+
+When `system_flow_type` is `general`, no attribute context is injected and the agent must create configs and instances itself (Steps 0–1 in this document).
+
+See the `bim-kv-table-citation-template.openflow.json` reference template for a complete working example of the `resource_attr_extraction` flow.
+
+---
 
 ### Attribute scopes — resource vs project
 
@@ -105,8 +130,6 @@ from tektome.endpoints.models.post_general_dataspace_attribute_dataspace_entity_
     PostGeneralDataspaceAttributeDataspaceEntityType,
 )
 
-from tektome.endpoints.models.attribute_extraction_status_choices import AttributeExtractionStatusChoices
-
 attr = post_general_dataspace_attribute.sync(
     dataspace_id=dataspace_uuid,
     attribute_category=PostGeneralDataspaceAttributeDataspaceEntityType.RESOURCE,
@@ -115,15 +138,19 @@ attr = post_general_dataspace_attribute.sync(
         name="wall_thickness",
         value=0.3,
         type_=AttributeType.FLOAT_ATTRIBUTES,
-        entity_id=resource_uuid,                                       # REQUIRED — links attribute to entity
-        extraction_status=AttributeExtractionStatusChoices.COMPLETED,   # REQUIRED — default PENDING_APPROVAL is invisible
+        entity_id=resource_uuid,   # REQUIRED — links attribute to entity
+        # extraction_status is intentionally NOT set.
+        # The default is PENDING_APPROVAL, which is what we want: the attribute
+        # will be finalised via an approval ticket (Step 3), not by the agent.
     ),
 )
 
-attribute_id = attr.id   # UUID — needed for all citation calls
+attribute_id = attr.id   # UUID — needed for citation calls and for the approval ticket candidate
 ```
 
 For a project-level attribute, use the same endpoint with `PostGeneralDataspaceAttributeDataspaceEntityType.PROJECT` as `attribute_category`.
+
+> **Do not pass `extraction_status=AttributeExtractionStatusChoices.COMPLETED`.** Agents running inside a process execution submit an approval ticket (Step 3) instead. While the ticket is pending, the attribute will **not** appear in `core_attributes_metadata` on the resource response — that is expected. It becomes visible once approved.
 
 ### Attribute types
 
@@ -175,14 +202,13 @@ Table attributes require a **three-step process**: declare the config (Step 0), 
 
 Use `post_general_dataspace_attribute` to create the `TableAttribute` record and link it to the resource. The `value` must be a dict matching the `Table` schema — **not** a list.
 
-> **Critical: you MUST pass `extraction_status=AttributeExtractionStatusChoices.COMPLETED`.** The default is `PENDING_APPROVAL`, which has two effects: (1) the attribute is **not linked** to the resource via the M2M relation, and (2) it is **filtered out** of `core_attributes_metadata` when reading the resource back. The attribute will exist in the database but be invisible and unusable.
+> **Do not pass `extraction_status`.** Leave it at its default (`PENDING_APPROVAL`). The attribute will not be linked to the resource via the M2M relation and will not appear in `core_attributes_metadata` until the approval ticket created in Step 3 is approved. This is intentional. You still receive the `attribute_id` in the 201 response, so Step 1c (cell upsert) and Step 2 (citations) can proceed normally.
 
 ```python
 from tektome.endpoints.api.dataspace import post_general_dataspace_attribute
 from tektome.endpoints.models.create_attribute_request import CreateAttributeRequest
 from tektome.endpoints.models.create_attribute_request_value_type_7 import CreateAttributeRequestValueType7
 from tektome.endpoints.models.attribute_type import AttributeType
-from tektome.endpoints.models.attribute_extraction_status_choices import AttributeExtractionStatusChoices
 from tektome.endpoints.models.post_general_dataspace_attribute_dataspace_entity_type import (
     PostGeneralDataspaceAttributeDataspaceEntityType,
 )
@@ -209,19 +235,12 @@ attr_resp = post_general_dataspace_attribute.sync_detailed(
         value=table_value,
         type_=AttributeType.TABLE_ATTRIBUTES,
         entity_id=resource_uuid,
-        extraction_status=AttributeExtractionStatusChoices.COMPLETED,  # REQUIRED
+        # extraction_status is intentionally omitted — defaults to PENDING_APPROVAL.
     ),
 )
 if attr_resp.status_code.value == 201:
     attr_data = json.loads(attr_resp.content.decode())
     attribute_id = UUID(attr_data["id"])
-elif attr_resp.status_code.value == 409:
-    # Attribute already exists — read its ID from resource metadata
-    res_resp = get_dataspace_project_resource.sync_detailed(
-        resource_id=resource_uuid, client=client,
-    )
-    res_data = json.loads(res_resp.content.decode())
-    attribute_id = UUID(res_data["core_attributes_metadata"][attr_name]["id"])
 else:
     raise RuntimeError(
         f"post_general_dataspace_attribute failed: {attr_resp.status_code.value} "
@@ -235,7 +254,7 @@ else:
 - `"rows"` can be `[]` for an empty table
 - Passing `value=[]` or `value="placeholder"` causes a **500 ValidationError** on the server
 
-**Idempotency:** The endpoint returns **409** if a `COMPLETED` attribute with the same name already exists on the resource. Handle this by reading the existing attribute ID from resource metadata (shown above).
+**Re-runs / idempotency:** Because pending attributes are not exposed via `core_attributes_metadata`, a re-run cannot rediscover an existing pending table from the resource response. If you need to resume a prior run, list the approval candidates on the active execution (see Step 3) and reuse the `attribute_id` from the existing candidate instead of creating a new one.
 
 ### Step 1c — Populate the table cells
 
@@ -283,45 +302,19 @@ if upsert_resp.status_code.value != 204:
 > **Do NOT pass `version=None`.** `None` serializes as `"version": null` in the JSON body, which the server interprets as a version mismatch and returns **409 Table has been modified**.
 
 The `version` field uses `UNSET` semantics (see "UNSET vs None" below):
-- **New table (first write after Step 1b):** leave `version` as the default `UNSET` — it is omitted from the request body entirely.
-- **Existing table (re-run/update):** read the current version from the resource metadata and pass it explicitly.
+- **New table (first write after Step 1b):** leave `version` as the default `UNSET` — it is omitted from the request body entirely. This is the common case when the agent creates the attribute and immediately populates its cells in the same run.
+- **Updating an already-approved table:** read the current version from the resource metadata (`core_attributes_metadata.<name>.value.version`) and pass it explicitly.
 
 ```python
-from tektome.endpoints.api.dataspace import get_dataspace_project_resource
-
-res_resp = get_dataspace_project_resource.sync_detailed(
-    resource_id=resource_uuid, client=client,
-)
-res_data = json.loads(res_resp.content.decode())
-
-attr_entry = res_data.get("core_attributes_metadata", {}).get(attr_name)
-current_version = None
-if attr_entry:
-    val = attr_entry.get("value")
-    if isinstance(val, dict) and "version" in val:
-        current_version = val["version"]  # nested at core_attributes_metadata.<name>.value.version
-
-if current_version is not None:
-    body = UpdateDataspaceTableAttributeRequest(cells=cells, version=current_version)
-else:
-    body = UpdateDataspaceTableAttributeRequest(cells=cells)  # UNSET — omitted
+body = UpdateDataspaceTableAttributeRequest(cells=cells)  # UNSET — version omitted
 ```
 
 ### Getting the `attribute_id` for citations
 
-The `attribute_id` is returned in the Step 1b response (201 → parse `id` from body). If you already created the attribute in a previous run, read it from resource metadata:
+Parse `id` from the Step 1b 201 response body and keep it in memory for the rest of the run — you'll need it for Step 1c (cell upsert), Step 2 (citations), and Step 3 (approval-ticket candidate payload).
 
-```python
-from tektome.endpoints.api.dataspace import get_dataspace_project_resource
+Because the attribute is `pending_approval`, it is **not** in `core_attributes_metadata` yet, so you cannot recover its ID by reading the resource. After the approval ticket is approved, the attribute promotes to `completed` and the resource response structure becomes:
 
-res_resp = get_dataspace_project_resource.sync_detailed(
-    resource_id=resource_uuid, client=client,
-)
-res_data = json.loads(res_resp.content.decode())
-attribute_id = UUID(res_data["core_attributes_metadata"][attr_name]["id"])
-```
-
-The resource response structure is:
 ```json
 {
   "core_attributes_metadata": {
@@ -346,7 +339,7 @@ The resource response structure is:
 - **Sparse cells**: rows that are missing a column get `None` for that column.
 - **`version`**: used for optimistic concurrency control. Pass the version number from `core_attributes_metadata.<name>.value.version` when updating an existing table. Leave as `UNSET` (the default) for a first write — do **not** pass `None`, which serializes as `null` and causes a 409.
 - **`insert_dataspace_table_attribute_row`**: inserts a blank row at a given `row_index`, shifting existing rows down. Use this when you need to splice a row into the middle of an existing table rather than replacing everything.
-- **Do NOT call `post_general_dataspace_attribute` again after Step 1b.** A second call with `extraction_status=COMPLETED` returns 409. A call with a different status or value creates a new, disconnected attribute record and can overwrite the M2M link, destroying your table data.
+- **Do NOT call `post_general_dataspace_attribute` again after Step 1b.** Each call creates a new attribute record; a second call for the same logical attribute produces a disconnected duplicate that will never be linked to the resource. Create the attribute once, keep the `attribute_id` in memory, and submit a single approval ticket for it.
 
 ### Config idempotency
 
@@ -586,6 +579,91 @@ create_attribute_attribute_citation.sync(
 
 ---
 
+## Step 3 — Submit an approval ticket
+
+After creating the attribute (Step 1 / Step 1b–c) and attaching its citations (Step 2), submit an approval ticket so a human can review and approve the work. The attribute stays `pending_approval` — and therefore hidden from `core_attributes_metadata` — until the ticket is approved.
+
+This step is **required** for agents running inside a Tektome process execution. It is how values reach the resource.
+
+### When to submit the ticket
+
+One ticket per execution, submitted **after** all candidate attributes and their citations have been created. Batch every candidate produced by the run into a single ticket via the `candidates` list — do not POST a ticket per attribute.
+
+### Required context
+
+- `dataspace_id` — the dataspace the attributes live in.
+- `execution_id` — the current process execution. When the script is running as an Openflow process, read it from `Context.system_execution_id`. It must be non-null.
+
+```python
+from tektome.endpoints.api.dataspace_approval_tickets import (
+    create_execution_approval_ticket_with_candidates,
+)
+from tektome.endpoints.models.approval_category_types import ApprovalCategoryTypes
+from tektome.endpoints.models.attribute_candidate_payload import AttributeCandidatePayload
+from tektome.endpoints.models.candidate_item import CandidateItem
+from tektome.endpoints.models.candidate_item_kind import CandidateItemKind
+from tektome.endpoints.models.create_approval_ticket_request import CreateApprovalTicketRequest
+from tektome.endpoints.models.create_execution_approval_ticket_with_candidates_multi_part_body_params import (
+    CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams,
+)
+
+# One CandidateItem per attribute the agent produced in this run.
+# `kind` must match the attribute's type.
+candidates = [
+    CandidateItem(
+        kind=CandidateItemKind.CREATE_UPDATE_FLOAT_ATTRIBUTES,
+        data=AttributeCandidatePayload(
+            attribute_id=attribute_id,      # UUID from Step 1 / Step 1b
+            resource_id=resource_uuid,      # for resource-scoped attributes
+            # or: project_id=project_uuid   # for project-scoped attributes
+        ),
+    ),
+    # ... additional CandidateItem entries for each attribute produced in this run
+]
+
+payload = CreateApprovalTicketRequest(
+    category=ApprovalCategoryTypes.ATTRIBUTE_UPDATE,
+    candidates=candidates,
+)
+
+ticket_resp = create_execution_approval_ticket_with_candidates.sync_detailed(
+    dataspace_id=dataspace_uuid,
+    execution_id=ctx.system_execution_id,   # from the Openflow Context
+    client=client,
+    body=CreateExecutionApprovalTicketWithCandidatesMultiPartBodyParams(payload=payload),
+)
+if ticket_resp.status_code.value != 201:
+    raise RuntimeError(
+        f"create_execution_approval_ticket_with_candidates failed: "
+        f"{ticket_resp.status_code.value} {ticket_resp.content.decode()}"
+    )
+
+ticket_id = ticket_resp.parsed.id
+```
+
+### Candidate kinds
+
+`CandidateItemKind` maps 1:1 onto `AttributeType`, plus `FILE_UPLOAD` for file-extraction tickets:
+
+| `CandidateItemKind` | Use for |
+|---|---|
+| `CREATE_UPDATE_<TYPE>_ATTRIBUTES` | The corresponding primitive/table/JSON attribute kind |
+| `FILE_UPLOAD` | File-extraction tickets (`ApprovalCategoryTypes.FILE_EXTRACTION`) with `FileUploadCandidatePayload` |
+
+For attribute extraction, use `ApprovalCategoryTypes.ATTRIBUTE_UPDATE` and the matching `CREATE_UPDATE_*` kind per candidate.
+
+### Inspecting pending candidates
+
+Because pending attributes are not in `core_attributes_metadata`, use the approval-ticket endpoints to enumerate in-flight work:
+
+- `get_execution_approvals` — list approval tickets for an execution.
+- `get_approval_ticket_details` — inspect a ticket by ID.
+- `get_approval_candidates` — list the candidates attached to a ticket, including their `attribute_id` and `serialized_review_data`.
+
+These replace `get_dataspace_project_resource` → `core_attributes_metadata` for discovering work the agent has produced but that has not yet been approved.
+
+---
+
 ## Key rules
 
 | Rule | Detail |
@@ -595,11 +673,11 @@ create_attribute_attribute_citation.sync(
 | `attribute_type` in config is a plain string | Use `"float_attributes"`, `"table_attributes"` etc. — not the `AttributeType` enum |
 | Table attributes need Step 1b before upsert | `upsert_dataspace_table_attributes` returns 404 if the attribute instance doesn't exist — you must create it first with `post_general_dataspace_attribute` |
 | Table `value` must be a dict, not a list | Pass `{"rows": [], "columns": [...]}` — not `[]` or `"placeholder"` |
-| Table creation requires `extraction_status=COMPLETED` | Default `PENDING_APPROVAL` prevents M2M linking and hides the attribute from `core_attributes_metadata` |
-| Use `post_general_dataspace_attribute` to get `attribute_id` | Returns `AttributeResponse` with `id` — needed for citations. For table attributes, the ID is returned in the Step 1b response |
+| Do NOT set `extraction_status=COMPLETED` | Agents must leave `extraction_status` at its default (`PENDING_APPROVAL`) and submit an approval ticket (Step 3). Setting `COMPLETED` bypasses human review |
+| Use `post_general_dataspace_attribute` to get `attribute_id` | Returns `AttributeResponse` with `id` — needed for citations and as the approval candidate's `attribute_id`. For table attributes, the ID is returned in the Step 1b response |
 | `attribute_type` in citation body | Must match the type of the attribute you're citing |
 | `attribute_category` | `RESOURCE` or `PROJECT` — matches where the attribute lives |
-| `dataspace_id` required | All citation endpoints operate within a dataspace context |
+| `dataspace_id` required | All citation and approval-ticket endpoints operate within a dataspace context |
 | BIM `bim_elements` is required | Must include at least one `BIMElementRequest`; `bim_element_id` is optional (omit to cite the whole project) |
 | `bim_element_id` is the 32-char Speckle hash | Not the UUID, not the Revit Tag — use the `id` returned by the KV search endpoint |
 | Citation `title` max 32 characters | The database column is `varchar(32)` — longer titles cause a 400 error |
@@ -607,8 +685,10 @@ create_attribute_attribute_citation.sync(
 | Image `bounding_geometry` is required | Must always be provided for image citations |
 | PDF `polygons` is optional | Can be omitted if you only need to cite the resource without a specific region |
 | Citations attach to the attribute, not individual rows | For table attributes, all citations link to the table attribute UUID as a whole |
-| Get table `attribute_id` from Step 1b or resource metadata | Step 1b returns the ID in the 201 response. For re-runs (409), read `get_dataspace_project_resource` → `core_attributes_metadata.<name>.id` |
-| `version` for tables: `UNSET` for new, integer for updates | `version=None` serializes as `null` → 409. Read from `core_attributes_metadata.<name>.value.version` |
+| Keep table `attribute_id` from Step 1b in memory | Pending attributes are not in `core_attributes_metadata`, so there is no way to recover the ID from the resource until the approval ticket is approved |
+| `version` for tables: `UNSET` for new, integer for updating approved tables | `version=None` serializes as `null` → 409. Only approved tables expose a `version` via `core_attributes_metadata.<name>.value.version` |
+| One approval ticket per execution | Batch all candidates produced by a run into a single `create_execution_approval_ticket_with_candidates` call; do not POST one ticket per attribute |
+| `execution_id` is required for the approval ticket | Read from `Context.system_execution_id` in Openflow scripts — it must be non-null |
 
 ---
 
@@ -617,16 +697,20 @@ create_attribute_attribute_citation.sync(
 | Mistake | Symptom | Fix |
 |---|---|---|
 | Passing `value=[]` or `value="placeholder"` in Step 1b | **500 ValidationError** — server calls `Table.model_validate()` which expects a dict | Pass `value={"rows": [], "columns": [...]}` with columns matching the config |
-| Omitting `extraction_status=COMPLETED` in Step 1b | Attribute is created but invisible — not linked to the resource, not in `core_attributes_metadata` | Always pass `extraction_status=AttributeExtractionStatusChoices.COMPLETED` |
-| Omitting `entity_id` in Step 1b | Attribute is created but not linked to any resource/project | Always pass `entity_id=resource_uuid` (or project UUID) |
-| Calling `post_general_dataspace_attribute` a second time after Step 1b | **409** if same status, or creates a disconnected duplicate that can overwrite table data | Call it once. Handle 409 by reading the existing ID from resource metadata |
+| Setting `extraction_status=COMPLETED` from an agent | Bypasses human approval, skips the ticket pipeline, and attaches unreviewed values to the resource | Leave `extraction_status` at its default (`PENDING_APPROVAL`) and submit an approval ticket (Step 3) |
+| Skipping Step 3 (no approval ticket) | Attribute stays `pending_approval` forever, never promotes to `completed`, and never appears in `core_attributes_metadata` | Always finish the run by calling `create_execution_approval_ticket_with_candidates` with one candidate per attribute produced |
+| POSTing a separate ticket per attribute | Clutters the approvals inbox and may exceed per-execution limits | Bundle all candidates for the run into a single ticket's `candidates` list |
+| Relying on `core_attributes_metadata` to rediscover an attribute after Step 1b | Pending attributes are filtered out of the resource response — lookup returns nothing | Keep the `attribute_id` from the Step 1b 201 response in memory, or enumerate via `get_approval_candidates` |
+| Omitting `entity_id` in Step 1 / Step 1b | Attribute is created but not linked to any resource/project | Always pass `entity_id=resource_uuid` (or project UUID) |
+| Calling `post_general_dataspace_attribute` a second time for the same logical attribute | Creates a disconnected duplicate record; only one can be referenced from the approval ticket | Call it once per attribute per run and reuse the `attribute_id` |
 | Skipping Step 1b and calling `upsert_dataspace_table_attributes` directly | **404 Attribute not found** — the upsert endpoint cannot create attributes | Always create the attribute instance first (Step 1b) before upserting cells |
-| Using the config ID as `attribute_id` in the upsert | **404 Attribute not found** — config IDs and attribute instance IDs are different models | Use the attribute instance ID from the Step 1b response or from `core_attributes_metadata` |
-| Passing `version=None` to `upsert_dataspace_table_attributes` | Server returns **409 Table has been modified** | Leave `version` as `UNSET` (default) for a new table; pass the integer version for updates |
+| Using the config ID as `attribute_id` in the upsert | **404 Attribute not found** — config IDs and attribute instance IDs are different models | Use the attribute instance ID from the Step 1b response |
+| Passing `version=None` to `upsert_dataspace_table_attributes` | Server returns **409 Table has been modified** | Leave `version` as `UNSET` (default) for the first write; pass the integer version only when updating an already-approved table |
 | Passing the document `resource_id` as `bim_resource_id` in a BIM citation | Server returns 400/404; no citations created | `bim_resource_id` must be the BIM resource (IFC file) UUID — always a separate parameter |
-| Using `sync()` instead of `sync_detailed()` for citations | Script reports success but no citations exist | Use `sync_detailed()` and check `resp.status_code.value == 201` |
+| Using `sync()` instead of `sync_detailed()` for citations or approval tickets | Script reports success but no citations/tickets exist | Use `sync_detailed()` and check `resp.status_code.value == 201` |
 | Using `attribute_label` instead of `attribute_name` as the attribute `name` | `upsert_dataspace_table_attributes` or `post_general_dataspace_attribute` fails or targets wrong attribute | The config returns both; use `attribute_name` (the server-generated key) not `attribute_label` (the human label) |
 | Using `AttributeType` enum values in config `attribute_type` | Config creation fails | Use plain strings: `"table_attributes"`, `"float_attributes"`, etc. |
+| Submitting the approval ticket without `execution_id` (or with a stale one) | **400/404** from `create_execution_approval_ticket_with_candidates` | Read `ctx.system_execution_id` inside the Openflow-scope `main` and pass it as `execution_id` |
 
 ---
 
