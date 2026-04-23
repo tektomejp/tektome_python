@@ -12,9 +12,7 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.template_override_response_input_schema_patch_type_0 import (
-        TemplateOverrideResponseInputSchemaPatchType0,
-    )
+    from ..models.template_override_input_schema import TemplateOverrideInputSchema
     from ..models.user_metadata import UserMetadata
 
 
@@ -27,6 +25,7 @@ class TemplateOverrideResponse:
     Attributes:
         created_by (None | UserMetadata):
         updated_by (None | UserMetadata):
+        input_schema_patch (None | TemplateOverrideInputSchema):
         created (datetime.datetime):
         updated (datetime.datetime):
         template (UUID):
@@ -38,11 +37,11 @@ class TemplateOverrideResponse:
         project (None | Unset | UUID):
         ui_trigger_name (None | str | Unset):
         ui_trigger_kind (None | str | Unset):
-        input_schema_patch (None | TemplateOverrideResponseInputSchemaPatchType0 | Unset):
     """
 
     created_by: None | UserMetadata
     updated_by: None | UserMetadata
+    input_schema_patch: None | TemplateOverrideInputSchema
     created: datetime.datetime
     updated: datetime.datetime
     template: UUID
@@ -54,13 +53,10 @@ class TemplateOverrideResponse:
     project: None | Unset | UUID = UNSET
     ui_trigger_name: None | str | Unset = UNSET
     ui_trigger_kind: None | str | Unset = UNSET
-    input_schema_patch: None | TemplateOverrideResponseInputSchemaPatchType0 | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.template_override_response_input_schema_patch_type_0 import (
-            TemplateOverrideResponseInputSchemaPatchType0,
-        )
+        from ..models.template_override_input_schema import TemplateOverrideInputSchema
         from ..models.user_metadata import UserMetadata
 
         created_by: dict[str, Any] | None
@@ -74,6 +70,12 @@ class TemplateOverrideResponse:
             updated_by = self.updated_by.to_dict()
         else:
             updated_by = self.updated_by
+
+        input_schema_patch: dict[str, Any] | None
+        if isinstance(self.input_schema_patch, TemplateOverrideInputSchema):
+            input_schema_patch = self.input_schema_patch.to_dict()
+        else:
+            input_schema_patch = self.input_schema_patch
 
         created = self.created.isoformat()
 
@@ -123,20 +125,13 @@ class TemplateOverrideResponse:
         else:
             ui_trigger_kind = self.ui_trigger_kind
 
-        input_schema_patch: dict[str, Any] | None | Unset
-        if isinstance(self.input_schema_patch, Unset):
-            input_schema_patch = UNSET
-        elif isinstance(self.input_schema_patch, TemplateOverrideResponseInputSchemaPatchType0):
-            input_schema_patch = self.input_schema_patch.to_dict()
-        else:
-            input_schema_patch = self.input_schema_patch
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "created_by": created_by,
                 "updated_by": updated_by,
+                "input_schema_patch": input_schema_patch,
                 "created": created,
                 "updated": updated,
                 "template": template,
@@ -157,16 +152,12 @@ class TemplateOverrideResponse:
             field_dict["ui_trigger_name"] = ui_trigger_name
         if ui_trigger_kind is not UNSET:
             field_dict["ui_trigger_kind"] = ui_trigger_kind
-        if input_schema_patch is not UNSET:
-            field_dict["input_schema_patch"] = input_schema_patch
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.template_override_response_input_schema_patch_type_0 import (
-            TemplateOverrideResponseInputSchemaPatchType0,
-        )
+        from ..models.template_override_input_schema import TemplateOverrideInputSchema
         from ..models.user_metadata import UserMetadata
 
         d = dict(src_dict)
@@ -200,6 +191,21 @@ class TemplateOverrideResponse:
             return cast(None | UserMetadata, data)
 
         updated_by = _parse_updated_by(d.pop("updated_by"))
+
+        def _parse_input_schema_patch(data: object) -> None | TemplateOverrideInputSchema:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                input_schema_patch_type_0 = TemplateOverrideInputSchema.from_dict(data)
+
+                return input_schema_patch_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | TemplateOverrideInputSchema, data)
+
+        input_schema_patch = _parse_input_schema_patch(d.pop("input_schema_patch"))
 
         created = isoparse(d.pop("created"))
 
@@ -282,26 +288,10 @@ class TemplateOverrideResponse:
 
         ui_trigger_kind = _parse_ui_trigger_kind(d.pop("ui_trigger_kind", UNSET))
 
-        def _parse_input_schema_patch(data: object) -> None | TemplateOverrideResponseInputSchemaPatchType0 | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                input_schema_patch_type_0 = TemplateOverrideResponseInputSchemaPatchType0.from_dict(data)
-
-                return input_schema_patch_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | TemplateOverrideResponseInputSchemaPatchType0 | Unset, data)
-
-        input_schema_patch = _parse_input_schema_patch(d.pop("input_schema_patch", UNSET))
-
         template_override_response = cls(
             created_by=created_by,
             updated_by=updated_by,
+            input_schema_patch=input_schema_patch,
             created=created,
             updated=updated,
             template=template,
@@ -313,7 +303,6 @@ class TemplateOverrideResponse:
             project=project,
             ui_trigger_name=ui_trigger_name,
             ui_trigger_kind=ui_trigger_kind,
-            input_schema_patch=input_schema_patch,
         )
 
         template_override_response.additional_properties = d
