@@ -1076,6 +1076,8 @@ from .template_override_request import TemplateOverrideRequest
 from .template_override_response import TemplateOverrideResponse
 from .template_override_response_input_schema_patch_type_0 import TemplateOverrideResponseInputSchemaPatchType0
 from .template_path_params import TemplatePathParams
+from .template_request import TemplateRequest
+from .template_request_openflow_json_type_1 import TemplateRequestOpenflowJsonType1
 from .template_response import TemplateResponse
 from .template_response_openflow_json import TemplateResponseOpenflowJson
 from .template_update_request import TemplateUpdateRequest
@@ -2166,6 +2168,8 @@ __all__ = (
     "TemplateOverrideResponse",
     "TemplateOverrideResponseInputSchemaPatchType0",
     "TemplatePathParams",
+    "TemplateRequest",
+    "TemplateRequestOpenflowJsonType1",
     "TemplateResponse",
     "TemplateResponseOpenflowJson",
     "TemplateUpdateRequest",
