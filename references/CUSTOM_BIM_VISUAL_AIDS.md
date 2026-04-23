@@ -15,7 +15,7 @@ This document explains how to create custom BIM geometry objects (lines, meshes,
 
 Custom BIM objects are **standalone** — they are not part of any BIM project. They exist independently and are referenced by their content-hashed ID. When attached to a citation via `bim_annotations`, the viewer renders them alongside the cited BIM elements, giving the user a visual overlay that explains the agent's analysis.
 
-### Use cases
+### Example use cases
 
 - **Escape routes** — draw line segments tracing the shortest path from a room to an exit
 - **Measurement indicators** — place a line between two points with a text label showing the distance
