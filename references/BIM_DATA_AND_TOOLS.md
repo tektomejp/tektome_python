@@ -2,6 +2,8 @@
 
 This document explains how to query, retrieve, and analyse BIM (Building Information Modeling) data using the Tektome Python SDK. It covers element search, batch retrieval, spatial queries, clash detection, and key-value statistics.
 
+For task-level spatial workflows such as finding rooms, counting doors per room, locating objects, or measuring distances, see [BIM_SPATIAL_ANALYSIS_PLAYBOOK.md](BIM_SPATIAL_ANALYSIS_PLAYBOOK.md).
+
 ---
 
 ## Overview
