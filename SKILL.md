@@ -195,3 +195,6 @@ The `references` directory contains markdown files detailing specific Tektome co
 The following references are available:
 - [Attribute Extraction](references/ATTRIBUTE_EXTRACTION.md) -- how to use the SDK to run agentic attribute extraction flows, and how to interpret the results
 - [Manual Attributes and Citation Creation](references/MANUAL_ATTRIBUTES_AND_CITATIONS.md) -- how to use the SDK to create manually create attributes and citations to resources, and best practices for doing so
+- [BIM Data and Tools](references/BIM_DATA_AND_TOOLS.md) -- how to search, fetch, and analyse BIM elements (KV search, batch streaming, spatial queries, clash detection, element data structure)
+- [PDF Data and Tools](references/PDF_DATA_AND_TOOLS.md) -- how to upload PDFs, trigger OCR extraction, list pages, search documents, and create PDF citations with polygon annotations
+- [Dataspaces, Projects, and Resources](references/DATASPACES_PROJECTS_AND_RESOURCES.md) -- navigating the data hierarchy (dataspaces → projects → resources), reading attribute metadata, resolving configs, and understanding Openflow context fields
