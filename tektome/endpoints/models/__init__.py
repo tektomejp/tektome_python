@@ -1053,6 +1053,7 @@ from .table_column import TableColumn
 from .table_column_info import TableColumnInfo
 from .table_column_mapping import TableColumnMapping
 from .table_column_mapping_entity_type import TableColumnMappingEntityType
+from .table_column_type import TableColumnType
 from .table_result_info import TableResultInfo
 from .table_row_cell_info import TableRowCellInfo
 from .target_model_entity_filter_options import TargetModelEntityFilterOptions
@@ -2147,6 +2148,7 @@ __all__ = (
     "TableColumnInfo",
     "TableColumnMapping",
     "TableColumnMappingEntityType",
+    "TableColumnType",
     "TableResultInfo",
     "TableRowCellInfo",
     "TargetModelEntityFilterOptions",
