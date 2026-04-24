@@ -347,7 +347,32 @@ def parse_id_response(content: str) -> set[str]:
 
 ## Spatial queries — Topology Search
 
-Find BIM objects within a defined 3D region. Three geometry types are supported:
+Find BIM objects within a defined 3D region. Three geometry types are supported. **All topology searches are async** — they return a `process_id` string, not element IDs. You must poll `get_celery_task` to retrieve the result. See [BIM_SPATIAL_ANALYSIS_PLAYBOOK.md](BIM_SPATIAL_ANALYSIS_PLAYBOOK.md) for production-ready polling helpers and spatial workflow recipes.
+
+All coordinates are in the **model's native unit system** — typically millimetres for Japanese Revit/IFC exports, but sometimes metres or other units for other models. Sample a known element's bbox to verify before hard-coding a unit.
+
+### Polling the async result
+
+```python
+import time
+from tektome.endpoints.api.tasks import get_celery_task
+
+IN_FLIGHT = {"PENDING", "RECEIVED", "STARTED", "RETRY"}
+TERMINAL_FAIL = {"FAILURE", "REVOKED", "REJECTED", "IGNORED"}
+
+def poll_topology_result(client, process_id: str, timeout_s: int = 180):
+    deadline = time.time() + timeout_s
+    while time.time() < deadline:
+        resp = get_celery_task.sync_detailed(task_id=process_id, client=client)
+        data = resp.parsed.to_dict() if resp.parsed else {}
+        status = data.get("status")
+        if status == "SUCCESS":
+            return data.get("result")
+        if status in TERMINAL_FAIL:
+            raise RuntimeError(f"Topology task failed ({status}): {data}")
+        time.sleep(3)
+    raise TimeoutError(f"Topology task did not finish in {timeout_s}s")
+```
 
 ### Box search (axis-aligned)
 
@@ -356,7 +381,7 @@ from tektome.endpoints.api.bim import bim_topology_search_box
 from tektome.endpoints.models.bim_topology_search_box_post_in import BimTopologySearchBoxPostIn
 from tektome.endpoints.models.boundary import Boundary
 
-result = bim_topology_search_box.sync(
+resp = bim_topology_search_box.sync_detailed(
     bim_project_id=bim_project_id,
     client=client,
     body=BimTopologySearchBoxPostIn(
@@ -365,6 +390,7 @@ result = bim_topology_search_box.sync(
         max_boundary=Boundary(x=10000.0, y=10000.0, z=3000.0),
     ),
 )
+result = poll_topology_result(client, resp.parsed.process_id)
 ```
 
 ### Sphere search (radial)
@@ -374,7 +400,7 @@ from tektome.endpoints.api.bim import bim_topology_search_sphere
 from tektome.endpoints.models.bim_topology_search_sphere_post_in import BimTopologySearchSpherePostIn
 from tektome.endpoints.models.point_3d import Point3D
 
-result = bim_topology_search_sphere.sync(
+resp = bim_topology_search_sphere.sync_detailed(
     bim_project_id=bim_project_id,
     client=client,
     body=BimTopologySearchSpherePostIn(
@@ -383,16 +409,17 @@ result = bim_topology_search_sphere.sync(
         radius=2000.0,
     ),
 )
+result = poll_topology_result(client, resp.parsed.process_id)
 ```
 
-### Prism search (vertical column)
+### Prism search (vertical extrusion)
 
 ```python
 from tektome.endpoints.api.bim import bim_topology_search_prism
 from tektome.endpoints.models.bim_topology_search_prism_post_in import BimTopologySearchPrismPostIn
 from tektome.endpoints.models.point_2d import Point2D
 
-result = bim_topology_search_prism.sync(
+resp = bim_topology_search_prism.sync_detailed(
     bim_project_id=bim_project_id,
     client=client,
     body=BimTopologySearchPrismPostIn(
@@ -405,9 +432,10 @@ result = bim_topology_search_prism.sync(
         z_max=3000.0,
     ),
 )
+result = poll_topology_result(client, resp.parsed.process_id)
 ```
 
-All coordinates are in **millimetres**. Results return element IDs that intersect with or are contained within the search region.
+Results contain element IDs that intersect with or are contained within the search region.
 
 ---
 
@@ -428,18 +456,10 @@ resp = bim_clash_check.sync_detailed(
 )
 ```
 
-This is an **async operation** — the response contains a task ID. Poll with `get_bim_task`:
+This is an **async operation** — the response contains a Celery `process_id`. Poll with `get_celery_task` using the same pattern as topology search:
 
 ```python
-from tektome.endpoints.api.bim import get_bim_task
-import time
-
-task_id = UUID(resp.parsed.process_id)
-while True:
-    task = get_bim_task.sync(bim_task_id=task_id, client=client)
-    if task.status in ("COMPLETED", "FAILED"):
-        break
-    time.sleep(3)
+result = poll_topology_result(client, resp.parsed.process_id)
 ```
 
 ---
@@ -520,9 +540,42 @@ Returns matching key-value pairs ranked by semantic similarity. Useful for disco
 
 ---
 
-## BIM task polling
+## Async task polling
 
-Several BIM operations (IFC conversion, clash detection, reindexing) are async. Poll their status:
+Several BIM operations (topology search, clash detection, IFC conversion, reindexing) are async and return a `process_id` string. There are two polling endpoints:
+
+### Celery task polling (topology, clash detection)
+
+Topology search and clash detection return a Celery `process_id`. Poll with `get_celery_task`:
+
+```python
+from tektome.endpoints.api.tasks import get_celery_task
+
+resp = get_celery_task.sync_detailed(task_id=process_id, client=client)
+data = resp.parsed.to_dict() if resp.parsed else {}
+status = data.get("status")
+result = data.get("result")
+```
+
+The Celery status set is fixed:
+
+| Status | Meaning |
+|---|---|
+| `PENDING` | Queued, not yet started |
+| `RECEIVED` | Received by a worker |
+| `STARTED` | Currently running |
+| `SUCCESS` | Finished successfully — `result` contains the data |
+| `FAILURE` | Failed — `result` contains error details |
+| `REVOKED` | Cancelled |
+| `REJECTED` | Worker rejected the task |
+| `RETRY` | Will be retried |
+| `IGNORED` | Ignored by the worker |
+
+There is no `COMPLETED`, `FAILED`, `PROCESSING`, or `state` key. Only `SUCCESS` carries a usable `result`.
+
+### BIM task polling (IFC conversion, reindexing)
+
+Long-running BIM-specific operations (IFC conversion, reindexing) create `BimTask` records with their own UUID. Poll with `get_bim_task`:
 
 ```python
 from tektome.endpoints.api.bim import get_bim_task
@@ -530,12 +583,7 @@ from tektome.endpoints.api.bim import get_bim_task
 task = get_bim_task.sync(bim_task_id=task_uuid, client=client)
 ```
 
-| Status | Meaning |
-|---|---|
-| `PENDING` | Queued, not yet started |
-| `PROCESSING` | Currently running |
-| `COMPLETED` | Finished successfully |
-| `FAILED` | Failed — check error details |
+`BimTaskResponse` has a `status: str` field and an optional `celery_task_id` linking to the underlying Celery task.
 
 ---
 
@@ -545,14 +593,14 @@ task = get_bim_task.sync(bim_task_id=task_uuid, client=client)
 |---|---|
 | BIM element IDs are Speckle hashes | 32-char hex strings, not UUIDs. Use the `id` returned by KV search — not Revit element IDs or resource UUIDs |
 | Always prefer streaming endpoints | `stream_batch_bim_elements` (50K IDs) over `get_batch_bim_elements` (50 IDs) for anything beyond trivial lookups |
-| Coordinates are in millimetres | All spatial queries (topology search) use mm as the unit |
+| Coordinates are in the model's native unit | Typically mm for Japanese Revit/IFC exports, but may be metres or other units. Sample a known bbox to verify before hard-coding |
 | KV search returns IDs only | You must batch-fetch to get full element data (properties, geometry) |
 | NDJSON responses need manual parsing | Streaming endpoints return `Response[Any]` — parse `.content.decode()` line by line as JSON |
 | `properties` may be a string | Some elements return `properties` as a JSON string rather than a dict — always check and `json.loads()` if needed |
 | `data` may be a string | Same as above — the `data` field in batch responses may need an extra `json.loads()` |
 | Validate IDs before citations | The BIM citation API rejects element IDs not found in the project. Always validate with `validate_bim_element_ids` or `stream_bim_elements_by_project(id_only=True)` |
 | Stats require generation first | `get_bim_key_value_stats` returns 404 if stats have never been generated. Call `generate_bim_key_value_stats` first |
-| Async operations need polling | IFC conversion, clash detection, and reindexing return task IDs — poll with `get_bim_task` |
+| Topology and clash are async | Return a Celery `process_id` — poll with `get_celery_task`. Check for `status == "SUCCESS"`, not `"COMPLETED"` |
 | KV search max 150K results | If your search exceeds this, narrow the query with more specific key-value patterns |
 | `bim_resource_id` in citations ≠ document `resource_id` | When creating BIM citations, `bim_resource_id` is the IFC/BIM file resource UUID, not the PDF or document resource |
 
@@ -570,7 +618,9 @@ task = get_bim_task.sync(bim_task_id=task_uuid, client=client)
 | Not handling `found: false` in batch responses | Processing non-existent elements | Check `obj.get("found", True)` and skip false entries |
 | Skipping ID validation before citation | BIM citation creation fails silently or returns 400 | Validate against project IDs using `validate_bim_element_ids` or `stream_bim_elements_by_project(id_only=True)` |
 | Using `sync()` for streaming endpoints | Returns `None` because streaming responses don't parse | Always use `sync_detailed()` and read `.content.decode()` for streaming endpoints |
-| Forgetting that topology search uses mm | Search region is too small or too large | Convert to mm: 1 metre = 1000 mm |
+| Assuming coordinates are always in mm | Search region is 1000x too large or small | Sample a known element bbox to infer the model's unit before setting search dimensions |
+| Polling topology/clash for `"COMPLETED"` or `"FAILED"` | Task appears stuck — loop never exits | Celery uses `"SUCCESS"` and `"FAILURE"`. There is no `"COMPLETED"` or `"FAILED"` status |
+| Using `get_bim_task` for topology/clash `process_id` | 400/404 — wrong endpoint | Topology and clash return Celery task IDs (`str`), not BIM task UUIDs. Use `get_celery_task` |
 
 ---
 
@@ -596,5 +646,6 @@ task = get_bim_task.sync(bim_task_id=task_uuid, client=client)
 | List views | `bim.list_bim_views_in_project` | POST |
 | List sheets | `bim.list_bim_sheets_in_project` | POST |
 | Objects in view | `bim.list_bim_objects_in_view` | POST |
-| Poll async task | `bim.get_bim_task` | GET |
+| Poll Celery task (topology, clash) | `tasks.get_celery_task` | GET |
+| Poll BIM task (IFC conversion) | `bim.get_bim_task` | GET |
 | IFC to BIM conversion | `bim.convert_ifc_to_bim_elements` | POST |
