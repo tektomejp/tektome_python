@@ -5,6 +5,7 @@ class AttributeExtractionStatusChoices(str, Enum):
     CANCELLED = "cancelled"
     COMPLETED = "completed"
     COMPLETED_NOT_FOUND = "completed_not_found"
+    DISCARDED = "discarded"
     FAILED = "failed"
     IN_PROGRESS = "in_progress"
     PENDING = "pending"
