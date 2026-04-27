@@ -19,6 +19,7 @@ def _get_kwargs(
     ui_trigger_kinds: list[ListCoreProjectProcessesUiTriggerKindChoices] | Unset = UNSET,
     name: None | str | Unset = UNSET,
     template_id: None | Unset | UUID = UNSET,
+    show_system_processes: bool | Unset = False,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> dict[str, Any]:
@@ -56,6 +57,8 @@ def _get_kwargs(
     else:
         json_template_id = template_id
     params["template_id"] = json_template_id
+
+    params["show_system_processes"] = show_system_processes
 
     params["page"] = page
 
@@ -108,6 +111,7 @@ def sync_detailed(
     ui_trigger_kinds: list[ListCoreProjectProcessesUiTriggerKindChoices] | Unset = UNSET,
     name: None | str | Unset = UNSET,
     template_id: None | Unset | UUID = UNSET,
+    show_system_processes: bool | Unset = False,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedProcessOut]:
@@ -123,6 +127,8 @@ def sync_detailed(
             processes by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
         name (None | str | Unset): The name (or part of the name) of the process to search for.
         template_id (None | Unset | UUID): Filter processes by the associated process template ID.
+        show_system_processes (bool | Unset): Controls whether to include system-generated
+            processes Default: False.
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
 
@@ -140,6 +146,7 @@ def sync_detailed(
         ui_trigger_kinds=ui_trigger_kinds,
         name=name,
         template_id=template_id,
+        show_system_processes=show_system_processes,
         page=page,
         page_size=page_size,
     )
@@ -159,6 +166,7 @@ def sync(
     ui_trigger_kinds: list[ListCoreProjectProcessesUiTriggerKindChoices] | Unset = UNSET,
     name: None | str | Unset = UNSET,
     template_id: None | Unset | UUID = UNSET,
+    show_system_processes: bool | Unset = False,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedProcessOut | None:
@@ -174,6 +182,8 @@ def sync(
             processes by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
         name (None | str | Unset): The name (or part of the name) of the process to search for.
         template_id (None | Unset | UUID): Filter processes by the associated process template ID.
+        show_system_processes (bool | Unset): Controls whether to include system-generated
+            processes Default: False.
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
 
@@ -192,6 +202,7 @@ def sync(
         ui_trigger_kinds=ui_trigger_kinds,
         name=name,
         template_id=template_id,
+        show_system_processes=show_system_processes,
         page=page,
         page_size=page_size,
     ).parsed
@@ -205,6 +216,7 @@ async def asyncio_detailed(
     ui_trigger_kinds: list[ListCoreProjectProcessesUiTriggerKindChoices] | Unset = UNSET,
     name: None | str | Unset = UNSET,
     template_id: None | Unset | UUID = UNSET,
+    show_system_processes: bool | Unset = False,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> Response[PagedProcessOut]:
@@ -220,6 +232,8 @@ async def asyncio_detailed(
             processes by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
         name (None | str | Unset): The name (or part of the name) of the process to search for.
         template_id (None | Unset | UUID): Filter processes by the associated process template ID.
+        show_system_processes (bool | Unset): Controls whether to include system-generated
+            processes Default: False.
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
 
@@ -237,6 +251,7 @@ async def asyncio_detailed(
         ui_trigger_kinds=ui_trigger_kinds,
         name=name,
         template_id=template_id,
+        show_system_processes=show_system_processes,
         page=page,
         page_size=page_size,
     )
@@ -254,6 +269,7 @@ async def asyncio(
     ui_trigger_kinds: list[ListCoreProjectProcessesUiTriggerKindChoices] | Unset = UNSET,
     name: None | str | Unset = UNSET,
     template_id: None | Unset | UUID = UNSET,
+    show_system_processes: bool | Unset = False,
     page: int | Unset = 1,
     page_size: int | None | Unset = UNSET,
 ) -> PagedProcessOut | None:
@@ -269,6 +285,8 @@ async def asyncio(
             processes by UI trigger kind. Possible values are defined in UiTriggerKindChoices.
         name (None | str | Unset): The name (or part of the name) of the process to search for.
         template_id (None | Unset | UUID): Filter processes by the associated process template ID.
+        show_system_processes (bool | Unset): Controls whether to include system-generated
+            processes Default: False.
         page (int | Unset):  Default: 1.
         page_size (int | None | Unset):
 
@@ -288,6 +306,7 @@ async def asyncio(
             ui_trigger_kinds=ui_trigger_kinds,
             name=name,
             template_id=template_id,
+            show_system_processes=show_system_processes,
             page=page,
             page_size=page_size,
         )
