@@ -22,12 +22,14 @@ class ProcessFilterRequest:
             Possible values are defined in UiTriggerKindChoices.
         name (None | str | Unset): The name (or part of the name) of the process to search for.
         template_id (None | Unset | UUID): Filter processes by the associated process template ID.
+        show_system_processes (bool | Unset): Controls whether to include system-generated processes Default: False.
     """
 
     ui_trigger_name: None | str | Unset = UNSET
     ui_trigger_kinds: list[ProcessFilterRequestUiTriggerKindChoices] | Unset = UNSET
     name: None | str | Unset = UNSET
     template_id: None | Unset | UUID = UNSET
+    show_system_processes: bool | Unset = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -58,6 +60,8 @@ class ProcessFilterRequest:
         else:
             template_id = self.template_id
 
+        show_system_processes = self.show_system_processes
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -69,6 +73,8 @@ class ProcessFilterRequest:
             field_dict["name"] = name
         if template_id is not UNSET:
             field_dict["template_id"] = template_id
+        if show_system_processes is not UNSET:
+            field_dict["show_system_processes"] = show_system_processes
 
         return field_dict
 
@@ -120,11 +126,14 @@ class ProcessFilterRequest:
 
         template_id = _parse_template_id(d.pop("template_id", UNSET))
 
+        show_system_processes = d.pop("show_system_processes", UNSET)
+
         process_filter_request = cls(
             ui_trigger_name=ui_trigger_name,
             ui_trigger_kinds=ui_trigger_kinds,
             name=name,
             template_id=template_id,
+            show_system_processes=show_system_processes,
         )
 
         process_filter_request.additional_properties = d
