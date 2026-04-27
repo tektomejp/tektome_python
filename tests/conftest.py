@@ -1,7 +1,12 @@
 """Shared fixtures for tests."""
 import uuid
 from datetime import date, datetime
+from unittest.mock import MagicMock
+
 import pytest
+
+from tektome import Context
+from tektome.endpoints import AuthenticatedClient
 
 
 @pytest.fixture
@@ -32,3 +37,35 @@ def sample_date():
 def sample_datetime():
     """Return a sample datetime for testing."""
     return datetime(2025, 11, 17, 14, 30, 0)
+
+
+@pytest.fixture
+def dataspace_id():
+    return uuid.uuid4()
+
+
+@pytest.fixture
+def resource_id():
+    return uuid.uuid4()
+
+
+@pytest.fixture
+def execution_id():
+    return uuid.uuid4()
+
+
+@pytest.fixture
+def context(dataspace_id, resource_id, execution_id):
+    return Context(
+        system_user_api_key="test_api_key",
+        system_base_url="https://example.tektome.com",
+        system_flow_type="general",
+        system_dataspace_id=dataspace_id,
+        system_resource_id=resource_id,
+        system_execution_id=execution_id,
+    )
+
+
+@pytest.fixture
+def client():
+    return MagicMock(spec=AuthenticatedClient)

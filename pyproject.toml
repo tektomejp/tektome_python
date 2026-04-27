@@ -41,6 +41,7 @@ include = ["tektome*"]
 dev = [
     "pytest>=8.3.5",
     "pytest-cov>=5.0.0",
+    "ruff>=0.15.12",
 ]
 
 [tool.coverage.run]
