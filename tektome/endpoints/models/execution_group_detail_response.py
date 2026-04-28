@@ -36,6 +36,7 @@ class ExecutionGroupDetailResponse:
         review_status (ExecutionsReviewStatusDetails): Details about execution review statuses within an execution group
         created (datetime.datetime):
         updated (datetime.datetime):
+        tektome_token (float | None | Unset):
         reviewed_by_names (list[str] | Unset):
         id (None | Unset | UUID):
         memo (None | str | Unset): A description of the purpose of this execution group
@@ -58,6 +59,7 @@ class ExecutionGroupDetailResponse:
     review_status: ExecutionsReviewStatusDetails
     created: datetime.datetime
     updated: datetime.datetime
+    tektome_token: float | None | Unset = UNSET
     reviewed_by_names: list[str] | Unset = UNSET
     id: None | Unset | UUID = UNSET
     memo: None | str | Unset = UNSET
@@ -88,6 +90,12 @@ class ExecutionGroupDetailResponse:
         created = self.created.isoformat()
 
         updated = self.updated.isoformat()
+
+        tektome_token: float | None | Unset
+        if isinstance(self.tektome_token, Unset):
+            tektome_token = UNSET
+        else:
+            tektome_token = self.tektome_token
 
         reviewed_by_names: list[str] | Unset = UNSET
         if not isinstance(self.reviewed_by_names, Unset):
@@ -145,6 +153,8 @@ class ExecutionGroupDetailResponse:
                 "updated": updated,
             }
         )
+        if tektome_token is not UNSET:
+            field_dict["tektome_token"] = tektome_token
         if reviewed_by_names is not UNSET:
             field_dict["reviewed_by_names"] = reviewed_by_names
         if id is not UNSET:
@@ -191,6 +201,15 @@ class ExecutionGroupDetailResponse:
         created = isoparse(d.pop("created"))
 
         updated = isoparse(d.pop("updated"))
+
+        def _parse_tektome_token(data: object) -> float | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(float | None | Unset, data)
+
+        tektome_token = _parse_tektome_token(d.pop("tektome_token", UNSET))
 
         reviewed_by_names = cast(list[str], d.pop("reviewed_by_names", UNSET))
 
@@ -271,6 +290,7 @@ class ExecutionGroupDetailResponse:
             review_status=review_status,
             created=created,
             updated=updated,
+            tektome_token=tektome_token,
             reviewed_by_names=reviewed_by_names,
             id=id,
             memo=memo,

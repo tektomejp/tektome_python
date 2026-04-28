@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -28,6 +28,8 @@ class CreateExtractionRequest:
         include_pdf_pages_as_images (bool | Unset):  Default: False.
         for_approval (bool | Unset): Whether the extraction results should be marked as pending approval before being
             finalized. Default: False.
+        execution_id (None | Unset | UUID): The execution ID to associate LLM usage with, when triggered from a
+            dataspace execution.
     """
 
     section_id: UUID
@@ -36,6 +38,7 @@ class CreateExtractionRequest:
     enduser_prompt: str
     include_pdf_pages_as_images: bool | Unset = False
     for_approval: bool | Unset = False
+    execution_id: None | Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -54,6 +57,14 @@ class CreateExtractionRequest:
 
         for_approval = self.for_approval
 
+        execution_id: None | str | Unset
+        if isinstance(self.execution_id, Unset):
+            execution_id = UNSET
+        elif isinstance(self.execution_id, UUID):
+            execution_id = str(self.execution_id)
+        else:
+            execution_id = self.execution_id
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -68,6 +79,8 @@ class CreateExtractionRequest:
             field_dict["include_pdf_pages_as_images"] = include_pdf_pages_as_images
         if for_approval is not UNSET:
             field_dict["for_approval"] = for_approval
+        if execution_id is not UNSET:
+            field_dict["execution_id"] = execution_id
 
         return field_dict
 
@@ -93,6 +106,23 @@ class CreateExtractionRequest:
 
         for_approval = d.pop("for_approval", UNSET)
 
+        def _parse_execution_id(data: object) -> None | Unset | UUID:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                execution_id_type_0 = UUID(data)
+
+                return execution_id_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | Unset | UUID, data)
+
+        execution_id = _parse_execution_id(d.pop("execution_id", UNSET))
+
         create_extraction_request = cls(
             section_id=section_id,
             recipe=recipe,
@@ -100,6 +130,7 @@ class CreateExtractionRequest:
             enduser_prompt=enduser_prompt,
             include_pdf_pages_as_images=include_pdf_pages_as_images,
             for_approval=for_approval,
+            execution_id=execution_id,
         )
 
         create_extraction_request.additional_properties = d

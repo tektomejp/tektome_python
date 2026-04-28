@@ -35,6 +35,7 @@ class ExecutionsResponse:
         created (datetime.datetime):
         updated (datetime.datetime):
         memo (None | str | Unset):
+        tektome_token (float | None | Unset):
         candidates_count (int | None | Unset):
         id (None | Unset | UUID):
         summary (None | str | Unset): A brief summary of the tickets from the execution
@@ -58,6 +59,7 @@ class ExecutionsResponse:
     created: datetime.datetime
     updated: datetime.datetime
     memo: None | str | Unset = UNSET
+    tektome_token: float | None | Unset = UNSET
     candidates_count: int | None | Unset = UNSET
     id: None | Unset | UUID = UNSET
     summary: None | str | Unset = UNSET
@@ -93,6 +95,12 @@ class ExecutionsResponse:
             memo = UNSET
         else:
             memo = self.memo
+
+        tektome_token: float | None | Unset
+        if isinstance(self.tektome_token, Unset):
+            tektome_token = UNSET
+        else:
+            tektome_token = self.tektome_token
 
         candidates_count: int | None | Unset
         if isinstance(self.candidates_count, Unset):
@@ -172,6 +180,8 @@ class ExecutionsResponse:
         )
         if memo is not UNSET:
             field_dict["memo"] = memo
+        if tektome_token is not UNSET:
+            field_dict["tektome_token"] = tektome_token
         if candidates_count is not UNSET:
             field_dict["candidates_count"] = candidates_count
         if id is not UNSET:
@@ -229,6 +239,15 @@ class ExecutionsResponse:
             return cast(None | str | Unset, data)
 
         memo = _parse_memo(d.pop("memo", UNSET))
+
+        def _parse_tektome_token(data: object) -> float | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(float | None | Unset, data)
+
+        tektome_token = _parse_tektome_token(d.pop("tektome_token", UNSET))
 
         def _parse_candidates_count(data: object) -> int | None | Unset:
             if data is None:
@@ -356,6 +375,7 @@ class ExecutionsResponse:
             created=created,
             updated=updated,
             memo=memo,
+            tektome_token=tektome_token,
             candidates_count=candidates_count,
             id=id,
             summary=summary,
