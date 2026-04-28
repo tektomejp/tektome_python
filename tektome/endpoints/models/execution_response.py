@@ -33,6 +33,7 @@ class ExecutionResponse:
         created (datetime.datetime):
         updated (datetime.datetime):
         reviewed_by_names (list[str] | Unset):
+        tektome_token (float | None | Unset):
         id (None | Unset | UUID):
         start_time (datetime.datetime | None | Unset):
         end_time (datetime.datetime | None | Unset):
@@ -50,6 +51,7 @@ class ExecutionResponse:
     created: datetime.datetime
     updated: datetime.datetime
     reviewed_by_names: list[str] | Unset = UNSET
+    tektome_token: float | None | Unset = UNSET
     id: None | Unset | UUID = UNSET
     start_time: datetime.datetime | None | Unset = UNSET
     end_time: datetime.datetime | None | Unset = UNSET
@@ -75,6 +77,12 @@ class ExecutionResponse:
         reviewed_by_names: list[str] | Unset = UNSET
         if not isinstance(self.reviewed_by_names, Unset):
             reviewed_by_names = self.reviewed_by_names
+
+        tektome_token: float | None | Unset
+        if isinstance(self.tektome_token, Unset):
+            tektome_token = UNSET
+        else:
+            tektome_token = self.tektome_token
 
         id: None | str | Unset
         if isinstance(self.id, Unset):
@@ -124,6 +132,8 @@ class ExecutionResponse:
         )
         if reviewed_by_names is not UNSET:
             field_dict["reviewed_by_names"] = reviewed_by_names
+        if tektome_token is not UNSET:
+            field_dict["tektome_token"] = tektome_token
         if id is not UNSET:
             field_dict["id"] = id
         if start_time is not UNSET:
@@ -162,6 +172,15 @@ class ExecutionResponse:
         updated = isoparse(d.pop("updated"))
 
         reviewed_by_names = cast(list[str], d.pop("reviewed_by_names", UNSET))
+
+        def _parse_tektome_token(data: object) -> float | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(float | None | Unset, data)
+
+        tektome_token = _parse_tektome_token(d.pop("tektome_token", UNSET))
 
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -235,6 +254,7 @@ class ExecutionResponse:
             created=created,
             updated=updated,
             reviewed_by_names=reviewed_by_names,
+            tektome_token=tektome_token,
             id=id,
             start_time=start_time,
             end_time=end_time,

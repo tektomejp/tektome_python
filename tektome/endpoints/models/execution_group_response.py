@@ -37,6 +37,7 @@ class ExecutionGroupResponse:
         review_status (ExecutionsReviewStatusDetails): Details about execution review statuses within an execution group
         created (datetime.datetime):
         updated (datetime.datetime):
+        tektome_token (float | None | Unset):
         id (None | Unset | UUID):
         memo (None | str | Unset): A description of the purpose of this execution group
         status (str | Unset): The status of the execution group (e.g., Initializing, Running, Completed, Failed)
@@ -58,6 +59,7 @@ class ExecutionGroupResponse:
     review_status: ExecutionsReviewStatusDetails
     created: datetime.datetime
     updated: datetime.datetime
+    tektome_token: float | None | Unset = UNSET
     id: None | Unset | UUID = UNSET
     memo: None | str | Unset = UNSET
     status: str | Unset = "initializing"
@@ -90,6 +92,12 @@ class ExecutionGroupResponse:
         created = self.created.isoformat()
 
         updated = self.updated.isoformat()
+
+        tektome_token: float | None | Unset
+        if isinstance(self.tektome_token, Unset):
+            tektome_token = UNSET
+        else:
+            tektome_token = self.tektome_token
 
         id: None | str | Unset
         if isinstance(self.id, Unset):
@@ -143,6 +151,8 @@ class ExecutionGroupResponse:
                 "updated": updated,
             }
         )
+        if tektome_token is not UNSET:
+            field_dict["tektome_token"] = tektome_token
         if id is not UNSET:
             field_dict["id"] = id
         if memo is not UNSET:
@@ -193,6 +203,15 @@ class ExecutionGroupResponse:
         created = isoparse(d.pop("created"))
 
         updated = isoparse(d.pop("updated"))
+
+        def _parse_tektome_token(data: object) -> float | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(float | None | Unset, data)
+
+        tektome_token = _parse_tektome_token(d.pop("tektome_token", UNSET))
 
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:
@@ -271,6 +290,7 @@ class ExecutionGroupResponse:
             review_status=review_status,
             created=created,
             updated=updated,
+            tektome_token=tektome_token,
             id=id,
             memo=memo,
             status=status,
