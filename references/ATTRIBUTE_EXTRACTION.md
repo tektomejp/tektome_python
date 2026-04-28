@@ -285,35 +285,6 @@ For project flows, use `GetGeneralDataspaceAttributeDataspaceEntityType.PROJECT`
 
 The `tektome.shortcuts` module bundles common multi-call workflows into a single function.
 
-#### `create_attribute_approval_ticket`
-
-Creates attribute on the system resource or system project into a single approval ticket. All payloads in a single call must share the same `attribute_type`.
-
-```python
-from tektome import Context
-from tektome.endpoints.models import AttributeType
-from tektome.shortcuts.create_attribute_approval_ticket import (
-    AttributeConfig,
-    AttributePayload,
-    create_attribute_approval_ticket,
-)
-
-def main(ctx: Context):
-    payloads = [
-        AttributePayload(
-            attribute_config=AttributeConfig(
-                attribute_name="title",
-                attribute_type=AttributeType.STRING_ATTRIBUTES,
-            ),
-            value="Project Alpha",
-        )
-    ]
-
-    with ctx.client() as client:
-        response = create_attribute_approval_ticket(client, ctx, payloads)
-        print(f"Approval ticket created: {response.parsed}")
-```
-
 #### `extract_attribute_approval_ticket`
 
 Runs an attribute extraction against a section, polls until each extracted attribute is ready, then creates one approval ticket per non-reserved attribute.
