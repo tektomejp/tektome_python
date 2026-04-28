@@ -25,8 +25,7 @@ class CreateChatroomIdRequest:
             chatroom type: general -> tektome-os-v1, process_creator -> tektome-os-process-creator-v1.
         user_context (CreateChatroomIdRequestUserContextType0 | None | Unset): Optional client-supplied context about
             the user's current state (e.g., current page, dataspace id, focus). Forwarded verbatim into the LLM's system
-            prompt under a 'Current User Context' section so the agent can disambiguate intent without asking the user for
-            IDs.
+            prompt under a <UserContext> section so the agent can disambiguate intent without asking the user for IDs.
     """
 
     prompt: str
