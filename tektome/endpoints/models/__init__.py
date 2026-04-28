@@ -415,10 +415,9 @@ from .error_output_schema_response import ErrorOutputSchemaResponse
 from .error_response import ErrorResponse
 from .error_response_out import ErrorResponseOut
 from .error_response_post_out import ErrorResponsePostOut
-from .execute_metadata_kind import ExecuteMetadataKind
 from .execute_process_details import ExecuteProcessDetails
 from .execute_process_file_attribute_details import ExecuteProcessFileAttributeDetails
-from .execute_process_metadata_query_request import ExecuteProcessMetadataQueryRequest
+from .execute_process_metadata_post_request import ExecuteProcessMetadataPostRequest
 from .execute_process_metadata_response import ExecuteProcessMetadataResponse
 from .execute_process_payload_response import ExecuteProcessPayloadResponse
 from .execute_process_payload_response_execution_run_args import ExecuteProcessPayloadResponseExecutionRunArgs
@@ -524,7 +523,6 @@ from .get_dataspace_executions_execution_review_status import GetDataspaceExecut
 from .get_dataspace_executions_execution_status import GetDataspaceExecutionsExecutionStatus
 from .get_dataspace_executions_process_type_choices import GetDataspaceExecutionsProcessTypeChoices
 from .get_dr_default_output_format_response import GetDRDefaultOutputFormatResponse
-from .get_execute_process_metadata_execute_metadata_kind import GetExecuteProcessMetadataExecuteMetadataKind
 from .get_execution_approvals_approval_category_types import GetExecutionApprovalsApprovalCategoryTypes
 from .get_execution_approvals_approval_status import GetExecutionApprovalsApprovalStatus
 from .get_execution_approvals_process_type_choices import GetExecutionApprovalsProcessTypeChoices
@@ -1554,10 +1552,9 @@ __all__ = (
     "ErrorResponse",
     "ErrorResponseOut",
     "ErrorResponsePostOut",
-    "ExecuteMetadataKind",
     "ExecuteProcessDetails",
     "ExecuteProcessFileAttributeDetails",
-    "ExecuteProcessMetadataQueryRequest",
+    "ExecuteProcessMetadataPostRequest",
     "ExecuteProcessMetadataResponse",
     "ExecuteProcessPayloadResponse",
     "ExecuteProcessPayloadResponseExecutionRunArgs",
@@ -1663,7 +1660,6 @@ __all__ = (
     "GetDataspaceExecutionsExecutionStatus",
     "GetDataspaceExecutionsProcessTypeChoices",
     "GetDRDefaultOutputFormatResponse",
-    "GetExecuteProcessMetadataExecuteMetadataKind",
     "GetExecutionApprovalsApprovalCategoryTypes",
     "GetExecutionApprovalsApprovalStatus",
     "GetExecutionApprovalsProcessTypeChoices",

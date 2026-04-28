@@ -7,42 +7,32 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.execute_process_metadata_post_request import ExecuteProcessMetadataPostRequest
 from ...models.execute_process_metadata_response import ExecuteProcessMetadataResponse
-from ...models.get_execute_process_metadata_execute_metadata_kind import GetExecuteProcessMetadataExecuteMetadataKind
-from ...types import UNSET, Response
+from ...types import Response
 
 
 def _get_kwargs(
     dataspace_id: UUID,
     process_id: UUID,
     *,
-    kind: GetExecuteProcessMetadataExecuteMetadataKind,
-    model_entity_ids: list[UUID],
+    body: ExecuteProcessMetadataPostRequest,
 ) -> dict[str, Any]:
-
-    params: dict[str, Any] = {}
-
-    json_kind = kind.value
-    params["kind"] = json_kind
-
-    json_model_entity_ids = []
-    for model_entity_ids_item_data in model_entity_ids:
-        model_entity_ids_item = str(model_entity_ids_item_data)
-        json_model_entity_ids.append(model_entity_ids_item)
-
-    params["model_entity_ids"] = json_model_entity_ids
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+    headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
-        "method": "get",
+        "method": "post",
         "url": "/api/core/dataspaces/{dataspace_id}/processes/{process_id}/metadata/".format(
             dataspace_id=quote(str(dataspace_id), safe=""),
             process_id=quote(str(process_id), safe=""),
         ),
-        "params": params,
     }
 
+    _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -76,8 +66,7 @@ def sync_detailed(
     process_id: UUID,
     *,
     client: AuthenticatedClient,
-    kind: GetExecuteProcessMetadataExecuteMetadataKind,
-    model_entity_ids: list[UUID],
+    body: ExecuteProcessMetadataPostRequest,
 ) -> Response[ExecuteProcessMetadataResponse]:
     """Get execution metadata for a configured process
 
@@ -87,8 +76,7 @@ def sync_detailed(
     Args:
         dataspace_id (UUID):
         process_id (UUID): The ID of an existing process.
-        kind (GetExecuteProcessMetadataExecuteMetadataKind):
-        model_entity_ids (list[UUID]):
+        body (ExecuteProcessMetadataPostRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -101,8 +89,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         dataspace_id=dataspace_id,
         process_id=process_id,
-        kind=kind,
-        model_entity_ids=model_entity_ids,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -117,8 +104,7 @@ def sync(
     process_id: UUID,
     *,
     client: AuthenticatedClient,
-    kind: GetExecuteProcessMetadataExecuteMetadataKind,
-    model_entity_ids: list[UUID],
+    body: ExecuteProcessMetadataPostRequest,
 ) -> ExecuteProcessMetadataResponse | None:
     """Get execution metadata for a configured process
 
@@ -128,8 +114,7 @@ def sync(
     Args:
         dataspace_id (UUID):
         process_id (UUID): The ID of an existing process.
-        kind (GetExecuteProcessMetadataExecuteMetadataKind):
-        model_entity_ids (list[UUID]):
+        body (ExecuteProcessMetadataPostRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -143,8 +128,7 @@ def sync(
         dataspace_id=dataspace_id,
         process_id=process_id,
         client=client,
-        kind=kind,
-        model_entity_ids=model_entity_ids,
+        body=body,
     ).parsed
 
 
@@ -153,8 +137,7 @@ async def asyncio_detailed(
     process_id: UUID,
     *,
     client: AuthenticatedClient,
-    kind: GetExecuteProcessMetadataExecuteMetadataKind,
-    model_entity_ids: list[UUID],
+    body: ExecuteProcessMetadataPostRequest,
 ) -> Response[ExecuteProcessMetadataResponse]:
     """Get execution metadata for a configured process
 
@@ -164,8 +147,7 @@ async def asyncio_detailed(
     Args:
         dataspace_id (UUID):
         process_id (UUID): The ID of an existing process.
-        kind (GetExecuteProcessMetadataExecuteMetadataKind):
-        model_entity_ids (list[UUID]):
+        body (ExecuteProcessMetadataPostRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -178,8 +160,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         dataspace_id=dataspace_id,
         process_id=process_id,
-        kind=kind,
-        model_entity_ids=model_entity_ids,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -192,8 +173,7 @@ async def asyncio(
     process_id: UUID,
     *,
     client: AuthenticatedClient,
-    kind: GetExecuteProcessMetadataExecuteMetadataKind,
-    model_entity_ids: list[UUID],
+    body: ExecuteProcessMetadataPostRequest,
 ) -> ExecuteProcessMetadataResponse | None:
     """Get execution metadata for a configured process
 
@@ -203,8 +183,7 @@ async def asyncio(
     Args:
         dataspace_id (UUID):
         process_id (UUID): The ID of an existing process.
-        kind (GetExecuteProcessMetadataExecuteMetadataKind):
-        model_entity_ids (list[UUID]):
+        body (ExecuteProcessMetadataPostRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -219,7 +198,6 @@ async def asyncio(
             dataspace_id=dataspace_id,
             process_id=process_id,
             client=client,
-            kind=kind,
-            model_entity_ids=model_entity_ids,
+            body=body,
         )
     ).parsed
