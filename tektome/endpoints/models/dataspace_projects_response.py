@@ -33,6 +33,7 @@ class DataspaceProjectsResponse:
         files_count (int):
         pages_count (int):
         id (None | Unset | UUID):
+        dataspace_id (None | Unset | UUID):
     """
 
     core_attributes: RequiredCoreProjectAttributes
@@ -44,6 +45,7 @@ class DataspaceProjectsResponse:
     files_count: int
     pages_count: int
     id: None | Unset | UUID = UNSET
+    dataspace_id: None | Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -71,6 +73,14 @@ class DataspaceProjectsResponse:
         else:
             id = self.id
 
+        dataspace_id: None | str | Unset
+        if isinstance(self.dataspace_id, Unset):
+            dataspace_id = UNSET
+        elif isinstance(self.dataspace_id, UUID):
+            dataspace_id = str(self.dataspace_id)
+        else:
+            dataspace_id = self.dataspace_id
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -87,6 +97,8 @@ class DataspaceProjectsResponse:
         )
         if id is not UNSET:
             field_dict["id"] = id
+        if dataspace_id is not UNSET:
+            field_dict["dataspace_id"] = dataspace_id
 
         return field_dict
 
@@ -130,6 +142,23 @@ class DataspaceProjectsResponse:
 
         id = _parse_id(d.pop("id", UNSET))
 
+        def _parse_dataspace_id(data: object) -> None | Unset | UUID:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                dataspace_id_type_0 = UUID(data)
+
+                return dataspace_id_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | Unset | UUID, data)
+
+        dataspace_id = _parse_dataspace_id(d.pop("dataspace_id", UNSET))
+
         dataspace_projects_response = cls(
             core_attributes=core_attributes,
             core_attributes_metadata=core_attributes_metadata,
@@ -140,6 +169,7 @@ class DataspaceProjectsResponse:
             files_count=files_count,
             pages_count=pages_count,
             id=id,
+            dataspace_id=dataspace_id,
         )
 
         dataspace_projects_response.additional_properties = d

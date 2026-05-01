@@ -57,7 +57,9 @@ def sync_detailed(
 ) -> Response[DataspaceProjectsResponse]:
     """Get a dataspace project by ID
 
-     Retrieve detailed information about a specific project within a dataspace.
+     Retrieve detailed information about a specific project within a dataspace, including its
+    `dataspace_id`. If the project belongs to multiple dataspaces, the oldest associated dataspace is
+    returned.
 
     Args:
         project_id (UUID):
@@ -88,7 +90,9 @@ def sync(
 ) -> DataspaceProjectsResponse | None:
     """Get a dataspace project by ID
 
-     Retrieve detailed information about a specific project within a dataspace.
+     Retrieve detailed information about a specific project within a dataspace, including its
+    `dataspace_id`. If the project belongs to multiple dataspaces, the oldest associated dataspace is
+    returned.
 
     Args:
         project_id (UUID):
@@ -114,7 +118,9 @@ async def asyncio_detailed(
 ) -> Response[DataspaceProjectsResponse]:
     """Get a dataspace project by ID
 
-     Retrieve detailed information about a specific project within a dataspace.
+     Retrieve detailed information about a specific project within a dataspace, including its
+    `dataspace_id`. If the project belongs to multiple dataspaces, the oldest associated dataspace is
+    returned.
 
     Args:
         project_id (UUID):
@@ -143,7 +149,9 @@ async def asyncio(
 ) -> DataspaceProjectsResponse | None:
     """Get a dataspace project by ID
 
-     Retrieve detailed information about a specific project within a dataspace.
+     Retrieve detailed information about a specific project within a dataspace, including its
+    `dataspace_id`. If the project belongs to multiple dataspaces, the oldest associated dataspace is
+    returned.
 
     Args:
         project_id (UUID):

@@ -92,8 +92,10 @@ def sync_detailed(
 ) -> Response[PagedDataspaceProjectsGetOut]:
     """List all projects in a dataspace
 
-     Retrieve all projects within a dataspace with their file counts, page counts, and attributes.
-    Supports sorting and filtering via query parameters.
+     Retrieve all projects within a dataspace with their file counts, page counts, attributes, and
+    `dataspace_id`. Supports sorting and filtering via query parameters. Note: `dataspace_id` is the
+    project's oldest associated dataspace; if a project belongs to multiple dataspaces, this value may
+    differ from the `{dataspace_id}` in the URL path.
 
     Args:
         dataspace_id (UUID):
@@ -136,8 +138,10 @@ def sync(
 ) -> PagedDataspaceProjectsGetOut | None:
     """List all projects in a dataspace
 
-     Retrieve all projects within a dataspace with their file counts, page counts, and attributes.
-    Supports sorting and filtering via query parameters.
+     Retrieve all projects within a dataspace with their file counts, page counts, attributes, and
+    `dataspace_id`. Supports sorting and filtering via query parameters. Note: `dataspace_id` is the
+    project's oldest associated dataspace; if a project belongs to multiple dataspaces, this value may
+    differ from the `{dataspace_id}` in the URL path.
 
     Args:
         dataspace_id (UUID):
@@ -175,8 +179,10 @@ async def asyncio_detailed(
 ) -> Response[PagedDataspaceProjectsGetOut]:
     """List all projects in a dataspace
 
-     Retrieve all projects within a dataspace with their file counts, page counts, and attributes.
-    Supports sorting and filtering via query parameters.
+     Retrieve all projects within a dataspace with their file counts, page counts, attributes, and
+    `dataspace_id`. Supports sorting and filtering via query parameters. Note: `dataspace_id` is the
+    project's oldest associated dataspace; if a project belongs to multiple dataspaces, this value may
+    differ from the `{dataspace_id}` in the URL path.
 
     Args:
         dataspace_id (UUID):
@@ -217,8 +223,10 @@ async def asyncio(
 ) -> PagedDataspaceProjectsGetOut | None:
     """List all projects in a dataspace
 
-     Retrieve all projects within a dataspace with their file counts, page counts, and attributes.
-    Supports sorting and filtering via query parameters.
+     Retrieve all projects within a dataspace with their file counts, page counts, attributes, and
+    `dataspace_id`. Supports sorting and filtering via query parameters. Note: `dataspace_id` is the
+    project's oldest associated dataspace; if a project belongs to multiple dataspaces, this value may
+    differ from the `{dataspace_id}` in the URL path.
 
     Args:
         dataspace_id (UUID):
