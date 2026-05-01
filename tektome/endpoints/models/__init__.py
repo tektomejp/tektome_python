@@ -94,8 +94,6 @@ from .bim_key_value_stats_response import BimKeyValueStatsResponse
 from .bim_key_value_stats_response_bool_bucket_stats import BimKeyValueStatsResponseBoolBucketStats
 from .bim_key_value_stats_response_num_bucket_stats import BimKeyValueStatsResponseNumBucketStats
 from .bim_key_value_stats_response_text_bucket_stats import BimKeyValueStatsResponseTextBucketStats
-from .bim_object_3d_item_response import BimObject3DItemResponse
-from .bim_object_3d_response_response import BimObject3DResponseResponse
 from .bim_object_from_json_response import BimObjectFromJsonResponse
 from .bim_object_response import BimObjectResponse
 from .bim_project_element_id_type_path_params import BimProjectElementIdTypePathParams
@@ -498,7 +496,6 @@ from .generate_usage_report_post_in import GenerateUsageReportPostIn
 from .generate_usage_report_post_out import GenerateUsageReportPostOut
 from .generic_check_response import GenericCheckResponse
 from .generic_http_error import GenericHttpError
-from .geometry import Geometry
 from .get_api_key_filter_request import GetAPIKeyFilterRequest
 from .get_api_key_response import GetAPIKeyResponse
 from .get_attribute_bim_citation_dataspace_entity_type import GetAttributeBimCitationDataspaceEntityType
@@ -797,7 +794,6 @@ from .reference_notes_query_sort import ReferenceNotesQuerySort
 from .reference_notes_version_path_params import ReferenceNotesVersionPathParams
 from .refresh_response import RefreshResponse
 from .remove_resource_group_request import RemoveResourceGroupRequest
-from .render_material import RenderMaterial
 from .replace_default_attribute_body_request import ReplaceDefaultAttributeBodyRequest
 from .replace_entity_tracker_request import ReplaceEntityTrackerRequest
 from .replace_lawtalk_attribute_body_request import ReplaceLawtalkAttributeBodyRequest
@@ -1058,7 +1054,6 @@ from .target_table import TargetTable
 from .target_user_in_schema import TargetUserInSchema
 from .task_response import TaskResponse
 from .tektome_response_entry import TektomeResponseEntry
-from .tekton_geom_instance import TektonGeomInstance
 from .template_admin_filter_request import TemplateAdminFilterRequest
 from .template_admin_filter_request_ui_trigger_kind_choices import TemplateAdminFilterRequestUiTriggerKindChoices
 from .template_filter_request import TemplateFilterRequest
@@ -1082,7 +1077,6 @@ from .time_attribute_schema_request import TimeAttributeSchemaRequest
 from .time_attribute_schema_response import TimeAttributeSchemaResponse
 from .total_objects_count import TotalObjectsCount
 from .transaction_types import TransactionTypes
-from .transform import Transform
 from .ttos_folder_copy_response import TtosFolderCopyResponse
 from .ttos_folder_delete_out import TtosFolderDeleteOut
 from .ttos_folder_delete_path_params import TtosFolderDeletePathParams
@@ -1259,8 +1253,6 @@ __all__ = (
     "BimKeyValueStatsResponseBoolBucketStats",
     "BimKeyValueStatsResponseNumBucketStats",
     "BimKeyValueStatsResponseTextBucketStats",
-    "BimObject3DItemResponse",
-    "BimObject3DResponseResponse",
     "BimObjectFromJsonResponse",
     "BimObjectResponse",
     "BimProjectElementIdTypePathParams",
@@ -1635,7 +1627,6 @@ __all__ = (
     "GenerateUsageReportPostOut",
     "GenericCheckResponse",
     "GenericHttpError",
-    "Geometry",
     "GetAPIKeyFilterRequest",
     "GetAPIKeyResponse",
     "GetAttributeBimCitationDataspaceEntityType",
@@ -1918,7 +1909,6 @@ __all__ = (
     "ReferenceNoteVersionResponse",
     "RefreshResponse",
     "RemoveResourceGroupRequest",
-    "RenderMaterial",
     "ReplaceDefaultAttributeBodyRequest",
     "ReplaceEntityTrackerRequest",
     "ReplaceLawtalkAttributeBodyRequest",
@@ -2149,7 +2139,6 @@ __all__ = (
     "TargetUserInSchema",
     "TaskResponse",
     "TektomeResponseEntry",
-    "TektonGeomInstance",
     "TemplateAdminFilterRequest",
     "TemplateAdminFilterRequestUiTriggerKindChoices",
     "TemplateFilterRequest",
@@ -2171,7 +2160,6 @@ __all__ = (
     "TimeAttributeSchemaResponse",
     "TotalObjectsCount",
     "TransactionTypes",
-    "Transform",
     "TtosFolderCopyResponse",
     "TtosFolderDeleteOut",
     "TtosFolderDeletePathParams",
