@@ -26,12 +26,12 @@ class TemplateFromArtifactRequest:
 
     Attributes:
         name (str): The name of the template.
-        description (str): A brief description of the template.
         artifact_id (UUID): The ID of the artifact to create or update the template from.
         openflow_json (str | TemplateFromArtifactRequestOpenflowJsonType1): The OpenFlow JSON content for the template.
         ui_trigger_name (None | str | Unset): The name of the UI trigger associated with the template.
         ui_trigger_kind (None | UiTriggerKindChoices | Unset): The kind of the UI trigger associated with the template.
             Possible values are defined in UiTriggerKindChoices.
+        description (str | Unset): A brief description of the template. Default: ''.
         is_available_to_all_dataspaces (bool | Unset): Whether the template is available to all dataspaces. Default:
             False.
         is_default_to_all_dataspaces (bool | Unset): Whether the template is default to all dataspaces. Default: False.
@@ -42,11 +42,11 @@ class TemplateFromArtifactRequest:
     """
 
     name: str
-    description: str
     artifact_id: UUID
     openflow_json: str | TemplateFromArtifactRequestOpenflowJsonType1
     ui_trigger_name: None | str | Unset = UNSET
     ui_trigger_kind: None | UiTriggerKindChoices | Unset = UNSET
+    description: str | Unset = ""
     is_available_to_all_dataspaces: bool | Unset = False
     is_default_to_all_dataspaces: bool | Unset = False
     is_available_to_all_projects: bool | Unset = False
@@ -61,8 +61,6 @@ class TemplateFromArtifactRequest:
         )
 
         name = self.name
-
-        description = self.description
 
         artifact_id = str(self.artifact_id)
 
@@ -86,6 +84,8 @@ class TemplateFromArtifactRequest:
         else:
             ui_trigger_kind = self.ui_trigger_kind
 
+        description = self.description
+
         is_available_to_all_dataspaces = self.is_available_to_all_dataspaces
 
         is_default_to_all_dataspaces = self.is_default_to_all_dataspaces
@@ -105,7 +105,6 @@ class TemplateFromArtifactRequest:
         field_dict.update(
             {
                 "name": name,
-                "description": description,
                 "artifact_id": artifact_id,
                 "openflow_json": openflow_json,
             }
@@ -114,6 +113,8 @@ class TemplateFromArtifactRequest:
             field_dict["ui_trigger_name"] = ui_trigger_name
         if ui_trigger_kind is not UNSET:
             field_dict["ui_trigger_kind"] = ui_trigger_kind
+        if description is not UNSET:
+            field_dict["description"] = description
         if is_available_to_all_dataspaces is not UNSET:
             field_dict["is_available_to_all_dataspaces"] = is_available_to_all_dataspaces
         if is_default_to_all_dataspaces is not UNSET:
@@ -137,8 +138,6 @@ class TemplateFromArtifactRequest:
 
         d = dict(src_dict)
         name = d.pop("name")
-
-        description = d.pop("description")
 
         artifact_id = UUID(d.pop("artifact_id"))
 
@@ -181,6 +180,8 @@ class TemplateFromArtifactRequest:
 
         ui_trigger_kind = _parse_ui_trigger_kind(d.pop("ui_trigger_kind", UNSET))
 
+        description = d.pop("description", UNSET)
+
         is_available_to_all_dataspaces = d.pop("is_available_to_all_dataspaces", UNSET)
 
         is_default_to_all_dataspaces = d.pop("is_default_to_all_dataspaces", UNSET)
@@ -200,11 +201,11 @@ class TemplateFromArtifactRequest:
 
         template_from_artifact_request = cls(
             name=name,
-            description=description,
             artifact_id=artifact_id,
             openflow_json=openflow_json,
             ui_trigger_name=ui_trigger_name,
             ui_trigger_kind=ui_trigger_kind,
+            description=description,
             is_available_to_all_dataspaces=is_available_to_all_dataspaces,
             is_default_to_all_dataspaces=is_default_to_all_dataspaces,
             is_available_to_all_projects=is_available_to_all_projects,
