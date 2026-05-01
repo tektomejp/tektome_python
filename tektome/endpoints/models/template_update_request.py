@@ -23,12 +23,12 @@ class TemplateUpdateRequest:
 
     Attributes:
         name (str): The name of the template.
-        description (str): A brief description of the template.
         ui_trigger_name (None | str | Unset): The name of the UI trigger associated with the template.
         ui_trigger_kind (None | UiTriggerKindChoices | Unset): The kind of the UI trigger associated with the template.
             Possible values are defined in UiTriggerKindChoices.
         is_active (bool | Unset): Whether the template is active. Default: True.
         input_schema_patch (None | TemplateOverrideInputSchema | Unset): Overrides the original template's input schema.
+        description (str | Unset): A brief description of the template. Default: ''.
         is_available_to_all_dataspaces (bool | Unset): Whether the template is available to all dataspaces. Default:
             False.
         is_default_to_all_dataspaces (bool | Unset): Whether the template is default to all dataspaces. Default: False.
@@ -38,11 +38,11 @@ class TemplateUpdateRequest:
     """
 
     name: str
-    description: str
     ui_trigger_name: None | str | Unset = UNSET
     ui_trigger_kind: None | UiTriggerKindChoices | Unset = UNSET
     is_active: bool | Unset = True
     input_schema_patch: None | TemplateOverrideInputSchema | Unset = UNSET
+    description: str | Unset = ""
     is_available_to_all_dataspaces: bool | Unset = False
     is_default_to_all_dataspaces: bool | Unset = False
     is_available_to_all_projects: bool | Unset = False
@@ -54,8 +54,6 @@ class TemplateUpdateRequest:
         from ..models.template_override_input_schema import TemplateOverrideInputSchema
 
         name = self.name
-
-        description = self.description
 
         ui_trigger_name: None | str | Unset
         if isinstance(self.ui_trigger_name, Unset):
@@ -81,6 +79,8 @@ class TemplateUpdateRequest:
         else:
             input_schema_patch = self.input_schema_patch
 
+        description = self.description
+
         is_available_to_all_dataspaces = self.is_available_to_all_dataspaces
 
         is_default_to_all_dataspaces = self.is_default_to_all_dataspaces
@@ -98,7 +98,6 @@ class TemplateUpdateRequest:
         field_dict.update(
             {
                 "name": name,
-                "description": description,
             }
         )
         if ui_trigger_name is not UNSET:
@@ -109,6 +108,8 @@ class TemplateUpdateRequest:
             field_dict["is_active"] = is_active
         if input_schema_patch is not UNSET:
             field_dict["input_schema_patch"] = input_schema_patch
+        if description is not UNSET:
+            field_dict["description"] = description
         if is_available_to_all_dataspaces is not UNSET:
             field_dict["is_available_to_all_dataspaces"] = is_available_to_all_dataspaces
         if is_default_to_all_dataspaces is not UNSET:
@@ -128,8 +129,6 @@ class TemplateUpdateRequest:
 
         d = dict(src_dict)
         name = d.pop("name")
-
-        description = d.pop("description")
 
         def _parse_ui_trigger_name(data: object) -> None | str | Unset:
             if data is None:
@@ -176,6 +175,8 @@ class TemplateUpdateRequest:
 
         input_schema_patch = _parse_input_schema_patch(d.pop("input_schema_patch", UNSET))
 
+        description = d.pop("description", UNSET)
+
         is_available_to_all_dataspaces = d.pop("is_available_to_all_dataspaces", UNSET)
 
         is_default_to_all_dataspaces = d.pop("is_default_to_all_dataspaces", UNSET)
@@ -193,11 +194,11 @@ class TemplateUpdateRequest:
 
         template_update_request = cls(
             name=name,
-            description=description,
             ui_trigger_name=ui_trigger_name,
             ui_trigger_kind=ui_trigger_kind,
             is_active=is_active,
             input_schema_patch=input_schema_patch,
+            description=description,
             is_available_to_all_dataspaces=is_available_to_all_dataspaces,
             is_default_to_all_dataspaces=is_default_to_all_dataspaces,
             is_available_to_all_projects=is_available_to_all_projects,

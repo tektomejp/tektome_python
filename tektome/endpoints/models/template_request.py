@@ -24,11 +24,11 @@ class TemplateRequest:
 
     Attributes:
         name (str): The name of the template.
-        description (str): A brief description of the template.
         openflow_json (str | TemplateRequestOpenflowJsonType1): The OpenFlow JSON content for the template.
         ui_trigger_name (None | str | Unset): The name of the UI trigger associated with the template.
         ui_trigger_kind (None | UiTriggerKindChoices | Unset): The kind of the UI trigger associated with the template.
             Possible values are defined in UiTriggerKindChoices.
+        description (str | Unset): A brief description of the template. Default: ''.
         is_available_to_all_dataspaces (bool | Unset): Whether the template is available to all dataspaces. Default:
             False.
         is_default_to_all_dataspaces (bool | Unset): Whether the template is default to all dataspaces. Default: False.
@@ -40,10 +40,10 @@ class TemplateRequest:
     """
 
     name: str
-    description: str
     openflow_json: str | TemplateRequestOpenflowJsonType1
     ui_trigger_name: None | str | Unset = UNSET
     ui_trigger_kind: None | UiTriggerKindChoices | Unset = UNSET
+    description: str | Unset = ""
     is_available_to_all_dataspaces: bool | Unset = False
     is_default_to_all_dataspaces: bool | Unset = False
     is_available_to_all_projects: bool | Unset = False
@@ -57,8 +57,6 @@ class TemplateRequest:
         from ..models.template_request_openflow_json_type_1 import TemplateRequestOpenflowJsonType1
 
         name = self.name
-
-        description = self.description
 
         openflow_json: dict[str, Any] | str
         if isinstance(self.openflow_json, TemplateRequestOpenflowJsonType1):
@@ -79,6 +77,8 @@ class TemplateRequest:
             ui_trigger_kind = self.ui_trigger_kind.value
         else:
             ui_trigger_kind = self.ui_trigger_kind
+
+        description = self.description
 
         is_available_to_all_dataspaces = self.is_available_to_all_dataspaces
 
@@ -107,7 +107,6 @@ class TemplateRequest:
         field_dict.update(
             {
                 "name": name,
-                "description": description,
                 "openflow_json": openflow_json,
             }
         )
@@ -115,6 +114,8 @@ class TemplateRequest:
             field_dict["ui_trigger_name"] = ui_trigger_name
         if ui_trigger_kind is not UNSET:
             field_dict["ui_trigger_kind"] = ui_trigger_kind
+        if description is not UNSET:
+            field_dict["description"] = description
         if is_available_to_all_dataspaces is not UNSET:
             field_dict["is_available_to_all_dataspaces"] = is_available_to_all_dataspaces
         if is_default_to_all_dataspaces is not UNSET:
@@ -138,8 +139,6 @@ class TemplateRequest:
 
         d = dict(src_dict)
         name = d.pop("name")
-
-        description = d.pop("description")
 
         def _parse_openflow_json(data: object) -> str | TemplateRequestOpenflowJsonType1:
             try:
@@ -180,6 +179,8 @@ class TemplateRequest:
 
         ui_trigger_kind = _parse_ui_trigger_kind(d.pop("ui_trigger_kind", UNSET))
 
+        description = d.pop("description", UNSET)
+
         is_available_to_all_dataspaces = d.pop("is_available_to_all_dataspaces", UNSET)
 
         is_default_to_all_dataspaces = d.pop("is_default_to_all_dataspaces", UNSET)
@@ -216,10 +217,10 @@ class TemplateRequest:
 
         template_request = cls(
             name=name,
-            description=description,
             openflow_json=openflow_json,
             ui_trigger_name=ui_trigger_name,
             ui_trigger_kind=ui_trigger_kind,
+            description=description,
             is_available_to_all_dataspaces=is_available_to_all_dataspaces,
             is_default_to_all_dataspaces=is_default_to_all_dataspaces,
             is_available_to_all_projects=is_available_to_all_projects,
