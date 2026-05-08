@@ -139,6 +139,7 @@ from .candidate_item import CandidateItem
 from .candidate_item_kind import CandidateItemKind
 from .candidate_select_post_in import CandidateSelectPostIn
 from .candidate_select_status import CandidateSelectStatus
+from .chatroom_cancel_post_path_params import ChatroomCancelPostPathParams
 from .chatroom_delete_path_params import ChatroomDeletePathParams
 from .chatroom_id_post_path_params import ChatroomIdPostPathParams
 from .chatroom_response import ChatroomResponse
@@ -1299,6 +1300,7 @@ __all__ = (
     "CandidateItemKind",
     "CandidateSelectPostIn",
     "CandidateSelectStatus",
+    "ChatroomCancelPostPathParams",
     "ChatroomDeletePathParams",
     "ChatroomIdPostPathParams",
     "ChatroomResponse",
