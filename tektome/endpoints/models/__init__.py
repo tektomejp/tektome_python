@@ -633,6 +633,7 @@ from .markdown_schema import MarkdownSchema
 from .me_get_gitbook_token_out import MeGetGitbookTokenOut
 from .me_get_out_without_organization import MeGetOutWithoutOrganization
 from .me_response import MeResponse
+from .model_hint import ModelHint
 from .model_tier import ModelTier
 from .multi_select_attribute_schema_request import MultiSelectAttributeSchemaRequest
 from .multi_select_attribute_schema_response import MultiSelectAttributeSchemaResponse
@@ -1756,6 +1757,7 @@ __all__ = (
     "MeGetGitbookTokenOut",
     "MeGetOutWithoutOrganization",
     "MeResponse",
+    "ModelHint",
     "ModelTier",
     "MultiSelectAttributeSchemaRequest",
     "MultiSelectAttributeSchemaResponse",
