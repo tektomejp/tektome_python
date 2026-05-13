@@ -182,6 +182,48 @@ with ctx.client(raise_on_unexpected_status=False) as client:
         raise ValueError(f"Failed: {response.status_code} - {response.content.decode()}")
 ```
 
+### List response shape
+
+All paginated list endpoints (e.g. `get_attribute_citations`,
+`list_dataspace_resource_attribute_configs`, `get_execution_approvals`,
+`get_approval_candidates`, `list_bim_projects_by_resource`) return the same
+envelope: `{"items": [...], "count": N, "page": ..., "total_page": ...}`.
+
+**Records always live under the `"items"` key. There are no type-specific
+sub-keys** like `"bim_citations"`, `"pdf_citations"`, `"candidates"`, or
+`"configs"` — even when the list is mixed-type. Filter the flat `items` list by
+a discriminator field on each record (e.g. `citation_type`, `kind`).
+
+Prefer `response.parsed.items` when the SDK has a typed model:
+
+```python
+resp = list_dataspace_resource_attribute_configs.sync_detailed(
+    dataspace_id=ds_uuid, client=client, page=1, page_size=100,
+)
+for cfg in resp.parsed.items:                       # ✅ typed access
+    ...
+```
+
+Only fall back to `json.loads(...)` when you need a field the typed model
+doesn't expose, and read from `"items"`:
+
+```python
+body = json.loads(resp.content.decode())
+records = body.get("items", [])                     # ✅ always "items"
+# body.get("bim_citations")                         # ❌ this key does not exist
+```
+
+Mixed-type example — `get_attribute_citations` returns BIM, PDF, image,
+raw-text, and attribute-to-attribute citations interleaved in one `items`
+list, each tagged with `citation_type`:
+
+```python
+body = json.loads(resp.content.decode())
+bim_citation_id = next(
+    UUID(c["id"]) for c in body.get("items", []) if c.get("citation_type") == "bim"
+)
+```
+
 ## Important Notes
 
 - The `tektome/endpoints/` directory is **auto-generated** from OpenAPI spec - never edit it directly

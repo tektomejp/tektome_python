@@ -464,11 +464,12 @@ resp = create_attribute_bim_citation.sync_detailed(
 if resp.status_code.value == 201:
     pass  # created
 elif resp.status_code.value == 400 and "already cited" in resp.content.decode().lower():
-    # Find the existing citation ID then PATCH it
-    # get_attribute_citations returns a mixed PagedCitations list — all citation types
-    # (BIM, PDF, image, attribute-to-attribute) are interleaved. Filter by citation_type == "bim"
-    # to find the BIM citation. Note: the POST response uses citation_type="bim_citation" (schema
-    # field), but the list response uses the shorter "bim" value.
+    # Find the existing citation ID then PATCH it.
+    # get_attribute_citations returns the standard paginated envelope (see SKILL.md
+    # "List response shape"): records live under "items" — there is NO "bim_citations"
+    # sub-key. The list is mixed-type (BIM, PDF, image, raw-text, attribute-to-attribute
+    # interleaved); filter by citation_type == "bim". Note: the POST response uses
+    # citation_type="bim_citation" (schema field), but the list response uses "bim".
     list_resp = get_attribute_citations.sync_detailed(
         dataspace_id=dataspace_uuid,
         attribute_category=GetAttributeCitationsDataspaceEntityType.RESOURCE,
@@ -476,9 +477,9 @@ elif resp.status_code.value == 400 and "already cited" in resp.content.decode().
         client=client,
         page_size=100,
     )
-    citations_data = json.loads(list_resp.content.decode())
+    citations_data = list_resp.parsed.items
     bim_citation_id = next(
-        UUID(c["id"]) for c in citations_data.get("items", []) if c.get("citation_type") == "bim"
+        c.id for c in citations_data if c.citation_type == "bim_citation"
     )
     update_attribute_bim_citation.sync_detailed(
         dataspace_id=dataspace_uuid,
@@ -691,6 +692,39 @@ These replace `get_dataspace_project_resource` → `core_attributes_metadata` fo
 | `execution_id` is required for the approval ticket | Read from `Context.system_execution_id` in Openflow scripts — it must be non-null |
 
 ---
+
+## Shortcut helpers
+
+The `tektome.shortcuts` module bundles common multi-call workflows into a single function.
+
+#### `create_attribute_approval_ticket`
+
+Creates attribute on the system resource or system project into a single approval ticket. All payloads in a single call must share the same `attribute_type`.
+
+```python
+from tektome import Context
+from tektome.endpoints.models import AttributeType
+from tektome.shortcuts.create_attribute_approval_ticket import (
+    AttributeConfig,
+    AttributePayload,
+    create_attribute_approval_ticket,
+)
+
+def main(ctx: Context):
+    payloads = [
+        AttributePayload(
+            attribute_config=AttributeConfig(
+                attribute_name="title",
+                attribute_type=AttributeType.STRING_ATTRIBUTES,
+            ),
+            value="Project Alpha",
+        )
+    ]
+
+    with ctx.client() as client:
+        response = create_attribute_approval_ticket(client, ctx, payloads)
+        print(f"Approval ticket created: {response.parsed}")
+```
 
 ## Common mistakes
 
